@@ -5,6 +5,7 @@ import ttsc from "ttypescript";
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: "/pvme-preset-editor/",
   plugins: [
     react(),
     typescript({
