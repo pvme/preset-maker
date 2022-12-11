@@ -34,7 +34,6 @@ export const PresetEditor = () => {
 
   const handleSlotSelection = useCallback(
     (_event: React.MouseEvent<HTMLAreaElement>, index: number, className: string) => {
-      console.log(index, className);
       if (className === "inventory") {
         dispatch(updateSlotType(SlotType.Inventory));
       } else {

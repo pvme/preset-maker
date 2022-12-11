@@ -3,3 +3,5 @@ export interface ItemData {
   image: string;
   name: string;
 }
+
+export type ItemDataArray = ItemData[] | null;

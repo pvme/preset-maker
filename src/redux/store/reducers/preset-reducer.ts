@@ -36,11 +36,9 @@ export const presetSlice = createSlice({
       state.equipmentSlots = initialState.equipmentSlots;
     },
     setInventorySlot: (state: PresetState, action: PayloadAction<SetSlot>) => {
-      console.log("[INV] Updating state: ", action.payload);
       state.inventorySlots[action.payload.index] = action.payload.item;
     },
     setEquipmentSlot: (state: PresetState, action: PayloadAction<SetSlot>) => {
-      console.log("[EQU] Updating state: ", action.payload);
       state.equipmentSlots[action.payload.index] = action.payload.item;
     },
     importDataAction: (state: PresetState, action: PayloadAction<ImportData>) => {

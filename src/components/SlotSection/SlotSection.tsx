@@ -25,7 +25,6 @@ const SlotSection = ({ slots, handleClickOpen, coords, className }: SlotSectionP
             shape="rect"
             coords={`${coord.x1},${coord.y1},${coord.x2},${coord.y2}`}
             onClick={(event: React.MouseEvent<HTMLAreaElement>) => {
-              console.log("AREA ONCLICK: ", index);
               handleClickOpen(event, index, className);
             }}
           />
