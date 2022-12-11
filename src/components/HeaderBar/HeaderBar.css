@@ -1,0 +1,39 @@
+.header-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgb(26, 32, 39);
+}
+
+.app-bar {
+  max-width: 100%;
+  background-color: #191d1d;
+}
+
+.tool-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.image-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.sub-item {
+  width: 300px !important;
+}
+
+.tool-bar > button {
+  margin: 15px;
+}

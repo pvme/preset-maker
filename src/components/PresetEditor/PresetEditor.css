@@ -1,0 +1,44 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 510px;
+  height: 190px;
+  background-color: transparent !important;
+  padding: 0px !important;
+  min-width: 275px;
+  box-shadow: none !important;
+}
+
+.preset-container {
+  width: 510px;
+  height: 163px; /* same as image height */
+  padding: 0px !important;
+}
+
+.inventory-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: calc(50px * 8);
+}
+
+.equipment-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  width: calc(50px * 4.5);
+}
+
+.preset-buttons {
+  margin: 0 auto;
+  padding: 0px !important;
+}
+
+.preset-buttons button {
+  height: 25px;
+}

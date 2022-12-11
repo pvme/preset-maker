@@ -1,0 +1,33 @@
+.dialog-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.auto-complete {
+  width: 400px;
+  margin-top: 2px;
+}
+
+.image-container > img {
+  margin-right: 2px;
+  flex-shrink: 0;
+}
+
+.item-icon {
+  width: 25px;
+  height: 25px;
+  object-fit: contain;
+}
+
+.recent-items-title {
+  text-align: center;
+  margin-top: 5px;
+}
+
+.avatar-icon img {
+  height: 32px !important;
+  width: 32px !important;
+  object-fit: contain !important;
+}

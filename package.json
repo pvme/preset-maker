@@ -1,0 +1,40 @@
+{
+  "name": "preset-generator",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@mui/icons-material": "^5.10.16",
+    "@mui/material": "^5.10.17",
+    "@reduxjs/toolkit": "^1.9.1",
+    "file-saver": "^2.0.5",
+    "fuzzysort": "^2.0.4",
+    "html2canvas": "^1.4.1",
+    "notistack": "^2.0.8",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-redux": "^8.0.5",
+    "redux": "^4.2.0",
+    "typescript-json": "^3.3.43"
+  },
+  "devDependencies": {
+    "@rollup/plugin-typescript": "^10.0.1",
+    "@types/file-saver": "^2.0.5",
+    "@types/html2canvas": "^1.0.0",
+    "@types/react": "^18.0.24",
+    "@types/react-dom": "^18.0.8",
+    "@vitejs/plugin-react": "^2.2.0",
+    "ts-node": "^10.9.1",
+    "tslib": "^2.4.1",
+    "ttypescript": "^1.5.15",
+    "typescript": "^4.6.4",
+    "vite": "^3.2.3"
+  }
+}

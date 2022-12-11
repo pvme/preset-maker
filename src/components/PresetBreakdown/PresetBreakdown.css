@@ -1,0 +1,23 @@
+.breakdown-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.equipment-breakdown-container {
+  width: 600px;
+}
+
+.breakdown-list {
+  width: 100%;
+  background-color: #181818;
+}
+
+.empty-div {
+  height: 48px;
+}
+
+.bold {
+  font-weight: bold;
+}
