@@ -22,10 +22,11 @@ import { ItemData } from "../../types/inventory-slot";
 import itemData from "../../data/sorted_items.json";
 
 import "./DialogPopup.css";
+import { useAppSelector } from "../../redux/hooks";
+import { selectPreset } from "../../redux/store/reducers/preset-reducer";
 
 interface DialogPopupProps {
   open: boolean;
-  selectedIndex: number;
   recentlySelectedItems: ItemData[];
   handleClose: () => void;
   handleSlotChange: (index: number, item: ItemData) => void;
@@ -34,13 +35,8 @@ interface DialogPopupProps {
 const dialogBaseHeight = 170;
 const dialogExpandedHeight = 450;
 
-export const DialogPopup = ({
-  open,
-  selectedIndex,
-  recentlySelectedItems,
-  handleClose,
-  handleSlotChange,
-}: DialogPopupProps) => {
+export const DialogPopup = ({ open, recentlySelectedItems, handleClose, handleSlotChange }: DialogPopupProps) => {
+  const { slotType, slotIndex } = useAppSelector(selectPreset);
   const [dialogHeight, setDialogHeight] = useState(
     // Initialize dialogHeight state with the value of the dialogBaseHeight
     // constant.
@@ -82,26 +78,24 @@ export const DialogPopup = ({
         return;
       }
 
-      handleSlotChange(selectedIndex, value);
+      handleSlotChange(slotIndex, value);
       handleClose();
     },
-    // ! adding open to the dependancy list fixed a range of issues
-    // ! do not remove until refactor lmao
-    [open, selectedIndex]
+    [slotType, slotIndex]
   );
 
   const handleRecentClick = useCallback(
     (item: ItemData) => {
-      handleSlotChange(selectedIndex, item);
+      handleSlotChange(slotIndex, item);
       handleClose();
     },
-    [selectedIndex]
+    [slotType, slotIndex]
   );
 
   const clearCell = useCallback(() => {
-    handleSlotChange(selectedIndex, { name: "", image: "", label: "" });
+    handleSlotChange(slotIndex, { name: "", image: "", label: "" });
     handleClose();
-  }, [selectedIndex]);
+  }, [slotIndex]);
 
   return (
     <Dialog open={open} onClose={handleClose}>

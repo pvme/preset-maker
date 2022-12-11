@@ -3,11 +3,14 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 import { ItemData } from "../../../types/inventory-slot";
 import { ApplicationState } from "../store";
 import { ImportData } from "../../../types/import-data";
+import { SlotType } from "../../../types/slot-type";
 
 // Define a type for the slice state
 interface PresetState {
   inventorySlots: ItemData[];
   equipmentSlots: ItemData[];
+  slotType: SlotType;
+  slotIndex: number;
 }
 
 interface SetSlot {
@@ -19,6 +22,8 @@ interface SetSlot {
 const initialState: PresetState = {
   inventorySlots: new Array(13).fill({ name: "", image: "", label: "" }),
   equipmentSlots: new Array(28).fill({ name: "", image: "", label: "" }),
+  slotType: SlotType.Inventory,
+  slotIndex: -1,
 };
 
 export const presetSlice = createSlice({
@@ -42,10 +47,17 @@ export const presetSlice = createSlice({
       state.inventorySlots = action.payload.inventorySlots;
       state.equipmentSlots = action.payload.equipmentSlots;
     },
+    updateSlotType: (state: PresetState, action: PayloadAction<SlotType>) => {
+      state.slotType = action.payload;
+    },
+    updateSlotIndex: (state: PresetState, action: PayloadAction<number>) => {
+      state.slotIndex = action.payload;
+    },
   },
 });
 
-export const { resetSlots, setInventorySlot, setEquipmentSlot, importDataAction } = presetSlice.actions;
+export const { resetSlots, setInventorySlot, setEquipmentSlot, importDataAction, updateSlotType, updateSlotIndex } =
+  presetSlice.actions;
 
 // Other code such as selectors can use the imported `RootState` type
 export const selectPreset = (state: ApplicationState) => state.preset;

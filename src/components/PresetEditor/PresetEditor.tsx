@@ -10,6 +10,8 @@ import {
   selectPreset,
   setEquipmentSlot,
   setInventorySlot,
+  updateSlotIndex,
+  updateSlotType,
 } from "../../redux/store/reducers/preset-reducer";
 import { addToQueue, selectRecentItems } from "../../redux/store/reducers/recent-item-reducer";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
@@ -24,28 +26,25 @@ import "./PresetEditor.css";
 export const PresetEditor = () => {
   const dispatch = useAppDispatch();
 
-  const { inventorySlots, equipmentSlots } = useAppSelector(selectPreset);
+  const { inventorySlots, equipmentSlots, slotType, slotIndex } = useAppSelector(selectPreset);
   const recentItems = useAppSelector(selectRecentItems);
 
   const exportRef = useRef<HTMLDivElement>(null);
-
-  const [selectedIndex, setSelectedIndex] = useState<number>(-1);
-
-  const [inventoryOrEquipment, setInventoryOrEquipment] = useState<SlotType>(SlotType.Inventory);
   const [open, setOpen] = useState(false);
 
   const handleSlotSelection = useCallback(
     (_event: React.MouseEvent<HTMLAreaElement>, index: number, className: string) => {
+      console.log(index, className);
       if (className === "inventory") {
-        setInventoryOrEquipment(SlotType.Inventory);
+        dispatch(updateSlotType(SlotType.Inventory));
       } else {
-        setInventoryOrEquipment(SlotType.Equipment);
+        dispatch(updateSlotType(SlotType.Equipment));
       }
 
-      setSelectedIndex(index);
+      dispatch(updateSlotIndex(index));
       setOpen(true);
     },
-    [inventoryOrEquipment]
+    [dispatch]
   );
 
   const handleClose = useCallback(() => {
@@ -54,19 +53,18 @@ export const PresetEditor = () => {
 
   const changeSlot = useCallback(
     (index: number, item: ItemData) => {
-      if (index === -1 || item === null) {
-        console.error("error?");
+      if (index === -1) {
         return;
       }
 
-      if (inventoryOrEquipment === SlotType.Inventory) {
+      if (slotType === SlotType.Inventory) {
         dispatch(setInventorySlot({ index, item }));
       } else {
         dispatch(setEquipmentSlot({ index, item }));
       }
       dispatch(addToQueue(item));
     },
-    [inventoryOrEquipment]
+    [dispatch, slotType, slotIndex]
   );
 
   const onReset = useCallback(() => {
@@ -107,7 +105,6 @@ export const PresetEditor = () => {
       </Card>
       <DialogPopup
         open={open}
-        selectedIndex={selectedIndex}
         recentlySelectedItems={recentItems}
         handleClose={handleClose}
         handleSlotChange={changeSlot}
