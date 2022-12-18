@@ -30,3 +30,11 @@
   /* not sure why this fixes a ui error */
   height: 0px;
 }
+
+.option-list {
+  padding: 0px 15px;
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+}

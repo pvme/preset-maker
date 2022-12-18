@@ -5,7 +5,9 @@ import Autocomplete, {
 } from "@mui/material/Autocomplete";
 import Button from "@mui/material/Button";
 import ButtonGroup from "@mui/material/ButtonGroup";
+import IconButton from "@mui/material/IconButton";
 import TextField from "@mui/material/TextField";
+import CloseIcon from "@mui/icons-material/Close";
 import { useSnackbar } from "notistack";
 import React, { useCallback, useEffect, useState } from "react";
 
@@ -74,6 +76,32 @@ export const PresetName = () => {
     setSaveDialogOpen(true);
   }, []);
 
+  const removePreset = useCallback(
+    (event: React.MouseEvent<HTMLButtonElement>, presetKey: string) => {
+      // prevent default onClick behaviour
+      event.preventDefault();
+      event.stopPropagation();
+
+      let data = loadData();
+      // check to see if presetKey exists in localStorage
+      if (data.find((d) => d.presetName.toLocaleUpperCase() === presetKey.toLocaleUpperCase())) {
+        const confirm = window.confirm("Are you sure you wish to delete this preset?");
+        if (!confirm) {
+          return;
+        }
+      }
+
+      // remove the preset from the localStorage
+      data = data.filter((p) => p.presetName.toLocaleUpperCase() !== presetKey.toLocaleUpperCase());
+
+      // overwrite the localStorage with removed data
+      window.localStorage.setItem("presets", JSON.stringify(data));
+      enqueueSnackbar("Successfully removed the preset", { variant: "success" });
+      updateData();
+    },
+    [presets]
+  );
+
   const handleDialogClose = useCallback(() => {
     setSaveDialogOpen(false);
   }, []);
@@ -102,6 +130,14 @@ export const PresetName = () => {
                   className: "load-preset-field",
                 }}
               />
+            )}
+            renderOption={(props: React.HTMLAttributes<HTMLLIElement>, option: string) => (
+              <li {...props} className="option-list">
+                {option}
+                <IconButton onClick={(event) => removePreset(event, option)}>
+                  <CloseIcon htmlColor="white" />
+                </IconButton>
+              </li>
             )}
           />
         )}
