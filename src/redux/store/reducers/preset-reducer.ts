@@ -7,7 +7,7 @@ import { SlotType } from "../../../types/slot-type";
 
 // Define a type for the slice state
 interface PresetState {
-  name: string;
+  presetName: string;
   inventorySlots: ItemData[];
   equipmentSlots: ItemData[];
   slotType: SlotType;
@@ -21,7 +21,7 @@ interface SetSlot {
 
 // Define the initial state using that type
 const initialState: PresetState = {
-  name: "",
+  presetName: "",
   inventorySlots: new Array(28).fill({ name: "", image: "", label: "" }),
   equipmentSlots: new Array(13).fill({ name: "", image: "", label: "" }),
   slotType: SlotType.Inventory,
@@ -34,11 +34,12 @@ export const presetSlice = createSlice({
   initialState,
   reducers: {
     resetSlots: (state: PresetState) => {
+      state.presetName = initialState.presetName;
       state.inventorySlots = initialState.inventorySlots;
       state.equipmentSlots = initialState.equipmentSlots;
     },
     setPresetName: (state: PresetState, action: PayloadAction<string>) => {
-      state.name = action.payload;
+      state.presetName = action.payload;
     },
     setInventorySlot: (state: PresetState, action: PayloadAction<SetSlot>) => {
       state.inventorySlots[action.payload.index] = action.payload.item;
@@ -47,7 +48,7 @@ export const presetSlice = createSlice({
       state.equipmentSlots[action.payload.index] = action.payload.item;
     },
     importDataAction: (state: PresetState, action: PayloadAction<ImportData>) => {
-      state.name = action.payload.name;
+      state.presetName = action.payload.presetName;
       state.inventorySlots = action.payload.inventorySlots;
       state.equipmentSlots = action.payload.equipmentSlots;
     },
@@ -72,7 +73,7 @@ export const {
 
 // Other code such as selectors can use the imported `RootState` type
 export const selectPreset = (state: ApplicationState) => state.preset;
-export const selectPresetName = (state: ApplicationState) => state.preset.name;
+export const selectPresetName = (state: ApplicationState) => state.preset.presetName;
 export const selectInventorySlots = (state: ApplicationState) => state.preset.inventorySlots;
 
 export default presetSlice.reducer;

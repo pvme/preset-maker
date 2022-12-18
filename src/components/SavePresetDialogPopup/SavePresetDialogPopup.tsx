@@ -29,7 +29,7 @@ export const SavePresetDialogPopup = ({ open, loadData, updateData, handleClose 
   const [name, setName] = useState<string>("");
   const [error, setError] = useState<boolean>();
 
-  const { name: presetName, inventorySlots, equipmentSlots } = useAppSelector(selectPreset);
+  const { presetName: presetName, inventorySlots, equipmentSlots } = useAppSelector(selectPreset);
 
   const onPresetNameChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
     setError(!event.currentTarget.value);
@@ -50,7 +50,7 @@ export const SavePresetDialogPopup = ({ open, loadData, updateData, handleClose 
       const data = sanitizedData(inventorySlots, equipmentSlots);
       const currentData = loadData();
 
-      if (currentData.find((d) => d.name.toLocaleUpperCase() === name.toLocaleUpperCase())) {
+      if (currentData.find((d) => d.presetName.toLocaleUpperCase() === name.toLocaleUpperCase())) {
         const confirm = window.confirm(
           "A preset with this name already exists, are you sure you wish to overwrite it?"
         );
@@ -60,7 +60,7 @@ export const SavePresetDialogPopup = ({ open, loadData, updateData, handleClose 
       }
 
       currentData.push({
-        name: name,
+        presetName: name,
         inventorySlots: data.inventory,
         equipmentSlots: data.equipment,
       });

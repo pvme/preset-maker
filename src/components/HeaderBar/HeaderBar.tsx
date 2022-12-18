@@ -1,6 +1,6 @@
 import { useCallback, useRef } from "react";
 import { useSnackbar } from "notistack";
-import { isParse } from "typescript-json";
+import { validate } from "typescript-json";
 
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -22,7 +22,7 @@ export const HeaderBar = () => {
   const inputFile = useRef<HTMLInputElement>(null);
 
   const dispatch = useAppDispatch();
-  const { name: presetName, inventorySlots, equipmentSlots } = useAppSelector(selectPreset);
+  const { presetName, inventorySlots, equipmentSlots } = useAppSelector(selectPreset);
   const { enqueueSnackbar } = useSnackbar();
 
   const exportData = useCallback(() => {
@@ -47,13 +47,13 @@ export const HeaderBar = () => {
         return;
       }
 
-      const data = isParse<ImportData>(event.target.result as string);
-      if (!data) {
-        // do something here
+      const data = JSON.parse(event.target.result as string);
+      if (!validate<ImportData>(data).success) {
         enqueueSnackbar("Invalid JSON data.", { variant: "error" });
         return;
       }
 
+      // import the json data into the preset editor
       dispatch(importDataAction(data));
       enqueueSnackbar("Successfully imported your preset.", { variant: "success" });
     };

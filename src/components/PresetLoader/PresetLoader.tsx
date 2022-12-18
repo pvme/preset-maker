@@ -19,10 +19,10 @@ import "./PresetLoader.css";
 export const PresetName = () => {
   const [presets, setPresets] = useState<ImportData[]>();
   const [presetNames, setPresetNames] = useState<string[]>();
-  const [selectedPreset, setSelectedPreset] = useState<string>("");
+  const [selectedPreset, setSelectedPreset] = useState<string>();
   const [saveDialogOpen, setSaveDialogOpen] = useState<boolean>(false);
 
-  const { name } = useAppSelector(selectPreset);
+  const { presetName } = useAppSelector(selectPreset);
 
   const { enqueueSnackbar } = useSnackbar();
 
@@ -30,15 +30,15 @@ export const PresetName = () => {
 
   useEffect(() => {
     updateData();
-  }, [name]);
+  }, [presetName]);
 
   const updateData = useCallback(() => {
     const data = loadData();
 
     setPresets(data);
-    setPresetNames(data.map((importData) => importData.name));
-    setSelectedPreset(name);
-  }, [name]);
+    setPresetNames(data.map((importData: ImportData) => importData.presetName || ""));
+    setSelectedPreset(presetName);
+  }, [presetName]);
 
   const loadData = () => {
     // load data from localStorage
@@ -58,7 +58,7 @@ export const PresetName = () => {
       _reason: AutocompleteChangeReason,
       _details?: AutocompleteChangeDetails<string>
     ) => {
-      const preset = presets?.find((p) => p.name === value);
+      const preset = presets?.find((p) => p.presetName === value);
       if (!preset) {
         enqueueSnackbar("Unable to find preset", { variant: "error" });
         return;
@@ -81,26 +81,30 @@ export const PresetName = () => {
   return (
     <div className="input-group">
       <ButtonGroup>
-        <Autocomplete
-          className="autocomplete-field"
-          disableClearable
-          freeSolo={true}
-          value={selectedPreset}
-          forcePopupIcon
-          onChange={onPresetChange}
-          options={presetNames?.sort((a, b) => a.localeCompare(b)) ?? []}
-          renderInput={(params: AutocompleteRenderInputParams) => (
-            <TextField
-              {...params}
-              label="Load Preset"
-              inputProps={{
-                ...params.inputProps,
-                autoComplete: "new-password", // disable autocomplete and autofill
-                className: "load-preset-field",
-              }}
-            />
-          )}
-        />
+        {presetNames && (
+          <Autocomplete
+            className="autocomplete-field"
+            disablePortal
+            autoHighlight
+            disableClearable
+            freeSolo
+            forcePopupIcon
+            value={selectedPreset}
+            onChange={onPresetChange}
+            options={presetNames}
+            renderInput={(params: AutocompleteRenderInputParams) => (
+              <TextField
+                {...params}
+                label="Load Preset"
+                inputProps={{
+                  ...params.inputProps,
+                  autoComplete: "new-password", // disable autocomplete and autofill
+                  className: "load-preset-field",
+                }}
+              />
+            )}
+          />
+        )}
         <Button className="button" variant="contained" onClick={savePreset}>
           Save&nbsp;New&nbsp;Preset
         </Button>

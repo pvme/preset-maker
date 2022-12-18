@@ -26,7 +26,7 @@ import "./PresetEditor.css";
 export const PresetEditor = () => {
   const dispatch = useAppDispatch();
 
-  const { name, inventorySlots, equipmentSlots, slotType, slotIndex } = useAppSelector(selectPreset);
+  const { presetName: name, inventorySlots, equipmentSlots, slotType, slotIndex } = useAppSelector(selectPreset);
   const recentItems = useAppSelector(selectRecentItems);
 
   const exportRef = useRef<HTMLDivElement>(null);

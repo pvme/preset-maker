@@ -23,7 +23,7 @@ export const PresetBreakdown = () => {
   const [mappedEquipment, setMappedEquipment] = useState<ItemData[]>();
   const [uniqueInventoryItems, setUniqueInventoryItems] = useState<ItemData[][]>();
 
-  const { name, inventorySlots, equipmentSlots } = useAppSelector(selectPreset);
+  const { presetName: name, inventorySlots, equipmentSlots } = useAppSelector(selectPreset);
 
   useEffect(() => {
     const getMappedEquipment = () => {
