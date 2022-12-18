@@ -3,9 +3,10 @@ import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
 import { SnackbarKey, SnackbarProvider, useSnackbar } from "notistack";
 
-import { StyledEngineProvider } from "@mui/material/styles";
+import { createTheme, StyledEngineProvider, ThemeProvider } from "@mui/material/styles";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
+import CssBaseline from "@mui/material/CssBaseline";
 
 import App from "./App";
 import { ReduxStore } from "./redux/store/store";
@@ -26,18 +27,27 @@ function SnackbarCloseButton({ snackbarKey }: SnackBarAction) {
   );
 }
 
+const darkTheme = createTheme({
+  palette: {
+    mode: "dark",
+  },
+});
+
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <StyledEngineProvider injectFirst>
-      <Provider store={ReduxStore}>
-        <SnackbarProvider
-          maxSnack={3}
-          action={(snackBarKey) => <SnackbarCloseButton snackbarKey={snackBarKey} />}
-          autoHideDuration={3000}
-        >
-          <App />
-        </SnackbarProvider>
-      </Provider>
-    </StyledEngineProvider>
+    <ThemeProvider theme={darkTheme}>
+      <StyledEngineProvider injectFirst>
+        <Provider store={ReduxStore}>
+          <SnackbarProvider
+            maxSnack={3}
+            action={(snackBarKey) => <SnackbarCloseButton snackbarKey={snackBarKey} />}
+            autoHideDuration={3000}
+          >
+            <CssBaseline />
+            <App />
+          </SnackbarProvider>
+        </Provider>
+      </StyledEngineProvider>
+    </ThemeProvider>
   </React.StrictMode>
 );

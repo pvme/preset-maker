@@ -5,13 +5,23 @@
   justify-content: center;
 }
 
+.other-container {
+  display: flex;
+  flex-direction: row;
+  background-color: #181818;
+}
+
+.other-container div:hover {
+  background-color: #181818;
+}
+
 .equipment-breakdown-container {
   width: 600px;
 }
 
 .breakdown-list {
   width: 100%;
-  background-color: #181818;
+  /* background-color: #181818; */
 }
 
 .empty-div {
@@ -20,4 +30,8 @@
 
 .bold {
   font-weight: bold;
+}
+
+.breakdown-button {
+  margin: 10px auto !important;
 }

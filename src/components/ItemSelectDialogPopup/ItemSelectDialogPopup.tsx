@@ -21,7 +21,7 @@ import { FilterOptionsState } from "@mui/material/useAutocomplete";
 import { ItemData } from "../../types/inventory-slot";
 import itemData from "../../data/sorted_items.json";
 
-import "./DialogPopup.css";
+import "./ItemSelectDialogPopup.css";
 import { useAppSelector } from "../../redux/hooks";
 import { selectPreset } from "../../redux/store/reducers/preset-reducer";
 

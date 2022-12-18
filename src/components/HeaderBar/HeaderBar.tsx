@@ -1,41 +1,35 @@
 import { useCallback, useRef } from "react";
+import { useSnackbar } from "notistack";
+import { isParse } from "typescript-json";
 
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
+import ButtonGroup from "@mui/material/ButtonGroup";
+import Container from "@mui/material/Container";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 
 import { importDataAction, selectPreset } from "../../redux/store/reducers/preset-reducer";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { ImportData } from "../../types/import-data";
 import { exportAsJson } from "../../utility/export-to-json";
+import { sanitizedData, stringifyData } from "../../utility/sanitizer";
 
 import "./HeaderBar.css";
-import Container from "@mui/material/Container";
-import { ButtonGroup } from "@mui/material";
-import { ImportData } from "../../types/import-data";
-import { isParse } from "typescript-json";
-import { useSnackbar } from "notistack";
 
 export const HeaderBar = () => {
   const inputFile = useRef<HTMLInputElement>(null);
 
   const dispatch = useAppDispatch();
-  const { inventorySlots, equipmentSlots } = useAppSelector(selectPreset);
+  const { name: presetName, inventorySlots, equipmentSlots } = useAppSelector(selectPreset);
   const { enqueueSnackbar } = useSnackbar();
 
   const exportData = useCallback(() => {
-    const data = JSON.stringify(
-      {
-        inventorySlots,
-        equipmentSlots,
-      },
-      null,
-      2
-    );
-
-    exportAsJson("PRESET", data);
-  }, [inventorySlots, equipmentSlots]);
+    const sanitized = sanitizedData(inventorySlots, equipmentSlots);
+    const stringified = stringifyData(presetName, sanitized.inventory, sanitized.equipment);
+    exportAsJson(`PRESET_${presetName.replaceAll(" ", "_")}`, stringified);
+  }, [presetName, inventorySlots, equipmentSlots]);
 
   const importData = useCallback(() => {
     inputFile.current?.click();
@@ -95,10 +89,10 @@ export const HeaderBar = () => {
             </Typography>
             <ButtonGroup className="button-container sub-item">
               <Button color="inherit" variant="outlined" onClick={importData}>
-                Import JSON
+                Import&nbsp;JSON
               </Button>
               <Button color="inherit" variant="outlined" onClick={exportData}>
-                Export JSON
+                Export&nbsp;JSON
               </Button>
             </ButtonGroup>
           </Toolbar>

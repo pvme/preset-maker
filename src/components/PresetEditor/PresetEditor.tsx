@@ -18,7 +18,7 @@ import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { ItemData } from "../../types/inventory-slot";
 import { SlotType } from "../../types/slot-type";
 import { exportAsImage } from "../../utility/export-to-png";
-import { DialogPopup } from "../DialogPopup/DialogPopup";
+import { DialogPopup } from "../ItemSelectDialogPopup/ItemSelectDialogPopup";
 import { Equipment, Inventory } from "../SlotSection/SlotSection";
 
 import "./PresetEditor.css";
@@ -26,7 +26,7 @@ import "./PresetEditor.css";
 export const PresetEditor = () => {
   const dispatch = useAppDispatch();
 
-  const { inventorySlots, equipmentSlots, slotType, slotIndex } = useAppSelector(selectPreset);
+  const { name, inventorySlots, equipmentSlots, slotType, slotIndex } = useAppSelector(selectPreset);
   const recentItems = useAppSelector(selectRecentItems);
 
   const exportRef = useRef<HTMLDivElement>(null);
@@ -71,8 +71,8 @@ export const PresetEditor = () => {
   }, []);
 
   const onSave = useCallback(async () => {
-    await exportAsImage(exportRef.current, "PRESET");
-  }, []);
+    await exportAsImage(exportRef.current, `PRESET_${name.replaceAll(" ", "_")}`);
+  }, [name]);
 
   return (
     <>

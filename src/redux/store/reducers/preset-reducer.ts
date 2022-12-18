@@ -7,6 +7,7 @@ import { SlotType } from "../../../types/slot-type";
 
 // Define a type for the slice state
 interface PresetState {
+  name: string;
   inventorySlots: ItemData[];
   equipmentSlots: ItemData[];
   slotType: SlotType;
@@ -20,8 +21,9 @@ interface SetSlot {
 
 // Define the initial state using that type
 const initialState: PresetState = {
-  inventorySlots: new Array(13).fill({ name: "", image: "", label: "" }),
-  equipmentSlots: new Array(28).fill({ name: "", image: "", label: "" }),
+  name: "",
+  inventorySlots: new Array(28).fill({ name: "", image: "", label: "" }),
+  equipmentSlots: new Array(13).fill({ name: "", image: "", label: "" }),
   slotType: SlotType.Inventory,
   slotIndex: -1,
 };
@@ -35,6 +37,9 @@ export const presetSlice = createSlice({
       state.inventorySlots = initialState.inventorySlots;
       state.equipmentSlots = initialState.equipmentSlots;
     },
+    setPresetName: (state: PresetState, action: PayloadAction<string>) => {
+      state.name = action.payload;
+    },
     setInventorySlot: (state: PresetState, action: PayloadAction<SetSlot>) => {
       state.inventorySlots[action.payload.index] = action.payload.item;
     },
@@ -42,6 +47,7 @@ export const presetSlice = createSlice({
       state.equipmentSlots[action.payload.index] = action.payload.item;
     },
     importDataAction: (state: PresetState, action: PayloadAction<ImportData>) => {
+      state.name = action.payload.name;
       state.inventorySlots = action.payload.inventorySlots;
       state.equipmentSlots = action.payload.equipmentSlots;
     },
@@ -54,11 +60,19 @@ export const presetSlice = createSlice({
   },
 });
 
-export const { resetSlots, setInventorySlot, setEquipmentSlot, importDataAction, updateSlotType, updateSlotIndex } =
-  presetSlice.actions;
+export const {
+  resetSlots,
+  setPresetName,
+  setInventorySlot,
+  setEquipmentSlot,
+  importDataAction,
+  updateSlotType,
+  updateSlotIndex,
+} = presetSlice.actions;
 
 // Other code such as selectors can use the imported `RootState` type
 export const selectPreset = (state: ApplicationState) => state.preset;
+export const selectPresetName = (state: ApplicationState) => state.preset.name;
 export const selectInventorySlots = (state: ApplicationState) => state.preset.inventorySlots;
 
 export default presetSlice.reducer;

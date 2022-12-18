@@ -23,7 +23,7 @@ export const PresetBreakdown = () => {
   const [mappedEquipment, setMappedEquipment] = useState<ItemData[]>();
   const [uniqueInventoryItems, setUniqueInventoryItems] = useState<ItemData[][]>();
 
-  const { inventorySlots, equipmentSlots } = useAppSelector(selectPreset);
+  const { name, inventorySlots, equipmentSlots } = useAppSelector(selectPreset);
 
   useEffect(() => {
     const getMappedEquipment = () => {
@@ -59,13 +59,12 @@ export const PresetBreakdown = () => {
   }, [inventorySlots, equipmentSlots]);
 
   const exportBreakdown = useCallback(async () => {
-    await exportAsImage(exportRef.current, "BREAK_DOWN");
-  }, [exportRef]);
+    await exportAsImage(exportRef.current, `BREAK_DOWN_${name.replaceAll(" ", "_")}`);
+  }, [name, exportRef]);
 
   return (
     <div className="breakdown-container">
-      {/* Moving this style tag into .css breaks it ??? */}
-      <div ref={exportRef} style={{ display: "flex", flexDirection: "row", backgroundColor: "#181818" }}>
+      <div className="other-container" ref={exportRef}>
         <div className="equipment-breakdown-container">
           <List className="breakdown-list" dense>
             <BreakdownHeader />
@@ -86,7 +85,7 @@ export const PresetBreakdown = () => {
             )
         )}
       </div>
-      <Button variant="contained" color="success" onClick={exportBreakdown}>
+      <Button className="breakdown-button" variant="contained" color="success" onClick={exportBreakdown}>
         Export Breakdown
       </Button>
     </div>

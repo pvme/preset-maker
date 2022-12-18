@@ -29,7 +29,7 @@ export const exportAsImage = async (element: HTMLElement | null, preface: string
 
   const canvas = await html2canvas(element, {
     allowTaint: true,
-    logging: true,
+    logging: false,
     useCORS: true,
   });
   const image = canvas.toDataURL("image/png", 1.0);
