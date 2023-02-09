@@ -3013,5 +3013,30 @@
 		"label": "herbbag",
 		"image": "https://cdn.discordapp.com/attachments/799648976168288256/824459280953376798/Herb_bag.png",
 		"name": "Herb bag"
+	},
+	{
+		"label": "attunedcrystalhelm",
+		"image": "https://i.imgur.com/fiTvvCf.png",
+		"name": "Attuned crystal helm"
+	},
+		{
+		"label": "attunedcrystalbody",
+		"image": "https://i.imgur.com/uKBw6jW.png",
+		"name": "Attuned crystal body"
+	},
+		{
+		"label": "attunedcrystallegs",
+		"image": "https://i.imgur.com/xnjdLrW.png",
+		"name": "Attuned crystal legs"
+	},
+		{
+		"label": "attunedcrystalgloves",
+		"image": "https://i.imgur.com/xgIpwVn.png",
+		"name": "Attuned crystal gloves"
+	},
+		{
+		"label": "attunedcrystalboots",
+		"image": "https://i.imgur.com/SESOIYr.png",
+		"name": "Attuned crystal boots"
 	}
 ]
