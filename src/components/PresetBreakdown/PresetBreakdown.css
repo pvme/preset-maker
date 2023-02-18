@@ -5,13 +5,16 @@
   justify-content: center;
 }
 
-.other-container {
+.breakdown-inner-container {
   display: flex;
+  justify-content: center;
   flex-direction: row;
+  flex-wrap: wrap;
+  max-width: 100%;
   background-color: #181818;
 }
 
-.other-container div:hover {
+.breakdown-inner-container div:hover {
   background-color: #181818;
 }
 

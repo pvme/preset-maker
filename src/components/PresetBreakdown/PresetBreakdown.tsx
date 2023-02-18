@@ -64,7 +64,7 @@ export const PresetBreakdown = () => {
 
   return (
     <div className="breakdown-container">
-      <div className="other-container" ref={exportRef}>
+      <div className="breakdown-inner-container" ref={exportRef}>
         <div className="equipment-breakdown-container">
           <List className="breakdown-list" dense>
             <BreakdownHeader />
