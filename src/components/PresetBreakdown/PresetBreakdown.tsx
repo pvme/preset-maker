@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 
-import { Button } from "@mui/material";
+import { Button, CardActions } from "@mui/material";
 import List from "@mui/material/List";
 
 import { useAppSelector } from "../../redux/hooks";
@@ -8,7 +8,7 @@ import { selectPreset } from "../../redux/store/reducers/preset-reducer";
 import { ItemData } from "../../types/inventory-slot";
 import { BreakdownHeader } from "../BreakdownHeader/BreakdownHeader";
 import { BreakdownListItem } from "../BreakdownListItem/BreakdownListItem";
-import { exportAsImage } from "../../utility/export-to-png";
+import { copyImageToClipboard, exportAsImage } from "../../utility/export-to-png";
 
 import "./PresetBreakdown.css";
 
@@ -62,8 +62,20 @@ export const PresetBreakdown = () => {
     await exportAsImage(exportRef.current, `BREAK_DOWN_${name.replaceAll(" ", "_")}`);
   }, [name, exportRef]);
 
+  const copyBreakdownToClipboard = useCallback(async () => {
+    await copyImageToClipboard(exportRef.current);
+  }, [exportRef]);
+
   return (
     <div className="breakdown-container">
+      <div className="breakdown-header">
+          <Button className="breakdown-button" variant="contained" color="success" onClick={exportBreakdown}>
+            Save Breakdown as PNG
+          </Button>
+          <Button className="breakdown-button" variant="outlined" color="secondary" onClick={copyBreakdownToClipboard}>
+            Copy Breakdown to Clipboard
+          </Button>
+      </div>
       <div className="breakdown-inner-container" ref={exportRef}>
         <div className="equipment-breakdown-container">
           <List className="breakdown-list" dense>
@@ -85,9 +97,6 @@ export const PresetBreakdown = () => {
             )
         )}
       </div>
-      <Button className="breakdown-button" variant="contained" color="success" onClick={exportBreakdown}>
-        Export Breakdown
-      </Button>
     </div>
   );
 };
