@@ -98,7 +98,9 @@ export const DialogPopup = ({ open, recentlySelectedItems, handleClose, handleSl
   }, [slotIndex]);
 
   return (
-    <Dialog open={open} onClose={handleClose}>
+    <Dialog classes={{
+      paper: 'item-select-dialog-paper'
+    }} open={open} onClose={handleClose}>
       <DialogTitle>Assign an item</DialogTitle>
       <DialogContent
         className="dialog-content"

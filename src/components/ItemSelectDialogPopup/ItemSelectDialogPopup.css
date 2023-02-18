@@ -1,8 +1,14 @@
+.item-select-dialog-paper {
+  /* Prevent unnecessary scrollbar. */
+  overflow-y: hidden;
+}
+
 .dialog-content {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  overflow-y: hidden;
 }
 
 .auto-complete {
