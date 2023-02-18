@@ -14,6 +14,8 @@ import {
   setInventorySlot,
   updateSlotIndex,
   updateSlotType,
+  toggleSlotSelection,
+  clearSlotSelection,
 } from "../../redux/store/reducers/preset-reducer";
 import { addToQueue, selectRecentItems } from "../../redux/store/reducers/recent-item-reducer";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
@@ -37,6 +39,28 @@ export const PresetEditor = () => {
   const exportRef = useRef<HTMLDivElement>(null);
   const [open, setOpen] = useState(false);
 
+  const handleSlotOpen = useCallback(
+    (_event: React.MouseEvent<HTMLAreaElement>, index: number, className: string) => {
+      if (className === "inventory") {
+        dispatch(updateSlotType(SlotType.Inventory));
+      } else {
+        dispatch(updateSlotType(SlotType.Equipment));
+      }
+      
+      // If a slot is opened that is not currently selected, clear the selected
+      // slots.
+      if (!inventorySlots[index].selected) {
+        // FIXME: This doesn't propagate correctly to the opened dialog - it still thinks theres
+        // multiple slots selected
+        dispatch(clearSlotSelection());
+      }
+
+      dispatch(updateSlotIndex(index));
+      setOpen(true);
+    },
+    [dispatch, inventorySlots]
+  );
+
   const handleSlotSelection = useCallback(
     (_event: React.MouseEvent<HTMLAreaElement>, index: number, className: string) => {
       if (className === "inventory") {
@@ -45,8 +69,7 @@ export const PresetEditor = () => {
         dispatch(updateSlotType(SlotType.Equipment));
       }
 
-      dispatch(updateSlotIndex(index));
-      setOpen(true);
+      dispatch(toggleSlotSelection(index));
     },
     [dispatch]
   );
@@ -56,17 +79,21 @@ export const PresetEditor = () => {
   }, []);
 
   const changeSlot = useCallback(
-    (index: number, item: ItemData) => {
-      if (index === -1) {
-        return;
-      }
+    (indices: number[], item: ItemData) => {
+      indices.forEach((index) => {
+        if (index === -1) {
+          return;
+        }
+  
+        if (slotType === SlotType.Inventory) {
+          dispatch(setInventorySlot({ index, item }));
+        } else {
+          dispatch(setEquipmentSlot({ index, item }));
+        }
+      })
 
-      if (slotType === SlotType.Inventory) {
-        dispatch(setInventorySlot({ index, item }));
-      } else {
-        dispatch(setEquipmentSlot({ index, item }));
-      }
       dispatch(addToQueue(item));
+      dispatch(clearSlotSelection());
     },
     [dispatch, slotType, slotIndex]
   );
@@ -91,8 +118,12 @@ export const PresetEditor = () => {
         <CardContent data-id="content" className="preset-container">
           <div ref={exportRef}>
             <map name="presetmap">
-              <Inventory slots={inventorySlots} handleClickOpen={handleSlotSelection} />
-              <Equipment slots={equipmentSlots} handleClickOpen={handleSlotSelection} />
+              <Inventory
+                slots={inventorySlots}
+                handleClickOpen={handleSlotOpen}
+                handleShiftClick={handleSlotSelection}
+              />
+              <Equipment slots={equipmentSlots} handleClickOpen={handleSlotOpen} />
             </map>
             <img
               width={510}

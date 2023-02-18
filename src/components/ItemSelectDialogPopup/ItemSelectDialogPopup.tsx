@@ -29,14 +29,21 @@ interface DialogPopupProps {
   open: boolean;
   recentlySelectedItems: ItemData[];
   handleClose: () => void;
-  handleSlotChange: (index: number, item: ItemData) => void;
+  handleSlotChange: (indices: number[], item: ItemData) => void;
 }
 
 const dialogBaseHeight = 170;
 const dialogExpandedHeight = 450;
 
 export const DialogPopup = ({ open, recentlySelectedItems, handleClose, handleSlotChange }: DialogPopupProps) => {
-  const { slotType, slotIndex } = useAppSelector(selectPreset);
+  const { slotType, slotIndex, inventorySlots } = useAppSelector(selectPreset);
+
+  const selectedInventorySlots = inventorySlots
+    .map((slot: ItemData, index: number) => slot.selected ? index : undefined)
+    .filter((entry): entry is number => entry !== undefined);
+  const selectedIndices = selectedInventorySlots.length ? selectedInventorySlots : [slotIndex];
+  console.error(selectedIndices);
+
   const [dialogHeight, setDialogHeight] = useState(
     // Initialize dialogHeight state with the value of the dialogBaseHeight
     // constant.
@@ -78,30 +85,34 @@ export const DialogPopup = ({ open, recentlySelectedItems, handleClose, handleSl
         return;
       }
 
-      handleSlotChange(slotIndex, value);
+      handleSlotChange(selectedIndices, value);
       handleClose();
     },
-    [slotType, slotIndex]
+    [slotType, selectedIndices]
   );
 
   const handleRecentClick = useCallback(
     (item: ItemData) => {
-      handleSlotChange(slotIndex, item);
+      handleSlotChange(selectedIndices, item);
       handleClose();
     },
-    [slotType, slotIndex]
+    [slotType, selectedIndices]
   );
 
   const clearCell = useCallback(() => {
-    handleSlotChange(slotIndex, { name: "", image: "", label: "" });
+    handleSlotChange(selectedIndices, { name: "", image: "", label: "" });
     handleClose();
-  }, [slotIndex]);
+  }, []);
 
   return (
     <Dialog classes={{
       paper: 'item-select-dialog-paper'
     }} open={open} onClose={handleClose}>
-      <DialogTitle>Assign an item</DialogTitle>
+      {selectedIndices.length > 0
+        ? <DialogTitle>Assign multiple items</DialogTitle>
+        : <DialogTitle>Assign an item</DialogTitle>
+      }
+
       <DialogContent
         className="dialog-content"
         sx={{

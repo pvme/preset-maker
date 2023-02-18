@@ -9,6 +9,10 @@
   height: 32px;
 }
 
+.inventory-icon-container--selected {
+  border: 1px solid white;
+}
+
 .equipment-icon-container {
   position: absolute;
   pointer-events: none;

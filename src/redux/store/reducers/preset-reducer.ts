@@ -22,7 +22,7 @@ interface SetSlot {
 // Define the initial state using that type
 const initialState: PresetState = {
   presetName: "",
-  inventorySlots: new Array(28).fill({ name: "", image: "", label: "" }),
+  inventorySlots: new Array(28).fill({ name: "", image: "", label: "", selected: false }),
   equipmentSlots: new Array(13).fill({ name: "", image: "", label: "" }),
   slotType: SlotType.Inventory,
   slotIndex: -1,
@@ -42,6 +42,7 @@ export const presetSlice = createSlice({
       state.presetName = action.payload;
     },
     setInventorySlot: (state: PresetState, action: PayloadAction<SetSlot>) => {
+      console.error('setInventorySlot');
       state.inventorySlots[action.payload.index] = action.payload.item;
     },
     setEquipmentSlot: (state: PresetState, action: PayloadAction<SetSlot>) => {
@@ -58,6 +59,15 @@ export const presetSlice = createSlice({
     updateSlotIndex: (state: PresetState, action: PayloadAction<number>) => {
       state.slotIndex = action.payload;
     },
+    toggleSlotSelection: (state: PresetState, action: PayloadAction<number>) => {
+      state.inventorySlots[action.payload].selected = !state.inventorySlots[action.payload].selected;
+    },
+    clearSlotSelection: (state: PresetState) => {
+      state.inventorySlots = state.inventorySlots.map((slot) => ({
+        ...slot,
+        selected: false,
+      }));
+    },
   },
 });
 
@@ -69,6 +79,8 @@ export const {
   importDataAction,
   updateSlotType,
   updateSlotIndex,
+  toggleSlotSelection,
+  clearSlotSelection,
 } = presetSlice.actions;
 
 // Other code such as selectors can use the imported `RootState` type
