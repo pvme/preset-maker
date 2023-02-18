@@ -38,11 +38,11 @@ const dialogExpandedHeight = 450;
 export const DialogPopup = ({ open, recentlySelectedItems, handleClose, handleSlotChange }: DialogPopupProps) => {
   const { slotType, slotIndex, inventorySlots } = useAppSelector(selectPreset);
 
+  console.error(inventorySlots);
   const selectedInventorySlots = inventorySlots
     .map((slot: ItemData, index: number) => slot.selected ? index : undefined)
     .filter((entry): entry is number => entry !== undefined);
   const selectedIndices = selectedInventorySlots.length ? selectedInventorySlots : [slotIndex];
-  console.error(selectedIndices);
 
   const [dialogHeight, setDialogHeight] = useState(
     // Initialize dialogHeight state with the value of the dialogBaseHeight
@@ -108,7 +108,7 @@ export const DialogPopup = ({ open, recentlySelectedItems, handleClose, handleSl
     <Dialog classes={{
       paper: 'item-select-dialog-paper'
     }} open={open} onClose={handleClose}>
-      {selectedIndices.length > 0
+      {selectedIndices.length > 1
         ? <DialogTitle>Assign multiple items</DialogTitle>
         : <DialogTitle>Assign an item</DialogTitle>
       }
