@@ -7,6 +7,31 @@ export const exportAsImage = async (element: HTMLElement | null, preface: string
     return;
   }
 
+  await createCanvas(element, (blob: string) => {
+    downloadImage(blob, preface);
+  });
+};
+
+export const copyImageToClipboard = async (element: HTMLElement | null): Promise<void> => {
+  if (!element) {
+    return;
+  }
+
+  await createCanvas(element, (_imageBlobURL: string, canvas: HTMLCanvasElement) => {
+      canvas.toBlob((blob) => {
+        if (!blob) {
+          // TODO: Failure snackbar?
+          return;
+        }
+        
+        console.error(blob);
+        const item = new ClipboardItem({ 'image/png': blob });
+        navigator.clipboard.write([item]); 
+      })
+  });
+};
+
+const createCanvas = ( async (element: HTMLElement, callback: (imageBlobURL: string, canvas: HTMLCanvasElement) => void): Promise<void> => {
   const previousheight = element.style.height;
 
   const html = document.getElementsByTagName("html")[0];
@@ -32,12 +57,11 @@ export const exportAsImage = async (element: HTMLElement | null, preface: string
     logging: false,
     useCORS: true,
   });
-  const image = canvas.toDataURL("image/png", 1.0);
-  downloadImage(image, preface);
-
+  const imageBlobURL = canvas.toDataURL("image/png", 1.0);
+  callback(imageBlobURL, canvas);
   // reset height
   element.style.height = previousheight;
-};
+})
 
 const downloadImage = (blob: string, preface: string): void => {
   const fakeLink = window.document.createElement("a");
@@ -52,3 +76,4 @@ const downloadImage = (blob: string, preface: string): void => {
 
   fakeLink.remove();
 };
+

@@ -17,7 +17,7 @@ import { addToQueue, selectRecentItems } from "../../redux/store/reducers/recent
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { ItemData } from "../../types/inventory-slot";
 import { SlotType } from "../../types/slot-type";
-import { exportAsImage } from "../../utility/export-to-png";
+import { copyImageToClipboard, exportAsImage } from "../../utility/export-to-png";
 import { DialogPopup } from "../ItemSelectDialogPopup/ItemSelectDialogPopup";
 import { Equipment, Inventory } from "../SlotSection/SlotSection";
 
@@ -74,6 +74,10 @@ export const PresetEditor = () => {
     await exportAsImage(exportRef.current, `PRESET_${name.replaceAll(" ", "_")}`);
   }, [name]);
 
+  const onCopyToClipboard = useCallback(async () => {
+    await copyImageToClipboard(exportRef.current);
+  }, [name]);
+
   return (
     <>
       <Card className="container">
@@ -99,6 +103,9 @@ export const PresetEditor = () => {
           </Button>
           <Button color="success" variant="contained" size="small" onClick={onSave}>
             Save as PNG
+          </Button>
+          <Button color="secondary" variant="outlined" size="small" onClick={onCopyToClipboard}>
+            Copy Image to Clipboard
           </Button>
         </CardActions>
       </Card>
