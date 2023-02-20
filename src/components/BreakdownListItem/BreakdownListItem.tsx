@@ -34,8 +34,10 @@ export const BreakdownListItem = ({ item }: BreakdownListItemProps) => {
 
   return (
     <ListItem
+      tabIndex={-1}
       secondaryAction={
         <TextField
+          tabIndex={1}
           fullWidth
           multiline
           value={text}
@@ -53,9 +55,9 @@ export const BreakdownListItem = ({ item }: BreakdownListItemProps) => {
       }
       disablePadding
     >
-      <ListItemButton>
+      <ListItemButton tabIndex={-1}>
         {item.image ? (
-          <ListItemAvatar>
+          <ListItemAvatar tabIndex={-1}>
             <Avatar
               imgProps={{ style: { objectFit: "scale-down" } }}
               variant="square"
@@ -66,7 +68,7 @@ export const BreakdownListItem = ({ item }: BreakdownListItemProps) => {
         ) : (
           <div style={{ height: "40px" }}></div>
         )}
-        <ListItemText primaryTypographyProps={{ maxWidth: "225px", maxHeight: "40px" }} primary={item.name} />
+        <ListItemText tabIndex={-1} primaryTypographyProps={{ maxWidth: "225px", maxHeight: "40px" }} primary={item.name} />
       </ListItemButton>
     </ListItem>
   );

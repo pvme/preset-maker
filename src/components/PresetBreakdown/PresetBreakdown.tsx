@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 
-import { Button } from "@mui/material";
+import { Button, CardActions } from "@mui/material";
 import List from "@mui/material/List";
 
 import { useAppSelector } from "../../redux/hooks";
@@ -8,9 +8,12 @@ import { selectPreset } from "../../redux/store/reducers/preset-reducer";
 import { ItemData } from "../../types/inventory-slot";
 import { BreakdownHeader } from "../BreakdownHeader/BreakdownHeader";
 import { BreakdownListItem } from "../BreakdownListItem/BreakdownListItem";
-import { exportAsImage } from "../../utility/export-to-png";
+import { copyImageToClipboard, exportAsImage } from "../../utility/export-to-png";
 
 import "./PresetBreakdown.css";
+import { canCopyImagesToClipboard } from "copy-image-clipboard";
+import { ClipboardCopyButtonContainer } from "../ClipboardCopyButtonContainer/ClipboardCopyButtonContainer";
+import { useSnackbar } from "notistack";
 
 // This is used to map the equipmentSlots array (0-12) to a column
 // Used in getMappedEquipment
@@ -20,6 +23,7 @@ const maxLength = 14;
 
 export const PresetBreakdown = () => {
   const exportRef = useRef<HTMLDivElement>(null);
+  const { enqueueSnackbar } = useSnackbar();
   const [mappedEquipment, setMappedEquipment] = useState<ItemData[]>();
   const [uniqueInventoryItems, setUniqueInventoryItems] = useState<ItemData[][]>();
 
@@ -62,9 +66,35 @@ export const PresetBreakdown = () => {
     await exportAsImage(exportRef.current, `BREAK_DOWN_${name.replaceAll(" ", "_")}`);
   }, [name, exportRef]);
 
+  const copyBreakdownToClipboard = useCallback(async () => {
+    await copyImageToClipboard(exportRef.current, () => {
+      enqueueSnackbar("Failed to copy image to clipboard", { variant: 'error'});
+    });
+  }, [exportRef]);
+
   return (
     <div className="breakdown-container">
-      <div className="other-container" ref={exportRef}>
+      <div className="breakdown-header">
+        <Button
+          className="breakdown-button"
+          variant="contained"
+          color="success"
+          onClick={exportBreakdown}
+        >
+          Save Breakdown as PNG
+        </Button> 
+        <ClipboardCopyButtonContainer className="breakdown-button">
+          <Button
+            variant="outlined"
+            color="secondary"
+            disabled={!canCopyImagesToClipboard()}
+            onClick={copyBreakdownToClipboard}
+          >
+            Copy Breakdown to Clipboard
+          </Button>
+        </ClipboardCopyButtonContainer>
+      </div>
+      <div className="breakdown-inner-container" ref={exportRef}>
         <div className="equipment-breakdown-container">
           <List className="breakdown-list" dense>
             <BreakdownHeader />
@@ -85,9 +115,6 @@ export const PresetBreakdown = () => {
             )
         )}
       </div>
-      <Button className="breakdown-button" variant="contained" color="success" onClick={exportBreakdown}>
-        Export Breakdown
-      </Button>
     </div>
   );
 };

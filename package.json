@@ -16,6 +16,7 @@
 		"@mui/icons-material": "^5.10.16",
 		"@mui/material": "^5.10.17",
 		"@reduxjs/toolkit": "^1.9.1",
+		"copy-image-clipboard": "^2.1.2",
 		"file-saver": "^2.0.5",
 		"fuzzysort": "^2.0.4",
 		"html2canvas": "^1.4.1",

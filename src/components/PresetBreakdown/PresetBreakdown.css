@@ -1,17 +1,33 @@
 .breakdown-container {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-top: 10px !important;
 }
 
-.other-container {
+.breakdown-header {
   display: flex;
+  justify-content: center;
+  width: 95%;
+  margin: 0 auto;
+}
+
+.breakdown-button {
+  margin: 10px;
+}
+
+.breakdown-inner-container {
+  display: flex;
+  justify-content: center;
   flex-direction: row;
+  flex-wrap: wrap;
+  max-width: 100%;
   background-color: #181818;
 }
 
-.other-container div:hover {
+.breakdown-inner-container div:hover {
   background-color: #181818;
 }
 
@@ -30,8 +46,4 @@
 
 .bold {
   font-weight: bold;
-}
-
-.breakdown-button {
-  margin: 10px auto !important;
 }

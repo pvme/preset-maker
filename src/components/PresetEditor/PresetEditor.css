@@ -39,6 +39,10 @@
   padding: 0 !important;
 }
 
+.preset-buttons__button {
+  margin: 0 10px;
+}
+
 .preset-buttons button {
   height: 25px;
 }
