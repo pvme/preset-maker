@@ -50,8 +50,6 @@ export const PresetEditor = () => {
       // If a slot is opened that is not currently selected, clear the selected
       // slots.
       if (!inventorySlots[index].selected) {
-        // FIXME: This doesn't propagate correctly to the opened dialog - it still thinks theres
-        // multiple slots selected
         dispatch(clearSlotSelection());
       }
 

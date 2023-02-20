@@ -101,7 +101,7 @@ export const DialogPopup = ({ open, recentlySelectedItems, handleClose, handleSl
   const clearCell = useCallback(() => {
     handleSlotChange(selectedIndices, { name: "", image: "", label: "" });
     handleClose();
-  }, []);
+  }, [selectedIndices]);
 
   return (
     <Dialog classes={{
@@ -111,7 +111,6 @@ export const DialogPopup = ({ open, recentlySelectedItems, handleClose, handleSl
         ? <DialogTitle>Assign multiple items</DialogTitle>
         : <DialogTitle>Assign an item</DialogTitle>
       }
-
       <DialogContent
         className="dialog-content"
         sx={{
