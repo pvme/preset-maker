@@ -11,6 +11,8 @@ import { BreakdownListItem } from "../BreakdownListItem/BreakdownListItem";
 import { copyImageToClipboard, exportAsImage } from "../../utility/export-to-png";
 
 import "./PresetBreakdown.css";
+import { canCopyImagesToClipboard } from "copy-image-clipboard";
+import { ClipboardCopyButtonContainer } from "../ClipboardCopyButtonContainer/ClipboardCopyButtonContainer";
 
 // This is used to map the equipmentSlots array (0-12) to a column
 // Used in getMappedEquipment
@@ -69,12 +71,24 @@ export const PresetBreakdown = () => {
   return (
     <div className="breakdown-container">
       <div className="breakdown-header">
-          <Button className="breakdown-button" variant="contained" color="success" onClick={exportBreakdown}>
-            Save Breakdown as PNG
-          </Button>
-          <Button className="breakdown-button" variant="outlined" color="secondary" onClick={copyBreakdownToClipboard}>
+        <Button
+          className="breakdown-button"
+          variant="contained"
+          color="success"
+          onClick={exportBreakdown}
+        >
+          Save Breakdown as PNG
+        </Button> 
+        <ClipboardCopyButtonContainer className="breakdown-button">
+          <Button
+            variant="outlined"
+            color="secondary"
+            disabled={!canCopyImagesToClipboard()}
+            onClick={copyBreakdownToClipboard}
+          >
             Copy Breakdown to Clipboard
           </Button>
+        </ClipboardCopyButtonContainer>
       </div>
       <div className="breakdown-inner-container" ref={exportRef}>
         <div className="equipment-breakdown-container">

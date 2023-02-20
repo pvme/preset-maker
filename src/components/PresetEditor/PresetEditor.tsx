@@ -1,9 +1,11 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useCallback, useRef, useState } from "react";
 
+import { Tooltip } from "@mui/material";
 import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
+import { canCopyImagesToClipboard } from 'copy-image-clipboard'
 
 import {
   resetSlots,
@@ -22,6 +24,7 @@ import { DialogPopup } from "../ItemSelectDialogPopup/ItemSelectDialogPopup";
 import { Equipment, Inventory } from "../SlotSection/SlotSection";
 
 import "./PresetEditor.css";
+import { ClipboardCopyButtonContainer } from "../ClipboardCopyButtonContainer/ClipboardCopyButtonContainer";
 
 export const PresetEditor = () => {
   const dispatch = useAppDispatch();
@@ -76,7 +79,7 @@ export const PresetEditor = () => {
 
   const onCopyToClipboard = useCallback(async () => {
     await copyImageToClipboard(exportRef.current);
-  }, [name]);
+  }, []);
 
   return (
     <>
@@ -104,9 +107,17 @@ export const PresetEditor = () => {
           <Button color="success" variant="contained" size="small" onClick={onSave}>
             Save as PNG
           </Button>
-          <Button color="secondary" variant="outlined" size="small" onClick={onCopyToClipboard}>
-            Copy Image to Clipboard
-          </Button>
+          <ClipboardCopyButtonContainer className="preset-buttons__button">
+            <Button
+              color="secondary"
+              variant="outlined"
+              size="small"
+              disabled={!canCopyImagesToClipboard()}
+              onClick={onCopyToClipboard}
+            >
+              Copy Image to Clipboard
+            </Button>
+          </ClipboardCopyButtonContainer>
         </CardActions>
       </Card>
       <DialogPopup
