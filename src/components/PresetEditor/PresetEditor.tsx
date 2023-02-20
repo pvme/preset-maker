@@ -25,9 +25,11 @@ import { Equipment, Inventory } from "../SlotSection/SlotSection";
 
 import "./PresetEditor.css";
 import { ClipboardCopyButtonContainer } from "../ClipboardCopyButtonContainer/ClipboardCopyButtonContainer";
+import { useSnackbar } from "notistack";
 
 export const PresetEditor = () => {
   const dispatch = useAppDispatch();
+  const { enqueueSnackbar } = useSnackbar();
 
   const { presetName: name, inventorySlots, equipmentSlots, slotType, slotIndex } = useAppSelector(selectPreset);
   const recentItems = useAppSelector(selectRecentItems);
@@ -78,7 +80,9 @@ export const PresetEditor = () => {
   }, [name]);
 
   const onCopyToClipboard = useCallback(async () => {
-    await copyImageToClipboard(exportRef.current);
+    await copyImageToClipboard(exportRef.current, () => {
+      enqueueSnackbar("Failed to copy image to clipboard", { variant: 'error'});
+    });
   }, []);
 
   return (

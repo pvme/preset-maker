@@ -12,7 +12,7 @@ export const exportAsImage = async (element: HTMLElement | null, preface: string
   });
 };
 
-export const copyImageToClipboard = async (element: HTMLElement | null): Promise<void> => {
+export const copyImageToClipboard = async (element: HTMLElement | null, onError: () => void): Promise<void> => {
   if (!element) {
     return;
   }
@@ -20,11 +20,10 @@ export const copyImageToClipboard = async (element: HTMLElement | null): Promise
   await createCanvas(element, (_imageBlobURL: string, canvas: HTMLCanvasElement) => {
       canvas.toBlob((blob) => {
         if (!blob) {
-          // TODO: Failure snackbar?
+          onError();
           return;
         }
         
-        console.error(blob);
         const item = new ClipboardItem({ 'image/png': blob });
         navigator.clipboard.write([item]); 
       })

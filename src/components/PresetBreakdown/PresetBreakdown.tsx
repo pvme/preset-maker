@@ -13,6 +13,7 @@ import { copyImageToClipboard, exportAsImage } from "../../utility/export-to-png
 import "./PresetBreakdown.css";
 import { canCopyImagesToClipboard } from "copy-image-clipboard";
 import { ClipboardCopyButtonContainer } from "../ClipboardCopyButtonContainer/ClipboardCopyButtonContainer";
+import { useSnackbar } from "notistack";
 
 // This is used to map the equipmentSlots array (0-12) to a column
 // Used in getMappedEquipment
@@ -22,6 +23,7 @@ const maxLength = 14;
 
 export const PresetBreakdown = () => {
   const exportRef = useRef<HTMLDivElement>(null);
+  const { enqueueSnackbar } = useSnackbar();
   const [mappedEquipment, setMappedEquipment] = useState<ItemData[]>();
   const [uniqueInventoryItems, setUniqueInventoryItems] = useState<ItemData[][]>();
 
@@ -65,7 +67,9 @@ export const PresetBreakdown = () => {
   }, [name, exportRef]);
 
   const copyBreakdownToClipboard = useCallback(async () => {
-    await copyImageToClipboard(exportRef.current);
+    await copyImageToClipboard(exportRef.current, () => {
+      enqueueSnackbar("Failed to copy image to clipboard", { variant: 'error'});
+    });
   }, [exportRef]);
 
   return (
