@@ -3019,24 +3019,29 @@
 		"image": "https://i.imgur.com/fiTvvCf.png",
 		"name": "Attuned crystal helm"
 	},
-		{
+	{
 		"label": "attunedcrystalbody",
 		"image": "https://i.imgur.com/uKBw6jW.png",
 		"name": "Attuned crystal body"
 	},
-		{
+	{
 		"label": "attunedcrystallegs",
 		"image": "https://i.imgur.com/xnjdLrW.png",
 		"name": "Attuned crystal legs"
 	},
-		{
+	{
 		"label": "attunedcrystalgloves",
 		"image": "https://i.imgur.com/xgIpwVn.png",
 		"name": "Attuned crystal gloves"
 	},
-		{
+	{
 		"label": "attunedcrystalboots",
 		"image": "https://i.imgur.com/SESOIYr.png",
 		"name": "Attuned crystal boots"
+	},
+	{
+		"label": "reaverscrolls",
+		"image": "https://cdn.discordapp.com/attachments/977249938922668093/1049201664965488680/Blood_Reaver_scroll_28Blood_Siphon29.png",
+		"name": "Blood siphon scrolls"
 	}
 ]
