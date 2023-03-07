@@ -1,15 +1,18 @@
+.breakdown-list-item > .MuiListItemSecondaryAction-root {
+  position: relative;
+  right: 0;
+  margin-top: 6px;
+  transform: none;
+  top: 0;
+}
+
 .notes-field {
   width: 280px !important;
-  max-height: 38px !important;
   border: 1px solid rgb(100, 100, 100) !important;
-  overflow: hidden !important;
   border-radius: 0 !important;
 }
 
 .inner-notes-field {
   color: white !important;
-  line-height: 1.2 !important;
-  overflow: hidden !important;
-  height: 22px !important;
   border-radius: 0 !important;
 }

@@ -82,7 +82,7 @@ export const PresetBreakdown = () => {
           onClick={exportBreakdown}
         >
           Save Breakdown as PNG
-        </Button> 
+        </Button>
         <ClipboardCopyButtonContainer className="breakdown-button">
           <Button
             variant="outlined"
@@ -95,25 +95,27 @@ export const PresetBreakdown = () => {
         </ClipboardCopyButtonContainer>
       </div>
       <div className="breakdown-inner-container" ref={exportRef}>
-        <div className="equipment-breakdown-container">
+        <div className="equipment-breakdown-container--equipment">
           <List className="breakdown-list" dense>
             <BreakdownHeader />
             {mappedEquipment?.map((item) => item.label && <BreakdownListItem key={item.label} item={item} />)}
           </List>
         </div>
-        {uniqueInventoryItems?.map(
-          (array, index) =>
-            array.length > 0 && (
-              <div key={index} className="equipment-breakdown-container">
-                <List className="breakdown-list" dense>
-                  <BreakdownHeader />
-                  {array?.map((item) => {
-                    return <BreakdownListItem key={item.label} item={item} />;
-                  })}
-                </List>
-              </div>
-            )
-        )}
+        <div className='equipment-breakdown-container--inventory'>
+          <BreakdownHeader />
+          {uniqueInventoryItems?.map(
+            (array, index) =>
+              array.length > 0 && (
+                <div key={index} className={`equipment-breakdown-container--${index}`}>
+                  <List className="breakdown-list" dense>
+                    {array?.map((item) => {
+                      return <BreakdownListItem key={item.label} item={item} />;
+                    })}
+                  </List>
+                </div>
+              )
+          )}
+        </div>
       </div>
     </div>
   );

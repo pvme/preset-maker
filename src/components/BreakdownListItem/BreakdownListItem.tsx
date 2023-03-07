@@ -35,6 +35,10 @@ export const BreakdownListItem = ({ item }: BreakdownListItemProps) => {
   return (
     <ListItem
       tabIndex={-1}
+      classes={{
+        root: 'breakdown-list-item',
+        secondaryAction: 'notes-field-outer-two'
+      }}
       secondaryAction={
         <TextField
           tabIndex={1}
@@ -49,6 +53,9 @@ export const BreakdownListItem = ({ item }: BreakdownListItemProps) => {
             style: {
               fontSize: fontSize,
             },
+          }}
+          classes={{
+            root: 'notes-field-outer'
           }}
           className="notes-field"
         />
@@ -68,7 +75,7 @@ export const BreakdownListItem = ({ item }: BreakdownListItemProps) => {
         ) : (
           <div style={{ height: "40px" }}></div>
         )}
-        <ListItemText tabIndex={-1} primaryTypographyProps={{ maxWidth: "225px", maxHeight: "40px" }} primary={item.name} />
+        <ListItemText tabIndex={-1} primaryTypographyProps={{ maxWidth: "225px" }} primary={item.name} />
       </ListItemButton>
     </ListItem>
   );
