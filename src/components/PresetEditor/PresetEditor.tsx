@@ -1,12 +1,13 @@
 import React, { useCallback, useRef, useState } from "react";
 
-import { Tooltip } from "@mui/material";
 import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import { canCopyImagesToClipboard } from "copy-image-clipboard";
-
+import bgImagePath from '../../assets/bg_full.png';
+import summoningIconPath from '../../assets/summoning.png';
+import relicIconPath from '../../assets/relic.png';
 import {
   resetSlots,
   selectPreset,
@@ -35,6 +36,7 @@ import "./PresetEditor.css";
 import { ClipboardCopyButtonContainer } from "../ClipboardCopyButtonContainer/ClipboardCopyButtonContainer";
 import { useSnackbar } from "notistack";
 import { ResetConfirmation } from "../ResetConfirmation/ResetConfirmation";
+import { Typography } from "@mui/material";
 
 export const PresetEditor = () => {
   const dispatch = useAppDispatch();
@@ -153,7 +155,7 @@ export const PresetEditor = () => {
         handleConfirmation={onResetConfirmation}
         handleClose={onResetClose}
       />
-      <Card className="container">
+      <Card className="inventory-equipment-container">
         <CardContent data-id="content" className="preset-container">
           <div ref={exportRef}>
             <map name="presetmap">
@@ -206,6 +208,38 @@ export const PresetEditor = () => {
             </Button>
           </ClipboardCopyButtonContainer>
         </CardActions>
+      </Card>
+      {/* Relics and familiar */}
+      <Card
+        className="relics-familiar-container"
+        style={{
+            backgroundImage: `url(${bgImagePath})`,
+            width: 510,
+            height: 163,
+        }}
+      >
+        <div className="relics-familiar-container__relics">
+          <Typography className="d-flex align-center" variant="h6">
+            <img
+              className="relics-familiar-container--icon"
+              width={28}
+              height={28}
+              src={relicIconPath}
+            />
+            Relics
+          </Typography>
+        </div>
+        <div className="relics-familiar-container__familiar">
+          <Typography className="d-flex align-center" variant="h6">
+            <img
+              className="relics-familiar-container--icon"
+              width={28}
+              height={28}
+              src={summoningIconPath}
+            />
+            Familiar
+          </Typography>
+        </div>
       </Card>
       <DialogPopup
         open={dialogOpen}
