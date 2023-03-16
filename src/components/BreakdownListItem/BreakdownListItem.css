@@ -7,9 +7,9 @@
 
 .inner-notes-field {
   padding: 3px 8px;
+  margin: 3px;
   color: white;
   border-radius: 3px;
-  word-wrap: normal;
   overflow-wrap: break-word;
   border: 1px solid rgb(100, 100, 100);
   min-height: 36px;
