@@ -1,18 +1,20 @@
 .breakdown-list-item > .MuiListItemSecondaryAction-root {
   position: relative;
   right: 0;
-  margin-top: 6px;
   transform: none;
   top: 0;
 }
 
-.notes-field {
-  width: 280px !important;
-  border: 1px solid rgb(100, 100, 100) !important;
-  border-radius: 0 !important;
-}
-
 .inner-notes-field {
-  color: white !important;
-  border-radius: 0 !important;
+  padding: 3px 8px;
+  color: white;
+  border-radius: 3px;
+  word-wrap: normal;
+  overflow-wrap: break-word;
+  border: 1px solid rgb(100, 100, 100);
+  min-height: 36px;
+  line-height: 28px;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-size: 14px;
+  width: 330px;
 }
