@@ -10,6 +10,8 @@ import Container from "@mui/material/Container";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 
+import { UploadPreset } from "./headerBarApi";
+
 import { importDataAction, selectPreset } from "../../redux/store/reducers/preset-reducer";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { ImportData } from "../../types/import-data";
@@ -24,6 +26,13 @@ export const HeaderBar = () => {
   const dispatch = useAppDispatch();
   const { presetName, inventorySlots, equipmentSlots } = useAppSelector(selectPreset);
   const { enqueueSnackbar } = useSnackbar();
+
+  const generateShareableLink = useCallback(async () => {
+    const sanitized = sanitizedData(inventorySlots, equipmentSlots);
+    const stringified = stringifyData(presetName, sanitized.inventory, sanitized.equipment);
+    const id = await UploadPreset(stringified);
+    console.log(id);
+  }, []);
 
   const exportData = useCallback(() => {
     const sanitized = sanitizedData(inventorySlots, equipmentSlots);
@@ -88,6 +97,9 @@ export const HeaderBar = () => {
               PVME Preset Generator
             </Typography>
             <ButtonGroup className="button-container sub-item">
+              <Button color="inherit" variant="outlined" onClick={generateShareableLink}>
+                Get&nbsp;Shareable&nbsp;Link
+              </Button>
               <Button color="inherit" variant="outlined" onClick={importData}>
                 Import&nbsp;JSON
               </Button>
