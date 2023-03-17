@@ -1,33 +1,39 @@
 import { useCallback, useEffect, useRef, useState } from "react";
+import { canCopyImagesToClipboard } from "copy-image-clipboard";
+import { useSnackbar } from "notistack";
 
-import { Button, CardActions } from "@mui/material";
+import Button from "@mui/material/Button";
 import List from "@mui/material/List";
 
+import { BreakdownHeader } from "../BreakdownHeader/BreakdownHeader";
+import { BreakdownListItem } from "../BreakdownListItem/BreakdownListItem";
+import { ClipboardCopyButtonContainer } from "../ClipboardCopyButtonContainer/ClipboardCopyButtonContainer";
 import { useAppSelector } from "../../redux/hooks";
 import { selectPreset } from "../../redux/store/reducers/preset-reducer";
 import { ItemData } from "../../types/inventory-slot";
-import { BreakdownHeader } from "../BreakdownHeader/BreakdownHeader";
-import { BreakdownListItem } from "../BreakdownListItem/BreakdownListItem";
-import { copyImageToClipboard, exportAsImage } from "../../utility/export-to-png";
+import {
+  copyImageToClipboard,
+  exportAsImage,
+} from "../../utility/export-to-png";
 
 import "./PresetBreakdown.css";
-import { canCopyImagesToClipboard } from "copy-image-clipboard";
-import { ClipboardCopyButtonContainer } from "../ClipboardCopyButtonContainer/ClipboardCopyButtonContainer";
-import { useSnackbar } from "notistack";
 
 // This is used to map the equipmentSlots array (0-12) to a column
 // Used in getMappedEquipment
 const customOrder: number[] = [0, 4, 6, 7, 8, 2, 9, 1, 3, 5, 10, 11, 12];
 
-const maxLength = 14;
-
 export const PresetBreakdown = () => {
   const exportRef = useRef<HTMLDivElement>(null);
   const { enqueueSnackbar } = useSnackbar();
   const [mappedEquipment, setMappedEquipment] = useState<ItemData[]>();
-  const [uniqueInventoryItems, setUniqueInventoryItems] = useState<ItemData[][]>();
+  const [uniqueInventoryItems, setUniqueInventoryItems] =
+    useState<ItemData[]>();
 
-  const { presetName: name, inventorySlots, equipmentSlots } = useAppSelector(selectPreset);
+  const {
+    presetName: name,
+    inventorySlots,
+    equipmentSlots,
+  } = useAppSelector(selectPreset);
 
   useEffect(() => {
     const getMappedEquipment = () => {
@@ -43,19 +49,12 @@ export const PresetBreakdown = () => {
 
     const getUniqueInventoryItems = () => {
       let uniqueItemData = inventorySlots.filter((item, index, self) => {
-        return self.map((i) => i.name).indexOf(item.name) === index && item.name;
+        return (
+          self.map((i) => i.name).indexOf(item.name) === index && item.name
+        );
       });
 
-      const splItemArray = uniqueItemData.map((_item, index) => {
-        // Calculate the start and end indices of the subarray
-        const startIndex = index * maxLength;
-        const endIndex = startIndex + maxLength;
-
-        // Return the subarray
-        return uniqueItemData.slice(startIndex, endIndex);
-      });
-
-      setUniqueInventoryItems(splItemArray);
+      setUniqueInventoryItems(uniqueItemData);
     };
 
     getMappedEquipment();
@@ -63,12 +62,17 @@ export const PresetBreakdown = () => {
   }, [inventorySlots, equipmentSlots]);
 
   const exportBreakdown = useCallback(async () => {
-    await exportAsImage(exportRef.current, `BREAK_DOWN_${name.replaceAll(" ", "_")}`);
+    await exportAsImage(
+      exportRef.current,
+      `BREAK_DOWN_${name.replaceAll(" ", "_")}`
+    );
   }, [name, exportRef]);
 
   const copyBreakdownToClipboard = useCallback(async () => {
     await copyImageToClipboard(exportRef.current, () => {
-      enqueueSnackbar("Failed to copy image to clipboard", { variant: 'error'});
+      enqueueSnackbar("Failed to copy image to clipboard", {
+        variant: "error",
+      });
     });
   }, [exportRef]);
 
@@ -82,7 +86,7 @@ export const PresetBreakdown = () => {
           onClick={exportBreakdown}
         >
           Save Breakdown as PNG
-        </Button> 
+        </Button>
         <ClipboardCopyButtonContainer className="breakdown-button">
           <Button
             variant="outlined"
@@ -95,25 +99,24 @@ export const PresetBreakdown = () => {
         </ClipboardCopyButtonContainer>
       </div>
       <div className="breakdown-inner-container" ref={exportRef}>
-        <div className="equipment-breakdown-container">
+        <div className="equipment-breakdown-container--equipment">
           <List className="breakdown-list" dense>
             <BreakdownHeader />
-            {mappedEquipment?.map((item) => item.label && <BreakdownListItem key={item.label} item={item} />)}
+            {mappedEquipment?.map(
+              (item) =>
+                item.label && <BreakdownListItem key={item.label} item={item} />
+            )}
           </List>
         </div>
-        {uniqueInventoryItems?.map(
-          (array, index) =>
-            array.length > 0 && (
-              <div key={index} className="equipment-breakdown-container">
-                <List className="breakdown-list" dense>
-                  <BreakdownHeader />
-                  {array?.map((item) => {
-                    return <BreakdownListItem key={item.label} item={item} />;
-                  })}
-                </List>
-              </div>
-            )
-        )}
+        <div className="equipment-breakdown-container--inventory">
+          <List className="breakdown-list" dense>
+            <BreakdownHeader />
+            {uniqueInventoryItems &&
+              uniqueInventoryItems.map((item) => {
+                return <BreakdownListItem key={item.label} item={item} />;
+              })}
+          </List>
+        </div>
       </div>
     </div>
   );

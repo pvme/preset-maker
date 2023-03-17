@@ -19,25 +19,35 @@
 }
 
 .breakdown-inner-container {
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-  flex-wrap: wrap;
-  max-width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 10px;
   background-color: #181818;
+  padding: 10px;
 }
 
 .breakdown-inner-container div:hover {
   background-color: #181818;
 }
 
-.equipment-breakdown-container {
+.equipment-breakdown-container--equipment {
   width: 600px;
+}
+
+.equipment-breakdown-container--inventory {
+  margin-right: 10px;
+}
+
+.equipment-breakdown-container--inventory > .equipment-breakdown-container--0 > .MuiList-root {
+  padding-bottom: 0px;
+}
+
+.equipment-breakdown-container--inventory > .equipment-breakdown-container--1 > .MuiList-root {
+  padding-top: 0px;
 }
 
 .breakdown-list {
   width: 100%;
-  /* background-color: #181818; */
 }
 
 .empty-div {
