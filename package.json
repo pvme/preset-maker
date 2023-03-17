@@ -22,9 +22,11 @@
 		"html2canvas": "^1.4.1",
 		"notistack": "^2.0.8",
 		"react": "^18.2.0",
+		"react-contenteditable": "^3.3.7",
 		"react-dom": "^18.2.0",
 		"react-redux": "^8.0.5",
 		"redux": "^4.2.0",
+		"sanitize-html": "^2.10.0",
 		"typescript-json": "^3.3.43"
 	},
 	"devDependencies": {
@@ -33,6 +35,7 @@
 		"@types/html2canvas": "^1.0.0",
 		"@types/react": "^18.0.24",
 		"@types/react-dom": "^18.0.8",
+		"@types/sanitize-html": "^2.9.0",
 		"@vitejs/plugin-react": "^2.2.0",
 		"gh-pages": "^4.0.0",
 		"ts-node": "^10.9.1",

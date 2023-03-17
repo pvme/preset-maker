@@ -1,15 +1,20 @@
-.notes-field {
-  width: 280px !important;
-  max-height: 38px !important;
-  border: 1px solid rgb(100, 100, 100) !important;
-  overflow: hidden !important;
-  border-radius: 0 !important;
+.breakdown-list-item > .MuiListItemSecondaryAction-root {
+  position: relative;
+  right: 0;
+  transform: none;
+  top: 0;
 }
 
 .inner-notes-field {
-  color: white !important;
-  line-height: 1.2 !important;
-  overflow: hidden !important;
-  height: 22px !important;
-  border-radius: 0 !important;
+  padding: 3px 8px;
+  margin: 3px;
+  color: white;
+  border-radius: 3px;
+  overflow-wrap: break-word;
+  border: 1px solid rgb(100, 100, 100);
+  min-height: 36px;
+  line-height: 28px;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-size: 14px;
+  width: 330px;
 }

@@ -1,10 +1,13 @@
+import { useCallback, useRef } from "react";
+import ContentEditable, { ContentEditableEvent } from "react-contenteditable";
+import sanitizeHtml from "sanitize-html";
+
 import Avatar from "@mui/material/Avatar";
 import ListItem from "@mui/material/ListItem";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
-import TextField from "@mui/material/TextField";
-import React, { useCallback, useState } from "react";
+
 import { ItemData } from "../../types/inventory-slot";
 
 import "./BreakdownListItem.css";
@@ -13,44 +16,25 @@ export interface BreakdownListItemProps {
   item: ItemData;
 }
 
-const defaultFontSize = 12;
-
 export const BreakdownListItem = ({ item }: BreakdownListItemProps) => {
-  const [text, setText] = useState<string>();
-  const [fontSize, setFontSize] = useState<number>(defaultFontSize);
+  const breakdownNotes = useRef("");
 
-  const onChange = useCallback((event: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setText(event.target.value);
-
-    if (!event.target.value) {
-      setFontSize(defaultFontSize);
-      return;
-    }
-
-    // TODO: update this to be 'better'
-    const newFontSize = defaultFontSize - event.target.value.length / 50;
-    setFontSize(newFontSize);
+  const onChange = useCallback((event: ContentEditableEvent) => {
+    breakdownNotes.current = sanitizeHtml(event.currentTarget.innerHTML || "");
   }, []);
 
   return (
     <ListItem
       tabIndex={-1}
+      classes={{
+        root: "breakdown-list-item",
+        secondaryAction: "notes-field-outer-two",
+      }}
       secondaryAction={
-        <TextField
-          tabIndex={1}
-          fullWidth
-          multiline
-          value={text}
+        <ContentEditable
+          className="inner-notes-field"
+          html={breakdownNotes.current}
           onChange={onChange}
-          size="small"
-          variant="outlined"
-          inputProps={{
-            className: "inner-notes-field",
-            style: {
-              fontSize: fontSize,
-            },
-          }}
-          className="notes-field"
         />
       }
       disablePadding
@@ -68,7 +52,11 @@ export const BreakdownListItem = ({ item }: BreakdownListItemProps) => {
         ) : (
           <div style={{ height: "40px" }}></div>
         )}
-        <ListItemText tabIndex={-1} primaryTypographyProps={{ maxWidth: "225px", maxHeight: "40px" }} primary={item.name} />
+        <ListItemText
+          tabIndex={-1}
+          primaryTypographyProps={{ maxWidth: "225px" }}
+          primary={item.name}
+        />
       </ListItemButton>
     </ListItem>
   );
