@@ -35,13 +35,20 @@ interface DialogPopupProps {
 const dialogBaseHeight = 170;
 const dialogExpandedHeight = 450;
 
-export const DialogPopup = ({ open, recentlySelectedItems, handleClose, handleSlotChange }: DialogPopupProps) => {
+export const DialogPopup = ({
+  open,
+  recentlySelectedItems,
+  handleClose,
+  handleSlotChange,
+}: DialogPopupProps) => {
   const { slotType, slotIndex, inventorySlots } = useAppSelector(selectPreset);
 
   const selectedInventorySlots = inventorySlots
-    .map((slot: ItemData, index: number) => slot.selected ? index : undefined)
+    .map((slot: ItemData, index: number) => (slot.selected ? index : undefined))
     .filter((entry): entry is number => entry !== undefined);
-  const selectedIndices = selectedInventorySlots.length ? selectedInventorySlots : [slotIndex];
+  const selectedIndices = selectedInventorySlots.length
+    ? selectedInventorySlots
+    : [slotIndex];
 
   const [dialogHeight, setDialogHeight] = useState(
     // Initialize dialogHeight state with the value of the dialogBaseHeight
@@ -59,19 +66,26 @@ export const DialogPopup = ({ open, recentlySelectedItems, handleClose, handleSl
     setDialogHeight(dialogBaseHeight);
   }, [dialogBaseHeight]);
 
-  const filterOptions = useCallback((options: ItemData[], state: FilterOptionsState<ItemData>): ItemData[] => {
-    if (!state.inputValue) {
-      return options;
-    }
+  const filterOptions = useCallback(
+    (options: ItemData[], state: FilterOptionsState<ItemData>): ItemData[] => {
+      if (!state.inputValue) {
+        return options;
+      }
 
-    const filteredOptions = fuzzysort.go<ItemData>(state.inputValue, options, {
-      limit: 100,
-      threshold: -100,
-      keys: ["name", "label"],
-    });
+      const filteredOptions = fuzzysort.go<ItemData>(
+        state.inputValue,
+        options,
+        {
+          limit: 100,
+          threshold: -100,
+          keys: ["name", "label"],
+        }
+      );
 
-    return Array.from(filteredOptions).map((i) => i.obj);
-  }, []);
+      return Array.from(filteredOptions).map((i) => i.obj);
+    },
+    []
+  );
 
   const onChange = useCallback(
     (
@@ -99,18 +113,28 @@ export const DialogPopup = ({ open, recentlySelectedItems, handleClose, handleSl
   );
 
   const clearCell = useCallback(() => {
-    handleSlotChange(selectedIndices, { name: "", image: "", label: "" });
+    handleSlotChange(selectedIndices, {
+      name: "",
+      image: "",
+      label: "",
+      breakdownNotes: "",
+    });
     handleClose();
   }, [selectedIndices]);
 
   return (
-    <Dialog classes={{
-      paper: 'item-select-dialog-paper'
-    }} open={open} onClose={handleClose}>
-      {selectedIndices.length > 1
-        ? <DialogTitle>Assign multiple items</DialogTitle>
-        : <DialogTitle>Assign an item</DialogTitle>
-      }
+    <Dialog
+      classes={{
+        paper: "item-select-dialog-paper",
+      }}
+      open={open}
+      onClose={handleClose}
+    >
+      {selectedIndices.length > 1 ? (
+        <DialogTitle>Assign multiple items</DialogTitle>
+      ) : (
+        <DialogTitle>Assign an item</DialogTitle>
+      )}
       <DialogContent
         className="dialog-content"
         sx={{
@@ -143,7 +167,12 @@ export const DialogPopup = ({ open, recentlySelectedItems, handleClose, handleSl
             option: ItemData,
             _state: AutocompleteRenderOptionState
           ) => (
-            <Box key={`option-${option.name}`} className="image-container" component="li" {...props}>
+            <Box
+              key={`option-${option.name}`}
+              className="image-container"
+              component="li"
+              {...props}
+            >
               <img
                 id={`option-${option.image}`}
                 key={`option-${option.image}`}
@@ -160,13 +189,20 @@ export const DialogPopup = ({ open, recentlySelectedItems, handleClose, handleSl
         />
         {recentlySelectedItems.length > 0 && (
           <div className="recent-items-title">
-            <Typography className="recent-items-title">Recent Items:</Typography>
+            <Typography className="recent-items-title">
+              Recent Items:
+            </Typography>
             {recentlySelectedItems.map((item: ItemData) =>
               item.image ? (
                 <Button
                   key={`recent-${item.name}`}
                   startIcon={
-                    <Avatar key={`recent-${item.image}`} variant="square" src={item.image} className="avatar-icon" />
+                    <Avatar
+                      key={`recent-${item.image}`}
+                      variant="square"
+                      src={item.image}
+                      className="avatar-icon"
+                    />
                   }
                   onClick={() => handleRecentClick(item)}
                 ></Button>

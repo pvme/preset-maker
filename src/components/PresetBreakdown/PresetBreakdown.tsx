@@ -11,6 +11,7 @@ import { ClipboardCopyButtonContainer } from "../ClipboardCopyButtonContainer/Cl
 import { useAppSelector } from "../../redux/hooks";
 import { selectPreset } from "../../redux/store/reducers/preset-reducer";
 import { ItemData } from "../../types/inventory-slot";
+import { BreakdownType } from "../../types/breakdown";
 import {
   copyImageToClipboard,
   exportAsImage,
@@ -104,7 +105,13 @@ export const PresetBreakdown = () => {
             <BreakdownHeader />
             {mappedEquipment?.map(
               (item) =>
-                item.label && <BreakdownListItem key={item.label} item={item} />
+                item.label && (
+                  <BreakdownListItem
+                    key={item.label}
+                    item={item}
+                    type={BreakdownType.Equipment}
+                  />
+                )
             )}
           </List>
         </div>
@@ -113,7 +120,13 @@ export const PresetBreakdown = () => {
             <BreakdownHeader />
             {uniqueInventoryItems &&
               uniqueInventoryItems.map((item) => {
-                return <BreakdownListItem key={item.label} item={item} />;
+                return (
+                  <BreakdownListItem
+                    key={item.label}
+                    item={item}
+                    type={BreakdownType.Inventory}
+                  />
+                );
               })}
           </List>
         </div>

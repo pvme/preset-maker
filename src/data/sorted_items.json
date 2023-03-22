@@ -2,3046 +2,3655 @@
 	{
 		"label": "2hslot",
 		"image": "https://i.imgur.com/8m3jziP.png",
-		"name": "2h equipment slot"
+		"name": "2h equipment slot",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "2hslotscythe",
 		"image": "https://i.imgur.com/2wRLPe1.png",
-		"name": "2h equipment slot"
+		"name": "2h equipment slot",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "abyssalspikes",
 		"image": "https://i.imgur.com/cevmcA1.png",
-		"name": "Abyssal armour spikes (alloy)"
+		"name": "Abyssal armour spikes (alloy)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "abyssalscourge",
 		"image": "https://i.imgur.com/Moh9yya.png",
-		"name": "Abyssal scourge"
+		"name": "Abyssal scourge",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "abbywand",
 		"image": "https://i.imgur.com/kSzcNN5.png",
-		"name": "Abyssal wand"
+		"name": "Abyssal wand",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "achtotempesbody",
 		"image": "https://i.imgur.com/BDTWQIq.png",
-		"name": "Achto Tempest body"
+		"name": "Achto Tempest body",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "achtotempeslegs",
 		"image": "https://i.imgur.com/LpgUWZ1.png",
-		"name": "Achto Tempest chaps"
+		"name": "Achto Tempest chaps",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "achtotempestmask",
 		"image": "https://i.imgur.com/MsrYGHh.png",
-		"name": "Achto Tempest cowl"
+		"name": "Achto Tempest cowl",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "achtomask",
 		"image": "https://i.imgur.com/LLKhzlZ.png",
-		"name": "Achto primeval mask"
+		"name": "Achto primeval mask",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "achtobottom",
 		"image": "https://i.imgur.com/4fPphBL.png",
-		"name": "Achto primeval robe legs"
+		"name": "Achto primeval robe legs",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "achtotop",
 		"image": "https://i.imgur.com/aCAN4SP.png",
-		"name": "Achto primeval robe top"
+		"name": "Achto primeval robe top",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "achtoprimboots",
 		"image": "https://i.imgur.com/Mn5v6Fe.png",
-		"name": "Achto primevil boots"
+		"name": "Achto primevil boots",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "achtoprimgloves",
 		"image": "https://i.imgur.com/dP49Eec.png",
-		"name": "Achto primevil gloves"
+		"name": "Achto primevil gloves",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "adrenurn",
 		"image": "https://i.imgur.com/xhMnZMo.png",
-		"name": "Adrenaline Urn"
+		"name": "Adrenaline Urn",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "renewal4",
 		"image": "https://i.imgur.com/b7OFnll.png",
-		"name": "Adrenaline renewal"
+		"name": "Adrenaline renewal",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "renewal6",
 		"image": "https://i.imgur.com/9wds5Ez.png",
-		"name": "Adrenaline renewal flask"
+		"name": "Adrenaline renewal flask",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "aggro6",
 		"image": "https://i.imgur.com/ThvW5Tw.png",
-		"name": "Aggression flask"
+		"name": "Aggression flask",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "aggro4",
 		"image": "https://i.imgur.com/tgY7OqO.png",
-		"name": "Aggression potion (4)"
+		"name": "Aggression potion (4)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "aggroverload",
 		"image": "https://i.imgur.com/RsOriXw.png",
-		"name": "Aggroverload (6)"
+		"name": "Aggroverload (6)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "pouchgreen",
 		"image": "https://i.imgur.com/mbgZgVQ.png",
-		"name": "Air : Soul : Chaos |"
+		"name": "Air : Soul : Chaos |",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "airrune",
 		"image": "https://i.imgur.com/7XCAtVP.png",
-		"name": "Air rune"
+		"name": "Air rune",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "airrune1k",
 		"image": "https://i.imgur.com/7crFFMq.png",
-		"name": "Air runes (1k)"
+		"name": "Air runes (1k)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "akrisaehood",
 		"image": "https://i.imgur.com/IAOluOa.png",
-		"name": "Akrisae's hood"
+		"name": "Akrisae's hood",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "akrisaeskirt",
 		"image": "https://i.imgur.com/uzP90rO.png",
-		"name": "Akrisae's robe skirt"
+		"name": "Akrisae's robe skirt",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "akrisaetop",
 		"image": "https://i.imgur.com/AOPN6sg.png",
-		"name": "Akrisae's robe top"
+		"name": "Akrisae's robe top",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "amuletoffury",
 		"image": "https://i.imgur.com/ixoEqMS.png",
-		"name": "Amulet of fury"
+		"name": "Amulet of fury",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "souls",
 		"image": "https://i.imgur.com/7bR3H3U.png",
-		"name": "Amulet of souls (or)"
+		"name": "Amulet of souls (or)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "zealots",
 		"image": "https://i.imgur.com/UHRGdEk.png",
-		"name": "Amulet of zealots"
+		"name": "Amulet of zealots",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "ancientgodbook2",
 		"image": "https://i.imgur.com/zi5v5NW.png",
-		"name": "Ancient book"
+		"name": "Ancient book",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "ancientcloak",
 		"image": "https://i.imgur.com/nBHYWRM.png",
-		"name": "Ancient cloak"
+		"name": "Ancient cloak",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "nexdefender",
 		"image": "https://i.imgur.com/6IjpoTc.png",
-		"name": "Ancient defender"
+		"name": "Ancient defender",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "elvenshard",
 		"image": "https://i.imgur.com/UURvGNW.png",
-		"name": "Ancient elven ritual shard"
+		"name": "Ancient elven ritual shard",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "lantern",
 		"image": "https://i.imgur.com/I6vORmU.png",
-		"name": "Ancient lantern"
+		"name": "Ancient lantern",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "repriser",
 		"image": "https://i.imgur.com/liT4nh4.png",
-		"name": "Ancient repriser"
+		"name": "Ancient repriser",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "serenbody",
 		"image": "https://i.imgur.com/84rL2dv.png",
-		"name": "Anima core body of seren"
+		"name": "Anima core body of seren",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "sliskebody",
 		"image": "https://i.imgur.com/FMvke44.png",
-		"name": "Anima core body of sliske"
+		"name": "Anima core body of sliske",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "serenhelm",
 		"image": "https://i.imgur.com/cqg3cXV.png",
-		"name": "Anima core helm of seren"
+		"name": "Anima core helm of seren",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "sliskehelm",
 		"image": "https://i.imgur.com/jxHhKUO.png",
-		"name": "Anima core helm of sliske"
+		"name": "Anima core helm of sliske",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "zamhelm",
 		"image": "https://i.imgur.com/DpKvhTI.png",
-		"name": "Anima core helm of zamorak"
+		"name": "Anima core helm of zamorak",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "serenlegs",
 		"image": "https://i.imgur.com/I5QHqtm.png",
-		"name": "Anima core legs of seren"
+		"name": "Anima core legs of seren",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "sliskelegs",
 		"image": "https://i.imgur.com/0HQcba9.png",
-		"name": "Anima core legs of sliske"
+		"name": "Anima core legs of sliske",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "antipsn++",
 		"image": "https://i.imgur.com/ap5QY9d.png",
-		"name": "Antipoison++"
+		"name": "Antipoison++",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "mageblood",
 		"image": "https://i.imgur.com/lwggy0h.png",
-		"name": "Arcane blood necklace"
+		"name": "Arcane blood necklace",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "arcane",
 		"image": "https://i.imgur.com/klfBwI5.png",
-		"name": "Arcane spirit shield"
+		"name": "Arcane spirit shield",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "archcape",
 		"image": "https://i.imgur.com/EcaWmO8.png",
-		"name": "Archaeology master cape"
+		"name": "Archaeology master cape",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "abs",
 		"image": "https://i.imgur.com/kOg6Htl.png",
-		"name": "Armadyl battlestaff"
+		"name": "Armadyl battlestaff",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "armaboots",
 		"image": "https://i.imgur.com/m9hre9E.png",
-		"name": "Armadyl boots"
+		"name": "Armadyl boots",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "armaskirt",
 		"image": "https://i.imgur.com/wpBDLzn.png",
-		"name": "Armadyl chainskirt"
+		"name": "Armadyl chainskirt",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "armaplate",
 		"image": "https://i.imgur.com/3IVzrrl.png",
-		"name": "Armadyl chestplate"
+		"name": "Armadyl chestplate",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "armagloves",
 		"image": "https://i.imgur.com/FjsLw1L.png",
-		"name": "Armadyl gloves"
+		"name": "Armadyl gloves",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "armahelm",
 		"image": "https://i.imgur.com/5LejzUu.png",
-		"name": "Armadyl helmet"
+		"name": "Armadyl helmet",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "spikes",
 		"image": "https://i.imgur.com/MnbQtqX.png",
-		"name": "Armour spikes (alloy)"
+		"name": "Armour spikes (alloy)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "artificier",
 		"image": "https://i.imgur.com/2VUi0VP.png",
-		"name": "Artificier's measure"
+		"name": "Artificier's measure",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "ascendri",
 		"image": "https://i.imgur.com/zmGm6EP.png",
-		"name": "Ascendri bolts (e)"
+		"name": "Ascendri bolts (e)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "ascbolts",
 		"image": "https://i.imgur.com/6oDVbcd.png",
-		"name": "Ascension bolts"
+		"name": "Ascension bolts",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "primkey",
 		"image": "https://i.imgur.com/vDHTr9c.png",
-		"name": "Ascension keystone primus"
+		"name": "Ascension keystone primus",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "quartkey",
 		"image": "https://i.imgur.com/pjnSVHA.png",
-		"name": "Ascension keystone quartus"
+		"name": "Ascension keystone quartus",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "quinkey",
 		"image": "https://i.imgur.com/zV7uAQe.png",
-		"name": "Ascension keystone quintus"
+		"name": "Ascension keystone quintus",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "seckey",
 		"image": "https://i.imgur.com/ZNln4K2.png",
-		"name": "Ascension keystone secundus"
+		"name": "Ascension keystone secundus",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "sextkey",
 		"image": "https://i.imgur.com/g9a23nS.png",
-		"name": "Ascension keystone sextus"
+		"name": "Ascension keystone sextus",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "tertkey",
 		"image": "https://i.imgur.com/wPORkEC.png",
-		"name": "Ascension keystone tertius"
+		"name": "Ascension keystone tertius",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "ascshard",
 		"image": "https://i.imgur.com/SNNAakc.png",
-		"name": "Ascension shard"
+		"name": "Ascension shard",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "astralrune",
 		"image": "https://i.imgur.com/baftx2e.png",
-		"name": "Astral rune"
+		"name": "Astral rune",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "asr",
 		"image": "https://i.imgur.com/RZg5LNG.png",
-		"name": "Asylum surgeon's ring"
+		"name": "Asylum surgeon's ring",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "atrroguegloves",
 		"image": "https://i.imgur.com/w154nfi.png",
-		"name": "Atrocious rogue gloves"
+		"name": "Atrocious rogue gloves",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "attunedcrystalbody",
 		"image": "https://i.imgur.com/uKBw6jW.png",
-		"name": "Attuned crystal body"
+		"name": "Attuned crystal body",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "attunedcrystalboots",
 		"image": "https://i.imgur.com/SESOIYr.png",
-		"name": "Attuned crystal boots"
+		"name": "Attuned crystal boots",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "attunedcrystalgloves",
 		"image": "https://i.imgur.com/xgIpwVn.png",
-		"name": "Attuned crystal gloves"
+		"name": "Attuned crystal gloves",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "attunedcrystalhelm",
 		"image": "https://i.imgur.com/fiTvvCf.png",
-		"name": "Attuned crystal helm"
+		"name": "Attuned crystal helm",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "attunedcrystallegs",
 		"image": "https://i.imgur.com/xnjdLrW.png",
-		"name": "Attuned crystal legs"
+		"name": "Attuned crystal legs",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "ecto",
 		"image": "https://i.imgur.com/5XEM9AB.png",
-		"name": "Attuned ectoplasmator"
+		"name": "Attuned ectoplasmator",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "attunedportentofrestorationx",
 		"image": "https://i.imgur.com/SRVgAXl.png",
-		"name": "Attuned portent of restoration x"
+		"name": "Attuned portent of restoration x",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "flowers",
 		"image": "https://i.imgur.com/2lYX5Jl.png",
-		"name": "Augmented flowers"
+		"name": "Augmented flowers",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "alerter",
 		"image": "https://i.imgur.com/9S3gp8c.png",
-		"name": "Ava's alerter"
+		"name": "Ava's alerter",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "bandosboots",
 		"image": "https://i.imgur.com/53Fx4cV.png",
-		"name": "Bandos boots"
+		"name": "Bandos boots",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "bandosbody",
 		"image": "https://i.imgur.com/rZAwGOE.png",
-		"name": "Bandos chestplate"
+		"name": "Bandos chestplate",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "bandosgloves",
 		"image": "https://i.imgur.com/iEpTY9H.png",
-		"name": "Bandos gloves"
+		"name": "Bandos gloves",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "bandoshelm",
 		"image": "https://i.imgur.com/9NwuMuG.png",
-		"name": "Bandos helmet"
+		"name": "Bandos helmet",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "bandoslegs",
 		"image": "https://i.imgur.com/YTrvyv7.png",
-		"name": "Bandos tassets"
+		"name": "Bandos tassets",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "bandosshield",
 		"image": "https://i.imgur.com/9imiEjS.png",
-		"name": "Bandos warshield"
+		"name": "Bandos warshield",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "barrowsamulet",
 		"image": "https://i.imgur.com/SxE7lDs.png",
-		"name": "Barrows amulets"
+		"name": "Barrows amulets",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "barrowstotems",
 		"image": "https://i.imgur.com/1KKDsVs.png",
-		"name": "Barrows totems"
+		"name": "Barrows totems",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "zerkess",
 		"image": "https://i.imgur.com/DyfukSE.png",
-		"name": "Berserk blood essence"
+		"name": "Berserk blood essence",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "zerk",
 		"image": "https://i.imgur.com/dNm4A5W.png",
-		"name": "Berserker aura"
+		"name": "Berserker aura",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "bikarrow",
 		"image": "https://i.imgur.com/YZsd041.png",
-		"name": "Bik arrow"
+		"name": "Bik arrow",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "reaver",
 		"image": "https://i.imgur.com/BQXFPFu.png",
-		"name": "Binding contract (blood reaver)"
+		"name": "Binding contract (blood reaver)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "hellhound",
 		"image": "https://i.imgur.com/FPfRiAQ.png",
-		"name": "Binding contract (hellhound)"
+		"name": "Binding contract (hellhound)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "kalg",
 		"image": "https://i.imgur.com/5dumsv0.png",
-		"name": "Binding contract (kal'gerion demon)"
+		"name": "Binding contract (kal'gerion demon)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "ripper",
 		"image": "https://i.imgur.com/OQ4ZaK3.png",
-		"name": "Binding contract (ripper demon)"
+		"name": "Binding contract (ripper demon)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "contracts",
 		"image": "https://i.imgur.com/kVRvKbP.png",
-		"name": "Binding contracts"
+		"name": "Binding contracts",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "blackcrystal",
 		"image": "https://i.imgur.com/UEC7TLp.png",
-		"name": "Black crystal (reduced healing)"
+		"name": "Black crystal (reduced healing)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "bsa",
 		"image": "https://i.imgur.com/b2y3wrv.png",
-		"name": "Black stone arrows"
+		"name": "Black stone arrows",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "bsa21",
 		"image": "https://i.imgur.com/7qlGCyV.png",
-		"name": "Black stone arrows"
+		"name": "Black stone arrows",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "bsa100",
 		"image": "https://i.imgur.com/uBbMQoy.png",
-		"name": "Black stone arrows"
+		"name": "Black stone arrows",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "bsa1k",
 		"image": "https://i.imgur.com/asuawfb.png",
-		"name": "Black stone arrows"
+		"name": "Black stone arrows",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "bsa10k",
 		"image": "https://i.imgur.com/FCjk3us.png",
-		"name": "Black stone arrows"
+		"name": "Black stone arrows",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "nymorablade",
 		"image": "https://i.imgur.com/KujZsuF.png",
-		"name": "Blade of nymora"
+		"name": "Blade of nymora",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "diffusion",
 		"image": "https://i.imgur.com/2VPk1SN.png",
-		"name": "Blast diffusion boots"
+		"name": "Blast diffusion boots",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "blessed",
 		"image": "https://i.imgur.com/q7228b9.png",
-		"name": "Blessed flask"
+		"name": "Blessed flask",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "blightbolts",
 		"image": "https://i.imgur.com/BicWRtM.png",
-		"name": "Blight bolts"
+		"name": "Blight bolts",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "pouchblue",
 		"image": "https://i.imgur.com/yh8LZY1.png",
-		"name": "Blood : Astral : Body |"
+		"name": "Blood : Astral : Body |",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "pouchorange",
 		"image": "https://i.imgur.com/OOETa4Z.png",
-		"name": "Blood : Fire : Death |"
+		"name": "Blood : Fire : Death |",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "bloodfury",
 		"image": "https://i.imgur.com/lDrVrEd.png",
-		"name": "Blood amulet of fury"
+		"name": "Blood amulet of fury",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "bloodnihil",
 		"image": "https://i.imgur.com/pSNIBhe.png",
-		"name": "Blood nihil pouch"
+		"name": "Blood nihil pouch",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "bloodrune",
 		"image": "https://i.imgur.com/NFysv2o.png",
-		"name": "Blood rune"
+		"name": "Blood rune",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "reaverscrolls",
 		"image": "https://i.imgur.com/Fd4eS9L.png",
-		"name": "Blood siphon scrolls"
+		"name": "Blood siphon scrolls",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "jelly",
 		"image": "https://i.imgur.com/ygwcjzt.png",
-		"name": "Blue blubber jellyfish"
+		"name": "Blue blubber jellyfish",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "bluecharm1",
 		"image": "https://i.imgur.com/zWUvHQP.png",
-		"name": "Blue charm (1)"
+		"name": "Blue charm (1)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "bodyrune",
 		"image": "https://i.imgur.com/AuLIVBm.png",
-		"name": "Body rune"
+		"name": "Body rune",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "bolas",
 		"image": "https://i.imgur.com/bTWNbdr.png",
-		"name": "Bolas"
+		"name": "Bolas",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "bonecrusher",
 		"image": "https://i.imgur.com/9Dzj0Sl.png",
-		"name": "Bonecrusher"
+		"name": "Bonecrusher",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "guthixgodbook2",
 		"image": "https://i.imgur.com/hdJimPF.png",
-		"name": "Book of balance"
+		"name": "Book of balance",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "guthixgodbook",
 		"image": "https://i.imgur.com/GZwJgcW.png",
-		"name": "Book of balance (Illuminated)"
+		"name": "Book of balance (Illuminated)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "zammygodbook2",
 		"image": "https://i.imgur.com/F6Q8fGK.png",
-		"name": "Book of chaos"
+		"name": "Book of chaos",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "zammygodbook",
 		"image": "https://i.imgur.com/AMmI7st.png",
-		"name": "Book of chaos (Illuminated)"
+		"name": "Book of chaos (Illuminated)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "armagodbook2",
 		"image": "https://i.imgur.com/hm5z04C.png",
-		"name": "Book of law"
+		"name": "Book of law",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "armagodbook",
 		"image": "https://i.imgur.com/VgpxUSQ.png",
-		"name": "Book of law (Illuminated)"
+		"name": "Book of law (Illuminated)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "bandosgodbook2",
 		"image": "https://i.imgur.com/MKhvXuj.png",
-		"name": "Book of war"
+		"name": "Book of war",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "saragodbook2",
 		"image": "https://i.imgur.com/5jzWrXY.png",
-		"name": "Book of wisdom"
+		"name": "Book of wisdom",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "saragodbook",
 		"image": "https://i.imgur.com/PY2Fx7Z.png",
-		"name": "Book of wisdom (Illuminated)"
+		"name": "Book of wisdom (Illuminated)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "subjboots",
 		"image": "https://i.imgur.com/7XWA1eE.png",
-		"name": "Boots of subjugation"
+		"name": "Boots of subjugation",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "bolg",
 		"image": "https://i.imgur.com/GkhQHSj.png",
-		"name": "Bow of the Last Guardian"
+		"name": "Bow of the Last Guardian",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "meleeblood",
 		"image": "https://i.imgur.com/E9U0laS.png",
-		"name": "Brawler's blood necklace"
+		"name": "Brawler's blood necklace",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "brooch",
 		"image": "https://i.imgur.com/5rpdKqL.png",
-		"name": "Brooch of the Gods"
+		"name": "Brooch of the Gods",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "calcifiedfungussoup",
 		"image": "https://i.imgur.com/exlOdpw.png",
-		"name": "Calcified fungus soup"
+		"name": "Calcified fungus soup",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "calorie",
 		"image": "https://i.imgur.com/48X7sPq.png",
-		"name": "Calorie bomb"
+		"name": "Calorie bomb",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "cballs",
 		"image": "https://i.imgur.com/39OlNWt.png",
-		"name": "Cannonballs"
+		"name": "Cannonballs",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "caroming",
 		"image": "https://i.imgur.com/QnRVnIg.png",
-		"name": "Caroming perk"
+		"name": "Caroming perk",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "celestial",
 		"image": "https://i.imgur.com/CHwh7uQ.png",
-		"name": "Celestial handwraps"
+		"name": "Celestial handwraps",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "championring",
 		"image": "https://i.imgur.com/cc9GxHt.png",
-		"name": "Champion's ring"
+		"name": "Champion's ring",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "channellerring",
 		"image": "https://i.imgur.com/Zs7j4JG.png",
-		"name": "Channeller's ring"
+		"name": "Channeller's ring",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "chaosrune",
 		"image": "https://i.imgur.com/iFFmqvi.png",
-		"name": "Chaos rune"
+		"name": "Chaos rune",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "chaosrune1k",
 		"image": "https://i.imgur.com/wbWrG7X.png",
-		"name": "Chaos runes (1k)"
+		"name": "Chaos runes (1k)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "mhchaoticcbow",
 		"image": "https://i.imgur.com/rmpD7AL.png",
-		"name": "Chaotic crossbow"
+		"name": "Chaotic crossbow",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "cluebag",
 		"image": "https://i.imgur.com/h7hCOfy.png",
-		"name": "Charos' clue carrier"
+		"name": "Charos' clue carrier",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "cinder",
 		"image": "https://i.imgur.com/LutTgCH.png",
-		"name": "Cinderbane gloves"
+		"name": "Cinderbane gloves",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "dummy",
 		"image": "https://i.imgur.com/E03cGER.png",
-		"name": "Combat dummy MKII"
+		"name": "Combat dummy MKII",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "mtx",
 		"image": "https://i.imgur.com/aq2xYgY.png",
-		"name": "Combat training dummy"
+		"name": "Combat training dummy",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "combatantscape",
 		"image": "https://i.imgur.com/NhX2RVu.png",
-		"name": "Combatant's cape"
+		"name": "Combatant's cape",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "comp",
 		"image": "https://i.imgur.com/UqMEx96.png",
-		"name": "Completionist cape"
+		"name": "Completionist cape",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "trim",
 		"image": "https://i.imgur.com/iAoUmwW.png",
-		"name": "Completionist cape (t)"
+		"name": "Completionist cape (t)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "cosmicrune",
 		"image": "https://i.imgur.com/BUBWYjA.png",
-		"name": "Cosmic rune"
+		"name": "Cosmic rune",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "kalgscrolls",
 		"image": "https://i.imgur.com/COanosD.png",
-		"name": "Crit-i-kal scrolls"
+		"name": "Crit-i-kal scrolls",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "cryptbloomboots",
 		"image": "https://i.imgur.com/1MkR1qn.png",
-		"name": "Cryptbloom boots"
+		"name": "Cryptbloom boots",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "cryptbloomgloves",
 		"image": "https://i.imgur.com/yHxz8PD.png",
-		"name": "Cryptbloom gloves"
+		"name": "Cryptbloom gloves",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "cryptbloomhelm",
 		"image": "https://i.imgur.com/xNXHeIN.png",
-		"name": "Cryptbloom helm"
+		"name": "Cryptbloom helm",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "cryptbloomlegs",
 		"image": "https://i.imgur.com/h07wgr8.png",
-		"name": "Cryptbloom legs"
+		"name": "Cryptbloom legs",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "cryptbloomtop",
 		"image": "https://i.imgur.com/G07AY4A.png",
-		"name": "Cryptbloom top"
+		"name": "Cryptbloom top",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "cywirorb",
 		"image": "https://i.imgur.com/H37FxHZ.png",
-		"name": "Cywir orb"
+		"name": "Cywir orb",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "cywirwand",
 		"image": "https://i.imgur.com/6Zear8O.png",
-		"name": "Cywir wand"
+		"name": "Cywir wand",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "lengmh",
 		"image": "https://i.imgur.com/wFdHN9C.png",
-		"name": "Dark Shard of Leng"
+		"name": "Dark Shard of Leng",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "lengoh",
 		"image": "https://i.imgur.com/LAVYvrE.png",
-		"name": "Dark Sliver of Leng"
+		"name": "Dark Sliver of Leng",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "dbow",
 		"image": "https://i.imgur.com/usBugge.png",
-		"name": "Dark bow"
+		"name": "Dark bow",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "darkiceshard",
 		"image": "https://i.imgur.com/TjVRnbE.png",
-		"name": "Dark ice shard"
+		"name": "Dark ice shard",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "darkicesliver",
 		"image": "https://i.imgur.com/U8DpGds.png",
-		"name": "Dark ice sliver"
+		"name": "Dark ice sliver",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "darklight",
 		"image": "https://i.imgur.com/2nPFZU6.png",
-		"name": "Darklight"
+		"name": "Darklight",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "pouchpurple",
 		"image": "https://i.imgur.com/qX339s9.png",
-		"name": "Death : Cosmic : Law |"
+		"name": "Death : Cosmic : Law |",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "ripperscrolls",
 		"image": "https://i.imgur.com/fEm2b5Q.png",
-		"name": "Death from above scrolls"
+		"name": "Death from above scrolls",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "deathrune",
 		"image": "https://i.imgur.com/Lcb8Hbu.png",
-		"name": "Death rune"
+		"name": "Death rune",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "deathrune10k",
 		"image": "https://i.imgur.com/vyDmBAB.png",
-		"name": "Death runes (10k)"
+		"name": "Death runes (10k)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "deathsporearrows",
 		"image": "https://i.imgur.com/u9527hu.png",
-		"name": "Deathspore arrows"
+		"name": "Deathspore arrows",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "dtb",
 		"image": "https://i.imgur.com/n7j573y.png",
-		"name": "Deathtouched bracelet"
+		"name": "Deathtouched bracelet",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "deci",
 		"image": "https://i.imgur.com/BJ1Qzbt.png",
-		"name": "Decimation"
+		"name": "Decimation",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "defencecape",
 		"image": "https://i.imgur.com/LaFfLEy.png",
-		"name": "Defence skill cape"
+		"name": "Defence skill cape",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "demonhorn",
 		"image": "https://i.imgur.com/lwTB80E.png",
-		"name": "Demon horn necklace"
+		"name": "Demon horn necklace",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "desertamulet4",
 		"image": "https://i.imgur.com/JInu2Jy.png",
-		"name": "Desert amulet 4"
+		"name": "Desert amulet 4",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "diamond",
 		"image": "https://i.imgur.com/QEOZnyI.png",
-		"name": "Diamond bakriminel bolts (e)"
+		"name": "Diamond bakriminel bolts (e)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "divcharge",
 		"image": "https://i.imgur.com/CsaPZ6y.png",
-		"name": "Divine charge"
+		"name": "Divine charge",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "divine",
 		"image": "https://i.imgur.com/FqCe5Kw.png",
-		"name": "Divine spirit shield"
+		"name": "Divine spirit shield",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "mines",
 		"image": "https://i.imgur.com/fEO5HWg.png",
-		"name": "Dominion mines"
+		"name": "Dominion mines",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "2mines",
 		"image": "https://i.imgur.com/MRHUme8.png",
-		"name": "Dominion mines"
+		"name": "Dominion mines",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "4mines",
 		"image": "https://i.imgur.com/Mod2BCi.png",
-		"name": "Dominion mines"
+		"name": "Dominion mines",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "20mines",
 		"image": "https://i.imgur.com/OPZ0ibN.png",
-		"name": "Dominion mines"
+		"name": "Dominion mines",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "dba",
 		"image": "https://i.imgur.com/BoTSwMT.png",
-		"name": "Dragon battleaxe"
+		"name": "Dragon battleaxe",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "dragonclaw",
 		"image": "https://i.imgur.com/L2sY8ND.png",
-		"name": "Dragon claw"
+		"name": "Dragon claw",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "dslayergloves",
 		"image": "https://i.imgur.com/6eXqXnc.png",
-		"name": "Dragon slayer gloves"
+		"name": "Dragon slayer gloves",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "dbane2h",
 		"image": "https://i.imgur.com/Hv713Z2.png",
-		"name": "Dragonbane 2h sword"
+		"name": "Dragonbane 2h sword",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "dbanearrows",
 		"image": "https://i.imgur.com/dlHBMRN.png",
-		"name": "Dragonbane arrows"
+		"name": "Dragonbane arrows",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "dbanebolts",
 		"image": "https://i.imgur.com/Ad6Ws1U.png",
-		"name": "Dragonbane bolts"
+		"name": "Dragonbane bolts",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "driderlance",
 		"image": "https://i.imgur.com/Qgyyrwc.png",
-		"name": "Dragonride lance"
+		"name": "Dragonride lance",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "drider",
 		"image": "https://i.imgur.com/03MW8YA.png",
-		"name": "Dragonrider amulet"
+		"name": "Dragonrider amulet",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "dstone",
 		"image": "https://i.imgur.com/XHVo2IT.png",
-		"name": "Dragonstone bakriminel bolts (e)"
+		"name": "Dragonstone bakriminel bolts (e)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "drakansmedal",
 		"image": "https://i.imgur.com/gyyfHQl.png",
-		"name": "Drakan's medallion"
+		"name": "Drakan's medallion",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "nips",
 		"image": "https://i.imgur.com/m5SqRS1.png",
-		"name": "Dreadnip"
+		"name": "Dreadnip",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "pouchyellow",
 		"image": "https://i.imgur.com/dac17j8.png",
-		"name": "Dust : Soul : Chaos |"
+		"name": "Dust : Soul : Chaos |",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "dustrune",
 		"image": "https://i.imgur.com/wx33VZG.png",
-		"name": "Dust rune"
+		"name": "Dust rune",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "cannon",
 		"image": "https://i.imgur.com/eXAbFdM.png",
-		"name": "Dwarven siege engine"
+		"name": "Dwarven siege engine",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "earthrune",
 		"image": "https://i.imgur.com/L9LzYeY.png",
-		"name": "Earth rune"
+		"name": "Earth rune",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "zekkil",
 		"image": "https://i.imgur.com/aKEG5mi.png",
-		"name": "Ek-ZekKil"
+		"name": "Ek-ZekKil",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "ovl",
 		"image": "https://i.imgur.com/pzEjejy.png",
-		"name": "Elder overload"
+		"name": "Elder overload",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "salve",
 		"image": "https://i.imgur.com/SsNRoVE.png",
-		"name": "Elder overload salve"
+		"name": "Elder overload salve",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "elderrunehelm",
 		"image": "https://i.imgur.com/2Mz4PUK.png",
-		"name": "Elder rune full helm + 5"
+		"name": "Elder rune full helm + 5",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "elderrunegauntlets",
 		"image": "https://i.imgur.com/1t7JUu2.png",
-		"name": "Elder rune gauntlets + 5"
+		"name": "Elder rune gauntlets + 5",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "elderruneshield",
 		"image": "https://i.imgur.com/cuKTG4y.png",
-		"name": "Elder rune round shield"
+		"name": "Elder rune round shield",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "ecb",
 		"image": "https://i.imgur.com/G6doXGi.png",
-		"name": "Eldrich crossbow"
+		"name": "Eldrich crossbow",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "ecb3a",
 		"image": "https://i.imgur.com/nT78NJf.png",
-		"name": "Eldrich crossbow (3a)"
+		"name": "Eldrich crossbow (3a)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "ecbbarrows",
 		"image": "https://i.imgur.com/38HCWk7.png",
-		"name": "Eldrich crossbow (barrows)"
+		"name": "Eldrich crossbow (barrows)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "ecbblood",
 		"image": "https://i.imgur.com/4kajtRF.png",
-		"name": "Eldrich crossbow (blood)"
+		"name": "Eldrich crossbow (blood)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "ecbice",
 		"image": "https://i.imgur.com/TXyWqPJ.png",
-		"name": "Eldrich crossbow (ice)"
+		"name": "Eldrich crossbow (ice)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "ecbshadow",
 		"image": "https://i.imgur.com/lMLegOB.png",
-		"name": "Eldrich crossbow (shadow)"
+		"name": "Eldrich crossbow (shadow)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "eliterangerboots",
 		"image": "https://i.imgur.com/oC9uglO.png",
-		"name": "Elite ranger boots"
+		"name": "Elite ranger boots",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "ekiba",
 		"image": "https://i.imgur.com/y10SH1v.png",
-		"name": "Elite seasinger kiba"
+		"name": "Elite seasinger kiba",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "emakigai",
 		"image": "https://i.imgur.com/jsjDF91.png",
-		"name": "Elite seasinger makigai"
+		"name": "Elite seasinger makigai",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "esireniclegs",
 		"image": "https://i.imgur.com/bHmDqjV.png",
-		"name": "Elite sirenic chaps"
+		"name": "Elite sirenic chaps",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "esireniclegsbarrows",
 		"image": "https://i.imgur.com/1220ZXy.png",
-		"name": "Elite sirenic chaps (barrows)"
+		"name": "Elite sirenic chaps (barrows)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "esirenictop",
 		"image": "https://i.imgur.com/Awlvns0.png",
-		"name": "Elite sirenic hauberk"
+		"name": "Elite sirenic hauberk",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "esirenictopbarrows",
 		"image": "https://i.imgur.com/8gZNodr.png",
-		"name": "Elite sirenic hauberk (barrows)"
+		"name": "Elite sirenic hauberk (barrows)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "esirenichelm",
 		"image": "https://i.imgur.com/zghHDxK.png",
-		"name": "Elite sirenic mask"
+		"name": "Elite sirenic mask",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "esirenichelmbarrows",
 		"image": "https://i.imgur.com/cpTn1et.png",
-		"name": "Elite sirenic mask (barrows)"
+		"name": "Elite sirenic mask (barrows)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "etectohelm",
 		"image": "https://i.imgur.com/JkrhqUi.png",
-		"name": "Elite tectonic mask"
+		"name": "Elite tectonic mask",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "etectolegs",
 		"image": "https://i.imgur.com/t6HbIdO.png",
-		"name": "Elite tectonic robe bottom"
+		"name": "Elite tectonic robe bottom",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "etectotop",
 		"image": "https://i.imgur.com/seS3Yh2.png",
-		"name": "Elite tectonic robe top"
+		"name": "Elite tectonic robe top",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "tetsukatana",
 		"image": "https://i.imgur.com/ycR3w7M.png",
-		"name": "Elite tetsu katana"
+		"name": "Elite tetsu katana",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "ely",
 		"image": "https://i.imgur.com/dw164tg.png",
-		"name": "Elysian spirit shield"
+		"name": "Elysian spirit shield",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "emerald",
 		"image": "https://i.imgur.com/1sbqXay.png",
-		"name": "Emerald bakriminel bolts (e)"
+		"name": "Emerald bakriminel bolts (e)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "enhancedblastdiff",
 		"image": "https://i.imgur.com/KUGqEdN.png",
-		"name": "Enhanced blast diffusion boots"
+		"name": "Enhanced blast diffusion boots",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "excal",
 		"image": "https://i.imgur.com/KFZJLhU.png",
-		"name": "Enhanced excalibur"
+		"name": "Enhanced excalibur",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "enhancedfleet",
 		"image": "https://i.imgur.com/9j06KPo.png",
-		"name": "Enhanced fleeting boots"
+		"name": "Enhanced fleeting boots",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "enhancedlacs",
 		"image": "https://i.imgur.com/GSehhZd.png",
-		"name": "Enhanced laceration boots"
+		"name": "Enhanced laceration boots",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "enhluck",
 		"image": "https://i.imgur.com/sh0rUPx.png",
-		"name": "Enhanced luck potion"
+		"name": "Enhanced luck potion",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "replen",
 		"image": "https://i.imgur.com/1KQHomq.png",
-		"name": "Enhanced replenishment"
+		"name": "Enhanced replenishment",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "eofyellow",
 		"image": "https://i.imgur.com/hiC7f5F.png",
-		"name": "EoF -  Armadyl Battlestaff"
+		"name": "EoF -  Armadyl Battlestaff",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "eofgreen",
 		"image": "https://i.imgur.com/LhMlWmw.png",
-		"name": "EoF - Dark bow"
+		"name": "EoF - Dark bow",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "eofred",
 		"image": "https://i.imgur.com/JMC7t7Y.png",
-		"name": "EoF - Dragon claws"
+		"name": "EoF - Dragon claws",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "eofpink",
 		"image": "https://i.imgur.com/MWLieOn.png",
-		"name": "EoF - Eldritch crossbow"
+		"name": "EoF - Eldritch crossbow",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "eofpurple",
 		"image": "https://i.imgur.com/nu7QSbh.png",
-		"name": "EoF - Guthix staff"
+		"name": "EoF - Guthix staff",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "eofblue",
 		"image": "https://i.imgur.com/zAiXkJn.png",
-		"name": "EoF - Seren godbow"
+		"name": "EoF - Seren godbow",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "eofblack",
 		"image": "https://i.imgur.com/iZw3Uee.png",
-		"name": "EoF - Statius warhammer"
+		"name": "EoF - Statius warhammer",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "grim",
 		"image": "https://i.imgur.com/FAPSk6p.png",
-		"name": "Erethdor's grimoire"
+		"name": "Erethdor's grimoire",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "eof",
 		"image": "https://i.imgur.com/UB0lAK8.png",
-		"name": "Essence of finality"
+		"name": "Essence of finality",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "eofor",
 		"image": "https://i.imgur.com/xPypDhQ.png",
-		"name": "Essence of finality (or)"
+		"name": "Essence of finality (or)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "spices",
 		"image": "https://i.imgur.com/GNzR4sU.png",
-		"name": "Expensive spices"
+		"name": "Expensive spices",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "extattack",
 		"image": "https://i.imgur.com/bbhu0Wx.png",
-		"name": "Extreme Attack"
+		"name": "Extreme Attack",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "extdefence",
 		"image": "https://i.imgur.com/DUhcOW3.png",
-		"name": "Extreme Defence"
+		"name": "Extreme Defence",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "extmagic",
 		"image": "https://i.imgur.com/SgGHcx0.png",
-		"name": "Extreme Magic"
+		"name": "Extreme Magic",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "extrange",
 		"image": "https://i.imgur.com/SIxkkCF.png",
-		"name": "Extreme Ranging"
+		"name": "Extreme Ranging",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "extstrength",
 		"image": "https://i.imgur.com/7fRfsO4.png",
-		"name": "Extreme Strength"
+		"name": "Extreme Strength",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "extpray",
 		"image": "https://i.imgur.com/YSj7H2I.png",
-		"name": "Extreme prayer"
+		"name": "Extreme prayer",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "rangeblood",
 		"image": "https://i.imgur.com/9lDPDdo.png",
-		"name": "Farsight blood necklace"
+		"name": "Farsight blood necklace",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "maatfeathers1k",
 		"image": "https://i.imgur.com/pXfMf6J.png",
-		"name": "Feather of Ma'at (1k)"
+		"name": "Feather of Ma'at (1k)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "pouchsmall",
 		"image": "https://i.imgur.com/X7aZIbf.png",
-		"name": "Fire : Nature | High alch"
+		"name": "Fire : Nature | High alch",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "firerune",
 		"image": "https://i.imgur.com/0UBrFSR.png",
-		"name": "Fire rune"
+		"name": "Fire rune",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "firerune10k",
 		"image": "https://i.imgur.com/NI16H5f.png",
-		"name": "Fire runes (10k)"
+		"name": "Fire runes (10k)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "flank",
 		"image": "https://i.imgur.com/KWaUJLP.png",
-		"name": "Flanking perk"
+		"name": "Flanking perk",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "flarefrost",
 		"image": "https://i.imgur.com/TYqTtJI.png",
-		"name": "Flarefrost boots"
+		"name": "Flarefrost boots",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "fleet",
 		"image": "https://i.imgur.com/R5kSCvF.png",
-		"name": "Fleeting boots"
+		"name": "Fleeting boots",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "forinthrybracelet",
 		"image": "https://i.imgur.com/AeQr9sy.png",
-		"name": "Forinthry bracelet"
+		"name": "Forinthry bracelet",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "fsoa",
 		"image": "https://i.imgur.com/AI12yBk.png",
-		"name": "Fractured Staff of Armadyl"
+		"name": "Fractured Staff of Armadyl",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "fremmyboots",
 		"image": "https://i.imgur.com/pFRwJyu.png",
-		"name": "Fremennik sea boots 4"
+		"name": "Fremennik sea boots 4",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "fularrow",
 		"image": "https://i.imgur.com/ayjE5KH.png",
-		"name": "Ful arrow"
+		"name": "Ful arrow",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "fungaalgaesoup",
 		"image": "https://i.imgur.com/OxpeKXr.png",
-		"name": "Fungal algae soup"
+		"name": "Fungal algae soup",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "fungalsporesoup",
 		"image": "https://i.imgur.com/Wb8Mgob.png",
-		"name": "Fungal spore soup"
+		"name": "Fungal spore soup",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "ganoboots",
 		"image": "https://i.imgur.com/bB6QR8V.png",
-		"name": "Ganodermic boots"
+		"name": "Ganodermic boots",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "ganogloves",
 		"image": "https://i.imgur.com/oZYP7Ig.png",
-		"name": "Ganodermic gloves"
+		"name": "Ganodermic gloves",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "ganolegs",
 		"image": "https://i.imgur.com/D3cx9PR.png",
-		"name": "Ganodermic leggings"
+		"name": "Ganodermic leggings",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "ganobody",
 		"image": "https://i.imgur.com/Io6oIdr.png",
-		"name": "Ganodermic poncho"
+		"name": "Ganodermic poncho",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "ganohelm",
 		"image": "https://i.imgur.com/uDHYUf6.png",
-		"name": "Ganodermic visor"
+		"name": "Ganodermic visor",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "subjgarb",
 		"image": "https://i.imgur.com/xaiyx7X.png",
-		"name": "Garb of subjugation"
+		"name": "Garb of subjugation",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "gembag",
 		"image": "https://i.imgur.com/OiUGVBZ.png",
-		"name": "Gem bag (upgraded)"
+		"name": "Gem bag (upgraded)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "ghostbackpack",
 		"image": "https://i.imgur.com/zNu0qYb.png",
-		"name": "Ghost hunter backpack"
+		"name": "Ghost hunter backpack",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "ghostbody",
 		"image": "https://i.imgur.com/aEqw7uJ.png",
-		"name": "Ghost hunter body"
+		"name": "Ghost hunter body",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "ghostgoggles",
 		"image": "https://i.imgur.com/iyXqN3S.png",
-		"name": "Ghost hunter goggles"
+		"name": "Ghost hunter goggles",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "ghostlegs",
 		"image": "https://i.imgur.com/VLeD3Vy.png",
-		"name": "Ghost hunter legs"
+		"name": "Ghost hunter legs",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "glovesofpassage",
 		"image": "https://i.imgur.com/U4Wa7vb.png",
-		"name": "Gloves of passage"
+		"name": "Gloves of passage",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "subjgloves",
 		"image": "https://i.imgur.com/dzW7KB4.png",
-		"name": "Gloves of subjugation"
+		"name": "Gloves of subjugation",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "subjgown",
 		"image": "https://i.imgur.com/OprqhH8.png",
-		"name": "Gown of subjugation"
+		"name": "Gown of subjugation",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "gote",
 		"image": "https://i.imgur.com/eP6MMdc.png",
-		"name": "Grace of the elves"
+		"name": "Grace of the elves",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "grandmagic",
 		"image": "https://i.imgur.com/KHq1UgF.png",
-		"name": "Grand magic potion (6)"
+		"name": "Grand magic potion (6)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "graspingpouch",
 		"image": "https://i.imgur.com/Mk7jbjC.png",
-		"name": "Grasping rune pouch"
+		"name": "Grasping rune pouch",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "graspingpouchblack",
 		"image": "https://i.imgur.com/hvhOeDs.png",
-		"name": "Grasping rune pouch (black)"
+		"name": "Grasping rune pouch (black)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "graspingpouchblue",
 		"image": "https://i.imgur.com/gDZtYb4.png",
-		"name": "Grasping rune pouch (blue)"
+		"name": "Grasping rune pouch (blue)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "graspingpouchgreen",
 		"image": "https://i.imgur.com/fWzGXLF.png",
-		"name": "Grasping rune pouch (green)"
+		"name": "Grasping rune pouch (green)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "graspingpouchorange",
 		"image": "https://i.imgur.com/9JNBvSP.png",
-		"name": "Grasping rune pouch (orange)"
+		"name": "Grasping rune pouch (orange)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "graspingpouchpink",
 		"image": "https://i.imgur.com/yrnlR2T.png",
-		"name": "Grasping rune pouch (pink)"
+		"name": "Grasping rune pouch (pink)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "graspingpouchpurple",
 		"image": "https://i.imgur.com/gCf8SPg.png",
-		"name": "Grasping rune pouch (purple)"
+		"name": "Grasping rune pouch (purple)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "graspingpouchred",
 		"image": "https://i.imgur.com/6nJNred.png",
-		"name": "Grasping rune pouch (red)"
+		"name": "Grasping rune pouch (red)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "graspingpouchyellow",
 		"image": "https://i.imgur.com/N1tQnRc.png",
-		"name": "Grasping rune pouch (yellow)"
+		"name": "Grasping rune pouch (yellow)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "gunkan",
 		"image": "https://i.imgur.com/qJwQe9I.png",
-		"name": "Great gunkan"
+		"name": "Great gunkan",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "greenjelly",
 		"image": "https://i.imgur.com/I8vuFeB.png",
-		"name": "Green blubber jellyfish"
+		"name": "Green blubber jellyfish",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "grimgem",
 		"image": "https://i.imgur.com/BQZgdnb.png",
-		"name": "Grim gem"
+		"name": "Grim gem",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "godcape",
 		"image": "https://i.imgur.com/fBubAFa.png",
-		"name": "Guthix / Saradomin / Zamorak cape"
+		"name": "Guthix / Saradomin / Zamorak cape",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "grest",
 		"image": "https://i.imgur.com/U47oHsq.png",
-		"name": "Guthix rest"
+		"name": "Guthix rest",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "gstaff",
 		"image": "https://i.imgur.com/mkWYDjK.png",
-		"name": "Guthix staff"
+		"name": "Guthix staff",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "hsr",
 		"image": "https://i.imgur.com/xmcbfhs.png",
-		"name": "Hazelmere's signet"
+		"name": "Hazelmere's signet",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "uniscrolls",
 		"image": "https://i.imgur.com/UhtB5A7.png",
-		"name": "Healing aura scrolls"
+		"name": "Healing aura scrolls",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "herbbag",
 		"image": "https://i.imgur.com/P3tjlC8.png",
-		"name": "Herb bag"
+		"name": "Herb bag",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "hex",
 		"image": "https://i.imgur.com/2GdYUn5.png",
-		"name": "Hexhunter bow"
+		"name": "Hexhunter bow",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "holyaggroverload",
 		"image": "https://i.imgur.com/x2G1m0Q.png",
-		"name": "Holy aggroverload (6)"
+		"name": "Holy aggroverload (6)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "holyovl",
 		"image": "https://i.imgur.com/8FcJc3b.png",
-		"name": "Holy overload (6)"
+		"name": "Holy overload (6)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "holyscarab",
 		"image": "https://i.imgur.com/JollAZs.png",
-		"name": "Holy scarab pouch"
+		"name": "Holy scarab pouch",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "wrench",
 		"image": "https://i.imgur.com/UVffd75.png",
-		"name": "Holy wrench"
+		"name": "Holy wrench",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "subjhood",
 		"image": "https://i.imgur.com/gfBW8r7.png",
-		"name": "Hood of subjugation"
+		"name": "Hood of subjugation",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "hydrix",
 		"image": "https://i.imgur.com/OcjCQFi.png",
-		"name": "Hydrix bakriminel bolts (e)"
+		"name": "Hydrix bakriminel bolts (e)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "kalket",
 		"image": "https://i.imgur.com/bfzX8Up.png",
-		"name": "Igneous Kal-Ket"
+		"name": "Igneous Kal-Ket",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "kalmej",
 		"image": "https://i.imgur.com/6EvPhe6.png",
-		"name": "Igneous Kal-Mej"
+		"name": "Igneous Kal-Mej",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "kalxil",
 		"image": "https://i.imgur.com/TNKAuKX.png",
-		"name": "Igneous Kal-Xil"
+		"name": "Igneous Kal-Xil",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "kalzuk",
 		"image": "https://i.imgur.com/jcfkzGn.png",
-		"name": "Igneous Kal-Zuk"
+		"name": "Igneous Kal-Zuk",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "core",
 		"image": "https://i.imgur.com/WHurFLm.png",
-		"name": "Imperium core"
+		"name": "Imperium core",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "corebarrows",
 		"image": "https://i.imgur.com/hSW732y.png",
-		"name": "Imperium core"
+		"name": "Imperium core",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "coreshadow",
 		"image": "https://i.imgur.com/8vKR1NV.png",
-		"name": "Imperium core"
+		"name": "Imperium core",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "coreice",
 		"image": "https://i.imgur.com/dskxSCW.png",
-		"name": "Imperium core"
+		"name": "Imperium core",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "core3a",
 		"image": "https://i.imgur.com/hBrNru0.png",
-		"name": "Imperium core"
+		"name": "Imperium core",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "coreblood",
 		"image": "https://i.imgur.com/OGIFaB2.png",
-		"name": "Imperium core"
+		"name": "Imperium core",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "infernalpuzzlebox",
 		"image": "https://i.imgur.com/U8R9vg2.png",
-		"name": "Infernal puzzle box"
+		"name": "Infernal puzzle box",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "inq",
 		"image": "https://i.imgur.com/xBT2XFf.png",
-		"name": "Inquisitor staff"
+		"name": "Inquisitor staff",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "inspiration",
 		"image": "https://i.imgur.com/RKETUGp.png",
-		"name": "Inspiration aura"
+		"name": "Inspiration aura",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "insulatedboots",
 		"image": "https://i.imgur.com/ebJDhOO.png",
-		"name": "Insulated boots"
+		"name": "Insulated boots",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "invigorate",
 		"image": "https://i.imgur.com/YpjIoNM.png",
-		"name": "Invigorate aura"
+		"name": "Invigorate aura",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "iritsticks",
 		"image": "https://i.imgur.com/PP5dYq0.png",
-		"name": "Irit incense sticks"
+		"name": "Irit incense sticks",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "jasdemonbanearrow",
 		"image": "https://i.imgur.com/nM9lFG8.png",
-		"name": "Jas demonbane arrow"
+		"name": "Jas demonbane arrow",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "jasdragonbanearrow",
 		"image": "https://i.imgur.com/GhS5tdX.png",
-		"name": "Jas dragonbane arrow"
+		"name": "Jas dragonbane arrow",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "jawsoftheabyss",
 		"image": "https://i.imgur.com/11pg3gM.png",
-		"name": "Jaws of the Abyss"
+		"name": "Jaws of the Abyss",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "defender",
 		"image": "https://i.imgur.com/PnbhWlm.png",
-		"name": "Kalphite defender"
+		"name": "Kalphite defender",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "rebounder",
 		"image": "https://i.imgur.com/PNWPCPA.png",
-		"name": "Kalphite rebounder"
+		"name": "Kalphite rebounder",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "t90repriser",
 		"image": "https://i.imgur.com/SseVPAr.png",
-		"name": "Kalphite repriser"
+		"name": "Kalphite repriser",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "wristwraps",
 		"image": "https://i.imgur.com/CEn20Sk.png",
-		"name": "Kerapac's wrist wraps"
+		"name": "Kerapac's wrist wraps",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "keris",
 		"image": "https://i.imgur.com/AQnrzP2.png",
-		"name": "Keris"
+		"name": "Keris",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "kethsiring",
 		"image": "https://i.imgur.com/1XuMVbo.png",
-		"name": "Kethsi ring"
+		"name": "Kethsi ring",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "crossingkey",
 		"image": "https://i.imgur.com/b9nVW5t.png",
-		"name": "Key to the Crossing"
+		"name": "Key to the Crossing",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "ohkhopesh",
 		"image": "https://i.imgur.com/sNiAnOI.png",
-		"name": "Khopesh of elidinis"
+		"name": "Khopesh of elidinis",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "ohkhopesh3a",
 		"image": "https://i.imgur.com/sNiAnOI.png",
-		"name": "Khopesh of elidinis (3a)"
+		"name": "Khopesh of elidinis (3a)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "ohkhopeshbarrows",
 		"image": "https://i.imgur.com/ZotmF80.png",
-		"name": "Khopesh of elidinis (barrows)"
+		"name": "Khopesh of elidinis (barrows)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "ohkhopeshblood",
 		"image": "https://i.imgur.com/kA5vw5v.png",
-		"name": "Khopesh of elidinis (blood)"
+		"name": "Khopesh of elidinis (blood)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "ohkhopeshice",
 		"image": "https://i.imgur.com/MmixPsj.png",
-		"name": "Khopesh of elidinis (ice)"
+		"name": "Khopesh of elidinis (ice)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "ohkhopeshshadow",
 		"image": "https://i.imgur.com/443tnne.png",
-		"name": "Khopesh of elidinis (shadow)"
+		"name": "Khopesh of elidinis (shadow)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "khopesh",
 		"image": "https://i.imgur.com/k9PlpR0.png",
-		"name": "Khopesh of tumeken"
+		"name": "Khopesh of tumeken",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "khopesh3a",
 		"image": "https://i.imgur.com/vuCb0O9.png",
-		"name": "Khopesh of tumeken (3a)"
+		"name": "Khopesh of tumeken (3a)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "khopeshbarrows",
 		"image": "https://i.imgur.com/6CBkbpp.png",
-		"name": "Khopesh of tumeken (barrows)"
+		"name": "Khopesh of tumeken (barrows)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "khopeshblood",
 		"image": "https://i.imgur.com/5sJZlo0.png",
-		"name": "Khopesh of tumeken (blood)"
+		"name": "Khopesh of tumeken (blood)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "khopeshice",
 		"image": "https://i.imgur.com/i1ThF62.png",
-		"name": "Khopesh of tumeken (ice)"
+		"name": "Khopesh of tumeken (ice)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "khopeshshadow",
 		"image": "https://i.imgur.com/Ou7DqST.png",
-		"name": "Khopesh of tumeken (shadow)"
+		"name": "Khopesh of tumeken (shadow)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "cyclone",
 		"image": "https://i.imgur.com/8FRrGHg.png",
-		"name": "Kinetic cyclone"
+		"name": "Kinetic cyclone",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "kwuarmsticks",
 		"image": "https://i.imgur.com/iQiQKke.png",
-		"name": "Kwuarm incense sticks"
+		"name": "Kwuarm incense sticks",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "laceration",
 		"image": "https://i.imgur.com/EiQNqj9.png",
-		"name": "Laceration boots"
+		"name": "Laceration boots",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "lanispear",
 		"image": "https://i.imgur.com/BGhsSXy.png",
-		"name": "Laniakea's spear"
+		"name": "Laniakea's spear",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "lantasticks",
 		"image": "https://i.imgur.com/FmTBRvg.png",
-		"name": "Lantadyme incense sticks"
+		"name": "Lantadyme incense sticks",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "pouchred",
 		"image": "https://i.imgur.com/gwmw96E.png",
-		"name": "Law : Cosmic : Fire |"
+		"name": "Law : Cosmic : Fire |",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "lawrune",
 		"image": "https://i.imgur.com/VD4kaJa.png",
-		"name": "Law rune"
+		"name": "Law rune",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "lawrune100",
 		"image": "https://i.imgur.com/MLCntzy.png",
-		"name": "Law runes (100)"
+		"name": "Law runes (100)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "lotd",
 		"image": "https://i.imgur.com/MtrMHZ0.png",
-		"name": "Luck of the dwarves"
+		"name": "Luck of the dwarves",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "luckyed1",
 		"image": "https://i.imgur.com/gzDqze6.png",
-		"name": "Lucky charms (ED1)"
+		"name": "Lucky charms (ED1)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "luckyed2",
 		"image": "https://i.imgur.com/SZrCEcQ.png",
-		"name": "Lucky charms (ED2)"
+		"name": "Lucky charms (ED2)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "luckyed3",
 		"image": "https://i.imgur.com/b0WGGBg.png",
-		"name": "Lucky charms (ED3)"
+		"name": "Lucky charms (ED3)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "lunarammy",
 		"image": "https://i.imgur.com/MZrnol8.png",
-		"name": "Lunar ammy"
+		"name": "Lunar ammy",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "lunarboots",
 		"image": "https://i.imgur.com/MPEFfj4.png",
-		"name": "Lunar boots"
+		"name": "Lunar boots",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "lunargloves",
 		"image": "https://i.imgur.com/sFyLuKh.png",
-		"name": "Lunar gloves"
+		"name": "Lunar gloves",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "lunarhelm",
 		"image": "https://i.imgur.com/HYq8kom.png",
-		"name": "Lunar helm"
+		"name": "Lunar helm",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "lunarlegs",
 		"image": "https://i.imgur.com/W36mgq6.png",
-		"name": "Lunar legs"
+		"name": "Lunar legs",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "lunartorso",
 		"image": "https://i.imgur.com/8xVdj2x.png",
-		"name": "Lunar torso"
+		"name": "Lunar torso",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "lunging",
 		"image": "https://i.imgur.com/Yf7g79G.gif",
-		"name": "Lunging perk"
+		"name": "Lunging perk",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "mag120",
 		"image": "https://i.imgur.com/vmHoB6p.png",
-		"name": "Magic master skill cape"
+		"name": "Magic master skill cape",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "1knote",
 		"image": "https://i.imgur.com/nG9F5n4.png",
-		"name": "Magic notepaper (1000)"
+		"name": "Magic notepaper (1000)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "40note",
 		"image": "https://i.imgur.com/GcHXzUJ.png",
-		"name": "Magic notepaper (40)"
+		"name": "Magic notepaper (40)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "mahj",
 		"image": "https://i.imgur.com/Gc4VzXI.png",
-		"name": "Mahjarrat aura"
+		"name": "Mahjarrat aura",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "asc",
 		"image": "https://i.imgur.com/2X4XRWf.png",
-		"name": "Mainhand ascension crossbow"
+		"name": "Mainhand ascension crossbow",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "bbc",
 		"image": "https://i.imgur.com/wXTEWHO.png",
-		"name": "Mainhand blightbound crossbow"
+		"name": "Mainhand blightbound crossbow",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "bbc3a",
 		"image": "https://i.imgur.com/zYi52dw.png",
-		"name": "Mainhand blightbound crossbow (3a)"
+		"name": "Mainhand blightbound crossbow (3a)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "bbcbarrows",
 		"image": "https://i.imgur.com/DqgW9OV.png",
-		"name": "Mainhand blightbound crossbow (barrows)"
+		"name": "Mainhand blightbound crossbow (barrows)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "bbcblood",
 		"image": "https://i.imgur.com/SO4aQNJ.png",
-		"name": "Mainhand blightbound crossbow (blood)"
+		"name": "Mainhand blightbound crossbow (blood)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "bbcice",
 		"image": "https://i.imgur.com/6kBdoxc.png",
-		"name": "Mainhand blightbound crossbow (ice)"
+		"name": "Mainhand blightbound crossbow (ice)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "bbcshadow",
 		"image": "https://i.imgur.com/Nylh7Q4.png",
-		"name": "Mainhand blightbound crossbow (shadow)"
+		"name": "Mainhand blightbound crossbow (shadow)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "mace",
 		"image": "https://i.imgur.com/i6WWkrb.png",
-		"name": "Mainhand drygore mace"
+		"name": "Mainhand drygore mace",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "mhslot",
 		"image": "https://i.imgur.com/6tZsbOh.png",
-		"name": "Mainhand equipment slot"
+		"name": "Mainhand equipment slot",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "glaivemh",
 		"image": "https://i.imgur.com/vMb1oi9.png",
-		"name": "Mainhand shadow glaive"
+		"name": "Mainhand shadow glaive",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "glaiveoh",
 		"image": "https://i.imgur.com/OX5iUca.png",
-		"name": "Mainhand shadow glaive"
+		"name": "Mainhand shadow glaive",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "malevtop",
 		"image": "https://i.imgur.com/MPWh2PL.png",
-		"name": "Malevolent cuirass"
+		"name": "Malevolent cuirass",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "malevlegs",
 		"image": "https://i.imgur.com/vxMoCyg.png",
-		"name": "Malevolent greaves"
+		"name": "Malevolent greaves",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "malevhelm",
 		"image": "https://i.imgur.com/RWjMKOw.png",
-		"name": "Malevolent helm"
+		"name": "Malevolent helm",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "meleeshield",
 		"image": "https://i.imgur.com/3HSronv.png",
-		"name": "Malevolent kiteshield"
+		"name": "Malevolent kiteshield",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "mani",
 		"image": "https://i.imgur.com/Zevs8R8.png",
-		"name": "Maniacal aura"
+		"name": "Maniacal aura",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "mwboots",
 		"image": "https://i.imgur.com/4T5psQM.png",
-		"name": "Masterwork boots"
+		"name": "Masterwork boots",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "mwgloves",
 		"image": "https://i.imgur.com/gdtmo86.png",
-		"name": "Masterwork gloves"
+		"name": "Masterwork gloves",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "mwhelm",
 		"image": "https://i.imgur.com/OrJxXz2.png",
-		"name": "Masterwork helm"
+		"name": "Masterwork helm",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "mwtop",
 		"image": "https://i.imgur.com/U2uwZ3j.png",
-		"name": "Masterwork platebody"
+		"name": "Masterwork platebody",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "mwlegs",
 		"image": "https://i.imgur.com/SpI2Us6.png",
-		"name": "Masterwork platelegs"
+		"name": "Masterwork platelegs",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "spear",
 		"image": "https://i.imgur.com/m8aQij5.png",
-		"name": "Masterwork spear of annihilation"
+		"name": "Masterwork spear of annihilation",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "masutaspear",
 		"image": "https://i.imgur.com/vBk5ipp.png",
-		"name": "Masutas warspear"
+		"name": "Masutas warspear",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "max",
 		"image": "https://i.imgur.com/XspSSvu.png",
-		"name": "Max cape"
+		"name": "Max cape",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "chins",
 		"image": "https://i.imgur.com/S2uAoW3.png",
-		"name": "Mechanised chinchompa"
+		"name": "Mechanised chinchompa",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "mechsiphon",
 		"image": "https://i.imgur.com/T0d5yew.png",
-		"name": "Mechanised siphon"
+		"name": "Mechanised siphon",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "mhbd",
 		"image": "https://i.imgur.com/OsVtupZ.png",
-		"name": "Melee Mainhand"
+		"name": "Melee Mainhand",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "mageshield",
 		"image": "https://i.imgur.com/7vPonR2.png",
-		"name": "Merciless kiteshield"
+		"name": "Merciless kiteshield",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "mindrune",
 		"image": "https://i.imgur.com/84NdLDO.png",
-		"name": "Mind rune"
+		"name": "Mind rune",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "mudrune",
 		"image": "https://i.imgur.com/0DwGfDv.png",
-		"name": "Mud rune"
+		"name": "Mud rune",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "naturerune1k",
 		"image": "https://i.imgur.com/lQglFLf.png",
-		"name": "Nature runes (1k)"
+		"name": "Nature runes (1k)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "salamancy",
 		"image": "https://i.imgur.com/tsyhx6q.png",
-		"name": "Necklace of Salamancy"
+		"name": "Necklace of Salamancy",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "nightmare",
 		"image": "https://i.imgur.com/DpNOi7u.png",
-		"name": "Nightmare gauntlets"
+		"name": "Nightmare gauntlets",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "noxbow",
 		"image": "https://i.imgur.com/iiBXivW.png",
-		"name": "Noxious longbow"
+		"name": "Noxious longbow",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "scythe",
 		"image": "https://i.imgur.com/H74WgP2.png",
-		"name": "Noxious scythe"
+		"name": "Noxious scythe",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "scythe3a",
 		"image": "https://i.imgur.com/nGzSVtH.png",
-		"name": "Noxious scythe (3a)"
+		"name": "Noxious scythe (3a)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "scythebarrows",
 		"image": "https://i.imgur.com/0ARJW4e.png",
-		"name": "Noxious scythe (barrows)"
+		"name": "Noxious scythe (barrows)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "scytheblood",
 		"image": "https://i.imgur.com/ye7QpcY.png",
-		"name": "Noxious scythe (blood)"
+		"name": "Noxious scythe (blood)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "scytheice",
 		"image": "https://i.imgur.com/bHcMZA3.png",
-		"name": "Noxious scythe (ice)"
+		"name": "Noxious scythe (ice)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "scytheshadow",
 		"image": "https://i.imgur.com/gp1Ujbc.png",
-		"name": "Noxious scythe (shadow)"
+		"name": "Noxious scythe (shadow)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "noxstaff",
 		"image": "https://i.imgur.com/ysTivBO.png",
-		"name": "Noxious staff"
+		"name": "Noxious staff",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "obbyboots",
 		"image": "https://i.imgur.com/JMJoDfG.png",
-		"name": "Obsidian boots"
+		"name": "Obsidian boots",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "obbygloves",
 		"image": "https://i.imgur.com/wP1GLeo.png",
-		"name": "Obsidian gloves"
+		"name": "Obsidian gloves",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "obbymage",
 		"image": "https://i.imgur.com/VAlRD3r.png",
-		"name": "Obsidian mage helm"
+		"name": "Obsidian mage helm",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "obbytop",
 		"image": "https://i.imgur.com/JlGK1Sw.png",
-		"name": "Obsidian platebody"
+		"name": "Obsidian platebody",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "obbylegs",
 		"image": "https://i.imgur.com/nVnBsvE.png",
-		"name": "Obsidian platelegs"
+		"name": "Obsidian platelegs",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "obbymelee",
 		"image": "https://i.imgur.com/INHcQrh.png",
-		"name": "Obsidian ranger helm"
+		"name": "Obsidian ranger helm",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "obbyrange",
 		"image": "https://i.imgur.com/mmW0g5D.png",
-		"name": "Obsidian warrior helm"
+		"name": "Obsidian warrior helm",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "ohchaoticcbow",
 		"image": "https://i.imgur.com/74JuHDf.png",
-		"name": "Off-hand Chaotic crossbow"
+		"name": "Off-hand Chaotic crossbow",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "dragonclawoh",
 		"image": "https://i.imgur.com/2ySldbp.png",
-		"name": "Off-hand dragon claw"
+		"name": "Off-hand dragon claw",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "ohasc",
 		"image": "https://i.imgur.com/RusBiGh.png",
-		"name": "Offhand ascension crossbow"
+		"name": "Offhand ascension crossbow",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "ohbbc",
 		"image": "https://i.imgur.com/KBuV3lm.png",
-		"name": "Offhand blightbound crossbow"
+		"name": "Offhand blightbound crossbow",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "ohbbc3a",
 		"image": "https://i.imgur.com/APA8Kmz.png",
-		"name": "Offhand blightbound crossbow (3a)"
+		"name": "Offhand blightbound crossbow (3a)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "ohbbcbarrows",
 		"image": "https://i.imgur.com/xlrzdKl.png",
-		"name": "Offhand blightbound crossbow (barrows)"
+		"name": "Offhand blightbound crossbow (barrows)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "ohbbcblood",
 		"image": "https://i.imgur.com/HajwRC9.png",
-		"name": "Offhand blightbound crossbow (blood)"
+		"name": "Offhand blightbound crossbow (blood)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "ohbbcice",
 		"image": "https://i.imgur.com/xFtj8QK.png",
-		"name": "Offhand blightbound crossbow (ice)"
+		"name": "Offhand blightbound crossbow (ice)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "ohbbcshadow",
 		"image": "https://i.imgur.com/AISyiI9.png",
-		"name": "Offhand blightbound crossbow (shadow)"
+		"name": "Offhand blightbound crossbow (shadow)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "ohlong",
 		"image": "https://i.imgur.com/NBRRXkx.png",
-		"name": "Offhand drygore longsword"
+		"name": "Offhand drygore longsword",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "ohmace",
 		"image": "https://i.imgur.com/U0UDx31.png",
-		"name": "Offhand drygore mace"
+		"name": "Offhand drygore mace",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "ohrapier",
 		"image": "https://i.imgur.com/HI0sqY3.png",
-		"name": "Offhand drygore rapier"
+		"name": "Offhand drygore rapier",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "ohslot",
 		"image": "https://i.imgur.com/QaySzam.png",
-		"name": "Offhand equipment slot"
+		"name": "Offhand equipment slot",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "ogrethermal",
 		"image": "https://i.imgur.com/6GKoFBO.png",
-		"name": "Ogre flask (thermal)"
+		"name": "Ogre flask (thermal)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "oldakcoil",
 		"image": "https://i.imgur.com/9LcNW0Q.png",
-		"name": "Oldak coil"
+		"name": "Oldak coil",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "onyx",
 		"image": "https://i.imgur.com/YffUmc4.png",
-		"name": "Onyx bakriminel bolts (e)"
+		"name": "Onyx bakriminel bolts (e)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "furnacecore",
 		"image": "https://i.imgur.com/vxHDfak.png",
-		"name": "Orthen furnace core"
+		"name": "Orthen furnace core",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "mammothscrolls",
 		"image": "https://i.imgur.com/kOJa3qu.png",
-		"name": "Pack Mammoth scroll (Mammoth Feast)"
+		"name": "Pack Mammoth scroll (Mammoth Feast)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "yakscrolls",
 		"image": "https://i.imgur.com/S5KrnxO.png",
-		"name": "Pack Yak scroll (Winter Storage)"
+		"name": "Pack Yak scroll (Winter Storage)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "mammoth",
 		"image": "https://i.imgur.com/m27fHr1.png",
-		"name": "Pack mammoth pouch"
+		"name": "Pack mammoth pouch",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "penance",
 		"image": "https://i.imgur.com/JtO8ViZ.png",
-		"name": "Penance aura"
+		"name": "Penance aura",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "pernixtop",
 		"image": "https://i.imgur.com/dxkh9P1.png",
-		"name": "Pernix body"
+		"name": "Pernix body",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "pernixboots",
 		"image": "https://i.imgur.com/A73qg8r.png",
-		"name": "Pernix boots"
+		"name": "Pernix boots",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "pernixlegs",
 		"image": "https://i.imgur.com/PlvpZRO.png",
-		"name": "Pernix chaps"
+		"name": "Pernix chaps",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "pernixhelm",
 		"image": "https://i.imgur.com/vfJIHaA.png",
-		"name": "Pernix cowl"
+		"name": "Pernix cowl",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "pernixgloves",
 		"image": "https://i.imgur.com/pmqm1Uw.png",
-		"name": "Pernix gloves"
+		"name": "Pernix gloves",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "pernixquiver",
 		"image": "https://i.imgur.com/b3geFp8.png",
-		"name": "Pernix's Quiver"
+		"name": "Pernix's Quiver",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "pernixquiverred",
 		"image": "https://i.imgur.com/uMJW8pU.png",
-		"name": "Pernix's Quiver"
+		"name": "Pernix's Quiver",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "pernixquiverorange",
 		"image": "https://i.imgur.com/KYb4lnS.png",
-		"name": "Pernix's Quiver"
+		"name": "Pernix's Quiver",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "pernixquiveryellow",
 		"image": "https://i.imgur.com/MCRkOPS.png",
-		"name": "Pernix's Quiver"
+		"name": "Pernix's Quiver",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "pernixquivergreen",
 		"image": "https://i.imgur.com/MG25Uow.png",
-		"name": "Pernix's Quiver"
+		"name": "Pernix's Quiver",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "pernixquiverblue",
 		"image": "https://i.imgur.com/X5AcgQh.png",
-		"name": "Pernix's Quiver"
+		"name": "Pernix's Quiver",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "pernixquiverpurple",
 		"image": "https://i.imgur.com/xt67uWC.png",
-		"name": "Pernix's Quiver"
+		"name": "Pernix's Quiver",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "pernixquiverblack",
 		"image": "https://i.imgur.com/JqXq1zD.png",
-		"name": "Pernix's Quiver"
+		"name": "Pernix's Quiver",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "pneck",
 		"image": "https://i.imgur.com/lIMwMKb.png",
-		"name": "Phoenix necklace"
+		"name": "Phoenix necklace",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "pf",
 		"image": "https://i.imgur.com/X4HBBS8.png",
-		"name": "Planted feet perk"
+		"name": "Planted feet perk",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "fairyring",
 		"image": "https://i.imgur.com/izBbkMd.png",
-		"name": "Portable fairy ring"
+		"name": "Portable fairy ring",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "portentitemprotection",
 		"image": "https://i.imgur.com/TFvRsJF.png",
-		"name": "Portent of item protection"
+		"name": "Portent of item protection",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "potionreservoir",
 		"image": "https://i.imgur.com/uIF03Iz.png",
-		"name": "Potion reservoir"
+		"name": "Potion reservoir",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "potionreservoir2",
 		"image": "https://i.imgur.com/af9O4EM.png",
-		"name": "Potion reservoir"
+		"name": "Potion reservoir",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "reservoir2",
 		"image": "https://i.imgur.com/5AhXsx1.png",
-		"name": "Potion reservoir (2)"
+		"name": "Potion reservoir (2)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "powderofpenance",
 		"image": "https://i.imgur.com/XjIho2f.png",
-		"name": "Powder of penance"
+		"name": "Powder of penance",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "powderofpenance2",
 		"image": "https://i.imgur.com/w6hThUy.png",
-		"name": "Powder of penance"
+		"name": "Powder of penance",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "accel4",
 		"image": "https://i.imgur.com/cP73EYR.png",
-		"name": "Powerburst of acceleration"
+		"name": "Powerburst of acceleration",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "accel1",
 		"image": "https://i.imgur.com/ilJrmfQ.png",
-		"name": "Powerburst of acceleration (1 dose)"
+		"name": "Powerburst of acceleration (1 dose)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "vitality4",
 		"image": "https://i.imgur.com/oOITsKV.png",
-		"name": "Powerburst of vitality"
+		"name": "Powerburst of vitality",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "vitality1",
 		"image": "https://i.imgur.com/wh6PgIk.png",
-		"name": "Powerburst of vitality (1 dose)"
+		"name": "Powerburst of vitality (1 dose)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "feast",
 		"image": "https://i.imgur.com/ZtPaUJq.png",
-		"name": "Primal feast"
+		"name": "Primal feast",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "rangecape",
 		"image": "https://i.imgur.com/I3GmAD6.png",
-		"name": "Ranged skill cape"
+		"name": "Ranged skill cape",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "reaper",
 		"image": "https://i.imgur.com/l3D44kd.png",
-		"name": "Reaper necklace (or)"
+		"name": "Reaper necklace (or)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "reaverring",
 		"image": "https://i.imgur.com/cnIOClx.png",
-		"name": "Reaver's ring"
+		"name": "Reaver's ring",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "reckless",
 		"image": "https://i.imgur.com/56x8kkE.png",
-		"name": "Reckless aura"
+		"name": "Reckless aura",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "reefcape",
 		"image": "https://i.imgur.com/wTwgzck.png",
-		"name": "Reefwalker's cape"
+		"name": "Reefwalker's cape",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "revbane2h",
 		"image": "https://i.imgur.com/Hv713Z2.png",
-		"name": "Revenant bane 2h sword"
+		"name": "Revenant bane 2h sword",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "revenantdropenhancer",
 		"image": "https://i.imgur.com/xE7wk4H.png",
-		"name": "Revenant drop enhancer"
+		"name": "Revenant drop enhancer",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "ringofwhispers",
 		"image": "https://i.imgur.com/sxtHL16.png",
-		"name": "Ring of Whispers"
+		"name": "Ring of Whispers",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "rod",
 		"image": "https://i.imgur.com/sRmyeJv.png",
-		"name": "Ring of death"
+		"name": "Ring of death",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "vigour",
 		"image": "https://i.imgur.com/2kNbRW2.png",
-		"name": "Ring of vigour"
+		"name": "Ring of vigour",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "rocktail",
 		"image": "https://i.imgur.com/04JlEFC.png",
-		"name": "Rocktail"
+		"name": "Rocktail",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "rocktailsoup",
 		"image": "https://i.imgur.com/5cLOtWD.png",
-		"name": "Rocktail soup"
+		"name": "Rocktail soup",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "royalebarrels",
 		"image": "https://i.imgur.com/7vNPXv1.png",
-		"name": "Royale cannon barrels"
+		"name": "Royale cannon barrels",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "royalebase",
 		"image": "https://i.imgur.com/Qh0hceu.png",
-		"name": "Royale cannon base"
+		"name": "Royale cannon base",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "royalefurnace",
 		"image": "https://i.imgur.com/uYbGD2j.png",
-		"name": "Royale cannon furnace"
+		"name": "Royale cannon furnace",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "royalestand",
 		"image": "https://i.imgur.com/OYR60Z8.png",
-		"name": "Royale cannon stand"
+		"name": "Royale cannon stand",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "ruby",
 		"image": "https://i.imgur.com/2ZmzTAd.png",
-		"name": "Ruby bakriminel bolts (e)"
+		"name": "Ruby bakriminel bolts (e)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "sailfish",
 		"image": "https://i.imgur.com/zWMNrib.png",
-		"name": "Sailfish"
+		"name": "Sailfish",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "soup",
 		"image": "https://i.imgur.com/ZI7v9Mn.png",
-		"name": "Sailfish soup"
+		"name": "Sailfish soup",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "salvee",
 		"image": "https://i.imgur.com/qbsFxuG.png",
-		"name": "Salve amulet (e)"
+		"name": "Salve amulet (e)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "fyretorch",
 		"image": "https://i.imgur.com/n42Kunc.png",
-		"name": "Sana's fyrtorch"
+		"name": "Sana's fyrtorch",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "sara",
 		"image": "https://i.imgur.com/3ETfbUf.png",
-		"name": "Saradomin brew"
+		"name": "Saradomin brew",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "sgs",
 		"image": "https://i.imgur.com/JuScqvV.png",
-		"name": "Saradomin godsword"
+		"name": "Saradomin godsword",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "murmur",
 		"image": "https://i.imgur.com/TjkQqVC.png",
-		"name": "Saradomin's murmur"
+		"name": "Saradomin's murmur",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "cruelty",
 		"image": "https://i.imgur.com/hdScmNs.png",
-		"name": "Scrimshaw of Cruelty"
+		"name": "Scrimshaw of Cruelty",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "elements",
 		"image": "https://i.imgur.com/BEIG6LL.png",
-		"name": "Scrimshaw of Elements"
+		"name": "Scrimshaw of Elements",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "vamp",
 		"image": "https://i.imgur.com/sh1uQyP.png",
-		"name": "Scrimshaw of Vampyrism"
+		"name": "Scrimshaw of Vampyrism",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "aggroscrim",
 		"image": "https://i.imgur.com/EbMKlXu.png",
-		"name": "Scrimshaw of aggression"
+		"name": "Scrimshaw of aggression",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "sacscrim",
 		"image": "https://i.imgur.com/gEMAH7Z.png",
-		"name": "Scrimshaw of sacrifice"
+		"name": "Scrimshaw of sacrifice",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "scriptureofbik",
 		"image": "https://i.imgur.com/t1KMJMv.png",
-		"name": "Scripture of Bik"
+		"name": "Scripture of Bik",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "scriptureofful",
 		"image": "https://i.imgur.com/lPppoD4.png",
-		"name": "Scripture of Ful"
+		"name": "Scripture of Ful",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "scriptureofjas",
 		"image": "https://i.imgur.com/jTJxwFt.png",
-		"name": "Scripture of Jas"
+		"name": "Scripture of Jas",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "scriptureofwen",
 		"image": "https://i.imgur.com/zd3mKfH.png",
-		"name": "Scripture of Wen"
+		"name": "Scripture of Wen",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "seasingerwand",
 		"image": "https://i.imgur.com/YEyYNW4.png",
-		"name": "Seasinger kiba"
+		"name": "Seasinger kiba",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "seasingerorb",
 		"image": "https://i.imgur.com/N9eTQqg.png",
-		"name": "Seasinger makigai"
+		"name": "Seasinger makigai",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "sing",
 		"image": "https://i.imgur.com/mPyVbvU.png",
-		"name": "Seismic singularity"
+		"name": "Seismic singularity",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "swand",
 		"image": "https://i.imgur.com/3kiCU0l.png",
-		"name": "Seismic wand"
+		"name": "Seismic wand",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "sgb",
 		"image": "https://i.imgur.com/f8fipOt.png",
-		"name": "Seren godbow"
+		"name": "Seren godbow",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "sgb3a",
 		"image": "https://i.imgur.com/H8aWRSK.png",
-		"name": "Seren godbow (3a)"
+		"name": "Seren godbow (3a)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "sgbbarrows",
 		"image": "https://i.imgur.com/MhFygLu.png",
-		"name": "Seren godbow (barrows)"
+		"name": "Seren godbow (barrows)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "sgbblood",
 		"image": "https://i.imgur.com/slywFm6.png",
-		"name": "Seren godbow (blood)"
+		"name": "Seren godbow (blood)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "sgbice",
 		"image": "https://i.imgur.com/6l9lGwP.png",
-		"name": "Seren godbow (ice)"
+		"name": "Seren godbow (ice)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "sgbshadow",
 		"image": "https://i.imgur.com/mdf0zgo.png",
-		"name": "Seren godbow (shadow)"
+		"name": "Seren godbow (shadow)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "shadownihil",
 		"image": "https://i.imgur.com/0QDIRGb.png",
-		"name": "Shadow nihil pouch"
+		"name": "Shadow nihil pouch",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "shield",
 		"image": "https://i.imgur.com/KRNNH5G.png",
-		"name": "Shield"
+		"name": "Shield",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "shboots",
 		"image": "https://i.imgur.com/TkJs5ST.png",
-		"name": "Silverhawk boots"
+		"name": "Silverhawk boots",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "sireniclegs",
 		"image": "https://i.imgur.com/IuyylJw.png",
-		"name": "Sirenic chaps"
+		"name": "Sirenic chaps",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "sirenictop",
 		"image": "https://i.imgur.com/Xqpr6Xs.png",
-		"name": "Sirenic hauberk"
+		"name": "Sirenic hauberk",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "sirenichelm",
 		"image": "https://i.imgur.com/Ezvarbg.png",
-		"name": "Sirenic mask"
+		"name": "Sirenic mask",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "sixthagecircuit",
 		"image": "https://i.imgur.com/lF55iT3.png",
-		"name": "Sixth-Age circuit"
+		"name": "Sixth-Age circuit",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "scodex",
 		"image": "https://i.imgur.com/D0Ky3DE.png",
-		"name": "Slayer codex"
+		"name": "Slayer codex",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "slayercape",
 		"image": "https://i.imgur.com/Js2GVpJ.png",
-		"name": "Slayer master cape"
+		"name": "Slayer master cape",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "smokenihil",
 		"image": "https://i.imgur.com/kJ17hH6.png",
-		"name": "Smoke nihil pouch"
+		"name": "Smoke nihil pouch",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "pouchpink",
 		"image": "https://i.imgur.com/SkevD4i.png",
-		"name": "Soul : Mud : Air |"
+		"name": "Soul : Mud : Air |",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "hellhoundscrolls",
 		"image": "https://i.imgur.com/zNZLlL3.png",
-		"name": "Soul Food scrolls"
+		"name": "Soul Food scrolls",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "soulrune",
 		"image": "https://i.imgur.com/wdtfUi0.png",
-		"name": "Soul rune"
+		"name": "Soul rune",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "soulrune1k",
 		"image": "https://i.imgur.com/LHQUoc3.png",
-		"name": "Soul runes (1k)"
+		"name": "Soul runes (1k)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "spiritsticks",
 		"image": "https://i.imgur.com/m40Cqfq.png",
-		"name": "Spirit weed incense sticks"
+		"name": "Spirit weed incense sticks",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "spiritual",
 		"image": "https://i.imgur.com/5PPmPXC.png",
-		"name": "Spiritual prayer"
+		"name": "Spiritual prayer",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "splinteringarrows",
 		"image": "https://i.imgur.com/JiHavos.png",
-		"name": "Splintering arrows"
+		"name": "Splintering arrows",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "springcleaner",
 		"image": "https://i.imgur.com/pjHPdhj.png",
-		"name": "Spring clearner 9001"
+		"name": "Spring clearner 9001",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "sos",
 		"image": "https://i.imgur.com/6teyxne.png",
-		"name": "Staff of sliske"
+		"name": "Staff of sliske",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "sosbarrows",
 		"image": "https://i.imgur.com/0MAtfaQ.png",
-		"name": "Staff of sliske"
+		"name": "Staff of sliske",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "sosshadow",
 		"image": "https://i.imgur.com/KU0MkIK.png",
-		"name": "Staff of sliske"
+		"name": "Staff of sliske",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "sosice",
 		"image": "https://i.imgur.com/5aG5kfb.png",
-		"name": "Staff of sliske"
+		"name": "Staff of sliske",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "sos3a",
 		"image": "https://i.imgur.com/lxCdP4r.png",
-		"name": "Staff of sliske"
+		"name": "Staff of sliske",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "sosblood",
 		"image": "https://i.imgur.com/bsX4jSG.png",
-		"name": "Staff of sliske"
+		"name": "Staff of sliske",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "stalkerring",
 		"image": "https://i.imgur.com/xRj7mKb.png",
-		"name": "Stalker's ring"
+		"name": "Stalker's ring",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "titanscrolls",
 		"image": "https://i.imgur.com/5IKQkH1.png",
-		"name": "Steel of legends scrolls"
+		"name": "Steel of legends scrolls",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "titanpouch",
 		"image": "https://i.imgur.com/hOgzyPZ.png",
-		"name": "Steel titan pouch"
+		"name": "Steel titan pouch",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "sticky",
 		"image": "https://i.imgur.com/KYtAuVF.png",
-		"name": "Sticky bombs"
+		"name": "Sticky bombs",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "strengthcape",
 		"image": "https://i.imgur.com/sfMnypY.png",
-		"name": "Strength skill cape"
+		"name": "Strength skill cape",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "strykebow",
 		"image": "https://i.imgur.com/AjoZkV0.png",
-		"name": "Strykebow"
+		"name": "Strykebow",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "summrenewal",
 		"image": "https://i.imgur.com/ZTO2jLD.png",
-		"name": "Summoning renewal (1 dose)"
+		"name": "Summoning renewal (1 dose)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "sunspear",
 		"image": "https://i.imgur.com/iRMTmuZ.png",
-		"name": "Sunspear"
+		"name": "Sunspear",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "superantifire",
 		"image": "https://i.imgur.com/g4GKi54.png",
-		"name": "Super antifire"
+		"name": "Super antifire",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "supatk3dose",
 		"image": "https://i.imgur.com/REAiiV4.png",
-		"name": "Super attack potion (3 dose noted)"
+		"name": "Super attack potion (3 dose noted)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "supdef3dose",
 		"image": "https://i.imgur.com/6uTif4Z.png",
-		"name": "Super defense potion (3 dose noted)"
+		"name": "Super defense potion (3 dose noted)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "gbrew",
 		"image": "https://i.imgur.com/xnevE7L.png",
-		"name": "Super guthix brew"
+		"name": "Super guthix brew",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "superpray",
 		"image": "https://i.imgur.com/2gndedF.png",
-		"name": "Super prayer"
+		"name": "Super prayer",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "prayrenewal",
 		"image": "https://i.imgur.com/yiqKcos.png",
-		"name": "Super prayer renewal"
+		"name": "Super prayer renewal",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "restore",
 		"image": "https://i.imgur.com/pulVXx3.png",
-		"name": "Super restore"
+		"name": "Super restore",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "sbrew",
 		"image": "https://i.imgur.com/rqIBPF1.png",
-		"name": "Super saradomin brew"
+		"name": "Super saradomin brew",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "supstr3dose",
 		"image": "https://i.imgur.com/TIHdUpO.png",
-		"name": "Super strength potion (3 dose noted)"
+		"name": "Super strength potion (3 dose noted)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "lotuschaps",
 		"image": "https://i.imgur.com/E2kivaa.png",
-		"name": "Superior death lotus chaps"
+		"name": "Superior death lotus chaps",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "superiorspinedgloves",
 		"image": "https://i.imgur.com/JuhCtuD.png",
-		"name": "Superior spined gloves"
+		"name": "Superior spined gloves",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "swh",
 		"image": "https://i.imgur.com/HF0MlYj.png",
-		"name": "Superior statius warhammer"
+		"name": "Superior statius warhammer",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "vls",
 		"image": "https://i.imgur.com/KpwlJBg.png",
-		"name": "Superior vestas longsword"
+		"name": "Superior vestas longsword",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "zurielshood",
 		"image": "https://i.imgur.com/dBR1aPk.png",
-		"name": "Superior zuriel's hood"
+		"name": "Superior zuriel's hood",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "zurielslegs",
 		"image": "https://i.imgur.com/BeEP8yV.png",
-		"name": "Superior zuriel's robe bottom"
+		"name": "Superior zuriel's robe bottom",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "zurielstop",
 		"image": "https://i.imgur.com/obXHgr6.png",
-		"name": "Superior zuriel's robe top"
+		"name": "Superior zuriel's robe top",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "brawler",
 		"image": "https://i.imgur.com/3yB6JBo.png",
-		"name": "Supreme brawler aura"
+		"name": "Supreme brawler aura",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "supremesalve",
 		"image": "https://i.imgur.com/UdwG9Sq.png",
-		"name": "Supreme overload salve (6)"
+		"name": "Supreme overload salve (6)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "runic",
 		"image": "https://i.imgur.com/HwmLz6n.png",
-		"name": "Supreme runic accuracy aura"
+		"name": "Supreme runic accuracy aura",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "sharpshooter",
 		"image": "https://i.imgur.com/QjBPpY3.png",
-		"name": "Supreme sharpshooter aura"
+		"name": "Supreme sharpshooter aura",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "swift",
 		"image": "https://i.imgur.com/2WMUq8U.png",
-		"name": "Swift gloves"
+		"name": "Swift gloves",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "corehammer",
 		"image": "https://i.imgur.com/JffmIPJ.png",
-		"name": "Tagga's corehammer"
+		"name": "Tagga's corehammer",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "tectohelm",
 		"image": "https://i.imgur.com/Y8MaTBE.png",
-		"name": "Tectonic mask"
+		"name": "Tectonic mask",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "tectolegs",
 		"image": "https://i.imgur.com/esdesHe.png",
-		"name": "Tectonic robe bottom"
+		"name": "Tectonic robe bottom",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "tectotop",
 		"image": "https://i.imgur.com/eJL18LE.png",
-		"name": "Tectonic robe top"
+		"name": "Tectonic robe top",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "tmaul",
 		"image": "https://i.imgur.com/rDaERpR.png",
-		"name": "Terrasaur maul"
+		"name": "Terrasaur maul",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "timberfungussoup",
 		"image": "https://i.imgur.com/ylitEiS.png",
-		"name": "Timber fungus soup"
+		"name": "Timber fungus soup",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "quiver4",
 		"image": "https://i.imgur.com/92PLIAF.png",
-		"name": "Tirannwn quiver 4"
+		"name": "Tirannwn quiver 4",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "kilnmelee",
 		"image": "https://i.imgur.com/kF1db5M.png",
-		"name": "TokHaar-Kal-Ket"
+		"name": "TokHaar-Kal-Ket",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "kilnmage",
 		"image": "https://i.imgur.com/KWBhzbp.png",
-		"name": "TokHaar-Kal-Mej"
+		"name": "TokHaar-Kal-Mej",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "kilnrange",
 		"image": "https://i.imgur.com/RSCsDrM.png",
-		"name": "TokHaar-Kal-Xil"
+		"name": "TokHaar-Kal-Xil",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "tokkulzo",
 		"image": "https://i.imgur.com/J1iLqln.png",
-		"name": "Tokkul-zo"
+		"name": "Tokkul-zo",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "grimpage",
 		"image": "https://i.imgur.com/wD7BGd2.png",
-		"name": "Torn grimoire page"
+		"name": "Torn grimoire page",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "grimpage10",
 		"image": "https://i.imgur.com/KopqFpb.png",
-		"name": "Torn grimoire page (10)"
+		"name": "Torn grimoire page (10)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "tmwboots",
 		"image": "https://i.imgur.com/Q9wmMDK.png",
-		"name": "Trimmed masterwork boots"
+		"name": "Trimmed masterwork boots",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "tmwgloves",
 		"image": "https://i.imgur.com/GFUeCUl.png",
-		"name": "Trimmed masterwork gloves"
+		"name": "Trimmed masterwork gloves",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "tmwhelm",
 		"image": "https://i.imgur.com/rYwQ8OI.png",
-		"name": "Trimmed masterwork helm"
+		"name": "Trimmed masterwork helm",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "tmwtop",
 		"image": "https://i.imgur.com/bD8MfPp.png",
-		"name": "Trimmed masterwork platebody"
+		"name": "Trimmed masterwork platebody",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "tmwlegs",
 		"image": "https://i.imgur.com/K3lxy64.png",
-		"name": "Trimmed masterwork platelegs"
+		"name": "Trimmed masterwork platelegs",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "unipouch",
 		"image": "https://i.imgur.com/mZ9MKRK.png",
-		"name": "Unicorn stallion pouch"
+		"name": "Unicorn stallion pouch",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "upgradedblowpipe",
 		"image": "https://i.imgur.com/JSUUa5Q.png",
-		"name": "Upgraded bone blowpipe"
+		"name": "Upgraded bone blowpipe",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "vampaura",
 		"image": "https://i.imgur.com/NAg6p5G.png",
-		"name": "Vampyrism aura"
+		"name": "Vampyrism aura",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "vanquish",
 		"image": "https://i.imgur.com/oThyaup.png",
-		"name": "Vanquish"
+		"name": "Vanquish",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "rangeshield",
 		"image": "https://i.imgur.com/KoF0X2U.png",
-		"name": "Vengful kiteshield"
+		"name": "Vengful kiteshield",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "veracbrassard",
 		"image": "https://i.imgur.com/eV23pWz.png",
-		"name": "Verac's brassard"
+		"name": "Verac's brassard",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "veracflail",
 		"image": "https://i.imgur.com/p6sNv8x.png",
-		"name": "Verac's flail"
+		"name": "Verac's flail",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "verachelm",
 		"image": "https://i.imgur.com/P6X95g8.png",
-		"name": "Verac's helm"
+		"name": "Verac's helm",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "veracskirt",
 		"image": "https://i.imgur.com/E0XJIgg.png",
-		"name": "Verac's plateskirt"
+		"name": "Verac's plateskirt",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "vestmentboots",
 		"image": "https://i.imgur.com/FarIA5V.png",
-		"name": "Vestments of havoc boots"
+		"name": "Vestments of havoc boots",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "vestmenthood",
 		"image": "https://i.imgur.com/EVh5SwD.png",
-		"name": "Vestments of havoc hood"
+		"name": "Vestments of havoc hood",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "vestmentlegs",
 		"image": "https://i.imgur.com/mz7GwWF.png",
-		"name": "Vestments of havoc robe bottom"
+		"name": "Vestments of havoc robe bottom",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "vestmentbody",
 		"image": "https://i.imgur.com/E5ptfu6.png",
-		"name": "Vestments of havoc robe top"
+		"name": "Vestments of havoc robe top",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "vbook",
 		"image": "https://i.imgur.com/Fi9V1qB.png",
-		"name": "Virtus book"
+		"name": "Virtus book",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "virtusboots",
 		"image": "https://i.imgur.com/tPEufwU.png",
-		"name": "Virtus boots"
+		"name": "Virtus boots",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "virtusgloves",
 		"image": "https://i.imgur.com/Bke5Tz8.png",
-		"name": "Virtus gloves"
+		"name": "Virtus gloves",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "virtushelm",
 		"image": "https://i.imgur.com/mew0xD5.png",
-		"name": "Virtus mask"
+		"name": "Virtus mask",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "virtuslegs",
 		"image": "https://i.imgur.com/eEGwTU4.png",
-		"name": "Virtus robe legs"
+		"name": "Virtus robe legs",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "virtustop",
 		"image": "https://i.imgur.com/cau9oLa.png",
-		"name": "Virtus robe top"
+		"name": "Virtus robe top",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "sparkenhancers",
 		"image": "https://i.imgur.com/l8c2mCG.png",
-		"name": "Vital spark enhancers"
+		"name": "Vital spark enhancers",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "vuln",
 		"image": "https://i.imgur.com/306PXtG.png",
-		"name": "Vulnerabilty bombs"
+		"name": "Vulnerabilty bombs",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "pwand",
 		"image": "https://i.imgur.com/DmUfsSM.png",
-		"name": "Wand of the praesul"
+		"name": "Wand of the praesul",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "pwand3a",
 		"image": "https://i.imgur.com/4Y2VUiV.png",
-		"name": "Wand of the praesul (3a)"
+		"name": "Wand of the praesul (3a)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "pwandbarrows",
 		"image": "https://i.imgur.com/qx0WDM8.png",
-		"name": "Wand of the praesul (barrows)"
+		"name": "Wand of the praesul (barrows)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "pwandblood",
 		"image": "https://i.imgur.com/3LHcNUm.png",
-		"name": "Wand of the praesul (blood)"
+		"name": "Wand of the praesul (blood)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "pwandice",
 		"image": "https://i.imgur.com/i5O55lf.png",
-		"name": "Wand of the praesul (ice)"
+		"name": "Wand of the praesul (ice)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "pwandshadow",
 		"image": "https://i.imgur.com/nNIwxGN.png",
-		"name": "Wand of the praesul (shadow)"
+		"name": "Wand of the praesul (shadow)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "pouch",
 		"image": "https://i.imgur.com/lBTTP01.png",
-		"name": "Water : Blood : Fire |"
+		"name": "Water : Blood : Fire |",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "pouchblack",
 		"image": "https://i.imgur.com/IDV9Fny.png",
-		"name": "Water : Death : Earth |"
+		"name": "Water : Death : Earth |",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "waterrune",
 		"image": "https://i.imgur.com/iACL834.png",
-		"name": "Water rune"
+		"name": "Water rune",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "poison1",
 		"image": "https://i.imgur.com/hw7rKHz.png",
-		"name": "Weapon poison+++ (1 dose)"
+		"name": "Weapon poison+++ (1 dose)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "poison4",
 		"image": "https://i.imgur.com/CR06fbn.png",
-		"name": "Weapon poison+++ (4 dose)"
+		"name": "Weapon poison+++ (4 dose)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "poison6",
 		"image": "https://i.imgur.com/KyZkJoc.png",
-		"name": "Weapon poison+++ flask"
+		"name": "Weapon poison+++ flask",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "wenarrow",
 		"image": "https://i.imgur.com/eI2oUEw.png",
-		"name": "Wen arrow"
+		"name": "Wen arrow",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "whetstone",
 		"image": "https://i.imgur.com/Uh2BO7T.png",
-		"name": "Whetstone"
+		"name": "Whetstone",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "wildernesssword",
 		"image": "https://i.imgur.com/cIHG8g8.png",
-		"name": "Wilderness sword 4"
+		"name": "Wilderness sword 4",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "wyverncbow",
 		"image": "https://i.imgur.com/YGlkhDV.png",
-		"name": "Wyvern crossbow"
+		"name": "Wyvern crossbow",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "zambrew4",
 		"image": "https://i.imgur.com/WibUB0k.png",
-		"name": "Zamorak brew (4)"
+		"name": "Zamorak brew (4)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "zgs",
 		"image": "https://i.imgur.com/4iuw5ze.png",
-		"name": "Zaros godsword"
+		"name": "Zaros godsword",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "zgs3a",
 		"image": "https://i.imgur.com/oXFxXjx.png",
-		"name": "Zaros godsword (3a)"
+		"name": "Zaros godsword (3a)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "zgsbarrows",
 		"image": "https://i.imgur.com/i5Niiyp.png",
-		"name": "Zaros godsword (barrows)"
+		"name": "Zaros godsword (barrows)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "zgsblood",
 		"image": "https://i.imgur.com/L4iVbDh.png",
-		"name": "Zaros godsword (blood)"
+		"name": "Zaros godsword (blood)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "zgsice",
 		"image": "https://i.imgur.com/iAqSkkJ.png",
-		"name": "Zaros godsword (ice)"
+		"name": "Zaros godsword (ice)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "zgsshadow",
 		"image": "https://i.imgur.com/Q92qcRk.png",
-		"name": "Zaros godsword (shadow)"
+		"name": "Zaros godsword (shadow)",
+		"breakdownNotes": ""
 	},
 	{
 		"label": "zaryte",
 		"image": "https://i.imgur.com/lPFE6lN.png",
-		"name": "Zaryte bow"
+		"name": "Zaryte bow",
+		"breakdownNotes": ""
 	}
 ]
