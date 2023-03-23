@@ -42,10 +42,10 @@ export const HeaderBar = () => {
       enqueueSnackbar("Generating shareable link...", { variant: "info" });
       const id = await UploadPreset(stringified);
       await navigator.clipboard.writeText(
-        `https://pvme.github.io/preset-maker/${id}`
+        `https://pvme.github.io/preset-maker/#/${id}`
       );
       enqueueSnackbar(
-        `https://pvme.github.io/preset-maker/${id} has been copied to your clipboard!`,
+        `https://pvme.github.io/preset-maker/#/${id} has been copied to your clipboard!`,
         { variant: "success" }
       );
     } catch (err) {

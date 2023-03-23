@@ -1,7 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
-import { createHashRouter, RouterProvider } from "react-router-dom";
+import {
+  createHashRouter,
+  HashRouter,
+  Route,
+  RouterProvider,
+  Routes,
+  useLocation,
+  useParams,
+} from "react-router-dom";
 import { SnackbarKey, SnackbarProvider, useSnackbar } from "notistack";
 
 import {
@@ -38,13 +46,6 @@ const darkTheme = createTheme({
   },
 });
 
-export const router = createHashRouter([
-  {
-    path: "/preset-maker/:id?",
-    element: <App />,
-  },
-]);
-
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <ThemeProvider theme={darkTheme}>
@@ -58,7 +59,11 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
             autoHideDuration={3000}
           >
             <CssBaseline />
-            <RouterProvider router={router} />
+            <HashRouter>
+              <Routes>
+                <Route path="/:id?" element={<App />} />
+              </Routes>
+            </HashRouter>
           </SnackbarProvider>
         </Provider>
       </StyledEngineProvider>
