@@ -1,9 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { SnackbarKey, SnackbarProvider, useSnackbar } from "notistack";
 
-import { createTheme, StyledEngineProvider, ThemeProvider } from "@mui/material/styles";
+import {
+  createTheme,
+  StyledEngineProvider,
+  ThemeProvider,
+} from "@mui/material/styles";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -33,6 +38,13 @@ const darkTheme = createTheme({
   },
 });
 
+export const router = createBrowserRouter([
+  {
+    path: "/preset-maker/:id?",
+    element: <App />,
+  },
+]);
+
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <ThemeProvider theme={darkTheme}>
@@ -40,11 +52,13 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
         <Provider store={ReduxStore}>
           <SnackbarProvider
             maxSnack={3}
-            action={(snackBarKey) => <SnackbarCloseButton snackbarKey={snackBarKey} />}
+            action={(snackBarKey) => (
+              <SnackbarCloseButton snackbarKey={snackBarKey} />
+            )}
             autoHideDuration={3000}
           >
             <CssBaseline />
-            <App />
+            <RouterProvider router={router} />
           </SnackbarProvider>
         </Provider>
       </StyledEngineProvider>

@@ -1,5 +1,6 @@
 import { useCallback, useRef } from "react";
 import ContentEditable, { ContentEditableEvent } from "react-contenteditable";
+import { useDispatch } from "react-redux";
 import sanitizeHtml from "sanitize-html";
 
 import Avatar from "@mui/material/Avatar";
@@ -9,19 +10,36 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 
 import { ItemData } from "../../types/inventory-slot";
+import { setBreakdown } from "../../redux/store/reducers/preset-reducer";
+import { BreakdownType } from "../../types/breakdown";
 
 import "./BreakdownListItem.css";
 
 export interface BreakdownListItemProps {
   item: ItemData;
+  type: BreakdownType;
 }
 
-export const BreakdownListItem = ({ item }: BreakdownListItemProps) => {
-  const breakdownNotes = useRef("");
+export const BreakdownListItem = ({ item, type }: BreakdownListItemProps) => {
+  const dispatch = useDispatch();
+  const breakdownNotes = useRef(item.breakdownNotes ?? "");
 
   const onChange = useCallback((event: ContentEditableEvent) => {
     breakdownNotes.current = sanitizeHtml(event.currentTarget.innerHTML || "");
   }, []);
+
+  const onBlur = useCallback(
+    (event: React.FocusEvent<HTMLDivElement>) => {
+      dispatch(
+        setBreakdown({
+          breakdownType: type,
+          itemName: item.label,
+          description: sanitizeHtml(event.currentTarget.innerHTML || ""),
+        })
+      );
+    },
+    [item]
+  );
 
   return (
     <ListItem
@@ -35,6 +53,7 @@ export const BreakdownListItem = ({ item }: BreakdownListItemProps) => {
           className="inner-notes-field"
           html={breakdownNotes.current}
           onChange={onChange}
+          onBlur={onBlur}
         />
       }
       disablePadding
