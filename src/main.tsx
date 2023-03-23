@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createHashRouter, RouterProvider } from "react-router-dom";
 import { SnackbarKey, SnackbarProvider, useSnackbar } from "notistack";
 
 import {
@@ -38,7 +38,7 @@ const darkTheme = createTheme({
   },
 });
 
-export const router = createBrowserRouter([
+export const router = createHashRouter([
   {
     path: "/preset-maker/:id?",
     element: <App />,
