@@ -5,7 +5,7 @@ import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
-import { canCopyImagesToClipboard } from 'copy-image-clipboard'
+import { canCopyImagesToClipboard } from "copy-image-clipboard";
 
 import {
   resetSlots,
@@ -17,36 +17,54 @@ import {
   toggleSlotSelection,
   clearSlotSelection,
 } from "../../redux/store/reducers/preset-reducer";
-import { addToQueue, selectRecentItems } from "../../redux/store/reducers/recent-item-reducer";
+import {
+  addToQueue,
+  selectRecentItems,
+} from "../../redux/store/reducers/recent-item-reducer";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { ItemData } from "../../types/inventory-slot";
 import { SlotType } from "../../types/slot-type";
-import { copyImageToClipboard, exportAsImage } from "../../utility/export-to-png";
+import {
+  copyImageToClipboard,
+  exportAsImage,
+} from "../../utility/export-to-png";
 import { DialogPopup } from "../ItemSelectDialogPopup/ItemSelectDialogPopup";
 import { Equipment, Inventory } from "../SlotSection/SlotSection";
 
 import "./PresetEditor.css";
 import { ClipboardCopyButtonContainer } from "../ClipboardCopyButtonContainer/ClipboardCopyButtonContainer";
 import { useSnackbar } from "notistack";
+import { ResetConfirmation } from "../ResetConfirmation/ResetConfirmation";
 
 export const PresetEditor = () => {
   const dispatch = useAppDispatch();
   const { enqueueSnackbar } = useSnackbar();
 
-  const { presetName: name, inventorySlots, equipmentSlots, slotType, slotIndex } = useAppSelector(selectPreset);
+  const {
+    presetName: name,
+    inventorySlots,
+    equipmentSlots,
+    slotType,
+    slotIndex,
+  } = useAppSelector(selectPreset);
   const recentItems = useAppSelector(selectRecentItems);
 
   const exportRef = useRef<HTMLDivElement>(null);
-  const [open, setOpen] = useState(false);
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [confirmationOpen, setConfirmationOpen] = useState(false);
 
   const handleSlotOpen = useCallback(
-    (_event: React.MouseEvent<HTMLAreaElement>, index: number, className: string) => {
+    (
+      _event: React.MouseEvent<HTMLAreaElement>,
+      index: number,
+      className: string
+    ) => {
       if (className === "inventory") {
         dispatch(updateSlotType(SlotType.Inventory));
       } else {
         dispatch(updateSlotType(SlotType.Equipment));
       }
-      
+
       // If a slot is opened that is not currently selected, clear the selected
       // slots.
       if (!inventorySlots[index].selected) {
@@ -54,13 +72,17 @@ export const PresetEditor = () => {
       }
 
       dispatch(updateSlotIndex(index));
-      setOpen(true);
+      setDialogOpen(true);
     },
     [dispatch, inventorySlots]
   );
 
   const handleSlotSelection = useCallback(
-    (_event: React.MouseEvent<HTMLAreaElement>, index: number, className: string) => {
+    (
+      _event: React.MouseEvent<HTMLAreaElement>,
+      index: number,
+      className: string
+    ) => {
       if (className === "inventory") {
         dispatch(updateSlotType(SlotType.Inventory));
       } else {
@@ -72,8 +94,8 @@ export const PresetEditor = () => {
     [dispatch]
   );
 
-  const handleClose = useCallback(() => {
-    setOpen(false);
+  const onDialogClose = useCallback(() => {
+    setDialogOpen(false);
   }, []);
 
   const changeSlot = useCallback(
@@ -82,13 +104,13 @@ export const PresetEditor = () => {
         if (index === -1) {
           return;
         }
-  
+
         if (slotType === SlotType.Inventory) {
           dispatch(setInventorySlot({ index, item }));
         } else {
           dispatch(setEquipmentSlot({ index, item }));
         }
-      })
+      });
 
       dispatch(addToQueue(item));
       dispatch(clearSlotSelection());
@@ -96,22 +118,41 @@ export const PresetEditor = () => {
     [dispatch, slotType, slotIndex]
   );
 
-  const onReset = useCallback(() => {
+  const onResetClick = useCallback(() => {
+    setConfirmationOpen(true);
+  }, []);
+
+  const onResetConfirmation = useCallback(() => {
     dispatch(resetSlots());
+    setConfirmationOpen(false);
+  }, [dispatch]);
+
+  const onResetClose = useCallback(() => {
+    setConfirmationOpen(false);
   }, []);
 
   const onSave = useCallback(async () => {
-    await exportAsImage(exportRef.current, `PRESET_${name.replaceAll(" ", "_")}`);
+    await exportAsImage(
+      exportRef.current,
+      `PRESET_${name.replaceAll(" ", "_")}`
+    );
   }, [name]);
 
   const onCopyToClipboard = useCallback(async () => {
     await copyImageToClipboard(exportRef.current, () => {
-      enqueueSnackbar("Failed to copy image to clipboard", { variant: 'error'});
+      enqueueSnackbar("Failed to copy image to clipboard", {
+        variant: "error",
+      });
     });
   }, []);
 
   return (
     <>
+      <ResetConfirmation
+        open={confirmationOpen}
+        handleConfirmation={onResetConfirmation}
+        handleClose={onResetClose}
+      />
       <Card className="container">
         <CardContent data-id="content" className="preset-container">
           <div ref={exportRef}>
@@ -121,7 +162,10 @@ export const PresetEditor = () => {
                 handleClickOpen={handleSlotOpen}
                 handleShiftClick={handleSlotSelection}
               />
-              <Equipment slots={equipmentSlots} handleClickOpen={handleSlotOpen} />
+              <Equipment
+                slots={equipmentSlots}
+                handleClickOpen={handleSlotOpen}
+              />
             </map>
             <img
               width={510}
@@ -134,10 +178,20 @@ export const PresetEditor = () => {
           </div>
         </CardContent>
         <CardActions className="preset-buttons">
-          <Button color="error" variant="contained" size="small" onClick={onReset}>
+          <Button
+            color="error"
+            variant="contained"
+            size="small"
+            onClick={onResetClick}
+          >
             Reset
           </Button>
-          <Button color="success" variant="contained" size="small" onClick={onSave}>
+          <Button
+            color="success"
+            variant="contained"
+            size="small"
+            onClick={onSave}
+          >
             Save as PNG
           </Button>
           <ClipboardCopyButtonContainer className="preset-buttons__button">
@@ -154,9 +208,9 @@ export const PresetEditor = () => {
         </CardActions>
       </Card>
       <DialogPopup
-        open={open}
+        open={dialogOpen}
         recentlySelectedItems={recentItems}
-        handleClose={handleClose}
+        handleClose={onDialogClose}
         handleSlotChange={changeSlot}
       />
     </>
