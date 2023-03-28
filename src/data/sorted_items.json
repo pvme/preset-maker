@@ -1181,6 +1181,12 @@
 		"name": "Dragon claw",
 		"breakdownNotes": ""
 	},
+  {
+		"label": "dragonscimitar",
+		"image": "https://i.imgur.com/GMiwyEA.png",
+		"name": "Dragon scimitar",
+		"breakdownNotes": ""
+	},
 	{
 		"label": "dslayergloves",
 		"image": "https://i.imgur.com/6eXqXnc.png",
@@ -3961,7 +3967,7 @@
 	},
 	{
 		"label": "supremesalve",
-		"image": "https://i.imgur.com/UdwG9Sq.png",
+		"image": "https://i.imgur.com/q8y4rib.png",
 		"name": "Supreme overload salve (6)",
 		"breakdownNotes": ""
 	},
@@ -4032,20 +4038,20 @@
 		"breakdownNotes": ""
 	},
 	{
-		"label": "tirannwnquiver1",
+		"label": "quiver1",
 		"image": "https://i.imgur.com/EYzcYPz.png",
 		"name": "Tirannwn quiver 1",
 		"breakdownNotes": ""
 	},
 	{
-		"label": "tirannwnquiver2",
+		"label": "quiver2",
 		"image": "https://i.imgur.com/uAHVorK.png",
 		"name": "Tirannwn quiver 2",
 		"breakdownNotes": ""
 	},
 	{
 		"label": "quiver3",
-		"image": "https://i.imgur.com/3pJunhU.png",
+		"image": "https://i.imgur.com/PlfEUpY.png",
 		"name": "Tirannwn quiver 3",
 		"breakdownNotes": ""
 	},
