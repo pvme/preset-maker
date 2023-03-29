@@ -1181,7 +1181,7 @@
 		"name": "Dragon claw",
 		"breakdownNotes": ""
 	},
-  {
+	{
 		"label": "dragonscimitar",
 		"image": "https://i.imgur.com/GMiwyEA.png",
 		"name": "Dragon scimitar",
@@ -3672,7 +3672,7 @@
 		"breakdownNotes": ""
 	},
 	{
-		"label": "slayercape",
+		"label": "slayermastercape",
 		"image": "https://i.imgur.com/Js2GVpJ.png",
 		"name": "Slayer master cape",
 		"breakdownNotes": ""

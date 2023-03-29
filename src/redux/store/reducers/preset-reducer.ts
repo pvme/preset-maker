@@ -25,13 +25,13 @@ interface SetSlot {
 // Define the initial state using that type
 const initialState: PresetState = {
   presetName: "",
-  inventorySlots: new Array(28).fill({
+  inventorySlots: Array.from({ length: 28 }, () => ({
     name: "",
     image: "",
     label: "",
     selected: false,
     breakdownNotes: "",
-  }),
+  })),
   equipmentSlots: new Array(13).fill({
     name: "",
     image: "",
@@ -69,27 +69,16 @@ export const presetSlice = createSlice({
       state.breakdown = action.payload;
     },
     setBreakdown: (state: PresetState, action: PayloadAction<Breakdown>) => {
-      console.log("Called");
-      switch (action.payload.breakdownType) {
-        case BreakdownType.Equipment:
-          // set all descriptions of the same item name
-          state.equipmentSlots
-            .filter((item) => item.label === action.payload.itemName)
-            .forEach(
-              (item: ItemData) =>
-                (item.breakdownNotes = action.payload.description)
-            );
-          break;
-        case BreakdownType.Inventory:
-          // set all descriptions of the same item name
-          state.inventorySlots
-            .filter((item) => item.label === action.payload.itemName)
-            .forEach(
-              (item: ItemData) =>
-                (item.breakdownNotes = action.payload.description)
-            );
-          break;
-      }
+      const { breakdownType, itemName, description } = action.payload;
+
+      const targetSlots =
+        breakdownType === BreakdownType.Equipment
+          ? state.equipmentSlots
+          : state.inventorySlots;
+
+      targetSlots
+        .filter((item) => item.label === itemName)
+        .forEach((item: ItemData) => (item.breakdownNotes = description));
     },
     importDataAction: (
       state: PresetState,
