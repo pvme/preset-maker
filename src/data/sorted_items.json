@@ -647,7 +647,7 @@
 		"name": "Blight bolts",
 		"breakdownNotes": ""
 	},
-  {
+	{
 		"label": "blightedrebounder",
 		"image": "https://i.imgur.com/wwmdQ4Q.png",
 		"name": "Blighted rebounder",
@@ -689,7 +689,7 @@
 		"name": "Blood siphon scrolls",
 		"breakdownNotes": ""
 	},
-  {
+	{
 		"label": "reaverscrolls500",
 		"image": "https://i.imgur.com/3o2DaTu.png",
 		"name": "Blood siphon scrolls",
@@ -917,10 +917,16 @@
 		"name": "Corrupted defender",
 		"breakdownNotes": ""
 	},
-  {
+	{
 		"label": "trim",
 		"image": "https://i.imgur.com/iAoUmwW.png",
 		"name": "Completionist cape (t)",
+		"breakdownNotes": ""
+	},
+	{
+		"label": "corrupteddefender",
+		"image": "https://i.imgur.com/RPZ5ksO.png",
+		"name": "Corrupted defender",
 		"breakdownNotes": ""
 	},
 	{
@@ -953,13 +959,13 @@
 		"name": "Crit-i-kal scrolls",
 		"breakdownNotes": ""
 	},
-  {
+	{
 		"label": "kalgscrolls100",
 		"image": "https://i.imgur.com/vIatvqA.png",
 		"name": "Crit-i-kal scrolls",
 		"breakdownNotes": ""
 	},
-  {
+	{
 		"label": "kalgscrolls500",
 		"image": "https://i.imgur.com/hjoH9xr.png",
 		"name": "Crit-i-kal scrolls",
@@ -2694,6 +2700,12 @@
 		"breakdownNotes": ""
 	},
 	{
+		"label": "masterquestcape",
+		"image": "https://i.imgur.com/wTjsmBt.png",
+		"name": "Master quest cape",
+		"breakdownNotes": ""
+	},
+	{
 		"label": "mwboots",
 		"image": "https://i.imgur.com/4T5psQM.png",
 		"name": "Masterwork boots",
@@ -2723,7 +2735,7 @@
 		"name": "Masterwork platelegs",
 		"breakdownNotes": ""
 	},
-  {
+	{
 		"label": "masterquestcape",
 		"image": "https://i.imgur.com/wTjsmBt.png",
 		"name": "Master quest cape",
@@ -3449,7 +3461,7 @@
 		"name": "Rocktail soup",
 		"breakdownNotes": ""
 	},
-  {
+	{
 		"label": "royalcrossbow",
 		"image": "https://i.imgur.com/Jz8xIly.png",
 		"name": "Royal crossbow",
@@ -3803,7 +3815,7 @@
 		"name": "Spring clearner 9001",
 		"breakdownNotes": ""
 	},
-  {
+	{
 		"label": "staffoflimitlessair",
 		"image": "https://i.imgur.com/vPnAjqC.png",
 		"name": "Staff of limitless air",
@@ -4037,7 +4049,7 @@
 		"name": "Tagga's corehammer",
 		"breakdownNotes": ""
 	},
-  {
+	{
 		"label": "taintedrepriser",
 		"image": "https://i.imgur.com/kxQd8lA.png",
 		"name": "Tainted repriser",
