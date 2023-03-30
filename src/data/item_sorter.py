@@ -13,7 +13,7 @@ def find_duplicate_objects(json_array):
     return duplicates
 
 
-with open('src\data\sorted_items.json') as f:
+with open('sorted_items.json') as f:
     data = json.load(f)
     duplicates = find_duplicate_objects(data)
     if duplicates:
@@ -23,5 +23,5 @@ with open('src\data\sorted_items.json') as f:
 
 sorted_data = sorted(data, key=lambda x: x['name'])
 
-with open('src\data\sorted_items.json', 'w') as f:
+with open('sorted_items.json', 'w') as f:
     json.dump(sorted_data, f, indent='\t', separators=(',', ': '))

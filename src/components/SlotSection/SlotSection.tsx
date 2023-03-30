@@ -1,13 +1,23 @@
+import { useState } from "react";
 import { equipmentCoords, inventoryCoords } from "../../data/coordinates";
 import { Coord } from "../../types/coord";
 import { ItemData } from "../../types/inventory-slot";
+import { ItemSlotContextMenu } from "../ItemSlotContextMenu/ItemSlotContextMenu";
 
 import "./SlotSection.css";
 
 interface SlotProps {
   slots: ItemData[];
-  handleClickOpen: (event: React.MouseEvent<HTMLAreaElement>, index: number, className: string) => void;
-  handleShiftClick?: (event: React.MouseEvent<HTMLAreaElement>, index: number, className: string) => void;
+  handleClickOpen: (
+    event: React.MouseEvent<HTMLAreaElement>,
+    index: number,
+    className: string
+  ) => void;
+  handleShiftClick?: (
+    event: React.MouseEvent<HTMLAreaElement>,
+    index: number,
+    className: string
+  ) => void;
 }
 
 interface SlotSectionProps extends SlotProps {
@@ -15,16 +25,46 @@ interface SlotSectionProps extends SlotProps {
   className: string;
 }
 
-const SlotSection = ({ slots, handleClickOpen, handleShiftClick, coords, className }: SlotSectionProps) => {
+const SlotSection = ({
+  slots,
+  handleClickOpen,
+  handleShiftClick,
+  coords,
+  className,
+}: SlotSectionProps) => {
   const getClassName = (slot: ItemData) => {
-    const selectedClass = slot.selected ? `${className}-icon-container--selected` : '';
+    const selectedClass = slot.selected
+      ? `${className}-icon-container--selected`
+      : "";
     return `${className}-icon-container ${selectedClass}`;
-  }
+  };
+
+  const [anchorPosition, setAnchorPosition] = useState<{
+    top: number;
+    left: number;
+  } | null>(null);
+
+  const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
+    event.preventDefault();
+    setAnchorPosition({ top: event.clientY, left: event.clientX });
+  };
+
+  const handleClose = () => {
+    setAnchorPosition(null);
+  };
 
   return (
     <div>
+      <ItemSlotContextMenu
+        anchorPosition={anchorPosition}
+        handleClose={handleClose}
+      />
       {coords.map((coord: Coord, index: number) => (
-        <div key={index + new Date().getTime()} style={{ position: "relative" }}>
+        <div
+          key={index + new Date().getTime()}
+          style={{ position: "relative" }}
+          onContextMenu={handleClick}
+        >
           <area
             key={`${coord.x1},${coord.y1},${coord.x2},${coord.y2}`}
             style={{ cursor: "pointer" }}
@@ -47,10 +87,14 @@ const SlotSection = ({ slots, handleClickOpen, handleShiftClick, coords, classNa
                 left: coord.x1,
               }}
             >
-              {slots[index]?.image ? 
-                <img key={index} className={`${className}-icon`} src={slots[index].image} alt={slots[index].name} />
-                : null
-              }                
+              {slots[index]?.image ? (
+                <img
+                  key={index}
+                  className={`${className}-icon`}
+                  src={slots[index].image}
+                  alt={slots[index].name}
+                />
+              ) : null}
             </div>
           ) : null}
         </div>
@@ -60,9 +104,13 @@ const SlotSection = ({ slots, handleClickOpen, handleShiftClick, coords, classNa
 };
 
 export const Inventory = (props: SlotProps) => {
-  return <SlotSection {...props} coords={inventoryCoords} className="inventory" />;
+  return (
+    <SlotSection {...props} coords={inventoryCoords} className="inventory" />
+  );
 };
 
 export const Equipment = (props: SlotProps) => {
-  return <SlotSection {...props} coords={equipmentCoords} className="equipment" />;
+  return (
+    <SlotSection {...props} coords={equipmentCoords} className="equipment" />
+  );
 };
