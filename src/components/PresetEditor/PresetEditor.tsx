@@ -5,7 +5,6 @@ import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import { canCopyImagesToClipboard } from "copy-image-clipboard";
-import bgImagePath from '../../assets/bg_full.png';
 import summoningIconPath from '../../assets/summoning.png';
 import relicIconPath from '../../assets/relic.png';
 import {
@@ -157,7 +156,7 @@ export const PresetEditor = () => {
       />
       <Card className="inventory-equipment-container">
         <CardContent data-id="content" className="preset-container">
-          <div ref={exportRef}>
+          <div className="export-container" ref={exportRef}>
             <map name="presetmap">
               <Inventory
                 slots={inventorySlots}
@@ -177,6 +176,30 @@ export const PresetEditor = () => {
               useMap="#presetmap"
               alt="preset background"
             />
+            <div className="relics-familiar-container">
+              <div className="relics-familiar-container__relics">
+                <Typography className="d-flex align-center" variant="h6">
+                  <img
+                    className="relics-familiar-container--icon"
+                    width={28}
+                    height={28}
+                    src={relicIconPath}
+                  />
+                  Relics
+                </Typography>
+              </div>
+              <div className="relics-familiar-container__familiar">
+                <Typography className="d-flex align-center" variant="h6">
+                  <img
+                    className="relics-familiar-container--icon"
+                    width={28}
+                    height={28}
+                    src={summoningIconPath}
+                  />
+                  Familiar
+                </Typography>
+              </div>
+            </div>
           </div>
         </CardContent>
         <CardActions className="preset-buttons">
@@ -208,38 +231,6 @@ export const PresetEditor = () => {
             </Button>
           </ClipboardCopyButtonContainer>
         </CardActions>
-      </Card>
-      {/* Relics and familiar */}
-      <Card
-        className="relics-familiar-container"
-        style={{
-            backgroundImage: `url(${bgImagePath})`,
-            width: 510,
-            height: 163,
-        }}
-      >
-        <div className="relics-familiar-container__relics">
-          <Typography className="d-flex align-center" variant="h6">
-            <img
-              className="relics-familiar-container--icon"
-              width={28}
-              height={28}
-              src={relicIconPath}
-            />
-            Relics
-          </Typography>
-        </div>
-        <div className="relics-familiar-container__familiar">
-          <Typography className="d-flex align-center" variant="h6">
-            <img
-              className="relics-familiar-container--icon"
-              width={28}
-              height={28}
-              src={summoningIconPath}
-            />
-            Familiar
-          </Typography>
-        </div>
       </Card>
       <DialogPopup
         open={dialogOpen}

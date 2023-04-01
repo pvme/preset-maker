@@ -3,7 +3,6 @@
   flex-direction: column;
   align-items: flex-start;
   width: 510px;
-  height: 210px;
   background-color: transparent !important;
   padding: 0px !important;
   min-width: 275px;
@@ -12,7 +11,6 @@
 
 .preset-container {
   width: 510px;
-  height: 163px; /* same as image height */
   padding: 0px !important;
 }
 
@@ -47,10 +45,18 @@
   height: 25px;
 }
 
+.export-container {
+  display: flex;
+  flex-direction: column;
+}
+
 .relics-familiar-container {
   display: flex;
   justify-content: space-evenly;
   text-align: center;
+  height: 100%;
+  background-image: url("https://i.imgur.com/HSATCDr.png");
+  padding-top: 10px;
 }
 
 .relics-familiar-container--icon {
