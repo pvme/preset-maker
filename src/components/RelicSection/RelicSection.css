@@ -1,0 +1,18 @@
+.relic-section__list-item {
+  height: 30px;
+  border: 1px solid rgb(100, 100, 100, 0.5);
+  border-radius: 3px;
+  margin: 4px 10px;
+  font-size: 14px;
+}
+
+.relic-section__list-item:hover {
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.025);
+}
+
+.relic-section__list-item-image {
+  height: 20px;
+  width: 20px;
+  margin-right: 6px;
+}

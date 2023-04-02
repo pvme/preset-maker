@@ -47,10 +47,23 @@
 
 /* Utility classes */
 
+.width-50 {
+  width: 50%;
+}
+
 .d-flex {
   display: flex;
 }
 
-.align-center {
+.flex-center {
   align-items: center;
+  justify-content: center;
+}
+
+.m-8 {
+  margin: 8px;
+}
+
+.overflow-y-hidden {
+  overflow-y: hidden;
 }

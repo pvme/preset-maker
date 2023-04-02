@@ -6,7 +6,7 @@ import { ApplicationState } from "../store";
 import { ImportData } from "../../../types/import-data";
 import { SlotType } from "../../../types/slot-type";
 import { Breakdown, BreakdownType } from "../../../types/breakdown";
-import { AuraData, Auras } from "../../../types/auras";
+import { FamiliarData, Familiars } from "../../../types/familiar";
 import { RelicData, Relics } from "../../../types/relics";
 
 // Define a type for the slice state
@@ -14,7 +14,7 @@ interface PresetState {
   presetName: string;
   inventorySlots: ItemData[];
   equipmentSlots: ItemData[];
-  auras: Auras;
+  familiars: Familiars;
   relics: Relics;
   breakdown: Breakdown[];
   slotType: SlotType;
@@ -27,8 +27,16 @@ interface IndexedSlot<T> {
 }
 
 type SetSlot = IndexedSlot<ItemData>;
-type AuraSlot = IndexedSlot<AuraData>
+type FamiliarSlot = IndexedSlot<FamiliarData>
 type RelicSlot = IndexedSlot<RelicData>;
+
+const fillArrayWithSlotData = (numItems: number) =>
+  new Array(numItems).fill({
+  name: "",
+  image: "",
+  label: "",
+  breakdownNotes: "",
+});
 
 // Define the initial state using that type
 const initialState: PresetState = {
@@ -40,19 +48,14 @@ const initialState: PresetState = {
     selected: false,
     breakdownNotes: "",
   })),
-  equipmentSlots: new Array(13).fill({
-    name: "",
-    image: "",
-    label: "",
-    breakdownNotes: "",
-  }),
-  auras: {
-    primaryAuras: [],
-    alternativeAuras: [],
+  equipmentSlots: fillArrayWithSlotData(13),
+  familiars: {
+    primaryFamiliars: fillArrayWithSlotData(3),
+    alternativeFamiliars: fillArrayWithSlotData(3),
   },
   relics: {
-    primaryRelics: [],
-    alternativeRelics: [],
+    primaryRelics: fillArrayWithSlotData(3),
+    alternativeRelics: fillArrayWithSlotData(3),
   },
   breakdown: [],
   slotType: SlotType.Inventory,
@@ -78,11 +81,14 @@ export const presetSlice = createSlice({
     setEquipmentSlot: (state: PresetState, action: PayloadAction<SetSlot>) => {
       state.equipmentSlots[action.payload.index] = action.payload.value;
     },
-    setPrimaryAura: (state: PresetState, action: PayloadAction<AuraSlot>) => {
-      state.auras.primaryAuras[action.payload.index] = action.payload.value;
-    },
     setPrimaryRelic: (state: PresetState, action: PayloadAction<RelicSlot>) => {
       state.relics.primaryRelics[action.payload.index] = action.payload.value;
+    },
+    setAlternativeRelic: (state: PresetState, action: PayloadAction<RelicSlot>) => {
+      state.relics.alternativeRelics[action.payload.index] = action.payload.value;
+    },
+    setPrimaryFamiliar: (state: PresetState, action: PayloadAction<FamiliarSlot>) => {
+      state.familiars.primaryFamiliars[action.payload.index] = action.payload.value;
     },
     setEntireBreakdown: (
       state: PresetState,
@@ -137,6 +143,8 @@ export const {
   setPresetName,
   setInventorySlot,
   setEquipmentSlot,
+  setPrimaryRelic,
+  setAlternativeRelic,
   setEntireBreakdown,
   setBreakdown,
   importDataAction,

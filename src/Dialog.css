@@ -1,0 +1,27 @@
+/* Shared dialog styles. */
+
+.dialog__paper {
+  /* Prevent unnecessary scrollbar. */
+  overflow-y: hidden;
+}
+
+.dialog__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  overflow-y: hidden;
+}
+
+.dialog__auto-complete {
+  width: 400px;
+  margin-top: 2px;
+}
+
+.dialog__list__image {
+  width: 25px;
+  height: 25px;
+  object-fit: contain;
+  margin-right: 10px;
+  flex-shrink: 0;
+}

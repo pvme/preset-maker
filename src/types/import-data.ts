@@ -1,4 +1,4 @@
-import { Auras } from "./auras";
+import { Familiars } from "./familiar";
 import { ItemData } from "./inventory-slot";
 import { Relics } from "./relics";
 
@@ -7,5 +7,5 @@ export interface ImportData {
   inventorySlots: ItemData[];
   equipmentSlots: ItemData[];
   relics?: Relics;
-  auras?: Auras;
+  familiars?: Familiars;
 }
