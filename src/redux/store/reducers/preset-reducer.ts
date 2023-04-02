@@ -6,21 +6,29 @@ import { ApplicationState } from "../store";
 import { ImportData } from "../../../types/import-data";
 import { SlotType } from "../../../types/slot-type";
 import { Breakdown, BreakdownType } from "../../../types/breakdown";
+import { AuraData, Auras } from "../../../types/auras";
+import { RelicData, Relics } from "../../../types/relics";
 
 // Define a type for the slice state
 interface PresetState {
   presetName: string;
   inventorySlots: ItemData[];
   equipmentSlots: ItemData[];
+  auras: Auras;
+  relics: Relics;
   breakdown: Breakdown[];
   slotType: SlotType;
   slotIndex: number;
 }
 
-interface SetSlot {
+interface IndexedSlot<T> {
   index: number;
-  item: ItemData;
+  value: T;
 }
+
+type SetSlot = IndexedSlot<ItemData>;
+type AuraSlot = IndexedSlot<AuraData>
+type RelicSlot = IndexedSlot<RelicData>;
 
 // Define the initial state using that type
 const initialState: PresetState = {
@@ -38,6 +46,14 @@ const initialState: PresetState = {
     label: "",
     breakdownNotes: "",
   }),
+  auras: {
+    primaryAuras: [],
+    alternativeAuras: [],
+  },
+  relics: {
+    primaryRelics: [],
+    alternativeRelics: [],
+  },
   breakdown: [],
   slotType: SlotType.Inventory,
   slotIndex: -1,
@@ -57,10 +73,16 @@ export const presetSlice = createSlice({
       state.presetName = action.payload;
     },
     setInventorySlot: (state: PresetState, action: PayloadAction<SetSlot>) => {
-      state.inventorySlots[action.payload.index] = action.payload.item;
+      state.inventorySlots[action.payload.index] = action.payload.value;
     },
     setEquipmentSlot: (state: PresetState, action: PayloadAction<SetSlot>) => {
-      state.equipmentSlots[action.payload.index] = action.payload.item;
+      state.equipmentSlots[action.payload.index] = action.payload.value;
+    },
+    setPrimaryAura: (state: PresetState, action: PayloadAction<AuraSlot>) => {
+      state.auras.primaryAuras[action.payload.index] = action.payload.value;
+    },
+    setPrimaryRelic: (state: PresetState, action: PayloadAction<RelicSlot>) => {
+      state.relics.primaryRelics[action.payload.index] = action.payload.value;
     },
     setEntireBreakdown: (
       state: PresetState,

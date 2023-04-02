@@ -107,9 +107,9 @@ export const PresetEditor = () => {
         }
 
         if (slotType === SlotType.Inventory) {
-          dispatch(setInventorySlot({ index, item }));
+          dispatch(setInventorySlot({ index, value: item }));
         } else {
-          dispatch(setEquipmentSlot({ index, item }));
+          dispatch(setEquipmentSlot({ index, value: item }));
         }
       });
 
