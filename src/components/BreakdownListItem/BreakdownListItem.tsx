@@ -84,7 +84,7 @@ export const BreakdownListItem = ({ item, type }: BreakdownListItemProps) => {
         <ListItemText
           tabIndex={-1}
           primaryTypographyProps={{ maxWidth: "225px" }}
-          primary={"🔗"+ item.name}
+          primary={"🔗 "+ item.name}
           title="Click to open wiki page"
           onClick={() => handleRecentClick(item)}
         />
