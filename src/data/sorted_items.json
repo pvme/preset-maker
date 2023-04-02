@@ -2571,7 +2571,7 @@
 		"label": "graspingpouchblack",
 		"image": "https://i.imgur.com/hvhOeDs.png",
 		"name": "Grasping rune pouch (black)",
-		"breakdownNotes": "",
+		"breakdownNotes": "Blood | Astral | Body | Soul",
 		"slot": 9,
 		"wikiLink": "https://runescape.wiki/w/Grasping_rune_pouch_(black)"
 	},
@@ -2603,7 +2603,7 @@
 		"label": "graspingpouchpink",
 		"image": "https://i.imgur.com/yrnlR2T.png",
 		"name": "Grasping rune pouch (pink)",
-		"breakdownNotes": "",
+		"breakdownNotes": "Death | Earth | Law | Cosmic",
 		"slot": 9,
 		"wikiLink": "https://runescape.wiki/w/Grasping_rune_pouch_(pink)"
 	},
@@ -5866,18 +5866,18 @@
 	{
 		"label": "pouch",
 		"image": "https://i.imgur.com/lBTTP01.png",
-		"name": "Water : Blood : Fire |",
+		"name": "Large rune pouch",
 		"breakdownNotes": "",
 		"slot": 9,
-		"wikiLink": "https://runescape.wiki/w/Water_:_Blood_:_Fire_|"
+		"wikiLink": "https://runescape.wiki/w/Large_rune_pouch"
 	},
 	{
 		"label": "pouchblack",
 		"image": "https://i.imgur.com/IDV9Fny.png",
-		"name": "Water : Death : Earth |",
-		"breakdownNotes": "",
+		"name": "Large rune pouch (black)",
+		"breakdownNotes": "Air | Death | Earth",
 		"slot": 9,
-		"wikiLink": "https://runescape.wiki/w/Water_:_Death_:_Earth_|"
+		"wikiLink": "https://runescape.wiki/w/Large_rune_pouch_(black)"
 	},
 	{
 		"label": "wateraltarteleport",
