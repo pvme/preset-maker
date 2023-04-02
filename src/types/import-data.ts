@@ -1,6 +1,6 @@
 import { Familiars } from "./familiar";
 import { ItemData } from "./item-data";
-import { Relics } from "./relics";
+import { Relics } from "./relic";
 
 export interface ImportData {
   presetName: string;

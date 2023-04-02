@@ -6,7 +6,7 @@ import relicIconPath from '../../assets/relic.png';
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { selectPreset, setAlternativeRelic, setPrimaryRelic } from "../../redux/store/reducers/preset-reducer";
 
-import { RelicData } from "../../types/relics";
+import { RelicData } from "../../types/relic";
 import { RelicSelectDialogPopup } from "../RelicSelectDialogPopup/RelicSelectDialogPopup";
 import "./RelicSection.css";
 import Tooltip from "@mui/material/Tooltip/Tooltip";
@@ -47,6 +47,9 @@ const RelicSectionList = ({ relics, onClick }: { relics: RelicData[], onClick: R
             <img className="relic-section__list-item-image" src={relicData.image}></img>
           )}
           <span className="relic-section__list-item-name">{relicData.name}</span>
+          {relicData.energy && (
+            <span className="relic-section__list-item-energy">&nbsp;({relicData.energy})</span>
+          )}
         </div>
       ))}
     </div>

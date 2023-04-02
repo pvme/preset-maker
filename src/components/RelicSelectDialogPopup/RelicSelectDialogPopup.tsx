@@ -17,7 +17,7 @@ import TextField from "@mui/material/TextField";
 import { FilterOptionsState } from "@mui/material/useAutocomplete";
 
 import sortedRelics from "../../data/sorted_relics.json";
-import { RelicData } from "../../types/relics";
+import { RelicData } from "../../types/relic";
 import "./RelicSelectDialogPopup.css";
 import { RelicType, SelectionDetails } from "../RelicSection/RelicSection";
 import { useAppSelector } from "../../redux/hooks";
@@ -168,7 +168,7 @@ export const RelicSelectDialogPopup = ({
                 srcSet={`${option.image} 2x`}
                 alt=""
               />
-              {option.name}
+              {option.name} ({option.energy})
             </Box>
           )}
         />

@@ -3,54 +3,63 @@
 		"label": "berserkersfury",
 		"image": "https://i.imgur.com/xXWYCHG.png",
 		"name": "Berserkers Fury",
-		"breakdownNotes": ""
+		"breakdownNotes": "",
+    "energy": 250
 	},
 	{
 		"label": "blessingofhet",
 		"image": "https://i.imgur.com/eDmt2lT.png",
 		"name": "Blessing of Het",
-		"breakdownNotes": ""
+		"breakdownNotes": "",
+    "energy": 100
 	},
 	{
 		"label": "conservationofenergy",
 		"image": "https://i.imgur.com/Gfdc9u6.png",
 		"name": "Conservation of Energy",
-		"breakdownNotes": ""
+		"breakdownNotes": "",
+    "energy": 350
 	},
 	{
 		"label": "deathward",
 		"image": "https://i.imgur.com/cFlJmWP.png",
 		"name": "Death Ward",
-		"breakdownNotes": ""
+		"breakdownNotes": "",
+    "energy": 150
 	},
 	{
 		"label": "fontoflife",
 		"image": "https://i.imgur.com/7e6Juey.png",
 		"name": "Font of Life",
-		"breakdownNotes": ""
+		"breakdownNotes": "",
+    "energy": 50
 	},
 	{
 		"label": "furyofthesmall",
 		"image": "https://i.imgur.com/W87TO3O.png",
 		"name": "Fury of the Small",
-		"breakdownNotes": ""
+		"breakdownNotes": "",
+    "energy": 150
 	},
 	{
 		"label": "heightenedsenses",
 		"image": "https://i.imgur.com/DjyfvR1.png",
 		"name": "Heightened Senses",
-		"breakdownNotes": ""
+		"breakdownNotes": "",
+    "energy": 350
 	},
 	{
 		"label": "persistentrage",
 		"image": "https://i.imgur.com/flHLvxL.png",
 		"name": "Persistent Rage",
-		"breakdownNotes": ""
+		"breakdownNotes": "",
+    "energy": 150
 	},
 	{
 		"label": "shadowsgrace",
 		"image": "https://i.imgur.com/sxdlwRm.png",
 		"name": "Shadows Grace",
-		"breakdownNotes": ""
+		"breakdownNotes": "",
+    "energy": 50
 	}
 ]

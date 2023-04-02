@@ -7,7 +7,7 @@ import { ImportData } from "../../../types/import-data";
 import { SlotType } from "../../../types/slot-type";
 import { Breakdown, BreakdownType } from "../../../types/breakdown";
 import { FamiliarData, Familiars } from "../../../types/familiar";
-import { RelicData, Relics } from "../../../types/relics";
+import { RelicData, Relics } from "../../../types/relic";
 
 // Define a type for the slice state
 interface PresetState {

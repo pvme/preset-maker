@@ -11,6 +11,10 @@
   background-color: rgba(255, 255, 255, 0.025);
 }
 
+.relic-section__list-item-energy {
+  font-size: 12px;
+}
+
 .relic-section__list-item-image {
   height: 20px;
   width: 20px;
