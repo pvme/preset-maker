@@ -28,6 +28,13 @@ export const BreakdownListItem = ({ item, type }: BreakdownListItemProps) => {
     breakdownNotes.current = sanitizeHtml(event.currentTarget.innerHTML || "");
   }, []);
 
+  const handleRecentClick = useCallback(
+    (item: ItemData) => {
+      window.open(item.wikiLink, '_blank');
+    },
+    []
+  );
+
   const onBlur = useCallback(
     (event: React.FocusEvent<HTMLDivElement>) => {
       dispatch(
@@ -50,6 +57,7 @@ export const BreakdownListItem = ({ item, type }: BreakdownListItemProps) => {
       }}
       secondaryAction={
         <ContentEditable
+          placeholder={item.breakdownNotes}
           className="inner-notes-field"
           html={breakdownNotes.current}
           onChange={onChange}
@@ -66,6 +74,8 @@ export const BreakdownListItem = ({ item, type }: BreakdownListItemProps) => {
               variant="square"
               alt={item.label}
               src={item.image}
+              title="Click to open wiki page"
+              onClick={() => handleRecentClick(item)}
             />
           </ListItemAvatar>
         ) : (
@@ -74,7 +84,9 @@ export const BreakdownListItem = ({ item, type }: BreakdownListItemProps) => {
         <ListItemText
           tabIndex={-1}
           primaryTypographyProps={{ maxWidth: "225px" }}
-          primary={item.name}
+          primary={"🔗 "+ item.name}
+          title="Click to open wiki page"
+          onClick={() => handleRecentClick(item)}
         />
       </ListItemButton>
     </ListItem>
