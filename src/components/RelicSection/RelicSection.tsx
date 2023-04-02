@@ -1,15 +1,18 @@
 import { useCallback, useState } from "react";
+import Typography from "@mui/material/Typography/Typography";
+import AddIcon from '@mui/icons-material/Add';
 
 import relicIconPath from '../../assets/relic.png';
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { selectPreset, setAlternativeRelic, setPrimaryRelic } from "../../redux/store/reducers/preset-reducer";
 
-import Typography from "@mui/material/Typography/Typography";
 import { RelicData } from "../../types/relics";
 import { RelicSelectDialogPopup } from "../RelicSelectDialogPopup/RelicSelectDialogPopup";
 import "./RelicSection.css";
+import Tooltip from "@mui/material/Tooltip/Tooltip";
+import IconButton from "@mui/material/IconButton/IconButton";
 
-enum RelicType {
+export enum RelicType {
   None,
   Primary,
   Alternative
@@ -56,6 +59,8 @@ export const RelicSection = ({}: RelicSectionProps) => {
   const {
     relics,
   } = useAppSelector(selectPreset);
+
+  const visibleAlternativeRelics = relics.alternativeRelics.filter((relic) => relic.name);
 
   const [dialogOpen, setDialogOpen] = useState(false);
   const [selectionDetails, setSelectionDetails] = useState({
@@ -117,16 +122,13 @@ export const RelicSection = ({}: RelicSectionProps) => {
       <Typography className="d-flex flex-center" variant="h6">
         <img
           className="m-8"
-          width={28}
-          height={28}
+          width={24}
+          height={24}
           src={relicIconPath}
         />
         Relics
       </Typography>
       <div>
-        <strong>
-          Primary
-        </strong>
         <RelicSectionList
           relics={relics.primaryRelics}
           onClick={(event, index) => {
@@ -135,15 +137,30 @@ export const RelicSection = ({}: RelicSectionProps) => {
         />
       </div>
       <div>
-        <strong>
-          Alternative
-        </strong>
+        <div>
+          <strong>
+            Alternative
+          </strong>
+        </div>
         <RelicSectionList
-          relics={relics.alternativeRelics}
+          relics={visibleAlternativeRelics}
           onClick={(event, index) => {
             openRelicDialog(event, RelicType.Alternative, index);
           }}
         />
+        <div
+          className="d-flex flex-center relic-section__list-item relic-section__list-item--add"
+          onClick={(event) => {
+            openRelicDialog(event, RelicType.Alternative, visibleAlternativeRelics.length);
+          }}
+        >
+          <Tooltip title="Add alternative relic">
+            <AddIcon
+              className="cursor-pointer relic-section__add-relic"
+              htmlColor="#646464"
+            />
+          </Tooltip>
+        </div>
       </div>
       <RelicSelectDialogPopup
         open={dialogOpen}

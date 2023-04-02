@@ -125,7 +125,7 @@ export const DialogPopup = ({
   return (
     <Dialog
       classes={{
-        paper: "item-select-dialog-paper",
+        paper: "dialog__paper",
       }}
       open={open}
       onClose={handleClose}
@@ -136,13 +136,13 @@ export const DialogPopup = ({
         <DialogTitle>Assign an item</DialogTitle>
       )}
       <DialogContent
-        className="dialog-content"
+        className="dialog__content"
         sx={{
           height: dialogHeight,
         }}
       >
         <Autocomplete
-          className="auto-complete"
+          className="dialog__auto-complete"
           disablePortal
           autoHighlight
           autoComplete

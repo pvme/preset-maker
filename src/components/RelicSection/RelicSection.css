@@ -2,7 +2,7 @@
   height: 30px;
   border: 1px solid rgb(100, 100, 100, 0.5);
   border-radius: 3px;
-  margin: 4px 10px;
+  margin: 4px 4px;
   font-size: 14px;
 }
 
@@ -15,4 +15,12 @@
   height: 20px;
   width: 20px;
   margin-right: 6px;
+}
+
+.relic-section__list-item--add:hover {
+  border-color: rgba(255, 255, 255, 0.45);
+}
+
+.relic-section__list-item:hover > .relic-section__add-relic {
+  color: white;
 }

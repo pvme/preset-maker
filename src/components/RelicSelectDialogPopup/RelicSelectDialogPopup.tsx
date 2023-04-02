@@ -19,7 +19,9 @@ import { FilterOptionsState } from "@mui/material/useAutocomplete";
 import sortedRelics from "../../data/sorted_relics.json";
 import { RelicData } from "../../types/relics";
 import "./RelicSelectDialogPopup.css";
-import { SelectionDetails } from "../RelicSection/RelicSection";
+import { RelicType, SelectionDetails } from "../RelicSection/RelicSection";
+import { useAppSelector } from "../../redux/hooks";
+import { selectPreset } from "../../redux/store/reducers/preset-reducer";
 
 interface RelicSelectDialogPopupProps {
   open: boolean;
@@ -37,6 +39,10 @@ export const RelicSelectDialogPopup = ({
   handleClose,
   handleSelection,
 }: RelicSelectDialogPopupProps) => {
+  const {
+    relics,
+  } = useAppSelector(selectPreset);
+
   const [dialogHeight, setDialogHeight] = useState(
     // Initialize dialogHeight state with the value of the dialogBaseHeight
     // constant.
@@ -52,6 +58,10 @@ export const RelicSelectDialogPopup = ({
     // Update the height of the Dialog box to the default height
     setDialogHeight(dialogBaseHeight);
   }, [dialogBaseHeight]);
+
+  const disabledRelics = selectionDetails.relicType === RelicType.Primary
+    ? new Set(relics.primaryRelics)
+    : new Set(relics.alternativeRelics);
 
   const filterOptions = useCallback(
     (options: RelicData[], state: FilterOptionsState<RelicData>): RelicData[] => {
@@ -126,6 +136,7 @@ export const RelicSelectDialogPopup = ({
           onClose={handleAutocompleteClose}
           onChange={onChange}
           filterOptions={filterOptions}
+          getOptionDisabled={(option) => disabledRelics.has(option)}
           renderInput={(params: AutocompleteRenderInputParams) => (
             <TextField
               {...params}

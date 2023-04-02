@@ -20,8 +20,8 @@ export const FamiliarSection = () => {
       <Typography className="d-flex flex-center" variant="h6">
         <img
           className="m-8"
-          width={28}
-          height={28}
+          width={24}
+          height={24}
           src={summoningIconPath}
         />
         Familiar
