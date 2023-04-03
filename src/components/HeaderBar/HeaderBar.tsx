@@ -1,4 +1,5 @@
 import { useCallback, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import { useSnackbar } from "notistack";
 import { validate } from "typescript-json";
 
@@ -25,6 +26,8 @@ import "./HeaderBar.css";
 
 export const HeaderBar = () => {
   const inputFile = useRef<HTMLInputElement>(null);
+
+  const navigate = useNavigate();
 
   const dispatch = useAppDispatch();
   const { presetName, inventorySlots, equipmentSlots } =
@@ -106,6 +109,13 @@ export const HeaderBar = () => {
     []
   );
 
+  const onHomeClick = useCallback(() => {
+    // go to root
+    navigate("/");
+    // refresh page to reset all data
+    navigate(0);
+  }, [navigate]);
+
   return (
     <Box className="header-bar">
       <input
@@ -123,9 +133,8 @@ export const HeaderBar = () => {
               <img
                 width={80}
                 height={80}
-                src={
-                  "https://cdn.discordapp.com/icons/534508796639182860/a_59ac554a5e8e3104d19f8d6f09dba8d8.gif"
-                }
+                src={"https://i.imgur.com/DhroQD5.gif"}
+                onClick={onHomeClick}
               />
             </div>
             <Typography

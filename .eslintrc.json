@@ -1,0 +1,14 @@
+{
+  "extends": ["plugin:react-hooks/recommended"],
+  "settings": {
+    "react": {
+      "pragma": "React",
+      "version": "detect"
+    }
+  },
+  "env": {
+    "node": true,
+    "browser": true,
+    "es6": true
+  }
+}
