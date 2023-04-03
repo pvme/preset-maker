@@ -24,6 +24,10 @@
   justify-content: flex-start;
 }
 
+.image-container > img {
+  cursor: pointer;
+}
+
 .button-container {
   display: flex;
   flex-direction: row;
