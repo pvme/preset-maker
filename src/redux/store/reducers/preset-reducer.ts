@@ -50,7 +50,7 @@ const initialState: PresetState = {
   })),
   equipmentSlots: fillArrayWithSlotData(13),
   familiars: {
-    primaryFamiliars: fillArrayWithSlotData(3),
+    primaryFamiliars: fillArrayWithSlotData(1),
     alternativeFamiliars: fillArrayWithSlotData(3),
   },
   relics: {
@@ -89,6 +89,9 @@ export const presetSlice = createSlice({
     },
     setPrimaryFamiliar: (state: PresetState, action: PayloadAction<FamiliarSlot>) => {
       state.familiars.primaryFamiliars[action.payload.index] = action.payload.value;
+    },
+    setAlternativeFamiliar: (state: PresetState, action: PayloadAction<FamiliarSlot>) => {
+      state.familiars.alternativeFamiliars[action.payload.index] = action.payload.value;
     },
     setEntireBreakdown: (
       state: PresetState,
@@ -145,6 +148,8 @@ export const {
   setEquipmentSlot,
   setPrimaryRelic,
   setAlternativeRelic,
+  setPrimaryFamiliar,
+  setAlternativeFamiliar,
   setEntireBreakdown,
   setBreakdown,
   importDataAction,

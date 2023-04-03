@@ -16,31 +16,31 @@ import DialogTitle from "@mui/material/DialogTitle";
 import TextField from "@mui/material/TextField";
 import { FilterOptionsState } from "@mui/material/useAutocomplete";
 
-import sortedRelics from "../../data/sorted_relics.json";
-import { RelicData } from "../../types/relic";
-import "./RelicSelectDialogPopup.css";
-import { RelicType, SelectionDetails } from "../RelicSection/RelicSection";
-import { useAppSelector } from "../../redux/hooks";
-import { selectPreset } from "../../redux/store/reducers/preset-reducer";
+import sortedFamiliars from "../../../data/sorted_familiars.json";
+import { FamiliarData } from "../../../types/familiar";
+import "./FamiliarSelectDialog.css";
+import { useAppSelector } from "../../../redux/hooks";
+import { selectPreset } from "../../../redux/store/reducers/preset-reducer";
+import { IndexedSelection, PrimaryOrAlternative } from "../../../types/util";
 
-interface RelicSelectDialogPopupProps {
+interface FamiliarSelectDialogProps {
   open: boolean;
-  selectionDetails: SelectionDetails;
+  indexedSelection: IndexedSelection;
   handleClose: () => void;
-  handleSelection: (selectionDetails: SelectionDetails, relic: RelicData) => void;
+  handleSelection: (indexedSelection: IndexedSelection, familiar: FamiliarData) => void;
 }
 
 const dialogBaseHeight = 130;
 const dialogExpandedHeight = 400;
 
-export const RelicSelectDialogPopup = ({
+export const FamiliarSelectDialog = ({
   open,
-  selectionDetails,
+  indexedSelection,
   handleClose,
   handleSelection,
-}: RelicSelectDialogPopupProps) => {
+}: FamiliarSelectDialogProps) => {
   const {
-    relics,
+    familiars,
   } = useAppSelector(selectPreset);
 
   const [dialogHeight, setDialogHeight] = useState(
@@ -59,17 +59,17 @@ export const RelicSelectDialogPopup = ({
     setDialogHeight(dialogBaseHeight);
   }, [dialogBaseHeight]);
 
-  const disabledRelics = selectionDetails.relicType === RelicType.Primary
-    ? new Set(relics.primaryRelics)
-    : new Set(relics.alternativeRelics);
+  const disabledFamiliars = indexedSelection.primaryOrAlternative === PrimaryOrAlternative.Primary
+    ? new Set(familiars.primaryFamiliars)
+    : new Set(familiars.alternativeFamiliars);
 
-  const filterOptions = useCallback(
-    (options: RelicData[], state: FilterOptionsState<RelicData>): RelicData[] => {
+  const filteredOptions = useCallback(
+    (options: FamiliarData[], state: FilterOptionsState<FamiliarData>): FamiliarData[] => {
       if (!state.inputValue) {
         return options;
       }
 
-      const filteredOptions = fuzzysort.go<RelicData>(
+      const filteredOptions = fuzzysort.go<FamiliarData>(
         state.inputValue,
         options,
         {
@@ -87,29 +87,29 @@ export const RelicSelectDialogPopup = ({
   const onChange = useCallback(
     (
       _event: React.SyntheticEvent,
-      value: RelicData | null,
+      value: FamiliarData | null,
       _reason: AutocompleteChangeReason,
-      _details?: AutocompleteChangeDetails<RelicData>
+      _details?: AutocompleteChangeDetails<FamiliarData>
     ) => {
       if (value === null) {
         return;
       }
 
-      handleSelection(selectionDetails, value);
+      handleSelection(indexedSelection, value);
       handleClose();
     },
-    [selectionDetails]
+    [indexedSelection]
   );
 
   const clearCell = useCallback(() => {
-    handleSelection(selectionDetails, {
+    handleSelection(indexedSelection, {
       name: "",
       image: "",
       label: "",
       breakdownNotes: "",
     });
     handleClose();
-  }, [selectionDetails]);
+  }, [indexedSelection]);
 
   return (
     <Dialog
@@ -119,7 +119,7 @@ export const RelicSelectDialogPopup = ({
       open={open}
       onClose={handleClose}
     >
-      <DialogTitle>Assign a relic</DialogTitle>
+      <DialogTitle>Assign a familiar</DialogTitle>
       <DialogContent
         className="dialog__content"
         sx={{
@@ -131,17 +131,17 @@ export const RelicSelectDialogPopup = ({
           disablePortal
           autoHighlight
           autoComplete
-          options={sortedRelics}
+          options={sortedFamiliars}
           onOpen={handleAutocompleteOpen}
           onClose={handleAutocompleteClose}
           onChange={onChange}
-          filterOptions={filterOptions}
-          getOptionDisabled={(option) => disabledRelics.has(option)}
+          filterOptions={filteredOptions}
+          getOptionDisabled={(option) => disabledFamiliars.has(option)}
           renderInput={(params: AutocompleteRenderInputParams) => (
             <TextField
               {...params}
               autoFocus
-              label="Relic list"
+              label="Familiar list"
               inputProps={{
                 ...params.inputProps,
                 autoComplete: "new-password", // disable autocomplete and autofill
@@ -150,7 +150,7 @@ export const RelicSelectDialogPopup = ({
           )}
           renderOption={(
             props: React.HTMLAttributes<HTMLLIElement>,
-            option: RelicData,
+            option: FamiliarData,
             _state: AutocompleteRenderOptionState
           ) => (
             <Box
@@ -168,14 +168,14 @@ export const RelicSelectDialogPopup = ({
                 srcSet={`${option.image} 2x`}
                 alt=""
               />
-              {option.name} ({option.energy})
+              {option.name}
             </Box>
           )}
         />
       </DialogContent>
       <DialogActions>
         <Button color="error" onClick={clearCell}>
-          Clear Relic
+          Clear Familiar
         </Button>
         <Button onClick={handleClose}>Cancel</Button>
       </DialogActions>

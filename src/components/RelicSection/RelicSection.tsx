@@ -7,25 +7,10 @@ import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { selectPreset, setAlternativeRelic, setPrimaryRelic } from "../../redux/store/reducers/preset-reducer";
 
 import { RelicData } from "../../types/relic";
-import { RelicSelectDialogPopup } from "../RelicSelectDialogPopup/RelicSelectDialogPopup";
 import "./RelicSection.css";
 import Tooltip from "@mui/material/Tooltip/Tooltip";
-import IconButton from "@mui/material/IconButton/IconButton";
-
-export enum RelicType {
-  None,
-  Primary,
-  Alternative
-};
-
-interface RelicSectionProps {
-  // Nothing yet.
-}
-
-export interface SelectionDetails {
-  relicType: RelicType;
-  index: number;
-}
+import { IndexedSelection, PrimaryOrAlternative } from "../../types/util";
+import { RelicSelectDialog } from "../dialogs/RelicSelectDialogPopup/RelicSelectDialog";
 
 export type RelicSectionListClickHandler = (
   _event: React.MouseEvent<HTMLDivElement>,
@@ -56,7 +41,7 @@ const RelicSectionList = ({ relics, onClick }: { relics: RelicData[], onClick: R
   )
 };
 
-export const RelicSection = ({}: RelicSectionProps) => {
+export const RelicSection = () => {
   const dispatch = useAppDispatch();
 
   const {
@@ -66,59 +51,59 @@ export const RelicSection = ({}: RelicSectionProps) => {
   const visibleAlternativeRelics = relics.alternativeRelics.filter((relic) => relic.name);
 
   const [dialogOpen, setDialogOpen] = useState(false);
-  const [selectionDetails, setSelectionDetails] = useState({
-    relicType: RelicType.None,
+  const [indexedSelection, setIndexedSelection] = useState({
+    primaryOrAlternative: PrimaryOrAlternative.None,
     index: -1,
   });
 
   const openRelicDialog = useCallback(
     (
       _event: React.MouseEvent<HTMLDivElement>,
-      relicType: RelicType,
+      primaryOrAlternative: PrimaryOrAlternative,
       index: number,
     ) => {
-      setSelectionDetails({
-        relicType,
+      setIndexedSelection({
+        primaryOrAlternative,
         index
       });
       setDialogOpen(true);
     },
-    [selectionDetails]
+    [indexedSelection]
   );
 
   const closeRelicDialog = useCallback(() => {
     setDialogOpen(false);
   }, []);
 
-  const handleRelicSelection = useCallback((selectionDetails: SelectionDetails, relic: RelicData) => {
-    if (selectionDetails.relicType === RelicType.Primary) {
+  const handleRelicSelection = useCallback((indexedSelection: IndexedSelection, relic: RelicData) => {
+    if (indexedSelection.primaryOrAlternative === PrimaryOrAlternative.Primary) {
       // Prevent duplicates.
       if (relics.primaryRelics.includes(relic)) {
         return;
       }
 
       dispatch(setPrimaryRelic({
-        index: selectionDetails.index,
+        index: indexedSelection.index,
         value: relic,
       }));
-    } else if (selectionDetails.relicType === RelicType.Alternative) {
+    } else if (indexedSelection.primaryOrAlternative === PrimaryOrAlternative.Alternative) {
       // Prevent duplicates.
       if (relics.alternativeRelics.includes(relic)) {
         return;
       }
 
       dispatch(setAlternativeRelic({
-        index: selectionDetails.index,
+        index: indexedSelection.index,
         value: relic,
       }));
     }
 
-    setSelectionDetails({
-      relicType: RelicType.None,
+    setIndexedSelection({
+      primaryOrAlternative: PrimaryOrAlternative.None,
       index: -1,
     });
     setDialogOpen(false);
-  }, [relics, selectionDetails]);
+  }, [relics, indexedSelection]);
 
   return (
     <div className="width-50">
@@ -135,7 +120,7 @@ export const RelicSection = ({}: RelicSectionProps) => {
         <RelicSectionList
           relics={relics.primaryRelics}
           onClick={(event, index) => {
-            openRelicDialog(event, RelicType.Primary, index);
+            openRelicDialog(event, PrimaryOrAlternative.Primary, index);
           }}
         />
       </div>
@@ -148,13 +133,13 @@ export const RelicSection = ({}: RelicSectionProps) => {
         <RelicSectionList
           relics={visibleAlternativeRelics}
           onClick={(event, index) => {
-            openRelicDialog(event, RelicType.Alternative, index);
+            openRelicDialog(event, PrimaryOrAlternative.Alternative, index);
           }}
         />
         <div
           className="d-flex flex-center relic-section__list-item relic-section__list-item--add"
           onClick={(event) => {
-            openRelicDialog(event, RelicType.Alternative, visibleAlternativeRelics.length);
+            openRelicDialog(event, PrimaryOrAlternative.Alternative, visibleAlternativeRelics.length);
           }}
         >
           <Tooltip title="Add alternative relic">
@@ -165,9 +150,9 @@ export const RelicSection = ({}: RelicSectionProps) => {
           </Tooltip>
         </div>
       </div>
-      <RelicSelectDialogPopup
+      <RelicSelectDialog
         open={dialogOpen}
-        selectionDetails={selectionDetails}
+        indexedSelection={indexedSelection}
         handleClose={closeRelicDialog}
         handleSelection={handleRelicSelection}
       />

@@ -1,6 +1,5 @@
 import json
 
-
 def find_duplicate_objects(json_array):
     labels = set()
     duplicates = []

@@ -8,7 +8,11 @@
 		"build": "tsc && vite build",
 		"preview": "vite preview",
 		"predeploy": "npm run build",
-		"deploy": "gh-pages -d dist"
+		"deploy": "gh-pages -d dist",
+    "sort-all": "yarn run sort-familiars && yarn run sort-items && yarn run sort-relics",
+    "sort-familiars": "python src/data/scripts/familiar_sorter.py",
+    "sort-items": "python src/data/scripts/item_sorter.py",
+    "sort-relics": "python src/data/scripts/relic_sorter.py"
 	},
 	"dependencies": {
 		"@emotion/react": "^11.10.5",

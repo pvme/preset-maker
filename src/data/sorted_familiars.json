@@ -1,0 +1,50 @@
+[
+	{
+		"label": "bloodnihil",
+		"image": "https://i.imgur.com/a2CITlX.png",
+		"name": "Blood Nihil",
+		"breakdownNotes": ""
+	},
+	{
+		"label": "bloodreaver",
+		"image": "https://i.imgur.com/sxnDQng.png",
+		"name": "Blood Reaver",
+		"breakdownNotes": ""
+	},
+	{
+		"label": "hellhound",
+		"image": "https://i.imgur.com/A1BvfVb.png",
+		"name": "Hellhound",
+		"breakdownNotes": ""
+	},
+	{
+		"label": "kalgdemon",
+		"image": "https://i.imgur.com/4oLwaZJ.png",
+		"name": "Kal'gerion Demon",
+		"breakdownNotes": ""
+	},
+	{
+		"label": "packmammoth",
+		"image": "https://i.imgur.com/z8NpfWG.png",
+		"name": "Pack Mammoth",
+		"breakdownNotes": ""
+	},
+	{
+		"label": "ripperdemon",
+		"image": "https://i.imgur.com/eDmt2lT.png",
+		"name": "Ripper Demon",
+		"breakdownNotes": ""
+	},
+	{
+		"label": "shadownihil",
+		"image": "https://i.imgur.com/evmMlFz.png",
+		"name": "Shadow Nihil",
+		"breakdownNotes": ""
+	},
+	{
+		"label": "smokenihil",
+		"image": "https://i.imgur.com/qbTjhXc.png",
+		"name": "Smoke Nihil",
+		"breakdownNotes": ""
+	}
+]
