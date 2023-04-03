@@ -29,7 +29,7 @@ const unpackData = async(stored: {
   for(let i = 0 ; i < stored.inventorySlots.length ; i++) {
     let itemLabel = stored.inventorySlots[i].label;
     let defaultItem = {...itemDataMap.get(itemLabel)};
-    if(stored.inventorySlots[i].breakdownNotes != "") {
+    if(stored.inventorySlots[i].breakdownNotes !== "") {
       defaultItem.breakdownNotes = stored.inventorySlots[i].breakdownNotes
     }
     newPreset.inventorySlots[i] = defaultItem;
