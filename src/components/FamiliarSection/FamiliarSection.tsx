@@ -103,7 +103,7 @@ export const FamiliarSection = () => {
   }, [familiars, indexedSelection]);
 
   return (
-    <div className="width-50">
+    <div className="width-50 familiar-section">
       <Typography className="d-flex flex-center" variant="h6">
         <img
           className="m-8"
@@ -113,7 +113,7 @@ export const FamiliarSection = () => {
         />
         Familiar
       </Typography>
-      <div>
+      <div className="familiar-section__primary">
         <FamiliarSectionList
           familiars={familiars.primaryFamiliars}
           onClick={(event, index) => {
@@ -121,7 +121,7 @@ export const FamiliarSection = () => {
           }}
         />
       </div>
-      <div>
+      <div className="familiar-section__alternative">
         <div>
           <strong>
             Alternative

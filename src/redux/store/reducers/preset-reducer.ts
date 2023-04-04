@@ -118,6 +118,10 @@ export const presetSlice = createSlice({
       state.presetName = action.payload.presetName;
       state.inventorySlots = action.payload.inventorySlots;
       state.equipmentSlots = action.payload.equipmentSlots;
+      // New state properties must be defaulted to `initialState` as it
+      // will not exist in older saved presets.
+      state.relics = action.payload.relics ?? initialState.relics;
+      state.familiars = action.payload.familiars ?? initialState.familiars;
     },
     updateSlotType: (state: PresetState, action: PayloadAction<SlotType>) => {
       state.slotType = action.payload;

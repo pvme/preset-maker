@@ -1,3 +1,12 @@
+.familiar-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.familiar-section__alternative {
+  margin-top: auto;
+}
+
 .familiar-section__list-item {
   height: 30px;
   border: 1px solid rgb(100, 100, 100, 0.5);
