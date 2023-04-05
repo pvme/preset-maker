@@ -1,12 +1,10 @@
 import React, { useCallback, useRef, useState } from "react";
 
-import { Tooltip } from "@mui/material";
 import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import { canCopyImagesToClipboard } from "copy-image-clipboard";
-
 import {
   resetSlots,
   selectPreset,
@@ -22,7 +20,7 @@ import {
   selectRecentItems,
 } from "../../redux/store/reducers/recent-item-reducer";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { ItemData } from "../../types/inventory-slot";
+import { ItemData } from "../../types/item-data";
 import { SlotType } from "../../types/slot-type";
 import {
   copyImageToClipboard,
@@ -35,6 +33,8 @@ import "./PresetEditor.css";
 import { ClipboardCopyButtonContainer } from "../ClipboardCopyButtonContainer/ClipboardCopyButtonContainer";
 import { useSnackbar } from "notistack";
 import { ResetConfirmation } from "../ResetConfirmation/ResetConfirmation";
+import { RelicSection } from "../RelicSection/RelicSection";
+import { FamiliarSection } from "../FamiliarSection/FamiliarSection";
 
 export const PresetEditor = () => {
   const dispatch = useAppDispatch();
@@ -44,6 +44,7 @@ export const PresetEditor = () => {
     presetName: name,
     inventorySlots,
     equipmentSlots,
+    relics,
     slotType,
     slotIndex,
   } = useAppSelector(selectPreset);
@@ -106,9 +107,9 @@ export const PresetEditor = () => {
         }
 
         if (slotType === SlotType.Inventory) {
-          dispatch(setInventorySlot({ index, item }));
+          dispatch(setInventorySlot({ index, value: item }));
         } else {
-          dispatch(setEquipmentSlot({ index, item }));
+          dispatch(setEquipmentSlot({ index, value: item }));
         }
       });
 
@@ -153,9 +154,9 @@ export const PresetEditor = () => {
         handleConfirmation={onResetConfirmation}
         handleClose={onResetClose}
       />
-      <Card className="container">
+      <Card className="inventory-equipment-container">
         <CardContent data-id="content" className="preset-container">
-          <div ref={exportRef}>
+          <div className="export-container" ref={exportRef}>
             <map name="presetmap">
               <Inventory
                 slots={inventorySlots}
@@ -175,6 +176,10 @@ export const PresetEditor = () => {
               useMap="#presetmap"
               alt="preset background"
             />
+            <div className="relics-familiar-container">
+              <RelicSection />
+              <FamiliarSection />
+            </div>
           </div>
         </CardContent>
         <CardActions className="preset-buttons">

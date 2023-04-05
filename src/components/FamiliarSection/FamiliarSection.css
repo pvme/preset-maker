@@ -1,0 +1,39 @@
+.familiar-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.familiar-section__alternative {
+  margin-top: auto;
+}
+
+.familiar-section__list-item {
+  height: 30px;
+  border: 1px solid rgb(100, 100, 100, 0.5);
+  border-radius: 3px;
+  margin: 4px 4px;
+  font-size: 14px;
+}
+
+.familiar-section__list-item:hover {
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.025);
+}
+
+.familiar-section__list-item-energy {
+  font-size: 12px;
+}
+
+.familiar-section__list-item-image {
+  height: 20px;
+  width: 20px;
+  margin-right: 6px;
+}
+
+.familiar-section__list-item--add:hover {
+  border-color: rgba(255, 255, 255, 0.45);
+}
+
+.familiar-section__list-item:hover > .relic-section__add-relic {
+  color: white;
+}

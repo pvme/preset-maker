@@ -10,7 +10,7 @@ import { BreakdownListItem } from "../BreakdownListItem/BreakdownListItem";
 import { ClipboardCopyButtonContainer } from "../ClipboardCopyButtonContainer/ClipboardCopyButtonContainer";
 import { useAppSelector } from "../../redux/hooks";
 import { selectPreset } from "../../redux/store/reducers/preset-reducer";
-import { ItemData } from "../../types/inventory-slot";
+import { ItemData } from "../../types/item-data";
 import { BreakdownType } from "../../types/breakdown";
 import {
   copyImageToClipboard,

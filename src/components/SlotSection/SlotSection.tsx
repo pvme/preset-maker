@@ -1,6 +1,6 @@
 import { equipmentCoords, inventoryCoords } from "../../data/coordinates";
 import { Coord } from "../../types/coord";
-import { ItemData } from "../../types/inventory-slot";
+import { ItemData } from "../../types/item-data";
 
 import "./SlotSection.css";
 
@@ -47,10 +47,10 @@ const SlotSection = ({ slots, handleClickOpen, handleShiftClick, coords, classNa
                 left: coord.x1,
               }}
             >
-              {slots[index]?.image ? 
+              {slots[index]?.image ?
                 <img key={index} className={`${className}-icon`} src={slots[index].image} alt={slots[index].name} />
                 : null
-              }                
+              }
             </div>
           ) : null}
         </div>

@@ -44,3 +44,26 @@
 .read-the-docs {
   color: #888;
 }
+
+/* Utility classes */
+
+.width-50 {
+  width: 50%;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.flex-center {
+  align-items: center;
+  justify-content: center;
+}
+
+.m-8 {
+  margin: 8px;
+}
+
+.cursor-pointer:hover {
+  cursor: pointer;
+}

@@ -1,26 +1,42 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
-import { ItemData } from "../../../types/inventory-slot";
+import { ItemData } from "../../../types/item-data";
 import { ApplicationState } from "../store";
 import { ImportData } from "../../../types/import-data";
 import { SlotType } from "../../../types/slot-type";
 import { Breakdown, BreakdownType } from "../../../types/breakdown";
+import { FamiliarData, Familiars } from "../../../types/familiar";
+import { RelicData, Relics } from "../../../types/relic";
 
 // Define a type for the slice state
 interface PresetState {
   presetName: string;
   inventorySlots: ItemData[];
   equipmentSlots: ItemData[];
+  familiars: Familiars;
+  relics: Relics;
   breakdown: Breakdown[];
   slotType: SlotType;
   slotIndex: number;
 }
 
-interface SetSlot {
+interface IndexedSlot<T> {
   index: number;
-  item: ItemData;
+  value: T;
 }
+
+type SetSlot = IndexedSlot<ItemData>;
+type FamiliarSlot = IndexedSlot<FamiliarData>
+type RelicSlot = IndexedSlot<RelicData>;
+
+const fillArrayWithSlotData = (numItems: number) =>
+  new Array(numItems).fill({
+  name: "",
+  image: "",
+  label: "",
+  breakdownNotes: "",
+});
 
 // Define the initial state using that type
 const initialState: PresetState = {
@@ -32,12 +48,15 @@ const initialState: PresetState = {
     selected: false,
     breakdownNotes: "",
   })),
-  equipmentSlots: new Array(13).fill({
-    name: "",
-    image: "",
-    label: "",
-    breakdownNotes: "",
-  }),
+  equipmentSlots: fillArrayWithSlotData(13),
+  familiars: {
+    primaryFamiliars: fillArrayWithSlotData(1),
+    alternativeFamiliars: fillArrayWithSlotData(3),
+  },
+  relics: {
+    primaryRelics: fillArrayWithSlotData(3),
+    alternativeRelics: fillArrayWithSlotData(3),
+  },
   breakdown: [],
   slotType: SlotType.Inventory,
   slotIndex: -1,
@@ -57,10 +76,22 @@ export const presetSlice = createSlice({
       state.presetName = action.payload;
     },
     setInventorySlot: (state: PresetState, action: PayloadAction<SetSlot>) => {
-      state.inventorySlots[action.payload.index] = action.payload.item;
+      state.inventorySlots[action.payload.index] = action.payload.value;
     },
     setEquipmentSlot: (state: PresetState, action: PayloadAction<SetSlot>) => {
-      state.equipmentSlots[action.payload.index] = action.payload.item;
+      state.equipmentSlots[action.payload.index] = action.payload.value;
+    },
+    setPrimaryRelic: (state: PresetState, action: PayloadAction<RelicSlot>) => {
+      state.relics.primaryRelics[action.payload.index] = action.payload.value;
+    },
+    setAlternativeRelic: (state: PresetState, action: PayloadAction<RelicSlot>) => {
+      state.relics.alternativeRelics[action.payload.index] = action.payload.value;
+    },
+    setPrimaryFamiliar: (state: PresetState, action: PayloadAction<FamiliarSlot>) => {
+      state.familiars.primaryFamiliars[action.payload.index] = action.payload.value;
+    },
+    setAlternativeFamiliar: (state: PresetState, action: PayloadAction<FamiliarSlot>) => {
+      state.familiars.alternativeFamiliars[action.payload.index] = action.payload.value;
     },
     setEntireBreakdown: (
       state: PresetState,
@@ -87,6 +118,10 @@ export const presetSlice = createSlice({
       state.presetName = action.payload.presetName;
       state.inventorySlots = action.payload.inventorySlots;
       state.equipmentSlots = action.payload.equipmentSlots;
+      // New state properties must be defaulted to `initialState` as it
+      // will not exist in older saved presets.
+      state.relics = action.payload.relics ?? initialState.relics;
+      state.familiars = action.payload.familiars ?? initialState.familiars;
     },
     updateSlotType: (state: PresetState, action: PayloadAction<SlotType>) => {
       state.slotType = action.payload;
@@ -115,6 +150,10 @@ export const {
   setPresetName,
   setInventorySlot,
   setEquipmentSlot,
+  setPrimaryRelic,
+  setAlternativeRelic,
+  setPrimaryFamiliar,
+  setAlternativeFamiliar,
   setEntireBreakdown,
   setBreakdown,
   importDataAction,

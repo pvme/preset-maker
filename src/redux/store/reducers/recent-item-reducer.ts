@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { ItemData } from "../../../types/inventory-slot";
+import { ItemData } from "../../../types/item-data";
 import { ApplicationState } from "../store";
 
 interface RecentItemState {

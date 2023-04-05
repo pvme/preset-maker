@@ -9,7 +9,7 @@ import ListItemAvatar from "@mui/material/ListItemAvatar";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 
-import { ItemData } from "../../types/inventory-slot";
+import { ItemData } from "../../types/item-data";
 import { setBreakdown } from "../../redux/store/reducers/preset-reducer";
 import { BreakdownType } from "../../types/breakdown";
 
