@@ -18,7 +18,7 @@ import Avatar from "@mui/material/Avatar";
 import DialogActions from "@mui/material/DialogActions";
 import { FilterOptionsState } from "@mui/material/useAutocomplete";
 
-import { ItemData } from "../../types/inventory-slot";
+import { ItemData } from "../../types/item-data";
 import itemData from "../../data/sorted_items.json";
 
 import "./ItemSelectDialogPopup.css";

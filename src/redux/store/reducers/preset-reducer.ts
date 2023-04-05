@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
-import { ItemData } from "../../../types/inventory-slot";
+import { ItemData } from "../../../types/item-data";
 import { ApplicationState } from "../store";
 import { ImportData } from "../../../types/import-data";
 import { SlotType } from "../../../types/slot-type";

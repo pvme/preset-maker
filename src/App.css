@@ -64,10 +64,6 @@
   margin: 8px;
 }
 
-.overflow-y-hidden {
-  overflow-y: hidden;
-}
-
 .cursor-pointer:hover {
   cursor: pointer;
 }

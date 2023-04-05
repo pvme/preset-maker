@@ -1,9 +1,7 @@
-export interface RelicData {
-  label: string;
-  image: string;
-  name: string;
-  breakdownNotes?: string;
-  selected?: boolean;
+import { EntityData } from "./entity-data";
+
+export interface RelicData extends EntityData {
+  // Nothing yet.
 };
 
 export interface Relics {

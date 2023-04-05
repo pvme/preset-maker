@@ -20,7 +20,7 @@ import {
   selectRecentItems,
 } from "../../redux/store/reducers/recent-item-reducer";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { ItemData } from "../../types/inventory-slot";
+import { ItemData } from "../../types/item-data";
 import { SlotType } from "../../types/slot-type";
 import {
   copyImageToClipboard,

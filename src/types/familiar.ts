@@ -1,9 +1,7 @@
-export interface FamiliarData {
-  label: string;
-  image: string;
-  name: string;
-  breakdownNotes?: string;
-  selected?: boolean;
+import { EntityData } from "./entity-data";
+
+export interface FamiliarData extends EntityData {
+  // Nothing yet.
 };
 
 export interface Familiars {

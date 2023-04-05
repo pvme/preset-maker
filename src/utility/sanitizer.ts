@@ -1,4 +1,4 @@
-import { ItemData } from "../types/inventory-slot";
+import { ItemData } from "../types/item-data";
 import { generateDateString } from "./generate-file-name";
 
 export const sanitizedData = (
