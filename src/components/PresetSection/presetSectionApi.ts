@@ -1,6 +1,8 @@
 import axios from "axios";
 import { ImportData } from "../../types/import-data";
 import itemData from "../../data/sorted_items.json";
+import { Relics } from "../../types/relic";
+import { Familiars } from "../../types/familiar";
 
 const apiUrl =
   "https://us-central1-pvmebackend.cloudfunctions.net/getPreset?id=";
@@ -13,12 +15,14 @@ export const GetPreset = async (id: string) => {
 };
 
 const unpackData = async(stored: {
-  equipmentSlots: any; presetName: any; inventorySlots: string | any[]; 
+  equipmentSlots: any; presetName: any; inventorySlots: string | any[]; relics: Relics; familiars: Familiars;
 }): Promise<ImportData> => {
   let newPreset: ImportData = {
     presetName: "",
     inventorySlots: [],
-    equipmentSlots: []
+    equipmentSlots: [],
+    relics: { primaryRelics: [], alternativeRelics: [] },
+    familiars: { primaryFamiliars: [], alternativeFamiliars: [] }
   };
   //create a map of all item labels to their default object
   let itemDataMap = new Map();
@@ -43,6 +47,13 @@ const unpackData = async(stored: {
     }
     newPreset.equipmentSlots[i] = defaultItem;
   }
+
+  //TODO map stored relic data to latest
+  //temp, for now just assign it
+  newPreset.relics = stored.relics;
+  //TODO map stored familiar data to latest
+  //temp, for now just assign it
+  newPreset.familiars = stored.familiars;
 
   return newPreset;
 };

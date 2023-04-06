@@ -30,17 +30,19 @@ export const HeaderBar = () => {
   const navigate = useNavigate();
 
   const dispatch = useAppDispatch();
-  const { presetName, inventorySlots, equipmentSlots } =
+  const { presetName, inventorySlots, equipmentSlots, relics, familiars } =
     useAppSelector(selectPreset);
   const { enqueueSnackbar } = useSnackbar();
 
   const generateShareableLink = async () => {
     try {
-      const sanitized = sanitizedData(inventorySlots, equipmentSlots);
+      const sanitized = sanitizedData(inventorySlots, equipmentSlots, relics, familiars);
       const stringified = stringifyData(
         presetName,
         sanitized.inventory,
-        sanitized.equipment
+        sanitized.equipment,
+        sanitized.relics,
+        sanitized.familiars
       );
       enqueueSnackbar("Generating shareable link...", { variant: "info" });
       const id = await UploadPreset(stringified);
@@ -59,14 +61,16 @@ export const HeaderBar = () => {
   };
 
   const exportData = useCallback(() => {
-    const sanitized = sanitizedData(inventorySlots, equipmentSlots);
+    const sanitized = sanitizedData(inventorySlots, equipmentSlots, relics, familiars);
     const stringified = stringifyData(
       presetName,
       sanitized.inventory,
-      sanitized.equipment
+      sanitized.equipment,
+      sanitized.relics,
+      sanitized.familiars
     );
     exportAsJson(`PRESET_${presetName.replaceAll(" ", "_")}`, stringified);
-  }, [presetName, inventorySlots, equipmentSlots]);
+  }, [presetName, inventorySlots, equipmentSlots, relics, familiars]);
 
   const importData = useCallback(() => {
     inputFile.current?.click();
