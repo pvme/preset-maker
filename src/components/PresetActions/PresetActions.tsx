@@ -12,8 +12,8 @@ import { ResetConfirmationDialog } from '../ResetConfirmationDialog/ResetConfirm
 import "./PresetActions.css";
 import { sanitizedData, stringifyData } from '../../utility/sanitizer';
 import { uploadPreset } from '../../api/upload-preset';
-import { SavePresetDialog } from '../SavePresetDialog/SavePresetDialog';
-import { ImportData } from '../../types/import-data';
+import { SavePresetDialog, SavePresetDialogState } from '../SavePresetDialog/SavePresetDialog';
+import { LocalStorage } from '../../store/local-storage';
 
 export const PresetActions = ({
   presetExportRef
@@ -54,7 +54,13 @@ export const PresetActions = ({
   }, [presetName]);
 
   const onSaveClick = useCallback(() => {
-  }, []);
+    LocalStorage.savePresetWithoutConfirmation({
+      presetName,
+      inventorySlots,
+      equipmentSlots,
+    });
+    enqueueSnackbar("Preset saved", { variant: "success" });
+  }, [presetName, inventorySlots, equipmentSlots]);
 
   const onSaveAsClick = useCallback(async () => {
     setSaveDialogOpen(true);
@@ -63,18 +69,6 @@ export const PresetActions = ({
   const closeSaveDialog = useCallback(() => {
     setSaveDialogOpen(false);
   }, []);
-
-  const updatePresets = useCallback(() => {
-    const data = localStorage.loadPresets();
-
-    selectPreset(data);
-    // FIXME: This data needs to be shared across PresetLoader and PresetActions.
-    // Move to SaveDialog itself.
-    // setPresetNames(
-    //   data.map((importData: ImportData) => importData.presetName || "")
-    // );
-    // setSelectedPreset(presetName);
-  }, [presetName]);
 
   const onCopyImageToClipboardClick = useCallback(async () => {
     await copyImageToClipboard(presetExportRef, {
@@ -194,8 +188,8 @@ export const PresetActions = ({
       />
       <SavePresetDialog
         open={saveDialogOpen}
-        updatePresets={updatePresets}
-        handleClose={closeSaveDialog}
+        state={SavePresetDialogState.ExistingPreset}
+        onClose={closeSaveDialog}
       />
     </div>
   );

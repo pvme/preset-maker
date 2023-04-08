@@ -20,8 +20,8 @@ import {
 import { ImportData } from "../../types/import-data";
 
 import "./PresetLoader.css";
-import { SavePresetDialog } from "../SavePresetDialog/SavePresetDialog";
-import localStorage from "../../store/local-storage";
+import { SavePresetDialog, SavePresetDialogState } from "../SavePresetDialog/SavePresetDialog";
+import { LocalStorage } from "../../store/local-storage";
 
 export const PresetName = () => {
   const [presets, setPresets] = useState<ImportData[]>();
@@ -40,7 +40,7 @@ export const PresetName = () => {
   }, [presetName]);
 
   const updatePresets = useCallback(() => {
-    const data = localStorage.loadPresets();
+    const data = LocalStorage.loadPresets();
 
     setPresets(data);
     setPresetNames(
@@ -69,8 +69,7 @@ export const PresetName = () => {
   );
 
   const createNewPreset = useCallback(() => {
-    // TODO
-    // setSaveDialogOpen(true);
+    setSaveDialogOpen(true);
   }, []);
 
   const removePreset = useCallback(
@@ -79,7 +78,7 @@ export const PresetName = () => {
       event.preventDefault();
       event.stopPropagation();
 
-      let data = localStorage.loadPresets();
+      let data = LocalStorage.loadPresets();
       // check to see if presetKey exists in localStorage
       if (
         data.find(
@@ -159,8 +158,9 @@ export const PresetName = () => {
       </ButtonGroup>
       <SavePresetDialog
         open={saveDialogOpen}
-        updatePresets={updatePresets}
-        handleClose={handleDialogClose}
+        state={SavePresetDialogState.NewPreset}
+        onSave={updatePresets}
+        onClose={handleDialogClose}
       />
     </div>
   );

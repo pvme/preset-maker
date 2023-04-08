@@ -14,15 +14,22 @@ import { ImportData } from "../../types/import-data";
 import { sanitizedData } from "../../utility/sanitizer";
 
 import "./SavePresetDialog.css";
-import localStorage from "../../store/local-storage";
+import { LocalStorage } from "../../store/local-storage";
+
+export enum SavePresetDialogState {
+  None,
+  NewPreset,
+  ExistingPreset
+}
 
 interface SavePresetDialogProps {
   open: boolean;
-  updatePresets: () => void;
-  handleClose: () => void;
+  state: SavePresetDialogState;
+  onSave?: () => void;
+  onClose: () => void;
 }
 
-export const SavePresetDialog = ({ open, updatePresets, handleClose }: SavePresetDialogProps) => {
+export const SavePresetDialog = ({ open, state, onSave, onClose }: SavePresetDialogProps) => {
   const dispatch = useAppDispatch();
   const { enqueueSnackbar } = useSnackbar();
 
@@ -49,38 +56,30 @@ export const SavePresetDialog = ({ open, updatePresets, handleClose }: SavePrese
 
       dispatch(setPresetName(name));
 
-      const data = sanitizedData(inventorySlots, equipmentSlots);
-      const currentData = localStorage.loadPresets();
-
-      if (currentData.find((d) => d.presetName.toLocaleUpperCase() === name.toLocaleUpperCase())) {
-        const confirm = window.confirm(
-          "A preset with this name already exists, are you sure you wish to overwrite it?"
-        );
-        if (!confirm) {
-          return;
+      const didSave = LocalStorage.savePresetWithConfirmation({
+        presetName: name,
+        inventorySlots,
+        equipmentSlots
+      });
+      if (didSave) {
+        enqueueSnackbar("Successfully saved your preset", { variant: "success" });
+        if (onSave) {
+          onSave();
         }
       }
 
-      currentData.push({
-        presetName: name,
-        inventorySlots: data.inventory,
-        equipmentSlots: data.equipment,
-      });
-
-      // TODO Move to LocalStorage class
-      window.localStorage.setItem("presets", JSON.stringify(currentData));
-      enqueueSnackbar("Successfully saved your preset", { variant: "success" });
-      updatePresets();
-      handleClose();
+      onClose();
     },
     [name, presetName, inventorySlots, equipmentSlots]
   );
 
+  const dialogTitle = state === SavePresetDialogState.ExistingPreset
+    ? 'Save preset as'
+    : 'Create new preset';
   return (
-    <Dialog open={open} onClose={handleClose}>
+    <Dialog open={open} onClose={onClose}>
       <form>
-        {/* TODO Change based on prop */}
-        <DialogTitle>Save new preset</DialogTitle>
+        <DialogTitle>{dialogTitle}</DialogTitle>
         <DialogContent>
           <TextField
             className="name-field"
@@ -93,7 +92,7 @@ export const SavePresetDialog = ({ open, updatePresets, handleClose }: SavePrese
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
+          <Button onClick={onClose}>Cancel</Button>
           <Button type="submit" onClick={handleSave}>
             Save
           </Button>
