@@ -37,7 +37,7 @@ export const PresetActions = ({
     setResetConfirmationOpen(true);
   }, []);
 
-  const onResetConfirmationOpen = useCallback(() => {
+  const onResetConfirmation = useCallback(() => {
     dispatch(resetSlots());
     setResetConfirmationOpen(false);
   }, [dispatch]);
@@ -183,7 +183,7 @@ export const PresetActions = ({
       {/* Dialogs */}
       <ResetConfirmationDialog
         open={resetConfirmationOpen}
-        handleConfirmation={onResetConfirmationOpen}
+        handleConfirmation={onResetConfirmation}
         handleClose={onResetConfirmationClose}
       />
       <SavePresetDialog
