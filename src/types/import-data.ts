@@ -2,6 +2,9 @@ import { Familiars } from "./familiar";
 import { ItemData } from "./item-data";
 import { Relics } from "./relic";
 
+/**
+ * Represents stored data for a preset, both in localStorage and on the backend.
+ */
 export interface ImportData {
   presetName: string;
   inventorySlots: ItemData[];

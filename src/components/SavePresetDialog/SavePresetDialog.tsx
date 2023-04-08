@@ -1,5 +1,5 @@
-import React, { useCallback, useState } from "react";
 import { useSnackbar } from "notistack";
+import React, { useCallback, useState } from "react";
 
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
@@ -10,11 +10,9 @@ import TextField from "@mui/material/TextField";
 
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { selectPreset, setPresetName } from "../../redux/store/reducers/preset-reducer";
-import { ImportData } from "../../types/import-data";
-import { sanitizedData } from "../../utility/sanitizer";
 
-import "./SavePresetDialog.css";
 import { LocalStorage } from "../../store/local-storage";
+import "./SavePresetDialog.css";
 
 export enum SavePresetDialogState {
   None,

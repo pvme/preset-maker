@@ -24,7 +24,6 @@ class LocalStorage {
     inventorySlots: ItemData[],
     equipmentSlots: ItemData[]
   }) {
-    debugger;
     const data = sanitizedData(inventorySlots, equipmentSlots);
     const currentPresets = this.loadPresets();
 
