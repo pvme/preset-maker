@@ -51,6 +51,10 @@
   width: 50%;
 }
 
+.width-100 {
+  width: 100%;
+}
+
 .d-flex {
   display: flex;
 }
@@ -62,6 +66,10 @@
 
 .mt-8 {
   margin-top: 8px;
+}
+
+.mr-8 {
+  margin-right: 8px;
 }
 
 .m-8 {

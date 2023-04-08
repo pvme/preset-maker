@@ -13,16 +13,16 @@ import { selectPreset, setPresetName } from "../../redux/store/reducers/preset-r
 import { ImportData } from "../../types/import-data";
 import { sanitizedData } from "../../utility/sanitizer";
 
-import "./SavePresetDialogPopup.css";
+import "./SavePresetDialog.css";
+import localStorage from "../../store/local-storage";
 
-interface SavePresetDialogPopupProps {
+interface SavePresetDialogProps {
   open: boolean;
-  loadData: () => ImportData[];
-  updateData: () => void;
+  updatePresets: () => void;
   handleClose: () => void;
 }
 
-export const SavePresetDialogPopup = ({ open, loadData, updateData, handleClose }: SavePresetDialogPopupProps) => {
+export const SavePresetDialog = ({ open, updatePresets, handleClose }: SavePresetDialogProps) => {
   const dispatch = useAppDispatch();
   const { enqueueSnackbar } = useSnackbar();
 
@@ -30,6 +30,7 @@ export const SavePresetDialogPopup = ({ open, loadData, updateData, handleClose 
   const [error, setError] = useState<boolean>();
 
   const { presetName: presetName, inventorySlots, equipmentSlots } = useAppSelector(selectPreset);
+
 
   const onPresetNameChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
     setError(!event.currentTarget.value);
@@ -45,10 +46,11 @@ export const SavePresetDialogPopup = ({ open, loadData, updateData, handleClose 
         setError(true);
         return;
       }
+
       dispatch(setPresetName(name));
 
       const data = sanitizedData(inventorySlots, equipmentSlots);
-      const currentData = loadData();
+      const currentData = localStorage.loadPresets();
 
       if (currentData.find((d) => d.presetName.toLocaleUpperCase() === name.toLocaleUpperCase())) {
         const confirm = window.confirm(
@@ -65,9 +67,10 @@ export const SavePresetDialogPopup = ({ open, loadData, updateData, handleClose 
         equipmentSlots: data.equipment,
       });
 
+      // TODO Move to LocalStorage class
       window.localStorage.setItem("presets", JSON.stringify(currentData));
       enqueueSnackbar("Successfully saved your preset", { variant: "success" });
-      updateData();
+      updatePresets();
       handleClose();
     },
     [name, presetName, inventorySlots, equipmentSlots]
@@ -76,6 +79,7 @@ export const SavePresetDialogPopup = ({ open, loadData, updateData, handleClose 
   return (
     <Dialog open={open} onClose={handleClose}>
       <form>
+        {/* TODO Change based on prop */}
         <DialogTitle>Save new preset</DialogTitle>
         <DialogContent>
           <TextField

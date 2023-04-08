@@ -1,58 +1,44 @@
-import React, { useCallback, useRef, useState } from "react";
+import React, { RefObject, useCallback, useRef, useState } from "react";
 
-import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
-import { canCopyImagesToClipboard } from "copy-image-clipboard";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import {
-  resetSlots,
-  selectPreset,
+  clearSlotSelection, selectPreset,
   setEquipmentSlot,
-  setInventorySlot,
-  updateSlotIndex,
-  updateSlotType,
-  toggleSlotSelection,
-  clearSlotSelection,
+  setInventorySlot, toggleSlotSelection, updateSlotIndex,
+  updateSlotType
 } from "../../redux/store/reducers/preset-reducer";
 import {
   addToQueue,
-  selectRecentItems,
+  selectRecentItems
 } from "../../redux/store/reducers/recent-item-reducer";
-import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { ItemData } from "../../types/item-data";
 import { SlotType } from "../../types/slot-type";
-import {
-  copyImageToClipboard,
-  exportAsImage,
-} from "../../utility/export-to-png";
 import { DialogPopup } from "../ItemSelectDialogPopup/ItemSelectDialogPopup";
 import { Equipment, Inventory } from "../SlotSection/SlotSection";
 
-import "./PresetEditor.css";
-import { ClipboardCopyButtonContainer } from "../ClipboardCopyButtonContainer/ClipboardCopyButtonContainer";
-import { useSnackbar } from "notistack";
-import { ResetConfirmation } from "../ResetConfirmation/ResetConfirmation";
-import { RelicSection } from "../RelicSection/RelicSection";
 import { FamiliarSection } from "../FamiliarSection/FamiliarSection";
+import { RelicSection } from "../RelicSection/RelicSection";
+import "./PresetEditor.css";
+import { Typography } from "@mui/material";
 
-export const PresetEditor = () => {
+export const PresetEditor = ({
+  setExportRef
+}: {
+  setExportRef: (ref: HTMLDivElement) => void
+}) => {
   const dispatch = useAppDispatch();
-  const { enqueueSnackbar } = useSnackbar();
 
   const {
-    presetName: name,
     inventorySlots,
     equipmentSlots,
-    relics,
     slotType,
     slotIndex,
   } = useAppSelector(selectPreset);
   const recentItems = useAppSelector(selectRecentItems);
 
-  const exportRef = useRef<HTMLDivElement>(null);
   const [dialogOpen, setDialogOpen] = useState(false);
-  const [confirmationOpen, setConfirmationOpen] = useState(false);
 
   const handleSlotOpen = useCallback(
     (
@@ -119,44 +105,11 @@ export const PresetEditor = () => {
     [dispatch, slotType, slotIndex]
   );
 
-  const onResetClick = useCallback(() => {
-    setConfirmationOpen(true);
-  }, []);
-
-  const onResetConfirmation = useCallback(() => {
-    dispatch(resetSlots());
-    setConfirmationOpen(false);
-  }, [dispatch]);
-
-  const onResetClose = useCallback(() => {
-    setConfirmationOpen(false);
-  }, []);
-
-  const onSave = useCallback(async () => {
-    await exportAsImage(
-      exportRef.current,
-      `PRESET_${name.replaceAll(" ", "_")}`
-    );
-  }, [name]);
-
-  const onCopyToClipboard = useCallback(async () => {
-    await copyImageToClipboard(exportRef.current, () => {
-      enqueueSnackbar("Failed to copy image to clipboard", {
-        variant: "error",
-      });
-    });
-  }, []);
-
   return (
     <>
-      <ResetConfirmation
-        open={confirmationOpen}
-        handleConfirmation={onResetConfirmation}
-        handleClose={onResetClose}
-      />
       <Card className="inventory-equipment-container">
         <CardContent data-id="content" className="preset-container">
-          <div className="export-container" ref={exportRef}>
+          <div className="export-container" ref={setExportRef}>
             <map name="presetmap">
               <Inventory
                 slots={inventorySlots}
@@ -182,35 +135,6 @@ export const PresetEditor = () => {
             </div>
           </div>
         </CardContent>
-        <CardActions className="preset-buttons">
-          <Button
-            color="error"
-            variant="contained"
-            size="small"
-            onClick={onResetClick}
-          >
-            Reset
-          </Button>
-          <Button
-            color="success"
-            variant="contained"
-            size="small"
-            onClick={onSave}
-          >
-            Save as PNG
-          </Button>
-          <ClipboardCopyButtonContainer className="preset-buttons__button">
-            <Button
-              color="secondary"
-              variant="outlined"
-              size="small"
-              disabled={!canCopyImagesToClipboard()}
-              onClick={onCopyToClipboard}
-            >
-              Copy Image to Clipboard
-            </Button>
-          </ClipboardCopyButtonContainer>
-        </CardActions>
       </Card>
       <DialogPopup
         open={dialogOpen}

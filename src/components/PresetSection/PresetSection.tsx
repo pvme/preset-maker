@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import { useAppDispatch } from "../../redux/hooks";
@@ -7,18 +7,21 @@ import { PresetBreakdown } from "../PresetBreakdown/PresetBreakdown";
 import { PresetEditor } from "../PresetEditor/PresetEditor";
 import { PresetName } from "../PresetLoader/PresetLoader";
 
-import { GetPreset } from "./presetSectionApi";
+import { getPreset } from "../../api/get-preset";
 
 import "./PresetSection.css";
 import CircularProgress from "@mui/material/CircularProgress/CircularProgress";
 import { Fade, Typography } from "@mui/material";
+import { PresetActions } from "../PresetActions/PresetActions";
 
 export const PresetSection = () => {
   const dispatch = useAppDispatch();
 
+  // const presetExportRef = useRef<HTMLDivElement>(null);
+  const [presetExportRef, setPresetExportRef] = useState<HTMLDivElement | null>(null);
   const [isPresetLoading, setIsPresetLoading] = useState(false);
-  const [preset, setPreset] = useState<any>();
-  // grab id from url params
+
+  // Preset ID is stored in URL params
   const { id } = useParams();
 
   useEffect(() => {
@@ -29,13 +32,17 @@ export const PresetSection = () => {
     // load preset from URL if code exists
     const getPresetData = async () => {
       setIsPresetLoading(true);
-      const response = await GetPreset(id);
+      const response = await getPreset(id);
       dispatch(importDataAction(response));
       setIsPresetLoading(false);
     };
 
     getPresetData();
   }, [id]);
+
+  const presetExportRefCallback = (ref: HTMLDivElement) => {
+    setPresetExportRef(ref);
+  }
 
   return (
     <>
@@ -51,7 +58,14 @@ export const PresetSection = () => {
           <Fade in={!isPresetLoading}>
             <div className="preset-section">
               <PresetName />
-              <PresetEditor />
+              <div className="preset-and-actions">
+                <PresetEditor
+                  setExportRef={presetExportRefCallback}
+                />
+                <PresetActions
+                  presetExportRef={presetExportRef}
+                />
+              </div>
               <PresetBreakdown />
             </div>
           </Fade>
