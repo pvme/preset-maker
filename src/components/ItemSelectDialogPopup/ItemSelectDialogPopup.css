@@ -11,10 +11,14 @@
 
 .recent-items-title {
   text-align: center;
-  margin-top: 5px;
+  margin: 10px 0 4px 0;
 }
 
-.avatar-icon img {
+.recent-item-button {
+  margin: 0 4px;
+}
+
+.recent-item-image {
   height: 32px !important;
   width: 32px !important;
   object-fit: contain !important;
