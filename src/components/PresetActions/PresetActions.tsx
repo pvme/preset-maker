@@ -10,7 +10,7 @@ import { resetSlots, selectPreset } from '../../redux/store/reducers/preset-redu
 import { copyImageToClipboard, exportAsImage } from '../../utility/export-to-png';
 import { ResetConfirmationDialog } from '../ResetConfirmationDialog/ResetConfirmationDialog';
 import "./PresetActions.css";
-import { sanitizedData, stringifyData } from '../../utility/sanitizer';
+import { sanitizePresetData, stringifyData } from '../../utility/sanitizer';
 import { uploadPreset } from '../../api/upload-preset';
 import { SavePresetDialog, SavePresetDialogState } from '../SavePresetDialog/SavePresetDialog';
 import { LocalStorage } from '../../store/local-storage';
@@ -24,8 +24,10 @@ export const PresetActions = ({
   const { closeSnackbar, enqueueSnackbar } = useSnackbar();
   const {
     equipmentSlots,
+    familiars,
     inventorySlots,
     presetName,
+    relics,
   } = useAppSelector(selectPreset);
 
   const [resetConfirmationOpen, setResetConfirmationOpen] = useState(false);
@@ -58,9 +60,11 @@ export const PresetActions = ({
       presetName,
       inventorySlots,
       equipmentSlots,
+      relics,
+      familiars,
     });
     enqueueSnackbar("Preset saved", { variant: "success" });
-  }, [presetName, inventorySlots, equipmentSlots]);
+  }, [presetName, inventorySlots, equipmentSlots, relics, familiars]);
 
   const onSaveAsClick = useCallback(async () => {
     setSaveDialogOpen(true);
@@ -87,16 +91,18 @@ export const PresetActions = ({
 
   const generateShareableLink = async () => {
     try {
-      const sanitized = sanitizedData(inventorySlots, equipmentSlots);
-      const stringified = stringifyData(
+      const sanitizedPresetData = sanitizePresetData({
         presetName,
-        sanitized.inventory,
-        sanitized.equipment
-      );
+        equipmentSlots,
+        inventorySlots,
+        relics,
+        familiars,
+      });
+      const stringifiedPresetData = stringifyData(sanitizedPresetData);
 
       setIsGeneratingLink(true);
       const generatingLinkSnackbarKey = enqueueSnackbar("Generating shareable link...", { variant: "info" });
-      const id = await uploadPreset(stringified);
+      const id = await uploadPreset(stringifiedPresetData);
 
       const link = `https://pvme.github.io/preset-maker/#/${id}`;
       setGeneratedLink(link);

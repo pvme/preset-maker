@@ -17,14 +17,14 @@ import {
   importDataAction,
   selectPreset,
 } from "../../redux/store/reducers/preset-reducer";
-import { ImportData } from "../../types/import-data";
+import { SavedPresetData as SavedPresetData } from "../../types/saved-preset-data";
 
 import "./PresetLoader.css";
 import { SavePresetDialog, SavePresetDialogState } from "../SavePresetDialog/SavePresetDialog";
 import { LocalStorage } from "../../store/local-storage";
 
 export const PresetName = () => {
-  const [presets, setPresets] = useState<ImportData[]>();
+  const [presets, setPresets] = useState<SavedPresetData[]>();
   const [presetNames, setPresetNames] = useState<string[]>();
   const [selectedPreset, setSelectedPreset] = useState<string>();
   const [saveDialogOpen, setSaveDialogOpen] = useState<boolean>(false);
@@ -44,7 +44,7 @@ export const PresetName = () => {
 
     setPresets(data);
     setPresetNames(
-      data.map((importData: ImportData) => importData.presetName || "")
+      data.map((savedPresetData: SavedPresetData) => savedPresetData.presetName || "")
     );
     setSelectedPreset(presetName);
   }, [presetName]);

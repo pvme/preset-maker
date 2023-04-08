@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ImportData } from "../types/import-data";
+import { SavedPresetData } from "../types/saved-preset-data";
 import itemData from "../data/sorted_items.json";
 
 const apiUrl =
@@ -14,8 +14,8 @@ export const getPreset = async (id: string) => {
 
 const unpackData = async(stored: {
   equipmentSlots: any; presetName: string; inventorySlots: string | any[];
-}): Promise<ImportData> => {
-  const newPreset: ImportData = {
+}): Promise<SavedPresetData> => {
+  const newPreset: SavedPresetData = {
     // Copy the preset name
     presetName: stored.presetName,
     inventorySlots: [],

@@ -17,9 +17,9 @@ import {
   importDataAction,
   selectPreset
 } from "../../redux/store/reducers/preset-reducer";
-import { ImportData } from "../../types/import-data";
+import { SavedPresetData } from "../../types/saved-preset-data";
 import { exportAsJson } from "../../utility/export-to-json";
-import { sanitizedData, stringifyData } from "../../utility/sanitizer";
+import { sanitizePresetData, stringifyData } from "../../utility/sanitizer";
 
 import "./HeaderBar.css";
 
@@ -29,18 +29,25 @@ export const HeaderBar = () => {
   const navigate = useNavigate();
 
   const dispatch = useAppDispatch();
-  const { presetName, inventorySlots, equipmentSlots } =
-    useAppSelector(selectPreset);
+  const {
+    presetName,
+    inventorySlots,
+    equipmentSlots,
+    relics,
+    familiars,
+  } = useAppSelector(selectPreset);
   const { enqueueSnackbar } = useSnackbar();
 
   const exportData = useCallback(() => {
-    const sanitized = sanitizedData(inventorySlots, equipmentSlots);
-    const stringified = stringifyData(
+    const sanitizedPresetData = sanitizePresetData({
       presetName,
-      sanitized.inventory,
-      sanitized.equipment
-    );
-    exportAsJson(`PRESET_${presetName.replaceAll(" ", "_")}`, stringified);
+      equipmentSlots,
+      inventorySlots,
+      relics,
+      familiars,
+    });
+    const stringifiedPresetData = stringifyData(sanitizedPresetData);
+    exportAsJson(`PRESET_${presetName.replaceAll(" ", "_")}`, stringifiedPresetData);
   }, [presetName, inventorySlots, equipmentSlots]);
 
   const importData = useCallback(() => {
@@ -64,7 +71,7 @@ export const HeaderBar = () => {
         }
 
         const data = JSON.parse(event.target.result as string);
-        if (!validate<ImportData>(data).success) {
+        if (!validate<SavedPresetData>(data).success) {
           enqueueSnackbar("Invalid JSON data.", { variant: "error" });
           return;
         }

@@ -3,7 +3,7 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 
 import { ItemData } from "../../../types/item-data";
 import { ApplicationState } from "../store";
-import { ImportData } from "../../../types/import-data";
+import { SavedPresetData } from "../../../types/saved-preset-data";
 import { SlotType } from "../../../types/slot-type";
 import { Breakdown, BreakdownType } from "../../../types/breakdown";
 import { FamiliarData, Familiars } from "../../../types/familiar";
@@ -113,7 +113,7 @@ export const presetSlice = createSlice({
     },
     importDataAction: (
       state: PresetState,
-      action: PayloadAction<ImportData>
+      action: PayloadAction<SavedPresetData>
     ) => {
       state.presetName = action.payload.presetName;
       state.inventorySlots = action.payload.inventorySlots;

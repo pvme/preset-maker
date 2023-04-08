@@ -1,57 +1,38 @@
-import { ImportData } from "../types/import-data";
-import { ItemData } from "../types/item-data";
-import { sanitizedData } from "../utility/sanitizer";
+import { SavedPresetData } from "../types/saved-preset-data";
+import { sanitizePresetData } from "../utility/sanitizer";
 
+/**
+ * TODO
+ */
 class LocalStorage {
   PRESETS_KEY = 'presets';
 
   loadPresets() {
-    const lsPresets = window.localStorage.getItem(this.PRESETS_KEY);
-    if (lsPresets) {
-      const itemData: ImportData[] = JSON.parse(lsPresets);
-      return itemData;
+    const localStoragePresets = window.localStorage.getItem(this.PRESETS_KEY);
+    if (localStoragePresets) {
+      const presetData: SavedPresetData[] = JSON.parse(localStoragePresets);
+      return presetData;
     }
 
     return [];
   }
 
-  savePresetWithoutConfirmation({
-    presetName,
-    inventorySlots,
-    equipmentSlots
-  }: {
-    presetName: string,
-    inventorySlots: ItemData[],
-    equipmentSlots: ItemData[]
-  }) {
-    const data = sanitizedData(inventorySlots, equipmentSlots);
+  savePresetWithoutConfirmation(presetData: SavedPresetData) {
+    debugger;
+    const presetName = presetData.presetName;
+    const sanitizedPresetData = sanitizePresetData(presetData);
     const currentPresets = this.loadPresets();
 
     const isExistingPreset = this._isMatchingExistingPreset(currentPresets, presetName);
     const updatedPresets = isExistingPreset
-      ? this._replacePreset(currentPresets, {
-        presetName,
-        inventorySlots: data.inventory,
-        equipmentSlots: data.equipment
-      })
-      : currentPresets.concat({
-        presetName,
-        inventorySlots: data.inventory,
-        equipmentSlots: data.equipment
-      });
+      ? this._replacePreset(currentPresets, sanitizedPresetData)
+      : currentPresets.concat(sanitizedPresetData);
     window.localStorage.setItem(this.PRESETS_KEY, JSON.stringify(updatedPresets));
   }
 
-  savePresetWithConfirmation({
-    presetName,
-    inventorySlots,
-    equipmentSlots
-  }: {
-    presetName: string,
-    inventorySlots: ItemData[],
-    equipmentSlots: ItemData[]
-  }) {
-    const data = sanitizedData(inventorySlots, equipmentSlots);
+  savePresetWithConfirmation(presetData: SavedPresetData) {
+    const presetName = presetData.presetName;
+    const sanitizedPresetData = sanitizePresetData(presetData);
     const currentPresets = this.loadPresets();
 
     const isExistingPreset = this._isMatchingExistingPreset(currentPresets, presetName);
@@ -65,27 +46,17 @@ class LocalStorage {
     }
 
     const updatedPresets = isExistingPreset
-      ? this._replacePreset(currentPresets, {
-        presetName,
-        inventorySlots: data.inventory,
-        equipmentSlots: data.equipment
-      })
-      : currentPresets.concat({
-        presetName,
-        inventorySlots: data.inventory,
-        equipmentSlots: data.equipment
-      });
+      ? this._replacePreset(currentPresets, sanitizedPresetData)
+      : currentPresets.concat(sanitizedPresetData);
     window.localStorage.setItem(this.PRESETS_KEY, JSON.stringify(updatedPresets));
     return true;
   }
 
-  _replacePreset(currentPresets: ImportData[], presetToReplace: ImportData) {
+  _replacePreset(currentPresets: SavedPresetData[], presetToReplace: SavedPresetData) {
     return currentPresets.map((preset) => {
       if (preset.presetName === presetToReplace.presetName) {
         return {
-          presetName: presetToReplace.presetName,
-          inventorySlots: presetToReplace.inventorySlots,
-          equipmentSlots: presetToReplace.equipmentSlots
+          ...presetToReplace,
         };
       }
 
@@ -93,7 +64,7 @@ class LocalStorage {
     });
   }
 
-  _isMatchingExistingPreset(currentPresets: ImportData[], presetName: string) {
+  _isMatchingExistingPreset(currentPresets: SavedPresetData[], presetName: string) {
     return currentPresets.findIndex((preset) =>
       preset.presetName.toLocaleUpperCase() === presetName.toLocaleUpperCase()) !== -1;
   }

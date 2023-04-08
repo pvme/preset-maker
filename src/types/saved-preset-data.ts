@@ -3,9 +3,9 @@ import { ItemData } from "./item-data";
 import { Relics } from "./relic";
 
 /**
- * Represents stored data for a preset, both in localStorage and on the backend.
+ * Represents saved data for a preset, both in localStorage and on the backend.
  */
-export interface ImportData {
+export interface SavedPresetData {
   presetName: string;
   inventorySlots: ItemData[];
   equipmentSlots: ItemData[];

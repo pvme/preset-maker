@@ -34,8 +34,13 @@ export const SavePresetDialog = ({ open, state, onSave, onClose }: SavePresetDia
   const [name, setName] = useState<string>("");
   const [error, setError] = useState<boolean>();
 
-  const { presetName: presetName, inventorySlots, equipmentSlots } = useAppSelector(selectPreset);
-
+  const {
+    presetName: presetName,
+    inventorySlots,
+    equipmentSlots,
+    relics,
+    familiars,
+  } = useAppSelector(selectPreset);
 
   const onPresetNameChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
     setError(!event.currentTarget.value);
@@ -57,7 +62,9 @@ export const SavePresetDialog = ({ open, state, onSave, onClose }: SavePresetDia
       const didSave = LocalStorage.savePresetWithConfirmation({
         presetName: name,
         inventorySlots,
-        equipmentSlots
+        equipmentSlots,
+        relics,
+        familiars
       });
       if (didSave) {
         enqueueSnackbar("Successfully saved your preset", { variant: "success" });
