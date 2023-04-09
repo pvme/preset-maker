@@ -1,33 +1,33 @@
-import fuzzysort from "fuzzysort";
-import { useCallback, useState } from "react";
+import fuzzysort from 'fuzzysort';
+import React, { useCallback, useState } from 'react';
 
 import Autocomplete, {
-  AutocompleteChangeDetails,
-  AutocompleteChangeReason,
-  AutocompleteRenderInputParams,
-  AutocompleteRenderOptionState
-} from "@mui/material/Autocomplete";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
-import DialogContent from "@mui/material/DialogContent";
-import DialogTitle from "@mui/material/DialogTitle";
-import TextField from "@mui/material/TextField";
-import { FilterOptionsState } from "@mui/material/useAutocomplete";
+  type AutocompleteChangeDetails,
+  type AutocompleteChangeReason,
+  type AutocompleteRenderInputParams,
+  type AutocompleteRenderOptionState
+} from '@mui/material/Autocomplete';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogTitle from '@mui/material/DialogTitle';
+import TextField from '@mui/material/TextField';
+import { type FilterOptionsState } from '@mui/material/useAutocomplete';
 
-import sortedFamiliars from "../../../data/sorted_familiars.json";
-import { FamiliarData } from "../../../types/familiar";
-import "./FamiliarSelectDialog.css";
-import { useAppSelector } from "../../../redux/hooks";
-import { selectPreset } from "../../../redux/store/reducers/preset-reducer";
-import { IndexedSelection, PrimaryOrAlternative } from "../../../types/util";
+import sortedFamiliars from '../../../data/sorted_familiars.json';
+import { type FamiliarData } from '../../../types/familiar';
+import './FamiliarSelectDialog.css';
+import { useAppSelector } from '../../../redux/hooks';
+import { selectPreset } from '../../../redux/store/reducers/preset-reducer';
+import { type IndexedSelection, PrimaryOrAlternative } from '../../../types/util';
 
 interface FamiliarSelectDialogProps {
-  open: boolean;
-  indexedSelection: IndexedSelection;
-  handleClose: () => void;
-  handleSelection: (indexedSelection: IndexedSelection, familiar: FamiliarData) => void;
+  open: boolean
+  indexedSelection: IndexedSelection
+  handleClose: () => void
+  handleSelection: (indexedSelection: IndexedSelection, familiar: FamiliarData) => void
 }
 
 const dialogBaseHeight = 130;
@@ -37,10 +37,10 @@ export const FamiliarSelectDialog = ({
   open,
   indexedSelection,
   handleClose,
-  handleSelection,
-}: FamiliarSelectDialogProps) => {
+  handleSelection
+}: FamiliarSelectDialogProps): JSX.Element => {
   const {
-    familiars,
+    familiars
   } = useAppSelector(selectPreset);
 
   const [dialogHeight, setDialogHeight] = useState(
@@ -65,7 +65,7 @@ export const FamiliarSelectDialog = ({
 
   const filteredOptions = useCallback(
     (options: FamiliarData[], state: FilterOptionsState<FamiliarData>): FamiliarData[] => {
-      if (!state.inputValue) {
+      if (state.inputValue.length === 0) {
         return options;
       }
 
@@ -75,7 +75,7 @@ export const FamiliarSelectDialog = ({
         {
           limit: 100,
           threshold: -100,
-          keys: ["name", "label"],
+          keys: ['name', 'label']
         }
       );
 
@@ -103,10 +103,10 @@ export const FamiliarSelectDialog = ({
 
   const clearCell = useCallback(() => {
     handleSelection(indexedSelection, {
-      name: "",
-      image: "",
-      label: "",
-      breakdownNotes: "",
+      name: '',
+      image: '',
+      label: '',
+      breakdownNotes: ''
     });
     handleClose();
   }, [indexedSelection]);
@@ -114,7 +114,7 @@ export const FamiliarSelectDialog = ({
   return (
     <Dialog
       classes={{
-        paper: "dialog__paper",
+        paper: 'dialog__paper'
       }}
       open={open}
       onClose={handleClose}
@@ -123,7 +123,7 @@ export const FamiliarSelectDialog = ({
       <DialogContent
         className="dialog__content"
         sx={{
-          height: dialogHeight,
+          height: dialogHeight
         }}
       >
         <Autocomplete
@@ -144,7 +144,7 @@ export const FamiliarSelectDialog = ({
               label="Familiar list"
               inputProps={{
                 ...params.inputProps,
-                autoComplete: "new-password", // disable autocomplete and autofill
+                autoComplete: 'new-password' // disable autocomplete and autofill
               }}
             />
           )}

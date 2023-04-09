@@ -3,7 +3,12 @@ export const generateFileName = (preface: string, extension: string): string => 
   return `${preface}-${dateString}-${hours}-${minutes}${seconds}.${extension}`;
 };
 
-export const generateDateString = () => {
+export const generateDateString = (): {
+  dateString: string
+  hours: number
+  minutes: number
+  seconds: number
+} => {
   const date = new Date();
 
   const dateString = date.toISOString().slice(0, 10);

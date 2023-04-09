@@ -2,24 +2,24 @@ import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import LinkIcon from '@mui/icons-material/Link';
 import SaveIcon from '@mui/icons-material/Save';
 import SaveAsIcon from '@mui/icons-material/SaveAs';
-import { useSnackbar } from "notistack";
-import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { Button, ButtonGroup, Link } from "@mui/material";
-import { useCallback, useState } from 'react';
-import { resetSlots, selectPreset } from '../../redux/store/reducers/preset-reducer';
-import { copyImageToClipboard, exportAsImage } from '../../utility/export-to-png';
-import { ResetConfirmationDialog } from '../ResetConfirmationDialog/ResetConfirmationDialog';
-import "./PresetActions.css";
-import { sanitizeAndStringifyPreset } from '../../utility/sanitizer';
+import { Button, ButtonGroup, Link } from '@mui/material';
+import { useSnackbar } from 'notistack';
+import React, { useCallback, useState } from 'react';
 import { uploadPreset } from '../../api/upload-preset';
-import { SavePresetDialog, SavePresetDialogState } from '../SavePresetDialog/SavePresetDialog';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import { resetSlots, selectPreset } from '../../redux/store/reducers/preset-reducer';
 import { LocalStorage } from '../../store/local-storage';
+import { copyImageToClipboard } from '../../utility/export-to-png';
+import { sanitizeAndStringifyPreset } from '../../utility/sanitizer';
+import { ResetConfirmationDialog } from '../ResetConfirmationDialog/ResetConfirmationDialog';
+import { SavePresetDialog, SavePresetDialogState } from '../SavePresetDialog/SavePresetDialog';
+import './PresetActions.css';
 
 export const PresetActions = ({
   presetExportRef
 }: {
   presetExportRef: HTMLDivElement | null
-}) => {
+}): JSX.Element => {
   const dispatch = useAppDispatch();
   const { closeSnackbar, enqueueSnackbar } = useSnackbar();
   const {
@@ -27,7 +27,7 @@ export const PresetActions = ({
     familiars,
     inventorySlots,
     presetName,
-    relics,
+    relics
   } = useAppSelector(selectPreset);
 
   const [resetConfirmationOpen, setResetConfirmationOpen] = useState(false);
@@ -48,22 +48,15 @@ export const PresetActions = ({
     setResetConfirmationOpen(false);
   }, []);
 
-  const onSaveAsPngClick = useCallback(async () => {
-    await exportAsImage(
-      presetExportRef,
-      `PRESET_${presetName.replaceAll(" ", "_")}`
-    );
-  }, [presetName]);
-
   const onSaveClick = useCallback(() => {
     LocalStorage.savePresetWithoutConfirmation({
       presetName,
       inventorySlots,
       equipmentSlots,
       relics,
-      familiars,
+      familiars
     });
-    enqueueSnackbar("Preset saved", { variant: "success" });
+    enqueueSnackbar('Preset saved', { variant: 'success' });
   }, [presetName, inventorySlots, equipmentSlots, relics, familiars]);
 
   const onSaveAsClick = useCallback(async () => {
@@ -77,30 +70,30 @@ export const PresetActions = ({
   const onCopyImageToClipboardClick = useCallback(async () => {
     await copyImageToClipboard(presetExportRef, {
       onSuccess: () => {
-        enqueueSnackbar("Copied image to clipboard", {
-          variant: "success",
+        enqueueSnackbar('Copied image to clipboard', {
+          variant: 'success'
         });
       },
       onError: () => {
-        enqueueSnackbar("Failed to copy image to clipboard", {
-          variant: "error",
+        enqueueSnackbar('Failed to copy image to clipboard', {
+          variant: 'error'
         });
       }
     });
   }, [presetExportRef]);
 
-  const generateShareableLink = async () => {
+  const generateShareableLink = async (): Promise<void> => {
     try {
       const stringifiedPresetData = sanitizeAndStringifyPreset({
         presetName,
         equipmentSlots,
         inventorySlots,
         relics,
-        familiars,
+        familiars
       });
 
       setIsGeneratingLink(true);
-      const generatingLinkSnackbarKey = enqueueSnackbar("Generating shareable link...", { variant: "info" });
+      const generatingLinkSnackbarKey = enqueueSnackbar('Generating shareable link...', { variant: 'info' });
       const id = await uploadPreset(stringifiedPresetData);
 
       const link = `https://pvme.github.io/preset-maker/#/${id}`;
@@ -110,11 +103,11 @@ export const PresetActions = ({
       closeSnackbar(generatingLinkSnackbarKey);
       enqueueSnackbar(
         `${link} has been copied to your clipboard!`,
-        { variant: "success" }
+        { variant: 'success' }
       );
     } catch (err) {
-      enqueueSnackbar("Something went wrong, please try again.", {
-        variant: "error",
+      enqueueSnackbar('Something went wrong, please try again.', {
+        variant: 'error'
       });
     } finally {
       setIsGeneratingLink(false);
@@ -139,7 +132,9 @@ export const PresetActions = ({
             className="preset-actions__button"
             variant="outlined"
             startIcon={<SaveAsIcon/>}
-            onClick={onSaveAsClick}
+            onClick={() => {
+              void onSaveAsClick();
+            }}
           >
             Save As
           </Button>
@@ -154,11 +149,13 @@ export const PresetActions = ({
             variant="contained"
             startIcon={<LinkIcon/>}
             disabled={isGeneratingLink}
-            onClick={generateShareableLink}
+            onClick={() => {
+              void generateShareableLink();
+            }}
           >
             Create Shareable Link
           </Button>
-          {generatedLink &&
+          {(generatedLink != null && generatedLink.length > 0) &&
             <Link className="preset-actions__link" href={generatedLink} underline="always">
               Link to preset
             </Link>
@@ -167,7 +164,9 @@ export const PresetActions = ({
             className="preset-actions__button"
             variant="outlined"
             startIcon={<ContentCopyIcon/>}
-            onClick={onCopyImageToClipboardClick}
+            onClick={() => {
+              void onCopyImageToClipboardClick();
+            }}
           >
             Copy Image to Clipboard
           </Button>

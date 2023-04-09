@@ -1,24 +1,25 @@
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemText from "@mui/material/ListItemText";
+import React from 'react';
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemText from '@mui/material/ListItemText';
 
-export const BreakdownHeader = () => {
+export const BreakdownHeader = (): JSX.Element => {
   return (
     <ListItem disablePadding>
       <ListItemButton
         style={{
-          textAlign: "center",
+          textAlign: 'center'
         }}
       >
         <ListItemText
           primaryTypographyProps={{
-            style: { fontWeight: "bold" },
+            style: { fontWeight: 'bold' }
           }}
           primary="Name"
         />
         <ListItemText
           primaryTypographyProps={{
-            style: { fontWeight: "bold" },
+            style: { fontWeight: 'bold' }
           }}
           primary="Notes"
         />

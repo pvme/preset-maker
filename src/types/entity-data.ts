@@ -5,15 +5,15 @@ export interface EntityData {
   /**
    * Label for HTML elements.
    */
-  label: string;
+  label: string
   /**
    * URL for the image associated with this entity.
    */
-  image: string;
+  image: string
   /**
    * Human-readable name of the entity.
    */
-  name: string;
+  name: string
 
   /**
    * Optional fields.
@@ -23,9 +23,9 @@ export interface EntityData {
   /**
    * Human-readable notes assoiated with the entity.
    */
-  breakdownNotes?: string;
+  breakdownNotes?: string
   /**
    * Link to RS Wiki.
    */
-  wikiLink?: string;
+  wikiLink?: string
 };

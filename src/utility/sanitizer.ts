@@ -1,40 +1,40 @@
-import { EntityData } from "../types/entity-data";
-import { FamiliarData, Familiars } from "../types/familiar";
-import { ItemData } from "../types/item-data";
-import { RelicData, Relics } from "../types/relic";
-import { SavedPresetData } from "../types/saved-preset-data";
-import { generateDateString } from "./generate-file-name";
+import { type EntityData } from '../types/entity-data';
+import { type FamiliarData, type Familiars } from '../types/familiar';
+import { type ItemData } from '../types/item-data';
+import { type RelicData, type Relics } from '../types/relic';
+import { type SavedPresetData } from '../types/saved-preset-data';
+import { generateDateString } from './generate-file-name';
 
 const DEFAULT_ENTITY_DATA: EntityData = {
-  name: "",
-  label: "",
-  image: "",
-  breakdownNotes: "",
-  wikiLink: ""
+  name: '',
+  label: '',
+  image: '',
+  breakdownNotes: '',
+  wikiLink: ''
 };
 
-export const sanitizeEntityData = (entityDataArr: EntityData[] | undefined) => {
-  return (entityDataArr ?? []).map((entityData: EntityData) =>
-    !entityData ? DEFAULT_ENTITY_DATA : entityData
+export const sanitizeEntityData = (entityDataArr: EntityData[] | undefined): EntityData[] => {
+  return (entityDataArr ?? []).map((entityData?: EntityData) =>
+    (entityData === null || entityData === undefined) ? DEFAULT_ENTITY_DATA : entityData
   );
 };
-export const sanitizeRelicData = (relicDataArr: RelicData[] | undefined) : RelicData[] => {
-  return (relicDataArr ?? []).map((relicData: RelicData) =>
-    !relicData
+export const sanitizeRelicData = (relicDataArr: RelicData[] | undefined): RelicData[] => {
+  return (relicDataArr ?? []).map((relicData?: RelicData) =>
+    (relicData === null || relicData === undefined)
       ? {
-        ...DEFAULT_ENTITY_DATA,
-        energy: 0
-      }
-     : relicData
+          ...DEFAULT_ENTITY_DATA,
+          energy: 0
+        }
+      : relicData
   );
 };
-export const sanitizeFamiliarData = (familiarDataArr: FamiliarData[] | undefined) : FamiliarData[] => {
-  return (familiarDataArr ?? []).map((familiarData: FamiliarData) =>
-    !familiarData
+export const sanitizeFamiliarData = (familiarDataArr: FamiliarData[] | undefined): FamiliarData[] => {
+  return (familiarDataArr ?? []).map((familiarData?: FamiliarData) =>
+    (familiarData === null || familiarData === undefined)
       ? {
-        ...DEFAULT_ENTITY_DATA,
-      }
-     : familiarData
+          ...DEFAULT_ENTITY_DATA
+        }
+      : familiarData
   );
 };
 
@@ -45,31 +45,31 @@ export const sanitizePresetData = (presetData: SavedPresetData): SavedPresetData
     equipmentSlots: sanitizeEntityData(presetData.equipmentSlots),
     relics: {
       primaryRelics: sanitizeRelicData(presetData.relics?.primaryRelics),
-      alternativeRelics: sanitizeRelicData(presetData.relics?.alternativeRelics),
+      alternativeRelics: sanitizeRelicData(presetData.relics?.alternativeRelics)
     },
     familiars: {
       primaryFamiliars: sanitizeFamiliarData(presetData.familiars?.primaryFamiliars),
-      alternativeFamiliars: sanitizeFamiliarData(presetData.familiars?.alternativeFamiliars),
+      alternativeFamiliars: sanitizeFamiliarData(presetData.familiars?.alternativeFamiliars)
     }
   };
-}
+};
 
-export const stringifyPreset = (sanitizedPresetData: SavedPresetData) => {
+export const stringifyPreset = (sanitizedPresetData: SavedPresetData): string => {
   const {
     presetName,
     inventorySlots,
     equipmentSlots,
     relics,
-    familiars,
+    familiars
   } = sanitizedPresetData;
 
   const { dateString, hours, minutes, seconds } = generateDateString();
   return JSON.stringify({
-    presetName: presetName || `${dateString}-${hours}-${minutes}${seconds}`,
+    presetName: presetName ?? `${dateString}-${hours}-${minutes}${seconds}`,
     inventorySlots,
     equipmentSlots,
     relics,
-    familiars,
+    familiars
   });
 };
 
@@ -79,10 +79,13 @@ export const stringifyData = (
   equipmentData: ItemData[],
   relicData: Relics,
   familiarData: Familiars
-) => {
+): string => {
   const { dateString, hours, minutes, seconds } = generateDateString();
+  const presetNameToUse = presetName.length > 0
+    ? presetName
+    : `${dateString}-${hours}-${minutes}${seconds}`;
   return JSON.stringify({
-    presetName: presetName || `${dateString}-${hours}-${minutes}${seconds}`,
+    presetName: presetNameToUse,
     inventorySlots: inventoryData,
     equipmentSlots: equipmentData,
     relics: relicData,
@@ -90,6 +93,6 @@ export const stringifyData = (
   });
 };
 
-export const sanitizeAndStringifyPreset = (presetData: SavedPresetData) => {
+export const sanitizeAndStringifyPreset = (presetData: SavedPresetData): string => {
   return stringifyPreset(sanitizePresetData(presetData));
 };

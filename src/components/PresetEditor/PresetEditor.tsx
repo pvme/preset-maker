@@ -1,40 +1,39 @@
-import React, { RefObject, useCallback, useRef, useState } from "react";
+import React, { useCallback, useState } from 'react';
 
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import {
   clearSlotSelection, selectPreset,
   setEquipmentSlot,
   setInventorySlot, toggleSlotSelection, updateSlotIndex,
   updateSlotType
-} from "../../redux/store/reducers/preset-reducer";
+} from '../../redux/store/reducers/preset-reducer';
 import {
   addToQueue,
   selectRecentItems
-} from "../../redux/store/reducers/recent-item-reducer";
-import { ItemData } from "../../types/item-data";
-import { SlotType } from "../../types/slot-type";
-import { DialogPopup } from "../ItemSelectDialogPopup/ItemSelectDialogPopup";
-import { Equipment, Inventory } from "../SlotSection/SlotSection";
+} from '../../redux/store/reducers/recent-item-reducer';
+import { type ItemData } from '../../types/item-data';
+import { SlotType } from '../../types/slot-type';
+import { DialogPopup } from '../ItemSelectDialogPopup/ItemSelectDialogPopup';
+import { Equipment, Inventory } from '../SlotSection/SlotSection';
 
-import { FamiliarSection } from "../FamiliarSection/FamiliarSection";
-import { RelicSection } from "../RelicSection/RelicSection";
-import "./PresetEditor.css";
-import { Typography } from "@mui/material";
+import { FamiliarSection } from '../FamiliarSection/FamiliarSection';
+import { RelicSection } from '../RelicSection/RelicSection';
+import './PresetEditor.css';
 
 export const PresetEditor = ({
   setExportRef
 }: {
   setExportRef: (ref: HTMLDivElement) => void
-}) => {
+}): JSX.Element => {
   const dispatch = useAppDispatch();
 
   const {
     inventorySlots,
     equipmentSlots,
     slotType,
-    slotIndex,
+    slotIndex
   } = useAppSelector(selectPreset);
   const recentItems = useAppSelector(selectRecentItems);
 
@@ -46,7 +45,7 @@ export const PresetEditor = ({
       index: number,
       className: string
     ) => {
-      if (className === "inventory") {
+      if (className === 'inventory') {
         dispatch(updateSlotType(SlotType.Inventory));
       } else {
         dispatch(updateSlotType(SlotType.Equipment));
@@ -54,7 +53,7 @@ export const PresetEditor = ({
 
       // If a slot is opened that is not currently selected, clear the selected
       // slots.
-      if (!inventorySlots[index].selected) {
+      if (!(inventorySlots[index].selected ?? false)) {
         dispatch(clearSlotSelection());
       }
 
@@ -70,7 +69,7 @@ export const PresetEditor = ({
       index: number,
       className: string
     ) => {
-      if (className === "inventory") {
+      if (className === 'inventory') {
         dispatch(updateSlotType(SlotType.Inventory));
       } else {
         dispatch(updateSlotType(SlotType.Equipment));

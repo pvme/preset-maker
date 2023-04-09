@@ -1,4 +1,4 @@
-import { Coord } from "../types/coord";
+import { type Coord } from '../types/coord';
 
 export const inventoryCoords: Coord[] = [
   { x1: 11, y1: 7, x2: 47, y2: 39 },
@@ -31,7 +31,7 @@ export const inventoryCoords: Coord[] = [
   { x1: 140, y1: 115, x2: 176, y2: 147 },
   { x1: 183, y1: 115, x2: 219, y2: 147 },
   { x1: 226, y1: 115, x2: 262, y2: 147 },
-  { x1: 269, y1: 115, x2: 305, y2: 147 },
+  { x1: 269, y1: 115, x2: 305, y2: 147 }
 ];
 
 export const equipmentCoords: Coord[] = [
@@ -50,5 +50,5 @@ export const equipmentCoords: Coord[] = [
   { x1: 422, y1: 84, x2: 454, y2: 115 },
   { x1: 468, y1: 84, x2: 500, y2: 115 },
 
-  { x1: 330, y1: 122, x2: 362, y2: 152 },
+  { x1: 330, y1: 122, x2: 362, y2: 152 }
 ];

@@ -1,29 +1,29 @@
-import { useCallback, useEffect, useRef, useState } from "react";
-import { canCopyImagesToClipboard } from "copy-image-clipboard";
-import { useSnackbar } from "notistack";
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { canCopyImagesToClipboard } from 'copy-image-clipboard';
+import { useSnackbar } from 'notistack';
 
-import Button from "@mui/material/Button";
-import List from "@mui/material/List";
+import Button from '@mui/material/Button';
+import List from '@mui/material/List';
 
-import { BreakdownHeader } from "../BreakdownHeader/BreakdownHeader";
-import { BreakdownListItem } from "../BreakdownListItem/BreakdownListItem";
-import { ClipboardCopyButtonContainer } from "../ClipboardCopyButtonContainer/ClipboardCopyButtonContainer";
-import { useAppSelector } from "../../redux/hooks";
-import { selectPreset } from "../../redux/store/reducers/preset-reducer";
-import { ItemData } from "../../types/item-data";
-import { BreakdownType } from "../../types/breakdown";
+import { BreakdownHeader } from '../BreakdownHeader/BreakdownHeader';
+import { BreakdownListItem } from '../BreakdownListItem/BreakdownListItem';
+import { ClipboardCopyButtonContainer } from '../ClipboardCopyButtonContainer/ClipboardCopyButtonContainer';
+import { useAppSelector } from '../../redux/hooks';
+import { selectPreset } from '../../redux/store/reducers/preset-reducer';
+import { type ItemData } from '../../types/item-data';
+import { BreakdownType } from '../../types/breakdown';
 import {
   copyImageToClipboard,
-  exportAsImage,
-} from "../../utility/export-to-png";
+  exportAsImage
+} from '../../utility/export-to-png';
 
-import "./PresetBreakdown.css";
+import './PresetBreakdown.css';
 
 // This is used to map the equipmentSlots array (0-12) to a column
 // Used in getMappedEquipment
 const customOrder: number[] = [0, 4, 6, 7, 8, 2, 9, 1, 3, 5, 10, 11, 12];
 
-export const PresetBreakdown = () => {
+export const PresetBreakdown = (): JSX.Element => {
   const exportRef = useRef<HTMLDivElement>(null);
   const { enqueueSnackbar } = useSnackbar();
   const [mappedEquipment, setMappedEquipment] = useState<ItemData[]>();
@@ -33,11 +33,11 @@ export const PresetBreakdown = () => {
   const {
     presetName: name,
     inventorySlots,
-    equipmentSlots,
+    equipmentSlots
   } = useAppSelector(selectPreset);
 
   useEffect(() => {
-    const getMappedEquipment = () => {
+    const getMappedEquipment = (): void => {
       const reorderedArray: ItemData[] = [];
 
       for (let i = 0; i < customOrder.length; i++) {
@@ -48,8 +48,8 @@ export const PresetBreakdown = () => {
       setMappedEquipment(reorderedArray);
     };
 
-    const getUniqueInventoryItems = () => {
-      let uniqueItemData = inventorySlots.filter((item, index, self) => {
+    const getUniqueInventoryItems = (): void => {
+      const uniqueItemData = inventorySlots.filter((item, index, self) => {
         return (
           self.map((i) => i.name).indexOf(item.name) === index && item.name
         );
@@ -65,8 +65,7 @@ export const PresetBreakdown = () => {
   const exportBreakdown = useCallback(async () => {
     await exportAsImage(
       exportRef.current,
-      `BREAK_DOWN_${name.replaceAll(" ", "_")}`
-
+      `BREAK_DOWN_${name.replaceAll(' ', '_')}`
 
     );
   }, [name, exportRef]);
@@ -74,13 +73,13 @@ export const PresetBreakdown = () => {
   const copyBreakdownToClipboard = useCallback(async () => {
     await copyImageToClipboard(exportRef.current, {
       onSuccess: () => {
-        enqueueSnackbar("Copied image to clipboard", {
-          variant: "success",
+        enqueueSnackbar('Copied image to clipboard', {
+          variant: 'success'
         });
       },
       onError: () => {
-        enqueueSnackbar("Failed to copy image to clipboard", {
-          variant: "error",
+        enqueueSnackbar('Failed to copy image to clipboard', {
+          variant: 'error'
         });
       }
     });
@@ -93,7 +92,9 @@ export const PresetBreakdown = () => {
           className="breakdown-button"
           variant="contained"
           color="success"
-          onClick={exportBreakdown}
+          onClick={() => {
+            void exportBreakdown();
+          }}
         >
           Save Breakdown as PNG
         </Button>
@@ -102,7 +103,9 @@ export const PresetBreakdown = () => {
             variant="outlined"
             color="secondary"
             disabled={!canCopyImagesToClipboard()}
-            onClick={copyBreakdownToClipboard}
+            onClick={() => {
+              void copyBreakdownToClipboard();
+            }}
           >
             Copy Breakdown to Clipboard
           </Button>
@@ -114,7 +117,7 @@ export const PresetBreakdown = () => {
             <BreakdownHeader />
             {mappedEquipment?.map(
               (item) =>
-                item.label && (
+                (item.label.length > 0) && (
                   <BreakdownListItem
                     key={item.label}
                     item={item}
@@ -127,16 +130,15 @@ export const PresetBreakdown = () => {
         <div className="equipment-breakdown-container--inventory">
           <List className="breakdown-list" dense>
             <BreakdownHeader />
-            {uniqueInventoryItems &&
-              uniqueInventoryItems.map((item) => {
-                return (
+            {(uniqueInventoryItems ?? []).map((item) => {
+              return (
                   <BreakdownListItem
                     key={item.label}
                     item={item}
                     type={BreakdownType.Inventory}
                   />
-                );
-              })}
+              );
+            })}
           </List>
         </div>
       </div>

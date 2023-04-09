@@ -1,9 +1,9 @@
-import html2canvas from "html2canvas";
+import html2canvas from 'html2canvas';
 
-import { generateFileName } from "./generate-file-name";
+import { generateFileName } from './generate-file-name';
 
 export const exportAsImage = async (element: HTMLElement | null, preface: string): Promise<void> => {
-  if (!element) {
+  if (element == null) {
     return;
   }
 
@@ -12,34 +12,34 @@ export const exportAsImage = async (element: HTMLElement | null, preface: string
   });
 };
 
-export const copyImageToClipboard = async (element: HTMLElement | null, { onSuccess, onError} : {
-  onSuccess: () => void,
-  onError: () => void,
+export const copyImageToClipboard = async (element: HTMLElement | null, { onSuccess, onError }: {
+  onSuccess: () => void
+  onError: () => void
 }): Promise<void> => {
-  if (!element) {
+  if (element == null) {
     onError();
     return;
   }
 
   await createCanvas(element, (_imageBlobURL: string, canvas: HTMLCanvasElement) => {
-      canvas.toBlob((blob) => {
-        if (!blob) {
-          onError();
-          return;
-        }
+    canvas.toBlob((blob) => {
+      if (blob == null) {
+        onError();
+        return;
+      }
 
-        const item = new ClipboardItem({ 'image/png': blob });
-        navigator.clipboard.write([item]);
-        onSuccess();
-      })
+      const item = new ClipboardItem({ 'image/png': blob });
+      void navigator.clipboard.write([item]);
+      onSuccess();
+    });
   });
 };
 
-const createCanvas = ( async (element: HTMLElement, callback: (imageBlobURL: string, canvas: HTMLCanvasElement) => void): Promise<void> => {
+const createCanvas = async (element: HTMLElement, callback: (imageBlobURL: string, canvas: HTMLCanvasElement) => void): Promise<void> => {
   const previousheight = element.style.height;
 
-  const html = document.getElementsByTagName("html")[0];
-  const body = document.getElementsByTagName("body")[0];
+  const html = document.getElementsByTagName('html')[0];
+  const body = document.getElementsByTagName('body')[0];
 
   let htmlWidth = html.clientWidth;
   let bodyWidth = body.clientWidth;
@@ -51,26 +51,26 @@ const createCanvas = ( async (element: HTMLElement, callback: (imageBlobURL: str
     bodyWidth += newWidth;
   }
 
-  html.style.width = htmlWidth + "px";
-  body.style.width = bodyWidth + "px";
+  html.style.width = `${htmlWidth}px`;
+  body.style.width = `${bodyWidth}px`;
 
-  element.style.height = element.clientHeight - 7 + "px";
+  element.style.height = `${element.clientHeight - 7}px`;
 
   const canvas = await html2canvas(element, {
     allowTaint: true,
     logging: false,
-    useCORS: true,
+    useCORS: true
   });
-  const imageBlobURL = canvas.toDataURL("image/png", 1.0);
+  const imageBlobURL = canvas.toDataURL('image/png', 1.0);
   callback(imageBlobURL, canvas);
   // reset height
   element.style.height = previousheight;
-})
+};
 
 const downloadImage = (blob: string, preface: string): void => {
-  const fakeLink = window.document.createElement("a");
-  fakeLink.setAttribute("style", "display: none");
-  fakeLink.download = generateFileName(preface, "png");
+  const fakeLink = window.document.createElement('a');
+  fakeLink.setAttribute('style', 'display: none');
+  fakeLink.download = generateFileName(preface, 'png');
 
   fakeLink.href = blob;
 
@@ -80,4 +80,3 @@ const downloadImage = (blob: string, preface: string): void => {
 
   fakeLink.remove();
 };
-

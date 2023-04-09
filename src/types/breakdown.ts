@@ -4,7 +4,7 @@ export enum BreakdownType {
 }
 
 export interface Breakdown {
-  itemName: string;
-  description: string;
-  breakdownType: BreakdownType;
+  itemName: string
+  description: string
+  breakdownType: BreakdownType
 }

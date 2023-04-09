@@ -1,22 +1,22 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { ItemData } from "../../../types/item-data";
-import { ApplicationState } from "../store";
+import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
+import { type ItemData } from '../../../types/item-data';
+import { type ApplicationState } from '../store';
 
 interface RecentItemState {
-  itemQueue: ItemData[];
+  itemQueue: ItemData[]
 }
 
 const initialState: RecentItemState = {
-  itemQueue: [],
+  itemQueue: []
 };
 
 export const recentItemSlice = createSlice({
-  name: "recent-item",
+  name: 'recent-item',
   initialState,
   reducers: {
     addToQueue: (state: RecentItemState, action: PayloadAction<ItemData>) => {
       // Check if the item has all empty values
-      if (Object.values(action.payload).every((value) => !value)) {
+      if (Object.values(action.payload).every((value) => value === undefined || value === null)) {
         // If it does, return without adding it to the queue
         return;
       }
@@ -44,12 +44,12 @@ export const recentItemSlice = createSlice({
         // If it's not, remove the last item in the queue
         state.itemQueue.pop();
       }
-    },
-  },
+    }
+  }
 });
 
 export const { addToQueue, popQueue } = recentItemSlice.actions;
 
-export const selectRecentItems = (state: ApplicationState) => state.recentItem.itemQueue;
+export const selectRecentItems = (state: ApplicationState): ItemData[] => state.recentItem.itemQueue;
 
 export default recentItemSlice.reducer;
