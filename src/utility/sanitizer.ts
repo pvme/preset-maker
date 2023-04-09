@@ -1,8 +1,7 @@
-<<<<<<< HEAD
 import { EntityData } from "../types/entity-data";
-import { FamiliarData } from "../types/familiar";
+import { FamiliarData, Familiars } from "../types/familiar";
 import { ItemData } from "../types/item-data";
-import { RelicData } from "../types/relic";
+import { RelicData, Relics } from "../types/relic";
 import { SavedPresetData } from "../types/saved-preset-data";
 import { generateDateString } from "./generate-file-name";
 
@@ -71,33 +70,7 @@ export const stringifyPreset = (sanitizedPresetData: SavedPresetData) => {
     equipmentSlots,
     relics,
     familiars,
-=======
-import { Familiars } from "../types/familiar";
-import { ItemData } from "../types/item-data";
-import { Relics } from "../types/relic";
-import { generateDateString } from "./generate-file-name";
-
-export const sanitizedData = (
-  inventoryData: ItemData[],
-  equipmentData: ItemData[],
-  relicData: Relics,
-  familiarData: Familiars
-) => {
-  // ensure that no values can be null
-  const inventory = inventoryData.map((item: ItemData) =>
-    !item ? { name: "", label: "", image: "", breakdownNotes: "" } : item
-  );
-  const equipment = equipmentData.map((item: ItemData) =>
-    !item ? { name: "", label: "", image: "", breakdownNotes: "" } : item
-  );
-  //TODO santize relics here
-  //temp, just assign it
-  const relics = relicData;
-  //TODO sanitize familiars here
-  //temp, just assign it
-  const familiars = familiarData;
-
-  return { inventory, equipment, relics, familiars };
+  });
 };
 
 export const stringifyData = (
@@ -114,7 +87,6 @@ export const stringifyData = (
     equipmentSlots: equipmentData,
     relics: relicData,
     familiars: familiarData
->>>>>>> origin/master
   });
 };
 
