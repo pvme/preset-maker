@@ -29,7 +29,7 @@ export const SavePresetDialogPopup = ({ open, loadData, updateData, handleClose 
   const [name, setName] = useState<string>("");
   const [error, setError] = useState<boolean>();
 
-  const { presetName: presetName, inventorySlots, equipmentSlots } = useAppSelector(selectPreset);
+  const { presetName: presetName, inventorySlots, equipmentSlots, relics, familiars } = useAppSelector(selectPreset);
 
   const onPresetNameChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
     setError(!event.currentTarget.value);
@@ -47,7 +47,7 @@ export const SavePresetDialogPopup = ({ open, loadData, updateData, handleClose 
       }
       dispatch(setPresetName(name));
 
-      const data = sanitizedData(inventorySlots, equipmentSlots);
+      const data = sanitizedData(inventorySlots, equipmentSlots, relics, familiars);
       const currentData = loadData();
 
       if (currentData.find((d) => d.presetName.toLocaleUpperCase() === name.toLocaleUpperCase())) {
