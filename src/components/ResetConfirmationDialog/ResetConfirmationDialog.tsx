@@ -11,7 +11,7 @@ interface ResetConfirmationProps {
   open: boolean;
 }
 
-export const ResetConfirmation = ({
+export const ResetConfirmationDialog = ({
   handleConfirmation,
   handleClose,
   open,

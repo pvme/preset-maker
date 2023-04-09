@@ -17,13 +17,14 @@ import {
   importDataAction,
   selectPreset,
 } from "../../redux/store/reducers/preset-reducer";
-import { ImportData } from "../../types/import-data";
-import { SavePresetDialogPopup } from "../SavePresetDialogPopup/SavePresetDialogPopup";
+import { SavedPresetData as SavedPresetData } from "../../types/saved-preset-data";
 
 import "./PresetLoader.css";
+import { SavePresetDialog, SavePresetDialogState } from "../SavePresetDialog/SavePresetDialog";
+import { LocalStorage } from "../../store/local-storage";
 
 export const PresetName = () => {
-  const [presets, setPresets] = useState<ImportData[]>();
+  const [presets, setPresets] = useState<SavedPresetData[]>();
   const [presetNames, setPresetNames] = useState<string[]>();
   const [selectedPreset, setSelectedPreset] = useState<string>();
   const [saveDialogOpen, setSaveDialogOpen] = useState<boolean>(false);
@@ -35,29 +36,18 @@ export const PresetName = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    updateData();
+    updatePresets();
   }, [presetName]);
 
-  const updateData = useCallback(() => {
-    const data = loadData();
+  const updatePresets = useCallback(() => {
+    const data = LocalStorage.loadPresets();
 
     setPresets(data);
     setPresetNames(
-      data.map((importData: ImportData) => importData.presetName || "")
+      data.map((savedPresetData: SavedPresetData) => savedPresetData.presetName || "")
     );
     setSelectedPreset(presetName);
   }, [presetName]);
-
-  const loadData = () => {
-    // load data from localStorage
-    const lsPresets = window.localStorage.getItem("presets");
-    if (lsPresets) {
-      const itemData: ImportData[] = JSON.parse(lsPresets);
-      return itemData;
-    }
-
-    return [];
-  };
 
   const onPresetChange = useCallback(
     (
@@ -78,7 +68,7 @@ export const PresetName = () => {
     [presets]
   );
 
-  const savePreset = useCallback(() => {
+  const createNewPreset = useCallback(() => {
     setSaveDialogOpen(true);
   }, []);
 
@@ -88,7 +78,7 @@ export const PresetName = () => {
       event.preventDefault();
       event.stopPropagation();
 
-      let data = loadData();
+      let data = LocalStorage.loadPresets();
       // check to see if presetKey exists in localStorage
       if (
         data.find(
@@ -115,7 +105,7 @@ export const PresetName = () => {
       enqueueSnackbar("Successfully removed the preset", {
         variant: "success",
       });
-      updateData();
+      updatePresets();
     },
     [presets]
   );
@@ -129,7 +119,7 @@ export const PresetName = () => {
       <ButtonGroup>
         {presetNames && (
           <Autocomplete
-            className="autocomplete-field"
+            className="autocomplete-field mr-8"
             disablePortal
             autoHighlight
             disableClearable
@@ -141,7 +131,7 @@ export const PresetName = () => {
             renderInput={(params: AutocompleteRenderInputParams) => (
               <TextField
                 {...params}
-                label="Load Preset"
+                label="Load existing preset"
                 inputProps={{
                   ...params.inputProps,
                   autoComplete: "new-password", // disable autocomplete and autofill
@@ -162,15 +152,15 @@ export const PresetName = () => {
             )}
           />
         )}
-        <Button className="button" variant="contained" onClick={savePreset}>
-          Save&nbsp;New&nbsp;Preset
+        <Button className="button" variant="contained" onClick={createNewPreset}>
+          Create&nbsp;New&nbsp;Preset
         </Button>
       </ButtonGroup>
-      <SavePresetDialogPopup
+      <SavePresetDialog
         open={saveDialogOpen}
-        loadData={loadData}
-        updateData={updateData}
-        handleClose={handleDialogClose}
+        state={SavePresetDialogState.NewPreset}
+        onSave={updatePresets}
+        onClose={handleDialogClose}
       />
     </div>
   );

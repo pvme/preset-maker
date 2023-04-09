@@ -12,8 +12,12 @@ export const exportAsImage = async (element: HTMLElement | null, preface: string
   });
 };
 
-export const copyImageToClipboard = async (element: HTMLElement | null, onError: () => void): Promise<void> => {
+export const copyImageToClipboard = async (element: HTMLElement | null, { onSuccess, onError} : {
+  onSuccess: () => void,
+  onError: () => void,
+}): Promise<void> => {
   if (!element) {
+    onError();
     return;
   }
 
@@ -23,9 +27,10 @@ export const copyImageToClipboard = async (element: HTMLElement | null, onError:
           onError();
           return;
         }
-        
+
         const item = new ClipboardItem({ 'image/png': blob });
-        navigator.clipboard.write([item]); 
+        navigator.clipboard.write([item]);
+        onSuccess();
       })
   });
 };

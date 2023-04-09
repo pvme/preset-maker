@@ -1,6 +1,6 @@
+import { useSnackbar } from "notistack";
 import { useCallback, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { useSnackbar } from "notistack";
 import { validate } from "typescript-json";
 
 import AppBar from "@mui/material/AppBar";
@@ -11,16 +11,14 @@ import Container from "@mui/material/Container";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 
-import { UploadPreset } from "./headerBarApi";
-
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import {
   importDataAction,
   selectPreset,
 } from "../../redux/store/reducers/preset-reducer";
-import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { ImportData } from "../../types/import-data";
+import { SavedPresetData } from "../../types/saved-preset-data";
 import { exportAsJson } from "../../utility/export-to-json";
-import { sanitizedData, stringifyData } from "../../utility/sanitizer";
+import { sanitizeAndStringifyPreset } from "../../utility/sanitizer";
 
 import "./HeaderBar.css";
 
@@ -34,43 +32,19 @@ export const HeaderBar = () => {
     useAppSelector(selectPreset);
   const { enqueueSnackbar } = useSnackbar();
 
-  const generateShareableLink = async () => {
-    try {
-      const sanitized = sanitizedData(inventorySlots, equipmentSlots, relics, familiars);
-      const stringified = stringifyData(
-        presetName,
-        sanitized.inventory,
-        sanitized.equipment,
-        sanitized.relics,
-        sanitized.familiars
-      );
-      enqueueSnackbar("Generating shareable link...", { variant: "info" });
-      const id = await UploadPreset(stringified);
-      await navigator.clipboard.writeText(
-        `https://pvme.github.io/preset-maker/#/${id}`
-      );
-      enqueueSnackbar(
-        `https://pvme.github.io/preset-maker/#/${id} has been copied to your clipboard!`,
-        { variant: "success" }
-      );
-    } catch (err) {
-      enqueueSnackbar("Something went wrong, please try again.", {
-        variant: "error",
-      });
-    }
-  };
-
   const exportData = useCallback(() => {
-    const sanitized = sanitizedData(inventorySlots, equipmentSlots, relics, familiars);
-    const stringified = stringifyData(
+    const stringifiedPresetData = sanitizeAndStringifyPreset({
       presetName,
-      sanitized.inventory,
-      sanitized.equipment,
-      sanitized.relics,
-      sanitized.familiars
+      equipmentSlots,
+      inventorySlots,
+      relics,
+      familiars,
+    });
+    exportAsJson(
+      `PRESET_${presetName.replaceAll(" ", "_")}`,
+      stringifiedPresetData
     );
-    exportAsJson(`PRESET_${presetName.replaceAll(" ", "_")}`, stringified);
-  }, [presetName, inventorySlots, equipmentSlots, relics, familiars]);
+  }, [presetName, inventorySlots, equipmentSlots]);
 
   const importData = useCallback(() => {
     inputFile.current?.click();
@@ -93,7 +67,7 @@ export const HeaderBar = () => {
         }
 
         const data = JSON.parse(event.target.result as string);
-        if (!validate<ImportData>(data).success) {
+        if (!validate<SavedPresetData>(data).success) {
           enqueueSnackbar("Invalid JSON data.", { variant: "error" });
           return;
         }
@@ -150,13 +124,6 @@ export const HeaderBar = () => {
               PVME Preset Generator
             </Typography>
             <ButtonGroup className="button-container sub-item">
-              <Button
-                color="inherit"
-                variant="outlined"
-                onClick={generateShareableLink}
-              >
-                Get&nbsp;Shareable&nbsp;Link
-              </Button>
               <Button color="inherit" variant="outlined" onClick={importData}>
                 Import&nbsp;JSON
               </Button>

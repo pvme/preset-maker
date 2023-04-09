@@ -1,3 +1,7 @@
+.preset-and-actions {
+  display: flex;
+}
+
 .preset-section {
   display: flex;
   flex-direction: column;
@@ -6,5 +10,5 @@
 }
 
 .preset-section > div {
-  margin: 15px;
+  margin: 10px;
 }

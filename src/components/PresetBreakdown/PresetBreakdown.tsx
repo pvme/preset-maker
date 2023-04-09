@@ -66,14 +66,23 @@ export const PresetBreakdown = () => {
     await exportAsImage(
       exportRef.current,
       `BREAK_DOWN_${name.replaceAll(" ", "_")}`
+
+
     );
   }, [name, exportRef]);
 
   const copyBreakdownToClipboard = useCallback(async () => {
-    await copyImageToClipboard(exportRef.current, () => {
-      enqueueSnackbar("Failed to copy image to clipboard", {
-        variant: "error",
-      });
+    await copyImageToClipboard(exportRef.current, {
+      onSuccess: () => {
+        enqueueSnackbar("Copied image to clipboard", {
+          variant: "success",
+        });
+      },
+      onError: () => {
+        enqueueSnackbar("Failed to copy image to clipboard", {
+          variant: "error",
+        });
+      }
     });
   }, [exportRef]);
 
