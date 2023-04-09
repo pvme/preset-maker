@@ -24,6 +24,7 @@ import itemData from "../../data/sorted_items.json";
 import "./ItemSelectDialogPopup.css";
 import { useAppSelector } from "../../redux/hooks";
 import { selectPreset } from "../../redux/store/reducers/preset-reducer";
+import { Tooltip } from "@mui/material";
 
 interface DialogPopupProps {
   open: boolean;
@@ -190,22 +191,29 @@ export const DialogPopup = ({
         {recentlySelectedItems.length > 0 && (
           <div className="recent-items-title">
             <Typography className="recent-items-title">
-              Recent Items:
+              Recent Items
             </Typography>
             {recentlySelectedItems.map((item: ItemData) =>
               item.image ? (
-                <Button
-                  key={`recent-${item.name}`}
-                  startIcon={
-                    <Avatar
-                      key={`recent-${item.image}`}
-                      variant="square"
-                      src={item.image}
-                      className="avatar-icon"
-                    />
-                  }
-                  onClick={() => handleRecentClick(item)}
-                ></Button>
+                <Tooltip title={item.name}>
+                  <Button
+                    classes={{
+                      startIcon: 'recent-item-button'
+                    }}
+                    key={`recent-${item.name}`}
+                    startIcon={
+                      <Avatar
+                        key={`recent-${item.image}`}
+                        variant="square"
+                        src={item.image}
+                        classes={{
+                          img: 'recent-item-image'
+                        }}
+                      />
+                    }
+                    onClick={() => handleRecentClick(item)}
+                  ></Button>
+                </Tooltip>
               ) : null
             )}
           </div>

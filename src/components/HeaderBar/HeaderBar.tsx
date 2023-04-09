@@ -11,11 +11,10 @@ import Container from "@mui/material/Container";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 
-
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import {
   importDataAction,
-  selectPreset
+  selectPreset,
 } from "../../redux/store/reducers/preset-reducer";
 import { SavedPresetData } from "../../types/saved-preset-data";
 import { exportAsJson } from "../../utility/export-to-json";
@@ -29,13 +28,8 @@ export const HeaderBar = () => {
   const navigate = useNavigate();
 
   const dispatch = useAppDispatch();
-  const {
-    presetName,
-    inventorySlots,
-    equipmentSlots,
-    relics,
-    familiars,
-  } = useAppSelector(selectPreset);
+  const { presetName, inventorySlots, equipmentSlots, relics, familiars } =
+    useAppSelector(selectPreset);
   const { enqueueSnackbar } = useSnackbar();
 
   const exportData = useCallback(() => {
@@ -46,7 +40,10 @@ export const HeaderBar = () => {
       relics,
       familiars,
     });
-    exportAsJson(`PRESET_${presetName.replaceAll(" ", "_")}`, stringifiedPresetData);
+    exportAsJson(
+      `PRESET_${presetName.replaceAll(" ", "_")}`,
+      stringifiedPresetData
+    );
   }, [presetName, inventorySlots, equipmentSlots]);
 
   const importData = useCallback(() => {

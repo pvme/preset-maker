@@ -9,7 +9,10 @@ import DialogTitle from "@mui/material/DialogTitle";
 import TextField from "@mui/material/TextField";
 
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { selectPreset, setPresetName } from "../../redux/store/reducers/preset-reducer";
+import {
+  selectPreset,
+  setPresetName,
+} from "../../redux/store/reducers/preset-reducer";
 
 import { LocalStorage } from "../../store/local-storage";
 import "./SavePresetDialog.css";
@@ -17,7 +20,7 @@ import "./SavePresetDialog.css";
 export enum SavePresetDialogState {
   None,
   NewPreset,
-  ExistingPreset
+  ExistingPreset,
 }
 
 interface SavePresetDialogProps {
@@ -27,7 +30,12 @@ interface SavePresetDialogProps {
   onClose: () => void;
 }
 
-export const SavePresetDialog = ({ open, state, onSave, onClose }: SavePresetDialogProps) => {
+export const SavePresetDialog = ({
+  open,
+  state,
+  onSave,
+  onClose,
+}: SavePresetDialogProps) => {
   const dispatch = useAppDispatch();
   const { enqueueSnackbar } = useSnackbar();
 
@@ -42,10 +50,13 @@ export const SavePresetDialog = ({ open, state, onSave, onClose }: SavePresetDia
     familiars,
   } = useAppSelector(selectPreset);
 
-  const onPresetNameChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
-    setError(!event.currentTarget.value);
-    setName(event.currentTarget.value);
-  }, []);
+  const onPresetNameChange = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      setError(!event.currentTarget.value);
+      setName(event.currentTarget.value);
+    },
+    []
+  );
 
   const handleSave = useCallback(
     (event: React.FormEvent<HTMLButtonElement>) => {
@@ -64,10 +75,12 @@ export const SavePresetDialog = ({ open, state, onSave, onClose }: SavePresetDia
         inventorySlots,
         equipmentSlots,
         relics,
-        familiars
+        familiars,
       });
       if (didSave) {
-        enqueueSnackbar("Successfully saved your preset", { variant: "success" });
+        enqueueSnackbar("Successfully saved your preset", {
+          variant: "success",
+        });
         if (onSave) {
           onSave();
         }
@@ -78,9 +91,10 @@ export const SavePresetDialog = ({ open, state, onSave, onClose }: SavePresetDia
     [name, presetName, inventorySlots, equipmentSlots]
   );
 
-  const dialogTitle = state === SavePresetDialogState.ExistingPreset
-    ? 'Save preset as'
-    : 'Create new preset';
+  const dialogTitle =
+    state === SavePresetDialogState.ExistingPreset
+      ? "Save preset as"
+      : "Create new preset";
   return (
     <Dialog open={open} onClose={onClose}>
       <form>
