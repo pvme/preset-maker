@@ -2,7 +2,9 @@ import { SavedPresetData } from "../types/saved-preset-data";
 import { sanitizePresetData } from "../utility/sanitizer";
 
 /**
- * TODO
+ * Handles read/writes to localStorage. Currently used for:
+ *
+ * - Saved presets
  */
 class LocalStorage {
   PRESETS_KEY = 'presets';
@@ -18,7 +20,6 @@ class LocalStorage {
   }
 
   savePresetWithoutConfirmation(presetData: SavedPresetData) {
-    debugger;
     const presetName = presetData.presetName;
     const sanitizedPresetData = sanitizePresetData(presetData);
     const currentPresets = this.loadPresets();

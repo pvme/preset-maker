@@ -10,7 +10,7 @@ import { resetSlots, selectPreset } from '../../redux/store/reducers/preset-redu
 import { copyImageToClipboard, exportAsImage } from '../../utility/export-to-png';
 import { ResetConfirmationDialog } from '../ResetConfirmationDialog/ResetConfirmationDialog';
 import "./PresetActions.css";
-import { sanitizePresetData, stringifyData } from '../../utility/sanitizer';
+import { sanitizeAndStringifyPreset } from '../../utility/sanitizer';
 import { uploadPreset } from '../../api/upload-preset';
 import { SavePresetDialog, SavePresetDialogState } from '../SavePresetDialog/SavePresetDialog';
 import { LocalStorage } from '../../store/local-storage';
@@ -91,14 +91,13 @@ export const PresetActions = ({
 
   const generateShareableLink = async () => {
     try {
-      const sanitizedPresetData = sanitizePresetData({
+      const stringifiedPresetData = sanitizeAndStringifyPreset({
         presetName,
         equipmentSlots,
         inventorySlots,
         relics,
         familiars,
       });
-      const stringifiedPresetData = stringifyData(sanitizedPresetData);
 
       setIsGeneratingLink(true);
       const generatingLinkSnackbarKey = enqueueSnackbar("Generating shareable link...", { variant: "info" });

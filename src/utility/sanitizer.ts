@@ -54,7 +54,7 @@ export const sanitizePresetData = (presetData: SavedPresetData): SavedPresetData
   };
 }
 
-export const stringifyData = (sanitizedPresetData: SavedPresetData) => {
+export const stringifyPreset = (sanitizedPresetData: SavedPresetData) => {
   const {
     presetName,
     inventorySlots,
@@ -71,4 +71,8 @@ export const stringifyData = (sanitizedPresetData: SavedPresetData) => {
     relics,
     familiars,
   });
+};
+
+export const sanitizeAndStringifyPreset = (presetData: SavedPresetData) => {
+  return stringifyPreset(sanitizePresetData(presetData));
 };

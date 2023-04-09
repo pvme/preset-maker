@@ -19,7 +19,7 @@ import {
 } from "../../redux/store/reducers/preset-reducer";
 import { SavedPresetData } from "../../types/saved-preset-data";
 import { exportAsJson } from "../../utility/export-to-json";
-import { sanitizePresetData, stringifyData } from "../../utility/sanitizer";
+import { sanitizeAndStringifyPreset } from "../../utility/sanitizer";
 
 import "./HeaderBar.css";
 
@@ -39,14 +39,13 @@ export const HeaderBar = () => {
   const { enqueueSnackbar } = useSnackbar();
 
   const exportData = useCallback(() => {
-    const sanitizedPresetData = sanitizePresetData({
+    const stringifiedPresetData = sanitizeAndStringifyPreset({
       presetName,
       equipmentSlots,
       inventorySlots,
       relics,
       familiars,
     });
-    const stringifiedPresetData = stringifyData(sanitizedPresetData);
     exportAsJson(`PRESET_${presetName.replaceAll(" ", "_")}`, stringifiedPresetData);
   }, [presetName, inventorySlots, equipmentSlots]);
 
