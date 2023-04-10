@@ -5,6 +5,6 @@ export enum PrimaryOrAlternative {
 };
 
 export interface IndexedSelection {
-  primaryOrAlternative: PrimaryOrAlternative;
-  index: number;
+  primaryOrAlternative: PrimaryOrAlternative
+  index: number
 }

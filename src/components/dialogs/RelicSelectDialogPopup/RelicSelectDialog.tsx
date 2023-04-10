@@ -1,33 +1,33 @@
-import fuzzysort from "fuzzysort";
-import { useCallback, useState } from "react";
+import fuzzysort from 'fuzzysort';
+import React, { useCallback, useState } from 'react';
 
 import Autocomplete, {
-  AutocompleteChangeDetails,
-  AutocompleteChangeReason,
-  AutocompleteRenderInputParams,
-  AutocompleteRenderOptionState
-} from "@mui/material/Autocomplete";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
-import DialogContent from "@mui/material/DialogContent";
-import DialogTitle from "@mui/material/DialogTitle";
-import TextField from "@mui/material/TextField";
-import { FilterOptionsState } from "@mui/material/useAutocomplete";
+  type AutocompleteChangeDetails,
+  type AutocompleteChangeReason,
+  type AutocompleteRenderInputParams,
+  type AutocompleteRenderOptionState
+} from '@mui/material/Autocomplete';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogTitle from '@mui/material/DialogTitle';
+import TextField from '@mui/material/TextField';
+import { type FilterOptionsState } from '@mui/material/useAutocomplete';
 
-import sortedRelics from "../../../data/sorted_relics.json";
-import { RelicData } from "../../../types/relic";
-import "./RelicSelectDialog.css";
-import { useAppSelector } from "../../../redux/hooks";
-import { selectPreset } from "../../../redux/store/reducers/preset-reducer";
-import { IndexedSelection, PrimaryOrAlternative } from "../../../types/util";
+import sortedRelics from '../../../data/sorted_relics.json';
+import { type RelicData } from '../../../types/relic';
+import './RelicSelectDialog.css';
+import { useAppSelector } from '../../../redux/hooks';
+import { selectPreset } from '../../../redux/store/reducers/preset-reducer';
+import { type IndexedSelection, PrimaryOrAlternative } from '../../../types/util';
 
 interface RelicSelectDialogProps {
-  open: boolean;
-  indexedSelection: IndexedSelection;
-  handleClose: () => void;
-  handleSelection: (indexedSelection: IndexedSelection, relic: RelicData) => void;
+  open: boolean
+  indexedSelection: IndexedSelection
+  handleClose: () => void
+  handleSelection: (indexedSelection: IndexedSelection, relic: RelicData) => void
 }
 
 const dialogBaseHeight = 130;
@@ -37,10 +37,10 @@ export const RelicSelectDialog = ({
   open,
   indexedSelection,
   handleClose,
-  handleSelection,
-}: RelicSelectDialogProps) => {
+  handleSelection
+}: RelicSelectDialogProps): JSX.Element => {
   const {
-    relics,
+    relics
   } = useAppSelector(selectPreset);
 
   const [dialogHeight, setDialogHeight] = useState(
@@ -65,7 +65,7 @@ export const RelicSelectDialog = ({
 
   const filterOptions = useCallback(
     (options: RelicData[], state: FilterOptionsState<RelicData>): RelicData[] => {
-      if (!state.inputValue) {
+      if (state.inputValue.length === 0) {
         return options;
       }
 
@@ -75,7 +75,7 @@ export const RelicSelectDialog = ({
         {
           limit: 100,
           threshold: -100,
-          keys: ["name", "label"],
+          keys: ['name', 'label']
         }
       );
 
@@ -103,11 +103,11 @@ export const RelicSelectDialog = ({
 
   const clearCell = useCallback(() => {
     handleSelection(indexedSelection, {
-      name: "",
-      image: "",
-      label: "",
-      breakdownNotes: "",
-      energy: 0,
+      name: '',
+      image: '',
+      label: '',
+      breakdownNotes: '',
+      energy: 0
     });
     handleClose();
   }, [indexedSelection]);
@@ -115,7 +115,7 @@ export const RelicSelectDialog = ({
   return (
     <Dialog
       classes={{
-        paper: "dialog__paper",
+        paper: 'dialog__paper'
       }}
       open={open}
       onClose={handleClose}
@@ -124,7 +124,7 @@ export const RelicSelectDialog = ({
       <DialogContent
         className="dialog__content"
         sx={{
-          height: dialogHeight,
+          height: dialogHeight
         }}
       >
         <Autocomplete
@@ -145,7 +145,7 @@ export const RelicSelectDialog = ({
               label="Relic list"
               inputProps={{
                 ...params.inputProps,
-                autoComplete: "new-password", // disable autocomplete and autofill
+                autoComplete: 'new-password' // disable autocomplete and autofill
               }}
             />
           )}

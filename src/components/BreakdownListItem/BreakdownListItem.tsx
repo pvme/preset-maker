@@ -1,31 +1,36 @@
-import { useCallback, useRef } from "react";
-import ContentEditable, { ContentEditableEvent } from "react-contenteditable";
-import { useDispatch } from "react-redux";
-import sanitizeHtml from "sanitize-html";
+import React, { useCallback, useRef } from 'react';
 
-import Avatar from "@mui/material/Avatar";
-import ListItem from "@mui/material/ListItem";
-import ListItemAvatar from "@mui/material/ListItemAvatar";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemText from "@mui/material/ListItemText";
+import ContentEditable, { type ContentEditableEvent } from 'react-contenteditable';
+import { useDispatch } from 'react-redux';
+import sanitizeHtml from 'sanitize-html';
 
-import { ItemData } from "../../types/item-data";
-import { setBreakdown } from "../../redux/store/reducers/preset-reducer";
-import { BreakdownType } from "../../types/breakdown";
+import Avatar from '@mui/material/Avatar';
+import ListItem from '@mui/material/ListItem';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemText from '@mui/material/ListItemText';
 
-import "./BreakdownListItem.css";
+import { type ItemData } from '../../types/item-data';
+import { setBreakdown } from '../../redux/store/reducers/preset-reducer';
+import { type BreakdownType } from '../../types/breakdown';
+
+import './BreakdownListItem.css';
 
 export interface BreakdownListItemProps {
-  item: ItemData;
-  type: BreakdownType;
+  item: ItemData
+  type: BreakdownType
 }
 
-export const BreakdownListItem = ({ item, type }: BreakdownListItemProps) => {
+export const BreakdownListItem = ({ item, type }: BreakdownListItemProps): JSX.Element => {
   const dispatch = useDispatch();
-  const breakdownNotes = useRef(item.breakdownNotes ?? "");
+  const breakdownNotes = useRef(item.breakdownNotes ?? '');
 
   const onChange = useCallback((event: ContentEditableEvent) => {
-    breakdownNotes.current = sanitizeHtml(event.currentTarget.innerHTML || "");
+    if (event.currentTarget.innerHTML === null || event.currentTarget.innerHTML === undefined) {
+      return;
+    }
+
+    breakdownNotes.current = sanitizeHtml(event.currentTarget.innerHTML);
   }, []);
 
   const handleRecentClick = useCallback(
@@ -37,11 +42,15 @@ export const BreakdownListItem = ({ item, type }: BreakdownListItemProps) => {
 
   const onBlur = useCallback(
     (event: React.FocusEvent<HTMLDivElement>) => {
+      if (event.currentTarget.innerHTML === null || event.currentTarget.innerHTML === undefined) {
+        return;
+      }
+
       dispatch(
         setBreakdown({
           breakdownType: type,
           itemName: item.label,
-          description: sanitizeHtml(event.currentTarget.innerHTML || ""),
+          description: sanitizeHtml(event.currentTarget.innerHTML)
         })
       );
     },
@@ -52,8 +61,8 @@ export const BreakdownListItem = ({ item, type }: BreakdownListItemProps) => {
     <ListItem
       tabIndex={-1}
       classes={{
-        root: "breakdown-list-item",
-        secondaryAction: "notes-field-outer-two",
+        root: 'breakdown-list-item',
+        secondaryAction: 'notes-field-outer-two'
       }}
       secondaryAction={
         <ContentEditable
@@ -67,26 +76,28 @@ export const BreakdownListItem = ({ item, type }: BreakdownListItemProps) => {
       disablePadding
     >
       <ListItemButton tabIndex={-1}>
-        {item.image ? (
+        {(item.image.length > 0)
+          ? (
           <ListItemAvatar tabIndex={-1}>
             <Avatar
-              imgProps={{ style: { objectFit: "scale-down" } }}
+              imgProps={{ style: { objectFit: 'scale-down' } }}
               variant="square"
               alt={item.label}
               src={item.image}
               title="Click to open wiki page"
-              onClick={() => handleRecentClick(item)}
+              onClick={() => { handleRecentClick(item); }}
             />
           </ListItemAvatar>
-        ) : (
-          <div style={{ height: "40px" }}></div>
-        )}
+            )
+          : (
+          <div style={{ height: '40px' }}></div>
+            )}
         <ListItemText
           tabIndex={-1}
-          primaryTypographyProps={{ maxWidth: "225px" }}
-          primary={"🔗 "+ item.name}
+          primaryTypographyProps={{ maxWidth: '225px' }}
+          primary={'🔗 ' + item.name}
           title="Click to open wiki page"
-          onClick={() => handleRecentClick(item)}
+          onClick={() => { handleRecentClick(item); }}
         />
       </ListItemButton>
     </ListItem>

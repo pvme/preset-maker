@@ -1,10 +1,10 @@
-import { EntityData } from "./entity-data";
+import { type EntityData } from './entity-data';
 
 export interface RelicData extends EntityData {
-  energy: number;
+  energy: number
 };
 
 export interface Relics {
-  primaryRelics: RelicData[];
-  alternativeRelics: RelicData[];
+  primaryRelics: RelicData[]
+  alternativeRelics: RelicData[]
 };

@@ -1,29 +1,29 @@
-import React, { useCallback, useEffect, useState } from "react";
-import { useSnackbar } from "notistack";
+import React, { useCallback, useEffect, useState } from 'react';
+import { useSnackbar } from 'notistack';
 
 import Autocomplete, {
-  AutocompleteChangeDetails,
-  AutocompleteChangeReason,
-  AutocompleteRenderInputParams,
-} from "@mui/material/Autocomplete";
-import Button from "@mui/material/Button";
-import ButtonGroup from "@mui/material/ButtonGroup";
-import IconButton from "@mui/material/IconButton";
-import TextField from "@mui/material/TextField";
-import CloseIcon from "@mui/icons-material/Close";
+  type AutocompleteChangeDetails,
+  type AutocompleteChangeReason,
+  type AutocompleteRenderInputParams
+} from '@mui/material/Autocomplete';
+import Button from '@mui/material/Button';
+import ButtonGroup from '@mui/material/ButtonGroup';
+import IconButton from '@mui/material/IconButton';
+import TextField from '@mui/material/TextField';
+import CloseIcon from '@mui/icons-material/Close';
 
-import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import {
   importDataAction,
-  selectPreset,
-} from "../../redux/store/reducers/preset-reducer";
-import { SavedPresetData as SavedPresetData } from "../../types/saved-preset-data";
+  selectPreset
+} from '../../redux/store/reducers/preset-reducer';
+import { type SavedPresetData } from '../../types/saved-preset-data';
 
-import "./PresetLoader.css";
-import { SavePresetDialog, SavePresetDialogState } from "../SavePresetDialog/SavePresetDialog";
-import { LocalStorage } from "../../store/local-storage";
+import './PresetLoader.css';
+import { SavePresetDialog, SavePresetDialogState } from '../SavePresetDialog/SavePresetDialog';
+import { LocalStorage } from '../../store/local-storage';
 
-export const PresetName = () => {
+export const PresetName = (): JSX.Element => {
   const [presets, setPresets] = useState<SavedPresetData[]>();
   const [presetNames, setPresetNames] = useState<string[]>();
   const [selectedPreset, setSelectedPreset] = useState<string>();
@@ -44,7 +44,7 @@ export const PresetName = () => {
 
     setPresets(data);
     setPresetNames(
-      data.map((savedPresetData: SavedPresetData) => savedPresetData.presetName || "")
+      data.map((savedPresetData: SavedPresetData) => savedPresetData.presetName ?? '')
     );
     setSelectedPreset(presetName);
   }, [presetName]);
@@ -57,13 +57,13 @@ export const PresetName = () => {
       _details?: AutocompleteChangeDetails<string>
     ) => {
       const preset = presets?.find((p) => p.presetName === value);
-      if (!preset) {
-        enqueueSnackbar("Unable to find preset", { variant: "error" });
+      if (preset == null) {
+        enqueueSnackbar('Unable to find preset', { variant: 'error' });
         return;
       }
 
       dispatch(importDataAction(preset));
-      enqueueSnackbar("Successfully loaded preset", { variant: "success" });
+      enqueueSnackbar('Successfully loaded preset', { variant: 'success' });
     },
     [presets]
   );
@@ -84,10 +84,10 @@ export const PresetName = () => {
         data.find(
           (d) =>
             d.presetName.toLocaleUpperCase() === presetKey.toLocaleUpperCase()
-        )
+        ) != null
       ) {
         const confirm = window.confirm(
-          "Are you sure you wish to delete this preset?"
+          'Are you sure you wish to delete this preset?'
         );
         if (!confirm) {
           return;
@@ -101,9 +101,9 @@ export const PresetName = () => {
       );
 
       // overwrite the localStorage with removed data
-      window.localStorage.setItem("presets", JSON.stringify(data));
-      enqueueSnackbar("Successfully removed the preset", {
-        variant: "success",
+      window.localStorage.setItem('presets', JSON.stringify(data));
+      enqueueSnackbar('Successfully removed the preset', {
+        variant: 'success'
       });
       updatePresets();
     },
@@ -117,7 +117,7 @@ export const PresetName = () => {
   return (
     <div className="input-group">
       <ButtonGroup>
-        {presetNames && (
+        {(presetNames != null) && (
           <Autocomplete
             className="autocomplete-field mr-8"
             disablePortal
@@ -134,8 +134,8 @@ export const PresetName = () => {
                 label="Load existing preset"
                 inputProps={{
                   ...params.inputProps,
-                  autoComplete: "new-password", // disable autocomplete and autofill
-                  className: "load-preset-field",
+                  autoComplete: 'new-password', // disable autocomplete and autofill
+                  className: 'load-preset-field'
                 }}
               />
             )}
@@ -145,7 +145,7 @@ export const PresetName = () => {
             ) => (
               <li {...props} className="option-list">
                 {option}
-                <IconButton onClick={(event) => removePreset(event, option)}>
+                <IconButton onClick={(event) => { removePreset(event, option); }}>
                   <CloseIcon htmlColor="white" />
                 </IconButton>
               </li>

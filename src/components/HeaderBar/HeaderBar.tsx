@@ -1,28 +1,28 @@
-import { useSnackbar } from "notistack";
-import { useCallback, useRef } from "react";
-import { useNavigate } from "react-router-dom";
-import { validate } from "typescript-json";
+import { useSnackbar } from 'notistack';
+import React, { useCallback, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { validate } from 'typescript-json';
 
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import ButtonGroup from "@mui/material/ButtonGroup";
-import Container from "@mui/material/Container";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import ButtonGroup from '@mui/material/ButtonGroup';
+import Container from '@mui/material/Container';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
 
-import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import {
   importDataAction,
-  selectPreset,
-} from "../../redux/store/reducers/preset-reducer";
-import { SavedPresetData } from "../../types/saved-preset-data";
-import { exportAsJson } from "../../utility/export-to-json";
-import { sanitizeAndStringifyPreset } from "../../utility/sanitizer";
+  selectPreset
+} from '../../redux/store/reducers/preset-reducer';
+import { type SavedPresetData } from '../../types/saved-preset-data';
+import { exportAsJson } from '../../utility/export-to-json';
+import { sanitizeAndStringifyPreset } from '../../utility/sanitizer';
 
-import "./HeaderBar.css";
+import './HeaderBar.css';
 
-export const HeaderBar = () => {
+export const HeaderBar = (): JSX.Element => {
   const inputFile = useRef<HTMLInputElement>(null);
 
   const navigate = useNavigate();
@@ -38,10 +38,10 @@ export const HeaderBar = () => {
       equipmentSlots,
       inventorySlots,
       relics,
-      familiars,
+      familiars
     });
     exportAsJson(
-      `PRESET_${presetName.replaceAll(" ", "_")}`,
+      `PRESET_${presetName.replaceAll(' ', '_')}`,
       stringifiedPresetData
     );
   }, [presetName, inventorySlots, equipmentSlots]);
@@ -52,44 +52,44 @@ export const HeaderBar = () => {
 
   const onFileUpload = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
-      if (!event.target.files) {
+      if (event.target.files == null) {
         return;
       }
 
       const reader = new FileReader();
       reader.onload = (event) => {
-        if (!event.target?.result) {
+        if (event.target?.result === null || event.target?.result === undefined) {
           enqueueSnackbar(
-            "Internal Server Error - Send your .json to nullopt#2057",
-            { variant: "error" }
+            'Internal Server Error - Send your .json to nullopt#2057',
+            { variant: 'error' }
           );
           return;
         }
 
         const data = JSON.parse(event.target.result as string);
         if (!validate<SavedPresetData>(data).success) {
-          enqueueSnackbar("Invalid JSON data.", { variant: "error" });
+          enqueueSnackbar('Invalid JSON data.', { variant: 'error' });
           return;
         }
 
         // import the json data into the preset editor
         dispatch(importDataAction(data));
-        enqueueSnackbar("Successfully imported your preset.", {
-          variant: "success",
+        enqueueSnackbar('Successfully imported your preset.', {
+          variant: 'success'
         });
       };
 
       reader.readAsText(event.target.files[0]);
 
       // Reset the file input so users can upload the same json
-      event.target.value = "";
+      event.target.value = '';
     },
     []
   );
 
   const onHomeClick = useCallback(() => {
     // go to root
-    navigate("/");
+    navigate('/');
     // refresh page to reset all data
     navigate(0);
   }, [navigate]);
@@ -100,7 +100,7 @@ export const HeaderBar = () => {
         type="file"
         id="file"
         ref={inputFile}
-        style={{ display: "none" }}
+        style={{ display: 'none' }}
         accept="application/JSON"
         onChange={onFileUpload}
       />
@@ -111,7 +111,7 @@ export const HeaderBar = () => {
               <img
                 width={80}
                 height={80}
-                src={"https://i.imgur.com/DhroQD5.gif"}
+                src={'https://i.imgur.com/DhroQD5.gif'}
                 onClick={onHomeClick}
               />
             </div>

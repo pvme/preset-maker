@@ -1,40 +1,35 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import { Provider } from "react-redux";
+import { SnackbarProvider, useSnackbar, type SnackbarKey } from 'notistack';
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { Provider } from 'react-redux';
 import {
-  createHashRouter,
   HashRouter,
-  Route,
-  RouterProvider,
-  Routes,
-  useLocation,
-  useParams,
-} from "react-router-dom";
-import { SnackbarKey, SnackbarProvider, useSnackbar } from "notistack";
+  Route, Routes
+} from 'react-router-dom';
 
+import CloseIcon from '@mui/icons-material/Close';
+import CssBaseline from '@mui/material/CssBaseline';
+import IconButton from '@mui/material/IconButton';
 import {
   createTheme,
   StyledEngineProvider,
-  ThemeProvider,
-} from "@mui/material/styles";
-import IconButton from "@mui/material/IconButton";
-import CloseIcon from "@mui/icons-material/Close";
-import CssBaseline from "@mui/material/CssBaseline";
+  ThemeProvider
+} from '@mui/material/styles';
 
-import App from "./App";
-import { ReduxStore } from "./redux/store/store";
+import App from './App';
+import { ReduxStore } from './redux/store/store';
 
-import "./index.css";
+import './index.css';
 
 interface SnackBarAction {
-  snackbarKey: SnackbarKey;
+  snackbarKey: SnackbarKey
 }
 
-function SnackbarCloseButton({ snackbarKey }: SnackBarAction) {
+function SnackbarCloseButton ({ snackbarKey }: SnackBarAction): JSX.Element {
   const { closeSnackbar } = useSnackbar();
 
   return (
-    <IconButton onClick={() => closeSnackbar(snackbarKey)}>
+    <IconButton onClick={() => { closeSnackbar(snackbarKey); }}>
       <CloseIcon htmlColor="white" />
     </IconButton>
   );
@@ -42,11 +37,11 @@ function SnackbarCloseButton({ snackbarKey }: SnackBarAction) {
 
 const darkTheme = createTheme({
   palette: {
-    mode: "dark",
-  },
+    mode: 'dark'
+  }
 });
 
-ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
+ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <ThemeProvider theme={darkTheme}>
       <StyledEngineProvider injectFirst>

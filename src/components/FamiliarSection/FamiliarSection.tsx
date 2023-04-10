@@ -1,28 +1,28 @@
-import { useCallback, useState } from "react";
-import Typography from "@mui/material/Typography/Typography";
+import React, { useCallback, useState } from 'react';
+import Typography from '@mui/material/Typography/Typography';
 import AddIcon from '@mui/icons-material/Add';
 
 import familiarIconPath from '../../assets/familiar.png';
-import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { selectPreset, setAlternativeFamiliar, setPrimaryFamiliar } from "../../redux/store/reducers/preset-reducer";
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import { selectPreset, setAlternativeFamiliar, setPrimaryFamiliar } from '../../redux/store/reducers/preset-reducer';
 
-import { FamiliarData } from "../../types/familiar";
-import "./FamiliarSection.css";
-import Tooltip from "@mui/material/Tooltip/Tooltip";
-import { IndexedSelection, PrimaryOrAlternative } from "../../types/util";
-import { FamiliarSelectDialog } from "../dialogs/FamiliarSelectDialog/FamiliarSelectDialog";
+import { type FamiliarData } from '../../types/familiar';
+import './FamiliarSection.css';
+import Tooltip from '@mui/material/Tooltip/Tooltip';
+import { type IndexedSelection, PrimaryOrAlternative } from '../../types/util';
+import { FamiliarSelectDialog } from '../dialogs/FamiliarSelectDialog/FamiliarSelectDialog';
 
 export type FamiliarSectionListClickHandler = (
   _event: React.MouseEvent<HTMLDivElement>,
   index: number
 ) => void;
 
-const FamiliarSectionList = ({ familiars, onClick }: { familiars: FamiliarData[], onClick: FamiliarSectionListClickHandler}) => {
+const FamiliarSectionList = ({ familiars, onClick }: { familiars: FamiliarData[], onClick: FamiliarSectionListClickHandler }): JSX.Element => {
   return (
     <div className="familiar-section__list">
       {familiars.map((familiarData, index) => (
         <div
-          key={familiarData.label + index}
+          key={`${familiarData.label}${index}`}
           className="d-flex flex-center familiar-section__list-item"
           onClick={(event: React.MouseEvent<HTMLDivElement>) => {
             onClick(event, index);
@@ -35,14 +35,14 @@ const FamiliarSectionList = ({ familiars, onClick }: { familiars: FamiliarData[]
         </div>
       ))}
     </div>
-  )
+  );
 };
 
-export const FamiliarSection = () => {
+export const FamiliarSection = (): JSX.Element => {
   const dispatch = useAppDispatch();
 
   const {
-    familiars,
+    familiars
   } = useAppSelector(selectPreset);
 
   const visibleAlternativeFamiliars = familiars.alternativeFamiliars.filter((familiar) => familiar.name);
@@ -50,14 +50,14 @@ export const FamiliarSection = () => {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [indexedSelection, setIndexedSelection] = useState({
     primaryOrAlternative: PrimaryOrAlternative.None,
-    index: -1,
+    index: -1
   });
 
   const openFamiliarDialog = useCallback(
     (
       _event: React.MouseEvent<HTMLDivElement>,
       primaryOrAlternative: PrimaryOrAlternative,
-      index: number,
+      index: number
     ) => {
       setIndexedSelection({
         primaryOrAlternative,
@@ -81,7 +81,7 @@ export const FamiliarSection = () => {
 
       dispatch(setPrimaryFamiliar({
         index: indexedSelection.index,
-        value: familiar,
+        value: familiar
       }));
     } else if (indexedSelection.primaryOrAlternative === PrimaryOrAlternative.Alternative) {
       // Prevent duplicates.
@@ -91,13 +91,13 @@ export const FamiliarSection = () => {
 
       dispatch(setAlternativeFamiliar({
         index: indexedSelection.index,
-        value: familiar,
+        value: familiar
       }));
     }
 
     setIndexedSelection({
       primaryOrAlternative: PrimaryOrAlternative.None,
-      index: -1,
+      index: -1
     });
     setDialogOpen(false);
   }, [familiars, indexedSelection]);

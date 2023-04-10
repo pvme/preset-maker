@@ -1,20 +1,20 @@
-import { useEffect, useRef, useState } from "react";
-import { useParams } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
-import { useAppDispatch } from "../../redux/hooks";
-import { importDataAction } from "../../redux/store/reducers/preset-reducer";
-import { PresetBreakdown } from "../PresetBreakdown/PresetBreakdown";
-import { PresetEditor } from "../PresetEditor/PresetEditor";
-import { PresetName } from "../PresetLoader/PresetLoader";
+import { useAppDispatch } from '../../redux/hooks';
+import { importDataAction } from '../../redux/store/reducers/preset-reducer';
+import { PresetBreakdown } from '../PresetBreakdown/PresetBreakdown';
+import { PresetEditor } from '../PresetEditor/PresetEditor';
+import { PresetName } from '../PresetLoader/PresetLoader';
 
-import { getPreset } from "../../api/get-preset";
+import { getPreset } from '../../api/get-preset';
 
-import "./PresetSection.css";
-import CircularProgress from "@mui/material/CircularProgress/CircularProgress";
-import { Fade, Typography } from "@mui/material";
-import { PresetActions } from "../PresetActions/PresetActions";
+import { Fade, Typography } from '@mui/material';
+import CircularProgress from '@mui/material/CircularProgress/CircularProgress';
+import { PresetActions } from '../PresetActions/PresetActions';
+import './PresetSection.css';
 
-export const PresetSection = () => {
+export const PresetSection = (): JSX.Element => {
   const dispatch = useAppDispatch();
 
   // const presetExportRef = useRef<HTMLDivElement>(null);
@@ -25,30 +25,29 @@ export const PresetSection = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    if (!id) {
-      return;
-    }
-
     // load preset from URL if code exists
-    const getPresetData = async () => {
+    const getPresetData = async (): Promise<void> => {
+      if (id === undefined) {
+        return;
+      }
+
       setIsPresetLoading(true);
       const response = await getPreset(id);
       dispatch(importDataAction(response));
       setIsPresetLoading(false);
     };
 
-    getPresetData();
+    void getPresetData();
   }, [id]);
 
-  const presetExportRefCallback = (ref: HTMLDivElement) => {
+  const presetExportRefCallback = (ref: HTMLDivElement): void => {
     setPresetExportRef(ref);
-  }
+  };
 
   return (
     <>
       {isPresetLoading
-        ?
-        <div className="preset-section--loading">
+        ? <div className="preset-section--loading">
           <CircularProgress />
           <Typography className="mt-8" variant="h6">
             Loading preset...
@@ -69,7 +68,7 @@ export const PresetSection = () => {
               <PresetBreakdown />
             </div>
           </Fade>
-        )
+          )
       }
     </>
   );

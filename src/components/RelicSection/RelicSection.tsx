@@ -1,28 +1,28 @@
-import { useCallback, useState } from "react";
-import Typography from "@mui/material/Typography/Typography";
+import React, { useCallback, useState } from 'react';
+import Typography from '@mui/material/Typography/Typography';
 import AddIcon from '@mui/icons-material/Add';
 
 import relicIconPath from '../../assets/relic.png';
-import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { selectPreset, setAlternativeRelic, setPrimaryRelic } from "../../redux/store/reducers/preset-reducer";
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import { selectPreset, setAlternativeRelic, setPrimaryRelic } from '../../redux/store/reducers/preset-reducer';
 
-import { RelicData } from "../../types/relic";
-import "./RelicSection.css";
-import Tooltip from "@mui/material/Tooltip/Tooltip";
-import { IndexedSelection, PrimaryOrAlternative } from "../../types/util";
-import { RelicSelectDialog } from "../dialogs/RelicSelectDialogPopup/RelicSelectDialog";
+import { type RelicData } from '../../types/relic';
+import './RelicSection.css';
+import Tooltip from '@mui/material/Tooltip/Tooltip';
+import { type IndexedSelection, PrimaryOrAlternative } from '../../types/util';
+import { RelicSelectDialog } from '../dialogs/RelicSelectDialogPopup/RelicSelectDialog';
 
 export type RelicSectionListClickHandler = (
   _event: React.MouseEvent<HTMLDivElement>,
   index: number
 ) => void;
 
-const RelicSectionList = ({ relics, onClick }: { relics: RelicData[], onClick: RelicSectionListClickHandler}) => {
+const RelicSectionList = ({ relics, onClick }: { relics: RelicData[], onClick: RelicSectionListClickHandler }): JSX.Element => {
   return (
     <div className="relic-section__list">
       {relics.map((relicData, index) => (
         <div
-          key={relicData.label + index}
+          key={`${relicData.label}${index}`}
           className="d-flex flex-center relic-section__list-item"
           onClick={(event: React.MouseEvent<HTMLDivElement>) => {
             onClick(event, index);
@@ -32,20 +32,20 @@ const RelicSectionList = ({ relics, onClick }: { relics: RelicData[], onClick: R
             <img className="relic-section__list-item-image" src={relicData.image}></img>
           )}
           <span className="relic-section__list-item-name">{relicData.name}</span>
-          {relicData.energy && (
+          {(relicData.energy !== 0) && (
             <span className="relic-section__list-item-energy">&nbsp;({relicData.energy})</span>
           )}
         </div>
       ))}
     </div>
-  )
+  );
 };
 
-export const RelicSection = () => {
+export const RelicSection = (): JSX.Element => {
   const dispatch = useAppDispatch();
 
   const {
-    relics,
+    relics
   } = useAppSelector(selectPreset);
 
   const visibleAlternativeRelics = relics.alternativeRelics.filter((relic) => relic.name);
@@ -53,14 +53,14 @@ export const RelicSection = () => {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [indexedSelection, setIndexedSelection] = useState({
     primaryOrAlternative: PrimaryOrAlternative.None,
-    index: -1,
+    index: -1
   });
 
   const openRelicDialog = useCallback(
     (
       _event: React.MouseEvent<HTMLDivElement>,
       primaryOrAlternative: PrimaryOrAlternative,
-      index: number,
+      index: number
     ) => {
       setIndexedSelection({
         primaryOrAlternative,
@@ -84,7 +84,7 @@ export const RelicSection = () => {
 
       dispatch(setPrimaryRelic({
         index: indexedSelection.index,
-        value: relic,
+        value: relic
       }));
     } else if (indexedSelection.primaryOrAlternative === PrimaryOrAlternative.Alternative) {
       // Prevent duplicates.
@@ -94,13 +94,13 @@ export const RelicSection = () => {
 
       dispatch(setAlternativeRelic({
         index: indexedSelection.index,
-        value: relic,
+        value: relic
       }));
     }
 
     setIndexedSelection({
       primaryOrAlternative: PrimaryOrAlternative.None,
-      index: -1,
+      index: -1
     });
     setDialogOpen(false);
   }, [relics, indexedSelection]);

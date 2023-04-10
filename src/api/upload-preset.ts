@@ -1,12 +1,12 @@
-import axios from "axios";
+import axios from 'axios';
 
 const apiUrl =
-  "https://us-central1-pvmebackend.cloudfunctions.net/uploadPreset";
+  'https://us-central1-pvmebackend.cloudfunctions.net/uploadPreset';
 
-export const uploadPreset = async (data: string) => {
-  data = typeof data === "object" ? data : JSON.parse(data);
+export const uploadPreset = async (data: string): Promise<string> => {
+  data = typeof data === 'object' ? data : JSON.parse(data);
   const response = await axios.post(apiUrl, data, {
-    withCredentials: false,
+    withCredentials: false
   });
   return response.data;
 };

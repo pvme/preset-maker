@@ -1,36 +1,36 @@
-import { useCallback, useState } from "react";
-import fuzzysort from "fuzzysort";
+import React, { useCallback, useState } from 'react';
+import fuzzysort from 'fuzzysort';
 
-import Dialog from "@mui/material/Dialog";
-import DialogTitle from "@mui/material/DialogTitle";
-import DialogContent from "@mui/material/DialogContent";
+import Dialog from '@mui/material/Dialog';
+import DialogTitle from '@mui/material/DialogTitle';
+import DialogContent from '@mui/material/DialogContent';
 import Autocomplete, {
-  AutocompleteChangeDetails,
-  AutocompleteChangeReason,
-  AutocompleteRenderInputParams,
-  AutocompleteRenderOptionState,
-} from "@mui/material/Autocomplete";
-import TextField from "@mui/material/TextField";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import Avatar from "@mui/material/Avatar";
-import DialogActions from "@mui/material/DialogActions";
-import { FilterOptionsState } from "@mui/material/useAutocomplete";
+  type AutocompleteChangeDetails,
+  type AutocompleteChangeReason,
+  type AutocompleteRenderInputParams,
+  type AutocompleteRenderOptionState
+} from '@mui/material/Autocomplete';
+import TextField from '@mui/material/TextField';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import Avatar from '@mui/material/Avatar';
+import DialogActions from '@mui/material/DialogActions';
+import { type FilterOptionsState } from '@mui/material/useAutocomplete';
 
-import { ItemData } from "../../types/item-data";
-import itemData from "../../data/sorted_items.json";
+import { type ItemData } from '../../types/item-data';
+import itemData from '../../data/sorted_items.json';
 
-import "./ItemSelectDialogPopup.css";
-import { useAppSelector } from "../../redux/hooks";
-import { selectPreset } from "../../redux/store/reducers/preset-reducer";
-import { Tooltip } from "@mui/material";
+import './ItemSelectDialogPopup.css';
+import { useAppSelector } from '../../redux/hooks';
+import { selectPreset } from '../../redux/store/reducers/preset-reducer';
+import { Tooltip } from '@mui/material';
 
 interface DialogPopupProps {
-  open: boolean;
-  recentlySelectedItems: ItemData[];
-  handleClose: () => void;
-  handleSlotChange: (indices: number[], item: ItemData) => void;
+  open: boolean
+  recentlySelectedItems: ItemData[]
+  handleClose: () => void
+  handleSlotChange: (indices: number[], item: ItemData) => void
 }
 
 const dialogBaseHeight = 170;
@@ -40,14 +40,14 @@ export const DialogPopup = ({
   open,
   recentlySelectedItems,
   handleClose,
-  handleSlotChange,
-}: DialogPopupProps) => {
+  handleSlotChange
+}: DialogPopupProps): JSX.Element => {
   const { slotType, slotIndex, inventorySlots } = useAppSelector(selectPreset);
 
   const selectedInventorySlots = inventorySlots
-    .map((slot: ItemData, index: number) => (slot.selected ? index : undefined))
+    .map((slot: ItemData, index: number) => (slot.selected === true ? index : undefined))
     .filter((entry): entry is number => entry !== undefined);
-  const selectedIndices = selectedInventorySlots.length
+  const selectedIndices = (selectedInventorySlots.length > 0)
     ? selectedInventorySlots
     : [slotIndex];
 
@@ -69,7 +69,7 @@ export const DialogPopup = ({
 
   const filterOptions = useCallback(
     (options: ItemData[], state: FilterOptionsState<ItemData>): ItemData[] => {
-      if (!state.inputValue) {
+      if (state.inputValue.length === 0) {
         return options;
       }
 
@@ -79,7 +79,7 @@ export const DialogPopup = ({
         {
           limit: 100,
           threshold: -100,
-          keys: ["name", "label"],
+          keys: ['name', 'label']
         }
       );
 
@@ -115,10 +115,10 @@ export const DialogPopup = ({
 
   const clearCell = useCallback(() => {
     handleSlotChange(selectedIndices, {
-      name: "",
-      image: "",
-      label: "",
-      breakdownNotes: "",
+      name: '',
+      image: '',
+      label: '',
+      breakdownNotes: ''
     });
     handleClose();
   }, [selectedIndices]);
@@ -126,20 +126,22 @@ export const DialogPopup = ({
   return (
     <Dialog
       classes={{
-        paper: "dialog__paper",
+        paper: 'dialog__paper'
       }}
       open={open}
       onClose={handleClose}
     >
-      {selectedIndices.length > 1 ? (
+      {selectedIndices.length > 1
+        ? (
         <DialogTitle>Assign multiple items</DialogTitle>
-      ) : (
+          )
+        : (
         <DialogTitle>Assign an item</DialogTitle>
-      )}
+          )}
       <DialogContent
         className="dialog__content"
         sx={{
-          height: dialogHeight,
+          height: dialogHeight
         }}
       >
         <Autocomplete
@@ -159,7 +161,7 @@ export const DialogPopup = ({
               label="Item list"
               inputProps={{
                 ...params.inputProps,
-                autoComplete: "new-password", // disable autocomplete and autofill
+                autoComplete: 'new-password' // disable autocomplete and autofill
               }}
             />
           )}
@@ -194,8 +196,9 @@ export const DialogPopup = ({
               Recent Items
             </Typography>
             {recentlySelectedItems.map((item: ItemData) =>
-              item.image ? (
-                <Tooltip title={item.name}>
+              (item.image.length > 0)
+                ? (
+                <Tooltip key={item.name} title={item.name}>
                   <Button
                     classes={{
                       startIcon: 'recent-item-button'
@@ -211,10 +214,11 @@ export const DialogPopup = ({
                         }}
                       />
                     }
-                    onClick={() => handleRecentClick(item)}
+                    onClick={() => { handleRecentClick(item); }}
                   ></Button>
                 </Tooltip>
-              ) : null
+                  )
+                : null
             )}
           </div>
         )}
