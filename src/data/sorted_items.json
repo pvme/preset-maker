@@ -392,6 +392,14 @@
 		"wikiLink": "https://runescape.wiki/w/Archaeology_teleport"
 	},
 	{
+		"label": "arcticbear",
+		"image": "https://i.imgur.com/o9TmbfA.png",
+		"name": "Arctic bear pouch",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Arctic_bear_pouch"
+	},
+	{
 		"label": "abs",
 		"image": "https://i.imgur.com/kOg6Htl.png",
 		"name": "Armadyl battlestaff",
@@ -734,6 +742,14 @@
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Binding_contract_(blood_reaver)"
+	},
+	{
+		"label": "gargoyle",
+		"image": "https://i.imgur.com/u1nbeaC.png",
+		"name": "Binding contract (gargoyle)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Binding_contract_(gargoyle)"
 	},
 	{
 		"label": "hellhound",
@@ -1312,6 +1328,14 @@
 		"wikiLink": "https://runescape.wiki/w/Cryptbloom_top"
 	},
 	{
+		"label": "crystalhatchet",
+		"image": "https://i.imgur.com/d2vGTfF.png",
+		"name": "Crystal_hatchet",
+		"breakdownNotes": "",
+		"slot": 4,
+		"wikiLink": "https://runescape.wiki/w/Crystal_hatchet"
+	},
+	{
 		"label": "curlyroot",
 		"image": "https://i.imgur.com/7C1e28s.png",
 		"name": "Curly root",
@@ -1430,6 +1454,14 @@
 		"breakdownNotes": "",
 		"slot": 9,
 		"wikiLink": "https://runescape.wiki/w/Deathspore_arrows"
+	},
+	{
+		"label": "deathsporearrowtips1",
+		"image": "https://i.imgur.com/u9UP2sY.png",
+		"name": "Deathspore_arrow_tips",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Deathspore_arrow_tips"
 	},
 	{
 		"label": "dtb",
@@ -2184,6 +2216,14 @@
 		"wikiLink": "https://runescape.wiki/w/Extreme_Strength"
 	},
 	{
+		"label": "extremehunter1",
+		"image": "https://i.imgur.com/HCjn9rk.png",
+		"name": "Extreme hunter (1)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Extreme_hunter#(1)"
+	},
+	{
 		"label": "extpray",
 		"image": "https://i.imgur.com/YSj7H2I.png",
 		"name": "Extreme prayer",
@@ -2230,6 +2270,14 @@
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Fishing_potion"
+	},
+	{
+		"label": "rodomatic",
+		"image": "https://i.imgur.com/5kqYUsz.png",
+		"name": "Fishing rod-o-matic",
+		"breakdownNotes": "",
+		"slot": 4,
+		"wikiLink": "https://runescape.wiki/w/Fishing_rod-o-matic"
 	},
 	{
 		"label": "flank",
@@ -2376,6 +2424,14 @@
 		"wikiLink": "https://runescape.wiki/w/Garb_of_subjugation"
 	},
 	{
+		"label": "gatherercape",
+		"image": "https://i.imgur.com/TG7eB10.png",
+		"name": "Gatherer's cape",
+		"breakdownNotes": "",
+		"slot": 12,
+		"wikiLink": "https://runescape.wiki/w/Gatherer's_cape"
+	},
+	{
 		"label": "gembag",
 		"image": "https://i.imgur.com/OiUGVBZ.png",
 		"name": "Gem bag (upgraded)",
@@ -2510,6 +2566,14 @@
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Grand_seed_pod"
+	},
+	{
+		"label": "granitelobster",
+		"image": "https://i.imgur.com/VsrLYXb.png",
+		"name": "Granite lobster",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Granite_lobster"
 	},
 	{
 		"label": "graspingpouch",
@@ -3208,6 +3272,38 @@
 		"wikiLink": "https://runescape.wiki/w/Law_runes_(100)"
 	},
 	{
+		"label": "legendarycallofthesea",
+		"image": "https://i.imgur.com/E3S1YRE.png",
+		"name": "Legendary call of the sea aura",
+		"breakdownNotes": "",
+		"slot": 8,
+		"wikiLink": "https://runescape.wiki/w/Legendary_call_of_the_sea_aura"
+	},
+	{
+		"label": "legendarylumberjack",
+		"image": "https://i.imgur.com/hqyxkA3.png",
+		"name": "Legendary lumberjack",
+		"breakdownNotes": "",
+		"slot": 8,
+		"wikiLink": "https://runescape.wiki/w/Legendary_lumberjack_aura"
+	},
+	{
+		"label": "legendaryquarrymaster",
+		"image": "https://i.imgur.com/tmJdFQd.png",
+		"name": "Legendary quarrymaster aura",
+		"breakdownNotes": "",
+		"slot": 8,
+		"wikiLink": "https://runescape.wiki/w/Legendary_quarrymaster_aura"
+	},
+	{
+		"label": "legendarytracker",
+		"image": "https://i.imgur.com/ppgW2YG.png",
+		"name": "Legendary tracker aura",
+		"breakdownNotes": "",
+		"slot": 8,
+		"wikiLink": "https://runescape.wiki/w/Legendary_tracker_aura"
+	},
+	{
 		"label": "lockboxskippingticket",
 		"image": "https://i.imgur.com/T0Apt2q.png",
 		"name": "Lockbox skipping ticket",
@@ -3302,6 +3398,54 @@
 		"breakdownNotes": "",
 		"slot": 14,
 		"wikiLink": "https://runescape.wiki/w/Lunging_perk"
+	},
+	{
+		"label": "magicbutterflynet",
+		"image": "https://i.imgur.com/TVFPeSk.png",
+		"name": "Magic butterfly net",
+		"breakdownNotes": "",
+		"slot": 4,
+		"wikiLink": "https://runescape.wiki/w/Magic_butterfly_net"
+	},
+	{
+		"label": "magicgolemboots",
+		"image": "https://i.imgur.com/o0nI98W.png",
+		"name": "Magic golem boots",
+		"breakdownNotes": "",
+		"slot": 7,
+		"wikiLink": "https://runescape.wiki/w/Magic_golem_boots"
+	},
+	{
+		"label": "magicgolemgloves",
+		"image": "https://i.imgur.com/TAsDBLq.png",
+		"name": "Magic golem gloves",
+		"breakdownNotes": "",
+		"slot": 6,
+		"wikiLink": "https://runescape.wiki/w/Magic_golem_gloves"
+	},
+	{
+		"label": "magicgolemhead",
+		"image": "https://i.imgur.com/qCWii5d.png",
+		"name": "Magic golem head",
+		"breakdownNotes": "",
+		"slot": 1,
+		"wikiLink": "https://runescape.wiki/w/Magic_golem_head"
+	},
+	{
+		"label": "magicgolemlegs",
+		"image": "https://i.imgur.com/VfnEgNk.png",
+		"name": "Magic golem legs",
+		"breakdownNotes": "",
+		"slot": 3,
+		"wikiLink": "https://runescape.wiki/w/Magic_golem_legs"
+	},
+	{
+		"label": "magicgolemtorso",
+		"image": "https://i.imgur.com/Hu01LwK.png",
+		"name": "Magic golem torso",
+		"breakdownNotes": "",
+		"slot": 2,
+		"wikiLink": "https://runescape.wiki/w/Magic_golem_torso"
 	},
 	{
 		"label": "magiclogs",
@@ -3598,6 +3742,46 @@
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Master_clue"
+	},
+	{
+		"label": "masterconstructorsboots",
+		"image": "https://i.imgur.com/ZE0dP2C.png",
+		"name": "Master constructor's boots",
+		"breakdownNotes": "",
+		"slot": 7,
+		"wikiLink": "https://runescape.wiki/w/Master_constructor's_boots"
+	},
+	{
+		"label": "masterconstructorgloves",
+		"image": "https://i.imgur.com/3NUEXXF.png",
+		"name": "Master constructor's gloves",
+		"breakdownNotes": "",
+		"slot": 6,
+		"wikiLink": "https://runescape.wiki/w/Master_constructor's_gloves"
+	},
+	{
+		"label": "masterconstructorhat",
+		"image": "https://i.imgur.com/bE6fQh6.png",
+		"name": "Master constructor's hat",
+		"breakdownNotes": "",
+		"slot": 1,
+		"wikiLink": "https://runescape.wiki/w/Master_constructor's_hat"
+	},
+	{
+		"label": "masterconstructorjacket",
+		"image": "https://i.imgur.com/34frqwZ.png",
+		"name": "Master constructor's jacket",
+		"breakdownNotes": "",
+		"slot": 2,
+		"wikiLink": "https://runescape.wiki/w/Master_constructor's_jacket"
+	},
+	{
+		"label": "masterconstructortrousers",
+		"image": "https://i.imgur.com/UFz0MJQ.png",
+		"name": "Master constructor's trousers",
+		"breakdownNotes": "",
+		"slot": 3,
+		"wikiLink": "https://runescape.wiki/w/Master_constructor's_trousers"
 	},
 	{
 		"label": "masterfarmerhat",
@@ -4200,6 +4384,14 @@
 		"wikiLink": "https://runescape.wiki/w/Perfect_juju_fishing_potion"
 	},
 	{
+		"label": "perfectplus",
+		"image": "https://i.imgur.com/IkmyHqv.png",
+		"name": "Perfect plus potion",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Perfect_plus_potion"
+	},
+	{
 		"label": "pernixtop",
 		"image": "https://i.imgur.com/dxkh9P1.png",
 		"name": "Pernix body",
@@ -4320,6 +4512,14 @@
 		"wikiLink": "https://runescape.wiki/w/Phoenix_necklace"
 	},
 	{
+		"label": "pickaxeofearthandsong",
+		"image": "https://i.imgur.com/KJgv85x.png",
+		"name": "Pickaxe of Earth and Song",
+		"breakdownNotes": "",
+		"slot": 4,
+		"wikiLink": "https://runescape.wiki/w/Pickaxe_of_Earth_and_Song"
+	},
+	{
 		"label": "pf",
 		"image": "https://i.imgur.com/X4HBBS8.png",
 		"name": "Planted feet perk",
@@ -4334,6 +4534,14 @@
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Pollnivneach_tablet"
+	},
+	{
+		"label": "pontifexshadowring",
+		"image": "https://i.imgur.com/IgcHKRH.png",
+		"name": "Pontifex shadow ring",
+		"breakdownNotes": "",
+		"slot": 11,
+		"wikiLink": "https://runescape.wiki/w/Pontifex_shadow_ring"
 	},
 	{
 		"label": "portableobelisk(shards)",
@@ -4382,14 +4590,6 @@
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Potion_reservoir"
-	},
-	{
-		"label": "reservoir2",
-		"image": "https://i.imgur.com/5AhXsx1.png",
-		"name": "Potion reservoir (2)",
-		"breakdownNotes": "",
-		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Potion_reservoir_(2)"
 	},
 	{
 		"label": "powderofpenance",
@@ -5070,6 +5270,14 @@
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Spiritual_prayer"
+	},
+	{
+		"label": "splinteringarrowtip1",
+		"image": "https://i.imgur.com/dwNjYgu.png",
+		"name": "Splintering arrow tips",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Splintering_arrow_tips"
 	},
 	{
 		"label": "splinteringarrows",
