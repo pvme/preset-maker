@@ -1,11 +1,11 @@
 import axios from 'axios';
-import { type ImportData } from '../../types/import-data';
+import { type SavedPresetData } from '../../types/saved-preset-data';
 import itemData from '../../data/sorted_items.json';
 
 const apiUrl =
   'https://us-central1-pvmebackend.cloudfunctions.net/getPreset?id=';
 
-export const GetPreset = async (id: string): Promise<ImportData> => {
+export const GetPreset = async (id: string): Promise<SavedPresetData> => {
   const response = await axios.get(`${apiUrl}${id}`);
   const storedPreset = response.data;
   const unpackedPreset = await unpackData(storedPreset);
@@ -16,15 +16,15 @@ const unpackData = async (stored: {
   equipmentSlots: any
   presetName: any
   inventorySlots: string | any[]
-}): Promise<ImportData> => {
-  const newPreset: ImportData = {
+}): Promise<SavedPresetData> => {
+  const newPreset: SavedPresetData = {
     presetName: '',
     inventorySlots: [],
     equipmentSlots: []
   };
   // create a map of all item labels to their default object
   const itemDataMap = new Map();
-  itemData.forEach(element => {
+  itemData.forEach((element) => {
     itemDataMap.set(element.label, element);
   });
 
