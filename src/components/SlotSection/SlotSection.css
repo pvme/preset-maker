@@ -5,8 +5,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 36px;
-  height: 32px;
+  width: 38px;
+  height: 34px;
 }
 
 .inventory-icon-container--selected {
@@ -25,14 +25,18 @@
 }
 
 .inventory-icon {
-  width: 32px;
-  height: 32px;
+  width: 38px;
+  height: 34px;
   object-fit: contain;
 }
 
 .equipment-icon {
-  width: 31px;
-  height: 31px;
+  width: 36px;
+  height: 34px;
   object-fit: contain;
-  background-image: url("https://i.imgur.com/udNECPk.png");
+  background: url("https://i.imgur.com/udNECPk.png") no-repeat;
+  background-position: center;
+  background-size: 31px 31px;
+  background-position-x: center;
+  background-position-y: center;
 }
