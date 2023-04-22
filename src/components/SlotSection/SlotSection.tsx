@@ -71,9 +71,16 @@ const SlotSection = ({ slots, handleClickOpen, handleShiftClick, coords, classNa
 };
 
 export const Inventory = (props: SlotProps): JSX.Element => {
-  return <SlotSection {...props} coords={inventoryCoordsMobile} className="inventory" />;
+  // TODO Create listener, use hook, etc.
+  const coordsToUse = window.innerWidth > 800
+    ? inventoryCoords
+    : inventoryCoordsMobile;
+  return <SlotSection {...props} coords={coordsToUse} className="inventory" />;
 };
 
 export const Equipment = (props: SlotProps): JSX.Element => {
-  return <SlotSection {...props} coords={equipmentCoordsMobile} className="equipment" />;
+  const coordsToUse = window.innerWidth > 800
+    ? equipmentCoords
+    : equipmentCoordsMobile;
+  return <SlotSection {...props} coords={coordsToUse} className="equipment" />;
 };
