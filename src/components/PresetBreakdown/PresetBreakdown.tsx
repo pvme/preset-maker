@@ -117,7 +117,7 @@ export const PresetBreakdown = (): JSX.Element => {
             <BreakdownHeader />
             {mappedEquipment?.map(
               (item) =>
-                (item.label.length > 0) && (
+                ((item.label ?? '').length > 0) && (
                   <BreakdownListItem
                     key={item.label}
                     item={item}

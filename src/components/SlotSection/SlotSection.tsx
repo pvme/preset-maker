@@ -22,6 +22,14 @@ const SlotSection = ({ slots, handleClickOpen, handleShiftClick, coords, classNa
     return `${className}-icon-container ${selectedClass}`;
   };
 
+  const slotHasImage = (slot: ItemData): boolean => {
+    return slot?.image?.length > 0;
+  };
+
+  const slotIsSelected = (slot: ItemData): boolean => {
+    return slot?.selected ?? false;
+  };
+
   return (
     <div>
       {coords.map((coord: Coord, index: number) => (
@@ -40,7 +48,7 @@ const SlotSection = ({ slots, handleClickOpen, handleShiftClick, coords, classNa
               handleClickOpen(event, index, className);
             }}
           />
-          {((slots[index]?.image).length > 0) || ((slots[index]?.selected) ?? false)
+          {slotHasImage(slots[index]) || slotIsSelected(slots[index])
             ? (
             <div
               className={getClassName(slots[index])}
