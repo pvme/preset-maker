@@ -5,11 +5,10 @@
     "**/.hg": true,
     "**/CVS": true,
     "**/.DS_Store": true,
-    "**/Thumbs.db": true,
-    "**/node_modules": true
+    "**/Thumbs.db": true
   },
 	"editor.codeActionsOnSave": {
     "source.fixAll": true
   },
-  "eslint.validate": ["typscript"],
+  "eslint.validate": ["typescript"],
 }
