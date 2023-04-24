@@ -208,6 +208,14 @@
 		"wikiLink": "https://runescape.wiki/w/Amulet_of_fury"
 	},
 	{
+		"label": "amuletofglory",
+		"image": "https://i.imgur.com/HyS1DoA.png",
+		"name": "Amulet of glory",
+		"breakdownNotes": "",
+		"slot": 10,
+		"wikiLink": "https://runescape.wiki/w/Amulet_of_glory"
+	},
+	{
 		"label": "amuletofnature",
 		"image": "https://i.imgur.com/rqmHHOy.png",
 		"name": "Amulet of nature",
@@ -704,6 +712,14 @@
 		"wikiLink": "https://runescape.wiki/w/Barrows_totems"
 	},
 	{
+		"label": "beaverpouch",
+		"image": "https://i.imgur.com/qa49nkC.png",
+		"name": "Beaver pouch",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Beaver_pouch"
+	},
+	{
 		"label": "zerkess",
 		"image": "https://i.imgur.com/DyfukSE.png",
 		"name": "Berserk blood essence",
@@ -1174,6 +1190,14 @@
 		"breakdownNotes": "",
 		"slot": 6,
 		"wikiLink": "https://runescape.wiki/w/Cinderbane_gloves"
+	},
+	{
+		"label": "combatbracelet",
+		"image": "https://i.imgur.com/fHvV11R.png",
+		"name": "Combat bracelet",
+		"breakdownNotes": "",
+		"slot": 6,
+		"wikiLink": "https://runescape.wiki/w/Combat_bracelet"
 	},
 	{
 		"label": "dummy",
@@ -2054,6 +2078,14 @@
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Enhanced_replenishment"
+	},
+	{
+		"label": "enlightenedamulet",
+		"image": "https://i.imgur.com/0ogKur6.png",
+		"name": "Enlightened amulet",
+		"breakdownNotes": "",
+		"slot": 10,
+		"wikiLink": "https://runescape.wiki/w/Enlightened_amulet"
 	},
 	{
 		"label": "eofyellow",
@@ -4784,12 +4816,28 @@
 		"wikiLink": "https://runescape.wiki/w/Ring_of_death"
 	},
 	{
+		"label": "ringofduelling",
+		"image": "https://i.imgur.com/6P8F0Ye.png",
+		"name": "Ring of duelling",
+		"breakdownNotes": "",
+		"slot": 11,
+		"wikiLink": "https://runescape.wiki/w/Ring_of_duelling"
+	},
+	{
 		"label": "ringofkinship",
 		"image": "https://i.imgur.com/o5sXUdw.png",
 		"name": "Ring of kinship",
 		"breakdownNotes": "",
 		"slot": 11,
 		"wikiLink": "https://runescape.wiki/w/Ring_of_kinship"
+	},
+	{
+		"label": "ringofrespawn",
+		"image": "https://i.imgur.com/Z5qbOnJ.png",
+		"name": "Ring of respawn",
+		"breakdownNotes": "",
+		"slot": 11,
+		"wikiLink": "https://runescape.wiki/w/Ring_of_respawn"
 	},
 	{
 		"label": "vigour",
@@ -5142,6 +5190,14 @@
 		"breakdownNotes": "",
 		"slot": 11,
 		"wikiLink": "https://runescape.wiki/w/Sixth-Age_circuit"
+	},
+	{
+		"label": "skillsnecklace",
+		"image": "https://i.imgur.com/28wkzOg.png",
+		"name": "Skills necklace",
+		"breakdownNotes": "",
+		"slot": 10,
+		"wikiLink": "https://runescape.wiki/w/Skills_necklace"
 	},
 	{
 		"label": "skullsceptre",
