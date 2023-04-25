@@ -1,5 +1,23 @@
 [
 	{
+		"label": "arcticbear",
+		"image": "https://i.imgur.com/o9TmbfA.png",
+		"name": "Arctic bear pouch",
+		"breakdownNotes": ""
+	},
+	{
+		"label": "beaver",
+		"image": "https://i.imgur.com/qa49nkC.png",
+		"name": "Beaver pouch",
+		"breakdownNotes": ""
+	},
+	{
+		"label": "gargoyle",
+		"image": "https://i.imgur.com/u1nbeaC.png",
+		"name": "Gargoyle",
+		"breakdownNotes": ""
+	},
+	{
 		"label": "bloodnihil",
 		"image": "https://i.imgur.com/a2CITlX.png",
 		"name": "Blood Nihil",
@@ -9,6 +27,12 @@
 		"label": "bloodreaver",
 		"image": "https://i.imgur.com/sxnDQng.png",
 		"name": "Blood Reaver",
+		"breakdownNotes": ""
+	},
+	{
+		"label": "granitelobster",
+		"image": "https://i.imgur.com/VsrLYXb.png",
+		"name": "Granite lobster",
 		"breakdownNotes": ""
 	},
 	{
