@@ -408,6 +408,14 @@
 		"wikiLink": "https://runescape.wiki/w/Arctic_bear_pouch"
 	},
 	{
+		"label": "ardytele100",
+		"image": "https://i.imgur.com/PreONox.png",
+		"name": "Ardougne teleport (item)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Ardougne_teleport_(item)"
+	},
+	{
 		"label": "abs",
 		"image": "https://i.imgur.com/kOg6Htl.png",
 		"name": "Armadyl battlestaff",
@@ -712,7 +720,7 @@
 		"wikiLink": "https://runescape.wiki/w/Barrows_totems"
 	},
 	{
-		"label": "beaver",
+		"label": "beaverpouch",
 		"image": "https://i.imgur.com/qa49nkC.png",
 		"name": "Beaver pouch",
 		"breakdownNotes": "",
@@ -1102,6 +1110,14 @@
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Calorie_bomb"
+	},
+	{
+		"label": "camelottele100",
+		"image": "https://i.imgur.com/9vEqmlE.png",
+		"name": "Camelot teleport (item)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Camelot_teleport_(item)"
 	},
 	{
 		"label": "cballs",
@@ -2264,6 +2280,14 @@
 		"wikiLink": "https://runescape.wiki/w/Extreme_prayer"
 	},
 	{
+		"label": "faladorteleport(item)",
+		"image": "https://i.imgur.com/IdYQdnl.png",
+		"name": "Falador teleport (item)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Falador_teleport_(item)"
+	},
+	{
 		"label": "rangeblood",
 		"image": "https://i.imgur.com/9lDPDdo.png",
 		"name": "Farsight blood necklace",
@@ -2406,6 +2430,46 @@
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Fungal_spore_soup"
+	},
+	{
+		"label": "furysharkbody",
+		"image": "https://i.imgur.com/uz0wELA.png",
+		"name": "Fury shark body",
+		"breakdownNotes": "",
+		"slot": 2,
+		"wikiLink": "https://runescape.wiki/w/Fury_shark_body"
+	},
+	{
+		"label": "furysharkboots",
+		"image": "https://i.imgur.com/Kk68bUS.png",
+		"name": "Fury shark feet",
+		"breakdownNotes": "",
+		"slot": 7,
+		"wikiLink": "https://runescape.wiki/w/Fury_shark_feet"
+	},
+	{
+		"label": "furysharkgloves",
+		"image": "https://i.imgur.com/iCfoioZ.png",
+		"name": "Fury shark hands",
+		"breakdownNotes": "",
+		"slot": 6,
+		"wikiLink": "https://runescape.wiki/w/Fury_shark_hands"
+	},
+	{
+		"label": "furysharkhead",
+		"image": "https://i.imgur.com/JHc4QWU.png",
+		"name": "Fury shark head",
+		"breakdownNotes": "",
+		"slot": 1,
+		"wikiLink": "https://runescape.wiki/w/Fury_shark_head"
+	},
+	{
+		"label": "furysharklegs",
+		"image": "https://i.imgur.com/r9Gzn0X.png",
+		"name": "Fury shark legs",
+		"breakdownNotes": "",
+		"slot": 3,
+		"wikiLink": "https://runescape.wiki/w/Fury_shark_legs"
 	},
 	{
 		"label": "ganoboots",
@@ -3374,6 +3438,14 @@
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Lucky_charms_(ED3)"
+	},
+	{
+		"label": "lumbytele100",
+		"image": "https://i.imgur.com/YSQatfJ.png",
+		"name": "Lumbrdige teleport (item)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Lumbrdige_teleport_(item)"
 	},
 	{
 		"label": "lunarammy",
@@ -5934,6 +6006,14 @@
 		"breakdownNotes": "",
 		"slot": 4,
 		"wikiLink": "https://runescape.wiki/w/Vanquish"
+	},
+	{
+		"label": "varrocktele100",
+		"image": "https://i.imgur.com/hRnhbj5.png",
+		"name": "Varrock teleport (item)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Varrock_teleport_(item)"
 	},
 	{
 		"label": "rangeshield",
