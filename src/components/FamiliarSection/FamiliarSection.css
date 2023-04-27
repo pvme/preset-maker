@@ -34,6 +34,6 @@
   border-color: rgba(255, 255, 255, 0.45);
 }
 
-.familiar-section__list-item:hover > .relic-section__add-relic {
+.familiar-section__list-item:hover > .familiar-section__add-familiar {
   color: white;
 }
