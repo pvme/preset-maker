@@ -32,7 +32,7 @@ const RelicSectionList = ({ relics, onClick }: { relics: RelicData[], onClick: R
             <img className="relic-section__list-item-image" src={relicData.image}></img>
           )}
           <span className="relic-section__list-item-name">{relicData.name}</span>
-          {(relicData.energy !== 0) && (
+          {((relicData?.energy ?? 0) > 0) && (
             <span className="relic-section__list-item-energy">&nbsp;({relicData.energy})</span>
           )}
         </div>

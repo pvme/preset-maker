@@ -107,7 +107,7 @@ export const RelicSelectDialog = ({
       image: '',
       label: '',
       breakdownNotes: '',
-      energy: 0
+      energy: undefined
     });
     handleClose();
   }, [indexedSelection]);
