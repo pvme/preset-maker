@@ -1,7 +1,7 @@
 import { type EntityData } from './entity-data';
 
 export interface RelicData extends EntityData {
-  energy: number
+  energy?: number
 };
 
 export interface Relics {
