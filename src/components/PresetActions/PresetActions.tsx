@@ -3,6 +3,7 @@ import LinkIcon from '@mui/icons-material/Link';
 import SaveIcon from '@mui/icons-material/Save';
 import SaveAsIcon from '@mui/icons-material/SaveAs';
 import { Button, ButtonGroup, Link, TextField } from '@mui/material';
+import { canCopyImagesToClipboard } from 'copy-image-clipboard';
 import { useSnackbar } from 'notistack';
 import React, { useCallback, useState } from 'react';
 import { uploadPreset } from '../../api/upload-preset';
@@ -14,6 +15,7 @@ import { sanitizeAndStringifyPreset } from '../../utility/sanitizer';
 import { ResetConfirmationDialog } from '../ResetConfirmationDialog/ResetConfirmationDialog';
 import { SavePresetDialog, SavePresetDialogState } from '../SavePresetDialog/SavePresetDialog';
 import './PresetActions.css';
+import { ClipboardCopyButtonContainer } from '../ClipboardCopyButtonContainer/ClipboardCopyButtonContainer';
 
 export const PresetActions = ({
   presetExportRef
@@ -170,16 +172,19 @@ export const PresetActions = ({
               Link to preset
             </Link>
           }
-          <Button
-            className="preset-actions__button"
-            variant="outlined"
-            startIcon={<ContentCopyIcon/>}
-            onClick={() => {
-              void onCopyImageToClipboardClick();
-            }}
-          >
-            Copy Image to Clipboard
-          </Button>
+          <ClipboardCopyButtonContainer>
+            <Button
+              className="preset-actions__button"
+              variant="outlined"
+              startIcon={<ContentCopyIcon/>}
+              disabled={!canCopyImagesToClipboard()}
+              onClick={() => {
+                void onCopyImageToClipboardClick();
+              }}
+            >
+              Copy Image to Clipboard
+            </Button>
+          </ClipboardCopyButtonContainer>
         </ButtonGroup>
       </fieldset>
       {/* Reset actions */}
