@@ -957,7 +957,7 @@
 		"name": "Blue charm (1)",
 		"breakdownNotes": "",
 		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Blue_charm_(1)"
+		"wikiLink": "https://runescape.wiki/w/Blue_charm"
 	},
 	{
 		"label": "bodyrune",
@@ -994,10 +994,10 @@
 	{
 		"label": "guthixgodbook",
 		"image": "https://i.imgur.com/GZwJgcW.png",
-		"name": "Book of balance (Illuminated)",
+		"name": "Illuminated Book of Balance",
 		"breakdownNotes": "",
 		"slot": 13,
-		"wikiLink": "https://runescape.wiki/w/Book_of_balance_(Illuminated)"
+		"wikiLink": "https://runescape.wiki/w/Illuminated_Book_of_Balance"
 	},
 	{
 		"label": "zammygodbook2",
@@ -1010,10 +1010,10 @@
 	{
 		"label": "zammygodbook",
 		"image": "https://i.imgur.com/AMmI7st.png",
-		"name": "Book of chaos (Illuminated)",
+		"name": "Illuminated Book of Chaos",
 		"breakdownNotes": "",
 		"slot": 13,
-		"wikiLink": "https://runescape.wiki/w/Book_of_chaos_(Illuminated)"
+		"wikiLink": "https://runescape.wiki/w/Illuminated_Book_of_Chaos"
 	},
 	{
 		"label": "armagodbook2",
@@ -1026,10 +1026,10 @@
 	{
 		"label": "armagodbook",
 		"image": "https://i.imgur.com/VgpxUSQ.png",
-		"name": "Book of law (Illuminated)",
+		"name": "Illuminated Book of Law",
 		"breakdownNotes": "",
 		"slot": 13,
-		"wikiLink": "https://runescape.wiki/w/Book_of_law_(Illuminated)"
+		"wikiLink": "https://runescape.wiki/w/Illuminated_Book_of_Law"
 	},
 	{
 		"label": "bandosgodbook2",
@@ -1050,10 +1050,10 @@
 	{
 		"label": "saragodbook",
 		"image": "https://i.imgur.com/PY2Fx7Z.png",
-		"name": "Book of wisdom (Illuminated)",
+		"name": "Illuminated Book of Wisdom",
 		"breakdownNotes": "",
 		"slot": 13,
-		"wikiLink": "https://runescape.wiki/w/Book_of_wisdom_(Illuminated)"
+		"wikiLink": "https://runescape.wiki/w/Illuminated_Book_of_Wisdom"
 	},
 	{
 		"label": "subjboots",
@@ -1081,7 +1081,7 @@
 	},
 	{
 		"label": "brimhaventablet",
-		"image": "hhttps://i.imgur.com/uRrpo3Y.png",
+		"image": "https://i.imgur.com/uRrpo3Y.png",
 		"name": "Brimhaven tablet",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -2125,7 +2125,7 @@
 		"name": "EoF -  Armadyl Battlestaff",
 		"breakdownNotes": "",
 		"slot": 10,
-		"wikiLink": "https://runescape.wiki/w/EoF_-__Armadyl_Battlestaff"
+		"wikiLink": "https://runescape.wiki/w/Armadyl_Battlestaff"
 	},
 	{
 		"label": "eofgreen",
@@ -2133,7 +2133,7 @@
 		"name": "EoF - Dark bow",
 		"breakdownNotes": "",
 		"slot": 10,
-		"wikiLink": "https://runescape.wiki/w/EoF_-_Dark_bow"
+		"wikiLink": "https://runescape.wiki/w/Dark_bow"
 	},
 	{
 		"label": "eofred",
@@ -2141,7 +2141,7 @@
 		"name": "EoF - Dragon claws",
 		"breakdownNotes": "",
 		"slot": 10,
-		"wikiLink": "https://runescape.wiki/w/EoF_-_Dragon_claws"
+		"wikiLink": "https://runescape.wiki/w/Dragon_claws"
 	},
 	{
 		"label": "eofpink",
@@ -2149,7 +2149,7 @@
 		"name": "EoF - Eldritch crossbow",
 		"breakdownNotes": "",
 		"slot": 10,
-		"wikiLink": "https://runescape.wiki/w/EoF_-_Eldritch_crossbow"
+		"wikiLink": "https://runescape.wiki/w/Eldritch_crossbow"
 	},
 	{
 		"label": "eofpurple",
@@ -2157,7 +2157,7 @@
 		"name": "EoF - Guthix staff",
 		"breakdownNotes": "",
 		"slot": 10,
-		"wikiLink": "https://runescape.wiki/w/EoF_-_Guthix_staff"
+		"wikiLink": "https://runescape.wiki/w/Guthix_staff"
 	},
 	{
 		"label": "eofblue",
@@ -2165,7 +2165,7 @@
 		"name": "EoF - Seren godbow",
 		"breakdownNotes": "",
 		"slot": 10,
-		"wikiLink": "https://runescape.wiki/w/EoF_-_Seren_godbow"
+		"wikiLink": "https://runescape.wiki/w/Seren_godbow"
 	},
 	{
 		"label": "eofblack",
@@ -2173,7 +2173,7 @@
 		"name": "EoF - Statius warhammer",
 		"breakdownNotes": "",
 		"slot": 10,
-		"wikiLink": "https://runescape.wiki/w/EoF_-_Statius_warhammer"
+		"wikiLink": "https://runescape.wiki/w/Statius_warhammer"
 	},
 	{
 		"label": "grim",
@@ -2845,7 +2845,7 @@
 		"name": "Guthix / Saradomin / Zamorak cape",
 		"breakdownNotes": "",
 		"slot": 12,
-		"wikiLink": "https://runescape.wiki/w/Guthix_/_Saradomin_/_Zamorak_cape"
+		"wikiLink": "https://runescape.wiki/w/God_capes"
 	},
 	{
 		"label": "grest",
@@ -3501,7 +3501,7 @@
 		"name": "Lucky charms (ED1)",
 		"breakdownNotes": "",
 		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Lucky_charms_(ED1)"
+		"wikiLink": "https://runescape.wiki/w/Lucky_charms_(Temple_of_Aminishi)"
 	},
 	{
 		"label": "luckyed2",
@@ -3509,7 +3509,7 @@
 		"name": "Lucky charms (ED2)",
 		"breakdownNotes": "",
 		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Lucky_charms_(ED2)"
+		"wikiLink": "https://runescape.wiki/w/Lucky_charms_(Dragonkin_Laboratory)"
 	},
 	{
 		"label": "luckyed3",
@@ -3517,7 +3517,7 @@
 		"name": "Lucky charms (ED3)",
 		"breakdownNotes": "",
 		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Lucky_charms_(ED3)"
+		"wikiLink": "https://runescape.wiki/w/Lucky_charms_(Shadow_Reef)"
 	},
 	{
 		"label": "lumbytele100",
@@ -6053,7 +6053,7 @@
 		"name": "Unfinished rune helm (98%)",
 		"breakdownNotes": "",
 		"slot": 0,
-		"wikiLink": "https://https://runescape.wiki/w/Unfinished_smithing_item"
+		"wikiLink": "https://runescape.wiki/w/Unfinished_smithing_item"
 	},
 	{
 		"label": "unipouch",
