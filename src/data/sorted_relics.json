@@ -61,5 +61,12 @@
 		"name": "Shadows Grace",
 		"breakdownNotes": "",
 		"energy": 50
+	},
+  {
+		"label": "slayerintrospection",
+		"image": "https://i.imgur.com/spEwR2q.png",
+		"name": "Slayer Introspection",
+		"breakdownNotes": "",
+		"energy": 200
 	}
 ]
