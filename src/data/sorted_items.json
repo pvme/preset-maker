@@ -992,14 +992,6 @@
 		"wikiLink": "https://runescape.wiki/w/Book_of_balance"
 	},
 	{
-		"label": "guthixgodbook",
-		"image": "https://i.imgur.com/GZwJgcW.png",
-		"name": "Illuminated Book of Balance",
-		"breakdownNotes": "",
-		"slot": 13,
-		"wikiLink": "https://runescape.wiki/w/Illuminated_Book_of_Balance"
-	},
-	{
 		"label": "zammygodbook2",
 		"image": "https://i.imgur.com/F6Q8fGK.png",
 		"name": "Book of chaos",
@@ -1008,28 +1000,12 @@
 		"wikiLink": "https://runescape.wiki/w/Book_of_chaos"
 	},
 	{
-		"label": "zammygodbook",
-		"image": "https://i.imgur.com/AMmI7st.png",
-		"name": "Illuminated Book of Chaos",
-		"breakdownNotes": "",
-		"slot": 13,
-		"wikiLink": "https://runescape.wiki/w/Illuminated_Book_of_Chaos"
-	},
-	{
 		"label": "armagodbook2",
 		"image": "https://i.imgur.com/hm5z04C.png",
 		"name": "Book of law",
 		"breakdownNotes": "",
 		"slot": 13,
 		"wikiLink": "https://runescape.wiki/w/Book_of_law"
-	},
-	{
-		"label": "armagodbook",
-		"image": "https://i.imgur.com/VgpxUSQ.png",
-		"name": "Illuminated Book of Law",
-		"breakdownNotes": "",
-		"slot": 13,
-		"wikiLink": "https://runescape.wiki/w/Illuminated_Book_of_Law"
 	},
 	{
 		"label": "bandosgodbook2",
@@ -1046,14 +1022,6 @@
 		"breakdownNotes": "",
 		"slot": 13,
 		"wikiLink": "https://runescape.wiki/w/Book_of_wisdom"
-	},
-	{
-		"label": "saragodbook",
-		"image": "https://i.imgur.com/PY2Fx7Z.png",
-		"name": "Illuminated Book of Wisdom",
-		"breakdownNotes": "",
-		"slot": 13,
-		"wikiLink": "https://runescape.wiki/w/Illuminated_Book_of_Wisdom"
 	},
 	{
 		"label": "subjboots",
@@ -2982,6 +2950,38 @@
 		"breakdownNotes": "",
 		"slot": 12,
 		"wikiLink": "https://runescape.wiki/w/Igneous_Kal-Zuk"
+	},
+	{
+		"label": "guthixgodbook",
+		"image": "https://i.imgur.com/GZwJgcW.png",
+		"name": "Illuminated Book of Balance",
+		"breakdownNotes": "",
+		"slot": 13,
+		"wikiLink": "https://runescape.wiki/w/Illuminated_Book_of_Balance"
+	},
+	{
+		"label": "zammygodbook",
+		"image": "https://i.imgur.com/AMmI7st.png",
+		"name": "Illuminated Book of Chaos",
+		"breakdownNotes": "",
+		"slot": 13,
+		"wikiLink": "https://runescape.wiki/w/Illuminated_Book_of_Chaos"
+	},
+	{
+		"label": "armagodbook",
+		"image": "https://i.imgur.com/VgpxUSQ.png",
+		"name": "Illuminated Book of Law",
+		"breakdownNotes": "",
+		"slot": 13,
+		"wikiLink": "https://runescape.wiki/w/Illuminated_Book_of_Law"
+	},
+	{
+		"label": "saragodbook",
+		"image": "https://i.imgur.com/PY2Fx7Z.png",
+		"name": "Illuminated Book of Wisdom",
+		"breakdownNotes": "",
+		"slot": 13,
+		"wikiLink": "https://runescape.wiki/w/Illuminated_Book_of_Wisdom"
 	},
 	{
 		"label": "core",
@@ -5998,6 +5998,14 @@
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Tower_skipping_ticket"
+	},
+	{
+		"label": "travellersnecklace",
+		"image": "https://i.imgur.com/9FP2aq7.png",
+		"name": "Traveller's Necklace",
+		"breakdownNotes": "",
+		"slot": 10,
+		"wikiLink": "https://runescape.wiki/w/Traveller%27s_necklace"
 	},
 	{
 		"label": "tmwboots",
