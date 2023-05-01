@@ -67,7 +67,9 @@ export const HeaderBar = (): JSX.Element => {
         }
 
         const data = JSON.parse(event.target.result as string);
-        if (!validate<SavedPresetData>(data).success) {
+        const validationResult = validate<SavedPresetData>(data);
+        if (!validationResult.success) {
+          console.error(validationResult.errors);
           enqueueSnackbar('Invalid JSON data.', { variant: 'error' });
           return;
         }

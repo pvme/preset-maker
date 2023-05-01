@@ -7,7 +7,7 @@ const warningMsg =
   'If using Firefox, you can set `dom.events.asyncClipboard.clipboardItem` to`true` in about: config.';
 
 export const ClipboardCopyButtonContainer = ({ className, children }: { className?: string, children: JSX.Element }): JSX.Element => {
-  const title = canCopyImagesToClipboard ()
+  const title = canCopyImagesToClipboard()
     ? undefined
     : warningMsg;
   return (
