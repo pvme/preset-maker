@@ -21,6 +21,13 @@
 		"energy": 350
 	},
 	{
+		"label": "deathnote",
+		"image": "https://i.imgur.com/2KToagJ.png",
+		"name": "Death Note",
+		"breakdownNotes": "",
+		"energy": 150
+	},
+	{
 		"label": "deathward",
 		"image": "https://i.imgur.com/cFlJmWP.png",
 		"name": "Death Ward",
@@ -62,7 +69,7 @@
 		"breakdownNotes": "",
 		"energy": 50
 	},
-  {
+	{
 		"label": "slayerintrospection",
 		"image": "https://i.imgur.com/spEwR2q.png",
 		"name": "Slayer Introspection",
