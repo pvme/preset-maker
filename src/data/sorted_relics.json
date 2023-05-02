@@ -1,4 +1,11 @@
 [
+  {
+		"label": "abyssallink",
+		"image": "https://i.imgur.com/8IMPgCF.png",
+		"name": "Abyssal Link",
+		"breakdownNotes": "",
+		"energy": 250
+	},
 	{
 		"label": "berserkersfury",
 		"image": "https://i.imgur.com/xXWYCHG.png",
