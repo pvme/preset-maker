@@ -912,6 +912,22 @@
 		"wikiLink": "https://runescape.wiki/w/Blighted_rebounder"
 	},
 	{
+		"label": "reaverscrolls",
+		"image": "https://i.imgur.com/Fq5eKsl.png",
+		"name": "Blood Reaver scroll (Blood Siphon)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Blood_Reaver_scroll_(Blood_Siphon)"
+	},
+	{
+		"label": "reaverscrolls500",
+		"image": "https://i.imgur.com/3o2DaTu.png",
+		"name": "Blood Reaver scroll (Blood Siphon)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Blood_Reaver_scroll_(Blood_Siphon)"
+	},
+	{
 		"label": "bloodfury",
 		"image": "https://i.imgur.com/lDrVrEd.png",
 		"name": "Blood amulet of fury",
@@ -934,22 +950,6 @@
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Blood_rune"
-	},
-	{
-		"label": "reaverscrolls",
-		"image": "https://i.imgur.com/Fq5eKsl.png",
-		"name": "Blood siphon scrolls",
-		"breakdownNotes": "",
-		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Blood_siphon_scrolls"
-	},
-	{
-		"label": "reaverscrolls500",
-		"image": "https://i.imgur.com/3o2DaTu.png",
-		"name": "Blood siphon scrolls",
-		"breakdownNotes": "",
-		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Blood_siphon_scrolls"
 	},
 	{
 		"label": "jelly",
@@ -1280,30 +1280,6 @@
 		"wikiLink": "https://runescape.wiki/w/Cramulet_(Camulet)"
 	},
 	{
-		"label": "kalgscrolls",
-		"image": "https://i.imgur.com/COanosD.png",
-		"name": "Crit-i-kal scrolls",
-		"breakdownNotes": "",
-		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Crit-i-kal_scrolls"
-	},
-	{
-		"label": "kalgscrolls100",
-		"image": "https://i.imgur.com/vIatvqA.png",
-		"name": "Crit-i-kal scrolls",
-		"breakdownNotes": "",
-		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Crit-i-kal_scrolls"
-	},
-	{
-		"label": "kalgscrolls500",
-		"image": "https://i.imgur.com/hjoH9xr.png",
-		"name": "Crit-i-kal scrolls",
-		"breakdownNotes": "",
-		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Crit-i-kal_scrolls"
-	},
-	{
 		"label": "crushednest",
 		"image": "https://i.imgur.com/iBgT4Kn.png",
 		"name": "Crushed nest",
@@ -1454,14 +1430,6 @@
 		"breakdownNotes": "",
 		"slot": 13,
 		"wikiLink": "https://runescape.wiki/w/Dave's_spellbook"
-	},
-	{
-		"label": "ripperscrolls",
-		"image": "https://i.imgur.com/fEm2b5Q.png",
-		"name": "Death from above scrolls",
-		"breakdownNotes": "",
-		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Death_from_above_scrolls"
 	},
 	{
 		"label": "deathrune",
@@ -2312,14 +2280,6 @@
 		"wikiLink": "https://runescape.wiki/w/Feather_of_Ma'at"
 	},
 	{
-		"label": "meerkatscrolls500",
-		"image": "https://i.imgur.com/Dc1RbtE.png",
-		"name": "Fetch casket scrolls",
-		"breakdownNotes": "",
-		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Fetch_casket_scrolls"
-	},
-	{
 		"label": "firerune",
 		"image": "https://i.imgur.com/0UBrFSR.png",
 		"name": "Fire rune",
@@ -2920,12 +2880,12 @@
 		"wikiLink": "https://runescape.wiki/w/Hazelmere's_signet"
 	},
 	{
-		"label": "uniscrolls",
-		"image": "https://i.imgur.com/UhtB5A7.png",
-		"name": "Healing aura scrolls",
+		"label": "hellhoundscrolls",
+		"image": "https://i.imgur.com/zNZLlL3.png",
+		"name": "Hellhound scroll (Soul Food)",
 		"breakdownNotes": "",
 		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Healing_aura_scrolls"
+		"wikiLink": "https://runescape.wiki/w/Hellhound_scroll_(Soul_Food)"
 	},
 	{
 		"label": "herbbag",
@@ -3182,6 +3142,30 @@
 		"breakdownNotes": "",
 		"slot": 1,
 		"wikiLink": "https://runescape.wiki/w/Jaws_of_the_Abyss"
+	},
+	{
+		"label": "kalgscrolls",
+		"image": "https://i.imgur.com/COanosD.png",
+		"name": "Kal'gerion Demon scroll (Crit-i-Kal)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Kal%27gerion_Demon_scroll_(Crit-i-Kal)"
+	},
+	{
+		"label": "kalgscrolls100",
+		"image": "https://i.imgur.com/vIatvqA.png",
+		"name": "Kal'gerion Demon scroll (Crit-i-Kal)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Kal%27gerion_Demon_scroll_(Crit-i-Kal)"
+	},
+	{
+		"label": "kalgscrolls500",
+		"image": "https://i.imgur.com/hjoH9xr.png",
+		"name": "Kal'gerion Demon scroll (Crit-i-Kal)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Kal%27gerion_Demon_scroll_(Crit-i-Kal)"
 	},
 	{
 		"label": "defender",
@@ -4152,20 +4136,28 @@
 		"wikiLink": "https://runescape.wiki/w/Medium_clue"
 	},
 	{
-		"label": "meerkatpouch",
-		"image": "https://i.imgur.com/U7prTHG.png",
-		"name": "Meerkat pouch",
+		"label": "meerkatscrolls500",
+		"image": "https://i.imgur.com/Dc1RbtE.png",
+		"name": "Meerkat scroll (Fetch Casket)",
 		"breakdownNotes": "",
 		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Meerkat_pouch"
+		"wikiLink": "https://runescape.wiki/w/Meerkat_scroll_(Fetch_Casket)"
 	},
 	{
-		"label": "meerkatscrolls",
+		"label": "meerkatscroll",
 		"image": "https://i.imgur.com/QrtxRyB.png",
-		"name": "Meerkat scrolls",
+		"name": "Meerkat scrolls (Fetch Casket)",
 		"breakdownNotes": "",
 		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Meerkat_scrolls"
+		"wikiLink": "https://runescape.wiki/w/Meerkat_scroll_(Fetch_Casket)"
+	},
+	{
+		"label": "meerkatspouch",
+		"image": "https://i.imgur.com/U7prTHG.png",
+		"name": "Meerkats pouch",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Meerkats pouch"
 	},
 	{
 		"label": "mhbd",
@@ -5160,6 +5152,14 @@
 		"wikiLink": "https://runescape.wiki/w/Ring_of_vigour"
 	},
 	{
+		"label": "ripperscrolls",
+		"image": "https://i.imgur.com/fEm2b5Q.png",
+		"name": "Ripper Demon scroll (Death From Above)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Ripper_Demon_scroll_(Death_From_Above)"
+	},
+	{
 		"label": "rocktail",
 		"image": "https://i.imgur.com/04JlEFC.png",
 		"name": "Rocktail",
@@ -5568,14 +5568,6 @@
 		"wikiLink": "https://runescape.wiki/w/Sophanem_Dungeon_teleport"
 	},
 	{
-		"label": "hellhoundscrolls",
-		"image": "https://i.imgur.com/zNZLlL3.png",
-		"name": "Soul Food scrolls",
-		"breakdownNotes": "",
-		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Soul_Food_scrolls"
-	},
-	{
 		"label": "soulrune",
 		"image": "https://i.imgur.com/wdtfUi0.png",
 		"name": "Soul rune",
@@ -5730,10 +5722,10 @@
 	{
 		"label": "titanscrolls",
 		"image": "https://i.imgur.com/5IKQkH1.png",
-		"name": "Steel of legends scrolls",
+		"name": "Steel Titan scroll (Steel of Legends)",
 		"breakdownNotes": "",
 		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Steel_of_legends_scrolls"
+		"wikiLink": "https://runescape.wiki/w/Steel_Titan_scroll_(Steel_of_Legends)"
 	},
 	{
 		"label": "titanpouch",
@@ -6214,6 +6206,14 @@
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Unfinished_smithing_item"
+	},
+	{
+		"label": "uniscrolls",
+		"image": "https://i.imgur.com/UhtB5A7.png",
+		"name": "Unicorn Stallion scroll (Healing Aura)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Unicorn_Stallion_scroll_(Healing_Aura)"
 	},
 	{
 		"label": "unipouch",
