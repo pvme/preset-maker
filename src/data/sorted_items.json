@@ -200,6 +200,14 @@
 		"wikiLink": "https://runescape.wiki/w/Akrisae's_robe_top"
 	},
 	{
+		"label": "aminishiteleport",
+		"image": "https://i.imgur.com/UvdpmhD.png",
+		"name": "Aminishi teleport",
+		"breakdownNotes": "",
+		"slot": 13,
+		"wikiLink": "https://runescape.wiki/w/Aminishi_teleport"
+	},
+	{
 		"label": "amuletoffury",
 		"image": "https://i.imgur.com/ixoEqMS.png",
 		"name": "Amulet of fury",
@@ -825,7 +833,7 @@
 	},
 	{
 		"label": "blackdragonleather",
-		"image": "https://i.imgur.com/20Xr27z.png",
+		"image": "https://i.imgur.com/o1fn8Bv.png",
 		"name": "Black dragon leather",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -1281,7 +1289,7 @@
 	},
 	{
 		"label": "crushednest",
-		"image": "https://i.imgur.com/iBgT4Kn.png",
+		"image": "https://i.imgur.com/JzxQM2m.png",
 		"name": "Crushed nest",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -1345,7 +1353,7 @@
 	},
 	{
 		"label": "curlyroot",
-		"image": "https://i.imgur.com/7C1e28s.png",
+		"image": "https://i.imgur.com/FN0XHFS.png",
 		"name": "Curly root",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -3113,7 +3121,7 @@
 	},
 	{
 		"label": "jangerberries",
-		"image": "https://i.imgur.com/TVcSeXt.png",
+		"image": "https://i.imgur.com/8ka7wAu.png",
 		"name": "Jangerberries",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -5000,8 +5008,16 @@
 		"wikiLink": "https://runescape.wiki/w/Ranged_skill_cape"
 	},
 	{
+		"label": "rawrocktail",
+		"image": "https://i.imgur.com/GauahOW.png",
+		"name": "Raw rocktail",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Raw_rocktail"
+	},
+	{
 		"label": "rawshark",
-		"image": "https://i.imgur.com/KrOVXDk.png",
+		"image": "https://i.imgur.com/1aatevD.png",
 		"name": "Raw shark",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -5440,6 +5456,14 @@
 		"wikiLink": "https://runescape.wiki/w/Seren_godbow_(shadow)"
 	},
 	{
+		"label": "shadowreefteleport",
+		"image": "https://i.imgur.com/UkipBGb.png",
+		"name": "Shadow Reef teleport",
+		"breakdownNotes": "",
+		"slot": 13,
+		"wikiLink": "https://runescape.wiki/w/Shadow_Reef_teleport"
+	},
+	{
 		"label": "shadownihil",
 		"image": "https://i.imgur.com/0QDIRGb.png",
 		"name": "Shadow nihil pouch",
@@ -5856,6 +5880,46 @@
 		"wikiLink": "https://runescape.wiki/w/Superior_death_lotus_chaps"
 	},
 	{
+		"label": "supseasingergloves",
+		"image": "https://i.imgur.com/dZg2l83.png",
+		"name": "Superior seasinger aonori",
+		"breakdownNotes": "",
+		"slot": 6,
+		"wikiLink": "https://runescape.wiki/w/Superior_seasinger_aonori"
+	},
+	{
+		"label": "supseasingerboots",
+		"image": "https://i.imgur.com/F7aZ8Cy.png",
+		"name": "Superior seasinger asari",
+		"breakdownNotes": "",
+		"slot": 7,
+		"wikiLink": "https://runescape.wiki/w/Superior_seasinger_asari"
+	},
+	{
+		"label": "supseasingerhood",
+		"image": "https://i.imgur.com/CFMETzl.png",
+		"name": "Superior seasinger's hood",
+		"breakdownNotes": "",
+		"slot": 1,
+		"wikiLink": "https://runescape.wiki/w/Superior_seasinger's_hood"
+	},
+	{
+		"label": "supseasingerlegs",
+		"image": "https://i.imgur.com/uMH1Cg6.png",
+		"name": "Superior seasinger's robe bottom",
+		"breakdownNotes": "",
+		"slot": 3,
+		"wikiLink": "https://runescape.wiki/w/Superior_seasinger's_robe_bottom"
+	},
+	{
+		"label": "supseasingertop",
+		"image": "https://i.imgur.com/4yR76OG.png",
+		"name": "Superior seasinger's robe top",
+		"breakdownNotes": "",
+		"slot": 2,
+		"wikiLink": "https://runescape.wiki/w/Superior_seasinger's_robe_top"
+	},
+	{
 		"label": "superiorspinedgloves",
 		"image": "https://i.imgur.com/JuhCtuD.png",
 		"name": "Superior spined gloves",
@@ -6032,6 +6096,14 @@
 		"wikiLink": "https://runescape.wiki/w/The_Heart_teleport"
 	},
 	{
+		"label": "thread",
+		"image": "https://i.imgur.com/E9ffrzS.png",
+		"name": "Thread",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Thread"
+	},
+	{
 		"label": "timberfungussoup",
 		"image": "https://i.imgur.com/ylitEiS.png",
 		"name": "Timber fungus soup",
@@ -6072,8 +6144,8 @@
 		"wikiLink": "https://runescape.wiki/w/Tirannwn_quiver_4"
 	},
 	{
-		"label": "toadflaxpotion(unf)",
-		"image": "https://i.imgur.com/SkFN2ys.png",
+		"label": "toadflaxpotionunf",
+		"image": "https://i.imgur.com/S0ENqzv.png",
 		"name": "Toadflax potion (unf)",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -6128,8 +6200,8 @@
 		"wikiLink": "https://runescape.wiki/w/Torn_grimoire_page"
 	},
 	{
-		"label": "torstolpotion(unf)",
-		"image": "https://i.imgur.com/YJkpXY9.png",
+		"label": "torstolpotionunf",
+		"image": "https://i.imgur.com/fAvXNbz.png",
 		"name": "Torstol potion (unf)",
 		"breakdownNotes": "",
 		"slot": 0,
