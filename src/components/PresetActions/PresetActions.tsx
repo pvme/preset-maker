@@ -10,7 +10,7 @@ import { uploadPreset } from '../../api/upload-preset';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { resetSlots, selectPreset } from '../../redux/store/reducers/preset-reducer';
 import { LocalStorage } from '../../store/local-storage';
-import { copyImageToClipboard } from '../../utility/export-to-png';
+import { copyImageToClipboard, getImageFromElement } from '../../utility/export-to-png';
 import { sanitizeAndStringifyPreset } from '../../utility/sanitizer';
 import { ResetConfirmationDialog } from '../ResetConfirmationDialog/ResetConfirmationDialog';
 import { SavePresetDialog, SavePresetDialogState } from '../SavePresetDialog/SavePresetDialog';
@@ -86,12 +86,14 @@ export const PresetActions = ({
 
   const generateShareableLink = async (): Promise<void> => {
     try {
+      const presetImage = await getImageFromElement(presetExportRef);
       const stringifiedPresetData = sanitizeAndStringifyPreset({
         presetName,
         equipmentSlots,
         inventorySlots,
         relics,
-        familiars
+        familiars,
+        presetImage
       });
 
       setIsGeneratingLink(true);
@@ -108,6 +110,7 @@ export const PresetActions = ({
         { variant: 'success' }
       );
     } catch (err) {
+      console.error(err);
       enqueueSnackbar('Something went wrong, please try again.', {
         variant: 'error'
       });

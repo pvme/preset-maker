@@ -17,4 +17,8 @@ export interface SavedPresetData {
 
   relics?: Relics
   familiars?: Familiars
+  /**
+   * Base64-encoded string.
+   */
+  presetImage?: string
 }

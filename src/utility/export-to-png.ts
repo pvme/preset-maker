@@ -2,6 +2,26 @@ import html2canvas from 'html2canvas';
 
 import { generateFileName } from './generate-file-name';
 
+/**
+ * Converts an HTMLElement to a Base64 image.
+ * @param element The element to convert.
+ * @returns Base64 encoded image as a string.
+ */
+export const getImageFromElement = async (element: HTMLElement | null): Promise<string> => {
+  return await new Promise<string>((resolve, reject) => {
+    if (element == null) {
+      reject(new Error('Null element'));
+      return;
+    }
+
+    createCanvas(element, (blob: string) => {
+      resolve(blob);
+    }).catch((e) => {
+      reject(e);
+    });
+  });
+};
+
 export const exportAsImage = async (element: HTMLElement | null, preface: string): Promise<void> => {
   if (element == null) {
     return;
