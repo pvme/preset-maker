@@ -117,7 +117,6 @@ export const PresetActions = ({
   };
 
   return (
-<<<<<<< HEAD
     <div className="preset-actions">
       {/* Details */}
       <fieldset className="preset-actions__fieldset preset-actions__details">
@@ -129,91 +128,90 @@ export const PresetActions = ({
           fullWidth
         />
       </fieldset>
-=======
-    <div className="preset-actions desktop-only">
->>>>>>> d4e60b9 (progress)
-      {/* Save actions */}
-      <fieldset className="preset-actions__fieldset preset-actions__save">
-        <legend>Save</legend>
-        <ButtonGroup className="preset-actions__button-group" orientation="vertical">
-          <Button
-            className="preset-actions__button"
-            variant="contained"
-            startIcon={<SaveIcon/>}
-            onClick={onSaveClick}
-          >
-            Save
-          </Button>
-          <Button
-            className="preset-actions__button"
-            variant="outlined"
-            startIcon={<SaveAsIcon/>}
-            onClick={() => {
-              void onSaveAsClick();
-            }}
-          >
-            Save As
-          </Button>
-        </ButtonGroup>
-      </fieldset>
-      {/* Export actions */}
-      <fieldset className="preset-actions__fieldset preset-actions__export">
-        <legend>Export</legend>
-        <ButtonGroup className="preset-actions__button-group" orientation="vertical">
-          <Button
-            className="preset-actions__button"
-            variant="contained"
-            startIcon={<LinkIcon/>}
-            disabled={isGeneratingLink}
-            onClick={() => {
-              void generateShareableLink();
-            }}
-          >
-            Create Shareable Link
-          </Button>
-          {(generatedLink != null && generatedLink.length > 0) &&
-            <Link className="preset-actions__link" href={generatedLink} underline="always">
-              Link to preset
-            </Link>
-          }
-          <ClipboardCopyButtonContainer>
+      <div className="preset-actions desktop-only">
+        {/* Save actions */}
+        <fieldset className="preset-actions__fieldset preset-actions__save">
+          <legend>Save</legend>
+          <ButtonGroup className="preset-actions__button-group" orientation="vertical">
+            <Button
+              className="preset-actions__button"
+              variant="contained"
+              startIcon={<SaveIcon/>}
+              onClick={onSaveClick}
+            >
+              Save
+            </Button>
             <Button
               className="preset-actions__button"
               variant="outlined"
-              startIcon={<ContentCopyIcon/>}
-              disabled={!canCopyImagesToClipboard()}
+              startIcon={<SaveAsIcon/>}
               onClick={() => {
-                void onCopyImageToClipboardClick();
+                void onSaveAsClick();
               }}
             >
-              Copy Image to Clipboard
+              Save As
             </Button>
-          </ClipboardCopyButtonContainer>
-        </ButtonGroup>
-      </fieldset>
-      {/* Reset actions */}
-      <div className="preset-actions__reset">
-        <Button
-          className="preset-actions__button width-100"
-          color="error"
-          variant="contained"
-          size="small"
-          onClick={onResetClick}
-        >
-          Reset
-        </Button>
+          </ButtonGroup>
+        </fieldset>
+        {/* Export actions */}
+        <fieldset className="preset-actions__fieldset preset-actions__export">
+          <legend>Export</legend>
+          <ButtonGroup className="preset-actions__button-group" orientation="vertical">
+            <Button
+              className="preset-actions__button"
+              variant="contained"
+              startIcon={<LinkIcon/>}
+              disabled={isGeneratingLink}
+              onClick={() => {
+                void generateShareableLink();
+              }}
+            >
+              Create Shareable Link
+            </Button>
+            {(generatedLink != null && generatedLink.length > 0) &&
+              <Link className="preset-actions__link" href={generatedLink} underline="always">
+                Link to preset
+              </Link>
+            }
+            <ClipboardCopyButtonContainer>
+              <Button
+                className="preset-actions__button"
+                variant="outlined"
+                startIcon={<ContentCopyIcon/>}
+                disabled={!canCopyImagesToClipboard()}
+                onClick={() => {
+                  void onCopyImageToClipboardClick();
+                }}
+              >
+                Copy Image to Clipboard
+              </Button>
+            </ClipboardCopyButtonContainer>
+          </ButtonGroup>
+        </fieldset>
+        {/* Reset actions */}
+        <div className="preset-actions__reset">
+          <Button
+            className="preset-actions__button width-100"
+            color="error"
+            variant="contained"
+            size="small"
+            onClick={onResetClick}
+          >
+            Reset
+          </Button>
+        </div>
+        {/* Dialogs */}
+        <ResetConfirmationDialog
+          open={resetConfirmationOpen}
+          handleConfirmation={onResetConfirmation}
+          handleClose={onResetConfirmationClose}
+        />
+        <SavePresetDialog
+          open={saveDialogOpen}
+          state={SavePresetDialogState.ExistingPreset}
+          onClose={closeSaveDialog}
+        />
       </div>
-      {/* Dialogs */}
-      <ResetConfirmationDialog
-        open={resetConfirmationOpen}
-        handleConfirmation={onResetConfirmation}
-        handleClose={onResetConfirmationClose}
-      />
-      <SavePresetDialog
-        open={saveDialogOpen}
-        state={SavePresetDialogState.ExistingPreset}
-        onClose={closeSaveDialog}
-      />
     </div>
   );
 };

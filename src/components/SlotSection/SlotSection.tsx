@@ -14,9 +14,10 @@ interface SlotProps {
 interface SlotSectionProps extends SlotProps {
   coords: Coord[]
   className: string
+  rootClassName: string
 }
 
-const SlotSection = ({ slots, handleClickOpen, handleShiftClick, coords, className }: SlotSectionProps): JSX.Element => {
+const SlotSection = ({ slots, handleClickOpen, handleShiftClick, coords, className, rootClassName }: SlotSectionProps): JSX.Element => {
   const getClassName = (slot: ItemData): string => {
     const selectedClass = (slot.selected ?? false) ? `${className}-icon-container--selected` : '';
     return `${className}-icon-container ${selectedClass}`;
@@ -31,7 +32,7 @@ const SlotSection = ({ slots, handleClickOpen, handleShiftClick, coords, classNa
   };
 
   return (
-    <div>
+    <div className={rootClassName}>
       {coords.map((coord: Coord, index: number) => (
         <div key={index + new Date().getTime()} style={{ position: 'relative' }}>
           <area
@@ -71,16 +72,15 @@ const SlotSection = ({ slots, handleClickOpen, handleShiftClick, coords, classNa
 };
 
 export const Inventory = (props: SlotProps): JSX.Element => {
-  // TODO Create listener, use hook, etc.
-  const coordsToUse = window.innerWidth > 800
-    ? inventoryCoords
-    : inventoryCoordsMobile;
-  return <SlotSection {...props} coords={coordsToUse} className="inventory" />;
+  const isMobile = window.innerWidth <= 800;
+  const coordsToUse = isMobile ? inventoryCoordsMobile : inventoryCoords;
+  const className = isMobile ? 'inventory inventory--mobile' : 'inventory';
+  return <SlotSection {...props} coords={coordsToUse} className="inventory" rootClassName={className} />;
 };
 
 export const Equipment = (props: SlotProps): JSX.Element => {
-  const coordsToUse = window.innerWidth > 800
-    ? equipmentCoords
-    : equipmentCoordsMobile;
-  return <SlotSection {...props} coords={coordsToUse} className="equipment" />;
+  const isMobile = window.innerWidth <= 800;
+  const coordsToUse = isMobile ? equipmentCoordsMobile : equipmentCoords;
+  const className = isMobile ? 'equipment equipment--mobile' : 'equipment';
+  return <SlotSection {...props} coords={coordsToUse} className="equipment" rootClassName={className} />;
 };
