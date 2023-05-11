@@ -1176,6 +1176,14 @@
 		"wikiLink": "https://runescape.wiki/w/Chaotic_crossbow"
 	},
 	{
+		"label": "charmingflask",
+		"image": "https://i.imgur.com/hvGFXFI.png",
+		"name": "Charming potion flask",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Charming_potion_flask"
+	},
+	{
 		"label": "cluebag",
 		"image": "https://i.imgur.com/h7hCOfy.png",
 		"name": "Charos' clue carrier",
@@ -1286,6 +1294,14 @@
 		"breakdownNotes": "",
 		"slot": 10,
 		"wikiLink": "https://runescape.wiki/w/Cramulet_(Camulet)"
+	},
+	{
+		"label": "crimsoncharm1",
+		"image": "https://i.imgur.com/m6W15K7.png",
+		"name": "Crimson charm (1)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Crimson_charm"
 	},
 	{
 		"label": "crushednest",
@@ -2288,6 +2304,22 @@
 		"wikiLink": "https://runescape.wiki/w/Feather_of_Ma'at"
 	},
 	{
+		"label": "fellstalkincensesticks100",
+		"image": "https://i.imgur.com/nK9EU1V.png",
+		"name": "Fellstalk incense sticks (100)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Fellstalk_incense_sticks"
+	},
+	{
+		"label": "fireorb1noted",
+		"image": "https://i.imgur.com/A6r373m.png",
+		"name": "Fire orb (1 noted)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Fire_orb"
+	},
+	{
 		"label": "firerune",
 		"image": "https://i.imgur.com/0UBrFSR.png",
 		"name": "Fire rune",
@@ -2632,6 +2664,14 @@
 		"wikiLink": "https://runescape.wiki/w/Goblin_village_sphere"
 	},
 	{
+		"label": "goldcharm1",
+		"image": "https://i.imgur.com/z9gFxyX.png",
+		"name": "Gold charm (1)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Gold_charm"
+	},
+	{
 		"label": "goldseal(noted)",
 		"image": "https://i.imgur.com/I74Bq3s.png",
 		"name": "Gold seal (noted)",
@@ -2774,6 +2814,14 @@
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Green_blubber_jellyfish"
+	},
+	{
+		"label": "greencharm1",
+		"image": "https://i.imgur.com/FuWsB0y.png",
+		"name": "Green charm (1)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Green_charm"
 	},
 	{
 		"label": "grenwallspikes",
@@ -3072,6 +3120,14 @@
 		"wikiLink": "https://runescape.wiki/w/Imperium_core"
 	},
 	{
+		"label": "infernalashes1noted",
+		"image": "https://i.imgur.com/UPLUhet.png",
+		"name": "Infernal ashes (1 noted)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Infernal_ashes"
+	},
+	{
 		"label": "infernalpuzzlebox",
 		"image": "https://i.imgur.com/U8R9vg2.png",
 		"name": "Infernal puzzle box",
@@ -3115,6 +3171,14 @@
 		"label": "iritsticks",
 		"image": "https://i.imgur.com/PP5dYq0.png",
 		"name": "Irit incense sticks",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Irit_incense_sticks"
+	},
+	{
+		"label": "iritincensesticks100",
+		"image": "https://i.imgur.com/WCcKGSB.png",
+		"name": "Irit incense sticks (100)",
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Irit_incense_sticks"
@@ -3416,6 +3480,14 @@
 		"wikiLink": "https://runescape.wiki/w/Lantadyme_incense_sticks"
 	},
 	{
+		"label": "lantadymeincensesticks100",
+		"image": "https://i.imgur.com/4n0C5gK.png",
+		"name": "Lantadyme incense sticks (100)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Lantadyme_incense_sticks"
+	},
+	{
 		"label": "pouch",
 		"image": "https://i.imgur.com/lBTTP01.png",
 		"name": "Large rune pouch",
@@ -3707,6 +3779,14 @@
 		"label": "magiclogs",
 		"image": "https://i.imgur.com/r8URqq8.png",
 		"name": "Magic logs",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Magic_logs"
+	},
+	{
+		"label": "magiclogs1noted",
+		"image": "https://i.imgur.com/fEa8Qx8.png",
+		"name": "Magic logs (1 noted)",
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Magic_logs"
@@ -5576,6 +5656,22 @@
 		"wikiLink": "https://runescape.wiki/w/small_rune_pouch"
 	},
 	{
+		"label": "smokedevilscroll5000",
+		"image": "https://i.imgur.com/6WSkKO7.png",
+		"name": "Smoke Devil scroll (Dust Cloud) (5k)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Smoke_Devil_scroll_(Dust_Cloud)"
+	},
+	{
+		"label": "smokedevilpouch",
+		"image": "https://i.imgur.com/FmyhIY5.png",
+		"name": "Smoke devil pouch",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Smoke_devil_pouch"
+	},
+	{
 		"label": "smokenihil",
 		"image": "https://i.imgur.com/kJ17hH6.png",
 		"name": "Smoke nihil pouch",
@@ -6198,6 +6294,14 @@
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Torn_grimoire_page"
+	},
+	{
+		"label": "torstolincensesticks100",
+		"image": "https://i.imgur.com/PpYdCr1.png",
+		"name": "Torstol incense sticks (100)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Torstol_incense_sticks"
 	},
 	{
 		"label": "torstolpotionunf",
