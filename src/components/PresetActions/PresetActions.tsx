@@ -117,6 +117,7 @@ export const PresetActions = ({
   };
 
   return (
+<<<<<<< HEAD
     <div className="preset-actions">
       {/* Details */}
       <fieldset className="preset-actions__fieldset preset-actions__details">
@@ -128,6 +129,9 @@ export const PresetActions = ({
           fullWidth
         />
       </fieldset>
+=======
+    <div className="preset-actions desktop-only">
+>>>>>>> d4e60b9 (progress)
       {/* Save actions */}
       <fieldset className="preset-actions__fieldset preset-actions__save">
         <legend>Save</legend>

@@ -1,6 +1,10 @@
 import axios from 'axios';
+<<<<<<< HEAD
 import { type SavedPresetData } from '../../types/saved-preset-data';
+=======
+>>>>>>> d4e60b9 (progress)
 import itemData from '../../data/sorted_items.json';
+import { type SavedPresetData } from '../../types/saved-preset-data';
 
 const apiUrl =
   'https://us-central1-pvmebackend.cloudfunctions.net/getPreset?id=';

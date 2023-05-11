@@ -1,5 +1,5 @@
 import React from 'react';
-import { equipmentCoords, inventoryCoords } from '../../data/coordinates';
+import { equipmentCoords, equipmentCoordsMobile, inventoryCoords, inventoryCoordsMobile } from '../../data/coordinates';
 import { type Coord } from '../../types/coord';
 import { type ItemData } from '../../types/item-data';
 
@@ -71,9 +71,9 @@ const SlotSection = ({ slots, handleClickOpen, handleShiftClick, coords, classNa
 };
 
 export const Inventory = (props: SlotProps): JSX.Element => {
-  return <SlotSection {...props} coords={inventoryCoords} className="inventory" />;
+  return <SlotSection {...props} coords={inventoryCoordsMobile} className="inventory" />;
 };
 
 export const Equipment = (props: SlotProps): JSX.Element => {
-  return <SlotSection {...props} coords={equipmentCoords} className="equipment" />;
+  return <SlotSection {...props} coords={equipmentCoordsMobile} className="equipment" />;
 };

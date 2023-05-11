@@ -37,3 +37,12 @@
   display: flex;
   margin-top: 16px;
 }
+
+
+/* Responsive + mobile styling */
+
+@media (max-width: 931px) {
+  .preset-and-actions {
+    flex-direction: column;
+  }
+}

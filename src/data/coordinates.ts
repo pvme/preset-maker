@@ -52,3 +52,89 @@ export const equipmentCoords: Coord[] = [
 
   { x1: 330, y1: 122, x2: 362, y2: 152 }
 ];
+
+/* Mobile version (vertical layout) */
+
+// roughly 43px between columns
+// roughly 36px between rows
+
+// Works at 419 px screen width
+
+/**
+ * The order of these must be preserved.
+ */
+export const equipmentCoordsMobile: Coord[] = [
+  // Helm
+  { x1: 191, y1: 24, x2: 362, y2: 39 },
+  // Cape
+  { x1: 151, y1: 67, x2: 408, y2: 39 },
+  // Necklace
+  { x1: 191, y1: 67, x2: 454, y2: 39 },
+  // Mainhand
+  { x1: 131, y1: 108, x2: 500, y2: 39 },
+  // Chest
+  { x1: 191, y1: 108, x2: 362, y2: 78 },
+  // Shield
+  { x1: 251, y1: 108, x2: 408, y2: 78 },
+  // Legs
+  { x1: 191, y1: 148, x2: 454, y2: 78 },
+  // Gloves
+  { x1: 131, y1: 189, x2: 500, y2: 78 },
+  // Boots
+  { x1: 192, y1: 189, x2: 362, y2: 115 },
+  // Ring
+  { x1: 251, y1: 189, x2: 408, y2: 115 },
+  // Ammo/rune pouch
+  { x1: 231, y1: 67, x2: 454, y2: 115 },
+  // Aura
+  { x1: 152, y1: 24, x2: 500, y2: 115 },
+  // Pocket slot
+  { x1: 232, y1: 24, x2: 362, y2: 152 }
+];
+
+/**
+ * The order of these must be preserved.
+ */
+export const inventoryCoordsMobile: Coord[] = [
+  // First row
+  { x1: 123, y1: 252, x2: 47, y2: 39 },
+  { x1: 167, y1: 252, x2: 90, y2: 39 },
+  { x1: 212, y1: 252, x2: 133, y2: 39 },
+  { x1: 257, y1: 252, x2: 176, y2: 39 },
+
+  // Second row
+  { x1: 123, y1: 288, x2: 47, y2: 39 },
+  { x1: 167, y1: 288, x2: 90, y2: 39 },
+  { x1: 212, y1: 288, x2: 133, y2: 39 },
+  { x1: 257, y1: 288, x2: 176, y2: 39 },
+
+  // Third row
+  { x1: 123, y1: 324, x2: 47, y2: 39 },
+  { x1: 167, y1: 324, x2: 90, y2: 39 },
+  { x1: 212, y1: 324, x2: 133, y2: 39 },
+  { x1: 257, y1: 324, x2: 176, y2: 39 },
+
+  // Fourth row
+  { x1: 123, y1: 360, x2: 47, y2: 39 },
+  { x1: 167, y1: 360, x2: 90, y2: 39 },
+  { x1: 212, y1: 360, x2: 133, y2: 39 },
+  { x1: 257, y1: 360, x2: 176, y2: 39 },
+
+  // Fifth row
+  { x1: 123, y1: 396, x2: 47, y2: 39 },
+  { x1: 167, y1: 396, x2: 90, y2: 39 },
+  { x1: 212, y1: 396, x2: 133, y2: 39 },
+  { x1: 257, y1: 396, x2: 176, y2: 39 },
+
+  // Sixth row
+  { x1: 123, y1: 433, x2: 47, y2: 39 },
+  { x1: 167, y1: 433, x2: 90, y2: 39 },
+  { x1: 212, y1: 433, x2: 133, y2: 39 },
+  { x1: 257, y1: 433, x2: 176, y2: 39 },
+
+  // Seventh row
+  { x1: 123, y1: 471, x2: 47, y2: 39 },
+  { x1: 167, y1: 471, x2: 90, y2: 39 },
+  { x1: 212, y1: 471, x2: 133, y2: 39 },
+  { x1: 257, y1: 471, x2: 176, y2: 39 }
+];

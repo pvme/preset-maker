@@ -21,6 +21,7 @@ import { Equipment, Inventory } from '../SlotSection/SlotSection';
 import { FamiliarSection } from '../FamiliarSection/FamiliarSection';
 import { RelicSection } from '../RelicSection/RelicSection';
 import './PresetEditor.css';
+import mobilePresetMapBackground from '../../assets/presetmap_mobile.png';
 
 export const PresetEditor = ({
   setExportRef
@@ -109,7 +110,7 @@ export const PresetEditor = ({
       <Card className="inventory-equipment-container">
         <CardContent data-id="content" className="preset-container">
           <div className="export-container" ref={setExportRef}>
-            <map name="presetmap">
+            <map name="presetmap" className="preset-map">
               <Inventory
                 slots={inventorySlots}
                 handleClickOpen={handleSlotOpen}
@@ -119,15 +120,24 @@ export const PresetEditor = ({
                 slots={equipmentSlots}
                 handleClickOpen={handleSlotOpen}
               />
+              <div className="preset-image-container mobile-only">
+                <img
+                  width={183}
+                  height={512}
+                  src={mobilePresetMapBackground}
+                  useMap="#presetmap"
+                  alt="preset background"
+                />
+              </div>
             </map>
-            <img
+            {/* <img
               width={510}
               height={163}
-              id="preset-background"
               src="https://i.imgur.com/O7VznNO.png"
               useMap="#presetmap"
               alt="preset background"
-            />
+              className="desktop-only"
+            /> */}
             <div className="relics-familiar-container">
               <RelicSection />
               <FamiliarSection />

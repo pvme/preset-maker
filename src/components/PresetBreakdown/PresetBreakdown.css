@@ -50,10 +50,24 @@
   width: 100%;
 }
 
-.empty-div {
-  height: 48px;
-}
+/* Mobile styling */
 
-.bold {
-  font-weight: bold;
+@media (max-width: 800px) {
+  .breakdown-container {
+    width: 100vw;
+    margin: 0;
+    overflow: hidden;
+  }
+
+  .breakdown-inner-container {
+    padding: 0;
+  }
+
+  .breakdown-list {
+    width: 100vw;
+  }
+
+  .equipment-breakdown-container--equipment {
+    max-width: 100%;
+  }
 }
