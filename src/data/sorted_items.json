@@ -120,28 +120,28 @@
 		"wikiLink": "https://runescape.wiki/w/Adrenaline_Urn"
 	},
 	{
-		"label": "renewal4",
-		"image": "https://i.imgur.com/b7OFnll.png",
-		"name": "Adrenaline renewal",
+		"label": "renewal6",
+		"image": "https://i.imgur.com/Swtl8pP.png",
+		"name": "Adrenaline renewal flask (6)",
 		"breakdownNotes": "",
 		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Adrenaline_renewal"
+		"wikiLink": "https://runescape.wiki/w/Adrenaline_renewal_flask#(6)"
 	},
 	{
-		"label": "renewal6",
-		"image": "https://i.imgur.com/9wds5Ez.png",
-		"name": "Adrenaline renewal flask",
+		"label": "renewal4",
+		"image": "https://i.imgur.com/b7OFnll.png",
+		"name": "Adrenaline renewal potion (4)",
 		"breakdownNotes": "",
 		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Adrenaline_renewal_flask"
+		"wikiLink": "https://runescape.wiki/w/Adrenaline_renewal_potion#(4)"
 	},
 	{
 		"label": "aggro6",
 		"image": "https://i.imgur.com/ThvW5Tw.png",
-		"name": "Aggression flask",
+		"name": "Aggression flask (6)",
 		"breakdownNotes": "",
 		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Aggression_flask"
+		"wikiLink": "https://runescape.wiki/w/Aggression_flask#(6)"
 	},
 	{
 		"label": "aggro4",
@@ -149,7 +149,7 @@
 		"name": "Aggression potion (4)",
 		"breakdownNotes": "",
 		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Aggression_potion_(4)"
+		"wikiLink": "https://runescape.wiki/w/Aggression_potion#(4)"
 	},
 	{
 		"label": "aggroverload",
@@ -157,7 +157,7 @@
 		"name": "Aggroverload (6)",
 		"breakdownNotes": "",
 		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Aggroverload_(6)"
+		"wikiLink": "https://runescape.wiki/w/Aggroverload#(6)"
 	},
 	{
 		"label": "airrune",
@@ -1514,10 +1514,10 @@
 	{
 		"label": "defencecape",
 		"image": "https://i.imgur.com/LaFfLEy.png",
-		"name": "Defence skill cape",
+		"name": "Defence cape (t)",
 		"breakdownNotes": "",
 		"slot": 12,
-		"wikiLink": "https://runescape.wiki/w/Defence_skill_cape"
+		"wikiLink": "https://runescape.wiki/w/Defence_cape_(t)"
 	},
 	{
 		"label": "demonhorn",
@@ -1826,18 +1826,18 @@
 	{
 		"label": "ovl",
 		"image": "https://i.imgur.com/pzEjejy.png",
-		"name": "Elder overload",
+		"name": "Elder overload potion (6)",
 		"breakdownNotes": "",
 		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Elder_overload"
+		"wikiLink": "https://runescape.wiki/w/Elder_overload#(6)"
 	},
 	{
 		"label": "salve",
 		"image": "https://i.imgur.com/SsNRoVE.png",
-		"name": "Elder overload salve",
+		"name": "Elder overload salve (6)",
 		"breakdownNotes": "",
 		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Elder_overload_salve"
+		"wikiLink": "https://runescape.wiki/w/Elder_overload_salve#(6)"
 	},
 	{
 		"label": "elderrunehelm",
@@ -2965,7 +2965,7 @@
 		"name": "Holy aggroverload (6)",
 		"breakdownNotes": "",
 		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Holy_aggroverload_(6)"
+		"wikiLink": "https://runescape.wiki/w/Holy_aggroverload#(6)"
 	},
 	{
 		"label": "holyovl",
@@ -2973,7 +2973,7 @@
 		"name": "Holy overload (6)",
 		"breakdownNotes": "",
 		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Holy_overload_(6)"
+		"wikiLink": "https://runescape.wiki/w/Holy_overload#(6)"
 	},
 	{
 		"label": "holyscarab",
@@ -3960,6 +3960,38 @@
 		"wikiLink": "https://runescape.wiki/w/Maniacal_aura"
 	},
 	{
+		"label": "manuscriptofbik",
+		"image": "https://i.imgur.com/Vy8HemN.png",
+		"name": "Manuscript of Bik",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Manuscript_of_Bik"
+	},
+	{
+		"label": "manuscriptofful",
+		"image": "https://i.imgur.com/C2vtuGN.png",
+		"name": "Manuscript of Ful",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Manuscript_of_Ful"
+	},
+	{
+		"label": "manuscriptofjas",
+		"image": "https://i.imgur.com/LB3wWGx.png",
+		"name": "Manuscript of Jas",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Manuscript_of_Jas"
+	},
+	{
+		"label": "manuscriptofwen",
+		"image": "https://i.imgur.com/Eq4sihp.png",
+		"name": "Manuscript of Wen",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Manuscript_of_Wen"
+	},
+	{
 		"label": "maskofreflection",
 		"image": "https://i.imgur.com/7k3qLJ9.png",
 		"name": "Mask of Reflection",
@@ -4674,18 +4706,18 @@
 	{
 		"label": "overload",
 		"image": "https://i.imgur.com/Ild6jKx.png",
-		"name": "Overload",
+		"name": "Overload flask (6)",
 		"breakdownNotes": "",
 		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Overload"
+		"wikiLink": "https://runescape.wiki/w/Overload_flask#(6)"
 	},
 	{
 		"label": "overloadsalve",
 		"image": "https://i.imgur.com/VKplCLx.png",
-		"name": "Overload Salve",
+		"name": "Overload salve (6)",
 		"breakdownNotes": "",
 		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Overload_Salve"
+		"wikiLink": "https://runescape.wiki/w/Overload_salve#(6)"
 	},
 	{
 		"label": "mammothscrolls",
@@ -4754,18 +4786,18 @@
 	{
 		"label": "perfectjujufishingpotion",
 		"image": "https://i.imgur.com/T6S5fgq.png",
-		"name": "Perfect juju fishing potion",
+		"name": "Perfect juju fishing potion (4)",
 		"breakdownNotes": "",
 		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Perfect_juju_fishing_potion"
+		"wikiLink": "https://runescape.wiki/w/Perfect_juju_fishing_potion#(4)"
 	},
 	{
 		"label": "perfectplus",
 		"image": "https://i.imgur.com/IkmyHqv.png",
-		"name": "Perfect plus potion",
+		"name": "Perfect plus potion (6)",
 		"breakdownNotes": "",
 		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Perfect_plus_potion"
+		"wikiLink": "https://runescape.wiki/w/Perfect_plus_potion#(6)"
 	},
 	{
 		"label": "pernixtop",
@@ -5081,11 +5113,11 @@
 	},
 	{
 		"label": "rangecape",
-		"image": "https://i.imgur.com/I3GmAD6.png",
-		"name": "Ranged skill cape",
+		"image": "https://i.imgur.com/mXAz21V.png",
+		"name": "Ranged cape (t)",
 		"breakdownNotes": "",
 		"slot": 12,
-		"wikiLink": "https://runescape.wiki/w/Ranged_skill_cape"
+		"wikiLink": "https://runescape.wiki/w/Ranged_cape_(t)"
 	},
 	{
 		"label": "rawrocktail",
@@ -5353,11 +5385,11 @@
 	},
 	{
 		"label": "sara",
-		"image": "https://i.imgur.com/3ETfbUf.png",
-		"name": "Saradomin brew",
+		"image": "https://i.imgur.com/NTlFcpC.png",
+		"name": "Saradomin brew flask (6)",
 		"breakdownNotes": "",
 		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Saradomin_brew"
+		"wikiLink": "https://runescape.wiki/w/Saradomin_brew_flask#(6)"
 	},
 	{
 		"label": "sgs",
@@ -5713,11 +5745,11 @@
 	},
 	{
 		"label": "spiritattractionflask",
-		"image": "https://i.imgur.com/rA5LGMj.png",
-		"name": "Spirit attraction flask",
+		"image": "https://i.imgur.com/9oDoU6T.png",
+		"name": "Spirit attraction flask (6)",
 		"breakdownNotes": "",
 		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Spirit_attraction_flask"
+		"wikiLink": "https://runescape.wiki/w/Spirit_attraction_flask#(6)"
 	},
 	{
 		"label": "spirittreere-rooter",
@@ -5739,6 +5771,14 @@
 		"label": "spiritsticks",
 		"image": "https://i.imgur.com/m40Cqfq.png",
 		"name": "Spirit weed incense sticks",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Spirit_weed_incense_sticks"
+	},
+	{
+		"label": "spiritsticks100",
+		"image": "https://i.imgur.com/YWaDJIE.png",
+		"name": "Spirit weed incense sticks (100)",
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Spirit_weed_incense_sticks"
@@ -5865,11 +5905,11 @@
 	},
 	{
 		"label": "strengthcape",
-		"image": "https://i.imgur.com/sfMnypY.png",
-		"name": "Strength skill cape",
+		"image": "https://i.imgur.com/kJFyO7G.png",
+		"name": "Strength cape",
 		"breakdownNotes": "",
 		"slot": 12,
-		"wikiLink": "https://runescape.wiki/w/Strength_skill_cape"
+		"wikiLink": "https://runescape.wiki/w/Strength_cape_(t)"
 	},
 	{
 		"label": "strykebow",
@@ -5885,7 +5925,7 @@
 		"name": "Summoning renewal (1)",
 		"breakdownNotes": "",
 		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Summoning_renewal"
+		"wikiLink": "https://runescape.wiki/w/Summoning_renewal#(1)"
 	},
 	{
 		"label": "sunspear",
@@ -5893,15 +5933,31 @@
 		"name": "Sunspear",
 		"breakdownNotes": "",
 		"slot": 4,
-		"wikiLink": "https://runescape.wiki/w/Sunspear"
+		"wikiLink": "https://runescape.wiki/w/Sunspear_(melee)"
+	},
+	{
+		"label": "gbrew",
+		"image": "https://i.imgur.com/xnevE7L.png",
+		"name": "Super Guthix brew flask (6)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Super_Guthix_brew_flask#(6)"
+	},
+	{
+		"label": "sbrew",
+		"image": "https://i.imgur.com/rqIBPF1.png",
+		"name": "Super Saradomin brew flask (6)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Super_Saradomin_brew_flask#(6)"
 	},
 	{
 		"label": "superantifire",
 		"image": "https://i.imgur.com/g4GKi54.png",
-		"name": "Super antifire",
+		"name": "Super antifire (4)",
 		"breakdownNotes": "",
 		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Super_antifire"
+		"wikiLink": "https://runescape.wiki/w/Super_antifire#(4)"
 	},
 	{
 		"label": "supatk3dose",
@@ -5909,7 +5965,7 @@
 		"name": "Super attack potion (3 dose noted)",
 		"breakdownNotes": "",
 		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Super_attack_potion_(3)"
+		"wikiLink": "https://runescape.wiki/w/Super_attack_potion#(3)"
 	},
 	{
 		"label": "supdef3dose",
@@ -5917,47 +5973,39 @@
 		"name": "Super defense potion (3 dose noted)",
 		"breakdownNotes": "",
 		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Super_defense_potion_(3)"
-	},
-	{
-		"label": "gbrew",
-		"image": "https://i.imgur.com/xnevE7L.png",
-		"name": "Super guthix brew",
-		"breakdownNotes": "",
-		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Super_guthix_brew"
+		"wikiLink": "https://runescape.wiki/w/Super_defense_potion#(3)"
 	},
 	{
 		"label": "superpray",
 		"image": "https://i.imgur.com/2gndedF.png",
-		"name": "Super prayer",
+		"name": "Super prayer (4)",
 		"breakdownNotes": "",
 		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Super_prayer"
+		"wikiLink": "https://runescape.wiki/w/Super_prayer#(4)"
 	},
 	{
 		"label": "prayrenewal",
 		"image": "https://i.imgur.com/yiqKcos.png",
-		"name": "Super prayer renewal",
+		"name": "Super prayer renewal potion (6)",
 		"breakdownNotes": "",
 		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Super_prayer_renewal"
+		"wikiLink": "https://runescape.wiki/w/Super_prayer_renewal_potion#(6)"
 	},
 	{
-		"label": "restore",
-		"image": "https://i.imgur.com/pulVXx3.png",
-		"name": "Super restore",
+		"label": "restore4",
+		"image": "https://i.imgur.com/9GwrVt6.png",
+		"name": "Super restore (4)",
 		"breakdownNotes": "",
 		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Super_restore"
+		"wikiLink": "https://runescape.wiki/w/Super_restore#(4)"
 	},
 	{
-		"label": "sbrew",
-		"image": "https://i.imgur.com/rqIBPF1.png",
-		"name": "Super saradomin brew",
+		"label": "restore6",
+		"image": "https://i.imgur.com/2uy0pnb.png",
+		"name": "Super restore flask (6)",
 		"breakdownNotes": "",
 		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Super_saradomin_brew"
+		"wikiLink": "https://runescape.wiki/w/Super_restore_flask#(6)"
 	},
 	{
 		"label": "supstr3dose",
@@ -5965,7 +6013,7 @@
 		"name": "Super strength potion (3 dose noted)",
 		"breakdownNotes": "",
 		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Super_strength_potion_(3)"
+		"wikiLink": "https://runescape.wiki/w/Super_strength_potion#(3)"
 	},
 	{
 		"label": "lotuschaps",
@@ -6072,14 +6120,6 @@
 		"wikiLink": "https://runescape.wiki/w/Support_cape"
 	},
 	{
-		"label": "supremeoverload",
-		"image": "https://i.imgur.com/Wqn525e.png",
-		"name": "Supreme Overload",
-		"breakdownNotes": "",
-		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Supreme_Overload"
-	},
-	{
 		"label": "brawler",
 		"image": "https://i.imgur.com/3yB6JBo.png",
 		"name": "Supreme brawler aura",
@@ -6088,12 +6128,20 @@
 		"wikiLink": "https://runescape.wiki/w/Supreme_brawler_aura"
 	},
 	{
+		"label": "supremeoverload",
+		"image": "https://i.imgur.com/Wqn525e.png",
+		"name": "Supreme overload potion (6)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Supreme_overload_potion#(6)"
+	},
+	{
 		"label": "supremesalve",
 		"image": "https://i.imgur.com/q8y4rib.png",
 		"name": "Supreme overload salve (6)",
 		"breakdownNotes": "",
 		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Supreme_overload_salve_(6)"
+		"wikiLink": "https://runescape.wiki/w/Supreme_overload_salve#(6)"
 	},
 	{
 		"label": "runic",
