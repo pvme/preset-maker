@@ -87,7 +87,7 @@ export const PresetBreakdown = (): JSX.Element => {
 
   return (
     <div className="breakdown-container">
-      <div className="breakdown-header">
+      <div className="breakdown-header desktop-only">
         <Button
           className="breakdown-button"
           variant="contained"

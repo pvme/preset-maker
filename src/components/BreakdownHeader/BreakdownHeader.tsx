@@ -5,7 +5,7 @@ import ListItemText from '@mui/material/ListItemText';
 
 export const BreakdownHeader = (): JSX.Element => {
   return (
-    <ListItem disablePadding>
+    <ListItem disablePadding className="desktop-only">
       <ListItemButton
         style={{
           textAlign: 'center'

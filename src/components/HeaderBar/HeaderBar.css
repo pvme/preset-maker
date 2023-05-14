@@ -41,3 +41,23 @@
 .tool-bar > button {
   margin: 15px;
 }
+
+/* Mobile styling */
+
+@media (max-width: 600px) {
+  .tool-bar {
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .sub-item {
+    font-size: 20px;
+    width: fit-content !important;
+  }
+
+  .button-container {
+    margin: 10px;
+  }
+}

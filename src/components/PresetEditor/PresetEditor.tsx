@@ -21,6 +21,8 @@ import { Equipment, Inventory } from '../SlotSection/SlotSection';
 import { FamiliarSection } from '../FamiliarSection/FamiliarSection';
 import { RelicSection } from '../RelicSection/RelicSection';
 import './PresetEditor.css';
+import genericBackground from '../../assets/bg_large.png';
+import mobilePresetMapBackground from '../../assets/presetmap_mobile.png';
 
 export const PresetEditor = ({
   setExportRef
@@ -106,28 +108,41 @@ export const PresetEditor = ({
 
   return (
     <>
-      <Card className="inventory-equipment-container">
+      <Card className="preset-editor__card">
         <CardContent data-id="content" className="preset-container">
-          <div className="export-container" ref={setExportRef}>
-            <map name="presetmap">
-              <Inventory
-                slots={inventorySlots}
-                handleClickOpen={handleSlotOpen}
-                handleShiftClick={handleSlotSelection}
-              />
-              <Equipment
-                slots={equipmentSlots}
-                handleClickOpen={handleSlotOpen}
-              />
-            </map>
-            <img
-              width={510}
-              height={163}
-              id="preset-background"
-              src="https://i.imgur.com/O7VznNO.png"
-              useMap="#presetmap"
-              alt="preset background"
-            />
+          <div className="preset-editor__export-container" ref={setExportRef}>
+            <div className="preset-map-container" style={{
+              backgroundImage: `url(${genericBackground})`
+            }}>
+              <map name="presetmap" className="preset-map">
+                <Inventory
+                  slots={inventorySlots}
+                  handleClickOpen={handleSlotOpen}
+                  handleShiftClick={handleSlotSelection}
+                />
+                <Equipment
+                  slots={equipmentSlots}
+                  handleClickOpen={handleSlotOpen}
+                />
+                <img
+                  width={510}
+                  height={163}
+                  src="https://i.imgur.com/O7VznNO.png"
+                  useMap="#presetmap"
+                  alt="preset background"
+                  className="desktop-only"
+                />
+                <div className="preset-image-container mobile-only">
+                  <img
+                    width={183}
+                    height={512}
+                    src={mobilePresetMapBackground}
+                    useMap="#presetmap"
+                    alt="preset background"
+                  />
+                </div>
+              </map>
+            </div>
             <div className="relics-familiar-container">
               <RelicSection />
               <FamiliarSection />

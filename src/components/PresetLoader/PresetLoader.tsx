@@ -115,7 +115,7 @@ export const PresetName = (): JSX.Element => {
   }, []);
 
   return (
-    <div className="input-group">
+    <div className="input-group desktop-only">
       <ButtonGroup>
         {(presetNames != null) && (
           <Autocomplete

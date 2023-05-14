@@ -18,3 +18,19 @@
   font-size: 14px;
   width: 330px;
 }
+
+/* Mobile styling */
+
+@media (max-width: 800px) {
+  .breakdown-inner-container {
+    display: flex !important;
+    flex-direction: column;
+    width: 100vw;
+    margin: 10px;
+  }
+
+  .breakdown-list-item {
+    display: flex;
+    flex-direction: column;
+  }
+}

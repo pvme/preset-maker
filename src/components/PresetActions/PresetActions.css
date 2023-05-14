@@ -37,3 +37,17 @@
   display: flex;
   margin-top: 16px;
 }
+
+
+/* Responsive + mobile styling */
+
+@media (max-width: 931px) {
+  .preset-actions {
+    margin-top: 10px;
+    margin-left: 0px;
+  }
+
+  .preset-and-actions {
+    flex-direction: column;
+  }
+}

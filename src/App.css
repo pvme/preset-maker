@@ -79,3 +79,43 @@
 .cursor-pointer:hover {
   cursor: pointer;
 }
+
+/* Mobile styling */
+
+.mobile-only {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  body {
+    place-items: initial !important;
+  }
+
+  .App {
+    margin-top: 60px;
+  }
+
+  .desktop-only {
+    display: none;
+  }
+
+  .mobile-only {
+    display: block;
+  }
+
+  .width-50 {
+    width: 100%;
+  }
+}
+
+@media (max-width: 400px) {
+  .App {
+    /* margin-top: 140px; */
+  }
+}
+
+@media (max-width: 308px) {
+  .App {
+    /* margin-top: 180px; */
+  }
+}

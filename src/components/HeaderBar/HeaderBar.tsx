@@ -125,7 +125,7 @@ export const HeaderBar = (): JSX.Element => {
             >
               PVME Preset Generator
             </Typography>
-            <ButtonGroup className="button-container sub-item">
+            <ButtonGroup className="button-container sub-item desktop-only">
               <Button color="inherit" variant="outlined" onClick={importData}>
                 Import&nbsp;JSON
               </Button>
