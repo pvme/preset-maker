@@ -50,7 +50,8 @@ export const sanitizePresetData = (presetData: SavedPresetData): SavedPresetData
     familiars: {
       primaryFamiliars: sanitizeFamiliarData(presetData.familiars?.primaryFamiliars),
       alternativeFamiliars: sanitizeFamiliarData(presetData.familiars?.alternativeFamiliars)
-    }
+    },
+    presetImage: presetData.presetImage ?? undefined
   };
 };
 
@@ -60,7 +61,8 @@ export const stringifyPreset = (sanitizedPresetData: SavedPresetData): string =>
     inventorySlots,
     equipmentSlots,
     relics,
-    familiars
+    familiars,
+    presetImage
   } = sanitizedPresetData;
 
   const { dateString, hours, minutes, seconds } = generateDateString();
@@ -69,7 +71,8 @@ export const stringifyPreset = (sanitizedPresetData: SavedPresetData): string =>
     inventorySlots,
     equipmentSlots,
     relics,
-    familiars
+    familiars,
+    presetImage
   });
 };
 
@@ -78,7 +81,8 @@ export const stringifyData = (
   inventoryData: ItemData[],
   equipmentData: ItemData[],
   relicData: Relics,
-  familiarData: Familiars
+  familiarData: Familiars,
+  presetImage: string
 ): string => {
   const { dateString, hours, minutes, seconds } = generateDateString();
   const presetNameToUse = presetName.length > 0
@@ -89,7 +93,8 @@ export const stringifyData = (
     inventorySlots: inventoryData,
     equipmentSlots: equipmentData,
     relics: relicData,
-    familiars: familiarData
+    familiars: familiarData,
+    presetImage
   });
 };
 
