@@ -67,10 +67,13 @@ export const presetSlice = createSlice({
   // `createSlice` will infer the state type from the `initialState` argument
   initialState,
   reducers: {
-    resetSlots: (state: PresetState) => {
+    resetToInitialState: (state: PresetState) => {
       state.presetName = initialState.presetName;
       state.inventorySlots = initialState.inventorySlots;
       state.equipmentSlots = initialState.equipmentSlots;
+      state.relics = initialState.relics;
+      state.familiars = initialState.familiars;
+      state.breakdown = initialState.breakdown;
     },
     setPresetName: (state: PresetState, action: PayloadAction<string>) => {
       state.presetName = action.payload;
@@ -146,7 +149,7 @@ export const presetSlice = createSlice({
 });
 
 export const {
-  resetSlots,
+  resetToInitialState,
   setPresetName,
   setInventorySlot,
   setEquipmentSlot,
