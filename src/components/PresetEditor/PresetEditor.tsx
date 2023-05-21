@@ -6,7 +6,7 @@ import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import {
   clearSlotSelection, selectPreset,
   setEquipmentSlot,
-  setInventorySlot, toggleSlotSelection, updateSlotIndex,
+  setInventorySlot, swapInventorySlots, toggleSlotSelection, updateSlotIndex,
   updateSlotType
 } from '../../redux/store/reducers/preset-reducer';
 import {
@@ -82,6 +82,19 @@ export const PresetEditor = ({
     [dispatch]
   );
 
+  const handleInventoryDragAndDrop = useCallback(
+    (
+      sourceIndex: number,
+      targetIndex: number
+    ) => {
+      dispatch(swapInventorySlots({
+        sourceIndex,
+        targetIndex
+      }));
+    },
+    [dispatch]
+  );
+
   const onDialogClose = useCallback(() => {
     setDialogOpen(false);
   }, []);
@@ -119,6 +132,7 @@ export const PresetEditor = ({
                   slots={inventorySlots}
                   handleClickOpen={handleSlotOpen}
                   handleShiftClick={handleSlotSelection}
+                  handleDragAndDrop={handleInventoryDragAndDrop}
                 />
                 <Equipment
                   slots={equipmentSlots}

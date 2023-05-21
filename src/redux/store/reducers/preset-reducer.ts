@@ -27,6 +27,10 @@ interface IndexedSlot<T> {
 }
 
 type SetSlot = IndexedSlot<ItemData>;
+interface SwapSlots {
+  sourceIndex: number
+  targetIndex: number
+}
 type FamiliarSlot = IndexedSlot<FamiliarData>;
 type RelicSlot = IndexedSlot<RelicData>;
 
@@ -80,6 +84,18 @@ export const presetSlice = createSlice({
     },
     setInventorySlot: (state: PresetState, action: PayloadAction<SetSlot>) => {
       state.inventorySlots[action.payload.index] = action.payload.value;
+    },
+    swapInventorySlots: (state: PresetState, action: PayloadAction<SwapSlots>) => {
+      const { sourceIndex, targetIndex } = action.payload;
+      if (sourceIndex === undefined || targetIndex === undefined) {
+        return;
+      }
+
+      const sourceSlot = state.inventorySlots[sourceIndex];
+      const targetSlot = state.inventorySlots[targetIndex];
+
+      state.inventorySlots[targetIndex] = sourceSlot;
+      state.inventorySlots[sourceIndex] = targetSlot;
     },
     setEquipmentSlot: (state: PresetState, action: PayloadAction<SetSlot>) => {
       state.equipmentSlots[action.payload.index] = action.payload.value;
@@ -152,6 +168,7 @@ export const {
   resetToInitialState,
   setPresetName,
   setInventorySlot,
+  swapInventorySlots,
   setEquipmentSlot,
   setPrimaryRelic,
   setAlternativeRelic,
