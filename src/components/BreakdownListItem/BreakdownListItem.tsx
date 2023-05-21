@@ -3,6 +3,7 @@ import React, { useCallback, useRef } from 'react';
 import ContentEditable, { type ContentEditableEvent } from 'react-contenteditable';
 import { useDispatch } from 'react-redux';
 import sanitizeHtml from 'sanitize-html';
+import linkifyHtml from 'linkify-html';
 
 import Avatar from '@mui/material/Avatar';
 import ListItem from '@mui/material/ListItem';
@@ -57,6 +58,13 @@ export const BreakdownListItem = ({ item, type }: BreakdownListItemProps): JSX.E
     [item]
   );
 
+  const breakdownNotesWithLinks = linkifyHtml(breakdownNotes.current, {
+    attributes: {
+      contenteditable: false
+    },
+    defaultProtocol: 'https'
+  });
+
   return (
     <ListItem
       tabIndex={-1}
@@ -68,7 +76,7 @@ export const BreakdownListItem = ({ item, type }: BreakdownListItemProps): JSX.E
         <ContentEditable
           placeholder={item.breakdownNotes}
           className="inner-notes-field"
-          html={breakdownNotes.current}
+          html={breakdownNotesWithLinks}
           onChange={onChange}
           onBlur={onBlur}
         />

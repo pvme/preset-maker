@@ -29,6 +29,8 @@
     "file-saver": "^2.0.5",
     "fuzzysort": "^2.0.4",
     "html2canvas": "^1.4.1",
+    "linkify-html": "^4.1.1",
+    "linkifyjs": "^4.1.1",
     "notistack": "^2.0.8",
     "react": "^18.2.0",
     "react-contenteditable": "^3.3.7",

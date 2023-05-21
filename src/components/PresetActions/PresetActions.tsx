@@ -17,6 +17,14 @@ import { SavePresetDialog, SavePresetDialogState } from '../SavePresetDialog/Sav
 import './PresetActions.css';
 import { ClipboardCopyButtonContainer } from '../ClipboardCopyButtonContainer/ClipboardCopyButtonContainer';
 
+const getLinkForPreset = (id: string): string => {
+  if (document.location.hostname === 'localhost') {
+    return `${document.location.origin}/#/${id}`;
+  }
+
+  return `https://pvme.github.io/preset-maker/#/${id}`;
+};
+
 export const PresetActions = ({
   presetExportRef
 }: {
@@ -100,7 +108,7 @@ export const PresetActions = ({
       const generatingLinkSnackbarKey = enqueueSnackbar('Generating shareable link...', { variant: 'info' });
       const id = await uploadPreset(stringifiedPresetData);
 
-      const link = `https://pvme.github.io/preset-maker/#/${id}`;
+      const link = getLinkForPreset(id);
       setGeneratedLink(link);
 
       await navigator.clipboard.writeText(link);
