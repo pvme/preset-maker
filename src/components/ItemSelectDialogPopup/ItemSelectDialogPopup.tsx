@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import fuzzysort from 'fuzzysort';
 
 import Dialog from '@mui/material/Dialog';
@@ -16,16 +16,16 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Avatar from '@mui/material/Avatar';
 import DialogActions from '@mui/material/DialogActions';
+import Tooltip from '@mui/material/Tooltip';
 import { type FilterOptionsState } from '@mui/material/useAutocomplete';
 
 import { type ItemData } from '../../types/item-data';
 import itemData from '../../data/sorted_items.json';
-
-import './ItemSelectDialogPopup.css';
 import { useAppSelector } from '../../redux/hooks';
 import { selectPreset } from '../../redux/store/reducers/preset-reducer';
-import { Tooltip } from '@mui/material';
+import { ItemType, SlotType } from '../../types/slot-type';
 
+import './ItemSelectDialogPopup.css';
 interface DialogPopupProps {
   open: boolean
   recentlySelectedItems: ItemData[]
@@ -36,6 +36,22 @@ interface DialogPopupProps {
 const dialogBaseHeight = 170;
 const dialogExpandedHeight = 450;
 
+const slotIndexToSlotEnumMap = new Map<number, ItemType>([
+  [0, ItemType.HELM],
+  [1, ItemType.CAPE],
+  [2, ItemType.NECKLACE],
+  [3, ItemType.MH_WEAPON],
+  [4, ItemType.BODY],
+  [5, ItemType.OH_WEAPON],
+  [6, ItemType.LEGS],
+  [7, ItemType.GLOVES],
+  [8, ItemType.BOOTS],
+  [9, ItemType.RING],
+  [10, ItemType.AMMO],
+  [11, ItemType.AURA],
+  [12, ItemType.POCKET]
+]);
+
 export const DialogPopup = ({
   open,
   recentlySelectedItems,
@@ -43,6 +59,11 @@ export const DialogPopup = ({
   handleSlotChange
 }: DialogPopupProps): JSX.Element => {
   const { slotType, slotIndex, inventorySlots } = useAppSelector(selectPreset);
+  const [filteredItemData, setFilteredItemData] = useState<ItemData[]>(itemData);
+
+  useEffect(() => {
+    setFilteredItemData(slotType === SlotType.Equipment ? itemData.filter(i => i.slot === slotIndexToSlotEnumMap.get(slotIndex)) : itemData);
+  }, [itemData, slotType, slotIndex]);
 
   const selectedInventorySlots = inventorySlots
     .map((slot: ItemData, index: number) => (slot.selected === true ? index : undefined))
@@ -149,7 +170,7 @@ export const DialogPopup = ({
           disablePortal
           autoHighlight
           autoComplete
-          options={itemData}
+          options={filteredItemData}
           onOpen={handleAutocompleteOpen}
           onClose={handleAutocompleteClose}
           onChange={onChange}
