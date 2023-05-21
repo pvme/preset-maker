@@ -1,19 +1,19 @@
 [
 	{
 		"label": "2hslot",
-		"image": "https://i.imgur.com/8m3jziP.png",
+		"image": "https://i.imgur.com/kLSCUux.png",
 		"name": "2h equipment slot",
 		"breakdownNotes": "",
 		"slot": 4,
-		"wikiLink": "https://runescape.wiki/w/2h_equipment_slot"
+		"wikiLink": "https://runescape.wiki/w/Worn_Equipment#Two-handed_items"
 	},
 	{
 		"label": "2hslotscythe",
-		"image": "https://i.imgur.com/2wRLPe1.png",
-		"name": "2h equipment slot",
+		"image": "https://i.imgur.com/a1shlqL.png",
+		"name": "2h equipment slot (halberd)",
 		"breakdownNotes": "",
 		"slot": 4,
-		"wikiLink": "https://runescape.wiki/w/2h_equipment_slot"
+		"wikiLink": "https://runescape.wiki/w/Halberd"
 	},
 	{
 		"label": "abyssalspikes",
@@ -40,6 +40,46 @@
 		"wikiLink": "https://runescape.wiki/w/Abyssal_wand"
 	},
 	{
+		"label": "achtoprimboots",
+		"image": "https://i.imgur.com/Mn5v6Fe.png",
+		"name": "Achto Primeval boots",
+		"breakdownNotes": "",
+		"slot": 7,
+		"wikiLink": "https://runescape.wiki/w/Achto_primeval_boots"
+	},
+	{
+		"label": "achtoprimgloves",
+		"image": "https://i.imgur.com/dP49Eec.png",
+		"name": "Achto Primeval gloves",
+		"breakdownNotes": "",
+		"slot": 6,
+		"wikiLink": "https://runescape.wiki/w/Achto_primeval_gloves"
+	},
+	{
+		"label": "achtomask",
+		"image": "https://i.imgur.com/f8yh04C.png",
+		"name": "Achto Primeval mask",
+		"breakdownNotes": "",
+		"slot": 1,
+		"wikiLink": "https://runescape.wiki/w/Achto_primeval_mask"
+	},
+	{
+		"label": "achtobottom",
+		"image": "https://i.imgur.com/4fPphBL.png",
+		"name": "Achto Primeval robe legs",
+		"breakdownNotes": "",
+		"slot": 3,
+		"wikiLink": "https://runescape.wiki/w/Achto_primeval_robe_legs"
+	},
+	{
+		"label": "achtotop",
+		"image": "https://i.imgur.com/aCAN4SP.png",
+		"name": "Achto Primeval robe top",
+		"breakdownNotes": "",
+		"slot": 2,
+		"wikiLink": "https://runescape.wiki/w/Achto_primeval_robe_top"
+	},
+	{
 		"label": "achtotempestbody",
 		"image": "https://i.imgur.com/BDTWQIq.png",
 		"name": "Achto Tempest body",
@@ -64,48 +104,8 @@
 		"wikiLink": "https://runescape.wiki/w/Achto_Tempest_cowl"
 	},
 	{
-		"label": "achtoprimboots",
-		"image": "https://i.imgur.com/Mn5v6Fe.png",
-		"name": "Achto primeval boots",
-		"breakdownNotes": "",
-		"slot": 7,
-		"wikiLink": "https://runescape.wiki/w/Achto_primeval_boots"
-	},
-	{
-		"label": "achtoprimgloves",
-		"image": "https://i.imgur.com/dP49Eec.png",
-		"name": "Achto primeval gloves",
-		"breakdownNotes": "",
-		"slot": 6,
-		"wikiLink": "https://runescape.wiki/w/Achto_primeval_gloves"
-	},
-	{
-		"label": "achtomask",
-		"image": "https://i.imgur.com/LLKhzlZ.png",
-		"name": "Achto primeval mask",
-		"breakdownNotes": "",
-		"slot": 1,
-		"wikiLink": "https://runescape.wiki/w/Achto_primeval_mask"
-	},
-	{
-		"label": "achtobottom",
-		"image": "https://i.imgur.com/4fPphBL.png",
-		"name": "Achto primeval robe legs",
-		"breakdownNotes": "",
-		"slot": 3,
-		"wikiLink": "https://runescape.wiki/w/Achto_primeval_robe_legs"
-	},
-	{
-		"label": "achtotop",
-		"image": "https://i.imgur.com/aCAN4SP.png",
-		"name": "Achto primeval robe top",
-		"breakdownNotes": "",
-		"slot": 2,
-		"wikiLink": "https://runescape.wiki/w/Achto_primeval_robe_top"
-	},
-	{
 		"label": "activeclue",
-		"image": "https://i.imgur.com/OZ9O0sa.png",
+		"image": "https://i.imgur.com/beq0RtH.png",
 		"name": "Active clue",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -137,7 +137,7 @@
 	},
 	{
 		"label": "aggro6",
-		"image": "https://i.imgur.com/ThvW5Tw.png",
+		"image": "https://i.imgur.com/nTRsMW1.png",
 		"name": "Aggression flask (6)",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -161,7 +161,7 @@
 	},
 	{
 		"label": "airrune",
-		"image": "https://i.imgur.com/7XCAtVP.png",
+		"image": "https://i.imgur.com/272HMXM.png",
 		"name": "Air rune",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -169,8 +169,8 @@
 	},
 	{
 		"label": "airrune1k",
-		"image": "https://i.imgur.com/7crFFMq.png",
-		"name": "Air runes (1k)",
+		"image": "https://i.imgur.com/IOehGlx.png",
+		"name": "Air runes",
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Air_rune"
@@ -185,7 +185,7 @@
 	},
 	{
 		"label": "akrisaeskirt",
-		"image": "https://i.imgur.com/uzP90rO.png",
+		"image": "https://i.imgur.com/K55Tyl3.png",
 		"name": "Akrisae's robe skirt",
 		"breakdownNotes": "",
 		"slot": 3,
@@ -193,7 +193,7 @@
 	},
 	{
 		"label": "akrisaetop",
-		"image": "https://i.imgur.com/AOPN6sg.png",
+		"image": "https://i.imgur.com/4vpqobx.png",
 		"name": "Akrisae's robe top",
 		"breakdownNotes": "",
 		"slot": 2,
@@ -225,7 +225,7 @@
 	},
 	{
 		"label": "amuletofnature",
-		"image": "https://i.imgur.com/rqmHHOy.png",
+		"image": "https://i.imgur.com/CjIUkSz.png",
 		"name": "Amulet of nature",
 		"breakdownNotes": "",
 		"slot": 10,
@@ -233,7 +233,7 @@
 	},
 	{
 		"label": "souls",
-		"image": "https://i.imgur.com/7bR3H3U.png",
+		"image": "https://i.imgur.com/ZCKGIBM.png",
 		"name": "Amulet of souls (or)",
 		"breakdownNotes": "",
 		"slot": 10,
@@ -265,7 +265,7 @@
 	},
 	{
 		"label": "nexdefender",
-		"image": "https://i.imgur.com/6IjpoTc.png",
+		"image": "https://i.imgur.com/ILVnJN0.png",
 		"name": "Ancient defender",
 		"breakdownNotes": "",
 		"slot": 5,
@@ -281,7 +281,7 @@
 	},
 	{
 		"label": "lantern",
-		"image": "https://i.imgur.com/I6vORmU.png",
+		"image": "https://i.imgur.com/v9ceVpM.png",
 		"name": "Ancient lantern",
 		"breakdownNotes": "",
 		"slot": 5,
@@ -313,7 +313,7 @@
 	},
 	{
 		"label": "serenhelm",
-		"image": "https://i.imgur.com/cqg3cXV.png",
+		"image": "https://i.imgur.com/VMQ89aP.png",
 		"name": "Anima core helm of seren",
 		"breakdownNotes": "",
 		"slot": 1,
@@ -361,7 +361,7 @@
 	},
 	{
 		"label": "arcjournal",
-		"image": "https://i.imgur.com/69xFAx4.png",
+		"image": "https://i.imgur.com/sOfnUEX.png",
 		"name": "Arc journal",
 		"breakdownNotes": "",
 		"slot": 13,
@@ -377,7 +377,7 @@
 	},
 	{
 		"label": "arcane",
-		"image": "https://i.imgur.com/klfBwI5.png",
+		"image": "https://i.imgur.com/IcTDNcT.png",
 		"name": "Arcane spirit shield",
 		"breakdownNotes": "",
 		"slot": 5,
@@ -385,7 +385,7 @@
 	},
 	{
 		"label": "archaeologyjournal",
-		"image": "https://i.imgur.com/0NG8TPw.png",
+		"image": "https://i.imgur.com/8C3OhBk.png",
 		"name": "Archaeology journal",
 		"breakdownNotes": "",
 		"slot": 13,
@@ -425,7 +425,7 @@
 	},
 	{
 		"label": "abs",
-		"image": "https://i.imgur.com/kOg6Htl.png",
+		"image": "https://i.imgur.com/alFbdln.png",
 		"name": "Armadyl battlestaff",
 		"breakdownNotes": "",
 		"slot": 4,
@@ -481,7 +481,7 @@
 	},
 	{
 		"label": "artificier",
-		"image": "https://i.imgur.com/2VUi0VP.png",
+		"image": "https://i.imgur.com/gMZLjIv.png",
 		"name": "Artificier's measure",
 		"breakdownNotes": "",
 		"slot": 5,
@@ -504,8 +504,16 @@
 		"wikiLink": "https://runescape.wiki/w/Ascension_bolts"
 	},
 	{
+		"label": "asc",
+		"image": "https://i.imgur.com/VZnA3ZS.png",
+		"name": "Ascension crossbow",
+		"breakdownNotes": "",
+		"slot": 4,
+		"wikiLink": "https://runescape.wiki/w/Ascension_crossbow"
+	},
+	{
 		"label": "primkey",
-		"image": "https://i.imgur.com/vDHTr9c.png",
+		"image": "https://i.imgur.com/zcGK9BZ.png",
 		"name": "Ascension keystone primus",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -513,7 +521,7 @@
 	},
 	{
 		"label": "quartkey",
-		"image": "https://i.imgur.com/pjnSVHA.png",
+		"image": "https://i.imgur.com/mfKIlJ5.png",
 		"name": "Ascension keystone quartus",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -521,7 +529,7 @@
 	},
 	{
 		"label": "quinkey",
-		"image": "https://i.imgur.com/zV7uAQe.png",
+		"image": "https://i.imgur.com/DaDiMWv.png",
 		"name": "Ascension keystone quintus",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -529,7 +537,7 @@
 	},
 	{
 		"label": "seckey",
-		"image": "https://i.imgur.com/ZNln4K2.png",
+		"image": "https://i.imgur.com/sepfJZf.png",
 		"name": "Ascension keystone secundus",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -537,7 +545,7 @@
 	},
 	{
 		"label": "sextkey",
-		"image": "https://i.imgur.com/g9a23nS.png",
+		"image": "https://i.imgur.com/hEb9765.png",
 		"name": "Ascension keystone sextus",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -545,7 +553,7 @@
 	},
 	{
 		"label": "tertkey",
-		"image": "https://i.imgur.com/wPORkEC.png",
+		"image": "https://i.imgur.com/gnYVyY0.png",
 		"name": "Ascension keystone tertius",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -553,7 +561,7 @@
 	},
 	{
 		"label": "ascshard",
-		"image": "https://i.imgur.com/SNNAakc.png",
+		"image": "https://i.imgur.com/honJ2pK.png",
 		"name": "Ascension shard",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -561,7 +569,7 @@
 	},
 	{
 		"label": "astralrune",
-		"image": "https://i.imgur.com/baftx2e.png",
+		"image": "https://i.imgur.com/tflpDfb.png",
 		"name": "Astral rune",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -625,7 +633,7 @@
 	},
 	{
 		"label": "attunedcrystalteleportseed",
-		"image": "https://i.imgur.com/muuvumG.png",
+		"image": "https://i.imgur.com/qNQ9dCI.png",
 		"name": "Attuned crystal teleport seed",
 		"breakdownNotes": "",
 		"slot": 13,
@@ -633,7 +641,7 @@
 	},
 	{
 		"label": "ecto",
-		"image": "https://i.imgur.com/5XEM9AB.png",
+		"image": "https://i.imgur.com/NkIcFSt.png",
 		"name": "Attuned ectoplasmator",
 		"breakdownNotes": "",
 		"slot": 13,
@@ -642,7 +650,7 @@
 	{
 		"label": "attunedportentofrestorationx",
 		"image": "https://i.imgur.com/SRVgAXl.png",
-		"name": "Attuned portent of restoration x",
+		"name": "Attuned portent of restoration X",
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Attuned_portent_of_restoration_x"
@@ -745,7 +753,7 @@
 	},
 	{
 		"label": "zerkess",
-		"image": "https://i.imgur.com/DyfukSE.png",
+		"image": "https://i.imgur.com/6Yt0jCG.png",
 		"name": "Berserk blood essence",
 		"breakdownNotes": "",
 		"slot": 13,
@@ -753,7 +761,7 @@
 	},
 	{
 		"label": "zerk",
-		"image": "https://i.imgur.com/dNm4A5W.png",
+		"image": "https://i.imgur.com/e50R2q0.png",
 		"name": "Berserker aura",
 		"breakdownNotes": "",
 		"slot": 8,
@@ -761,7 +769,7 @@
 	},
 	{
 		"label": "bigbookopiracy",
-		"image": "https://i.imgur.com/0DC4b3C.png",
+		"image": "https://i.imgur.com/Ho60PPT.png",
 		"name": "Big Book o'Piracy",
 		"breakdownNotes": "",
 		"slot": 13,
@@ -817,7 +825,7 @@
 	},
 	{
 		"label": "contracts",
-		"image": "https://i.imgur.com/kVRvKbP.png",
+		"image": "https://i.imgur.com/KkIYNhk.png",
 		"name": "Binding contracts",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -897,7 +905,7 @@
 	},
 	{
 		"label": "blessed",
-		"image": "https://i.imgur.com/q7228b9.png",
+		"image": "https://i.imgur.com/FVmxMkH.png",
 		"name": "Blessed flask",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -905,11 +913,59 @@
 	},
 	{
 		"label": "blightbolts",
-		"image": "https://i.imgur.com/BicWRtM.png",
+		"image": "https://i.imgur.com/749fyaq.png",
 		"name": "Blight bolts",
 		"breakdownNotes": "",
 		"slot": 9,
 		"wikiLink": "https://runescape.wiki/w/Blight_bolts"
+	},
+	{
+		"label": "bbc",
+		"image": "https://i.imgur.com/6IMR311.png",
+		"name": "Blightbound crossbow",
+		"breakdownNotes": "",
+		"slot": 4,
+		"wikiLink": "https://runescape.wiki/w/Blightbound_crossbow"
+	},
+	{
+		"label": "bbc3a",
+		"image": "https://i.imgur.com/jgkSXz1.png",
+		"name": "Blightbound crossbow (Third Age)",
+		"breakdownNotes": "",
+		"slot": 4,
+		"wikiLink": "https://runescape.wiki/w/Blightbound_crossbow_(Third_Age)"
+	},
+	{
+		"label": "bbcbarrows",
+		"image": "https://i.imgur.com/pqDhSTR.png",
+		"name": "Blightbound crossbow (barrows)",
+		"breakdownNotes": "",
+		"slot": 4,
+		"wikiLink": "https://runescape.wiki/w/Blightbound_crossbow_(barrows)"
+	},
+	{
+		"label": "bbcblood",
+		"image": "https://i.imgur.com/T79dXs3.png",
+		"name": "Blightbound crossbow (blood)",
+		"breakdownNotes": "",
+		"slot": 4,
+		"wikiLink": "https://runescape.wiki/w/Blightbound_crossbow_(blood)"
+	},
+	{
+		"label": "bbcice",
+		"image": "https://i.imgur.com/2d511wV.png",
+		"name": "Blightbound crossbow (ice)",
+		"breakdownNotes": "",
+		"slot": 4,
+		"wikiLink": "https://runescape.wiki/w/Blightbound_crossbow_(ice)"
+	},
+	{
+		"label": "bbcshadow",
+		"image": "https://i.imgur.com/vUv3qt5.png",
+		"name": "Blightbound crossbow (shadow)",
+		"breakdownNotes": "",
+		"slot": 4,
+		"wikiLink": "https://runescape.wiki/w/Blightbound_crossbow_(shadow)"
 	},
 	{
 		"label": "blightedrebounder",
@@ -953,7 +1009,7 @@
 	},
 	{
 		"label": "bloodrune",
-		"image": "https://i.imgur.com/NFysv2o.png",
+		"image": "https://i.imgur.com/2YxV2Pg.png",
 		"name": "Blood rune",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -961,7 +1017,7 @@
 	},
 	{
 		"label": "jelly",
-		"image": "https://i.imgur.com/ygwcjzt.png",
+		"image": "https://i.imgur.com/RD2LyxF.png",
 		"name": "Blue blubber jellyfish",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -970,14 +1026,14 @@
 	{
 		"label": "bluecharm1",
 		"image": "https://i.imgur.com/oL7B8YM.png",
-		"name": "Blue charm (1)",
+		"name": "Blue charm",
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Blue_charm"
 	},
 	{
 		"label": "bodyrune",
-		"image": "https://i.imgur.com/AuLIVBm.png",
+		"image": "https://i.imgur.com/KHVS8Ip.png",
 		"name": "Body rune",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -1121,7 +1177,7 @@
 	},
 	{
 		"label": "caroming",
-		"image": "https://i.imgur.com/QnRVnIg.png",
+		"image": "https://i.imgur.com/buHbsri.png",
 		"name": "Caroming perk",
 		"breakdownNotes": "",
 		"slot": 14,
@@ -1129,7 +1185,7 @@
 	},
 	{
 		"label": "celestial",
-		"image": "https://i.imgur.com/CHwh7uQ.png",
+		"image": "https://i.imgur.com/nYhykDP.png",
 		"name": "Celestial handwraps",
 		"breakdownNotes": "",
 		"slot": 6,
@@ -1153,16 +1209,16 @@
 	},
 	{
 		"label": "chaosrune",
-		"image": "https://i.imgur.com/iFFmqvi.png",
-		"name": "Chaos rune",
+		"image": "https://i.imgur.com/Tc9qi7D.png",
+		"name": "Chaos runes",
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Chaos_rune"
 	},
 	{
 		"label": "chaosrune1k",
-		"image": "https://i.imgur.com/cxrFhcE.png",
-		"name": "Chaos runes (1k)",
+		"image": "https://i.imgur.com/o8E0y1O.png",
+		"name": "Chaos runes",
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Chaos_rune"
@@ -1185,7 +1241,7 @@
 	},
 	{
 		"label": "cluebag",
-		"image": "https://i.imgur.com/h7hCOfy.png",
+		"image": "https://i.imgur.com/KPREDHT.png",
 		"name": "Charos' clue carrier",
 		"breakdownNotes": "",
 		"slot": 13,
@@ -1217,7 +1273,7 @@
 	},
 	{
 		"label": "dummy",
-		"image": "https://i.imgur.com/E03cGER.png",
+		"image": "https://i.imgur.com/Dgtgp4n.png",
 		"name": "Combat dummy MKII",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -1225,7 +1281,7 @@
 	},
 	{
 		"label": "mtx",
-		"image": "https://i.imgur.com/aq2xYgY.png",
+		"image": "https://i.imgur.com/yWv57LC.png",
 		"name": "Combat training dummy",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -1241,7 +1297,7 @@
 	},
 	{
 		"label": "comp",
-		"image": "https://i.imgur.com/UqMEx96.png",
+		"image": "https://i.imgur.com/OK9XWGB.png",
 		"name": "Completionist cape",
 		"breakdownNotes": "",
 		"slot": 12,
@@ -1273,7 +1329,7 @@
 	},
 	{
 		"label": "cosmicrune",
-		"image": "https://i.imgur.com/BUBWYjA.png",
+		"image": "https://i.imgur.com/hT4aSh6.png",
 		"name": "Cosmic rune",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -1289,16 +1345,16 @@
 	},
 	{
 		"label": "cramulet(camulet)",
-		"image": "https://i.imgur.com/FDBnj4I.png",
-		"name": "Cramulet (Camulet)",
+		"image": "https://i.imgur.com/u7oN7vj.png",
+		"name": "Cramulet",
 		"breakdownNotes": "",
 		"slot": 10,
-		"wikiLink": "https://runescape.wiki/w/Cramulet_(Camulet)"
+		"wikiLink": "https://runescape.wiki/w/Cramulet"
 	},
 	{
 		"label": "crimsoncharm1",
 		"image": "https://i.imgur.com/m6W15K7.png",
-		"name": "Crimson charm (1)",
+		"name": "Crimson charm",
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Crimson_charm"
@@ -1352,20 +1408,20 @@
 		"wikiLink": "https://runescape.wiki/w/Cryptbloom_top"
 	},
 	{
-		"label": "crystalkey1noted",
-		"image": "https://i.imgur.com/ele52vp.png",
-		"name": "Crystal key (1 noted)",
-		"breakdownNotes": "",
-		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Crystal_key"
-	},
-	{
 		"label": "crystalhatchet",
-		"image": "https://i.imgur.com/d2vGTfF.png",
-		"name": "Crystal_hatchet",
+		"image": "https://i.imgur.com/ngoTz66.png",
+		"name": "Crystal hatchet",
 		"breakdownNotes": "",
 		"slot": 4,
 		"wikiLink": "https://runescape.wiki/w/Crystal_hatchet"
+	},
+	{
+		"label": "crystalkey1noted",
+		"image": "https://i.imgur.com/ele52vp.png",
+		"name": "Crystal key",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Crystal_key"
 	},
 	{
 		"label": "curlyroot",
@@ -1409,7 +1465,7 @@
 	},
 	{
 		"label": "dbow",
-		"image": "https://i.imgur.com/usBugge.png",
+		"image": "https://i.imgur.com/KkJxTbf.png",
 		"name": "Dark bow",
 		"breakdownNotes": "",
 		"slot": 4,
@@ -1433,7 +1489,7 @@
 	},
 	{
 		"label": "darkmagicaura",
-		"image": "https://i.imgur.com/tg8JQSa.png",
+		"image": "https://i.imgur.com/nd6HpjD.png",
 		"name": "Dark magic aura",
 		"breakdownNotes": "",
 		"slot": 8,
@@ -1441,7 +1497,7 @@
 	},
 	{
 		"label": "darklight",
-		"image": "https://i.imgur.com/2nPFZU6.png",
+		"image": "https://i.imgur.com/SOBvbj7.png",
 		"name": "Darklight",
 		"breakdownNotes": "",
 		"slot": 4,
@@ -1449,7 +1505,7 @@
 	},
 	{
 		"label": "davesspellbook",
-		"image": "https://i.imgur.com/yFosHdX.png",
+		"image": "https://i.imgur.com/ahDBOU5.png",
 		"name": "Dave's spellbook",
 		"breakdownNotes": "",
 		"slot": 13,
@@ -1457,19 +1513,27 @@
 	},
 	{
 		"label": "deathrune",
-		"image": "https://i.imgur.com/Lcb8Hbu.png",
-		"name": "Death rune",
+		"image": "https://i.imgur.com/U2GTsL1.png",
+		"name": "Death runes",
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Death_rune"
 	},
 	{
 		"label": "deathrune10k",
-		"image": "https://i.imgur.com/vyDmBAB.png",
-		"name": "Death runes (10k)",
+		"image": "https://i.imgur.com/gxmlPbx.png",
+		"name": "Death runes",
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Death_rune"
+	},
+	{
+		"label": "deathsporearrowtips1",
+		"image": "https://i.imgur.com/jHCeJqk.png",
+		"name": "Deathspore arrow tips",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Deathspore_arrow_tips"
 	},
 	{
 		"label": "deathsporearrows",
@@ -1480,16 +1544,8 @@
 		"wikiLink": "https://runescape.wiki/w/Deathspore_arrows"
 	},
 	{
-		"label": "deathsporearrowtips1",
-		"image": "https://i.imgur.com/u9UP2sY.png",
-		"name": "Deathspore_arrow_tips",
-		"breakdownNotes": "",
-		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Deathspore_arrow_tips"
-	},
-	{
 		"label": "dtb",
-		"image": "https://i.imgur.com/n7j573y.png",
+		"image": "https://i.imgur.com/ia3JNEm.png",
 		"name": "Deathtouched bracelet",
 		"breakdownNotes": "",
 		"slot": 6,
@@ -1505,7 +1561,7 @@
 	},
 	{
 		"label": "decoratedcookingurn(nr)",
-		"image": "https://i.imgur.com/GgfWSMM.png",
+		"image": "https://i.imgur.com/cx7cvZh.png",
 		"name": "Decorated cooking urn (nr)",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -1545,7 +1601,7 @@
 	},
 	{
 		"label": "desertamulet1",
-		"image": "https://i.imgur.com/eVqgKf0.png",
+		"image": "https://i.imgur.com/RcXTDSc.png",
 		"name": "Desert amulet 1",
 		"breakdownNotes": "",
 		"slot": 10,
@@ -1553,7 +1609,7 @@
 	},
 	{
 		"label": "desertamulet2",
-		"image": "https://i.imgur.com/51gqAWz.png",
+		"image": "https://i.imgur.com/qi9TCpL.png",
 		"name": "Desert amulet 2",
 		"breakdownNotes": "",
 		"slot": 10,
@@ -1561,7 +1617,7 @@
 	},
 	{
 		"label": "desertamulet3",
-		"image": "https://i.imgur.com/fkFb6Ey.png",
+		"image": "https://i.imgur.com/nOwrqYE.png",
 		"name": "Desert amulet 3",
 		"breakdownNotes": "",
 		"slot": 10,
@@ -1593,7 +1649,7 @@
 	},
 	{
 		"label": "divcharge",
-		"image": "https://i.imgur.com/CsaPZ6y.png",
+		"image": "https://i.imgur.com/h5QEOgi.png",
 		"name": "Divine charge",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -1601,7 +1657,7 @@
 	},
 	{
 		"label": "divine",
-		"image": "https://i.imgur.com/FqCe5Kw.png",
+		"image": "https://i.imgur.com/cmPHm5u.png",
 		"name": "Divine spirit shield",
 		"breakdownNotes": "",
 		"slot": 5,
@@ -1625,7 +1681,7 @@
 	},
 	{
 		"label": "4mines",
-		"image": "https://i.imgur.com/Mod2BCi.png",
+		"image": "https://i.imgur.com/ghUXVss.png",
 		"name": "Dominion mines",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -1648,8 +1704,24 @@
 		"wikiLink": "https://runescape.wiki/w/Dorgesh-kaan_sphere"
 	},
 	{
+		"label": "driderlance",
+		"image": "https://i.imgur.com/lEdBw7C.png",
+		"name": "Dragon Rider lance",
+		"breakdownNotes": "",
+		"slot": 4,
+		"wikiLink": "https://runescape.wiki/w/Dragon_Rider_lance"
+	},
+	{
+		"label": "dbane2h",
+		"image": "https://i.imgur.com/Hv713Z2.png",
+		"name": "Dragon bane 2h sword",
+		"breakdownNotes": "",
+		"slot": 4,
+		"wikiLink": "https://runescape.wiki/w/Dragon_bane_2h_sword"
+	},
+	{
 		"label": "dba",
-		"image": "https://i.imgur.com/BoTSwMT.png",
+		"image": "https://i.imgur.com/hZGOmkB.png",
 		"name": "Dragon battleaxe",
 		"breakdownNotes": "",
 		"slot": 4,
@@ -1688,16 +1760,8 @@
 		"wikiLink": "https://runescape.wiki/w/Dragon_trinkets"
 	},
 	{
-		"label": "dbane2h",
-		"image": "https://i.imgur.com/Hv713Z2.png",
-		"name": "Dragonbane 2h sword",
-		"breakdownNotes": "",
-		"slot": 4,
-		"wikiLink": "https://runescape.wiki/w/Dragonbane_2h_sword"
-	},
-	{
 		"label": "dbanearrows",
-		"image": "https://i.imgur.com/dlHBMRN.png",
+		"image": "https://i.imgur.com/gh6fYvW.png",
 		"name": "Dragonbane arrows",
 		"breakdownNotes": "",
 		"slot": 9,
@@ -1705,7 +1769,7 @@
 	},
 	{
 		"label": "dbanebolts",
-		"image": "https://i.imgur.com/Ad6Ws1U.png",
+		"image": "https://i.imgur.com/nW0wCZN.png",
 		"name": "Dragonbane bolts",
 		"breakdownNotes": "",
 		"slot": 9,
@@ -1718,14 +1782,6 @@
 		"breakdownNotes": "",
 		"slot": 13,
 		"wikiLink": "https://runescape.wiki/w/Dragonkin_Laboratory_teleport"
-	},
-	{
-		"label": "driderlance",
-		"image": "https://i.imgur.com/Qgyyrwc.png",
-		"name": "Dragonride lance",
-		"breakdownNotes": "",
-		"slot": 4,
-		"wikiLink": "https://runescape.wiki/w/Dragonride_lance"
 	},
 	{
 		"label": "drider",
@@ -1753,31 +1809,47 @@
 	},
 	{
 		"label": "nips",
-		"image": "https://i.imgur.com/m5SqRS1.png",
+		"image": "https://i.imgur.com/PzFKnJF.png",
 		"name": "Dreadnip",
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Dreadnip"
 	},
 	{
+		"label": "mace",
+		"image": "https://i.imgur.com/0Cs8pvg.png",
+		"name": "Drygore mace",
+		"breakdownNotes": "",
+		"slot": 4,
+		"wikiLink": "https://runescape.wiki/w/Drygore_mace"
+	},
+	{
 		"label": "dungeoneeringcape",
-		"image": "https://i.imgur.com/x0Nwd1G.png",
-		"name": "Dungeoneering cape",
+		"image": "https://i.imgur.com/Ca8KMuK.png",
+		"name": "Dungeoneering cape (t)",
 		"breakdownNotes": "",
 		"slot": 12,
-		"wikiLink": "https://runescape.wiki/w/Dungeoneering_cape"
+		"wikiLink": "https://runescape.wiki/w/Dungeoneering_cape_(t)"
 	},
 	{
 		"label": "dustrune",
-		"image": "https://i.imgur.com/wx33VZG.png",
+		"image": "https://i.imgur.com/gxxSQqC.png",
 		"name": "Dust rune",
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Dust_rune"
 	},
 	{
+		"label": "dwarfcannon",
+		"image": "https://i.imgur.com/OYffZEA.png",
+		"name": "Dwarf multicannon",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Dwarf_multicannon"
+	},
+	{
 		"label": "dwarvenfishextractor",
-		"image": "https://i.imgur.com/juEjHr2.png",
+		"image": "https://i.imgur.com/oN8HWIo.png",
 		"name": "Dwarven fish extractor",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -1785,7 +1857,7 @@
 	},
 	{
 		"label": "cannon",
-		"image": "https://i.imgur.com/eXAbFdM.png",
+		"image": "https://i.imgur.com/GTwVqeC.png",
 		"name": "Dwarven siege engine",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -1793,7 +1865,7 @@
 	},
 	{
 		"label": "earthrune",
-		"image": "https://i.imgur.com/L9LzYeY.png",
+		"image": "https://i.imgur.com/DeJRGLD.png",
 		"name": "Earth rune",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -1802,7 +1874,7 @@
 	{
 		"label": "earthrune1k",
 		"image": "https://i.imgur.com/BaZYIcM.png",
-		"name": "Earth runes (1k)",
+		"name": "Earth runes",
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Earth_rune"
@@ -1817,7 +1889,7 @@
 	},
 	{
 		"label": "ectophial",
-		"image": "https://i.imgur.com/9et4PFh.png",
+		"image": "https://i.imgur.com/mqsH3xe.png",
 		"name": "Ectophial",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -1849,7 +1921,7 @@
 	},
 	{
 		"label": "salve",
-		"image": "https://i.imgur.com/SsNRoVE.png",
+		"image": "https://i.imgur.com/9GP63eS.png",
 		"name": "Elder overload salve (6)",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -1881,48 +1953,48 @@
 	},
 	{
 		"label": "ecb",
-		"image": "https://i.imgur.com/G6doXGi.png",
-		"name": "Eldrich crossbow",
+		"image": "https://i.imgur.com/n98Fmxx.png",
+		"name": "Eldritch crossbow",
 		"breakdownNotes": "",
 		"slot": 4,
 		"wikiLink": "https://runescape.wiki/w/Eldrich_crossbow"
 	},
 	{
 		"label": "ecb3a",
-		"image": "https://i.imgur.com/nT78NJf.png",
-		"name": "Eldrich crossbow (3a)",
+		"image": "https://i.imgur.com/IlvDzti.png",
+		"name": "Eldritch crossbow (Third Age)",
 		"breakdownNotes": "",
 		"slot": 4,
 		"wikiLink": "https://runescape.wiki/w/Eldrich_crossbow_(Third_Age)"
 	},
 	{
 		"label": "ecbbarrows",
-		"image": "https://i.imgur.com/38HCWk7.png",
-		"name": "Eldrich crossbow (barrows)",
+		"image": "https://i.imgur.com/3yhY4wS.png",
+		"name": "Eldritch crossbow (barrows)",
 		"breakdownNotes": "",
 		"slot": 4,
 		"wikiLink": "https://runescape.wiki/w/Eldrich_crossbow_(barrows)"
 	},
 	{
 		"label": "ecbblood",
-		"image": "https://i.imgur.com/4kajtRF.png",
-		"name": "Eldrich crossbow (blood)",
+		"image": "https://i.imgur.com/hhrKbwI.png",
+		"name": "Eldritch crossbow (blood)",
 		"breakdownNotes": "",
 		"slot": 4,
 		"wikiLink": "https://runescape.wiki/w/Eldrich_crossbow_(blood)"
 	},
 	{
 		"label": "ecbice",
-		"image": "https://i.imgur.com/TXyWqPJ.png",
-		"name": "Eldrich crossbow (ice)",
+		"image": "https://i.imgur.com/KbpL4t2.png",
+		"name": "Eldritch crossbow (ice)",
 		"breakdownNotes": "",
 		"slot": 4,
 		"wikiLink": "https://runescape.wiki/w/Eldrich_crossbow_(ice)"
 	},
 	{
 		"label": "ecbshadow",
-		"image": "https://i.imgur.com/lMLegOB.png",
-		"name": "Eldrich crossbow (shadow)",
+		"image": "https://i.imgur.com/ezPKDEr.png",
+		"name": "Eldritch crossbow (shadow)",
 		"breakdownNotes": "",
 		"slot": 4,
 		"wikiLink": "https://runescape.wiki/w/Eldrich_crossbow_(shadow)"
@@ -1953,7 +2025,7 @@
 	},
 	{
 		"label": "emakigai",
-		"image": "https://i.imgur.com/jsjDF91.png",
+		"image": "https://i.imgur.com/9c6iVBM.png",
 		"name": "Elite seasinger makigai",
 		"breakdownNotes": "",
 		"slot": 5,
@@ -1961,7 +2033,7 @@
 	},
 	{
 		"label": "esireniclegs",
-		"image": "https://i.imgur.com/bHmDqjV.png",
+		"image": "https://i.imgur.com/RTW90Dv.png",
 		"name": "Elite sirenic chaps",
 		"breakdownNotes": "",
 		"slot": 3,
@@ -1969,7 +2041,7 @@
 	},
 	{
 		"label": "esireniclegsbarrows",
-		"image": "https://i.imgur.com/1220ZXy.png",
+		"image": "https://i.imgur.com/n4fOiPY.png",
 		"name": "Elite sirenic chaps (barrows)",
 		"breakdownNotes": "",
 		"slot": 3,
@@ -1977,7 +2049,7 @@
 	},
 	{
 		"label": "esirenictop",
-		"image": "https://i.imgur.com/Awlvns0.png",
+		"image": "https://i.imgur.com/t4jnVcX.png",
 		"name": "Elite sirenic hauberk",
 		"breakdownNotes": "",
 		"slot": 2,
@@ -1985,7 +2057,7 @@
 	},
 	{
 		"label": "esirenictopbarrows",
-		"image": "https://i.imgur.com/8gZNodr.png",
+		"image": "https://i.imgur.com/U9lYah2.png",
 		"name": "Elite sirenic hauberk (barrows)",
 		"breakdownNotes": "",
 		"slot": 2,
@@ -1993,7 +2065,7 @@
 	},
 	{
 		"label": "esirenichelm",
-		"image": "https://i.imgur.com/zghHDxK.png",
+		"image": "https://i.imgur.com/G447lCn.png",
 		"name": "Elite sirenic mask",
 		"breakdownNotes": "",
 		"slot": 1,
@@ -2001,7 +2073,7 @@
 	},
 	{
 		"label": "esirenichelmbarrows",
-		"image": "https://i.imgur.com/cpTn1et.png",
+		"image": "https://i.imgur.com/a504Ary.png",
 		"name": "Elite sirenic mask (barrows)",
 		"breakdownNotes": "",
 		"slot": 1,
@@ -2009,7 +2081,7 @@
 	},
 	{
 		"label": "etectohelm",
-		"image": "https://i.imgur.com/JkrhqUi.png",
+		"image": "https://i.imgur.com/iPtkkKN.png",
 		"name": "Elite tectonic mask",
 		"breakdownNotes": "",
 		"slot": 1,
@@ -2017,7 +2089,7 @@
 	},
 	{
 		"label": "etectolegs",
-		"image": "https://i.imgur.com/t6HbIdO.png",
+		"image": "https://i.imgur.com/0TXtWf2.png",
 		"name": "Elite tectonic robe bottom",
 		"breakdownNotes": "",
 		"slot": 3,
@@ -2025,7 +2097,7 @@
 	},
 	{
 		"label": "etectotop",
-		"image": "https://i.imgur.com/seS3Yh2.png",
+		"image": "https://i.imgur.com/NftWcLQ.png",
 		"name": "Elite tectonic robe top",
 		"breakdownNotes": "",
 		"slot": 2,
@@ -2033,7 +2105,7 @@
 	},
 	{
 		"label": "tetsukatana",
-		"image": "https://i.imgur.com/ycR3w7M.png",
+		"image": "https://i.imgur.com/r0RVpXK.png",
 		"name": "Elite tetsu katana",
 		"breakdownNotes": "",
 		"slot": 4,
@@ -2041,7 +2113,7 @@
 	},
 	{
 		"label": "ely",
-		"image": "https://i.imgur.com/dw164tg.png",
+		"image": "https://i.imgur.com/vG9UXFJ.png",
 		"name": "Elysian spirit shield",
 		"breakdownNotes": "",
 		"slot": 5,
@@ -2057,7 +2129,7 @@
 	},
 	{
 		"label": "enchantedlyre",
-		"image": "https://i.imgur.com/RxZi3kC.png",
+		"image": "https://i.imgur.com/X0KALWt.png",
 		"name": "Enchanted lyre",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -2073,7 +2145,7 @@
 	},
 	{
 		"label": "excal",
-		"image": "https://i.imgur.com/KFZJLhU.png",
+		"image": "https://i.imgur.com/nC5xTAR.png",
 		"name": "Enhanced excalibur",
 		"breakdownNotes": "",
 		"slot": 5,
@@ -2097,7 +2169,7 @@
 	},
 	{
 		"label": "enhluck",
-		"image": "https://i.imgur.com/sh0rUPx.png",
+		"image": "https://i.imgur.com/wsYgZsb.png",
 		"name": "Enhanced luck potion",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -2105,11 +2177,11 @@
 	},
 	{
 		"label": "replen",
-		"image": "https://i.imgur.com/1KQHomq.png",
-		"name": "Enhanced replenishment",
+		"image": "https://i.imgur.com/LWm3PJt.png",
+		"name": "Enhanced replenishment poteion (6)",
 		"breakdownNotes": "",
 		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Enhanced_replenishment"
+		"wikiLink": "https://runescape.wiki/w/Enhanced_replenishment_potion#(6)"
 	},
 	{
 		"label": "enlightenedamulet",
@@ -2209,7 +2281,7 @@
 	},
 	{
 		"label": "explorersring1",
-		"image": "https://i.imgur.com/8qUWZja.png",
+		"image": "https://i.imgur.com/ywhQfXD.png",
 		"name": "Explorer's ring 1",
 		"breakdownNotes": "",
 		"slot": 11,
@@ -2217,7 +2289,7 @@
 	},
 	{
 		"label": "explorersring2",
-		"image": "https://i.imgur.com/3xjpMTV.png",
+		"image": "https://i.imgur.com/M1RRdHt.png",
 		"name": "Explorer's ring 2",
 		"breakdownNotes": "",
 		"slot": 11,
@@ -2225,7 +2297,7 @@
 	},
 	{
 		"label": "explorersring3",
-		"image": "https://i.imgur.com/1Qt9vPR.png",
+		"image": "https://i.imgur.com/hV3Q1D1.png",
 		"name": "Explorer's ring 3",
 		"breakdownNotes": "",
 		"slot": 11,
@@ -2233,7 +2305,7 @@
 	},
 	{
 		"label": "explorersring4",
-		"image": "https://i.imgur.com/KVcrYcx.png",
+		"image": "https://i.imgur.com/py4guxm.png",
 		"name": "Explorer's ring 4",
 		"breakdownNotes": "",
 		"slot": 11,
@@ -2242,42 +2314,18 @@
 	{
 		"label": "extattack",
 		"image": "https://i.imgur.com/bbhu0Wx.png",
-		"name": "Extreme Attack",
+		"name": "Extreme attack (4)",
 		"breakdownNotes": "",
 		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Extreme_Attack"
+		"wikiLink": "https://runescape.wiki/w/Extreme_Attack#(4)"
 	},
 	{
 		"label": "extdefence",
 		"image": "https://i.imgur.com/DUhcOW3.png",
-		"name": "Extreme Defence",
+		"name": "Extreme defence (4)",
 		"breakdownNotes": "",
 		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Extreme_Defence"
-	},
-	{
-		"label": "extmagic",
-		"image": "https://i.imgur.com/SgGHcx0.png",
-		"name": "Extreme Magic",
-		"breakdownNotes": "",
-		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Extreme_Magic"
-	},
-	{
-		"label": "extrange",
-		"image": "https://i.imgur.com/SIxkkCF.png",
-		"name": "Extreme Ranging",
-		"breakdownNotes": "",
-		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Extreme_Ranging"
-	},
-	{
-		"label": "extstrength",
-		"image": "https://i.imgur.com/7fRfsO4.png",
-		"name": "Extreme Strength",
-		"breakdownNotes": "",
-		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Extreme_Strength"
+		"wikiLink": "https://runescape.wiki/w/Extreme_Defence#(4)"
 	},
 	{
 		"label": "extremehunter1",
@@ -2288,12 +2336,36 @@
 		"wikiLink": "https://runescape.wiki/w/Extreme_hunter#(1)"
 	},
 	{
-		"label": "extpray",
-		"image": "https://i.imgur.com/YSj7H2I.png",
-		"name": "Extreme prayer",
+		"label": "extmagic",
+		"image": "https://i.imgur.com/SgGHcx0.png",
+		"name": "Extreme magic (4)",
 		"breakdownNotes": "",
 		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Extreme_prayer"
+		"wikiLink": "https://runescape.wiki/w/Extreme_Magic#(4)"
+	},
+	{
+		"label": "extpray",
+		"image": "https://i.imgur.com/YSj7H2I.png",
+		"name": "Extreme prayer flask (6)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Extreme_prayer_flask#(6)"
+	},
+	{
+		"label": "extrange",
+		"image": "https://i.imgur.com/SIxkkCF.png",
+		"name": "Extreme ranging (4)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Extreme_Ranging#(4)"
+	},
+	{
+		"label": "extstrength",
+		"image": "https://i.imgur.com/7fRfsO4.png",
+		"name": "Extreme strength (4)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Extreme_Strength#(4)"
 	},
 	{
 		"label": "faladorteleport(item)",
@@ -2314,7 +2386,7 @@
 	{
 		"label": "maatfeathers1k",
 		"image": "https://i.imgur.com/ZHuOtCr.png",
-		"name": "Feather of Ma'at (1k)",
+		"name": "Feather of Ma'at",
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Feather_of_Ma'at"
@@ -2322,7 +2394,7 @@
 	{
 		"label": "fellstalkincensesticks100",
 		"image": "https://i.imgur.com/nK9EU1V.png",
-		"name": "Fellstalk incense sticks (100)",
+		"name": "Fellstalk incense sticks",
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Fellstalk_incense_sticks"
@@ -2330,14 +2402,14 @@
 	{
 		"label": "fireorb1noted",
 		"image": "https://i.imgur.com/A6r373m.png",
-		"name": "Fire orb (1 noted)",
+		"name": "Fire orb",
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Fire_orb"
 	},
 	{
 		"label": "firerune",
-		"image": "https://i.imgur.com/0UBrFSR.png",
+		"image": "https://i.imgur.com/oGNpshh.png",
 		"name": "Fire rune",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -2345,15 +2417,15 @@
 	},
 	{
 		"label": "firerune10k",
-		"image": "https://i.imgur.com/NI16H5f.png",
-		"name": "Fire runes (10k)",
+		"image": "https://i.imgur.com/rbZs9di.png",
+		"name": "Fire runes",
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Fire_rune"
 	},
 	{
 		"label": "fishingpotion",
-		"image": "https://i.imgur.com/EfbteaK.png",
+		"image": "https://i.imgur.com/VZsgXdV.png",
 		"name": "Fishing potion (4)",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -2369,7 +2441,7 @@
 	},
 	{
 		"label": "flank",
-		"image": "https://i.imgur.com/KWaUJLP.png",
+		"image": "https://i.imgur.com/e79LetS.png",
 		"name": "Flanking perk",
 		"breakdownNotes": "",
 		"slot": 14,
@@ -2377,7 +2449,7 @@
 	},
 	{
 		"label": "flarefrost",
-		"image": "https://i.imgur.com/TYqTtJI.png",
+		"image": "https://i.imgur.com/tdzNkUs.png",
 		"name": "Flarefrost boots",
 		"breakdownNotes": "",
 		"slot": 7,
@@ -2417,7 +2489,7 @@
 	},
 	{
 		"label": "fremennikseaboots1",
-		"image": "https://i.imgur.com/3px2ugB.png",
+		"image": "https://i.imgur.com/F0EkLA4.png",
 		"name": "Fremennik sea boots 1",
 		"breakdownNotes": "",
 		"slot": 7,
@@ -2425,7 +2497,7 @@
 	},
 	{
 		"label": "fremennikseaboots2",
-		"image": "https://i.imgur.com/Sq3FN7Q.png",
+		"image": "https://i.imgur.com/9Iiz14Z.png",
 		"name": "Fremennik sea boots 2",
 		"breakdownNotes": "",
 		"slot": 7,
@@ -2433,7 +2505,7 @@
 	},
 	{
 		"label": "fremennikseaboots3",
-		"image": "https://i.imgur.com/lZW4rGZ.png",
+		"image": "https://i.imgur.com/C5TTowo.png",
 		"name": "Fremennik sea boots 3",
 		"breakdownNotes": "",
 		"slot": 7,
@@ -2569,7 +2641,7 @@
 	},
 	{
 		"label": "gatherercape",
-		"image": "https://i.imgur.com/TG7eB10.png",
+		"image": "https://i.imgur.com/jAZnS74.png",
 		"name": "Gatherer's cape",
 		"breakdownNotes": "",
 		"slot": 12,
@@ -2577,7 +2649,7 @@
 	},
 	{
 		"label": "gembag",
-		"image": "https://i.imgur.com/OiUGVBZ.png",
+		"image": "https://i.imgur.com/ODNlwIc.png",
 		"name": "Gem bag (upgraded)",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -2609,7 +2681,7 @@
 	},
 	{
 		"label": "ghostlegs",
-		"image": "https://i.imgur.com/VLeD3Vy.png",
+		"image": "https://i.imgur.com/Cn2x2Mi.png",
 		"name": "Ghost hunter legs",
 		"breakdownNotes": "",
 		"slot": 3,
@@ -2617,7 +2689,7 @@
 	},
 	{
 		"label": "globetrotterarmguards",
-		"image": "https://i.imgur.com/O9YJjP3.png",
+		"image": "https://i.imgur.com/TCZljWu.png",
 		"name": "Globetrotter arm guards",
 		"breakdownNotes": "",
 		"slot": 6,
@@ -2625,7 +2697,7 @@
 	},
 	{
 		"label": "globetrotterbackpack",
-		"image": "https://i.imgur.com/FNh0CHs.png",
+		"image": "https://i.imgur.com/9u3f0ws.png",
 		"name": "Globetrotter backpack",
 		"breakdownNotes": "",
 		"slot": 12,
@@ -2633,7 +2705,7 @@
 	},
 	{
 		"label": "globetrotterboots",
-		"image": "https://i.imgur.com/gyqrdbQ.png",
+		"image": "https://i.imgur.com/44J9f9V.png",
 		"name": "Globetrotter boots",
 		"breakdownNotes": "",
 		"slot": 7,
@@ -2641,7 +2713,7 @@
 	},
 	{
 		"label": "globetrotterjacket",
-		"image": "https://i.imgur.com/daSzOeF.png",
+		"image": "https://i.imgur.com/paFUjfv.png",
 		"name": "Globetrotter jacket",
 		"breakdownNotes": "",
 		"slot": 2,
@@ -2649,7 +2721,7 @@
 	},
 	{
 		"label": "globetrottershorts",
-		"image": "https://i.imgur.com/EAouSH2.png",
+		"image": "https://i.imgur.com/DvyUvd2.png",
 		"name": "Globetrotter shorts",
 		"breakdownNotes": "",
 		"slot": 3,
@@ -2682,7 +2754,7 @@
 	{
 		"label": "goldcharm1",
 		"image": "https://i.imgur.com/z9gFxyX.png",
-		"name": "Gold charm (1)",
+		"name": "Gold charm",
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Gold_charm"
@@ -2690,7 +2762,7 @@
 	{
 		"label": "goldseal(noted)",
 		"image": "https://i.imgur.com/I74Bq3s.png",
-		"name": "Gold seal (noted)",
+		"name": "Gold seal",
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Gold_seal"
@@ -2705,7 +2777,7 @@
 	},
 	{
 		"label": "gote",
-		"image": "https://i.imgur.com/eP6MMdc.png",
+		"image": "https://i.imgur.com/4KgPcpm.png",
 		"name": "Grace of the elves",
 		"breakdownNotes": "",
 		"slot": 10,
@@ -2721,7 +2793,7 @@
 	},
 	{
 		"label": "grandmagic",
-		"image": "https://i.imgur.com/KHq1UgF.png",
+		"image": "https://i.imgur.com/1cUQdhw.png",
 		"name": "Grand magic potion (6)",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -2738,10 +2810,10 @@
 	{
 		"label": "granitelobster",
 		"image": "https://i.imgur.com/VsrLYXb.png",
-		"name": "Granite lobster",
+		"name": "Granite lobster pouch",
 		"breakdownNotes": "",
 		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Granite_lobster"
+		"wikiLink": "https://runescape.wiki/w/Granite_lobster_pouch"
 	},
 	{
 		"label": "graspingpouch",
@@ -2817,7 +2889,7 @@
 	},
 	{
 		"label": "gunkan",
-		"image": "https://i.imgur.com/qJwQe9I.png",
+		"image": "https://i.imgur.com/4jN3eAQ.png",
 		"name": "Great gunkan",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -2834,7 +2906,7 @@
 	{
 		"label": "greencharm1",
 		"image": "https://i.imgur.com/FuWsB0y.png",
-		"name": "Green charm (1)",
+		"name": "Green charm",
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Green_charm"
@@ -2858,7 +2930,7 @@
 	{
 		"label": "grimyavantoe1noted",
 		"image": "https://i.imgur.com/cPoMobG.png",
-		"name": "Grimy avantoe (1 noted)",
+		"name": "Grimy avantoe",
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Grimy_avantoe"
@@ -2866,7 +2938,7 @@
 	{
 		"label": "grimycadantine1noted",
 		"image": "https://i.imgur.com/XpmkeB1.png",
-		"name": "Grimy cadantine (1 noted)",
+		"name": "Grimy cadantine",
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Grimy_cadantine"
@@ -2874,7 +2946,7 @@
 	{
 		"label": "grimydwarfweed1noted",
 		"image": "https://i.imgur.com/ByV98Gd.png",
-		"name": "Grimy dwarf weed (1 noted)",
+		"name": "Grimy dwarf weed",
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Grimy_dwarf_weed"
@@ -2882,7 +2954,7 @@
 	{
 		"label": "grimyirit1noted",
 		"image": "https://i.imgur.com/CEuJ1Oc.png",
-		"name": "Grimy irit (1 noted)",
+		"name": "Grimy irit",
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Grimy_irit"
@@ -2890,7 +2962,7 @@
 	{
 		"label": "grimylantadyme1noted",
 		"image": "https://i.imgur.com/vliP2On.png",
-		"name": "Grimy lantadyme (1 noted)",
+		"name": "Grimy lantadyme",
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Grimy_lantadyme"
@@ -2898,7 +2970,7 @@
 	{
 		"label": "grimytoadflax1noted",
 		"image": "https://i.imgur.com/0KTRRES.png",
-		"name": "Grimy toadflax (1 noted)",
+		"name": "Grimy toadflax",
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Grimy_toadflax"
@@ -2913,15 +2985,15 @@
 	},
 	{
 		"label": "godcape",
-		"image": "https://i.imgur.com/fBubAFa.png",
-		"name": "Guthix / Saradomin / Zamorak cape",
+		"image": "https://i.imgur.com/N3KChO6.png",
+		"name": "Guthix or Saradomin or Zamorak cape",
 		"breakdownNotes": "",
 		"slot": 12,
 		"wikiLink": "https://runescape.wiki/w/God_capes"
 	},
 	{
 		"label": "grest",
-		"image": "https://i.imgur.com/U47oHsq.png",
+		"image": "https://i.imgur.com/iXpGYQo.png",
 		"name": "Guthix rest",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -2929,7 +3001,7 @@
 	},
 	{
 		"label": "gstaff",
-		"image": "https://i.imgur.com/mkWYDjK.png",
+		"image": "https://i.imgur.com/EY9Nl4R.png",
 		"name": "Guthix staff",
 		"breakdownNotes": "",
 		"slot": 4,
@@ -2946,7 +3018,7 @@
 	{
 		"label": "hsr",
 		"image": "https://i.imgur.com/xmcbfhs.png",
-		"name": "Hazelmere's signet",
+		"name": "Hazelmere's signet ring",
 		"breakdownNotes": "",
 		"slot": 11,
 		"wikiLink": "https://runescape.wiki/w/Hazelmere's_signet"
@@ -2969,7 +3041,7 @@
 	},
 	{
 		"label": "herbbag",
-		"image": "https://i.imgur.com/P3tjlC8.png",
+		"image": "https://i.imgur.com/egmZjv0.png",
 		"name": "Herb bag",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -2977,7 +3049,7 @@
 	},
 	{
 		"label": "hex",
-		"image": "https://i.imgur.com/2GdYUn5.png",
+		"image": "https://i.imgur.com/XAnr0ki.png",
 		"name": "Hexhunter bow",
 		"breakdownNotes": "",
 		"slot": 4,
@@ -2993,7 +3065,7 @@
 	},
 	{
 		"label": "holyovl",
-		"image": "https://i.imgur.com/8FcJc3b.png",
+		"image": "https://i.imgur.com/TixXgDh.png",
 		"name": "Holy overload (6)",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -3065,7 +3137,7 @@
 	},
 	{
 		"label": "guthixgodbook",
-		"image": "https://i.imgur.com/GZwJgcW.png",
+		"image": "https://i.imgur.com/Dc55Kq4.png",
 		"name": "Illuminated Book of Balance",
 		"breakdownNotes": "",
 		"slot": 13,
@@ -3073,7 +3145,7 @@
 	},
 	{
 		"label": "zammygodbook",
-		"image": "https://i.imgur.com/AMmI7st.png",
+		"image": "https://i.imgur.com/tB7JxQh.png",
 		"name": "Illuminated Book of Chaos",
 		"breakdownNotes": "",
 		"slot": 13,
@@ -3081,7 +3153,7 @@
 	},
 	{
 		"label": "armagodbook",
-		"image": "https://i.imgur.com/VgpxUSQ.png",
+		"image": "https://i.imgur.com/2zNVN6w.png",
 		"name": "Illuminated Book of Law",
 		"breakdownNotes": "",
 		"slot": 13,
@@ -3089,7 +3161,7 @@
 	},
 	{
 		"label": "saragodbook",
-		"image": "https://i.imgur.com/PY2Fx7Z.png",
+		"image": "https://i.imgur.com/gNvJT7o.png",
 		"name": "Illuminated Book of Wisdom",
 		"breakdownNotes": "",
 		"slot": 13,
@@ -3097,7 +3169,7 @@
 	},
 	{
 		"label": "core",
-		"image": "https://i.imgur.com/WHurFLm.png",
+		"image": "https://i.imgur.com/rvFepeU.png",
 		"name": "Imperium core",
 		"breakdownNotes": "",
 		"slot": 5,
@@ -3106,47 +3178,47 @@
 	{
 		"label": "corebarrows",
 		"image": "https://i.imgur.com/hSW732y.png",
-		"name": "Imperium core",
+		"name": "Imperium core (Barrows)",
 		"breakdownNotes": "",
 		"slot": 5,
-		"wikiLink": "https://runescape.wiki/w/Imperium_core"
-	},
-	{
-		"label": "coreshadow",
-		"image": "https://i.imgur.com/8vKR1NV.png",
-		"name": "Imperium core",
-		"breakdownNotes": "",
-		"slot": 5,
-		"wikiLink": "https://runescape.wiki/w/Imperium_core"
-	},
-	{
-		"label": "coreice",
-		"image": "https://i.imgur.com/dskxSCW.png",
-		"name": "Imperium core",
-		"breakdownNotes": "",
-		"slot": 5,
-		"wikiLink": "https://runescape.wiki/w/Imperium_core"
+		"wikiLink": "https://runescape.wiki/w/Imperium_core_(Barrows)"
 	},
 	{
 		"label": "core3a",
 		"image": "https://i.imgur.com/hBrNru0.png",
-		"name": "Imperium core",
+		"name": "Imperium core (Third Age)",
 		"breakdownNotes": "",
 		"slot": 5,
-		"wikiLink": "https://runescape.wiki/w/Imperium_core"
+		"wikiLink": "https://runescape.wiki/w/Imperium_core_(Third_Age)"
 	},
 	{
 		"label": "coreblood",
 		"image": "https://i.imgur.com/OGIFaB2.png",
-		"name": "Imperium core",
+		"name": "Imperium core (blood)",
 		"breakdownNotes": "",
 		"slot": 5,
-		"wikiLink": "https://runescape.wiki/w/Imperium_core"
+		"wikiLink": "https://runescape.wiki/w/Imperium_core_(blood)"
+	},
+	{
+		"label": "coreice",
+		"image": "https://i.imgur.com/dskxSCW.png",
+		"name": "Imperium core (ice)",
+		"breakdownNotes": "",
+		"slot": 5,
+		"wikiLink": "https://runescape.wiki/w/Imperium_core_(ice)"
+	},
+	{
+		"label": "coreshadow",
+		"image": "https://i.imgur.com/8vKR1NV.png",
+		"name": "Imperium core (shadow)",
+		"breakdownNotes": "",
+		"slot": 5,
+		"wikiLink": "https://runescape.wiki/w/Imperium_core_(shadow)"
 	},
 	{
 		"label": "infernalashes1noted",
 		"image": "https://i.imgur.com/UPLUhet.png",
-		"name": "Infernal ashes (1 noted)",
+		"name": "Infernal ashes",
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Infernal_ashes"
@@ -3161,7 +3233,7 @@
 	},
 	{
 		"label": "inq",
-		"image": "https://i.imgur.com/xBT2XFf.png",
+		"image": "https://i.imgur.com/My8VkUX.png",
 		"name": "Inquisitor staff",
 		"breakdownNotes": "",
 		"slot": 4,
@@ -3169,7 +3241,7 @@
 	},
 	{
 		"label": "inspiration",
-		"image": "https://i.imgur.com/RKETUGp.png",
+		"image": "https://i.imgur.com/yLeE8ie.png",
 		"name": "Inspiration aura",
 		"breakdownNotes": "",
 		"slot": 8,
@@ -3184,14 +3256,6 @@
 		"wikiLink": "https://runescape.wiki/w/Insulated_boots"
 	},
 	{
-		"label": "invigorate",
-		"image": "https://i.imgur.com/YpjIoNM.png",
-		"name": "Invigorate aura",
-		"breakdownNotes": "",
-		"slot": 8,
-		"wikiLink": "https://runescape.wiki/w/Invigorate_aura"
-	},
-	{
 		"label": "iritsticks",
 		"image": "https://i.imgur.com/oEYAJZf.png",
 		"name": "Irit incense sticks",
@@ -3202,7 +3266,7 @@
 	{
 		"label": "iritincensesticks100",
 		"image": "https://i.imgur.com/WCcKGSB.png",
-		"name": "Irit incense sticks (100)",
+		"name": "Irit incense sticks",
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Irit_incense_sticks"
@@ -3289,7 +3353,7 @@
 	},
 	{
 		"label": "karamjagloves1",
-		"image": "https://i.imgur.com/STmEUbz.png",
+		"image": "https://i.imgur.com/unQR2fb.png",
 		"name": "Karamja gloves 1",
 		"breakdownNotes": "",
 		"slot": 6,
@@ -3297,7 +3361,7 @@
 	},
 	{
 		"label": "karamjagloves2",
-		"image": "https://i.imgur.com/KGxP8Zj.png",
+		"image": "https://i.imgur.com/1zKrKXf.png",
 		"name": "Karamja gloves 2",
 		"breakdownNotes": "",
 		"slot": 6,
@@ -3305,7 +3369,7 @@
 	},
 	{
 		"label": "karamjagloves3",
-		"image": "https://i.imgur.com/9Tu9nQk.png",
+		"image": "https://i.imgur.com/VfQfeoO.png",
 		"name": "Karamja gloves 3",
 		"breakdownNotes": "",
 		"slot": 6,
@@ -3313,7 +3377,7 @@
 	},
 	{
 		"label": "karamjagloves4",
-		"image": "https://i.imgur.com/VixKwKD.png",
+		"image": "https://i.imgur.com/8nZYJBs.png",
 		"name": "Karamja gloves 4",
 		"breakdownNotes": "",
 		"slot": 6,
@@ -3321,7 +3385,7 @@
 	},
 	{
 		"label": "wristwraps",
-		"image": "https://i.imgur.com/CEn20Sk.png",
+		"image": "https://i.imgur.com/6iT5PjZ.png",
 		"name": "Kerapac's wrist wraps",
 		"breakdownNotes": "",
 		"slot": 6,
@@ -3361,103 +3425,103 @@
 	},
 	{
 		"label": "ohkhopesh",
-		"image": "https://i.imgur.com/sNiAnOI.png",
-		"name": "Khopesh of elidinis",
+		"image": "https://i.imgur.com/PLSz3Aa.png",
+		"name": "Khopesh of Elidinis",
 		"breakdownNotes": "",
 		"slot": 5,
-		"wikiLink": "https://runescape.wiki/w/Khopesh_of_elidinis"
+		"wikiLink": "https://runescape.wiki/w/Khopesh_of_Elidinis"
 	},
 	{
 		"label": "ohkhopesh3a",
-		"image": "https://i.imgur.com/sNiAnOI.png",
-		"name": "Khopesh of elidinis (3a)",
+		"image": "https://i.imgur.com/TR8hFbg.png",
+		"name": "Khopesh of Elidinis (Third Age)",
 		"breakdownNotes": "",
 		"slot": 5,
-		"wikiLink": "https://runescape.wiki/w/Khopesh_of_elidinis_(Third_Age)"
+		"wikiLink": "https://runescape.wiki/w/Khopesh_of_Elidinis_(Third_Age)"
 	},
 	{
 		"label": "ohkhopeshbarrows",
-		"image": "https://i.imgur.com/ZotmF80.png",
-		"name": "Khopesh of elidinis (barrows)",
+		"image": "https://i.imgur.com/dQAITtl.png",
+		"name": "Khopesh of Elidinis (barrows)",
 		"breakdownNotes": "",
 		"slot": 5,
-		"wikiLink": "https://runescape.wiki/w/Khopesh_of_elidinis_(barrows)"
+		"wikiLink": "https://runescape.wiki/w/Khopesh_of_Elidinis_(barrows)"
 	},
 	{
 		"label": "ohkhopeshblood",
-		"image": "https://i.imgur.com/kA5vw5v.png",
-		"name": "Khopesh of elidinis (blood)",
+		"image": "https://i.imgur.com/LH4KgqT.png",
+		"name": "Khopesh of Elidinis (blood)",
 		"breakdownNotes": "",
 		"slot": 5,
-		"wikiLink": "https://runescape.wiki/w/Khopesh_of_elidinis_(blood)"
+		"wikiLink": "https://runescape.wiki/w/Khopesh_of_Elidinis_(blood)"
 	},
 	{
 		"label": "ohkhopeshice",
-		"image": "https://i.imgur.com/MmixPsj.png",
-		"name": "Khopesh of elidinis (ice)",
+		"image": "https://i.imgur.com/WLFHVGV.png",
+		"name": "Khopesh of Elidinis (ice)",
 		"breakdownNotes": "",
 		"slot": 5,
-		"wikiLink": "https://runescape.wiki/w/Khopesh_of_elidinis_(ice)"
+		"wikiLink": "https://runescape.wiki/w/Khopesh_of_Elidinis_(ice)"
 	},
 	{
 		"label": "ohkhopeshshadow",
-		"image": "https://i.imgur.com/443tnne.png",
-		"name": "Khopesh of elidinis (shadow)",
+		"image": "https://i.imgur.com/JGaKP1Y.png",
+		"name": "Khopesh of Elidinis (shadow)",
 		"breakdownNotes": "",
 		"slot": 5,
-		"wikiLink": "https://runescape.wiki/w/Khopesh_of_elidinis_(shadow)"
+		"wikiLink": "https://runescape.wiki/w/Khopesh_of_Elidinis_(shadow)"
 	},
 	{
 		"label": "khopesh",
-		"image": "https://i.imgur.com/k9PlpR0.png",
-		"name": "Khopesh of tumeken",
+		"image": "https://i.imgur.com/MBpJ07N.png",
+		"name": "Khopesh of Tumeken",
 		"breakdownNotes": "",
 		"slot": 4,
 		"wikiLink": "https://runescape.wiki/w/Khopesh_of_tumeken"
 	},
 	{
 		"label": "khopesh3a",
-		"image": "https://i.imgur.com/vuCb0O9.png",
-		"name": "Khopesh of tumeken (3a)",
+		"image": "https://i.imgur.com/jgJG50l.png",
+		"name": "Khopesh of Tumeken (Third Age)",
 		"breakdownNotes": "",
 		"slot": 4,
 		"wikiLink": "https://runescape.wiki/w/Khopesh_of_tumeken_(Third_Age)"
 	},
 	{
 		"label": "khopeshbarrows",
-		"image": "https://i.imgur.com/6CBkbpp.png",
-		"name": "Khopesh of tumeken (barrows)",
+		"image": "https://i.imgur.com/DN3ySWb.png",
+		"name": "Khopesh of Tumeken (barrows)",
 		"breakdownNotes": "",
 		"slot": 4,
 		"wikiLink": "https://runescape.wiki/w/Khopesh_of_tumeken_(barrows)"
 	},
 	{
 		"label": "khopeshblood",
-		"image": "https://i.imgur.com/5sJZlo0.png",
-		"name": "Khopesh of tumeken (blood)",
+		"image": "https://i.imgur.com/Ui1lsua.png",
+		"name": "Khopesh of Tumeken (blood)",
 		"breakdownNotes": "",
 		"slot": 4,
 		"wikiLink": "https://runescape.wiki/w/Khopesh_of_tumeken_(blood)"
 	},
 	{
 		"label": "khopeshice",
-		"image": "https://i.imgur.com/i1ThF62.png",
-		"name": "Khopesh of tumeken (ice)",
+		"image": "https://i.imgur.com/mQcblj9.png",
+		"name": "Khopesh of Tumeken (ice)",
 		"breakdownNotes": "",
 		"slot": 4,
 		"wikiLink": "https://runescape.wiki/w/Khopesh_of_tumeken_(ice)"
 	},
 	{
 		"label": "khopeshshadow",
-		"image": "https://i.imgur.com/Ou7DqST.png",
-		"name": "Khopesh of tumeken (shadow)",
+		"image": "https://i.imgur.com/ZWANGvP.png",
+		"name": "Khopesh of Tumeken (shadow)",
 		"breakdownNotes": "",
 		"slot": 4,
 		"wikiLink": "https://runescape.wiki/w/Khopesh_of_tumeken_(shadow)"
 	},
 	{
 		"label": "cyclone",
-		"image": "https://i.imgur.com/8FRrGHg.png",
+		"image": "https://i.imgur.com/LOWCNkE.png",
 		"name": "Kinetic cyclone",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -3506,7 +3570,7 @@
 	{
 		"label": "lantadymeincensesticks100",
 		"image": "https://i.imgur.com/4n0C5gK.png",
-		"name": "Lantadyme incense sticks (100)",
+		"name": "Lantadyme incense sticks",
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Lantadyme_incense_sticks"
@@ -3585,8 +3649,8 @@
 	},
 	{
 		"label": "lawrune",
-		"image": "https://i.imgur.com/VD4kaJa.png",
-		"name": "Law rune",
+		"image": "https://i.imgur.com/tFNp9IO.png",
+		"name": "Law runes",
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Law_rune"
@@ -3594,7 +3658,7 @@
 	{
 		"label": "lawrune100",
 		"image": "https://i.imgur.com/MLCntzy.png",
-		"name": "Law runes (100)",
+		"name": "Law runes",
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Law_rune"
@@ -3602,14 +3666,14 @@
 	{
 		"label": "lawrune500",
 		"image": "https://i.imgur.com/3wrb0Um.png",
-		"name": "Law runes (500)",
+		"name": "Law runes",
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Law_rune"
 	},
 	{
 		"label": "legendarycallofthesea",
-		"image": "https://i.imgur.com/E3S1YRE.png",
+		"image": "https://i.imgur.com/fsSx8Aa.png",
 		"name": "Legendary call of the sea aura",
 		"breakdownNotes": "",
 		"slot": 8,
@@ -3617,15 +3681,15 @@
 	},
 	{
 		"label": "legendarylumberjack",
-		"image": "https://i.imgur.com/hqyxkA3.png",
-		"name": "Legendary lumberjack",
+		"image": "https://i.imgur.com/TFKGtdh.png",
+		"name": "Legendary lumberjack aura",
 		"breakdownNotes": "",
 		"slot": 8,
 		"wikiLink": "https://runescape.wiki/w/Legendary_lumberjack_aura"
 	},
 	{
 		"label": "legendaryquarrymaster",
-		"image": "https://i.imgur.com/tmJdFQd.png",
+		"image": "https://i.imgur.com/KDmbuSF.png",
 		"name": "Legendary quarrymaster aura",
 		"breakdownNotes": "",
 		"slot": 8,
@@ -3633,7 +3697,7 @@
 	},
 	{
 		"label": "legendarytracker",
-		"image": "https://i.imgur.com/ppgW2YG.png",
+		"image": "https://i.imgur.com/seIQA49.png",
 		"name": "Legendary tracker aura",
 		"breakdownNotes": "",
 		"slot": 8,
@@ -3657,7 +3721,7 @@
 	},
 	{
 		"label": "lotd",
-		"image": "https://i.imgur.com/MtrMHZ0.png",
+		"image": "https://i.imgur.com/nXXZxpH.png",
 		"name": "Luck of the dwarves",
 		"breakdownNotes": "",
 		"slot": 11,
@@ -3698,10 +3762,10 @@
 	{
 		"label": "lunarammy",
 		"image": "https://i.imgur.com/MZrnol8.png",
-		"name": "Lunar ammy",
+		"name": "Lunar ammulet",
 		"breakdownNotes": "",
 		"slot": 10,
-		"wikiLink": "https://runescape.wiki/w/Lunar_ammy"
+		"wikiLink": "https://runescape.wiki/w/Lunar_ammulet"
 	},
 	{
 		"label": "lunarboots",
@@ -3745,7 +3809,7 @@
 	},
 	{
 		"label": "lunging",
-		"image": "https://i.imgur.com/Yf7g79G.gif",
+		"image": "https://i.imgur.com/3thTwM7.png",
 		"name": "Lunging perk",
 		"breakdownNotes": "",
 		"slot": 14,
@@ -3801,7 +3865,7 @@
 	},
 	{
 		"label": "magiclogs",
-		"image": "https://i.imgur.com/r8URqq8.png",
+		"image": "https://i.imgur.com/oOIEwH0.png",
 		"name": "Magic logs",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -3810,7 +3874,7 @@
 	{
 		"label": "magiclogs1noted",
 		"image": "https://i.imgur.com/fEa8Qx8.png",
-		"name": "Magic logs (1 noted)",
+		"name": "Magic logs",
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Magic_logs"
@@ -3818,30 +3882,30 @@
 	{
 		"label": "mag120",
 		"image": "https://i.imgur.com/vmHoB6p.png",
-		"name": "Magic master skill cape",
+		"name": "Magic master cape",
 		"breakdownNotes": "",
 		"slot": 12,
-		"wikiLink": "https://runescape.wiki/w/Magic_master_skill_cape"
+		"wikiLink": "https://runescape.wiki/w/Magic_master_cape"
 	},
 	{
 		"label": "1knote",
 		"image": "https://i.imgur.com/8r07LbS.png",
-		"name": "Magic notepaper (1000)",
+		"name": "Magic notepaper",
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Magic_notepaper"
 	},
 	{
 		"label": "40note",
-		"image": "https://i.imgur.com/GcHXzUJ.png",
-		"name": "Magic notepaper (40)",
+		"image": "https://i.imgur.com/TNm1JRD.png",
+		"name": "Magic notepaper",
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Magic_notepaper"
 	},
 	{
 		"label": "magicwhistle",
-		"image": "https://i.imgur.com/fNZYVj3.png",
+		"image": "https://i.imgur.com/CGKQgWV.png",
 		"name": "Magic whistle",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -3849,99 +3913,19 @@
 	},
 	{
 		"label": "mahj",
-		"image": "https://i.imgur.com/Gc4VzXI.png",
+		"image": "https://i.imgur.com/atGzdo2.png",
 		"name": "Mahjarrat aura",
 		"breakdownNotes": "",
 		"slot": 8,
 		"wikiLink": "https://runescape.wiki/w/Mahjarrat_aura"
 	},
 	{
-		"label": "asc",
-		"image": "https://i.imgur.com/2X4XRWf.png",
-		"name": "Mainhand ascension crossbow",
-		"breakdownNotes": "",
-		"slot": 4,
-		"wikiLink": "https://runescape.wiki/w/Mainhand_ascension_crossbow"
-	},
-	{
-		"label": "bbc",
-		"image": "https://i.imgur.com/wXTEWHO.png",
-		"name": "Mainhand blightbound crossbow",
-		"breakdownNotes": "",
-		"slot": 4,
-		"wikiLink": "https://runescape.wiki/w/Mainhand_blightbound_crossbow"
-	},
-	{
-		"label": "bbc3a",
-		"image": "https://i.imgur.com/zYi52dw.png",
-		"name": "Mainhand blightbound crossbow (3a)",
-		"breakdownNotes": "",
-		"slot": 4,
-		"wikiLink": "https://runescape.wiki/w/Mainhand_blightbound_crossbow_(Third_Age)"
-	},
-	{
-		"label": "bbcbarrows",
-		"image": "https://i.imgur.com/DqgW9OV.png",
-		"name": "Mainhand blightbound crossbow (barrows)",
-		"breakdownNotes": "",
-		"slot": 4,
-		"wikiLink": "https://runescape.wiki/w/Mainhand_blightbound_crossbow_(barrows)"
-	},
-	{
-		"label": "bbcblood",
-		"image": "https://i.imgur.com/SO4aQNJ.png",
-		"name": "Mainhand blightbound crossbow (blood)",
-		"breakdownNotes": "",
-		"slot": 4,
-		"wikiLink": "https://runescape.wiki/w/Mainhand_blightbound_crossbow_(blood)"
-	},
-	{
-		"label": "bbcice",
-		"image": "https://i.imgur.com/6kBdoxc.png",
-		"name": "Mainhand blightbound crossbow (ice)",
-		"breakdownNotes": "",
-		"slot": 4,
-		"wikiLink": "https://runescape.wiki/w/Mainhand_blightbound_crossbow_(ice)"
-	},
-	{
-		"label": "bbcshadow",
-		"image": "https://i.imgur.com/Nylh7Q4.png",
-		"name": "Mainhand blightbound crossbow (shadow)",
-		"breakdownNotes": "",
-		"slot": 4,
-		"wikiLink": "https://runescape.wiki/w/Mainhand_blightbound_crossbow_(shadow)"
-	},
-	{
-		"label": "mace",
-		"image": "https://i.imgur.com/i6WWkrb.png",
-		"name": "Mainhand drygore mace",
-		"breakdownNotes": "",
-		"slot": 4,
-		"wikiLink": "https://runescape.wiki/w/Mainhand_drygore_mace"
-	},
-	{
 		"label": "mhslot",
-		"image": "https://i.imgur.com/6tZsbOh.png",
-		"name": "Mainhand equipment slot",
+		"image": "https://i.imgur.com/4gzM0Ab.png",
+		"name": "Mainhand slot",
 		"breakdownNotes": "",
 		"slot": 4,
-		"wikiLink": "https://runescape.wiki/w/Mainhand_equipment_slot"
-	},
-	{
-		"label": "glaivemh",
-		"image": "https://i.imgur.com/vMb1oi9.png",
-		"name": "Mainhand shadow glaive",
-		"breakdownNotes": "",
-		"slot": 4,
-		"wikiLink": "https://runescape.wiki/w/Mainhand_shadow_glaive"
-	},
-	{
-		"label": "glaiveoh",
-		"image": "https://i.imgur.com/OX5iUca.png",
-		"name": "Mainhand shadow glaive",
-		"breakdownNotes": "",
-		"slot": 5,
-		"wikiLink": "https://runescape.wiki/w/Mainhand_shadow_glaive"
+		"wikiLink": "https://runescape.wiki/w/Worn_Equipment#Main_hand_slot"
 	},
 	{
 		"label": "malevtop",
@@ -3969,7 +3953,7 @@
 	},
 	{
 		"label": "meleeshield",
-		"image": "https://i.imgur.com/3HSronv.png",
+		"image": "https://i.imgur.com/Gsh2KCf.png",
 		"name": "Malevolent kiteshield",
 		"breakdownNotes": "",
 		"slot": 5,
@@ -3977,7 +3961,7 @@
 	},
 	{
 		"label": "mani",
-		"image": "https://i.imgur.com/Zevs8R8.png",
+		"image": "https://i.imgur.com/WB5GErF.png",
 		"name": "Maniacal aura",
 		"breakdownNotes": "",
 		"slot": 8,
@@ -4017,7 +4001,7 @@
 	},
 	{
 		"label": "maskofreflection",
-		"image": "https://i.imgur.com/7k3qLJ9.png",
+		"image": "https://i.imgur.com/ShsFpi3.png",
 		"name": "Mask of Reflection",
 		"breakdownNotes": "",
 		"slot": 1,
@@ -4025,7 +4009,7 @@
 	},
 	{
 		"label": "maskoftheaquanites",
-		"image": "https://i.imgur.com/ADKsySC.png",
+		"image": "https://i.imgur.com/EhwoK5P.png",
 		"name": "Mask of the Aquanites",
 		"breakdownNotes": "",
 		"slot": 1,
@@ -4033,7 +4017,7 @@
 	},
 	{
 		"label": "maskoftheganodermic",
-		"image": "https://i.imgur.com/g2Z1wq5.png",
+		"image": "https://i.imgur.com/PYRyglW.png",
 		"name": "Mask of the Ganodermic",
 		"breakdownNotes": "",
 		"slot": 1,
@@ -4041,7 +4025,7 @@
 	},
 	{
 		"label": "maskofthekura",
-		"image": "https://i.imgur.com/CIp9WqX.png",
+		"image": "https://i.imgur.com/zWpXokp.png",
 		"name": "Mask of the Kura",
 		"breakdownNotes": "",
 		"slot": 1,
@@ -4049,7 +4033,7 @@
 	},
 	{
 		"label": "masterarchaeologistsjacket",
-		"image": "https://i.imgur.com/vaKREvT.png",
+		"image": "https://i.imgur.com/CeH68i3.png",
 		"name": "Master Archaeologist's jacket",
 		"breakdownNotes": "",
 		"slot": 2,
@@ -4057,7 +4041,7 @@
 	},
 	{
 		"label": "masterarchaeologistsboots",
-		"image": "https://i.imgur.com/FuA83JZ.png",
+		"image": "https://i.imgur.com/uUxhha9.png",
 		"name": "Master archaeologist's boots",
 		"breakdownNotes": "",
 		"slot": 7,
@@ -4065,7 +4049,7 @@
 	},
 	{
 		"label": "masterarchaeologistsgloves",
-		"image": "https://i.imgur.com/BjqA9S2.png",
+		"image": "https://i.imgur.com/rZTzwbE.png",
 		"name": "Master archaeologist's gloves",
 		"breakdownNotes": "",
 		"slot": 6,
@@ -4073,7 +4057,7 @@
 	},
 	{
 		"label": "masterarchaeologistshat",
-		"image": "https://i.imgur.com/FoDcBwz.png",
+		"image": "https://i.imgur.com/RbVMH0O.png",
 		"name": "Master archaeologist's hat",
 		"breakdownNotes": "",
 		"slot": 1,
@@ -4081,7 +4065,7 @@
 	},
 	{
 		"label": "masterarchaeologiststrousers",
-		"image": "https://i.imgur.com/nEJqu19.png",
+		"image": "https://i.imgur.com/e7lRM02.png",
 		"name": "Master archaeologist's trousers",
 		"breakdownNotes": "",
 		"slot": 3,
@@ -4089,7 +4073,7 @@
 	},
 	{
 		"label": "mastercamouflagebody",
-		"image": "https://i.imgur.com/dslTSrC.png",
+		"image": "https://i.imgur.com/i8Lc9aI.png",
 		"name": "Master camouflage body",
 		"breakdownNotes": "",
 		"slot": 2,
@@ -4097,7 +4081,7 @@
 	},
 	{
 		"label": "mastercamouflagefeet",
-		"image": "https://i.imgur.com/H3DKB19.png",
+		"image": "https://i.imgur.com/3GULnea.png",
 		"name": "Master camouflage feet",
 		"breakdownNotes": "",
 		"slot": 7,
@@ -4105,7 +4089,7 @@
 	},
 	{
 		"label": "mastercamouflagehands",
-		"image": "https://i.imgur.com/ESTL9ez.png",
+		"image": "https://i.imgur.com/VNC7QgK.png",
 		"name": "Master camouflage hands",
 		"breakdownNotes": "",
 		"slot": 6,
@@ -4113,7 +4097,7 @@
 	},
 	{
 		"label": "mastercamouflagehead",
-		"image": "https://i.imgur.com/mi3PRy9.png",
+		"image": "https://i.imgur.com/lW5qEwC.png",
 		"name": "Master camouflage head",
 		"breakdownNotes": "",
 		"slot": 1,
@@ -4121,7 +4105,7 @@
 	},
 	{
 		"label": "mastercamouflagelegs",
-		"image": "https://i.imgur.com/qeFdS2B.png",
+		"image": "https://i.imgur.com/poKctmF.png",
 		"name": "Master camouflage legs",
 		"breakdownNotes": "",
 		"slot": 3,
@@ -4177,7 +4161,7 @@
 	},
 	{
 		"label": "masterfarmerhat",
-		"image": "https://i.imgur.com/upZnJoM.png",
+		"image": "https://i.imgur.com/OkwR3Yv.png",
 		"name": "Master farmer hat",
 		"breakdownNotes": "",
 		"slot": 1,
@@ -4193,7 +4177,7 @@
 	},
 	{
 		"label": "mwboots",
-		"image": "https://i.imgur.com/4T5psQM.png",
+		"image": "https://i.imgur.com/GsZmtrn.png",
 		"name": "Masterwork boots",
 		"breakdownNotes": "",
 		"slot": 7,
@@ -4201,7 +4185,7 @@
 	},
 	{
 		"label": "mwgloves",
-		"image": "https://i.imgur.com/gdtmo86.png",
+		"image": "https://i.imgur.com/cHM0RNa.png",
 		"name": "Masterwork gloves",
 		"breakdownNotes": "",
 		"slot": 6,
@@ -4209,7 +4193,7 @@
 	},
 	{
 		"label": "mwhelm",
-		"image": "https://i.imgur.com/OrJxXz2.png",
+		"image": "https://i.imgur.com/9gAdl6f.png",
 		"name": "Masterwork helm",
 		"breakdownNotes": "",
 		"slot": 1,
@@ -4217,7 +4201,7 @@
 	},
 	{
 		"label": "mwtop",
-		"image": "https://i.imgur.com/U2uwZ3j.png",
+		"image": "https://i.imgur.com/ALe1PIE.png",
 		"name": "Masterwork platebody",
 		"breakdownNotes": "",
 		"slot": 2,
@@ -4225,7 +4209,7 @@
 	},
 	{
 		"label": "mwlegs",
-		"image": "https://i.imgur.com/SpI2Us6.png",
+		"image": "https://i.imgur.com/Ev1KbDF.png",
 		"name": "Masterwork platelegs",
 		"breakdownNotes": "",
 		"slot": 3,
@@ -4233,7 +4217,7 @@
 	},
 	{
 		"label": "spear",
-		"image": "https://i.imgur.com/m8aQij5.png",
+		"image": "https://i.imgur.com/uLkJkio.png",
 		"name": "Masterwork spear of annihilation",
 		"breakdownNotes": "",
 		"slot": 4,
@@ -4242,7 +4226,7 @@
 	{
 		"label": "masutaspear",
 		"image": "https://i.imgur.com/vBk5ipp.png",
-		"name": "Masutas warspear",
+		"name": "Masuta's warspear",
 		"breakdownNotes": "",
 		"slot": 4,
 		"wikiLink": "https://runescape.wiki/w/Masutas_warspear"
@@ -4265,7 +4249,7 @@
 	},
 	{
 		"label": "mechsiphon",
-		"image": "https://i.imgur.com/T0d5yew.png",
+		"image": "https://i.imgur.com/8ZUh0B0.png",
 		"name": "Mechanised siphon",
 		"breakdownNotes": "",
 		"slot": 13,
@@ -4289,7 +4273,7 @@
 	},
 	{
 		"label": "meerkatscroll",
-		"image": "https://i.imgur.com/QrtxRyB.png",
+		"image": "https://i.imgur.com/WeCXPfh.png",
 		"name": "Meerkat scrolls (Fetch Casket)",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -4297,7 +4281,7 @@
 	},
 	{
 		"label": "meerkatspouch",
-		"image": "https://i.imgur.com/U7prTHG.png",
+		"image": "https://i.imgur.com/zIwiuqt.png",
 		"name": "Meerkats pouch",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -4305,15 +4289,15 @@
 	},
 	{
 		"label": "mhbd",
-		"image": "https://i.imgur.com/OsVtupZ.png",
+		"image": "https://i.imgur.com/lKCXPDn.png",
 		"name": "Melee Mainhand",
 		"breakdownNotes": "",
 		"slot": 4,
-		"wikiLink": "https://runescape.wiki/w/Melee_Mainhand"
+		"wikiLink": "https://runescape.wiki/w/Weapon/Melee_weapons#Types"
 	},
 	{
 		"label": "menaphosjournal",
-		"image": "https://i.imgur.com/dETIVV2.png",
+		"image": "https://i.imgur.com/EuRZLF2.png",
 		"name": "Menaphos journal",
 		"breakdownNotes": "",
 		"slot": 13,
@@ -4345,7 +4329,7 @@
 	},
 	{
 		"label": "mageshield",
-		"image": "https://i.imgur.com/7vPonR2.png",
+		"image": "https://i.imgur.com/ThpXK19.png",
 		"name": "Merciless kiteshield",
 		"breakdownNotes": "",
 		"slot": 5,
@@ -4353,7 +4337,7 @@
 	},
 	{
 		"label": "mindrune",
-		"image": "https://i.imgur.com/84NdLDO.png",
+		"image": "https://i.imgur.com/tp4TLQa.png",
 		"name": "Mind rune",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -4369,7 +4353,7 @@
 	},
 	{
 		"label": "mudrune",
-		"image": "https://i.imgur.com/0DwGfDv.png",
+		"image": "https://i.imgur.com/IBuEQ32.png",
 		"name": "Mud rune",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -4385,15 +4369,15 @@
 	},
 	{
 		"label": "naturerune1k",
-		"image": "https://i.imgur.com/lQglFLf.png",
-		"name": "Nature runes (1k)",
+		"image": "https://i.imgur.com/4FDacZk.png",
+		"name": "Nature runes",
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Nature_rune"
 	},
 	{
 		"label": "naturessentinelboots",
-		"image": "https://i.imgur.com/vTVT2IZ.png",
+		"image": "https://i.imgur.com/708o7G1.png",
 		"name": "Nature's sentinel boots",
 		"breakdownNotes": "",
 		"slot": 7,
@@ -4401,7 +4385,7 @@
 	},
 	{
 		"label": "naturessentinelbranch",
-		"image": "https://i.imgur.com/222WcbT.png",
+		"image": "https://i.imgur.com/aHlOVcO.png",
 		"name": "Nature's sentinel branch",
 		"breakdownNotes": "",
 		"slot": 6,
@@ -4409,7 +4393,7 @@
 	},
 	{
 		"label": "naturessentinelchest",
-		"image": "https://i.imgur.com/Mt2uWto.png",
+		"image": "https://i.imgur.com/AVtsARx.png",
 		"name": "Nature's sentinel chest",
 		"breakdownNotes": "",
 		"slot": 2,
@@ -4417,7 +4401,7 @@
 	},
 	{
 		"label": "naturessentinelhelm",
-		"image": "https://i.imgur.com/gE4FAHr.png",
+		"image": "https://i.imgur.com/h4cf5a8.png",
 		"name": "Nature's sentinel helm",
 		"breakdownNotes": "",
 		"slot": 1,
@@ -4425,7 +4409,7 @@
 	},
 	{
 		"label": "naturessentineltrunks",
-		"image": "https://i.imgur.com/2HmRMIT.png",
+		"image": "https://i.imgur.com/AyzY63R.png",
 		"name": "Nature's sentinel trunks",
 		"breakdownNotes": "",
 		"slot": 3,
@@ -4441,7 +4425,7 @@
 	},
 	{
 		"label": "nightmare",
-		"image": "https://i.imgur.com/DpNOi7u.png",
+		"image": "https://i.imgur.com/goMzH9N.png",
 		"name": "Nightmare gauntlets",
 		"breakdownNotes": "",
 		"slot": 6,
@@ -4449,7 +4433,7 @@
 	},
 	{
 		"label": "noteditems",
-		"image": "https://i.imgur.com/zMdfHLi.png",
+		"image": "https://i.imgur.com/TKRGiJ5.png",
 		"name": "Noted items",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -4465,7 +4449,7 @@
 	},
 	{
 		"label": "scythe",
-		"image": "https://i.imgur.com/H74WgP2.png",
+		"image": "https://i.imgur.com/DYr8pFK.png",
 		"name": "Noxious scythe",
 		"breakdownNotes": "",
 		"slot": 4,
@@ -4474,14 +4458,14 @@
 	{
 		"label": "scythe3a",
 		"image": "https://i.imgur.com/nGzSVtH.png",
-		"name": "Noxious scythe (3a)",
+		"name": "Noxious scythe (Third Age)",
 		"breakdownNotes": "",
 		"slot": 4,
 		"wikiLink": "https://runescape.wiki/w/Noxious_scythe_(Third_Age)"
 	},
 	{
 		"label": "scythebarrows",
-		"image": "https://i.imgur.com/0ARJW4e.png",
+		"image": "https://i.imgur.com/oUMcUuD.png",
 		"name": "Noxious scythe (barrows)",
 		"breakdownNotes": "",
 		"slot": 4,
@@ -4489,7 +4473,7 @@
 	},
 	{
 		"label": "scytheblood",
-		"image": "https://i.imgur.com/ye7QpcY.png",
+		"image": "https://i.imgur.com/BhXAYPY.png",
 		"name": "Noxious scythe (blood)",
 		"breakdownNotes": "",
 		"slot": 4,
@@ -4497,7 +4481,7 @@
 	},
 	{
 		"label": "scytheice",
-		"image": "https://i.imgur.com/bHcMZA3.png",
+		"image": "https://i.imgur.com/2XZizcf.png",
 		"name": "Noxious scythe (ice)",
 		"breakdownNotes": "",
 		"slot": 4,
@@ -4505,7 +4489,7 @@
 	},
 	{
 		"label": "scytheshadow",
-		"image": "https://i.imgur.com/gp1Ujbc.png",
+		"image": "https://i.imgur.com/5gLKqIh.png",
 		"name": "Noxious scythe (shadow)",
 		"breakdownNotes": "",
 		"slot": 4,
@@ -4521,7 +4505,7 @@
 	},
 	{
 		"label": "obbyboots",
-		"image": "https://i.imgur.com/JMJoDfG.png",
+		"image": "https://i.imgur.com/YPJB5ZK.png",
 		"name": "Obsidian boots",
 		"breakdownNotes": "",
 		"slot": 7,
@@ -4529,7 +4513,7 @@
 	},
 	{
 		"label": "obbygloves",
-		"image": "https://i.imgur.com/wP1GLeo.png",
+		"image": "https://i.imgur.com/ebb8GwX.png",
 		"name": "Obsidian gloves",
 		"breakdownNotes": "",
 		"slot": 6,
@@ -4537,7 +4521,7 @@
 	},
 	{
 		"label": "obbymage",
-		"image": "https://i.imgur.com/VAlRD3r.png",
+		"image": "https://i.imgur.com/q6ybwDR.png",
 		"name": "Obsidian mage helm",
 		"breakdownNotes": "",
 		"slot": 1,
@@ -4545,7 +4529,7 @@
 	},
 	{
 		"label": "obbytop",
-		"image": "https://i.imgur.com/JlGK1Sw.png",
+		"image": "https://i.imgur.com/hnMcjHe.png",
 		"name": "Obsidian platebody",
 		"breakdownNotes": "",
 		"slot": 2,
@@ -4553,23 +4537,23 @@
 	},
 	{
 		"label": "obbylegs",
-		"image": "https://i.imgur.com/nVnBsvE.png",
+		"image": "https://i.imgur.com/6Eul9Aj.png",
 		"name": "Obsidian platelegs",
 		"breakdownNotes": "",
 		"slot": 3,
 		"wikiLink": "https://runescape.wiki/w/Obsidian_platelegs"
 	},
 	{
-		"label": "obbymelee",
-		"image": "https://i.imgur.com/INHcQrh.png",
+		"label": "obbyrange",
+		"image": "https://i.imgur.com/k6nbaOZ.png",
 		"name": "Obsidian ranger helm",
 		"breakdownNotes": "",
 		"slot": 1,
 		"wikiLink": "https://runescape.wiki/w/Obsidian_ranger_helm"
 	},
 	{
-		"label": "obbyrange",
-		"image": "https://i.imgur.com/mmW0g5D.png",
+		"label": "obbymelee",
+		"image": "https://i.imgur.com/u17fgjW.png",
 		"name": "Obsidian warrior helm",
 		"breakdownNotes": "",
 		"slot": 1,
@@ -4585,7 +4569,7 @@
 	},
 	{
 		"label": "ohasc",
-		"image": "https://i.imgur.com/RusBiGh.png",
+		"image": "https://i.imgur.com/tSwe20M.png",
 		"name": "Off-hand ascension crossbow",
 		"breakdownNotes": "",
 		"slot": 5,
@@ -4593,7 +4577,7 @@
 	},
 	{
 		"label": "ohbbc",
-		"image": "https://i.imgur.com/KBuV3lm.png",
+		"image": "https://i.imgur.com/bDDDK9h.png",
 		"name": "Off-hand blightbound crossbow",
 		"breakdownNotes": "",
 		"slot": 5,
@@ -4601,15 +4585,15 @@
 	},
 	{
 		"label": "ohbbc3a",
-		"image": "https://i.imgur.com/APA8Kmz.png",
-		"name": "Off-hand blightbound crossbow (3a)",
+		"image": "https://i.imgur.com/jCrpnVJ.png",
+		"name": "Off-hand blightbound crossbow (Third Age)",
 		"breakdownNotes": "",
 		"slot": 5,
 		"wikiLink": "https://runescape.wiki/w/Off-hand_blightbound_crossbow_(Third_Age)"
 	},
 	{
 		"label": "ohbbcbarrows",
-		"image": "https://i.imgur.com/xlrzdKl.png",
+		"image": "https://i.imgur.com/ySvtUbA.png",
 		"name": "Off-hand blightbound crossbow (barrows)",
 		"breakdownNotes": "",
 		"slot": 5,
@@ -4617,7 +4601,7 @@
 	},
 	{
 		"label": "ohbbcblood",
-		"image": "https://i.imgur.com/HajwRC9.png",
+		"image": "https://i.imgur.com/R5GYeHU.png",
 		"name": "Off-hand blightbound crossbow (blood)",
 		"breakdownNotes": "",
 		"slot": 5,
@@ -4625,7 +4609,7 @@
 	},
 	{
 		"label": "ohbbcice",
-		"image": "https://i.imgur.com/xFtj8QK.png",
+		"image": "https://i.imgur.com/sB4UKB8.png",
 		"name": "Off-hand blightbound crossbow (ice)",
 		"breakdownNotes": "",
 		"slot": 5,
@@ -4633,7 +4617,7 @@
 	},
 	{
 		"label": "ohbbcshadow",
-		"image": "https://i.imgur.com/AISyiI9.png",
+		"image": "https://i.imgur.com/oC4Iyno.png",
 		"name": "Off-hand blightbound crossbow (shadow)",
 		"breakdownNotes": "",
 		"slot": 5,
@@ -4657,7 +4641,7 @@
 	},
 	{
 		"label": "ohmace",
-		"image": "https://i.imgur.com/U0UDx31.png",
+		"image": "https://i.imgur.com/25hw8wq.png",
 		"name": "Off-hand drygore mace",
 		"breakdownNotes": "",
 		"slot": 5,
@@ -4672,12 +4656,20 @@
 		"wikiLink": "https://runescape.wiki/w/Off-hand_drygore_rapier"
 	},
 	{
-		"label": "ohslot",
-		"image": "https://i.imgur.com/QaySzam.png",
-		"name": "Off-hand equipment slot",
+		"label": "glaiveoh",
+		"image": "https://i.imgur.com/OX5iUca.png",
+		"name": "Off-hand shadow glaive",
 		"breakdownNotes": "",
 		"slot": 5,
-		"wikiLink": "https://runescape.wiki/w/Off-hand_equipment_slot"
+		"wikiLink": "https://runescape.wiki/w/Off-hand_shadow_glaive"
+	},
+	{
+		"label": "ohslot",
+		"image": "https://i.imgur.com/ytFFaBI.png",
+		"name": "Off-hand slot",
+		"breakdownNotes": "",
+		"slot": 5,
+		"wikiLink": "https://runescape.wiki/w/Worn_Equipment#Off-hand_slot"
 	},
 	{
 		"label": "ogrethermal",
@@ -4689,7 +4681,7 @@
 	},
 	{
 		"label": "oldakcoil",
-		"image": "https://i.imgur.com/9LcNW0Q.png",
+		"image": "https://i.imgur.com/R4tRepk.png",
 		"name": "Oldak coil",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -4697,7 +4689,7 @@
 	},
 	{
 		"label": "onyx",
-		"image": "https://i.imgur.com/YffUmc4.png",
+		"image": "https://i.imgur.com/LTlNXuu.png",
 		"name": "Onyx bakriminel bolts (e)",
 		"breakdownNotes": "",
 		"slot": 9,
@@ -4705,7 +4697,7 @@
 	},
 	{
 		"label": "onyxboltse",
-		"image": "https://i.imgur.com/L3KZhg6.png",
+		"image": "https://i.imgur.com/sUAvNro.png",
 		"name": "Onyx bolts (e)",
 		"breakdownNotes": "",
 		"slot": 9,
@@ -4729,7 +4721,7 @@
 	},
 	{
 		"label": "overload",
-		"image": "https://i.imgur.com/Ild6jKx.png",
+		"image": "https://i.imgur.com/gKnqcZ0.png",
 		"name": "Overload flask (6)",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -4737,7 +4729,7 @@
 	},
 	{
 		"label": "overloadsalve",
-		"image": "https://i.imgur.com/VKplCLx.png",
+		"image": "https://i.imgur.com/zw4obTi.png",
 		"name": "Overload salve (6)",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -4769,7 +4761,7 @@
 	},
 	{
 		"label": "passageoftheabyss(green)",
-		"image": "https://i.imgur.com/G9wZEd2.png",
+		"image": "https://i.imgur.com/PDg2YBC.png",
 		"name": "Passage of the Abyss (green)",
 		"breakdownNotes": "",
 		"slot": 13,
@@ -4777,7 +4769,7 @@
 	},
 	{
 		"label": "passageoftheabyss(purple)",
-		"image": "https://i.imgur.com/I7UovoP.png",
+		"image": "https://i.imgur.com/4FnqALw.png",
 		"name": "Passage of the Abyss (purple)",
 		"breakdownNotes": "",
 		"slot": 13,
@@ -4785,7 +4777,7 @@
 	},
 	{
 		"label": "passageoftheabyss(red)",
-		"image": "https://i.imgur.com/Uf8U9cM.png",
+		"image": "https://i.imgur.com/Qp0s9G2.png",
 		"name": "Passage of the Abyss (red)",
 		"breakdownNotes": "",
 		"slot": 13,
@@ -4793,7 +4785,7 @@
 	},
 	{
 		"label": "passageoftheabyss(yellow)",
-		"image": "https://i.imgur.com/o66Pcti.png",
+		"image": "https://i.imgur.com/OD2ylaK.png",
 		"name": "Passage of the Abyss (yellow)",
 		"breakdownNotes": "",
 		"slot": 13,
@@ -4801,7 +4793,7 @@
 	},
 	{
 		"label": "penance",
-		"image": "https://i.imgur.com/JtO8ViZ.png",
+		"image": "https://i.imgur.com/G4FM1Cz.png",
 		"name": "Penance aura",
 		"breakdownNotes": "",
 		"slot": 8,
@@ -4809,7 +4801,7 @@
 	},
 	{
 		"label": "perfectjujufishingpotion",
-		"image": "https://i.imgur.com/T6S5fgq.png",
+		"image": "https://i.imgur.com/70U9pJh.png",
 		"name": "Perfect juju fishing potion (4)",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -4817,7 +4809,7 @@
 	},
 	{
 		"label": "perfectplus",
-		"image": "https://i.imgur.com/IkmyHqv.png",
+		"image": "https://i.imgur.com/r84FkMD.png",
 		"name": "Perfect plus potion (6)",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -4825,7 +4817,7 @@
 	},
 	{
 		"label": "pernixtop",
-		"image": "https://i.imgur.com/dxkh9P1.png",
+		"image": "https://i.imgur.com/2S7BJBW.png",
 		"name": "Pernix body",
 		"breakdownNotes": "",
 		"slot": 2,
@@ -4833,7 +4825,7 @@
 	},
 	{
 		"label": "pernixboots",
-		"image": "https://i.imgur.com/A73qg8r.png",
+		"image": "https://i.imgur.com/OAzJuDb.png",
 		"name": "Pernix boots",
 		"breakdownNotes": "",
 		"slot": 7,
@@ -4841,7 +4833,7 @@
 	},
 	{
 		"label": "pernixlegs",
-		"image": "https://i.imgur.com/PlvpZRO.png",
+		"image": "https://i.imgur.com/5EkevSX.png",
 		"name": "Pernix chaps",
 		"breakdownNotes": "",
 		"slot": 3,
@@ -4849,7 +4841,7 @@
 	},
 	{
 		"label": "pernixhelm",
-		"image": "https://i.imgur.com/vfJIHaA.png",
+		"image": "https://i.imgur.com/ja8fZUV.png",
 		"name": "Pernix cowl",
 		"breakdownNotes": "",
 		"slot": 1,
@@ -4857,11 +4849,19 @@
 	},
 	{
 		"label": "pernixgloves",
-		"image": "https://i.imgur.com/pmqm1Uw.png",
+		"image": "https://i.imgur.com/AYWIf2p.png",
 		"name": "Pernix gloves",
 		"breakdownNotes": "",
 		"slot": 6,
 		"wikiLink": "https://runescape.wiki/w/Pernix_gloves"
+	},
+	{
+		"label": "pernixquiver",
+		"image": "https://i.imgur.com/b3geFp8.png",
+		"name": "Pernix's Quiver",
+		"breakdownNotes": "",
+		"slot": 9,
+		"wikiLink": "https://runescape.wiki/w/Pernix's_Quiver"
 	},
 	{
 		"label": "pernixquiverblack",
@@ -4896,14 +4896,6 @@
 		"wikiLink": "https://runescape.wiki/w/Pernix's_Quiver"
 	},
 	{
-		"label": "pernixquiver",
-		"image": "https://i.imgur.com/b3geFp8.png",
-		"name": "Pernix's Quiver (Purple)",
-		"breakdownNotes": "",
-		"slot": 9,
-		"wikiLink": "https://runescape.wiki/w/Pernix's_Quiver"
-	},
-	{
 		"label": "pernixquiverpurple",
 		"image": "https://i.imgur.com/xt67uWC.png",
 		"name": "Pernix's Quiver (Purple)",
@@ -4929,7 +4921,7 @@
 	},
 	{
 		"label": "pharaohssceptre",
-		"image": "https://i.imgur.com/UJFUFh9.png",
+		"image": "https://i.imgur.com/rrvRa6H.png",
 		"name": "Pharaoh's sceptre",
 		"breakdownNotes": "",
 		"slot": 4,
@@ -4945,7 +4937,7 @@
 	},
 	{
 		"label": "pneck",
-		"image": "https://i.imgur.com/lIMwMKb.png",
+		"image": "https://i.imgur.com/ZjwLwcR.png",
 		"name": "Phoenix necklace",
 		"breakdownNotes": "",
 		"slot": 10,
@@ -4953,7 +4945,7 @@
 	},
 	{
 		"label": "pickaxeofearthandsong",
-		"image": "https://i.imgur.com/KJgv85x.png",
+		"image": "https://i.imgur.com/pshT4j0.png",
 		"name": "Pickaxe of Earth and Song",
 		"breakdownNotes": "",
 		"slot": 4,
@@ -4961,7 +4953,7 @@
 	},
 	{
 		"label": "pf",
-		"image": "https://i.imgur.com/X4HBBS8.png",
+		"image": "https://i.imgur.com/0d9nkK4.png",
 		"name": "Planted feet perk",
 		"breakdownNotes": "",
 		"slot": 14,
@@ -4985,7 +4977,7 @@
 	},
 	{
 		"label": "pontifexshadowring",
-		"image": "https://i.imgur.com/IgcHKRH.png",
+		"image": "https://i.imgur.com/VTDTXoF.png",
 		"name": "Pontifex shadow ring",
 		"breakdownNotes": "",
 		"slot": 11,
@@ -4993,27 +4985,27 @@
 	},
 	{
 		"label": "portableobelisk",
-		"image": "https://i.imgur.com/8ompym7.png",
+		"image": "https://i.imgur.com/gKUbd5X.png",
 		"name": "Portable Obelisk",
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Portable_Obelisk"
 	},
 	{
-		"label": "fairyring",
-		"image": "https://i.imgur.com/XCZuCaN.png",
-		"name": "Portable fairy ring",
-		"breakdownNotes": "",
-		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Portable_fairy_ring"
-	},
-	{
 		"label": "portablefairyring(used)",
 		"image": "https://i.imgur.com/iwTl6xy.png",
-		"name": "Portable fairy ring (used)",
+		"name": "Portable fairy ring",
 		"breakdownNotes": "",
 		"slot": 13,
-		"wikiLink": "https://runescape.wiki/w/Portable_fairy_ring"
+		"wikiLink": "https://runescape.wiki/w/Portable_fairy_ring#active"
+	},
+	{
+		"label": "fairyring",
+		"image": "https://i.imgur.com/XCZuCaN.png",
+		"name": "Portable fairy ring (inactive)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Portable_fairy_ring#inactive"
 	},
 	{
 		"label": "portentitemprotection",
@@ -5029,15 +5021,15 @@
 		"name": "Potion reservoir",
 		"breakdownNotes": "",
 		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Potion_reservoir"
+		"wikiLink": "https://runescape.wiki/w/Potion_reservoir#active"
 	},
 	{
 		"label": "potionreservoir2",
 		"image": "https://i.imgur.com/af9O4EM.png",
-		"name": "Potion reservoir",
+		"name": "Potion reservoir (inactive)",
 		"breakdownNotes": "",
 		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Potion_reservoir"
+		"wikiLink": "https://runescape.wiki/w/Potion_reservoir#inactive"
 	},
 	{
 		"label": "powderofpenance",
@@ -5056,44 +5048,44 @@
 		"wikiLink": "https://runescape.wiki/w/Powder_of_penance"
 	},
 	{
-		"label": "accel4",
-		"image": "https://i.imgur.com/cP73EYR.png",
-		"name": "Powerburst of acceleration",
-		"breakdownNotes": "",
-		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Powerburst_of_acceleration"
-	},
-	{
 		"label": "accel1",
-		"image": "https://i.imgur.com/ilJrmfQ.png",
+		"image": "https://i.imgur.com/itNElgJ.png",
 		"name": "Powerburst of acceleration (1)",
 		"breakdownNotes": "",
 		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Powerburst_of_acceleration_(1)"
+		"wikiLink": "https://runescape.wiki/w/Powerburst_of_acceleration#(1)"
+	},
+	{
+		"label": "accel4",
+		"image": "https://i.imgur.com/I6HFjyN.png",
+		"name": "Powerburst of acceleration (4)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Powerburst_of_acceleration#(4)"
 	},
 	{
 		"label": "powerburstofmasterstroke(1)",
-		"image": "https://i.imgur.com/rz7GNuM.png",
+		"image": "https://i.imgur.com/XSZEqx9.png",
 		"name": "Powerburst of masterstroke (1)",
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Powerburst_of_masterstroke_(1)"
 	},
 	{
-		"label": "vitality4",
-		"image": "https://i.imgur.com/oOITsKV.png",
-		"name": "Powerburst of vitality",
-		"breakdownNotes": "",
-		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Powerburst_of_vitality"
-	},
-	{
 		"label": "vitality1",
-		"image": "https://i.imgur.com/wh6PgIk.png",
+		"image": "https://i.imgur.com/T6g4IsW.png",
 		"name": "Powerburst of vitality (1)",
 		"breakdownNotes": "",
 		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Powerburst_of_vitality_(1)"
+		"wikiLink": "https://runescape.wiki/w/Powerburst_of_vitality#(1)"
+	},
+	{
+		"label": "vitality4",
+		"image": "https://i.imgur.com/n9C7iSA.png",
+		"name": "Powerburst of vitality (4)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Powerburst_of_vitality#(4)"
 	},
 	{
 		"label": "feast",
@@ -5106,14 +5098,14 @@
 	{
 		"label": "pureessence1noted",
 		"image": "https://i.imgur.com/jfijgZN.png",
-		"name": "Pure essence (1 noted)",
+		"name": "Pure essence",
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Pure_essence"
 	},
 	{
 		"label": "puzzlebox",
-		"image": "https://i.imgur.com/WG2UTnz.png",
+		"image": "https://i.imgur.com/jiK1ZtB.png",
 		"name": "Puzzle box",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -5129,7 +5121,7 @@
 	},
 	{
 		"label": "questcape",
-		"image": "https://i.imgur.com/qKT2peV.png",
+		"image": "https://i.imgur.com/NJu5OXw.png",
 		"name": "Quest cape",
 		"breakdownNotes": "",
 		"slot": 12,
@@ -5161,7 +5153,7 @@
 	},
 	{
 		"label": "rawwildpie",
-		"image": "https://i.imgur.com/P1WTVsO.png",
+		"image": "https://i.imgur.com/o0uIoLH.png",
 		"name": "Raw wild pie",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -5169,7 +5161,7 @@
 	},
 	{
 		"label": "reaper",
-		"image": "https://i.imgur.com/l3D44kd.png",
+		"image": "https://i.imgur.com/PGswTB1.png",
 		"name": "Reaper necklace (or)",
 		"breakdownNotes": "",
 		"slot": 10,
@@ -5185,7 +5177,7 @@
 	},
 	{
 		"label": "reckless",
-		"image": "https://i.imgur.com/56x8kkE.png",
+		"image": "https://i.imgur.com/oPYJmML.png",
 		"name": "Reckless aura",
 		"breakdownNotes": "",
 		"slot": 8,
@@ -5257,7 +5249,7 @@
 	},
 	{
 		"label": "rod",
-		"image": "https://i.imgur.com/sRmyeJv.png",
+		"image": "https://i.imgur.com/y5vAY4M.png",
 		"name": "Ring of death",
 		"breakdownNotes": "",
 		"slot": 11,
@@ -5273,7 +5265,7 @@
 	},
 	{
 		"label": "ringofkinship",
-		"image": "https://i.imgur.com/o5sXUdw.png",
+		"image": "https://i.imgur.com/dQVBOyX.png",
 		"name": "Ring of kinship",
 		"breakdownNotes": "",
 		"slot": 11,
@@ -5297,7 +5289,7 @@
 	},
 	{
 		"label": "vigour",
-		"image": "https://i.imgur.com/2kNbRW2.png",
+		"image": "https://i.imgur.com/3cSIbWx.png",
 		"name": "Ring of vigour",
 		"breakdownNotes": "",
 		"slot": 11,
@@ -5313,7 +5305,7 @@
 	},
 	{
 		"label": "rocktail",
-		"image": "https://i.imgur.com/04JlEFC.png",
+		"image": "https://i.imgur.com/bopHhxT.png",
 		"name": "Rocktail",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -5321,7 +5313,7 @@
 	},
 	{
 		"label": "rocktailsoup",
-		"image": "https://i.imgur.com/5cLOtWD.png",
+		"image": "https://i.imgur.com/kyuxyj3.png",
 		"name": "Rocktail soup",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -5336,38 +5328,6 @@
 		"wikiLink": "https://runescape.wiki/w/Royal_crossbow"
 	},
 	{
-		"label": "royalebarrels",
-		"image": "https://i.imgur.com/7vNPXv1.png",
-		"name": "Royale cannon barrels",
-		"breakdownNotes": "",
-		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Royale_cannon_barrels"
-	},
-	{
-		"label": "royalebase",
-		"image": "https://i.imgur.com/Qh0hceu.png",
-		"name": "Royale cannon base",
-		"breakdownNotes": "",
-		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Royale_cannon_base"
-	},
-	{
-		"label": "royalefurnace",
-		"image": "https://i.imgur.com/uYbGD2j.png",
-		"name": "Royale cannon furnace",
-		"breakdownNotes": "",
-		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Royale_cannon_furnace"
-	},
-	{
-		"label": "royalestand",
-		"image": "https://i.imgur.com/OYR60Z8.png",
-		"name": "Royale cannon stand",
-		"breakdownNotes": "",
-		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Royale_cannon_stand"
-	},
-	{
 		"label": "ruby",
 		"image": "https://i.imgur.com/ipGtNvB.png",
 		"name": "Ruby bakriminel bolts (e)",
@@ -5377,7 +5337,7 @@
 	},
 	{
 		"label": "sailfish",
-		"image": "https://i.imgur.com/zWMNrib.png",
+		"image": "https://i.imgur.com/qocLc4k.png",
 		"name": "Sailfish",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -5385,7 +5345,7 @@
 	},
 	{
 		"label": "soup",
-		"image": "https://i.imgur.com/ZI7v9Mn.png",
+		"image": "https://i.imgur.com/1odCIWn.png",
 		"name": "Sailfish soup",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -5441,7 +5401,7 @@
 	},
 	{
 		"label": "cruelty",
-		"image": "https://i.imgur.com/hdScmNs.png",
+		"image": "https://i.imgur.com/we1VPRx.png",
 		"name": "Scrimshaw of Cruelty",
 		"breakdownNotes": "",
 		"slot": 13,
@@ -5449,7 +5409,7 @@
 	},
 	{
 		"label": "elements",
-		"image": "https://i.imgur.com/BEIG6LL.png",
+		"image": "https://i.imgur.com/o7yhKdD.png",
 		"name": "Scrimshaw of Elements",
 		"breakdownNotes": "",
 		"slot": 13,
@@ -5457,7 +5417,7 @@
 	},
 	{
 		"label": "vamp",
-		"image": "https://i.imgur.com/sh1uQyP.png",
+		"image": "https://i.imgur.com/bMTAHDe.png",
 		"name": "Scrimshaw of Vampyrism",
 		"breakdownNotes": "",
 		"slot": 13,
@@ -5473,7 +5433,7 @@
 	},
 	{
 		"label": "sacscrim",
-		"image": "https://i.imgur.com/gEMAH7Z.png",
+		"image": "https://i.imgur.com/JtRtMGN.png",
 		"name": "Scrimshaw of sacrifice",
 		"breakdownNotes": "",
 		"slot": 13,
@@ -5497,7 +5457,7 @@
 	},
 	{
 		"label": "scriptureofjas",
-		"image": "https://i.imgur.com/jTJxwFt.png",
+		"image": "https://i.imgur.com/FLYAOEf.png",
 		"name": "Scripture of Jas",
 		"breakdownNotes": "",
 		"slot": 13,
@@ -5529,7 +5489,7 @@
 	},
 	{
 		"label": "sing",
-		"image": "https://i.imgur.com/mPyVbvU.png",
+		"image": "https://i.imgur.com/9Z9ChMg.png",
 		"name": "Seismic singularity",
 		"breakdownNotes": "",
 		"slot": 5,
@@ -5537,7 +5497,7 @@
 	},
 	{
 		"label": "swand",
-		"image": "https://i.imgur.com/3kiCU0l.png",
+		"image": "https://i.imgur.com/WTkwmcP.png",
 		"name": "Seismic wand",
 		"breakdownNotes": "",
 		"slot": 4,
@@ -5545,7 +5505,7 @@
 	},
 	{
 		"label": "sgb",
-		"image": "https://i.imgur.com/f8fipOt.png",
+		"image": "https://i.imgur.com/8xNK5NQ.png",
 		"name": "Seren godbow",
 		"breakdownNotes": "",
 		"slot": 4,
@@ -5553,15 +5513,15 @@
 	},
 	{
 		"label": "sgb3a",
-		"image": "https://i.imgur.com/H8aWRSK.png",
-		"name": "Seren godbow (3a)",
+		"image": "https://i.imgur.com/2HVcqMJ.png",
+		"name": "Seren godbow (Third Age)",
 		"breakdownNotes": "",
 		"slot": 4,
 		"wikiLink": "https://runescape.wiki/w/Seren_godbow_(Third_Age)"
 	},
 	{
 		"label": "sgbbarrows",
-		"image": "https://i.imgur.com/MhFygLu.png",
+		"image": "https://i.imgur.com/djktrqA.png",
 		"name": "Seren godbow (barrows)",
 		"breakdownNotes": "",
 		"slot": 4,
@@ -5569,7 +5529,7 @@
 	},
 	{
 		"label": "sgbblood",
-		"image": "https://i.imgur.com/slywFm6.png",
+		"image": "https://i.imgur.com/MsnJSle.png",
 		"name": "Seren godbow (blood)",
 		"breakdownNotes": "",
 		"slot": 4,
@@ -5577,7 +5537,7 @@
 	},
 	{
 		"label": "sgbice",
-		"image": "https://i.imgur.com/6l9lGwP.png",
+		"image": "https://i.imgur.com/MCiA0Wl.png",
 		"name": "Seren godbow (ice)",
 		"breakdownNotes": "",
 		"slot": 4,
@@ -5585,7 +5545,7 @@
 	},
 	{
 		"label": "sgbshadow",
-		"image": "https://i.imgur.com/mdf0zgo.png",
+		"image": "https://i.imgur.com/9icQ4tD.png",
 		"name": "Seren godbow (shadow)",
 		"breakdownNotes": "",
 		"slot": 4,
@@ -5598,6 +5558,14 @@
 		"breakdownNotes": "",
 		"slot": 13,
 		"wikiLink": "https://runescape.wiki/w/Shadow_Reef_teleport"
+	},
+	{
+		"label": "glaivemh",
+		"image": "https://i.imgur.com/vMb1oi9.png",
+		"name": "Shadow glaive",
+		"breakdownNotes": "",
+		"slot": 4,
+		"wikiLink": "https://runescape.wiki/w/Shadow_glaive"
 	},
 	{
 		"label": "shadownihil",
@@ -5617,7 +5585,7 @@
 	},
 	{
 		"label": "shield",
-		"image": "https://i.imgur.com/KRNNH5G.png",
+		"image": "https://i.imgur.com/So3SwSO.png",
 		"name": "Shield",
 		"breakdownNotes": "",
 		"slot": 5,
@@ -5633,7 +5601,7 @@
 	},
 	{
 		"label": "sireniclegs",
-		"image": "https://i.imgur.com/IuyylJw.png",
+		"image": "https://i.imgur.com/gBPOqaV.png",
 		"name": "Sirenic chaps",
 		"breakdownNotes": "",
 		"slot": 3,
@@ -5641,7 +5609,7 @@
 	},
 	{
 		"label": "sirenictop",
-		"image": "https://i.imgur.com/Xqpr6Xs.png",
+		"image": "https://i.imgur.com/lYDKMiu.png",
 		"name": "Sirenic hauberk",
 		"breakdownNotes": "",
 		"slot": 2,
@@ -5649,7 +5617,7 @@
 	},
 	{
 		"label": "sirenichelm",
-		"image": "https://i.imgur.com/Ezvarbg.png",
+		"image": "https://i.imgur.com/lhfAbhp.png",
 		"name": "Sirenic mask",
 		"breakdownNotes": "",
 		"slot": 1,
@@ -5657,7 +5625,7 @@
 	},
 	{
 		"label": "sixthagecircuit",
-		"image": "https://i.imgur.com/lF55iT3.png",
+		"image": "https://i.imgur.com/gpuvlcU.png",
 		"name": "Sixth-Age circuit",
 		"breakdownNotes": "",
 		"slot": 11,
@@ -5673,7 +5641,7 @@
 	},
 	{
 		"label": "skullsceptre",
-		"image": "https://i.imgur.com/thokp5R.png",
+		"image": "https://i.imgur.com/rMZUuze.png",
 		"name": "Skull sceptre",
 		"breakdownNotes": "",
 		"slot": 4,
@@ -5681,15 +5649,15 @@
 	},
 	{
 		"label": "slayercape",
-		"image": "https://i.imgur.com/3FATxXa.png",
-		"name": "Slayer cape",
+		"image": "https://i.imgur.com/B4vyqxv.png",
+		"name": "Slayer cape (t)",
 		"breakdownNotes": "",
 		"slot": 12,
-		"wikiLink": "https://runescape.wiki/w/Slayer_cape"
+		"wikiLink": "https://runescape.wiki/w/Slayer_cape_(t)"
 	},
 	{
 		"label": "scodex",
-		"image": "https://i.imgur.com/D0Ky3DE.png",
+		"image": "https://i.imgur.com/MivUk5T.png",
 		"name": "Slayer codex",
 		"breakdownNotes": "",
 		"slot": 13,
@@ -5697,7 +5665,7 @@
 	},
 	{
 		"label": "slayermastercape",
-		"image": "https://i.imgur.com/Js2GVpJ.png",
+		"image": "https://i.imgur.com/X6FOTd8.png",
 		"name": "Slayer master cape",
 		"breakdownNotes": "",
 		"slot": 12,
@@ -5705,7 +5673,7 @@
 	},
 	{
 		"label": "pouchsmall",
-		"image": "https://i.imgur.com/X7aZIbf.png",
+		"image": "https://i.imgur.com/9EG79yC.png",
 		"name": "Small rune pouch",
 		"breakdownNotes": "Fire | Nature",
 		"slot": 9,
@@ -5745,23 +5713,23 @@
 	},
 	{
 		"label": "soulrune",
-		"image": "https://i.imgur.com/wdtfUi0.png",
-		"name": "Soul rune",
+		"image": "https://i.imgur.com/tflpDfb.png",
+		"name": "Soul runes",
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Soul_rune"
 	},
 	{
 		"label": "soulrune1k",
-		"image": "https://i.imgur.com/LHQUoc3.png",
-		"name": "Soul runes (1k)",
+		"image": "https://i.imgur.com/I6H2Brv.png",
+		"name": "Soul runes",
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Soul_rune"
 	},
 	{
 		"label": "spade",
-		"image": "https://i.imgur.com/XVcGJMj.png",
+		"image": "https://i.imgur.com/3Hzb1UG.png",
 		"name": "Spade",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -5776,24 +5744,24 @@
 		"wikiLink": "https://runescape.wiki/w/Spirit_attraction_flask#(6)"
 	},
 	{
-		"label": "spirittreere-rooter",
-		"image": "https://i.imgur.com/Xrq18bn.png",
+		"label": "spirittreere-rooter(used)",
+		"image": "https://i.imgur.com/sv8RnA7.png",
 		"name": "Spirit tree re-rooter",
 		"breakdownNotes": "",
-		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Spirit_tree_re-rooter"
+		"slot": 13,
+		"wikiLink": "https://runescape.wiki/w/Spirit_tree_re-rooter#active"
 	},
 	{
-		"label": "spirittreere-rooter(used)",
-		"image": "https://i.imgur.com/KtuTeDA.png",
-		"name": "Spirit tree re-rooter (used)",
+		"label": "spirittreere-rooter",
+		"image": "https://i.imgur.com/Xrq18bn.png",
+		"name": "Spirit tree re-rooter (inactive)",
 		"breakdownNotes": "",
-		"slot": 13,
-		"wikiLink": "https://runescape.wiki/w/Spirit_tree_re-rooter"
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Spirit_tree_re-rooter#inactive"
 	},
 	{
 		"label": "spiritsticks",
-		"image": "https://i.imgur.com/m40Cqfq.png",
+		"image": "https://i.imgur.com/8RLFr9n.png",
 		"name": "Spirit weed incense sticks",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -5802,22 +5770,22 @@
 	{
 		"label": "spiritsticks100",
 		"image": "https://i.imgur.com/YWaDJIE.png",
-		"name": "Spirit weed incense sticks (100)",
+		"name": "Spirit weed incense sticks",
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Spirit_weed_incense_sticks"
 	},
 	{
 		"label": "spiritual",
-		"image": "https://i.imgur.com/5PPmPXC.png",
-		"name": "Spiritual prayer",
+		"image": "https://i.imgur.com/PFLToHh.png",
+		"name": "Spiritual prayer (6)",
 		"breakdownNotes": "",
 		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Spiritual_prayer"
+		"wikiLink": "https://runescape.wiki/w/Spiritual_prayer#(6)"
 	},
 	{
 		"label": "splinteringarrowtip1",
-		"image": "https://i.imgur.com/dwNjYgu.png",
+		"image": "https://i.imgur.com/jHCeJqk.png",
 		"name": "Splintering arrow tips",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -5840,17 +5808,9 @@
 		"wikiLink": "https://runescape.wiki/w/Spring_cleaner_9001"
 	},
 	{
-		"label": "staffoflimitlessair",
-		"image": "https://i.imgur.com/vPnAjqC.png",
-		"name": "Staff of limitless air",
-		"breakdownNotes": "",
-		"slot": 4,
-		"wikiLink": "https://runescape.wiki/w/Staff_of_limitless_air"
-	},
-	{
 		"label": "sos",
 		"image": "https://i.imgur.com/6teyxne.png",
-		"name": "Staff of sliske",
+		"name": "Staff of Sliske",
 		"breakdownNotes": "",
 		"slot": 4,
 		"wikiLink": "https://runescape.wiki/w/Staff_of_sliske"
@@ -5858,42 +5818,50 @@
 	{
 		"label": "sosbarrows",
 		"image": "https://i.imgur.com/0MAtfaQ.png",
-		"name": "Staff of sliske",
+		"name": "Staff of Sliske (Barrows)",
 		"breakdownNotes": "",
 		"slot": 4,
-		"wikiLink": "https://runescape.wiki/w/Staff_of_sliske"
-	},
-	{
-		"label": "sosshadow",
-		"image": "https://i.imgur.com/KU0MkIK.png",
-		"name": "Staff of sliske",
-		"breakdownNotes": "",
-		"slot": 4,
-		"wikiLink": "https://runescape.wiki/w/Staff_of_sliske"
-	},
-	{
-		"label": "sosice",
-		"image": "https://i.imgur.com/5aG5kfb.png",
-		"name": "Staff of sliske",
-		"breakdownNotes": "",
-		"slot": 4,
-		"wikiLink": "https://runescape.wiki/w/Staff_of_sliske"
+		"wikiLink": "https://runescape.wiki/w/Staff_of_Sliske_(Barrows)"
 	},
 	{
 		"label": "sos3a",
 		"image": "https://i.imgur.com/lxCdP4r.png",
-		"name": "Staff of sliske",
+		"name": "Staff of Sliske (Third Age)",
 		"breakdownNotes": "",
 		"slot": 4,
-		"wikiLink": "https://runescape.wiki/w/Staff_of_sliske"
+		"wikiLink": "https://runescape.wiki/w/Staff_of_Sliske_(Third_Age)"
 	},
 	{
 		"label": "sosblood",
 		"image": "https://i.imgur.com/bsX4jSG.png",
-		"name": "Staff of sliske",
+		"name": "Staff of Sliske (blood)",
 		"breakdownNotes": "",
 		"slot": 4,
-		"wikiLink": "https://runescape.wiki/w/Staff_of_sliske"
+		"wikiLink": "https://runescape.wiki/w/Staff_of_Sliske_(blood)"
+	},
+	{
+		"label": "sosice",
+		"image": "https://i.imgur.com/5aG5kfb.png",
+		"name": "Staff of Sliske (ice)",
+		"breakdownNotes": "",
+		"slot": 4,
+		"wikiLink": "https://runescape.wiki/w/Staff_of_Sliske_(ice)"
+	},
+	{
+		"label": "sosshadow",
+		"image": "https://i.imgur.com/KU0MkIK.png",
+		"name": "Staff of Sliske (shadow)",
+		"breakdownNotes": "",
+		"slot": 4,
+		"wikiLink": "https://runescape.wiki/w/Staff_of_Sliske_(shadow)"
+	},
+	{
+		"label": "staffoflimitlessair",
+		"image": "https://i.imgur.com/vPnAjqC.png",
+		"name": "Staff of limitless air",
+		"breakdownNotes": "",
+		"slot": 4,
+		"wikiLink": "https://runescape.wiki/w/Staff_of_limitless_air"
 	},
 	{
 		"label": "stalkerring",
@@ -5921,7 +5889,7 @@
 	},
 	{
 		"label": "sticky",
-		"image": "https://i.imgur.com/KYtAuVF.png",
+		"image": "https://i.imgur.com/mTBIIuw.png",
 		"name": "Sticky bombs",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -5930,7 +5898,7 @@
 	{
 		"label": "strengthcape",
 		"image": "https://i.imgur.com/kJFyO7G.png",
-		"name": "Strength cape",
+		"name": "Strength cape (t)",
 		"breakdownNotes": "",
 		"slot": 12,
 		"wikiLink": "https://runescape.wiki/w/Strength_cape_(t)"
@@ -5945,7 +5913,7 @@
 	},
 	{
 		"label": "summrenewal",
-		"image": "https://i.imgur.com/ZTO2jLD.png",
+		"image": "https://i.imgur.com/vBodqnM.png",
 		"name": "Summoning renewal (1)",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -5961,7 +5929,7 @@
 	},
 	{
 		"label": "gbrew",
-		"image": "https://i.imgur.com/xnevE7L.png",
+		"image": "https://i.imgur.com/dPf2fLt.png",
 		"name": "Super Guthix brew flask (6)",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -5969,7 +5937,7 @@
 	},
 	{
 		"label": "sbrew",
-		"image": "https://i.imgur.com/rqIBPF1.png",
+		"image": "https://i.imgur.com/xjiZl4Y.png",
 		"name": "Super Saradomin brew flask (6)",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -5985,31 +5953,31 @@
 	},
 	{
 		"label": "supatk3dose",
-		"image": "https://i.imgur.com/REAiiV4.png",
-		"name": "Super attack potion (3 dose noted)",
+		"image": "https://i.imgur.com/XfHaYVa.png",
+		"name": "Super attack (3)",
 		"breakdownNotes": "",
 		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Super_attack_potion#(3)"
+		"wikiLink": "https://runescape.wiki/w/Super_attack#(3)"
 	},
 	{
 		"label": "supdef3dose",
-		"image": "https://i.imgur.com/6uTif4Z.png",
-		"name": "Super defense potion (3 dose noted)",
+		"image": "https://i.imgur.com/t3dDV6y.png",
+		"name": "Super defense (3)",
 		"breakdownNotes": "",
 		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Super_defense_potion#(3)"
+		"wikiLink": "https://runescape.wiki/w/Super_defense#(3)"
 	},
 	{
 		"label": "superpray",
 		"image": "https://i.imgur.com/2gndedF.png",
-		"name": "Super prayer (4)",
+		"name": "Super prayer flask (6)",
 		"breakdownNotes": "",
 		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Super_prayer#(4)"
+		"wikiLink": "https://runescape.wiki/w/Super_prayer_flask#(6)"
 	},
 	{
 		"label": "prayrenewal",
-		"image": "https://i.imgur.com/yiqKcos.png",
+		"image": "https://i.imgur.com/vSUpqbs.png",
 		"name": "Super prayer renewal potion (6)",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -6033,11 +6001,11 @@
 	},
 	{
 		"label": "supstr3dose",
-		"image": "https://i.imgur.com/TIHdUpO.png",
-		"name": "Super strength potion (3 dose noted)",
+		"image": "https://i.imgur.com/h0i7b8x.png",
+		"name": "Super strength (3)",
 		"breakdownNotes": "",
 		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Super_strength_potion#(3)"
+		"wikiLink": "https://runescape.wiki/w/Super_strength#(3)"
 	},
 	{
 		"label": "lotuschaps",
@@ -6097,7 +6065,7 @@
 	},
 	{
 		"label": "swh",
-		"image": "https://i.imgur.com/HF0MlYj.png",
+		"image": "https://i.imgur.com/buKTnb1.png",
 		"name": "Superior statius warhammer",
 		"breakdownNotes": "",
 		"slot": 4,
@@ -6105,7 +6073,7 @@
 	},
 	{
 		"label": "vls",
-		"image": "https://i.imgur.com/KpwlJBg.png",
+		"image": "https://i.imgur.com/OcTkGQM.png",
 		"name": "Superior vestas longsword",
 		"breakdownNotes": "",
 		"slot": 4,
@@ -6113,7 +6081,7 @@
 	},
 	{
 		"label": "zurielshood",
-		"image": "https://i.imgur.com/dBR1aPk.png",
+		"image": "https://i.imgur.com/tzSrusP.png",
 		"name": "Superior zuriel's hood",
 		"breakdownNotes": "",
 		"slot": 1,
@@ -6121,7 +6089,7 @@
 	},
 	{
 		"label": "zurielslegs",
-		"image": "https://i.imgur.com/BeEP8yV.png",
+		"image": "https://i.imgur.com/2hVnR1G.png",
 		"name": "Superior zuriel's robe bottom",
 		"breakdownNotes": "",
 		"slot": 3,
@@ -6129,7 +6097,7 @@
 	},
 	{
 		"label": "zurielstop",
-		"image": "https://i.imgur.com/obXHgr6.png",
+		"image": "https://i.imgur.com/LxP4ocV.png",
 		"name": "Superior zuriel's robe top",
 		"breakdownNotes": "",
 		"slot": 2,
@@ -6137,7 +6105,7 @@
 	},
 	{
 		"label": "supportcape",
-		"image": "https://i.imgur.com/Q9hYd3C.png",
+		"image": "https://i.imgur.com/TmVweQs.png",
 		"name": "Support cape",
 		"breakdownNotes": "",
 		"slot": 12,
@@ -6145,15 +6113,23 @@
 	},
 	{
 		"label": "brawler",
-		"image": "https://i.imgur.com/3yB6JBo.png",
+		"image": "https://i.imgur.com/XGOJWlA.png",
 		"name": "Supreme brawler aura",
 		"breakdownNotes": "",
 		"slot": 8,
 		"wikiLink": "https://runescape.wiki/w/Supreme_brawler_aura"
 	},
 	{
+		"label": "invigorate",
+		"image": "https://i.imgur.com/YpjIoNM.png",
+		"name": "Supreme invigorate aura",
+		"breakdownNotes": "",
+		"slot": 8,
+		"wikiLink": "https://runescape.wiki/w/Supreme_invigorate_aura"
+	},
+	{
 		"label": "supremeoverload",
-		"image": "https://i.imgur.com/Wqn525e.png",
+		"image": "https://i.imgur.com/GZyBdRe.png",
 		"name": "Supreme overload potion (6)",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -6161,7 +6137,7 @@
 	},
 	{
 		"label": "supremesalve",
-		"image": "https://i.imgur.com/9GP63eS.png",
+		"image": "https://i.imgur.com/HsYQ0qt.png",
 		"name": "Supreme overload salve (6)",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -6169,7 +6145,7 @@
 	},
 	{
 		"label": "runic",
-		"image": "https://i.imgur.com/HwmLz6n.png",
+		"image": "https://i.imgur.com/VMjBISC.png",
 		"name": "Supreme runic accuracy aura",
 		"breakdownNotes": "",
 		"slot": 8,
@@ -6177,7 +6153,7 @@
 	},
 	{
 		"label": "sharpshooter",
-		"image": "https://i.imgur.com/QjBPpY3.png",
+		"image": "https://i.imgur.com/5FPSQEG.png",
 		"name": "Supreme sharpshooter aura",
 		"breakdownNotes": "",
 		"slot": 8,
@@ -6225,7 +6201,7 @@
 	},
 	{
 		"label": "tectohelm",
-		"image": "https://i.imgur.com/Y8MaTBE.png",
+		"image": "https://i.imgur.com/nA1Rs2s.png",
 		"name": "Tectonic mask",
 		"breakdownNotes": "",
 		"slot": 1,
@@ -6233,7 +6209,7 @@
 	},
 	{
 		"label": "tectolegs",
-		"image": "https://i.imgur.com/esdesHe.png",
+		"image": "https://i.imgur.com/pY0WMur.png",
 		"name": "Tectonic robe bottom",
 		"breakdownNotes": "",
 		"slot": 3,
@@ -6241,7 +6217,7 @@
 	},
 	{
 		"label": "tectotop",
-		"image": "https://i.imgur.com/eJL18LE.png",
+		"image": "https://i.imgur.com/IaM9G51.png",
 		"name": "Tectonic robe top",
 		"breakdownNotes": "",
 		"slot": 2,
@@ -6249,7 +6225,7 @@
 	},
 	{
 		"label": "tmaul",
-		"image": "https://i.imgur.com/rDaERpR.png",
+		"image": "https://i.imgur.com/GF84zR5.png",
 		"name": "Terrasaur maul",
 		"breakdownNotes": "",
 		"slot": 4,
@@ -6281,7 +6257,7 @@
 	},
 	{
 		"label": "quiver1",
-		"image": "https://i.imgur.com/EYzcYPz.png",
+		"image": "https://i.imgur.com/2SRcIeI.png",
 		"name": "Tirannwn quiver 1",
 		"breakdownNotes": "",
 		"slot": 9,
@@ -6289,7 +6265,7 @@
 	},
 	{
 		"label": "quiver2",
-		"image": "https://i.imgur.com/uAHVorK.png",
+		"image": "https://i.imgur.com/RCL7pWn.png",
 		"name": "Tirannwn quiver 2",
 		"breakdownNotes": "",
 		"slot": 9,
@@ -6297,7 +6273,7 @@
 	},
 	{
 		"label": "quiver3",
-		"image": "https://i.imgur.com/PlfEUpY.png",
+		"image": "https://i.imgur.com/Fguu6vB.png",
 		"name": "Tirannwn quiver 3",
 		"breakdownNotes": "",
 		"slot": 9,
@@ -6305,7 +6281,7 @@
 	},
 	{
 		"label": "quiver4",
-		"image": "https://i.imgur.com/92PLIAF.png",
+		"image": "https://i.imgur.com/yxmdGCZ.png",
 		"name": "Tirannwn quiver 4",
 		"breakdownNotes": "",
 		"slot": 9,
@@ -6321,7 +6297,7 @@
 	},
 	{
 		"label": "kilnmelee",
-		"image": "https://i.imgur.com/kF1db5M.png",
+		"image": "https://i.imgur.com/r0RF9V9.png",
 		"name": "TokHaar-Kal-Ket",
 		"breakdownNotes": "",
 		"slot": 12,
@@ -6329,7 +6305,7 @@
 	},
 	{
 		"label": "kilnmage",
-		"image": "https://i.imgur.com/KWBhzbp.png",
+		"image": "https://i.imgur.com/zAVbabw.png",
 		"name": "TokHaar-Kal-Mej",
 		"breakdownNotes": "",
 		"slot": 12,
@@ -6337,7 +6313,7 @@
 	},
 	{
 		"label": "kilnrange",
-		"image": "https://i.imgur.com/RSCsDrM.png",
+		"image": "https://i.imgur.com/rLbopHv.png",
 		"name": "TokHaar-Kal-Xil",
 		"breakdownNotes": "",
 		"slot": 12,
@@ -6362,7 +6338,7 @@
 	{
 		"label": "grimpage10",
 		"image": "https://i.imgur.com/KopqFpb.png",
-		"name": "Torn grimoire page (10)",
+		"name": "Torn grimoire page",
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Torn_grimoire_page"
@@ -6370,7 +6346,7 @@
 	{
 		"label": "torstolincensesticks100",
 		"image": "https://i.imgur.com/PpYdCr1.png",
-		"name": "Torstol incense sticks (100)",
+		"name": "Torstol incense sticks",
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Torstol_incense_sticks"
@@ -6393,7 +6369,7 @@
 	},
 	{
 		"label": "travellersnecklace",
-		"image": "https://i.imgur.com/9FP2aq7.png",
+		"image": "https://i.imgur.com/JbSgWma.png",
 		"name": "Traveller's Necklace",
 		"breakdownNotes": "",
 		"slot": 10,
@@ -6401,7 +6377,7 @@
 	},
 	{
 		"label": "tmwboots",
-		"image": "https://i.imgur.com/Q9wmMDK.png",
+		"image": "https://i.imgur.com/4g3hQJr.png",
 		"name": "Trimmed masterwork boots",
 		"breakdownNotes": "",
 		"slot": 7,
@@ -6409,7 +6385,7 @@
 	},
 	{
 		"label": "tmwgloves",
-		"image": "https://i.imgur.com/GFUeCUl.png",
+		"image": "https://i.imgur.com/mat9MQy.png",
 		"name": "Trimmed masterwork gloves",
 		"breakdownNotes": "",
 		"slot": 6,
@@ -6417,7 +6393,7 @@
 	},
 	{
 		"label": "tmwhelm",
-		"image": "https://i.imgur.com/rYwQ8OI.png",
+		"image": "https://i.imgur.com/x379hPF.png",
 		"name": "Trimmed masterwork helm",
 		"breakdownNotes": "",
 		"slot": 1,
@@ -6425,7 +6401,7 @@
 	},
 	{
 		"label": "tmwtop",
-		"image": "https://i.imgur.com/bD8MfPp.png",
+		"image": "https://i.imgur.com/kbAkth3.png",
 		"name": "Trimmed masterwork platebody",
 		"breakdownNotes": "",
 		"slot": 2,
@@ -6433,7 +6409,7 @@
 	},
 	{
 		"label": "tmwlegs",
-		"image": "https://i.imgur.com/K3lxy64.png",
+		"image": "https://i.imgur.com/Pggz07A.png",
 		"name": "Trimmed masterwork platelegs",
 		"breakdownNotes": "",
 		"slot": 3,
@@ -6449,7 +6425,7 @@
 	},
 	{
 		"label": "unfinishedrunehelm(98%)",
-		"image": "https://i.imgur.com/A2TivSy.png",
+		"image": "https://i.imgur.com/XBHs2Zb.png",
 		"name": "Unfinished rune helm (98%)",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -6457,7 +6433,7 @@
 	},
 	{
 		"label": "uniscrolls",
-		"image": "https://i.imgur.com/UhtB5A7.png",
+		"image": "https://i.imgur.com/0LwQ1N0.png",
 		"name": "Unicorn Stallion scroll (Healing Aura)",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -6481,7 +6457,7 @@
 	},
 	{
 		"label": "ushabti5",
-		"image": "https://i.imgur.com/xI1tZfP.png",
+		"image": "https://i.imgur.com/HCif79X.png",
 		"name": "Ushabti",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -6489,7 +6465,7 @@
 	},
 	{
 		"label": "ushabti1",
-		"image": "https://i.imgur.com/pszMs7G.png",
+		"image": "https://i.imgur.com/ukNr0As.png",
 		"name": "Ushabti",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -6497,7 +6473,7 @@
 	},
 	{
 		"label": "vampaura",
-		"image": "https://i.imgur.com/NAg6p5G.png",
+		"image": "https://i.imgur.com/cJL1LNJ.png",
 		"name": "Vampyrism aura",
 		"breakdownNotes": "",
 		"slot": 8,
@@ -6521,7 +6497,7 @@
 	},
 	{
 		"label": "rangeshield",
-		"image": "https://i.imgur.com/KoF0X2U.png",
+		"image": "https://i.imgur.com/upbhHnL.png",
 		"name": "Vengful kiteshield",
 		"breakdownNotes": "",
 		"slot": 5,
@@ -6593,7 +6569,7 @@
 	},
 	{
 		"label": "vbook",
-		"image": "https://i.imgur.com/Fi9V1qB.png",
+		"image": "https://i.imgur.com/BFlp29E.png",
 		"name": "Virtus book",
 		"breakdownNotes": "",
 		"slot": 5,
@@ -6601,7 +6577,7 @@
 	},
 	{
 		"label": "virtusboots",
-		"image": "https://i.imgur.com/tPEufwU.png",
+		"image": "https://i.imgur.com/6kNOh8G.png",
 		"name": "Virtus boots",
 		"breakdownNotes": "",
 		"slot": 7,
@@ -6609,7 +6585,7 @@
 	},
 	{
 		"label": "virtusgloves",
-		"image": "https://i.imgur.com/Bke5Tz8.png",
+		"image": "https://i.imgur.com/CVmSxkv.png",
 		"name": "Virtus gloves",
 		"breakdownNotes": "",
 		"slot": 6,
@@ -6617,7 +6593,7 @@
 	},
 	{
 		"label": "virtushelm",
-		"image": "https://i.imgur.com/mew0xD5.png",
+		"image": "https://i.imgur.com/z6apdWl.png",
 		"name": "Virtus mask",
 		"breakdownNotes": "",
 		"slot": 1,
@@ -6642,14 +6618,14 @@
 	{
 		"label": "sparkenhancers",
 		"image": "https://i.imgur.com/z9ssNId.png",
-		"name": "Vital spark enhancers",
+		"name": "Vital spark drop enhancer",
 		"breakdownNotes": "",
 		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Vital_spark_enhancers"
+		"wikiLink": "https://runescape.wiki/w/Vital_spark_drop_enhancer"
 	},
 	{
 		"label": "volcanictrapperarms",
-		"image": "https://i.imgur.com/VnHlArq.png",
+		"image": "https://i.imgur.com/Yw0OGHG.png",
 		"name": "Volcanic trapper arms",
 		"breakdownNotes": "",
 		"slot": 6,
@@ -6657,7 +6633,7 @@
 	},
 	{
 		"label": "volcanictrapperboots",
-		"image": "https://i.imgur.com/KAJ46uz.png",
+		"image": "https://i.imgur.com/E9pG2sG.png",
 		"name": "Volcanic trapper boots",
 		"breakdownNotes": "",
 		"slot": 7,
@@ -6665,7 +6641,7 @@
 	},
 	{
 		"label": "volcanictrapperchest",
-		"image": "https://i.imgur.com/4Yzi118.png",
+		"image": "https://i.imgur.com/rOg7aHk.png",
 		"name": "Volcanic trapper chest",
 		"breakdownNotes": "",
 		"slot": 2,
@@ -6673,7 +6649,7 @@
 	},
 	{
 		"label": "volcanictrapperhead",
-		"image": "https://i.imgur.com/nqYWKem.png",
+		"image": "https://i.imgur.com/cDfMJE7.png",
 		"name": "Volcanic trapper head",
 		"breakdownNotes": "",
 		"slot": 1,
@@ -6681,7 +6657,7 @@
 	},
 	{
 		"label": "volcanictrapperlegguards",
-		"image": "https://i.imgur.com/Q4cFyql.png",
+		"image": "https://i.imgur.com/HocPtbC.png",
 		"name": "Volcanic trapper legguards",
 		"breakdownNotes": "",
 		"slot": 3,
@@ -6697,7 +6673,7 @@
 	},
 	{
 		"label": "pwand",
-		"image": "https://i.imgur.com/DmUfsSM.png",
+		"image": "https://i.imgur.com/kyKIKBC.png",
 		"name": "Wand of the praesul",
 		"breakdownNotes": "",
 		"slot": 4,
@@ -6705,15 +6681,15 @@
 	},
 	{
 		"label": "pwand3a",
-		"image": "https://i.imgur.com/4Y2VUiV.png",
-		"name": "Wand of the praesul (3a)",
+		"image": "https://i.imgur.com/GPCzh4h.png",
+		"name": "Wand of the praesul (Third Age)",
 		"breakdownNotes": "",
 		"slot": 4,
 		"wikiLink": "https://runescape.wiki/w/Wand_of_the_praesul_(Third_Age)"
 	},
 	{
 		"label": "pwandbarrows",
-		"image": "https://i.imgur.com/qx0WDM8.png",
+		"image": "https://i.imgur.com/q1n7mQw.png",
 		"name": "Wand of the praesul (barrows)",
 		"breakdownNotes": "",
 		"slot": 4,
@@ -6721,7 +6697,7 @@
 	},
 	{
 		"label": "pwandblood",
-		"image": "https://i.imgur.com/3LHcNUm.png",
+		"image": "https://i.imgur.com/JGrqCtl.png",
 		"name": "Wand of the praesul (blood)",
 		"breakdownNotes": "",
 		"slot": 4,
@@ -6729,7 +6705,7 @@
 	},
 	{
 		"label": "pwandice",
-		"image": "https://i.imgur.com/i5O55lf.png",
+		"image": "https://i.imgur.com/0bDqylk.png",
 		"name": "Wand of the praesul (ice)",
 		"breakdownNotes": "",
 		"slot": 4,
@@ -6737,7 +6713,7 @@
 	},
 	{
 		"label": "pwandshadow",
-		"image": "https://i.imgur.com/nNIwxGN.png",
+		"image": "https://i.imgur.com/FMf3ige.png",
 		"name": "Wand of the praesul (shadow)",
 		"breakdownNotes": "",
 		"slot": 4,
@@ -6753,16 +6729,16 @@
 	},
 	{
 		"label": "waterrune",
-		"image": "https://i.imgur.com/iACL834.png",
-		"name": "Water rune",
+		"image": "https://i.imgur.com/KD1n82U.png",
+		"name": "Water runes",
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Water_rune"
 	},
 	{
 		"label": "waterrune1k",
-		"image": "https://i.imgur.com/7x9jLfm.png",
-		"name": "Water runes (1k)",
+		"image": "https://i.imgur.com/lvD8hP6.png",
+		"name": "Water runes",
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Water_rune"
@@ -6809,7 +6785,7 @@
 	},
 	{
 		"label": "wickedhood",
-		"image": "https://i.imgur.com/ReuvoLt.png",
+		"image": "https://i.imgur.com/Uxr7Xcm.png",
 		"name": "Wicked hood",
 		"breakdownNotes": "",
 		"slot": 1,
@@ -6817,7 +6793,7 @@
 	},
 	{
 		"label": "wildernesssword1",
-		"image": "https://i.imgur.com/LO0Cd39.png",
+		"image": "https://i.imgur.com/u7wViXz.png",
 		"name": "Wilderness Sword 1",
 		"breakdownNotes": "",
 		"slot": 4,
@@ -6825,7 +6801,7 @@
 	},
 	{
 		"label": "wildernesssword2",
-		"image": "https://i.imgur.com/wEA6J3w.png",
+		"image": "https://i.imgur.com/OWsqbra.png",
 		"name": "Wilderness Sword 2",
 		"breakdownNotes": "",
 		"slot": 4,
@@ -6833,7 +6809,7 @@
 	},
 	{
 		"label": "wildernesssword3",
-		"image": "https://i.imgur.com/MfFI58x.png",
+		"image": "https://i.imgur.com/yyxPOij.png",
 		"name": "Wilderness Sword 3",
 		"breakdownNotes": "",
 		"slot": 4,
@@ -6849,7 +6825,7 @@
 	},
 	{
 		"label": "witchdoctermask",
-		"image": "https://i.imgur.com/U5o3gwj.png",
+		"image": "https://i.imgur.com/nxi7XVo.png",
 		"name": "Witchdocter mask",
 		"breakdownNotes": "",
 		"slot": 1,
@@ -6873,7 +6849,7 @@
 	},
 	{
 		"label": "yaktweestick",
-		"image": "https://i.imgur.com/S0FKobV.png",
+		"image": "https://i.imgur.com/iVFW4i1.png",
 		"name": "Yaktwee stick",
 		"breakdownNotes": "",
 		"slot": 4,
@@ -6889,7 +6865,7 @@
 	},
 	{
 		"label": "zgs",
-		"image": "https://i.imgur.com/4iuw5ze.png",
+		"image": "https://i.imgur.com/VV0XoQe.png",
 		"name": "Zaros godsword",
 		"breakdownNotes": "",
 		"slot": 4,
@@ -6897,15 +6873,15 @@
 	},
 	{
 		"label": "zgs3a",
-		"image": "https://i.imgur.com/oXFxXjx.png",
-		"name": "Zaros godsword (3a)",
+		"image": "https://i.imgur.com/Q7OrJSD.png",
+		"name": "Zaros godsword (Third Age)",
 		"breakdownNotes": "",
 		"slot": 4,
 		"wikiLink": "https://runescape.wiki/w/Zaros_godsword_(Third_Age)"
 	},
 	{
 		"label": "zgsbarrows",
-		"image": "https://i.imgur.com/i5Niiyp.png",
+		"image": "https://i.imgur.com/EJnRUCe.png",
 		"name": "Zaros godsword (barrows)",
 		"breakdownNotes": "",
 		"slot": 4,
@@ -6913,7 +6889,7 @@
 	},
 	{
 		"label": "zgsblood",
-		"image": "https://i.imgur.com/L4iVbDh.png",
+		"image": "https://i.imgur.com/LHdT8I0.png",
 		"name": "Zaros godsword (blood)",
 		"breakdownNotes": "",
 		"slot": 4,
@@ -6921,7 +6897,7 @@
 	},
 	{
 		"label": "zgsice",
-		"image": "https://i.imgur.com/iAqSkkJ.png",
+		"image": "https://i.imgur.com/VqGIBsr.png",
 		"name": "Zaros godsword (ice)",
 		"breakdownNotes": "",
 		"slot": 4,
@@ -6929,7 +6905,7 @@
 	},
 	{
 		"label": "zgsshadow",
-		"image": "https://i.imgur.com/Q92qcRk.png",
+		"image": "https://i.imgur.com/AtxLpSq.png",
 		"name": "Zaros godsword (shadow)",
 		"breakdownNotes": "",
 		"slot": 4,

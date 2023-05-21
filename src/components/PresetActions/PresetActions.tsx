@@ -8,7 +8,7 @@ import { useSnackbar } from 'notistack';
 import React, { useCallback, useState } from 'react';
 import { uploadPreset } from '../../api/upload-preset';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
-import { resetSlots, selectPreset } from '../../redux/store/reducers/preset-reducer';
+import { resetToInitialState, selectPreset } from '../../redux/store/reducers/preset-reducer';
 import { LocalStorage } from '../../store/local-storage';
 import { copyImageToClipboard, getImageFromElement } from '../../utility/export-to-png';
 import { sanitizeAndStringifyPreset } from '../../utility/sanitizer';
@@ -50,7 +50,7 @@ export const PresetActions = ({
   }, []);
 
   const onResetConfirmation = useCallback(() => {
-    dispatch(resetSlots());
+    dispatch(resetToInitialState());
     setResetConfirmationOpen(false);
   }, [dispatch]);
 
