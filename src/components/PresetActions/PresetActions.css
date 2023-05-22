@@ -43,8 +43,7 @@
 
 @media (max-width: 931px) {
   .preset-actions {
-    margin-top: 10px;
-    margin-left: 0px;
+    margin: 10px;
   }
 
   .preset-and-actions {
