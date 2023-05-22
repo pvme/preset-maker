@@ -64,16 +64,30 @@
   justify-content: center;
 }
 
+.flex-align-center {
+  align-items: center;
+}
+
+.m-8 {
+  margin: 8px;
+}
+
+.mh-8 {
+  margin-left: 8px;
+  margin-right: 8px;
+}
+
+.mv-8 {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
 .mt-8 {
   margin-top: 8px;
 }
 
 .mr-8 {
   margin-right: 8px;
-}
-
-.m-8 {
-  margin: 8px;
 }
 
 .cursor-pointer:hover {

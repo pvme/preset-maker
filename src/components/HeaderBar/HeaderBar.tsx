@@ -1,5 +1,5 @@
 import { useSnackbar } from 'notistack';
-import React, { useCallback, useRef } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { validate } from 'typescript-json';
 
@@ -10,6 +10,7 @@ import ButtonGroup from '@mui/material/ButtonGroup';
 import Container from '@mui/material/Container';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import {
@@ -21,6 +22,7 @@ import { exportAsJson } from '../../utility/export-to-json';
 import { sanitizeAndStringifyPreset } from '../../utility/sanitizer';
 
 import './HeaderBar.css';
+import { HelpDialog } from '../HelpDialog/HelpDialog';
 
 export const HeaderBar = (): JSX.Element => {
   const inputFile = useRef<HTMLInputElement>(null);
@@ -30,6 +32,7 @@ export const HeaderBar = (): JSX.Element => {
   const dispatch = useAppDispatch();
   const { presetName, inventorySlots, equipmentSlots, relics, familiars } =
     useAppSelector(selectPreset);
+  const [helpDialogOpen, setHelpDialogOpen] = useState<boolean>(false);
   const { enqueueSnackbar } = useSnackbar();
 
   const exportData = useCallback(() => {
@@ -97,45 +100,55 @@ export const HeaderBar = (): JSX.Element => {
   }, [navigate]);
 
   return (
-    <Box className="header-bar">
-      <input
-        type="file"
-        id="file"
-        ref={inputFile}
-        style={{ display: 'none' }}
-        accept="application/JSON"
-        onChange={onFileUpload}
+    <>
+      <Box className="header-bar">
+        <input
+          type="file"
+          id="file"
+          ref={inputFile}
+          style={{ display: 'none' }}
+          accept="application/JSON"
+          onChange={onFileUpload}
+        />
+        <AppBar position="sticky">
+          <Container className="header-bar__app-bar">
+            <Toolbar disableGutters className="header-bar__tool-bar">
+              <div className="header-bar__logo header-bar__item">
+                <img
+                  width={80}
+                  height={80}
+                  src={'https://i.imgur.com/DhroQD5.gif'}
+                  onClick={onHomeClick}
+                />
+                <HelpOutlineIcon
+                  className="header-bar__help-icon cursor-pointer"
+                  onClick={() => { setHelpDialogOpen(true); }}
+                />
+              </div>
+              <Typography
+                variant="h5"
+                component="div"
+                fontFamily="monospace"
+                className="header-bar__item"
+              >
+                PVME Preset Generator
+              </Typography>
+              <ButtonGroup className="header-bar__json header-bar__item desktop-only">
+                <Button color="inherit" variant="outlined" onClick={importData}>
+                  Import&nbsp;JSON
+                </Button>
+                <Button color="inherit" variant="outlined" onClick={exportData}>
+                  Export&nbsp;JSON
+                </Button>
+              </ButtonGroup>
+            </Toolbar>
+          </Container>
+        </AppBar>
+      </Box>
+      <HelpDialog
+        open={helpDialogOpen}
+        onClose={() => { setHelpDialogOpen(false); }}
       />
-      <AppBar position="sticky">
-        <Container className="app-bar">
-          <Toolbar disableGutters className="tool-bar">
-            <div className="image-container sub-item">
-              <img
-                width={80}
-                height={80}
-                src={'https://i.imgur.com/DhroQD5.gif'}
-                onClick={onHomeClick}
-              />
-            </div>
-            <Typography
-              variant="h5"
-              component="div"
-              fontFamily="monospace"
-              className="sub-item"
-            >
-              PVME Preset Generator
-            </Typography>
-            <ButtonGroup className="button-container sub-item desktop-only">
-              <Button color="inherit" variant="outlined" onClick={importData}>
-                Import&nbsp;JSON
-              </Button>
-              <Button color="inherit" variant="outlined" onClick={exportData}>
-                Export&nbsp;JSON
-              </Button>
-            </ButtonGroup>
-          </Toolbar>
-        </Container>
-      </AppBar>
-    </Box>
+    </>
   );
 };
