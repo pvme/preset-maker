@@ -45,6 +45,13 @@
   color: #888;
 }
 
+.disc-emoji {
+  width: 1.375em;
+  height: 1.375em !important;
+  object-fit: contain;
+  vertical-align: middle;
+}
+
 /* Utility classes */
 
 .width-50 {

@@ -16,6 +16,7 @@ import { setBreakdown } from '../../redux/store/reducers/preset-reducer';
 import { type BreakdownType } from '../../types/breakdown';
 
 import './BreakdownListItem.css';
+import { emojify } from '../../utility/emojify';
 
 export interface BreakdownListItemProps {
   item: ItemData
@@ -65,6 +66,9 @@ export const BreakdownListItem = ({ item, type }: BreakdownListItemProps): JSX.E
     defaultProtocol: 'https'
   });
 
+  const breakdownNotesWithEmojisAndLinks = emojify(breakdownNotesWithLinks);
+  console.error(breakdownNotesWithEmojisAndLinks);
+
   return (
     <ListItem
       tabIndex={-1}
@@ -76,7 +80,7 @@ export const BreakdownListItem = ({ item, type }: BreakdownListItemProps): JSX.E
         <ContentEditable
           placeholder={item.breakdownNotes}
           className="inner-notes-field"
-          html={breakdownNotesWithLinks}
+          html={breakdownNotesWithEmojisAndLinks}
           onChange={onChange}
           onBlur={onBlur}
         />

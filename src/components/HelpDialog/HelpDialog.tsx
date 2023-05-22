@@ -39,6 +39,9 @@ export const HelpDialog = ({
                 <li>
                   <strong>Assign multiple</strong> - Hold <i>Shift+Click</i> to assign multiple slots to the same item.
                 </li>
+                <li>
+                  <strong>Emojis</strong> - Type <i>;emojiName;</i> to use emojis in notes fields.
+                </li>
               </ul>
             </Typography>
           </div>
