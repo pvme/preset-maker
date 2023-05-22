@@ -6,35 +6,44 @@
   background-color: rgb(26, 32, 39);
 }
 
-.app-bar {
+.header-bar__app-bar {
   max-width: 100%;
   background-color: #191d1d;
 }
 
-.tool-bar {
+.header-bar__tool-bar {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 }
 
-.image-container {
+.header-bar__logo {
   display: flex;
+  align-items: center;
   flex-direction: row;
   justify-content: flex-start;
 }
 
-.image-container > img {
+.header-bar__logo > img {
   cursor: pointer;
 }
 
-.button-container {
+.header-bar__help-icon {
+  margin-left: 10px;
+}
+
+.header-bar__help-icon:hover {
+  color: #747bff;
+}
+
+.header-bar__json {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
 }
 
-.sub-item {
+.header-bar__item {
   width: 500px !important;
 }
 
