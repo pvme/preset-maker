@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 
 import ContentEditable, { type ContentEditableEvent } from 'react-contenteditable';
 import { useDispatch } from 'react-redux';
@@ -38,21 +38,15 @@ const transformNotes = (input: string): string => {
 
 export const BreakdownListItem = ({ item, type }: BreakdownListItemProps): JSX.Element => {
   const dispatch = useDispatch();
-  const breakdownNotes = item.breakdownNotes ?? '';
+  const [formattedNotes, setFormattedNotes] = useState<string>(item.breakdownNotes ?? '');
 
   const onChange = useCallback((event: ContentEditableEvent) => {
     if (event.currentTarget.innerHTML === null || event.currentTarget.innerHTML === undefined) {
       return;
     }
 
-    dispatch(
-      setBreakdown({
-        breakdownType: type,
-        itemName: item.label,
-        description: transformNotes(event.currentTarget.innerHTML)
-      })
-    );
-  }, [item]);
+    setFormattedNotes(transformNotes(event.currentTarget.innerHTML));
+  }, []);
 
   const handleRecentClick = useCallback(
     (item: ItemData) => {
@@ -78,14 +72,14 @@ export const BreakdownListItem = ({ item, type }: BreakdownListItemProps): JSX.E
     [type, item.label]
   );
 
-  const breakdownNotesWithLinks = linkifyHtml(breakdownNotes, {
+  const breakdownNotesWithLinks = linkifyHtml(formattedNotes, {
     attributes: {
       contenteditable: false
     },
     defaultProtocol: 'https'
   });
 
-  const breakdownNotesWithEmojisAndLinks = breakdownNotesWithLinks;
+  const breakdownNotesWithEmojisAndLinks = emojify(breakdownNotesWithLinks);
 
   return (
     <ListItem
