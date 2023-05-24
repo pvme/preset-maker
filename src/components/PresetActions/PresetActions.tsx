@@ -139,7 +139,7 @@ export const PresetActions = ({
           fullWidth
         />
       </fieldset>
-      <div className="preset-actions desktop-only">
+      <div className="desktop-only">
         {/* Save actions */}
         <fieldset className="preset-actions__fieldset preset-actions__save">
           <legend>Save</legend>
