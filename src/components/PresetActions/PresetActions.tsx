@@ -2,7 +2,7 @@ import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import LinkIcon from '@mui/icons-material/Link';
 import SaveIcon from '@mui/icons-material/Save';
 import SaveAsIcon from '@mui/icons-material/SaveAs';
-import { Button, ButtonGroup, Link, TextField } from '@mui/material';
+import { Button, ButtonGroup, Link } from '@mui/material';
 import { canCopyImagesToClipboard } from 'copy-image-clipboard';
 import { useSnackbar } from 'notistack';
 import React, { useCallback, useState } from 'react';

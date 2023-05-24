@@ -41,6 +41,10 @@
   margin-top: 16px;
 }
 
+.preset-and-actions {
+  display: flex;
+}
+
 
 /* Responsive + mobile styling */
 
