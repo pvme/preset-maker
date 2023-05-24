@@ -15,7 +15,8 @@ export function emojify (text: string): string {
     if (emojiId === undefined) {
       return {
         alias,
-        mappedText: alias
+        // No emoji found - keep the original text as-is.
+        mappedText: `;${alias};`
       };
     }
 

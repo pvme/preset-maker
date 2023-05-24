@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from 'react';
+import React, { useCallback } from 'react';
 
 import ContentEditable, { type ContentEditableEvent } from 'react-contenteditable';
 import { useDispatch } from 'react-redux';
@@ -23,17 +23,36 @@ export interface BreakdownListItemProps {
   type: BreakdownType
 }
 
+const allowedHtmlTags = sanitizeHtml.defaults.allowedTags.concat(['img']);
+const allowedHtmlAttributes = {
+  ...sanitizeHtml.defaults.allowedAttributes,
+  img: ['class', 'src']
+};
+const transformNotes = (input: string): string => {
+  const sanitizedHtml = sanitizeHtml(input, {
+    allowedTags: allowedHtmlTags,
+    allowedAttributes: allowedHtmlAttributes
+  });
+  return emojify(sanitizedHtml);
+};
+
 export const BreakdownListItem = ({ item, type }: BreakdownListItemProps): JSX.Element => {
   const dispatch = useDispatch();
-  const breakdownNotes = useRef(item.breakdownNotes ?? '');
+  const breakdownNotes = item.breakdownNotes ?? '';
 
   const onChange = useCallback((event: ContentEditableEvent) => {
     if (event.currentTarget.innerHTML === null || event.currentTarget.innerHTML === undefined) {
       return;
     }
 
-    breakdownNotes.current = sanitizeHtml(event.currentTarget.innerHTML);
-  }, []);
+    dispatch(
+      setBreakdown({
+        breakdownType: type,
+        itemName: item.label,
+        description: transformNotes(event.currentTarget.innerHTML)
+      })
+    );
+  }, [item]);
 
   const handleRecentClick = useCallback(
     (item: ItemData) => {
@@ -52,25 +71,25 @@ export const BreakdownListItem = ({ item, type }: BreakdownListItemProps): JSX.E
         setBreakdown({
           breakdownType: type,
           itemName: item.label,
-          description: sanitizeHtml(event.currentTarget.innerHTML)
+          description: transformNotes(event.currentTarget.innerHTML)
         })
       );
     },
-    [item]
+    [type, item.label]
   );
 
-  const breakdownNotesWithLinks = linkifyHtml(breakdownNotes.current, {
+  const breakdownNotesWithLinks = linkifyHtml(breakdownNotes, {
     attributes: {
       contenteditable: false
     },
     defaultProtocol: 'https'
   });
 
-  const breakdownNotesWithEmojisAndLinks = emojify(breakdownNotesWithLinks);
-  console.error(breakdownNotesWithEmojisAndLinks);
+  const breakdownNotesWithEmojisAndLinks = breakdownNotesWithLinks;
 
   return (
     <ListItem
+      key={item.name}
       tabIndex={-1}
       classes={{
         root: 'breakdown-list-item',

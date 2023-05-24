@@ -11,10 +11,10 @@ class EmojiSettingsLoader {
    */
   emojiMap: Record<string, string> = {};
 
-  getEmojiId (alias: string): string {
+  getEmojiId (alias: string): string | undefined {
     const discordEmojiTag = this.emojiMap[alias.toLowerCase()] ?? undefined;
     if (discordEmojiTag === undefined) {
-      return alias;
+      return undefined;
     }
 
     return this._getDiscordIdFromTag(discordEmojiTag) ?? alias;
