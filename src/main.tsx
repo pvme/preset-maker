@@ -20,6 +20,7 @@ import App from './App';
 import { ReduxStore } from './redux/store/store';
 
 import './index.css';
+import { EmojiSettings } from './data/emoji-settings';
 
 interface SnackBarAction {
   snackbarKey: SnackbarKey
@@ -40,6 +41,9 @@ const darkTheme = createTheme({
     mode: 'dark'
   }
 });
+
+// Fetch emojis on page load.
+void EmojiSettings.load();
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>

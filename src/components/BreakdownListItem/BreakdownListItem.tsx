@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from 'react';
+import React, { useCallback, useState } from 'react';
 
 import ContentEditable, { type ContentEditableEvent } from 'react-contenteditable';
 import { useDispatch } from 'react-redux';
@@ -16,22 +16,36 @@ import { setBreakdown } from '../../redux/store/reducers/preset-reducer';
 import { type BreakdownType } from '../../types/breakdown';
 
 import './BreakdownListItem.css';
+import { emojify } from '../../utility/emojify';
 
 export interface BreakdownListItemProps {
   item: ItemData
   type: BreakdownType
 }
 
+const allowedHtmlTags = sanitizeHtml.defaults.allowedTags.concat(['img']);
+const allowedHtmlAttributes = {
+  ...sanitizeHtml.defaults.allowedAttributes,
+  img: ['class', 'src']
+};
+const transformNotes = (input: string): string => {
+  const sanitizedHtml = sanitizeHtml(input, {
+    allowedTags: allowedHtmlTags,
+    allowedAttributes: allowedHtmlAttributes
+  });
+  return emojify(sanitizedHtml);
+};
+
 export const BreakdownListItem = ({ item, type }: BreakdownListItemProps): JSX.Element => {
   const dispatch = useDispatch();
-  const breakdownNotes = useRef(item.breakdownNotes ?? '');
+  const [formattedNotes, setFormattedNotes] = useState<string>(item.breakdownNotes ?? '');
 
   const onChange = useCallback((event: ContentEditableEvent) => {
     if (event.currentTarget.innerHTML === null || event.currentTarget.innerHTML === undefined) {
       return;
     }
 
-    breakdownNotes.current = sanitizeHtml(event.currentTarget.innerHTML);
+    setFormattedNotes(transformNotes(event.currentTarget.innerHTML));
   }, []);
 
   const handleRecentClick = useCallback(
@@ -51,22 +65,25 @@ export const BreakdownListItem = ({ item, type }: BreakdownListItemProps): JSX.E
         setBreakdown({
           breakdownType: type,
           itemName: item.label,
-          description: sanitizeHtml(event.currentTarget.innerHTML)
+          description: transformNotes(event.currentTarget.innerHTML)
         })
       );
     },
-    [item]
+    [type, item.label]
   );
 
-  const breakdownNotesWithLinks = linkifyHtml(breakdownNotes.current, {
+  const breakdownNotesWithLinks = linkifyHtml(formattedNotes, {
     attributes: {
       contenteditable: false
     },
     defaultProtocol: 'https'
   });
 
+  const breakdownNotesWithEmojisAndLinks = emojify(breakdownNotesWithLinks);
+
   return (
     <ListItem
+      key={item.name}
       tabIndex={-1}
       classes={{
         root: 'breakdown-list-item',
@@ -76,7 +93,7 @@ export const BreakdownListItem = ({ item, type }: BreakdownListItemProps): JSX.E
         <ContentEditable
           placeholder={item.breakdownNotes}
           className="inner-notes-field"
-          html={breakdownNotesWithLinks}
+          html={breakdownNotesWithEmojisAndLinks}
           onChange={onChange}
           onBlur={onBlur}
         />
