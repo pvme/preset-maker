@@ -66,6 +66,10 @@
   display: flex;
 }
 
+.flex-col {
+  flex-direction: column;
+}
+
 .flex-center {
   align-items: center;
   justify-content: center;
@@ -95,6 +99,10 @@
 
 .mr-8 {
   margin-right: 8px;
+}
+
+.mt-auto {
+  margin-top: auto;
 }
 
 .cursor-pointer:hover {

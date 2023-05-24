@@ -1,7 +1,7 @@
 .preset-actions {
   display: flex;
   flex-direction: column;
-  margin-left: 10px;
+  margin-left: 16px;
 }
 
 .preset-actions__fieldset {

@@ -106,7 +106,7 @@ export const RelicSection = (): JSX.Element => {
   }, [relics, indexedSelection]);
 
   return (
-    <div className="width-50">
+    <div className="d-flex flex-col width-50">
       <Typography className="d-flex flex-center" variant="h6">
         <img
           className="m-8"
@@ -116,7 +116,7 @@ export const RelicSection = (): JSX.Element => {
         />
         Relics
       </Typography>
-      <div>
+      <div className="d-flex flex-col">
         <RelicSectionList
           relics={relics.primaryRelics}
           onClick={(event, index) => {
@@ -124,7 +124,7 @@ export const RelicSection = (): JSX.Element => {
           }}
         />
       </div>
-      <div>
+      <div className="mt-auto">
         <div>
           <strong>
             Alternative

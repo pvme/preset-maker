@@ -17,7 +17,6 @@ import './PresetSection.css';
 export const PresetSection = (): JSX.Element => {
   const dispatch = useAppDispatch();
 
-  // const presetExportRef = useRef<HTMLDivElement>(null);
   const [presetExportRef, setPresetExportRef] = useState<HTMLDivElement | null>(null);
   const [isPresetLoading, setIsPresetLoading] = useState(false);
 
