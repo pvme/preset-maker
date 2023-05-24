@@ -23,6 +23,8 @@ import './PresetBreakdown.css';
 // Used in getMappedEquipment
 const customOrder: number[] = [0, 4, 6, 7, 8, 2, 9, 1, 3, 5, 10, 11, 12];
 
+const clipboardSupported = canCopyImagesToClipboard();
+
 export const PresetBreakdown = (): JSX.Element => {
   const exportRef = useRef<HTMLDivElement>(null);
   const { enqueueSnackbar } = useSnackbar();
@@ -102,10 +104,9 @@ export const PresetBreakdown = (): JSX.Element => {
           <Button
             variant="outlined"
             color="secondary"
-            disabled={!canCopyImagesToClipboard()}
-            onClick={() => {
-              void copyBreakdownToClipboard();
-            }}
+            disabled={!clipboardSupported}
+            // eslint-disable-next-line @typescript-eslint/no-misused-promises
+            onClick={copyBreakdownToClipboard}
           >
             Copy Breakdown to Clipboard
           </Button>
