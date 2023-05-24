@@ -2261,7 +2261,31 @@
 		"name": "Essence of finality",
 		"breakdownNotes": "",
 		"slot": 10,
-		"wikiLink": "https://runescape.wiki/w/Essence_of_finality"
+		"wikiLink": "https://runescape.wiki/w/Essence_of_Finality_amulet"
+	},
+	{
+		"label": "eofblackunorn",
+		"image": "https://i.imgur.com/jSEhliT.png",
+		"name": "Essence of finality (black) [unorn]",
+		"breakdownNotes": "",
+		"slot": 10,
+		"wikiLink": "https://runescape.wiki/w/Essence_of_Finality_amulet_(black)"
+	},
+	{
+		"label": "eofblueunorn",
+		"image": "https://i.imgur.com/jsZS0fC.png",
+		"name": "Essence of finality (blue) [unorn]",
+		"breakdownNotes": "",
+		"slot": 10,
+		"wikiLink": "https://runescape.wiki/w/Essence_of_Finality_amulet_(blue)"
+	},
+	{
+		"label": "eofgreenunorn",
+		"image": "https://i.imgur.com/AGcSjD8.png",
+		"name": "Essence of finality (green) [unorn]",
+		"breakdownNotes": "",
+		"slot": 10,
+		"wikiLink": "https://runescape.wiki/w/Essence_of_Finality_amulet_(green)"
 	},
 	{
 		"label": "eofor",
@@ -2269,7 +2293,39 @@
 		"name": "Essence of finality (or)",
 		"breakdownNotes": "",
 		"slot": 10,
-		"wikiLink": "https://runescape.wiki/w/Essence_of_finality_(or)"
+		"wikiLink": "https://runescape.wiki/w/Essence_of_Finality_amulet_(or)"
+	},
+	{
+		"label": "eofpinkunorn",
+		"image": "https://i.imgur.com/iJDAjOV.png",
+		"name": "Essence of finality (pink) [unorn]",
+		"breakdownNotes": "",
+		"slot": 10,
+		"wikiLink": "https://runescape.wiki/w/Essence_of_Finality_amulet_(pink)"
+	},
+	{
+		"label": "eofpurpleunorn",
+		"image": "https://i.imgur.com/racSEUb.png",
+		"name": "Essence of finality (purple) [unorn]",
+		"breakdownNotes": "",
+		"slot": 10,
+		"wikiLink": "https://runescape.wiki/w/Essence_of_Finality_amulet_(purple)"
+	},
+	{
+		"label": "eofredunorn",
+		"image": "https://i.imgur.com/v6sUYiq.png",
+		"name": "Essence of finality (red) [unorn]",
+		"breakdownNotes": "",
+		"slot": 10,
+		"wikiLink": "https://runescape.wiki/w/Essence_of_Finality_amulet_(red)"
+	},
+	{
+		"label": "eofyellowunorn",
+		"image": "https://i.imgur.com/gvLLVbT.png",
+		"name": "Essence of finality (yellow) [unorn]",
+		"breakdownNotes": "",
+		"slot": 10,
+		"wikiLink": "https://runescape.wiki/w/Essence_of_Finality_amulet_(yellow)"
 	},
 	{
 		"label": "spices",
