@@ -61,8 +61,21 @@ export const DialogPopup = ({
   const { slotType, slotIndex, inventorySlots } = useAppSelector(selectPreset);
   const [filteredItemData, setFilteredItemData] = useState<ItemData[]>(itemData);
 
+  // Helper function for filtering.
+  const filterItemsForSlotType = (selectedSlotType: SlotType, selectedSlotIndex: number, items: ItemData[]): ItemData[] => {
+    // For inventory, filter out auras.
+    if (selectedSlotType === SlotType.Inventory) {
+      return items.filter((item) => item.slot !== ItemType.AURA);
+    } else {
+      return items.filter((item) => item.slot === slotIndexToSlotEnumMap.get(selectedSlotIndex));
+    }
+  };
+
+  // Ensure that recent items aren't for a different slot.
+  const filteredRecentItems = filterItemsForSlotType(slotType, slotIndex, recentlySelectedItems);
+
   useEffect(() => {
-    setFilteredItemData(slotType === SlotType.Equipment ? itemData.filter(i => i.slot === slotIndexToSlotEnumMap.get(slotIndex)) : itemData);
+    setFilteredItemData(filterItemsForSlotType(slotType, slotIndex, itemData));
   }, [itemData, slotType, slotIndex]);
 
   const selectedInventorySlots = inventorySlots
@@ -211,12 +224,12 @@ export const DialogPopup = ({
             </Box>
           )}
         />
-        {recentlySelectedItems.length > 0 && (
+        {filteredRecentItems.length > 0 && (
           <div className="recent-items-title">
             <Typography className="recent-items-title">
               Recent Items
             </Typography>
-            {recentlySelectedItems.map((item: ItemData) =>
+            {filteredRecentItems.map((item: ItemData) =>
               (item.image.length > 0)
                 ? (
                 <Tooltip key={item.name} title={item.name}>

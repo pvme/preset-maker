@@ -139,7 +139,7 @@ export const PresetActions = ({
           fullWidth
         />
       </fieldset>
-      <div className="preset-actions desktop-only">
+      <div className="desktop-only">
         {/* Save actions */}
         <fieldset className="preset-actions__fieldset preset-actions__save">
           <legend>Save</legend>
@@ -184,9 +184,9 @@ export const PresetActions = ({
                 Link to preset
               </Link>
             }
-            <ClipboardCopyButtonContainer>
+            <ClipboardCopyButtonContainer className="d-flex">
               <Button
-                className="preset-actions__button"
+                className="preset-actions__button width-100"
                 variant="outlined"
                 startIcon={<ContentCopyIcon/>}
                 disabled={!canCopyImagesToClipboard()}
