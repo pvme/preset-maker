@@ -101,8 +101,13 @@
   margin-right: 8px;
 }
 
+<<<<<<< HEAD
 .mt-auto {
   margin-top: auto;
+=======
+.ml-8 {
+  margin-right: 8px;
+>>>>>>> 54c00ac (enh: add preset-level notes')
 }
 
 .cursor-pointer:hover {

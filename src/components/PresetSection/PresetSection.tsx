@@ -13,6 +13,7 @@ import { Fade, Typography } from '@mui/material';
 import CircularProgress from '@mui/material/CircularProgress/CircularProgress';
 import { PresetActions } from '../PresetActions/PresetActions';
 import './PresetSection.css';
+import { PresetDetails } from '../PresetDetails/PresetDetails';
 
 export const PresetSection = (): JSX.Element => {
   const dispatch = useAppDispatch();
@@ -56,13 +57,16 @@ export const PresetSection = (): JSX.Element => {
           <Fade in={!isPresetLoading}>
             <div className="preset-section">
               <PresetName />
-              <div className="preset-and-actions">
+              <div className="d-flex">
                 <PresetEditor
                   setExportRef={presetExportRefCallback}
                 />
-                <PresetActions
-                  presetExportRef={presetExportRef}
-                />
+                <div className="preset-section__sidebar">
+                  <PresetDetails />
+                  <PresetActions
+                    presetExportRef={presetExportRef}
+                  />
+                </div>
               </div>
               <PresetBreakdown />
             </div>

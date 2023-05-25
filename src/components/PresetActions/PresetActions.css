@@ -1,9 +1,12 @@
+<<<<<<< HEAD
 .preset-actions {
   display: flex;
   flex-direction: column;
   margin-left: 16px;
 }
 
+=======
+>>>>>>> 54c00ac (enh: add preset-level notes')
 .preset-actions__fieldset {
   text-align: left;
   padding-right: 8px;
