@@ -24,8 +24,8 @@ const unpackData = async (stored: {
   familiars: Familiars
 }): Promise<SavedPresetData> => {
   const newPreset: SavedPresetData = {
-    presetName: '',
-    presetNotes: '',
+    presetName: stored.presetName,
+    presetNotes: stored.presetNotes,
     inventorySlots: [],
     equipmentSlots: [],
     relics: { primaryRelics: [], alternativeRelics: [] },
