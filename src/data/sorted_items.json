@@ -409,7 +409,7 @@
 	},
 	{
 		"label": "arcticbear",
-		"image": "https://i.imgur.com/o9TmbfA.png",
+		"image": "https://i.imgur.com/SDXWswc.png",
 		"name": "Arctic bear pouch",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -2216,6 +2216,14 @@
 		"wikiLink": "https://runescape.wiki/w/Dragon_claws"
 	},
 	{
+		"label": "eofor",
+		"image": "https://i.imgur.com/xPypDhQ.png",
+		"name": "EoF - Ek-ZekKil",
+		"breakdownNotes": "",
+		"slot": 10,
+		"wikiLink": "https://runescape.wiki/w/Ek-ZekKil"
+	},
+	{
 		"label": "eofpink",
 		"image": "https://i.imgur.com/MWLieOn.png",
 		"name": "EoF - Eldritch crossbow",
@@ -2258,42 +2266,58 @@
 	{
 		"label": "eof",
 		"image": "https://i.imgur.com/UB0lAK8.png",
-		"name": "Essence of finality",
+		"name": "Essence of Finality amulet",
 		"breakdownNotes": "",
 		"slot": 10,
 		"wikiLink": "https://runescape.wiki/w/Essence_of_Finality_amulet"
 	},
 	{
 		"label": "eofblackunorn",
-		"image": "https://i.imgur.com/jSEhliT.png",
-		"name": "Essence of finality (black) [unorn]",
+		"image": "https://i.imgur.com/jRuWtdl.png",
+		"name": "Essence of Finality amulet (black)",
 		"breakdownNotes": "",
 		"slot": 10,
 		"wikiLink": "https://runescape.wiki/w/Essence_of_Finality_amulet_(black)"
 	},
 	{
 		"label": "eofblueunorn",
-		"image": "https://i.imgur.com/jsZS0fC.png",
-		"name": "Essence of finality (blue) [unorn]",
+		"image": "https://i.imgur.com/CtZKC6Z.png",
+		"name": "Essence of Finality amulet (blue)",
 		"breakdownNotes": "",
 		"slot": 10,
 		"wikiLink": "https://runescape.wiki/w/Essence_of_Finality_amulet_(blue)"
 	},
 	{
 		"label": "eofgreenunorn",
-		"image": "https://i.imgur.com/AGcSjD8.png",
-		"name": "Essence of finality (green) [unorn]",
+		"image": "https://i.imgur.com/8a6M64a.png",
+		"name": "Essence of Finality amulet (green)",
 		"breakdownNotes": "",
 		"slot": 10,
 		"wikiLink": "https://runescape.wiki/w/Essence_of_Finality_amulet_(green)"
 	},
 	{
-		"label": "eofor",
-		"image": "https://i.imgur.com/xPypDhQ.png",
-		"name": "Essence of finality (or)",
+		"label": "eofpurpleunorn",
+		"image": "https://i.imgur.com/5NxOiAg.png",
+		"name": "Essence of Finality amulet (purple)",
 		"breakdownNotes": "",
 		"slot": 10,
-		"wikiLink": "https://runescape.wiki/w/Essence_of_Finality_amulet_(or)"
+		"wikiLink": "https://runescape.wiki/w/Essence_of_Finality_amulet_(purple)"
+	},
+	{
+		"label": "eofredunorn",
+		"image": "https://i.imgur.com/yUkClNY.png",
+		"name": "Essence of Finality amulet (red)",
+		"breakdownNotes": "",
+		"slot": 10,
+		"wikiLink": "https://runescape.wiki/w/Essence_of_Finality_amulet_(red)"
+	},
+	{
+		"label": "eofyellowunorn",
+		"image": "https://i.imgur.com/YR6pLdv.png",
+		"name": "Essence of Finality amulet (yellow)",
+		"breakdownNotes": "",
+		"slot": 10,
+		"wikiLink": "https://runescape.wiki/w/Essence_of_Finality_amulet_(yellow)"
 	},
 	{
 		"label": "eofpinkunorn",
@@ -2302,30 +2326,6 @@
 		"breakdownNotes": "",
 		"slot": 10,
 		"wikiLink": "https://runescape.wiki/w/Essence_of_Finality_amulet_(pink)"
-	},
-	{
-		"label": "eofpurpleunorn",
-		"image": "https://i.imgur.com/racSEUb.png",
-		"name": "Essence of finality (purple) [unorn]",
-		"breakdownNotes": "",
-		"slot": 10,
-		"wikiLink": "https://runescape.wiki/w/Essence_of_Finality_amulet_(purple)"
-	},
-	{
-		"label": "eofredunorn",
-		"image": "https://i.imgur.com/v6sUYiq.png",
-		"name": "Essence of finality (red) [unorn]",
-		"breakdownNotes": "",
-		"slot": 10,
-		"wikiLink": "https://runescape.wiki/w/Essence_of_Finality_amulet_(red)"
-	},
-	{
-		"label": "eofyellowunorn",
-		"image": "https://i.imgur.com/gvLLVbT.png",
-		"name": "Essence of finality (yellow) [unorn]",
-		"breakdownNotes": "",
-		"slot": 10,
-		"wikiLink": "https://runescape.wiki/w/Essence_of_Finality_amulet_(yellow)"
 	},
 	{
 		"label": "spices",
@@ -3881,7 +3881,7 @@
 	},
 	{
 		"label": "magicgolemboots",
-		"image": "https://i.imgur.com/o0nI98W.png",
+		"image": "https://i.imgur.com/0yMVyOj.png",
 		"name": "Magic golem boots",
 		"breakdownNotes": "",
 		"slot": 7,
@@ -3889,7 +3889,7 @@
 	},
 	{
 		"label": "magicgolemgloves",
-		"image": "https://i.imgur.com/TAsDBLq.png",
+		"image": "https://i.imgur.com/ZaLwIE0.png",
 		"name": "Magic golem gloves",
 		"breakdownNotes": "",
 		"slot": 6,
@@ -3897,7 +3897,7 @@
 	},
 	{
 		"label": "magicgolemhead",
-		"image": "https://i.imgur.com/qCWii5d.png",
+		"image": "https://i.imgur.com/XCIjNXk.png",
 		"name": "Magic golem head",
 		"breakdownNotes": "",
 		"slot": 1,
@@ -3905,7 +3905,7 @@
 	},
 	{
 		"label": "magicgolemlegs",
-		"image": "https://i.imgur.com/VfnEgNk.png",
+		"image": "https://i.imgur.com/4jZVBTE.png",
 		"name": "Magic golem legs",
 		"breakdownNotes": "",
 		"slot": 3,
@@ -3913,7 +3913,7 @@
 	},
 	{
 		"label": "magicgolemtorso",
-		"image": "https://i.imgur.com/Hu01LwK.png",
+		"image": "https://i.imgur.com/Ytyzy1c.png",
 		"name": "Magic golem torso",
 		"breakdownNotes": "",
 		"slot": 2,
