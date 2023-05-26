@@ -1,49 +1,68 @@
-import React, { useCallback } from 'react';
-import { TextField } from '@mui/material';
-import TextareaAutosize from '@mui/base/TextareaAutosize';
-import './PresetDetails.css';
+import { InputLabel, TextField } from '@mui/material';
+import React, { useCallback, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import './PresetDetails.css';
 
-import { selectPreset, setNotes } from '../../redux/store/reducers/preset-reducer';
+import { selectPreset, setPresetNotes, setPresetName } from '../../redux/store/reducers/preset-reducer';
+import { NotesField } from '../NotesField/NotesField';
 
 export const PresetDetails = (): JSX.Element => {
   const dispatch = useAppDispatch();
   const {
     presetName,
-    notes
+    presetNotes
   } = useAppSelector(selectPreset);
 
-  const onNotesChange = useCallback(
-    (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-      // TODO: Emojify it
-      dispatch(setNotes(event.currentTarget.value));
+  const [name, setName] = useState<string>(presetName);
+
+  const onNotesBlur = useCallback(
+    (formattedNotes: string) => {
+      dispatch(setPresetNotes(formattedNotes));
     },
-    [notes]
+    [presetNotes]
   );
 
+  const onNameChange = useCallback(
+    (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+      setName(event.currentTarget.value);
+    },
+    [name]
+  );
+
+  const onNameBlur = useCallback(
+    () => {
+      dispatch(setPresetName(name));
+    },
+    [name]
+  );
+
+  const placeholder = presetName.length > 0 ? presetName : 'Add a name...';
+  const value = name.length > 0 ? name : presetName;
   return (
     <>
       <fieldset className="preset-details">
         <legend>Details</legend>
+        <InputLabel className="preset-details__label">
+          Name
+        </InputLabel>
         <TextField
-          label="Name"
-          value={presetName}
-          disabled
+          className="preset-details__name"
+          placeholder={placeholder}
+          value={value}
           fullWidth
+          onChange={onNameChange}
+          onBlur={onNameBlur}
         />
-        <div>
-          <TextareaAutosize
-            placeholder="Notes"
-            className="preset-details__notes"
-            minRows={2}
-            maxRows={4}
-            value={notes}
-            onChange={onNotesChange}
-            spellCheck={false}
-          />
-        </div>
+        <InputLabel className="preset-details__label">
+          Notes
+        </InputLabel>
+        <NotesField
+          placeholder="Add notes..."
+          className="preset-details__notes"
+          initialValue={presetNotes}
+          onBlur={onNotesBlur}
+        />
       </fieldset>
-    {/* TODO Add notes */}
     </>
   );
 };

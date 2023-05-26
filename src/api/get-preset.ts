@@ -18,12 +18,14 @@ export const getPreset = async (id: string): Promise<SavedPresetData> => {
 const unpackData = async (stored: {
   equipmentSlots: any
   presetName: any
+  presetNotes: string
   inventorySlots: string | any[]
   relics: Relics
   familiars: Familiars
 }): Promise<SavedPresetData> => {
   const newPreset: SavedPresetData = {
     presetName: '',
+    presetNotes: '',
     inventorySlots: [],
     equipmentSlots: [],
     relics: { primaryRelics: [], alternativeRelics: [] },

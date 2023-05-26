@@ -12,6 +12,7 @@ import { type RelicData, type Relics } from '../../../types/relic';
 // Define a type for the slice state
 interface PresetState {
   presetName: string
+  presetNotes: string
   inventorySlots: ItemData[]
   equipmentSlots: ItemData[]
   familiars: Familiars
@@ -19,7 +20,6 @@ interface PresetState {
   breakdown: Breakdown[]
   slotType: SlotType
   slotIndex: number
-  notes: string
 }
 
 interface IndexedSlot<T> {
@@ -46,6 +46,7 @@ const fillArrayWithSlotData = (numItems: number): any[] =>
 // Define the initial state using that type
 const initialState: PresetState = {
   presetName: '',
+  presetNotes: '',
   inventorySlots: Array.from({ length: 28 }, () => ({
     name: '',
     image: '',
@@ -63,7 +64,6 @@ const initialState: PresetState = {
     alternativeRelics: fillArrayWithSlotData(3)
   },
   breakdown: [],
-  notes: '',
   slotType: SlotType.Inventory,
   slotIndex: -1
 };
@@ -75,12 +75,12 @@ export const presetSlice = createSlice({
   reducers: {
     resetToInitialState: (state: PresetState) => {
       state.presetName = initialState.presetName;
+      state.presetNotes = initialState.presetNotes;
       state.inventorySlots = initialState.inventorySlots;
       state.equipmentSlots = initialState.equipmentSlots;
       state.relics = initialState.relics;
       state.familiars = initialState.familiars;
       state.breakdown = initialState.breakdown;
-      state.notes = initialState.notes;
     },
     setPresetName: (state: PresetState, action: PayloadAction<string>) => {
       state.presetName = action.payload;
@@ -115,8 +115,8 @@ export const presetSlice = createSlice({
     setAlternativeFamiliar: (state: PresetState, action: PayloadAction<FamiliarSlot>) => {
       state.familiars.alternativeFamiliars[action.payload.index] = action.payload.value;
     },
-    setNotes: (state: PresetState, action: PayloadAction<string>) => {
-      state.notes = action.payload;
+    setPresetNotes: (state: PresetState, action: PayloadAction<string>) => {
+      state.presetNotes = action.payload;
     },
     setEntireBreakdown: (
       state: PresetState,
@@ -173,6 +173,7 @@ export const presetSlice = createSlice({
 export const {
   resetToInitialState,
   setPresetName,
+  setPresetNotes,
   setInventorySlot,
   swapInventorySlots,
   setEquipmentSlot,
@@ -182,7 +183,6 @@ export const {
   setAlternativeFamiliar,
   setEntireBreakdown,
   setBreakdown,
-  setNotes,
   importDataAction,
   updateSlotType,
   updateSlotIndex,

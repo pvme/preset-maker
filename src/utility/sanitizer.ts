@@ -78,6 +78,7 @@ export const stringifyPreset = (sanitizedPresetData: SavedPresetData): string =>
 
 export const stringifyData = (
   presetName: string,
+  presetNotes: string,
   inventoryData: ItemData[],
   equipmentData: ItemData[],
   relicData: Relics,
@@ -90,6 +91,7 @@ export const stringifyData = (
     : `${dateString}-${hours}-${minutes}${seconds}`;
   return JSON.stringify({
     presetName: presetNameToUse,
+    presetNotes,
     inventorySlots: inventoryData,
     equipmentSlots: equipmentData,
     relics: relicData,

@@ -5,14 +5,29 @@
   border-color: rgba(255, 255, 255, 0.25);
 }
 
+.preset-details__label {
+  margin: 6px;
+}
+
+.preset-details__label:first-of-type {
+  margin-top: 0;
+}
+
 .preset-details__notes {
   margin-top: 8px;
   background: none;
   width: 100%;
   max-width: 278px;
-  font: inherit;
-  padding: 16.5px 14px;
+  padding: 8px;
   border-radius: 4px;
   border-color: rgba(255, 255, 255, 0.25);
-  color: rgba(255, 255, 255, 0.5);
+}
+
+.preset-details__name > div > input {
+  font-size: 14px;
+  padding: 12px;
+}
+
+.preset-details__name > .Mui-focused > fieldset {
+  border-width: 1px !important;
 }

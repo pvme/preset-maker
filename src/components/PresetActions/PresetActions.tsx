@@ -16,6 +16,7 @@ import { ResetConfirmationDialog } from '../ResetConfirmationDialog/ResetConfirm
 import { SavePresetDialog, SavePresetDialogState } from '../SavePresetDialog/SavePresetDialog';
 import './PresetActions.css';
 import { ClipboardCopyButtonContainer } from '../ClipboardCopyButtonContainer/ClipboardCopyButtonContainer';
+import { PresetDetails } from '../PresetDetails/PresetDetails';
 
 const getLinkForPreset = (id: string): string => {
   if (document.location.hostname === 'localhost') {
@@ -129,16 +130,6 @@ export const PresetActions = ({
 
   return (
     <div className="preset-actions">
-      {/* Details */}
-      <fieldset className="preset-actions__fieldset preset-actions__details">
-        <legend>Details</legend>
-        <TextField
-          label="Name"
-          value={presetName}
-          disabled
-          fullWidth
-        />
-      </fieldset>
       <div className="desktop-only">
         {/* Save actions */}
         <fieldset className="preset-actions__fieldset preset-actions__save">
