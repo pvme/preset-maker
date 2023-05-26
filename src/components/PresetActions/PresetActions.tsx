@@ -38,6 +38,7 @@ export const PresetActions = ({
     familiars,
     inventorySlots,
     presetName,
+    presetNotes,
     relics
   } = useAppSelector(selectPreset);
 
@@ -62,6 +63,7 @@ export const PresetActions = ({
   const onSaveClick = useCallback(() => {
     LocalStorage.savePresetWithoutConfirmation({
       presetName,
+      presetNotes,
       inventorySlots,
       equipmentSlots,
       relics,
@@ -98,6 +100,7 @@ export const PresetActions = ({
       const presetImage = await getImageFromElement(presetExportRef);
       const stringifiedPresetData = sanitizeAndStringifyPreset({
         presetName,
+        presetNotes,
         equipmentSlots,
         inventorySlots,
         relics,

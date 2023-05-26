@@ -1,5 +1,5 @@
-import { SavedPresetData } from "../types/saved-preset-data";
-import { sanitizePresetData } from "../utility/sanitizer";
+import { type SavedPresetData } from '../types/saved-preset-data';
+import { sanitizePresetData } from '../utility/sanitizer';
 
 /**
  * Handles read/writes to localStorage. Currently used for:
@@ -9,9 +9,9 @@ import { sanitizePresetData } from "../utility/sanitizer";
 class LocalStorage {
   PRESETS_KEY = 'presets';
 
-  loadPresets() {
+  loadPresets (): SavedPresetData[] {
     const localStoragePresets = window.localStorage.getItem(this.PRESETS_KEY);
-    if (localStoragePresets) {
+    if (localStoragePresets !== undefined && localStoragePresets !== null) {
       const presetData: SavedPresetData[] = JSON.parse(localStoragePresets);
       return presetData;
     }
@@ -19,7 +19,7 @@ class LocalStorage {
     return [];
   }
 
-  savePresetWithoutConfirmation(presetData: SavedPresetData) {
+  savePresetWithoutConfirmation (presetData: SavedPresetData): void {
     const presetName = presetData.presetName;
     const sanitizedPresetData = sanitizePresetData(presetData);
     const currentPresets = this.loadPresets();
@@ -31,7 +31,7 @@ class LocalStorage {
     window.localStorage.setItem(this.PRESETS_KEY, JSON.stringify(updatedPresets));
   }
 
-  savePresetWithConfirmation(presetData: SavedPresetData) {
+  savePresetWithConfirmation (presetData: SavedPresetData): boolean {
     const presetName = presetData.presetName;
     const sanitizedPresetData = sanitizePresetData(presetData);
     const currentPresets = this.loadPresets();
@@ -53,11 +53,11 @@ class LocalStorage {
     return true;
   }
 
-  _replacePreset(currentPresets: SavedPresetData[], presetToReplace: SavedPresetData) {
+  _replacePreset (currentPresets: SavedPresetData[], presetToReplace: SavedPresetData): SavedPresetData[] {
     return currentPresets.map((preset) => {
       if (preset.presetName === presetToReplace.presetName) {
         return {
-          ...presetToReplace,
+          ...presetToReplace
         };
       }
 
@@ -65,7 +65,7 @@ class LocalStorage {
     });
   }
 
-  _isMatchingExistingPreset(currentPresets: SavedPresetData[], presetName: string) {
+  _isMatchingExistingPreset (currentPresets: SavedPresetData[], presetName: string): boolean {
     return currentPresets.findIndex((preset) =>
       preset.presetName.toLocaleUpperCase() === presetName.toLocaleUpperCase()) !== -1;
   }
@@ -75,4 +75,3 @@ const defaultInstance = new LocalStorage();
 export {
   defaultInstance as LocalStorage
 };
-
