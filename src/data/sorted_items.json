@@ -1704,6 +1704,38 @@
 		"wikiLink": "https://runescape.wiki/w/Dorgesh-kaan_sphere"
 	},
 	{
+		"label": "driderbody",
+		"image": "https://i.imgur.com/mqT1dpn.png",
+		"name": "Dragon Rider body",
+		"breakdownNotes": "",
+		"slot": 2,
+		"wikiLink": "https://runescape.wiki/w/Dragon_Rider_body"
+	},
+	{
+		"label": "dridercape",
+		"image": "https://i.imgur.com/TOBhmb5.png",
+		"name": "Dragon Rider cape",
+		"breakdownNotes": "",
+		"slot": 12,
+		"wikiLink": "https://runescape.wiki/w/Dragon_Rider_cape"
+	},
+	{
+		"label": "driderchaps",
+		"image": "https://i.imgur.com/WqRtsUQ.png",
+		"name": "Dragon Rider chaps",
+		"breakdownNotes": "",
+		"slot": 3,
+		"wikiLink": "https://runescape.wiki/w/Dragon_Rider_chaps"
+	},
+	{
+		"label": "driderhelm",
+		"image": "https://i.imgur.com/IZYhahB.png",
+		"name": "Dragon Rider helm",
+		"breakdownNotes": "",
+		"slot": 1,
+		"wikiLink": "https://runescape.wiki/w/Dragon_Rider_helm"
+	},
+	{
 		"label": "driderlance",
 		"image": "https://i.imgur.com/lEdBw7C.png",
 		"name": "Dragon Rider lance",
@@ -2264,6 +2296,14 @@
 		"wikiLink": "https://runescape.wiki/w/Erethdor's_grimoire"
 	},
 	{
+		"label": "eofpinkunorn",
+		"image": "https://i.imgur.com/tzIqWlO.png",
+		"name": "Essence of Finality (pink)",
+		"breakdownNotes": "",
+		"slot": 10,
+		"wikiLink": "https://runescape.wiki/w/Essence_of_Finality_amulet_(pink)"
+	},
+	{
 		"label": "eof",
 		"image": "https://i.imgur.com/UB0lAK8.png",
 		"name": "Essence of Finality amulet",
@@ -2318,14 +2358,6 @@
 		"breakdownNotes": "",
 		"slot": 10,
 		"wikiLink": "https://runescape.wiki/w/Essence_of_Finality_amulet_(yellow)"
-	},
-	{
-		"label": "eofpinkunorn",
-		"image": "https://i.imgur.com/iJDAjOV.png",
-		"name": "Essence of finality (pink) [unorn]",
-		"breakdownNotes": "",
-		"slot": 10,
-		"wikiLink": "https://runescape.wiki/w/Essence_of_Finality_amulet_(pink)"
 	},
 	{
 		"label": "spices",
