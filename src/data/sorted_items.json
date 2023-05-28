@@ -161,7 +161,7 @@
 	},
 	{
 		"label": "airrune",
-		"image": "https://i.imgur.com/272HMXM.png",
+		"image": "hhttps://i.imgur.com/9Nngfvj.png",
 		"name": "Air rune",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -170,7 +170,7 @@
 	{
 		"label": "airrune1k",
 		"image": "https://i.imgur.com/IOehGlx.png",
-		"name": "Air runes",
+		"name": "Air rune",
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Air_rune"
@@ -569,7 +569,7 @@
 	},
 	{
 		"label": "astralrune",
-		"image": "https://i.imgur.com/tflpDfb.png",
+		"image": "https://i.imgur.com/PxjiQ9K.png",
 		"name": "Astral rune",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -1009,7 +1009,7 @@
 	},
 	{
 		"label": "bloodrune",
-		"image": "https://i.imgur.com/2YxV2Pg.png",
+		"image": "https://i.imgur.com/DmJhw50.png",
 		"name": "Blood rune",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -1033,7 +1033,7 @@
 	},
 	{
 		"label": "bodyrune",
-		"image": "https://i.imgur.com/KHVS8Ip.png",
+		"image": "https://i.imgur.com/orRGsqY.png",
 		"name": "Body rune",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -1209,8 +1209,8 @@
 	},
 	{
 		"label": "chaosrune",
-		"image": "https://i.imgur.com/Tc9qi7D.png",
-		"name": "Chaos runes",
+		"image": "https://i.imgur.com/VmHx4CQ.png",
+		"name": "Chaos rune",
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Chaos_rune"
@@ -1218,7 +1218,7 @@
 	{
 		"label": "chaosrune1k",
 		"image": "https://i.imgur.com/o8E0y1O.png",
-		"name": "Chaos runes",
+		"name": "Chaos rune",
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Chaos_rune"
@@ -1329,7 +1329,7 @@
 	},
 	{
 		"label": "cosmicrune",
-		"image": "https://i.imgur.com/hT4aSh6.png",
+		"image": "https://i.imgur.com/7HrRTp8.png",
 		"name": "Cosmic rune",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -1513,8 +1513,8 @@
 	},
 	{
 		"label": "deathrune",
-		"image": "https://i.imgur.com/U2GTsL1.png",
-		"name": "Death runes",
+		"image": "https://i.imgur.com/0V4quVU.png",
+		"name": "Death rune",
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Death_rune"
@@ -1522,7 +1522,7 @@
 	{
 		"label": "deathrune10k",
 		"image": "https://i.imgur.com/gxmlPbx.png",
-		"name": "Death runes",
+		"name": "Death rune",
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Death_rune"
@@ -1865,7 +1865,7 @@
 	},
 	{
 		"label": "dustrune",
-		"image": "https://i.imgur.com/gxxSQqC.png",
+		"image": "https://i.imgur.com/vxUw7gQ.png",
 		"name": "Dust rune",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -1897,7 +1897,7 @@
 	},
 	{
 		"label": "earthrune",
-		"image": "https://i.imgur.com/DeJRGLD.png",
+		"image": "https://i.imgur.com/AnzJigr.png",
 		"name": "Earth rune",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -1906,7 +1906,7 @@
 	{
 		"label": "earthrune1k",
 		"image": "https://i.imgur.com/BaZYIcM.png",
-		"name": "Earth runes",
+		"name": "Earth rune",
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Earth_rune"
@@ -2296,14 +2296,6 @@
 		"wikiLink": "https://runescape.wiki/w/Erethdor's_grimoire"
 	},
 	{
-		"label": "eofpinkunorn",
-		"image": "https://i.imgur.com/tzIqWlO.png",
-		"name": "Essence of Finality (pink)",
-		"breakdownNotes": "",
-		"slot": 10,
-		"wikiLink": "https://runescape.wiki/w/Essence_of_Finality_amulet_(pink)"
-	},
-	{
 		"label": "eof",
 		"image": "https://i.imgur.com/UB0lAK8.png",
 		"name": "Essence of Finality amulet",
@@ -2334,6 +2326,14 @@
 		"breakdownNotes": "",
 		"slot": 10,
 		"wikiLink": "https://runescape.wiki/w/Essence_of_Finality_amulet_(green)"
+	},
+	{
+		"label": "eofpinkunorn",
+		"image": "https://i.imgur.com/tzIqWlO.png",
+		"name": "Essence of Finality amulet (pink)",
+		"breakdownNotes": "",
+		"slot": 10,
+		"wikiLink": "https://runescape.wiki/w/Essence_of_Finality_amulet_(pink)"
 	},
 	{
 		"label": "eofpurpleunorn",
@@ -2497,7 +2497,7 @@
 	},
 	{
 		"label": "firerune",
-		"image": "https://i.imgur.com/oGNpshh.png",
+		"image": "https://i.imgur.com/Moq1ANC.png",
 		"name": "Fire rune",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -2506,7 +2506,7 @@
 	{
 		"label": "firerune10k",
 		"image": "https://i.imgur.com/rbZs9di.png",
-		"name": "Fire runes",
+		"name": "Fire rune",
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Fire_rune"
@@ -3737,8 +3737,8 @@
 	},
 	{
 		"label": "lawrune",
-		"image": "https://i.imgur.com/tFNp9IO.png",
-		"name": "Law runes",
+		"image": "https://i.imgur.com/ILev8dS.png",
+		"name": "Law rune",
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Law_rune"
@@ -3746,7 +3746,7 @@
 	{
 		"label": "lawrune100",
 		"image": "https://i.imgur.com/MLCntzy.png",
-		"name": "Law runes",
+		"name": "Law rune",
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Law_rune"
@@ -3754,7 +3754,7 @@
 	{
 		"label": "lawrune500",
 		"image": "https://i.imgur.com/3wrb0Um.png",
-		"name": "Law runes",
+		"name": "Law rune",
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Law_rune"
@@ -4425,7 +4425,7 @@
 	},
 	{
 		"label": "mindrune",
-		"image": "https://i.imgur.com/tp4TLQa.png",
+		"image": "https://i.imgur.com/2zOitRL.png",
 		"name": "Mind rune",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -4441,7 +4441,7 @@
 	},
 	{
 		"label": "mudrune",
-		"image": "https://i.imgur.com/IBuEQ32.png",
+		"image": "https://i.imgur.com/6GTypln.png",
 		"name": "Mud rune",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -4457,8 +4457,8 @@
 	},
 	{
 		"label": "naturerune1k",
-		"image": "https://i.imgur.com/4FDacZk.png",
-		"name": "Nature runes",
+		"image": "https://i.imgur.com/3uR1o36.png",
+		"name": "Nature rune",
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Nature_rune"
@@ -5736,6 +5736,14 @@
 		"wikiLink": "https://runescape.wiki/w/Skull_sceptre"
 	},
 	{
+		"label": "slayerwildcard100",
+		"image": "https://i.imgur.com/wspoQxZ.png",
+		"name": "Slayer Wildcard",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Slayer_Wildcard"
+	},
+	{
 		"label": "slayercape",
 		"image": "https://i.imgur.com/B4vyqxv.png",
 		"name": "Slayer cape (t)",
@@ -5801,8 +5809,8 @@
 	},
 	{
 		"label": "soulrune",
-		"image": "https://i.imgur.com/tflpDfb.png",
-		"name": "Soul runes",
+		"image": "https://i.imgur.com/hXWHlfs.png",
+		"name": "Soul rune",
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Soul_rune"
@@ -5810,7 +5818,7 @@
 	{
 		"label": "soulrune1k",
 		"image": "https://i.imgur.com/I6H2Brv.png",
-		"name": "Soul runes",
+		"name": "Soul rune",
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Soul_rune"
@@ -6817,8 +6825,8 @@
 	},
 	{
 		"label": "waterrune",
-		"image": "https://i.imgur.com/KD1n82U.png",
-		"name": "Water runes",
+		"image": "https://i.imgur.com/WnPH1nm.png",
+		"name": "Water rune",
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Water_rune"
@@ -6826,7 +6834,7 @@
 	{
 		"label": "waterrune1k",
 		"image": "https://i.imgur.com/lvD8hP6.png",
-		"name": "Water runes",
+		"name": "Water rune",
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Water_rune"
