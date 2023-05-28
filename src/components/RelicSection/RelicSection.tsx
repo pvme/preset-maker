@@ -11,22 +11,31 @@ import './RelicSection.css';
 import Tooltip from '@mui/material/Tooltip/Tooltip';
 import { type IndexedSelection, PrimaryOrAlternative } from '../../types/util';
 import { RelicSelectDialog } from '../dialogs/RelicSelectDialogPopup/RelicSelectDialog';
+import { isMobile } from '../../utility/window-utils';
 
 export type RelicSectionListClickHandler = (
   _event: React.MouseEvent<HTMLDivElement>,
   index: number
 ) => void;
 
+const isMobileScreen = isMobile();
+
 const RelicSectionList = ({ relics, onClick }: { relics: RelicData[], onClick: RelicSectionListClickHandler }): JSX.Element => {
+  const onRelicSelect = useCallback((event: React.MouseEvent<HTMLDivElement>, index: number) => {
+    if (isMobileScreen) {
+      return;
+    }
+
+    onClick(event, index);
+  }, [onClick]);
+
   return (
     <div className="relic-section__list">
       {relics.map((relicData, index) => (
         <div
           key={`${relicData.label}${index}`}
           className="d-flex flex-center relic-section__list-item"
-          onClick={(event: React.MouseEvent<HTMLDivElement>) => {
-            onClick(event, index);
-          }}
+          onClick={(event) => { onRelicSelect(event, index); }}
         >
           {relicData.image.length > 0 && (
             <img className="relic-section__list-item-image" src={relicData.image}></img>
@@ -62,6 +71,10 @@ export const RelicSection = (): JSX.Element => {
       primaryOrAlternative: PrimaryOrAlternative,
       index: number
     ) => {
+      if (isMobileScreen) {
+        return;
+      }
+
       setIndexedSelection({
         primaryOrAlternative,
         index

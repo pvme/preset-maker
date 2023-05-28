@@ -11,22 +11,31 @@ import './FamiliarSection.css';
 import Tooltip from '@mui/material/Tooltip/Tooltip';
 import { type IndexedSelection, PrimaryOrAlternative } from '../../types/util';
 import { FamiliarSelectDialog } from '../dialogs/FamiliarSelectDialog/FamiliarSelectDialog';
+import { isMobile } from '../../utility/window-utils';
 
 export type FamiliarSectionListClickHandler = (
   _event: React.MouseEvent<HTMLDivElement>,
   index: number
 ) => void;
 
+const isMobileScreen = isMobile();
+
 const FamiliarSectionList = ({ familiars, onClick }: { familiars: FamiliarData[], onClick: FamiliarSectionListClickHandler }): JSX.Element => {
+  const onSelectionClick = useCallback((event: React.MouseEvent<HTMLDivElement>, index: number) => {
+    if (isMobileScreen) {
+      return;
+    }
+
+    onClick(event, index);
+  }, [onClick]);
+
   return (
     <div className="familiar-section__list">
       {familiars.map((familiarData, index) => (
         <div
           key={`${familiarData.label}${index}`}
           className="d-flex flex-center familiar-section__list-item"
-          onClick={(event: React.MouseEvent<HTMLDivElement>) => {
-            onClick(event, index);
-          }}
+          onClick={(event) => { onSelectionClick(event, index); }}
         >
           {familiarData.image.length > 0 && (
             <img className="familiar-section__list-item-image" src={familiarData.image}></img>
@@ -59,6 +68,10 @@ export const FamiliarSection = (): JSX.Element => {
       primaryOrAlternative: PrimaryOrAlternative,
       index: number
     ) => {
+      if (isMobileScreen) {
+        return;
+      }
+
       setIndexedSelection({
         primaryOrAlternative,
         index

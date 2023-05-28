@@ -40,3 +40,7 @@
   background-position-x: center;
   background-position-y: center;
 }
+
+.inventory--mobile {
+  margin-left: -3px;
+}

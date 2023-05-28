@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { DragPreviewImage, useDrag, useDrop } from 'react-dnd';
 
 import { equipmentCoords, equipmentCoordsMobile, inventoryCoords, inventoryCoordsMobile } from '../../data/coordinates';
 import { type Coord } from '../../types/coord';
 import { type ItemData } from '../../types/item-data';
+import { isMobile } from '../../utility/window-utils';
 
 import './SlotSection.css';
 
@@ -42,6 +43,15 @@ const SingleSlot = ({ index, coord, className, slots, handleClickOpen, handleShi
     return slot?.selected ?? false;
   };
 
+  const onSlotSelect = useCallback((event: React.MouseEvent<HTMLAreaElement>, index: number) => {
+    if (event.shiftKey && (handleShiftClick != null)) {
+      handleShiftClick(event, index, className);
+      return;
+    }
+
+    handleClickOpen(event, index, className);
+  }, [handleShiftClick, handleClickOpen, className]);
+
   const [{ opacity }, dragRef, dragPreview] = useDrag(
     () => ({
       type: 'INVENTORY_SLOT',
@@ -76,14 +86,7 @@ const SingleSlot = ({ index, coord, className, slots, handleClickOpen, handleShi
             style={{ cursor: 'pointer', opacity, userSelect: 'auto' }}
             shape="rect"
             coords={`${coord.x1},${coord.y1},${coord.x2},${coord.y2}`}
-            onClick={(event: React.MouseEvent<HTMLAreaElement>) => {
-              if (event.shiftKey && (handleShiftClick != null)) {
-                handleShiftClick(event, index, className);
-                return;
-              }
-
-              handleClickOpen(event, index, className);
-            }}
+            onClick={(event: React.MouseEvent<HTMLAreaElement>) => { onSlotSelect(event, index); }}
           />
           {slotHasImage(slots[index]) || slotIsSelected(slots[index])
             ? (
@@ -140,9 +143,8 @@ const SlotSection = ({ slots, handleClickOpen, handleShiftClick, handleDragAndDr
 };
 
 export const Inventory = (props: SlotProps): JSX.Element => {
-  const isMobile = window.innerWidth <= 800;
-  const coordsToUse = isMobile ? inventoryCoordsMobile : inventoryCoords;
-  const className = isMobile ? 'inventory inventory--mobile' : 'inventory';
+  const coordsToUse = isMobile() ? inventoryCoordsMobile : inventoryCoords;
+  const className = isMobile() ? 'inventory inventory--mobile' : 'inventory';
 
   return (
     <SlotSection {...props} coords={coordsToUse} className="inventory" rootClassName={className} />
@@ -150,8 +152,7 @@ export const Inventory = (props: SlotProps): JSX.Element => {
 };
 
 export const Equipment = (props: SlotProps): JSX.Element => {
-  const isMobile = window.innerWidth <= 800;
-  const coordsToUse = isMobile ? equipmentCoordsMobile : equipmentCoords;
-  const className = isMobile ? 'equipment equipment--mobile' : 'equipment';
+  const coordsToUse = isMobile() ? equipmentCoordsMobile : equipmentCoords;
+  const className = isMobile() ? 'equipment equipment--mobile' : 'equipment';
   return <SlotSection {...props} coords={coordsToUse} className="equipment" rootClassName={className} />;
 };
