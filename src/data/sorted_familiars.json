@@ -2,7 +2,7 @@
 	{
 		"label": "arcticbear",
 		"image": "https://i.imgur.com/cIiazJk.png",
-		"name": "Arctic bear",
+		"name": "Arctic Bear",
 		"breakdownNotes": ""
 	},
 	{
@@ -32,7 +32,7 @@
 	{
 		"label": "granitelobster",
 		"image": "https://i.imgur.com/uHd98i7.png",
-		"name": "Granite lobster",
+		"name": "Granite Lobster",
 		"breakdownNotes": ""
 	},
 	{
@@ -44,13 +44,19 @@
 	{
 		"label": "holyscarab",
 		"image": "https://i.imgur.com/x5tUpRe.png",
-		"name": "Holy scarab",
+		"name": "Holy Scarab",
 		"breakdownNotes": ""
 	},
 	{
 		"label": "kalgdemon",
 		"image": "https://i.imgur.com/4oLwaZJ.png",
 		"name": "Kal'gerion Demon",
+		"breakdownNotes": ""
+	},
+	{
+		"label": "legendpetscav",
+		"image": "https://i.imgur.com/KWIawjY.png",
+		"name": "Legendary Pet (Scavenge)",
 		"breakdownNotes": ""
 	},
 	{
