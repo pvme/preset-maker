@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { useAppDispatch } from '../../redux/hooks';
@@ -13,23 +13,30 @@ import { Fade, Typography } from '@mui/material';
 import CircularProgress from '@mui/material/CircularProgress/CircularProgress';
 import { PresetActions } from '../PresetActions/PresetActions';
 import './PresetSection.css';
+import { PresetDetails } from '../PresetDetails/PresetDetails';
 
 export const PresetSection = (): JSX.Element => {
   const dispatch = useAppDispatch();
 
   const [presetExportRef, setPresetExportRef] = useState<HTMLDivElement | null>(null);
   const [isPresetLoading, setIsPresetLoading] = useState(false);
+  const presetImported = useRef(false);
 
   // Preset ID is stored in URL params
   const { id } = useParams();
 
   useEffect(() => {
+    if (presetImported.current) {
+      return;
+    }
+
     // load preset from URL if code exists
     const getPresetData = async (): Promise<void> => {
       if (id === undefined) {
         return;
       }
 
+      presetImported.current = true;
       setIsPresetLoading(true);
       const response = await getPreset(id);
       dispatch(importDataAction(response));
@@ -56,13 +63,16 @@ export const PresetSection = (): JSX.Element => {
           <Fade in={!isPresetLoading}>
             <div className="preset-section">
               <PresetName />
-              <div className="preset-and-actions">
+              <div className="d-flex">
                 <PresetEditor
                   setExportRef={presetExportRefCallback}
                 />
-                <PresetActions
-                  presetExportRef={presetExportRef}
-                />
+                <div className="preset-section__sidebar">
+                  <PresetDetails />
+                  <PresetActions
+                    presetExportRef={presetExportRef}
+                  />
+                </div>
               </div>
               <PresetBreakdown />
             </div>

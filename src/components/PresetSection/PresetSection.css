@@ -1,7 +1,3 @@
-.preset-and-actions {
-  display: flex;
-}
-
 .preset-section {
   display: flex;
   flex-direction: column;
@@ -11,4 +7,8 @@
 
 .preset-section > div {
   margin: 10px;
+}
+
+.preset-section__sidebar {
+  margin-left: 16px;
 }

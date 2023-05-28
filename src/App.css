@@ -105,6 +105,10 @@
   margin-top: auto;
 }
 
+.ml-8 {
+  margin-right: 8px;
+}
+
 .cursor-pointer:hover {
   cursor: pointer;
 }

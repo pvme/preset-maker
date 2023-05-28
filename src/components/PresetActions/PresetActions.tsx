@@ -2,7 +2,7 @@ import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import LinkIcon from '@mui/icons-material/Link';
 import SaveIcon from '@mui/icons-material/Save';
 import SaveAsIcon from '@mui/icons-material/SaveAs';
-import { Button, ButtonGroup, Link, TextField } from '@mui/material';
+import { Button, ButtonGroup, Link } from '@mui/material';
 import { canCopyImagesToClipboard } from 'copy-image-clipboard';
 import { useSnackbar } from 'notistack';
 import React, { useCallback, useState } from 'react';
@@ -16,6 +16,7 @@ import { ResetConfirmationDialog } from '../ResetConfirmationDialog/ResetConfirm
 import { SavePresetDialog, SavePresetDialogState } from '../SavePresetDialog/SavePresetDialog';
 import './PresetActions.css';
 import { ClipboardCopyButtonContainer } from '../ClipboardCopyButtonContainer/ClipboardCopyButtonContainer';
+import { PresetDetails } from '../PresetDetails/PresetDetails';
 
 const getLinkForPreset = (id: string): string => {
   if (document.location.hostname === 'localhost') {
@@ -37,6 +38,7 @@ export const PresetActions = ({
     familiars,
     inventorySlots,
     presetName,
+    presetNotes,
     relics
   } = useAppSelector(selectPreset);
 
@@ -61,6 +63,7 @@ export const PresetActions = ({
   const onSaveClick = useCallback(() => {
     LocalStorage.savePresetWithoutConfirmation({
       presetName,
+      presetNotes,
       inventorySlots,
       equipmentSlots,
       relics,
@@ -97,6 +100,7 @@ export const PresetActions = ({
       const presetImage = await getImageFromElement(presetExportRef);
       const stringifiedPresetData = sanitizeAndStringifyPreset({
         presetName,
+        presetNotes,
         equipmentSlots,
         inventorySlots,
         relics,
@@ -129,16 +133,6 @@ export const PresetActions = ({
 
   return (
     <div className="preset-actions">
-      {/* Details */}
-      <fieldset className="preset-actions__fieldset preset-actions__details">
-        <legend>Details</legend>
-        <TextField
-          label="Name"
-          value={presetName}
-          disabled
-          fullWidth
-        />
-      </fieldset>
       <div className="desktop-only">
         {/* Save actions */}
         <fieldset className="preset-actions__fieldset preset-actions__save">

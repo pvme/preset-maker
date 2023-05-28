@@ -30,7 +30,7 @@ export const HeaderBar = (): JSX.Element => {
   const navigate = useNavigate();
 
   const dispatch = useAppDispatch();
-  const { presetName, inventorySlots, equipmentSlots, relics, familiars } =
+  const { presetName, presetNotes, inventorySlots, equipmentSlots, relics, familiars } =
     useAppSelector(selectPreset);
   const [helpDialogOpen, setHelpDialogOpen] = useState<boolean>(false);
   const { enqueueSnackbar } = useSnackbar();
@@ -38,6 +38,7 @@ export const HeaderBar = (): JSX.Element => {
   const exportData = useCallback(() => {
     const stringifiedPresetData = sanitizeAndStringifyPreset({
       presetName,
+      presetNotes,
       equipmentSlots,
       inventorySlots,
       relics,
@@ -47,7 +48,7 @@ export const HeaderBar = (): JSX.Element => {
       `PRESET_${presetName.replaceAll(' ', '_')}`,
       stringifiedPresetData
     );
-  }, [presetName, inventorySlots, equipmentSlots]);
+  }, [presetName, presetNotes, inventorySlots, equipmentSlots, relics, familiars]);
 
   const importData = useCallback(() => {
     inputFile.current?.click();

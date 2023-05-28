@@ -15,12 +15,14 @@ export const GetPreset = async (id: string): Promise<SavedPresetData> => {
 const unpackData = async (stored: {
   equipmentSlots: any
   presetName: any
+  presetNotes: string
   inventorySlots: string | any[]
 }): Promise<SavedPresetData> => {
   const newPreset: SavedPresetData = {
     presetName: '',
     inventorySlots: [],
-    equipmentSlots: []
+    equipmentSlots: [],
+    presetNotes: ''
   };
   // create a map of all item labels to their default object
   const itemDataMap = new Map();

@@ -21,4 +21,8 @@ export interface SavedPresetData {
    * Base64-encoded string.
    */
   presetImage?: string
+  /**
+   * Notes, with emoji and link support.
+   */
+  presetNotes?: string
 }

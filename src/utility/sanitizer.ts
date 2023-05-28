@@ -41,6 +41,7 @@ export const sanitizeFamiliarData = (familiarDataArr: FamiliarData[] | undefined
 export const sanitizePresetData = (presetData: SavedPresetData): SavedPresetData => {
   return {
     presetName: presetData.presetName,
+    presetNotes: presetData.presetNotes,
     inventorySlots: sanitizeEntityData(presetData.inventorySlots),
     equipmentSlots: sanitizeEntityData(presetData.equipmentSlots),
     relics: {
@@ -58,6 +59,7 @@ export const sanitizePresetData = (presetData: SavedPresetData): SavedPresetData
 export const stringifyPreset = (sanitizedPresetData: SavedPresetData): string => {
   const {
     presetName,
+    presetNotes,
     inventorySlots,
     equipmentSlots,
     relics,
@@ -68,6 +70,7 @@ export const stringifyPreset = (sanitizedPresetData: SavedPresetData): string =>
   const { dateString, hours, minutes, seconds } = generateDateString();
   return JSON.stringify({
     presetName: presetName ?? `${dateString}-${hours}-${minutes}${seconds}`,
+    presetNotes,
     inventorySlots,
     equipmentSlots,
     relics,
@@ -78,6 +81,7 @@ export const stringifyPreset = (sanitizedPresetData: SavedPresetData): string =>
 
 export const stringifyData = (
   presetName: string,
+  presetNotes: string,
   inventoryData: ItemData[],
   equipmentData: ItemData[],
   relicData: Relics,
@@ -90,6 +94,7 @@ export const stringifyData = (
     : `${dateString}-${hours}-${minutes}${seconds}`;
   return JSON.stringify({
     presetName: presetNameToUse,
+    presetNotes,
     inventorySlots: inventoryData,
     equipmentSlots: equipmentData,
     relics: relicData,

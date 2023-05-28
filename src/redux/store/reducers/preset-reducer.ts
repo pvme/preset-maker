@@ -12,6 +12,7 @@ import { type RelicData, type Relics } from '../../../types/relic';
 // Define a type for the slice state
 interface PresetState {
   presetName: string
+  presetNotes: string
   inventorySlots: ItemData[]
   equipmentSlots: ItemData[]
   familiars: Familiars
@@ -45,6 +46,7 @@ const fillArrayWithSlotData = (numItems: number): any[] =>
 // Define the initial state using that type
 const initialState: PresetState = {
   presetName: '',
+  presetNotes: '',
   inventorySlots: Array.from({ length: 28 }, () => ({
     name: '',
     image: '',
@@ -73,6 +75,7 @@ export const presetSlice = createSlice({
   reducers: {
     resetToInitialState: (state: PresetState) => {
       state.presetName = initialState.presetName;
+      state.presetNotes = initialState.presetNotes;
       state.inventorySlots = initialState.inventorySlots;
       state.equipmentSlots = initialState.equipmentSlots;
       state.relics = initialState.relics;
@@ -111,6 +114,9 @@ export const presetSlice = createSlice({
     },
     setAlternativeFamiliar: (state: PresetState, action: PayloadAction<FamiliarSlot>) => {
       state.familiars.alternativeFamiliars[action.payload.index] = action.payload.value;
+    },
+    setPresetNotes: (state: PresetState, action: PayloadAction<string>) => {
+      state.presetNotes = action.payload;
     },
     setEntireBreakdown: (
       state: PresetState,
@@ -167,6 +173,7 @@ export const presetSlice = createSlice({
 export const {
   resetToInitialState,
   setPresetName,
+  setPresetNotes,
   setInventorySlot,
   swapInventorySlots,
   setEquipmentSlot,
