@@ -1,11 +1,4 @@
 [
-  {
-		"label": "abyssallink",
-		"image": "https://i.imgur.com/8IMPgCF.png",
-		"name": "Abyssal Link",
-		"breakdownNotes": "",
-		"energy": 250
-	},
 	{
 		"label": "berserkersfury",
 		"image": "https://i.imgur.com/xXWYCHG.png",
@@ -26,13 +19,6 @@
 		"name": "Conservation of Energy",
 		"breakdownNotes": "",
 		"energy": 350
-	},
-	{
-		"label": "deathnote",
-		"image": "https://i.imgur.com/2KToagJ.png",
-		"name": "Death Note",
-		"breakdownNotes": "",
-		"energy": 150
 	},
 	{
 		"label": "deathward",
@@ -63,6 +49,13 @@
 		"energy": 350
 	},
 	{
+		"label": "luckofthedwarves",
+		"image": "https://i.imgur.com/Ivcgjer.png",
+		"name": "Luck of the Dwarves",
+		"breakdownNotes": "",
+		"energy": 200
+	},
+	{
 		"label": "persistentrage",
 		"image": "https://i.imgur.com/flHLvxL.png",
 		"name": "Persistent Rage",
@@ -75,12 +68,5 @@
 		"name": "Shadows Grace",
 		"breakdownNotes": "",
 		"energy": 50
-	},
-	{
-		"label": "slayerintrospection",
-		"image": "https://i.imgur.com/spEwR2q.png",
-		"name": "Slayer Introspection",
-		"breakdownNotes": "",
-		"energy": 200
 	}
 ]
