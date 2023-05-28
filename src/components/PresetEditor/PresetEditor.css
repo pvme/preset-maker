@@ -28,7 +28,7 @@
 
   .relics-familiar-container {
     max-width: 100vw;
-    max-height: 210px;
+    max-height: 420px;
     flex-direction: column;
   }
 }

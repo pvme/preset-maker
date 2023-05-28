@@ -11,11 +11,14 @@ import './FamiliarSection.css';
 import Tooltip from '@mui/material/Tooltip/Tooltip';
 import { type IndexedSelection, PrimaryOrAlternative } from '../../types/util';
 import { FamiliarSelectDialog } from '../dialogs/FamiliarSelectDialog/FamiliarSelectDialog';
+import { isMobile } from '../../utility/window-utils';
 
 export type FamiliarSectionListClickHandler = (
   _event: React.MouseEvent<HTMLDivElement>,
   index: number
 ) => void;
+
+const isMobileScreen = isMobile();
 
 const FamiliarSectionList = ({ familiars, onClick }: { familiars: FamiliarData[], onClick: FamiliarSectionListClickHandler }): JSX.Element => {
   return (
@@ -24,7 +27,12 @@ const FamiliarSectionList = ({ familiars, onClick }: { familiars: FamiliarData[]
         <div
           key={`${familiarData.label}${index}`}
           className="d-flex flex-center familiar-section__list-item"
+          // TODO Remove lambda
           onClick={(event: React.MouseEvent<HTMLDivElement>) => {
+            if (isMobileScreen) {
+              return;
+            }
+
             onClick(event, index);
           }}
         >
@@ -59,6 +67,10 @@ export const FamiliarSection = (): JSX.Element => {
       primaryOrAlternative: PrimaryOrAlternative,
       index: number
     ) => {
+      if (isMobileScreen) {
+        return;
+      }
+
       setIndexedSelection({
         primaryOrAlternative,
         index
@@ -116,6 +128,7 @@ export const FamiliarSection = (): JSX.Element => {
       <div className="familiar-section__primary">
         <FamiliarSectionList
           familiars={familiars.primaryFamiliars}
+          // TODO Remove lambda
           onClick={(event, index) => {
             openFamiliarDialog(event, PrimaryOrAlternative.Primary, index);
           }}
@@ -129,6 +142,7 @@ export const FamiliarSection = (): JSX.Element => {
         </div>
         <FamiliarSectionList
           familiars={visibleAlternativeFamiliars}
+          // TODO Remove lambda
           onClick={(event, index) => {
             openFamiliarDialog(event, PrimaryOrAlternative.Alternative, index);
           }}
@@ -136,6 +150,7 @@ export const FamiliarSection = (): JSX.Element => {
         <div
           className="d-flex flex-center familiar-section__list-item familiar-section__list-item--add"
           onClick={(event) => {
+            // TODO Remove lambda
             openFamiliarDialog(event, PrimaryOrAlternative.Alternative, visibleAlternativeFamiliars.length);
           }}
         >

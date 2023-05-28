@@ -11,11 +11,14 @@ import './RelicSection.css';
 import Tooltip from '@mui/material/Tooltip/Tooltip';
 import { type IndexedSelection, PrimaryOrAlternative } from '../../types/util';
 import { RelicSelectDialog } from '../dialogs/RelicSelectDialogPopup/RelicSelectDialog';
+import { isMobile } from '../../utility/window-utils';
 
 export type RelicSectionListClickHandler = (
   _event: React.MouseEvent<HTMLDivElement>,
   index: number
 ) => void;
+
+const isMobileScreen = isMobile();
 
 const RelicSectionList = ({ relics, onClick }: { relics: RelicData[], onClick: RelicSectionListClickHandler }): JSX.Element => {
   return (
@@ -24,7 +27,12 @@ const RelicSectionList = ({ relics, onClick }: { relics: RelicData[], onClick: R
         <div
           key={`${relicData.label}${index}`}
           className="d-flex flex-center relic-section__list-item"
+          // TODO Remove lambda
           onClick={(event: React.MouseEvent<HTMLDivElement>) => {
+            if (isMobileScreen) {
+              return;
+            }
+
             onClick(event, index);
           }}
         >
@@ -62,6 +70,10 @@ export const RelicSection = (): JSX.Element => {
       primaryOrAlternative: PrimaryOrAlternative,
       index: number
     ) => {
+      if (isMobileScreen) {
+        return;
+      }
+
       setIndexedSelection({
         primaryOrAlternative,
         index
@@ -119,6 +131,7 @@ export const RelicSection = (): JSX.Element => {
       <div className="d-flex flex-col">
         <RelicSectionList
           relics={relics.primaryRelics}
+          // TODO Remove lambda
           onClick={(event, index) => {
             openRelicDialog(event, PrimaryOrAlternative.Primary, index);
           }}
@@ -133,12 +146,14 @@ export const RelicSection = (): JSX.Element => {
         <RelicSectionList
           relics={visibleAlternativeRelics}
           onClick={(event, index) => {
+            // TODO Remove lambda
             openRelicDialog(event, PrimaryOrAlternative.Alternative, index);
           }}
         />
         <div
           className="d-flex flex-center relic-section__list-item relic-section__list-item--add"
           onClick={(event) => {
+            // TODO Remove lambda
             openRelicDialog(event, PrimaryOrAlternative.Alternative, visibleAlternativeRelics.length);
           }}
         >
