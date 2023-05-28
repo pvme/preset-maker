@@ -21,20 +21,21 @@ export type FamiliarSectionListClickHandler = (
 const isMobileScreen = isMobile();
 
 const FamiliarSectionList = ({ familiars, onClick }: { familiars: FamiliarData[], onClick: FamiliarSectionListClickHandler }): JSX.Element => {
+  const onSelectionClick = useCallback((event: React.MouseEvent<HTMLDivElement>, index: number) => {
+    if (isMobileScreen) {
+      return;
+    }
+
+    onClick(event, index);
+  }, [onClick]);
+
   return (
     <div className="familiar-section__list">
       {familiars.map((familiarData, index) => (
         <div
           key={`${familiarData.label}${index}`}
           className="d-flex flex-center familiar-section__list-item"
-          // TODO Remove lambda
-          onClick={(event: React.MouseEvent<HTMLDivElement>) => {
-            if (isMobileScreen) {
-              return;
-            }
-
-            onClick(event, index);
-          }}
+          onClick={(event) => { onSelectionClick(event, index); }}
         >
           {familiarData.image.length > 0 && (
             <img className="familiar-section__list-item-image" src={familiarData.image}></img>
@@ -128,7 +129,6 @@ export const FamiliarSection = (): JSX.Element => {
       <div className="familiar-section__primary">
         <FamiliarSectionList
           familiars={familiars.primaryFamiliars}
-          // TODO Remove lambda
           onClick={(event, index) => {
             openFamiliarDialog(event, PrimaryOrAlternative.Primary, index);
           }}
@@ -142,7 +142,6 @@ export const FamiliarSection = (): JSX.Element => {
         </div>
         <FamiliarSectionList
           familiars={visibleAlternativeFamiliars}
-          // TODO Remove lambda
           onClick={(event, index) => {
             openFamiliarDialog(event, PrimaryOrAlternative.Alternative, index);
           }}
@@ -150,7 +149,6 @@ export const FamiliarSection = (): JSX.Element => {
         <div
           className="d-flex flex-center familiar-section__list-item familiar-section__list-item--add"
           onClick={(event) => {
-            // TODO Remove lambda
             openFamiliarDialog(event, PrimaryOrAlternative.Alternative, visibleAlternativeFamiliars.length);
           }}
         >

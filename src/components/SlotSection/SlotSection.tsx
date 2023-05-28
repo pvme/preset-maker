@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { DragPreviewImage, useDrag, useDrop } from 'react-dnd';
 
 import { equipmentCoords, equipmentCoordsMobile, inventoryCoords, inventoryCoordsMobile } from '../../data/coordinates';
@@ -43,6 +43,15 @@ const SingleSlot = ({ index, coord, className, slots, handleClickOpen, handleShi
     return slot?.selected ?? false;
   };
 
+  const onSlotSelect = useCallback((event: React.MouseEvent<HTMLAreaElement>, index: number) => {
+    if (event.shiftKey && (handleShiftClick != null)) {
+      handleShiftClick(event, index, className);
+      return;
+    }
+
+    handleClickOpen(event, index, className);
+  }, [handleShiftClick, handleClickOpen, className]);
+
   const [{ opacity }, dragRef, dragPreview] = useDrag(
     () => ({
       type: 'INVENTORY_SLOT',
@@ -77,15 +86,7 @@ const SingleSlot = ({ index, coord, className, slots, handleClickOpen, handleShi
             style={{ cursor: 'pointer', opacity, userSelect: 'auto' }}
             shape="rect"
             coords={`${coord.x1},${coord.y1},${coord.x2},${coord.y2}`}
-            // TODO Remove lambda
-            onClick={(event: React.MouseEvent<HTMLAreaElement>) => {
-              if (event.shiftKey && (handleShiftClick != null)) {
-                handleShiftClick(event, index, className);
-                return;
-              }
-
-              handleClickOpen(event, index, className);
-            }}
+            onClick={(event: React.MouseEvent<HTMLAreaElement>) => { onSlotSelect(event, index); }}
           />
           {slotHasImage(slots[index]) || slotIsSelected(slots[index])
             ? (

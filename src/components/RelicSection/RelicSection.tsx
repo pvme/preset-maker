@@ -21,20 +21,21 @@ export type RelicSectionListClickHandler = (
 const isMobileScreen = isMobile();
 
 const RelicSectionList = ({ relics, onClick }: { relics: RelicData[], onClick: RelicSectionListClickHandler }): JSX.Element => {
+  const onRelicSelect = useCallback((event: React.MouseEvent<HTMLDivElement>, index: number) => {
+    if (isMobileScreen) {
+      return;
+    }
+
+    onClick(event, index);
+  }, [onClick]);
+
   return (
     <div className="relic-section__list">
       {relics.map((relicData, index) => (
         <div
           key={`${relicData.label}${index}`}
           className="d-flex flex-center relic-section__list-item"
-          // TODO Remove lambda
-          onClick={(event: React.MouseEvent<HTMLDivElement>) => {
-            if (isMobileScreen) {
-              return;
-            }
-
-            onClick(event, index);
-          }}
+          onClick={(event) => { onRelicSelect(event, index); }}
         >
           {relicData.image.length > 0 && (
             <img className="relic-section__list-item-image" src={relicData.image}></img>
@@ -131,7 +132,6 @@ export const RelicSection = (): JSX.Element => {
       <div className="d-flex flex-col">
         <RelicSectionList
           relics={relics.primaryRelics}
-          // TODO Remove lambda
           onClick={(event, index) => {
             openRelicDialog(event, PrimaryOrAlternative.Primary, index);
           }}
@@ -146,14 +146,12 @@ export const RelicSection = (): JSX.Element => {
         <RelicSectionList
           relics={visibleAlternativeRelics}
           onClick={(event, index) => {
-            // TODO Remove lambda
             openRelicDialog(event, PrimaryOrAlternative.Alternative, index);
           }}
         />
         <div
           className="d-flex flex-center relic-section__list-item relic-section__list-item--add"
           onClick={(event) => {
-            // TODO Remove lambda
             openRelicDialog(event, PrimaryOrAlternative.Alternative, visibleAlternativeRelics.length);
           }}
         >
