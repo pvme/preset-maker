@@ -141,6 +141,7 @@ export const presetSlice = createSlice({
       action: PayloadAction<SavedPresetData>
     ) => {
       state.presetName = action.payload.presetName;
+      state.presetNotes = action.payload.presetNotes ?? '';
       state.inventorySlots = action.payload.inventorySlots;
       state.equipmentSlots = action.payload.equipmentSlots;
       // New state properties must be defaulted to `initialState` as it
