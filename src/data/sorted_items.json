@@ -161,7 +161,7 @@
 	},
 	{
 		"label": "airrune",
-		"image": "https://i.imgur.com/9Nngfvj.png",
+		"image": "hhttps://i.imgur.com/9Nngfvj.png",
 		"name": "Air rune",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -1886,6 +1886,14 @@
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Dwarven_fish_extractor"
+	},
+	{
+		"label": "rockcake",
+		"image": "https://i.imgur.com/LIuAXT2.png",
+		"name": "Dwarven rock cake (cooled)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Dwarven_rock_cake_(cooled)"
 	},
 	{
 		"label": "cannon",
@@ -4955,7 +4963,7 @@
 		"label": "pernixquiverblack",
 		"image": "https://i.imgur.com/JqXq1zD.png",
 		"name": "Pernix's Quiver (Black)",
-		"breakdownNotes": "",
+		"breakdownNotes": "Ful arrows | Wen arrows",
 		"slot": 9,
 		"wikiLink": "https://runescape.wiki/w/Pernix's_Quiver"
 	},
@@ -4963,7 +4971,7 @@
 		"label": "pernixquiverblue",
 		"image": "https://i.imgur.com/X5AcgQh.png",
 		"name": "Pernix's Quiver (Blue)",
-		"breakdownNotes": "",
+		"breakdownNotes": "Black stone arrows | Deathspore arrows",
 		"slot": 9,
 		"wikiLink": "https://runescape.wiki/w/Pernix's_Quiver"
 	},
@@ -4971,7 +4979,7 @@
 		"label": "pernixquivergreen",
 		"image": "https://i.imgur.com/MG25Uow.png",
 		"name": "Pernix's Quiver (Green)",
-		"breakdownNotes": "",
+		"breakdownNotes": "Emerald bakriminel bolts (e) | Bik arrow",
 		"slot": 9,
 		"wikiLink": "https://runescape.wiki/w/Pernix's_Quiver"
 	},
@@ -4995,7 +5003,7 @@
 		"label": "pernixquiverred",
 		"image": "https://i.imgur.com/uMJW8pU.png",
 		"name": "Pernix's Quiver (Red)",
-		"breakdownNotes": "",
+		"breakdownNotes": "Ruby bakriminel bolts (e) | Hydrix bakriminel bolts (e)",
 		"slot": 9,
 		"wikiLink": "https://runescape.wiki/w/Pernix's_Quiver"
 	},
@@ -5003,7 +5011,7 @@
 		"label": "pernixquiveryellow",
 		"image": "https://i.imgur.com/MCRkOPS.png",
 		"name": "Pernix's Quiver (Yellow)",
-		"breakdownNotes": "",
+		"breakdownNotes": "Hydrix bakriminel bolts (e) | Jas dragonbane arrows",
 		"slot": 9,
 		"wikiLink": "https://runescape.wiki/w/Pernix's_Quiver"
 	},
