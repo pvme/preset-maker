@@ -12,3 +12,11 @@
 .preset-section__sidebar {
   margin-left: 16px;
 }
+
+/* Mobile styling */
+
+@media (max-width: 900px) {
+  .preset-section__inner {
+    flex-direction: column;
+  }
+}
