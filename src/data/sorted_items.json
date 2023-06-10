@@ -2040,6 +2040,30 @@
 		"wikiLink": "https://runescape.wiki/w/Eldrich_crossbow_(shadow)"
 	},
 	{
+		"label": "erobinhoodhat",
+		"image": "https://i.imgur.com/0v6t3Rg.png",
+		"name": "Elite Robin Hood hat",
+		"breakdownNotes": "",
+		"slot": 1,
+		"wikiLink": "https://runescape.wiki/w/Elite_Robin_Hood_hat"
+	},
+	{
+		"label": "erobinhoodlegs",
+		"image": "https://i.imgur.com/kvckrC8.png",
+		"name": "Elite Robin Hood tights",
+		"breakdownNotes": "",
+		"slot": 3,
+		"wikiLink": "https://runescape.wiki/w/Elite_Robin_Hood_tights"
+	},
+	{
+		"label": "erobinhoodbody",
+		"image": "https://i.imgur.com/m1pJrXk.png",
+		"name": "Elite Robin Hood tunic",
+		"breakdownNotes": "",
+		"slot": 2,
+		"wikiLink": "https://runescape.wiki/w/Elite_Robin_Hood_tunic"
+	},
+	{
 		"label": "eliteclue",
 		"image": "https://i.imgur.com/eyWoLsP.png",
 		"name": "Elite clue",
@@ -4104,6 +4128,14 @@
 		"wikiLink": "https://runescape.wiki/w/Mask_of_Reflection"
 	},
 	{
+		"label": "abyssalmask",
+		"image": "https://i.imgur.com/VTRqx5Y.png",
+		"name": "Mask of the Abyss",
+		"breakdownNotes": "",
+		"slot": 1,
+		"wikiLink": "https://runescape.wiki/w/Mask_of_the_Abyss"
+	},
+	{
 		"label": "maskoftheaquanites",
 		"image": "https://i.imgur.com/EhwoK5P.png",
 		"name": "Mask of the Aquanites",
@@ -4112,8 +4144,32 @@
 		"wikiLink": "https://runescape.wiki/w/Mask_of_the_Aquanites"
 	},
 	{
+		"label": "automatonmask",
+		"image": "https://i.imgur.com/r18sFHt.png",
+		"name": "Mask of the Automatons",
+		"breakdownNotes": "",
+		"slot": 1,
+		"wikiLink": "https://runescape.wiki/w/Mask_of_the_Automatons"
+	},
+	{
+		"label": "dagannothmask",
+		"image": "https://i.imgur.com/J37Y7lI.png",
+		"name": "Mask of the Dagannoth",
+		"breakdownNotes": "",
+		"slot": 1,
+		"wikiLink": "https://runescape.wiki/w/Mask_of_the_Dagannoth"
+	},
+	{
 		"label": "maskoftheganodermic",
 		"image": "https://i.imgur.com/PYRyglW.png",
+		"name": "Mask of the Ganodermic",
+		"breakdownNotes": "",
+		"slot": 1,
+		"wikiLink": "https://runescape.wiki/w/Mask_of_the_Ganodermic"
+	},
+	{
+		"label": "ganomask",
+		"image": "https://i.imgur.com/l8s8TN2.png",
 		"name": "Mask of the Ganodermic",
 		"breakdownNotes": "",
 		"slot": 1,
@@ -6110,6 +6166,14 @@
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Super_strength#(3)"
+	},
+	{
+		"label": "zurielstaff",
+		"image": "https://i.imgur.com/V2ql1Vu.png",
+		"name": "Superior Zuriel's staff",
+		"breakdownNotes": "",
+		"slot": 4,
+		"wikiLink": "https://runescape.wiki/w/Superior_Zuriel%27s_staff"
 	},
 	{
 		"label": "lotuschaps",
