@@ -1152,6 +1152,14 @@
 		"wikiLink": "https://runescape.wiki/w/Calorie_bomb"
 	},
 	{
+		"label": "camelstaff",
+		"image": "https://i.imgur.com/A3Lp2oS.png",
+		"name": "Camel staff",
+		"breakdownNotes": "",
+		"slot": 4,
+		"wikiLink": "https://runescape.wiki/w/Camel_staff"
+	},
+	{
 		"label": "camelottele100",
 		"image": "https://i.imgur.com/9vEqmlE.png",
 		"name": "Camelot teleport",
@@ -1646,6 +1654,14 @@
 		"breakdownNotes": "",
 		"slot": 10,
 		"wikiLink": "https://runescape.wiki/w/Dig_Site_pendant"
+	},
+	{
+		"label": "weeklytoken",
+		"image": "https://i.imgur.com/fOJHeIX.png",
+		"name": "Distraction & Diversion reset token (weekly)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Distraction_&_Diversion_reset_token_(weekly)"
 	},
 	{
 		"label": "divcharge",
@@ -4168,14 +4184,6 @@
 		"wikiLink": "https://runescape.wiki/w/Mask_of_the_Ganodermic"
 	},
 	{
-		"label": "ganomask",
-		"image": "https://i.imgur.com/l8s8TN2.png",
-		"name": "Mask of the Ganodermic",
-		"breakdownNotes": "",
-		"slot": 1,
-		"wikiLink": "https://runescape.wiki/w/Mask_of_the_Ganodermic"
-	},
-	{
 		"label": "maskofthekura",
 		"image": "https://i.imgur.com/zWpXokp.png",
 		"name": "Mask of the Kura",
@@ -4654,6 +4662,14 @@
 		"breakdownNotes": "",
 		"slot": 4,
 		"wikiLink": "https://runescape.wiki/w/Noxious_staff"
+	},
+	{
+		"label": "obliteration",
+		"image": "https://i.imgur.com/Mjyhuk5.png",
+		"name": "Obliteration",
+		"breakdownNotes": "",
+		"slot": 4,
+		"wikiLink": "https://runescape.wiki/w/Obliteration"
 	},
 	{
 		"label": "obbyboots",
@@ -6234,7 +6250,7 @@
 	{
 		"label": "swh",
 		"image": "https://i.imgur.com/buKTnb1.png",
-		"name": "Superior statius warhammer",
+		"name": "Superior Statius's warhammer",
 		"breakdownNotes": "",
 		"slot": 4,
 		"wikiLink": "https://runescape.wiki/w/Superior_statius_warhammer"
@@ -6242,7 +6258,7 @@
 	{
 		"label": "vls",
 		"image": "https://i.imgur.com/OcTkGQM.png",
-		"name": "Superior vestas longsword",
+		"name": "Superior Vesta's longsword",
 		"breakdownNotes": "",
 		"slot": 4,
 		"wikiLink": "https://runescape.wiki/w/Superior_vestas_longsword"
@@ -6250,7 +6266,7 @@
 	{
 		"label": "zurielshood",
 		"image": "https://i.imgur.com/tzSrusP.png",
-		"name": "Superior zuriel's hood",
+		"name": "Superior Zuriel's hood",
 		"breakdownNotes": "",
 		"slot": 1,
 		"wikiLink": "https://runescape.wiki/w/Superior_zuriel's_hood"
@@ -6258,7 +6274,7 @@
 	{
 		"label": "zurielslegs",
 		"image": "https://i.imgur.com/2hVnR1G.png",
-		"name": "Superior zuriel's robe bottom",
+		"name": "Superior Zuriel's robe bottom",
 		"breakdownNotes": "",
 		"slot": 3,
 		"wikiLink": "https://runescape.wiki/w/Superior_zuriel's_robe_bottom"
@@ -6266,7 +6282,7 @@
 	{
 		"label": "zurielstop",
 		"image": "https://i.imgur.com/LxP4ocV.png",
-		"name": "Superior zuriel's robe top",
+		"name": "Superior Zuriel's robe top",
 		"breakdownNotes": "",
 		"slot": 2,
 		"wikiLink": "https://runescape.wiki/w/Superior_zuriel's_robe_top"
