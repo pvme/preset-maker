@@ -6729,14 +6729,6 @@
 	},
 	{
 		"label": "vanquish",
-		"image": "https://i.imgur.com/oThyaup.png",
-		"name": "Vanquish",
-		"breakdownNotes": "",
-		"slot": 4,
-		"wikiLink": "https://runescape.wiki/w/Vanquish"
-	},
-	{
-		"label": "vanquishmagic",
 		"image": "https://i.imgur.com/eOAuE2e.png",
 		"name": "Vanquish (magic)",
 		"breakdownNotes": "",
