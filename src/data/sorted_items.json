@@ -232,6 +232,14 @@
 		"wikiLink": "https://runescape.wiki/w/Amulet_of_nature"
 	},
 	{
+		"label": "aos",
+		"image": "https://i.imgur.com/cUaU7mB.png",
+		"name": "Amulet of souls",
+		"breakdownNotes": "",
+		"slot": 10,
+		"wikiLink": "https://runescape.wiki/w/Amulet_of_souls"
+	},
+	{
 		"label": "souls",
 		"image": "https://i.imgur.com/ZCKGIBM.png",
 		"name": "Amulet of souls (or)",
@@ -1096,6 +1104,14 @@
 		"wikiLink": "https://runescape.wiki/w/Book_of_wisdom"
 	},
 	{
+		"label": "bootsoftrials",
+		"image": "https://i.imgur.com/gyUyNW7.png",
+		"name": "Boots of Trials",
+		"breakdownNotes": "",
+		"slot": 7,
+		"wikiLink": "https://runescape.wiki/w/Boots_of_Trials"
+	},
+	{
 		"label": "subjboots",
 		"image": "https://i.imgur.com/7XWA1eE.png",
 		"name": "Boots of subjugation",
@@ -1110,6 +1126,14 @@
 		"breakdownNotes": "",
 		"slot": 4,
 		"wikiLink": "https://runescape.wiki/w/Bow_of_the_Last_Guardian"
+	},
+	{
+		"label": "bracersoftrials",
+		"image": "https://i.imgur.com/qaiPCRu.png",
+		"name": "Bracers of Trials",
+		"breakdownNotes": "",
+		"slot": 6,
+		"wikiLink": "https://runescape.wiki/w/Bracers_of_Trials"
 	},
 	{
 		"label": "meleeblood",
@@ -3160,6 +3184,14 @@
 		"wikiLink": "https://runescape.wiki/w/Hazelmere's_signet"
 	},
 	{
+		"label": "headhuntersthrill",
+		"image": "https://i.imgur.com/QPCBJmb.png",
+		"name": "Headhunter's thrill",
+		"breakdownNotes": "",
+		"slot": 6,
+		"wikiLink": "https://runescape.wiki/w/Headhunter's_thrill"
+	},
+	{
 		"label": "hellhoundscrolls",
 		"image": "https://i.imgur.com/zNZLlL3.png",
 		"name": "Hellhound scroll (Soul Food)",
@@ -3174,6 +3206,14 @@
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Hellhound_scroll_(Soul_Food)"
+	},
+	{
+		"label": "helmetoftrials",
+		"image": "https://i.imgur.com/lSgXnet.png",
+		"name": "Helmet of trials",
+		"breakdownNotes": "",
+		"slot": 1,
+		"wikiLink": "https://runescape.wiki/w/Helmet_of_trials"
 	},
 	{
 		"label": "herbbag",
@@ -3302,6 +3342,14 @@
 		"breakdownNotes": "",
 		"slot": 13,
 		"wikiLink": "https://runescape.wiki/w/Illuminated_Book_of_Wisdom"
+	},
+	{
+		"label": "imcandohatchet",
+		"image": "https://i.imgur.com/Xoo3KYI.png",
+		"name": "Imcando hatchet",
+		"breakdownNotes": "",
+		"slot": 4,
+		"wikiLink": "https://runescape.wiki/w/Imcando_hatchet"
 	},
 	{
 		"label": "core",
@@ -5128,6 +5176,22 @@
 		"wikiLink": "https://runescape.wiki/w/Planted_feet_perk"
 	},
 	{
+		"label": "platebodyoftrials",
+		"image": "https://i.imgur.com/HOjpAMr.png",
+		"name": "Platebody of Trials",
+		"breakdownNotes": "",
+		"slot": 2,
+		"wikiLink": "https://runescape.wiki/w/Platebody_of_Trials"
+	},
+	{
+		"label": "platelegsoftrials",
+		"image": "https://i.imgur.com/bIeO9mz.png",
+		"name": "Platelegs of Trials",
+		"breakdownNotes": "",
+		"slot": 3,
+		"wikiLink": "https://runescape.wiki/w/Platelegs_of_Trials"
+	},
+	{
 		"label": "pollnivneachteleport",
 		"image": "https://i.imgur.com/AOVQ5Q9.png",
 		"name": "Pollnivneach Teleport",
@@ -5858,7 +5922,7 @@
 	{
 		"label": "smokedevilscroll5000",
 		"image": "https://i.imgur.com/6WSkKO7.png",
-		"name": "Smoke Devil scroll (Dust Cloud) (5k)",
+		"name": "Smoke Devil scroll (Dust Cloud)",
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Smoke_Devil_scroll_(Dust_Cloud)"
@@ -6184,6 +6248,46 @@
 		"wikiLink": "https://runescape.wiki/w/Super_strength#(3)"
 	},
 	{
+		"label": "swh",
+		"image": "https://i.imgur.com/buKTnb1.png",
+		"name": "Superior Statius's warhammer",
+		"breakdownNotes": "",
+		"slot": 4,
+		"wikiLink": "https://runescape.wiki/w/Superior_statius_warhammer"
+	},
+	{
+		"label": "vls",
+		"image": "https://i.imgur.com/OcTkGQM.png",
+		"name": "Superior Vesta's longsword",
+		"breakdownNotes": "",
+		"slot": 4,
+		"wikiLink": "https://runescape.wiki/w/Superior_vestas_longsword"
+	},
+	{
+		"label": "zurielshood",
+		"image": "https://i.imgur.com/tzSrusP.png",
+		"name": "Superior Zuriel's hood",
+		"breakdownNotes": "",
+		"slot": 1,
+		"wikiLink": "https://runescape.wiki/w/Superior_zuriel's_hood"
+	},
+	{
+		"label": "zurielslegs",
+		"image": "https://i.imgur.com/2hVnR1G.png",
+		"name": "Superior Zuriel's robe bottom",
+		"breakdownNotes": "",
+		"slot": 3,
+		"wikiLink": "https://runescape.wiki/w/Superior_zuriel's_robe_bottom"
+	},
+	{
+		"label": "zurielstop",
+		"image": "https://i.imgur.com/LxP4ocV.png",
+		"name": "Superior Zuriel's robe top",
+		"breakdownNotes": "",
+		"slot": 2,
+		"wikiLink": "https://runescape.wiki/w/Superior_zuriel's_robe_top"
+	},
+	{
 		"label": "zurielstaff",
 		"image": "https://i.imgur.com/V2ql1Vu.png",
 		"name": "Superior Zuriel's staff",
@@ -6246,46 +6350,6 @@
 		"breakdownNotes": "",
 		"slot": 6,
 		"wikiLink": "https://runescape.wiki/w/Superior_spined_gloves"
-	},
-	{
-		"label": "swh",
-		"image": "https://i.imgur.com/buKTnb1.png",
-		"name": "Superior Statius's warhammer",
-		"breakdownNotes": "",
-		"slot": 4,
-		"wikiLink": "https://runescape.wiki/w/Superior_statius_warhammer"
-	},
-	{
-		"label": "vls",
-		"image": "https://i.imgur.com/OcTkGQM.png",
-		"name": "Superior Vesta's longsword",
-		"breakdownNotes": "",
-		"slot": 4,
-		"wikiLink": "https://runescape.wiki/w/Superior_vestas_longsword"
-	},
-	{
-		"label": "zurielshood",
-		"image": "https://i.imgur.com/tzSrusP.png",
-		"name": "Superior Zuriel's hood",
-		"breakdownNotes": "",
-		"slot": 1,
-		"wikiLink": "https://runescape.wiki/w/Superior_zuriel's_hood"
-	},
-	{
-		"label": "zurielslegs",
-		"image": "https://i.imgur.com/2hVnR1G.png",
-		"name": "Superior Zuriel's robe bottom",
-		"breakdownNotes": "",
-		"slot": 3,
-		"wikiLink": "https://runescape.wiki/w/Superior_zuriel's_robe_bottom"
-	},
-	{
-		"label": "zurielstop",
-		"image": "https://i.imgur.com/LxP4ocV.png",
-		"name": "Superior Zuriel's robe top",
-		"breakdownNotes": "",
-		"slot": 2,
-		"wikiLink": "https://runescape.wiki/w/Superior_zuriel's_robe_top"
 	},
 	{
 		"label": "supportcape",
@@ -6672,6 +6736,30 @@
 		"wikiLink": "https://runescape.wiki/w/Vanquish"
 	},
 	{
+		"label": "vanquishmagic",
+		"image": "https://i.imgur.com/eOAuE2e.png",
+		"name": "Vanquish (magic)",
+		"breakdownNotes": "",
+		"slot": 4,
+		"wikiLink": "https://runescape.wiki/w/Vanquish_(magic)"
+	},
+	{
+		"label": "vanquishmelee",
+		"image": "https://i.imgur.com/eOAuE2e.png",
+		"name": "Vanquish (melee)",
+		"breakdownNotes": "",
+		"slot": 4,
+		"wikiLink": "https://runescape.wiki/w/Vanquish_(melee)"
+	},
+	{
+		"label": "vanquishranged",
+		"image": "https://i.imgur.com/eOAuE2e.png",
+		"name": "Vanquish (ranged)",
+		"breakdownNotes": "",
+		"slot": 4,
+		"wikiLink": "https://runescape.wiki/w/Vanquish_(ranged)"
+	},
+	{
 		"label": "varrocktele100",
 		"image": "https://i.imgur.com/hRnhbj5.png",
 		"name": "Varrock teleport",
@@ -7030,6 +7118,14 @@
 		"breakdownNotes": "",
 		"slot": 4,
 		"wikiLink": "https://runescape.wiki/w/Wyvern_crossbow"
+	},
+	{
+		"label": "xpcapacitor5000charging",
+		"image": "https://i.imgur.com/e0vL3ur.png",
+		"name": "XP Capacitor 5000 (Charging)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/XP_Capacitor_5000#Charging"
 	},
 	{
 		"label": "yaktweestick",
