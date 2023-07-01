@@ -217,11 +217,19 @@
 	},
 	{
 		"label": "amuletofglory",
-		"image": "https://i.imgur.com/HyS1DoA.png",
+		"image": "https://i.imgur.com/gawFoAi.png",
 		"name": "Amulet of glory",
 		"breakdownNotes": "",
 		"slot": 10,
 		"wikiLink": "https://runescape.wiki/w/Amulet_of_glory"
+	},
+	{
+		"label": "amuletofgloryc",
+		"image": "https://i.imgur.com/gawFoAi.png",
+		"name": "Amulet of glory (c)",
+		"breakdownNotes": "",
+		"slot": 10,
+		"wikiLink": "https://runescape.wiki/w/Amulet_of_glory_(c)"
 	},
 	{
 		"label": "amuletofnature",
@@ -417,7 +425,7 @@
 	},
 	{
 		"label": "arcticbear",
-		"image": "https://i.imgur.com/SDXWswc.png",
+		"image": "https://i.imgur.com/TTyHBIx.png",
 		"name": "Arctic bear pouch",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -753,7 +761,7 @@
 	},
 	{
 		"label": "beaver",
-		"image": "https://i.imgur.com/qa49nkC.png",
+		"image": "https://i.imgur.com/XuoH8jT.png",
 		"name": "Beaver pouch",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -801,7 +809,7 @@
 	},
 	{
 		"label": "gargoyle",
-		"image": "https://i.imgur.com/u1nbeaC.png",
+		"image": "https://i.imgur.com/ryD2xkC.png",
 		"name": "Binding contract (gargoyle)",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -1297,11 +1305,19 @@
 	},
 	{
 		"label": "combatbracelet",
-		"image": "https://i.imgur.com/fHvV11R.png",
+		"image": "https://i.imgur.com/KTG6jOQ.png",
 		"name": "Combat bracelet",
 		"breakdownNotes": "",
 		"slot": 6,
 		"wikiLink": "https://runescape.wiki/w/Combat_bracelet"
+	},
+	{
+		"label": "combatbraceletc",
+		"image": "https://i.imgur.com/KTG6jOQ.png",
+		"name": "Combat bracelet (c)",
+		"breakdownNotes": "",
+		"slot": 6,
+		"wikiLink": "https://runescape.wiki/w/Combat_bracelet_(c)"
 	},
 	{
 		"label": "dummy",
@@ -1673,11 +1689,27 @@
 	},
 	{
 		"label": "digsitependant",
-		"image": "https://i.imgur.com/fjGcC1M.png",
+		"image": "https://i.imgur.com/aviUAyA.png",
 		"name": "Dig Site pendant",
 		"breakdownNotes": "",
 		"slot": 10,
 		"wikiLink": "https://runescape.wiki/w/Dig_Site_pendant"
+	},
+	{
+		"label": "digsitependantc",
+		"image": "https://i.imgur.com/aviUAyA.png",
+		"name": "Dig Site pendant (c)",
+		"breakdownNotes": "",
+		"slot": 10,
+		"wikiLink": "https://runescape.wiki/w/Dig_Site_pendant_(c)"
+	},
+	{
+		"label": "diskofreturning",
+		"image": "https://i.imgur.com/z0Yiyhk.png",
+		"name": "Disk of returning",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Disk_of_returning_(Gower_Quest)"
 	},
 	{
 		"label": "weeklytoken",
@@ -1878,6 +1910,14 @@
 		"breakdownNotes": "",
 		"slot": 10,
 		"wikiLink": "https://runescape.wiki/w/Drakan's_medallion"
+	},
+	{
+		"label": "dramenstaff",
+		"image": "https://i.imgur.com/sxeQpNa.png",
+		"name": "Dramen staff",
+		"breakdownNotes": "",
+		"slot": 4,
+		"wikiLink": "https://runescape.wiki/w/Dramen_staff"
 	},
 	{
 		"label": "nips",
@@ -2289,11 +2329,19 @@
 	},
 	{
 		"label": "enlightenedamulet",
-		"image": "https://i.imgur.com/0ogKur6.png",
+		"image": "https://i.imgur.com/cr2oJs0.png",
 		"name": "Enlightened amulet",
 		"breakdownNotes": "",
 		"slot": 10,
 		"wikiLink": "https://runescape.wiki/w/Enlightened_amulet"
+	},
+	{
+		"label": "enlightenedamuletc",
+		"image": "https://i.imgur.com/cr2oJs0.png",
+		"name": "Enlightened amulet (c)",
+		"breakdownNotes": "",
+		"slot": 10,
+		"wikiLink": "https://runescape.wiki/w/Enlightened_amulet_(c)"
 	},
 	{
 		"label": "eofyellow",
@@ -2489,7 +2537,7 @@
 	},
 	{
 		"label": "extremehunter1",
-		"image": "https://i.imgur.com/HCjn9rk.png",
+		"image": "https://i.imgur.com/QrKIHKX.png",
 		"name": "Extreme hunter (1)",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -2593,7 +2641,7 @@
 	},
 	{
 		"label": "rodomatic",
-		"image": "https://i.imgur.com/5kqYUsz.png",
+		"image": "https://i.imgur.com/maZE8qW.png",
 		"name": "Fishing rod-o-matic",
 		"breakdownNotes": "",
 		"slot": 4,
@@ -2745,11 +2793,19 @@
 	},
 	{
 		"label": "gamesnecklace",
-		"image": "https://i.imgur.com/wzSSGvT.png",
+		"image": "https://i.imgur.com/bF43WHx.png",
 		"name": "Games necklace",
 		"breakdownNotes": "",
 		"slot": 10,
 		"wikiLink": "https://runescape.wiki/w/Games_necklace"
+	},
+	{
+		"label": "gamesnecklacec",
+		"image": "https://i.imgur.com/bF43WHx.png",
+		"name": "Games necklace (c)",
+		"breakdownNotes": "",
+		"slot": 10,
+		"wikiLink": "https://runescape.wiki/w/Games_necklace_(c)"
 	},
 	{
 		"label": "ganoboots",
@@ -2969,7 +3025,7 @@
 	},
 	{
 		"label": "granitelobster",
-		"image": "https://i.imgur.com/VsrLYXb.png",
+		"image": "https://i.imgur.com/J8VgIxA.png",
 		"name": "Granite lobster pouch",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -3192,6 +3248,14 @@
 		"wikiLink": "https://runescape.wiki/w/Headhunter's_thrill"
 	},
 	{
+		"label": "heatedteaflask",
+		"image": "https://i.imgur.com/28DukYt.png",
+		"name": "Heated tea flask",
+		"breakdownNotes": "",
+		"slot": 4,
+		"wikiLink": "https://runescape.wiki/w/Heated_tea_flask"
+	},
+	{
 		"label": "hellhoundscrolls",
 		"image": "https://i.imgur.com/zNZLlL3.png",
 		"name": "Hellhound scroll (Soul Food)",
@@ -3249,7 +3313,7 @@
 	},
 	{
 		"label": "holyscarab",
-		"image": "https://i.imgur.com/JollAZs.png",
+		"image": "https://i.imgur.com/7HsbgWH.png",
 		"name": "Holy scarab pouch",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -3438,6 +3502,14 @@
 		"breakdownNotes": "",
 		"slot": 7,
 		"wikiLink": "https://runescape.wiki/w/Insulated_boots"
+	},
+	{
+		"label": "invitationbox",
+		"image": "https://i.imgur.com/oQdFuSm.png",
+		"name": "Invitation box",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Invitation_box"
 	},
 	{
 		"label": "iritsticks",
@@ -4001,7 +4073,7 @@
 	},
 	{
 		"label": "magicbutterflynet",
-		"image": "https://i.imgur.com/TVFPeSk.png",
+		"image": "https://i.imgur.com/Qf9AVbR.png",
 		"name": "Magic butterfly net",
 		"breakdownNotes": "",
 		"slot": 4,
@@ -4329,7 +4401,7 @@
 	},
 	{
 		"label": "masterconstructorsboots",
-		"image": "https://i.imgur.com/ZE0dP2C.png",
+		"image": "https://i.imgur.com/UCx0Gj9.png",
 		"name": "Master constructor's boots",
 		"breakdownNotes": "",
 		"slot": 7,
@@ -4337,7 +4409,7 @@
 	},
 	{
 		"label": "masterconstructorgloves",
-		"image": "https://i.imgur.com/3NUEXXF.png",
+		"image": "https://i.imgur.com/Kk7SksF.png",
 		"name": "Master constructor's gloves",
 		"breakdownNotes": "",
 		"slot": 6,
@@ -4345,7 +4417,7 @@
 	},
 	{
 		"label": "masterconstructorhat",
-		"image": "https://i.imgur.com/bE6fQh6.png",
+		"image": "https://i.imgur.com/OTFMuCJ.png",
 		"name": "Master constructor's hat",
 		"breakdownNotes": "",
 		"slot": 1,
@@ -4353,7 +4425,7 @@
 	},
 	{
 		"label": "masterconstructorjacket",
-		"image": "https://i.imgur.com/34frqwZ.png",
+		"image": "https://i.imgur.com/0BCKI4J.png",
 		"name": "Master constructor's jacket",
 		"breakdownNotes": "",
 		"slot": 2,
@@ -4361,7 +4433,7 @@
 	},
 	{
 		"label": "masterconstructortrousers",
-		"image": "https://i.imgur.com/UFz0MJQ.png",
+		"image": "https://i.imgur.com/sKzjiFQ.png",
 		"name": "Master constructor's trousers",
 		"breakdownNotes": "",
 		"slot": 3,
@@ -5465,11 +5537,19 @@
 	},
 	{
 		"label": "ringofwealth",
-		"image": "https://i.imgur.com/vm7CGaN.png",
+		"image": "https://i.imgur.com/fd1hd39.png",
 		"name": "Ring of Wealth",
 		"breakdownNotes": "",
 		"slot": 11,
 		"wikiLink": "https://runescape.wiki/w/Ring_of_Wealth"
+	},
+	{
+		"label": "ringofwealthc",
+		"image": "https://i.imgur.com/fd1hd39.png",
+		"name": "Ring of Wealth (C)",
+		"breakdownNotes": "",
+		"slot": 11,
+		"wikiLink": "https://runescape.wiki/w/Ring_of_Wealth_(C)"
 	},
 	{
 		"label": "ringofwhispers",
@@ -5489,11 +5569,19 @@
 	},
 	{
 		"label": "ringofduelling",
-		"image": "https://i.imgur.com/6P8F0Ye.png",
+		"image": "https://i.imgur.com/TFgj5ji.png",
 		"name": "Ring of duelling",
 		"breakdownNotes": "",
 		"slot": 11,
 		"wikiLink": "https://runescape.wiki/w/Ring_of_duelling"
+	},
+	{
+		"label": "ringofduellingc",
+		"image": "https://i.imgur.com/TFgj5ji.png",
+		"name": "Ring of duelling (c)",
+		"breakdownNotes": "",
+		"slot": 11,
+		"wikiLink": "https://runescape.wiki/w/Ring_of_duelling_(c)"
 	},
 	{
 		"label": "ringofkinship",
@@ -5505,19 +5593,35 @@
 	},
 	{
 		"label": "ringofrespawn",
-		"image": "https://i.imgur.com/Z5qbOnJ.png",
+		"image": "https://i.imgur.com/OIXbC9E.png",
 		"name": "Ring of respawn",
 		"breakdownNotes": "",
 		"slot": 11,
 		"wikiLink": "https://runescape.wiki/w/Ring_of_respawn"
 	},
 	{
+		"label": "ringofrespawnc",
+		"image": "https://i.imgur.com/OIXbC9E.png",
+		"name": "Ring of respawn (c)",
+		"breakdownNotes": "",
+		"slot": 11,
+		"wikiLink": "https://runescape.wiki/w/Ring_of_respawn_(c)"
+	},
+	{
 		"label": "ringofslaying",
-		"image": "https://i.imgur.com/2naTdxd.png",
+		"image": "https://i.imgur.com/jSXTuBq.png",
 		"name": "Ring of slaying",
 		"breakdownNotes": "",
 		"slot": 11,
 		"wikiLink": "https://runescape.wiki/w/Ring_of_slaying"
+	},
+	{
+		"label": "ringofslayingc",
+		"image": "https://i.imgur.com/jSXTuBq.png",
+		"name": "Ring of slaying (c)",
+		"breakdownNotes": "",
+		"slot": 11,
+		"wikiLink": "https://runescape.wiki/w/Ring_of_slaying_(c)"
 	},
 	{
 		"label": "vigour",
@@ -5865,11 +5969,19 @@
 	},
 	{
 		"label": "skillsnecklace",
-		"image": "https://i.imgur.com/28wkzOg.png",
+		"image": "https://i.imgur.com/geVhmZZ.png",
 		"name": "Skills necklace",
 		"breakdownNotes": "",
 		"slot": 10,
 		"wikiLink": "https://runescape.wiki/w/Skills_necklace"
+	},
+	{
+		"label": "skillsnecklacec",
+		"image": "https://i.imgur.com/geVhmZZ.png",
+		"name": "Skills necklace (c)",
+		"breakdownNotes": "",
+		"slot": 10,
+		"wikiLink": "https://runescape.wiki/w/Skills_necklace_(c)"
 	},
 	{
 		"label": "skullsceptre",
@@ -6617,11 +6729,19 @@
 	},
 	{
 		"label": "travellersnecklace",
-		"image": "https://i.imgur.com/JbSgWma.png",
+		"image": "https://i.imgur.com/69eyA7I.png",
 		"name": "Traveller's Necklace",
 		"breakdownNotes": "",
 		"slot": 10,
 		"wikiLink": "https://runescape.wiki/w/Traveller%27s_necklace"
+	},
+	{
+		"label": "travellersnecklacec",
+		"image": "https://i.imgur.com/69eyA7I.png",
+		"name": "Traveller's necklace (c)",
+		"breakdownNotes": "",
+		"slot": 10,
+		"wikiLink": "https://runescape.wiki/w/Traveller's_necklace_(c)"
 	},
 	{
 		"label": "tmwboots",
