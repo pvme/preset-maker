@@ -1648,6 +1648,22 @@
 		"wikiLink": "https://runescape.wiki/w/Demon_slayer_circlet"
 	},
 	{
+		"label": "demonslayerskirt",
+		"image": "https://i.imgur.com/WM49WkU.png",
+		"name": "Demon slayer skirt",
+		"breakdownNotes": "",
+		"slot": 3,
+		"wikiLink": "https://runescape.wiki/w/Demon_slayer_skirt"
+	},
+	{
+		"label": "demonslayertorso",
+		"image": "https://i.imgur.com/9XerfRS.png",
+		"name": "Demon slayer torso",
+		"breakdownNotes": "",
+		"slot": 2,
+		"wikiLink": "https://runescape.wiki/w/Demon_slayer_torso"
+	},
+	{
 		"label": "desertamulet1",
 		"image": "https://i.imgur.com/RcXTDSc.png",
 		"name": "Desert amulet 1",
@@ -1702,6 +1718,46 @@
 		"breakdownNotes": "",
 		"slot": 10,
 		"wikiLink": "https://runescape.wiki/w/Dig_Site_pendant_(c)"
+	},
+	{
+		"label": "dinosaurhideboots",
+		"image": "https://i.imgur.com/YmGAlTn.png",
+		"name": "Dinosaurhide boots",
+		"breakdownNotes": "",
+		"slot": 7,
+		"wikiLink": "https://runescape.wiki/w/Dinosaurhide_boots"
+	},
+	{
+		"label": "dinosaurhidebody",
+		"image": "https://i.imgur.com/Dp3eF0D.png",
+		"name": "Dinosaurhide body",
+		"breakdownNotes": "",
+		"slot": 2,
+		"wikiLink": "https://runescape.wiki/w/Dinosaurhide_body"
+	},
+	{
+		"label": "dinosaurhidechaps",
+		"image": "https://i.imgur.com/UIfn3qG.png",
+		"name": "Dinosaurhide chaps",
+		"breakdownNotes": "",
+		"slot": 3,
+		"wikiLink": "https://runescape.wiki/w/Dinosaurhide_chaps"
+	},
+	{
+		"label": "dinosaurhidecowl",
+		"image": "https://i.imgur.com/JyAqn0X.png",
+		"name": "Dinosaurhide cowl",
+		"breakdownNotes": "",
+		"slot": 1,
+		"wikiLink": "https://runescape.wiki/w/Dinosaurhide_cowl"
+	},
+	{
+		"label": "dinosaurhidegloves",
+		"image": "https://i.imgur.com/hUNqJQP.png",
+		"name": "Dinosaurhide gloves",
+		"breakdownNotes": "",
+		"slot": 6,
+		"wikiLink": "https://runescape.wiki/w/Dinosaurhide_gloves"
 	},
 	{
 		"label": "diskofreturning",
@@ -5912,6 +5968,14 @@
 		"wikiLink": "https://runescape.wiki/w/Shadow_nihil_pouch"
 	},
 	{
+		"label": "shark",
+		"image": "https://i.imgur.com/qSP1R78.png",
+		"name": "Shark",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Shark"
+	},
+	{
 		"label": "shatteredworldsteleportscroll",
 		"image": "https://i.imgur.com/32yhm41.png",
 		"name": "Shattered Worlds teleport scroll",
@@ -6360,6 +6424,30 @@
 		"wikiLink": "https://runescape.wiki/w/Super_strength#(3)"
 	},
 	{
+		"label": "superiordeathlotuschestplate",
+		"image": "https://i.imgur.com/6MIGkP1.png",
+		"name": "Superior Death Lotus chestplate",
+		"breakdownNotes": "",
+		"slot": 2,
+		"wikiLink": "https://runescape.wiki/w/Superior_Death_Lotus_chestplate"
+	},
+	{
+		"label": "superiordeathlotushood",
+		"image": "https://i.imgur.com/ahIQK88.png",
+		"name": "Superior Death Lotus hood",
+		"breakdownNotes": "",
+		"slot": 1,
+		"wikiLink": "https://runescape.wiki/w/Superior_Death_Lotus_hood"
+	},
+	{
+		"label": "superiordragonriderboots",
+		"image": "https://i.imgur.com/DeDRUdo.png",
+		"name": "Superior Dragon Rider boots",
+		"breakdownNotes": "",
+		"slot": 7,
+		"wikiLink": "https://runescape.wiki/w/Superior_Dragon_Rider_boots"
+	},
+	{
 		"label": "swh",
 		"image": "https://i.imgur.com/buKTnb1.png",
 		"name": "Superior Statius's warhammer",
@@ -6414,6 +6502,14 @@
 		"breakdownNotes": "",
 		"slot": 3,
 		"wikiLink": "https://runescape.wiki/w/Superior_death_lotus_chaps"
+	},
+	{
+		"label": "superiorleviathanring",
+		"image": "https://i.imgur.com/auHIoIj.png",
+		"name": "Superior leviathan ring",
+		"breakdownNotes": "",
+		"slot": 11,
+		"wikiLink": "https://runescape.wiki/w/Superior_leviathan_ring"
 	},
 	{
 		"label": "supseasingergloves",
