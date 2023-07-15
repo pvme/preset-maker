@@ -264,6 +264,14 @@
 		"wikiLink": "https://runescape.wiki/w/Amulet_of_zealots"
 	},
 	{
+		"label": "ancestorspiritsaura",
+		"image": "https://i.imgur.com/2aMyvi6.png",
+		"name": "Ancestor spirits aura",
+		"breakdownNotes": "",
+		"slot": 8,
+		"wikiLink": "https://runescape.wiki/w/Ancestor_spirits_aura"
+	},
+	{
 		"label": "ancientgodbook2",
 		"image": "https://i.imgur.com/zi5v5NW.png",
 		"name": "Ancient book",
@@ -1720,20 +1728,20 @@
 		"wikiLink": "https://runescape.wiki/w/Dig_Site_pendant_(c)"
 	},
 	{
-		"label": "dinosaurhideboots",
-		"image": "https://i.imgur.com/YmGAlTn.png",
-		"name": "Dinosaurhide boots",
-		"breakdownNotes": "",
-		"slot": 7,
-		"wikiLink": "https://runescape.wiki/w/Dinosaurhide_boots"
-	},
-	{
 		"label": "dinosaurhidebody",
 		"image": "https://i.imgur.com/Dp3eF0D.png",
 		"name": "Dinosaurhide body",
 		"breakdownNotes": "",
 		"slot": 2,
 		"wikiLink": "https://runescape.wiki/w/Dinosaurhide_body"
+	},
+	{
+		"label": "dinosaurhideboots",
+		"image": "https://i.imgur.com/YmGAlTn.png",
+		"name": "Dinosaurhide boots",
+		"breakdownNotes": "",
+		"slot": 7,
+		"wikiLink": "https://runescape.wiki/w/Dinosaurhide_boots"
 	},
 	{
 		"label": "dinosaurhidechaps",
@@ -2462,6 +2470,14 @@
 		"breakdownNotes": "",
 		"slot": 10,
 		"wikiLink": "https://runescape.wiki/w/Statius_warhammer"
+	},
+	{
+		"label": "equilibriumaura",
+		"image": "https://i.imgur.com/a3Up2sd.png",
+		"name": "Equilibrium aura",
+		"breakdownNotes": "",
+		"slot": 8,
+		"wikiLink": "https://runescape.wiki/w/Equilibrium_aura"
 	},
 	{
 		"label": "grim",
@@ -5104,6 +5120,14 @@
 		"wikiLink": "https://runescape.wiki/w/Pack_mammoth_pouch"
 	},
 	{
+		"label": "packyakpouch",
+		"image": "https://i.imgur.com/HDVqGWL.png",
+		"name": "Pack yak pouch",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Pack_yak_pouch"
+	},
+	{
 		"label": "passageoftheabyss(green)",
 		"image": "https://i.imgur.com/PDg2YBC.png",
 		"name": "Passage of the Abyss (green)",
@@ -5880,6 +5904,14 @@
 		"wikiLink": "https://runescape.wiki/w/Seasinger_makigai"
 	},
 	{
+		"label": "seekerscharm",
+		"image": "https://i.imgur.com/yzalFZq.png",
+		"name": "Seeker's charm",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Seeker's_charm"
+	},
+	{
 		"label": "sing",
 		"image": "https://i.imgur.com/9Z9ChMg.png",
 		"name": "Seismic singularity",
@@ -6446,6 +6478,14 @@
 		"breakdownNotes": "",
 		"slot": 7,
 		"wikiLink": "https://runescape.wiki/w/Superior_Dragon_Rider_boots"
+	},
+	{
+		"label": "superiordragonridergloves",
+		"image": "https://i.imgur.com/ayCUL0c.png",
+		"name": "Superior Dragon Rider gloves",
+		"breakdownNotes": "",
+		"slot": 6,
+		"wikiLink": "https://runescape.wiki/w/Superior_Dragon_Rider_gloves"
 	},
 	{
 		"label": "swh",
