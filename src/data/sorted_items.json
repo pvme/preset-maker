@@ -6000,6 +6000,30 @@
 		"wikiLink": "https://runescape.wiki/w/Shadow_nihil_pouch"
 	},
 	{
+		"label": "shardoferebus",
+		"image": "https://i.imgur.com/dUZ4IIP.png",
+		"name": "Shard of Erebus",
+		"breakdownNotes": "",
+		"slot": 13,
+		"wikiLink": "https://runescape.wiki/w/Shard_of_Erebus"
+	},
+	{
+		"label": "shardofmah",
+		"image": "https://i.imgur.com/EUK3sji.png",
+		"name": "Shard of Mah",
+		"breakdownNotes": "",
+		"slot": 13,
+		"wikiLink": "https://runescape.wiki/w/Shard_of_Mah"
+	},
+	{
+		"label": "shardofzaros",
+		"image": "https://i.imgur.com/9IyFKle.png",
+		"name": "Shard of Zaros",
+		"breakdownNotes": "",
+		"slot": 13,
+		"wikiLink": "https://runescape.wiki/w/Shard_of_Zaros"
+	},
+	{
 		"label": "shark",
 		"image": "https://i.imgur.com/qSP1R78.png",
 		"name": "Shark",
