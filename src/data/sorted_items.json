@@ -15,6 +15,14 @@
 		"slot": 4,
 		"wikiLink": "https://runescape.wiki/w/Halberd"
 	},
+  {
+    "label": "404item",
+    "image": "https://i.imgur.com/xIoe7kR.png",
+    "name": "Item not found",
+    "breakdownNotes": "",
+    "slot": -1,
+    "wikiLink": ""
+  },
 	{
 		"label": "abyssalspikes",
 		"image": "https://i.imgur.com/0WBnZ62.png",
