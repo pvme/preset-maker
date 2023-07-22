@@ -22,7 +22,7 @@ export function emojify (text: string): string {
 
     return {
       alias,
-      mappedText: EmojiSettings.getEmojiImgTag(emojiId)
+      mappedText: EmojiSettings.getEmojiImgTag(emojiId, alias)
     };
   });
 

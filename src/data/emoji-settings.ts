@@ -20,8 +20,8 @@ class EmojiSettingsLoader {
     return this._getDiscordIdFromTag(discordEmojiTag) ?? alias;
   }
 
-  getEmojiImgTag (emojiId: string): string {
-    return '<img class="disc-emoji" src="https://cdn.discordapp.com/emojis/' + emojiId + '.png?v=1">';
+  getEmojiImgTag (emojiId: string, alias: string): string {
+    return `<img title="${alias}" class="disc-emoji" src="https://cdn.discordapp.com/emojis/'${emojiId}'.png?v=1">`;
   }
 
   async load (): Promise<void> {

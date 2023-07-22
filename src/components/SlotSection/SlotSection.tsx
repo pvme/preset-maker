@@ -82,6 +82,7 @@ const SingleSlot = ({ index, coord, className, slots, handleClickOpen, handleShi
       <div ref={dropRef}>
         <div key={index + new Date().getTime()} style={{ position: 'relative' }} ref={dragRef}>
           <area
+            title={slots[index].name}
             key={`${coord.x1},${coord.y1},${coord.x2},${coord.y2}`}
             style={{ cursor: 'pointer', opacity, userSelect: 'auto' }}
             shape="rect"

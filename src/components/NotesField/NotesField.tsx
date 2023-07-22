@@ -16,7 +16,7 @@ export interface NotesFieldProps {
 const allowedHtmlTags = sanitizeHtml.defaults.allowedTags.concat(['img', 'a']);
 const allowedHtmlAttributes = {
   ...sanitizeHtml.defaults.allowedAttributes,
-  img: ['class', 'src'],
+  img: ['class', 'src', 'title'],
   a: ['href', 'contenteditable']
 };
 
