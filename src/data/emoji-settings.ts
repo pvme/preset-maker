@@ -21,7 +21,7 @@ class EmojiSettingsLoader {
   }
 
   getEmojiImgTag (emojiId: string, alias: string): string {
-    return `<img title="${alias}" class="disc-emoji" src="https://cdn.discordapp.com/emojis/'${emojiId}'.png?v=1">`;
+    return `<img title="${alias}" class="disc-emoji" src="https://cdn.discordapp.com/emojis/${emojiId}.png?v=1">`;
   }
 
   async load (): Promise<void> {
