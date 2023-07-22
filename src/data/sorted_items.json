@@ -15,14 +15,6 @@
 		"slot": 4,
 		"wikiLink": "https://runescape.wiki/w/Halberd"
 	},
-  {
-    "label": "404item",
-    "image": "https://i.imgur.com/xIoe7kR.png",
-    "name": "Item not found",
-    "breakdownNotes": "",
-    "slot": -1,
-    "wikiLink": ""
-  },
 	{
 		"label": "abyssalspikes",
 		"image": "https://i.imgur.com/0WBnZ62.png",
@@ -3608,6 +3600,14 @@
 		"wikiLink": "https://runescape.wiki/w/Irit_incense_sticks"
 	},
 	{
+		"label": "404item",
+		"image": "https://i.imgur.com/xIoe7kR.png",
+		"name": "Item not found",
+		"breakdownNotes": "",
+		"slot": -1,
+		"wikiLink": ""
+	},
+	{
 		"label": "jangerberries",
 		"image": "https://i.imgur.com/8ka7wAu.png",
 		"name": "Jangerberries",
@@ -6486,6 +6486,14 @@
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Super_strength#(3)"
+	},
+	{
+		"label": "superwarmasterspotion6",
+		"image": "https://i.imgur.com/xIoe7kR.png",
+		"name": "Super warmaster's potion (6)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Super_warmaster%27s_potion#(6)"
 	},
 	{
 		"label": "superiordeathlotuschestplate",
