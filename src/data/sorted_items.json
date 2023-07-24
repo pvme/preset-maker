@@ -1176,6 +1176,14 @@
 		"wikiLink": "https://runescape.wiki/w/Brooch_of_the_Gods"
 	},
 	{
+		"label": "bunyippouch",
+		"image": "https://i.imgur.com/ThhI7qf.png",
+		"name": "Bunyip pouch",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Bunyip_pouch"
+	},
+	{
 		"label": "calcifiedfungussoup",
 		"image": "https://i.imgur.com/exlOdpw.png",
 		"name": "Calcified fungus soup",
@@ -3880,6 +3888,14 @@
 		"wikiLink": "https://runescape.wiki/w/Kwuarm_incense_sticks"
 	},
 	{
+		"label": "kwuarmsticks100",
+		"image": "https://i.imgur.com/ARLol7s.png",
+		"name": "Kwuarm incense sticks",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Kwuarm_incense_sticks"
+	},
+	{
 		"label": "laceration",
 		"image": "https://i.imgur.com/EiQNqj9.png",
 		"name": "Laceration boots",
@@ -4710,6 +4726,14 @@
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Miscellania_Teleport"
+	},
+	{
+		"label": "morytanialegs4",
+		"image": "https://i.imgur.com/7ZuWQzO.png",
+		"name": "Morytania legs 4",
+		"breakdownNotes": "",
+		"slot": 3,
+		"wikiLink": "https://runescape.wiki/w/Morytania_legs_4"
 	},
 	{
 		"label": "mudrune",
