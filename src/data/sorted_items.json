@@ -3320,6 +3320,14 @@
 		"wikiLink": "https://runescape.wiki/w/Hazelmere's_signet"
 	},
 	{
+		"label": "headhunterssacrifice",
+		"image": "https://i.imgur.com/314EQOn.png",
+		"name": "Headhunter's sacrifice",
+		"breakdownNotes": "",
+		"slot": 6,
+		"wikiLink": "https://runescape.wiki/w/Headhunter's_sacrifice"
+	},
+	{
 		"label": "headhuntersthrill",
 		"image": "https://i.imgur.com/QPCBJmb.png",
 		"name": "Headhunter's thrill",
@@ -6702,6 +6710,14 @@
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Supreme_overload_salve#(6)"
+	},
+	{
+		"label": "supremerangingpotion6",
+		"image": "https://i.imgur.com/AkEN37H.png",
+		"name": "Supreme ranging potion (6)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Supreme_ranging_potion_(6)"
 	},
 	{
 		"label": "runic",
