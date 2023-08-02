@@ -88,6 +88,14 @@
 		"wikiLink": "https://runescape.wiki/w/Achto_Tempest_body"
 	},
 	{
+		"label": "achtotempestboots",
+		"image": "https://i.imgur.com/tjl5Fqd.png",
+		"name": "Achto Tempest boots",
+		"breakdownNotes": "",
+		"slot": 7,
+		"wikiLink": "https://runescape.wiki/w/Achto_Tempest_boots"
+	},
+	{
 		"label": "achtotempestlegs",
 		"image": "https://i.imgur.com/LpgUWZ1.png",
 		"name": "Achto Tempest chaps",
@@ -102,6 +110,54 @@
 		"breakdownNotes": "",
 		"slot": 1,
 		"wikiLink": "https://runescape.wiki/w/Achto_Tempest_cowl"
+	},
+	{
+		"label": "achtotempestgloves",
+		"image": "https://i.imgur.com/IqC7xrI.png",
+		"name": "Achto Tempest gloves",
+		"breakdownNotes": "",
+		"slot": 6,
+		"wikiLink": "https://runescape.wiki/w/Achto_Tempest_gloves"
+	},
+	{
+		"label": "achtoteralithboots",
+		"image": "https://i.imgur.com/3BZukPm.png",
+		"name": "Achto Teralith boots",
+		"breakdownNotes": "",
+		"slot": 7,
+		"wikiLink": "https://runescape.wiki/w/Achto_Teralith_boots"
+	},
+	{
+		"label": "achtoteralithcuirass",
+		"image": "https://i.imgur.com/Bt2I4Se.png",
+		"name": "Achto Teralith cuirass",
+		"breakdownNotes": "",
+		"slot": 2,
+		"wikiLink": "https://runescape.wiki/w/Achto_Teralith_cuirass"
+	},
+	{
+		"label": "achtoteralithgauntlets",
+		"image": "https://i.imgur.com/v12aDnd.png",
+		"name": "Achto Teralith gauntlets",
+		"breakdownNotes": "",
+		"slot": 6,
+		"wikiLink": "https://runescape.wiki/w/Achto_Teralith_gauntlets"
+	},
+	{
+		"label": "achtoteralithhelmet",
+		"image": "https://i.imgur.com/u5jFH7R.png",
+		"name": "Achto Teralith helmet",
+		"breakdownNotes": "",
+		"slot": 1,
+		"wikiLink": "https://runescape.wiki/w/Achto_Teralith_helmet"
+	},
+	{
+		"label": "achtoteralithleggings",
+		"image": "https://i.imgur.com/oIrWohI.png",
+		"name": "Achto Teralith leggings",
+		"breakdownNotes": "",
+		"slot": 3,
+		"wikiLink": "https://runescape.wiki/w/Achto_Teralith_leggings"
 	},
 	{
 		"label": "activeclue",
