@@ -1640,12 +1640,20 @@
 		"wikiLink": "https://runescape.wiki/w/Dave's_spellbook"
 	},
 	{
-		"label": "deathguardt70",
+		"label": "deathguardtier70",
 		"image": "https://i.imgur.com/IjI79KW.png",
-		"name": "Death guard (T70)",
+		"name": "Death guard (tier 70)",
 		"breakdownNotes": "",
 		"slot": 4,
-		"wikiLink": "https://runescape.wiki/w/Death_guard_(T70)"
+		"wikiLink": "https://runescape.wiki/w/Death_guard_(tier_70)"
+	},
+	{
+		"label": "deathguardtier80",
+		"image": "https://i.imgur.com/HqXGvJ6.png",
+		"name": "Death guard (tier 80)",
+		"breakdownNotes": "",
+		"slot": 4,
+		"wikiLink": "https://runescape.wiki/w/Death_guard_(tier_80)"
 	},
 	{
 		"label": "deathrune",
@@ -1662,6 +1670,86 @@
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Death_rune"
+	},
+	{
+		"label": "deathdealerbootstier70",
+		"image": "https://i.imgur.com/xxuUiUI.png",
+		"name": "Deathdealer boots (tier 70)",
+		"breakdownNotes": "",
+		"slot": 7,
+		"wikiLink": "https://runescape.wiki/w/Deathdealer_boots_(tier_70)"
+	},
+	{
+		"label": "deathdealerbootstier80",
+		"image": "https://i.imgur.com/yYh2E9i.png",
+		"name": "Deathdealer boots (tier 80)",
+		"breakdownNotes": "",
+		"slot": 7,
+		"wikiLink": "https://runescape.wiki/w/Deathdealer_boots_(tier_80)"
+	},
+	{
+		"label": "deathdealerglovestier70",
+		"image": "https://i.imgur.com/lksnw1R.png",
+		"name": "Deathdealer gloves (tier 70)",
+		"breakdownNotes": "",
+		"slot": 6,
+		"wikiLink": "https://runescape.wiki/w/Deathdealer_gloves_(tier_70)"
+	},
+	{
+		"label": "deathdealerglovestier80",
+		"image": "https://i.imgur.com/cjWgU7S.png",
+		"name": "Deathdealer gloves (tier 80)",
+		"breakdownNotes": "",
+		"slot": 6,
+		"wikiLink": "https://runescape.wiki/w/Deathdealer_gloves_(tier_80)"
+	},
+	{
+		"label": "deathdealerhoodtier70",
+		"image": "https://i.imgur.com/KkSmljc.png",
+		"name": "Deathdealer hood (tier 70)",
+		"breakdownNotes": "",
+		"slot": 1,
+		"wikiLink": "https://runescape.wiki/w/Deathdealer_hood_(tier_70)"
+	},
+	{
+		"label": "deathdealerhoodtier80",
+		"image": "https://i.imgur.com/bCw4Kdq.png",
+		"name": "Deathdealer hood (tier 80)",
+		"breakdownNotes": "",
+		"slot": 1,
+		"wikiLink": "https://runescape.wiki/w/Deathdealer_hood_(tier_80)"
+	},
+	{
+		"label": "deathdealerrobebottomtier70",
+		"image": "https://i.imgur.com/7WKqA5L.png",
+		"name": "Deathdealer robe bottom (tier 70)",
+		"breakdownNotes": "",
+		"slot": 3,
+		"wikiLink": "https://runescape.wiki/w/Deathdealer_robe_bottom_(tier_70)"
+	},
+	{
+		"label": "deathdealerrobebottomtier80",
+		"image": "https://i.imgur.com/PUqNMhg.png",
+		"name": "Deathdealer robe bottom (tier 80)",
+		"breakdownNotes": "",
+		"slot": 3,
+		"wikiLink": "https://runescape.wiki/w/Deathdealer_robe_bottom_(tier_80)"
+	},
+	{
+		"label": "deathdealerrobetoptier70",
+		"image": "https://i.imgur.com/Yf8CzMa.png",
+		"name": "Deathdealer robe top (tier 70)",
+		"breakdownNotes": "",
+		"slot": 2,
+		"wikiLink": "https://runescape.wiki/w/Deathdealer_robe_top_(tier_70)"
+	},
+	{
+		"label": "deathdealerrobetoptier80",
+		"image": "https://i.imgur.com/qQTupff.png",
+		"name": "Deathdealer robe top (tier 80)",
+		"breakdownNotes": "",
+		"slot": 2,
+		"wikiLink": "https://runescape.wiki/w/Deathdealer_robe_top_(tier_80)"
 	},
 	{
 		"label": "deathsporearrowtips1",
@@ -1688,44 +1776,44 @@
 		"wikiLink": "https://runescape.wiki/w/Deathtouched_bracelet"
 	},
 	{
-		"label": "deathwardenbootst70",
+		"label": "deathwardenbootstier70",
 		"image": "https://i.imgur.com/HSvu5ig.png",
-		"name": "Deathwarden boots (T70)",
+		"name": "Deathwarden boots (tier 70)",
 		"breakdownNotes": "",
 		"slot": 7,
-		"wikiLink": "https://runescape.wiki/w/Deathwarden_boots_(T70)"
+		"wikiLink": "https://runescape.wiki/w/Deathwarden_boots_(tier_70)"
 	},
 	{
-		"label": "deathwardenglovest70",
+		"label": "deathwardenglovestier70",
 		"image": "https://i.imgur.com/zP1KZQS.png",
-		"name": "Deathwarden gloves (T70)",
+		"name": "Deathwarden gloves (tier 70)",
 		"breakdownNotes": "",
 		"slot": 6,
-		"wikiLink": "https://runescape.wiki/w/Deathwarden_gloves_(T70)"
+		"wikiLink": "https://runescape.wiki/w/Deathwarden_gloves_(tier_70)"
 	},
 	{
-		"label": "deathwardenhoodt70",
+		"label": "deathwardenhoodtier70",
 		"image": "https://i.imgur.com/7Xe3Ojt.png",
-		"name": "Deathwarden hood (T70)",
+		"name": "Deathwarden hood (tier 70)",
 		"breakdownNotes": "",
 		"slot": 1,
-		"wikiLink": "https://runescape.wiki/w/Deathwarden_hood_(T70)"
+		"wikiLink": "https://runescape.wiki/w/Deathwarden_hood_(tier_70)"
 	},
 	{
-		"label": "deathwardenrobebottomt70",
+		"label": "deathwardenrobebottomtier70",
 		"image": "https://i.imgur.com/kvHeNlP.png",
-		"name": "Deathwarden robe bottom (T70)",
+		"name": "Deathwarden robe bottom (tier 70)",
 		"breakdownNotes": "",
 		"slot": 3,
-		"wikiLink": "https://runescape.wiki/w/Deathwarden_robe_bottom_(T70)"
+		"wikiLink": "https://runescape.wiki/w/Deathwarden_robe_bottom_(tier_70)"
 	},
 	{
-		"label": "deathwardenrobetopt70",
+		"label": "deathwardenrobetoptier70",
 		"image": "https://i.imgur.com/ixmgpKw.png",
-		"name": "Deathwarden robe top (T70)",
+		"name": "Deathwarden robe top (tier 70)",
 		"breakdownNotes": "",
 		"slot": 2,
-		"wikiLink": "https://runescape.wiki/w/Deathwarden_robe_top_(T70)"
+		"wikiLink": "https://runescape.wiki/w/Deathwarden_robe_top_(tier_70)"
 	},
 	{
 		"label": "deci",
@@ -6280,12 +6368,20 @@
 		"wikiLink": "https://runescape.wiki/w/Skills_necklace_(c)"
 	},
 	{
-		"label": "skulllanternt70",
+		"label": "skulllanterntier70",
 		"image": "https://i.imgur.com/yhYsPpi.png",
-		"name": "Skull lantern (T70)",
+		"name": "Skull lantern (tier 70)",
 		"breakdownNotes": "",
 		"slot": 5,
-		"wikiLink": "https://runescape.wiki/w/Skull_lantern_(T70)"
+		"wikiLink": "https://runescape.wiki/w/Skull_lantern_(tier_70)"
+	},
+	{
+		"label": "skulllanterntier80",
+		"image": "https://i.imgur.com/9F9X4Jd.png",
+		"name": "Skull lantern (tier 80)",
+		"breakdownNotes": "",
+		"slot": 5,
+		"wikiLink": "https://runescape.wiki/w/Skull_lantern_(tier_80)"
 	},
 	{
 		"label": "skullsceptre",
