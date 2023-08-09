@@ -1128,6 +1128,14 @@
 		"wikiLink": "https://runescape.wiki/w/Bolas"
 	},
 	{
+		"label": "bonerune",
+		"image": "https://i.imgur.com/oYa48lq.png",
+		"name": "Bone rune",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Bone_rune"
+	},
+	{
 		"label": "bonecrusher",
 		"image": "https://i.imgur.com/9Dzj0Sl.png",
 		"name": "Bonecrusher",
@@ -1480,6 +1488,14 @@
 		"wikiLink": "https://runescape.wiki/w/Crimson_charm"
 	},
 	{
+		"label": "t95necrohelm",
+		"image": "https://i.imgur.com/YlR8MWC.png",
+		"name": "Crown of the First Necromancer",
+		"breakdownNotes": "",
+		"slot": 1,
+		"wikiLink": "https://runescape.wiki/w/Crown_of_the_First_Necromancer"
+	},
+	{
 		"label": "crushednest",
 		"image": "https://i.imgur.com/JzxQM2m.png",
 		"name": "Crushed nest",
@@ -1632,6 +1648,30 @@
 		"wikiLink": "https://runescape.wiki/w/Dave's_spellbook"
 	},
 	{
+		"label": "deathguardt70",
+		"image": "https://i.imgur.com/IjI79KW.png",
+		"name": "Death guard (tier 70)",
+		"breakdownNotes": "",
+		"slot": 4,
+		"wikiLink": "https://runescape.wiki/w/Death_guard_(tier_70)"
+	},
+	{
+		"label": "deathguardt80",
+		"image": "https://i.imgur.com/HqXGvJ6.png",
+		"name": "Death guard (tier 80)",
+		"breakdownNotes": "",
+		"slot": 4,
+		"wikiLink": "https://runescape.wiki/w/Death_guard_(tier_80)"
+	},
+	{
+		"label": "deathguardt90",
+		"image": "https://i.imgur.com/tosZimW.png",
+		"name": "Death guard (tier 90)",
+		"breakdownNotes": "",
+		"slot": 4,
+		"wikiLink": "https://runescape.wiki/w/Death_guard_(tier_90)"
+	},
+	{
 		"label": "deathrune",
 		"image": "https://i.imgur.com/0V4quVU.png",
 		"name": "Death rune",
@@ -1646,6 +1686,126 @@
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Death_rune"
+	},
+	{
+		"label": "deathdealerbootst70",
+		"image": "https://i.imgur.com/xxuUiUI.png",
+		"name": "Deathdealer boots (tier 70)",
+		"breakdownNotes": "",
+		"slot": 7,
+		"wikiLink": "https://runescape.wiki/w/Deathdealer_boots_(tier_70)"
+	},
+	{
+		"label": "deathdealerbootst80",
+		"image": "https://i.imgur.com/yYh2E9i.png",
+		"name": "Deathdealer boots (tier 80)",
+		"breakdownNotes": "",
+		"slot": 7,
+		"wikiLink": "https://runescape.wiki/w/Deathdealer_boots_(tier_80)"
+	},
+	{
+		"label": "deathdealerbootst90",
+		"image": "https://i.imgur.com/ixeiTn3.png",
+		"name": "Deathdealer boots (tier 90)",
+		"breakdownNotes": "",
+		"slot": 7,
+		"wikiLink": "https://runescape.wiki/w/Deathdealer_boots_(tier_90)"
+	},
+	{
+		"label": "deathdealerglovest70",
+		"image": "https://i.imgur.com/lksnw1R.png",
+		"name": "Deathdealer gloves (tier 70)",
+		"breakdownNotes": "",
+		"slot": 6,
+		"wikiLink": "https://runescape.wiki/w/Deathdealer_gloves_(tier_70)"
+	},
+	{
+		"label": "deathdealerglovest80",
+		"image": "https://i.imgur.com/cjWgU7S.png",
+		"name": "Deathdealer gloves (tier 80)",
+		"breakdownNotes": "",
+		"slot": 6,
+		"wikiLink": "https://runescape.wiki/w/Deathdealer_gloves_(tier_80)"
+	},
+	{
+		"label": "deathdealerglovest90",
+		"image": "https://i.imgur.com/olAlTZ8.png",
+		"name": "Deathdealer gloves (tier 90)",
+		"breakdownNotes": "",
+		"slot": 6,
+		"wikiLink": "https://runescape.wiki/w/Deathdealer_gloves_(tier_90)"
+	},
+	{
+		"label": "deathdealerhoodt70",
+		"image": "https://i.imgur.com/KkSmljc.png",
+		"name": "Deathdealer hood (tier 70)",
+		"breakdownNotes": "",
+		"slot": 1,
+		"wikiLink": "https://runescape.wiki/w/Deathdealer_hood_(tier_70)"
+	},
+	{
+		"label": "deathdealerhoodt80",
+		"image": "https://i.imgur.com/bCw4Kdq.png",
+		"name": "Deathdealer hood (tier 80)",
+		"breakdownNotes": "",
+		"slot": 1,
+		"wikiLink": "https://runescape.wiki/w/Deathdealer_hood_(tier_80)"
+	},
+	{
+		"label": "deathdealerhoodt90",
+		"image": "https://i.imgur.com/mOp3i6V.png",
+		"name": "Deathdealer hood (tier 90)",
+		"breakdownNotes": "",
+		"slot": 1,
+		"wikiLink": "https://runescape.wiki/w/Deathdealer_hood_(tier_90)"
+	},
+	{
+		"label": "deathdealerrobebottomt70",
+		"image": "https://i.imgur.com/7WKqA5L.png",
+		"name": "Deathdealer robe bottom (tier 70)",
+		"breakdownNotes": "",
+		"slot": 3,
+		"wikiLink": "https://runescape.wiki/w/Deathdealer_robe_bottom_(tier_70)"
+	},
+	{
+		"label": "deathdealerrobebottomt80",
+		"image": "https://i.imgur.com/PUqNMhg.png",
+		"name": "Deathdealer robe bottom (tier 80)",
+		"breakdownNotes": "",
+		"slot": 3,
+		"wikiLink": "https://runescape.wiki/w/Deathdealer_robe_bottom_(tier_80)"
+	},
+	{
+		"label": "deathdealerrobebottomt90",
+		"image": "https://i.imgur.com/4U5agZC.png",
+		"name": "Deathdealer robe bottom (tier 90)",
+		"breakdownNotes": "",
+		"slot": 3,
+		"wikiLink": "https://runescape.wiki/w/Deathdealer_robe_bottom_(tier_90)"
+	},
+	{
+		"label": "deathdealerrobetopt70",
+		"image": "https://i.imgur.com/Yf8CzMa.png",
+		"name": "Deathdealer robe top (tier 70)",
+		"breakdownNotes": "",
+		"slot": 2,
+		"wikiLink": "https://runescape.wiki/w/Deathdealer_robe_top_(tier_70)"
+	},
+	{
+		"label": "deathdealerrobetopt80",
+		"image": "https://i.imgur.com/qQTupff.png",
+		"name": "Deathdealer robe top (tier 80)",
+		"breakdownNotes": "",
+		"slot": 2,
+		"wikiLink": "https://runescape.wiki/w/Deathdealer_robe_top_(tier_80)"
+	},
+	{
+		"label": "deathdealerrobetopt90",
+		"image": "https://i.imgur.com/d9XO0Xd.png",
+		"name": "Deathdealer robe top (tier 90)",
+		"breakdownNotes": "",
+		"slot": 2,
+		"wikiLink": "https://runescape.wiki/w/Deathdealer_robe_top_(tier_90)"
 	},
 	{
 		"label": "deathsporearrowtips1",
@@ -1670,6 +1830,46 @@
 		"breakdownNotes": "",
 		"slot": 6,
 		"wikiLink": "https://runescape.wiki/w/Deathtouched_bracelet"
+	},
+	{
+		"label": "deathwardenbootst70",
+		"image": "https://i.imgur.com/HSvu5ig.png",
+		"name": "Deathwarden boots (tier 70)",
+		"breakdownNotes": "",
+		"slot": 7,
+		"wikiLink": "https://runescape.wiki/w/Deathwarden_boots_(tier_70)"
+	},
+	{
+		"label": "deathwardenglovest70",
+		"image": "https://i.imgur.com/zP1KZQS.png",
+		"name": "Deathwarden gloves (tier 70)",
+		"breakdownNotes": "",
+		"slot": 6,
+		"wikiLink": "https://runescape.wiki/w/Deathwarden_gloves_(tier_70)"
+	},
+	{
+		"label": "deathwardenhoodt70",
+		"image": "https://i.imgur.com/7Xe3Ojt.png",
+		"name": "Deathwarden hood (tier 70)",
+		"breakdownNotes": "",
+		"slot": 1,
+		"wikiLink": "https://runescape.wiki/w/Deathwarden_hood_(tier_70)"
+	},
+	{
+		"label": "deathwardenrobebottomt70",
+		"image": "https://i.imgur.com/kvHeNlP.png",
+		"name": "Deathwarden robe bottom (tier 70)",
+		"breakdownNotes": "",
+		"slot": 3,
+		"wikiLink": "https://runescape.wiki/w/Deathwarden_robe_bottom_(tier_70)"
+	},
+	{
+		"label": "deathwardenrobetopt70",
+		"image": "https://i.imgur.com/ixmgpKw.png",
+		"name": "Deathwarden robe top (tier 70)",
+		"breakdownNotes": "",
+		"slot": 2,
+		"wikiLink": "https://runescape.wiki/w/Deathwarden_robe_top_(tier_70)"
 	},
 	{
 		"label": "deci",
@@ -2142,6 +2342,14 @@
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Ectophial"
+	},
+	{
+		"label": "ectoplasm",
+		"image": "https://i.imgur.com/Dy2NfTt.png",
+		"name": "Ectoplasm",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Ectoplasm"
 	},
 	{
 		"label": "zekkil",
@@ -2808,6 +3016,22 @@
 		"wikiLink": "https://runescape.wiki/w/Fleeting_boots"
 	},
 	{
+		"label": "fleshrune",
+		"image": "https://i.imgur.com/cgW4gGD.png",
+		"name": "Flesh rune",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Flesh_rune"
+	},
+	{
+		"label": "t95necroboots",
+		"image": "https://i.imgur.com/FawdniP.png",
+		"name": "Foot wraps of the First Necromancer",
+		"breakdownNotes": "",
+		"slot": 7,
+		"wikiLink": "https://runescape.wiki/w/Foot_wraps_of_the_First_Necromancer"
+	},
+	{
 		"label": "forinthrybracelet",
 		"image": "https://i.imgur.com/AeQr9sy.png",
 		"name": "Forinthry bracelet",
@@ -3358,6 +3582,14 @@
 		"breakdownNotes": "",
 		"slot": 4,
 		"wikiLink": "https://runescape.wiki/w/Guthix_staff"
+	},
+	{
+		"label": "t95necrogloves",
+		"image": "https://i.imgur.com/8zjLczG.png",
+		"name": "Hand wrap of the First Necromancer",
+		"breakdownNotes": "",
+		"slot": 6,
+		"wikiLink": "https://runescape.wiki/w/Hand_wrap_of_the_First_Necromancer"
 	},
 	{
 		"label": "hardclue",
@@ -4776,6 +5008,14 @@
 		"wikiLink": "https://runescape.wiki/w/Merciless_kiteshield"
 	},
 	{
+		"label": "miasmarune",
+		"image": "https://i.imgur.com/4pGOeox.png",
+		"name": "Miasma rune",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Miasma_rune"
+	},
+	{
 		"label": "mindrune",
 		"image": "https://i.imgur.com/2zOitRL.png",
 		"name": "Mind rune",
@@ -5142,6 +5382,14 @@
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Oldak_coil"
+	},
+	{
+		"label": "omniguard",
+		"image": "https://i.imgur.com/SzFvoQB.png",
+		"name": "Omni guard",
+		"breakdownNotes": "",
+		"slot": 4,
+		"wikiLink": "https://runescape.wiki/w/Omni_guard"
 	},
 	{
 		"label": "onyx",
@@ -5816,6 +6064,22 @@
 		"wikiLink": "https://runescape.wiki/w/Ripper_Demon_scroll_(Death_From_Above)"
 	},
 	{
+		"label": "t95necrolegs",
+		"image": "https://i.imgur.com/9B2Bf7D.png",
+		"name": "Robe bottom of the First Necromancer",
+		"breakdownNotes": "",
+		"slot": 3,
+		"wikiLink": "https://runescape.wiki/w/Robe_bottom_of_the_First_Necromancer"
+	},
+	{
+		"label": "t95necrotop",
+		"image": "https://i.imgur.com/ju4qvbN.png",
+		"name": "Robe top of the First Necromancer",
+		"breakdownNotes": "",
+		"slot": 2,
+		"wikiLink": "https://runescape.wiki/w/Robe_top_of_the_First_Necromancer"
+	},
+	{
 		"label": "rocktail",
 		"image": "https://i.imgur.com/bopHhxT.png",
 		"name": "Rocktail",
@@ -6200,6 +6464,30 @@
 		"wikiLink": "https://runescape.wiki/w/Skills_necklace_(c)"
 	},
 	{
+		"label": "skulllanternt70",
+		"image": "https://i.imgur.com/yhYsPpi.png",
+		"name": "Skull lantern (tier 70)",
+		"breakdownNotes": "",
+		"slot": 5,
+		"wikiLink": "https://runescape.wiki/w/Skull_lantern_(tier_70)"
+	},
+	{
+		"label": "skulllanternt80",
+		"image": "https://i.imgur.com/9F9X4Jd.png",
+		"name": "Skull lantern (tier 80)",
+		"breakdownNotes": "",
+		"slot": 5,
+		"wikiLink": "https://runescape.wiki/w/Skull_lantern_(tier_80)"
+	},
+	{
+		"label": "skulllanternt90",
+		"image": "https://i.imgur.com/nEI3w2n.png",
+		"name": "Skull lantern (tier 90)",
+		"breakdownNotes": "",
+		"slot": 5,
+		"wikiLink": "https://runescape.wiki/w/Skull_lantern_(tier_90)"
+	},
+	{
 		"label": "skullsceptre",
 		"image": "https://i.imgur.com/rMZUuze.png",
 		"name": "Skull sceptre",
@@ -6296,6 +6584,14 @@
 		"wikiLink": "https://runescape.wiki/w/Soul_rune"
 	},
 	{
+		"label": "soulboundlantern",
+		"image": "https://i.imgur.com/VJsZ4HL.png",
+		"name": "Soulbound lantern",
+		"breakdownNotes": "",
+		"slot": 5,
+		"wikiLink": "https://runescape.wiki/w/Soulbound_lantern"
+	},
+	{
 		"label": "spade",
 		"image": "https://i.imgur.com/3Hzb1UG.png",
 		"name": "Spade",
@@ -6310,6 +6606,14 @@
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Spirit_attraction_flask#(6)"
+	},
+	{
+		"label": "spiritrune",
+		"image": "https://i.imgur.com/N0YCWbP.png",
+		"name": "Spirit rune",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Spirit_rune"
 	},
 	{
 		"label": "spirittreere-rooter(used)",
