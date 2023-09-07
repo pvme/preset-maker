@@ -75,7 +75,7 @@ export const RelicSelectDialog = ({
         {
           limit: 100,
           threshold: -100,
-          keys: ['name', 'label']
+          keys: ['name', 'label', 'description']
         }
       );
 
@@ -157,6 +157,7 @@ export const RelicSelectDialog = ({
             <Box
               key={`option-${option.name}`}
               component="li"
+              title={option.description}
               {...props}
             >
               <img

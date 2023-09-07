@@ -36,6 +36,7 @@ const RelicSectionList = ({ relics, onClick }: { relics: RelicData[], onClick: R
           key={`${relicData.label}${index}`}
           className="d-flex flex-center relic-section__list-item"
           onClick={(event) => { onRelicSelect(event, index); }}
+          title={relicData.description}
         >
           {relicData.image.length > 0 && (
             <img className="relic-section__list-item-image" src={relicData.image}></img>
