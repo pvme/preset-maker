@@ -75,7 +75,7 @@ export const RelicSelectDialog = ({
         {
           limit: 100,
           threshold: -100,
-          keys: ['name', 'label', 'description']
+          keys: ['name', 'label']
         }
       );
 
