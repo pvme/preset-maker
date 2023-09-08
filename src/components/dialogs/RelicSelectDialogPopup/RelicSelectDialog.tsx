@@ -157,6 +157,7 @@ export const RelicSelectDialog = ({
             <Box
               key={`option-${option.name}`}
               component="li"
+              title={option.description}
               {...props}
             >
               <img
