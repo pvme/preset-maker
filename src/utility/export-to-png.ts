@@ -2,6 +2,10 @@ import html2canvas from 'html2canvas';
 
 import { generateFileName } from './generate-file-name';
 
+interface ImageExportOptions {
+  hiddenElements?: string[]
+};
+
 /**
  * Converts an HTMLElement to a Base64 image.
  * @param element The element to convert.
@@ -14,7 +18,7 @@ export const getImageFromElement = async (element: HTMLElement | null): Promise<
       return;
     }
 
-    createCanvas(element, (blob: string) => {
+    createCanvas(element, {}, (blob: string) => {
       resolve(blob);
     }).catch((e) => {
       reject(e);
@@ -27,12 +31,12 @@ export const exportAsImage = async (element: HTMLElement | null, preface: string
     return;
   }
 
-  await createCanvas(element, (blob: string) => {
+  await createCanvas(element, {}, (blob: string) => {
     downloadImage(blob, preface);
   });
 };
 
-export const copyImageToClipboard = async (element: HTMLElement | null, { onSuccess, onError }: {
+export const copyImageToClipboard = async (element: HTMLElement | null, options: ImageExportOptions, { onSuccess, onError }: {
   onSuccess: () => void
   onError: () => void
 }): Promise<void> => {
@@ -41,7 +45,7 @@ export const copyImageToClipboard = async (element: HTMLElement | null, { onSucc
     return;
   }
 
-  await createCanvas(element, (_imageBlobURL: string, canvas: HTMLCanvasElement) => {
+  await createCanvas(element, options, (_imageBlobURL: string, canvas: HTMLCanvasElement) => {
     canvas.toBlob((blob) => {
       if (blob == null) {
         onError();
@@ -55,8 +59,8 @@ export const copyImageToClipboard = async (element: HTMLElement | null, { onSucc
   });
 };
 
-const createCanvas = async (element: HTMLElement, callback: (imageBlobURL: string, canvas: HTMLCanvasElement) => void): Promise<void> => {
-  const previousheight = element.style.height;
+const createCanvas = async (element: HTMLElement, options: ImageExportOptions, callback: (imageBlobURL: string, canvas: HTMLCanvasElement) => void): Promise<void> => {
+  const previousHeight = element.style.height;
 
   const html = document.getElementsByTagName('html')[0];
   const body = document.getElementsByTagName('body')[0];
@@ -74,7 +78,11 @@ const createCanvas = async (element: HTMLElement, callback: (imageBlobURL: strin
   html.style.width = `${htmlWidth}px`;
   body.style.width = `${bodyWidth}px`;
 
-  element.style.height = `${element.clientHeight - 7}px`;
+  toggleElementDisplay(options?.hiddenElements ?? [], false);
+
+  // Adjust the height to remove a white border at the bottom (not
+  // sure where its coming from).
+  element.style.height = `${element.clientHeight - 5}px`;
 
   const canvas = await html2canvas(element, {
     allowTaint: true,
@@ -83,8 +91,17 @@ const createCanvas = async (element: HTMLElement, callback: (imageBlobURL: strin
   });
   const imageBlobURL = canvas.toDataURL('image/png', 1.0);
   callback(imageBlobURL, canvas);
-  // reset height
-  element.style.height = previousheight;
+
+  // Restore the DOM
+  element.style.height = previousHeight;
+  // This needs a delay because the clipboard will cause the DOM not
+  // not be focused.
+  await new Promise((resolve) => {
+    setTimeout(() => {
+      toggleElementDisplay(options?.hiddenElements ?? [], true);
+      resolve(true);
+    }, 500);
+  });
 };
 
 const downloadImage = (blob: string, preface: string): void => {
@@ -99,4 +116,11 @@ const downloadImage = (blob: string, preface: string): void => {
   document.body.removeChild(fakeLink);
 
   fakeLink.remove();
+};
+
+const toggleElementDisplay = (classNames: string[], shouldDisplay: boolean): void => {
+  classNames.forEach(className => {
+    const element = document.querySelector(className) as HTMLElement;
+    element.style.display = shouldDisplay ? 'block' : 'none';
+  });
 };

@@ -81,7 +81,17 @@ export const PresetActions = ({
   }, []);
 
   const onCopyImageToClipboardClick = useCallback(async () => {
+    const alternativeIsPopulated = (alternative: { name: string }): boolean => alternative.name !== '';
+    const hasAlternativeRelics = relics.alternativeRelics.some(alternativeIsPopulated);
+    const hasAlternativeFamiliars = familiars.alternativeFamiliars.some(alternativeIsPopulated);
+    const hiddenElements = [
+      hasAlternativeRelics ? undefined : '.relic-section__alternative',
+      hasAlternativeFamiliars ? undefined : '.familiar-section__alternative'
+    ].filter(Boolean) as string[];
+
     await copyImageToClipboard(presetExportRef, {
+      hiddenElements
+    }, {
       onSuccess: () => {
         enqueueSnackbar('Copied image to clipboard', {
           variant: 'success'
@@ -93,7 +103,7 @@ export const PresetActions = ({
         });
       }
     });
-  }, [presetExportRef]);
+  }, [presetExportRef, relics, familiars]);
 
   const generateShareableLink = async (): Promise<void> => {
     try {
