@@ -1999,7 +1999,7 @@
 		"slot": 1,
 		"wikiLink": "https://runescape.wiki/w/Demon_slayer_circlet"
 	},
-  {
+	{
 		"label": "demonslayergloves",
 		"image": "https://i.imgur.com/qRiwQic.png",
 		"name": "Demon slayer gloves",
@@ -2134,6 +2134,14 @@
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Distraction_&_Diversion_reset_token_(weekly)"
+	},
+	{
+		"label": "divcape",
+		"image": "https://i.imgur.com/vROKP1U.png",
+		"name": "Divination cape",
+		"breakdownNotes": "",
+		"slot": 12,
+		"wikiLink": "https://runescape.wiki/w/Divination_cape"
 	},
 	{
 		"label": "divcharge",
@@ -2446,6 +2454,46 @@
 		"breakdownNotes": "",
 		"slot": 4,
 		"wikiLink": "https://runescape.wiki/w/Ek-ZekKil"
+	},
+	{
+		"label": "elderdivbody",
+		"image": "https://i.imgur.com/TFcJamU.png",
+		"name": "Elder divination body",
+		"breakdownNotes": "",
+		"slot": 2,
+		"wikiLink": "https://runescape.wiki/w/Elder_divination_body"
+	},
+	{
+		"label": "elderdivfeet",
+		"image": "",
+		"name": "Elder divination feet",
+		"breakdownNotes": "https://i.imgur.com/gDaxXcu.png",
+		"slot": 7,
+		"wikiLink": "https://runescape.wiki/w/Elder_divination_feet"
+	},
+	{
+		"label": "elderdivhands",
+		"image": "",
+		"name": "Elder divination hands",
+		"breakdownNotes": "https://i.imgur.com/srTFPjJ.png",
+		"slot": 6,
+		"wikiLink": "https://runescape.wiki/w/Elder_divination_hands"
+	},
+	{
+		"label": "elderdivhead",
+		"image": "https://i.imgur.com/FsSuJzl.png",
+		"name": "Elder divination head",
+		"breakdownNotes": "",
+		"slot": 1,
+		"wikiLink": "https://runescape.wiki/w/Elder_divination_head"
+	},
+	{
+		"label": "elderdivlegs",
+		"image": "https://i.imgur.com/YSDUcbl.png",
+		"name": "Elder divination legs",
+		"breakdownNotes": "",
+		"slot": 3,
+		"wikiLink": "https://runescape.wiki/w/Elder_divination_legs"
 	},
 	{
 		"label": "elderlogs",
@@ -3016,6 +3064,14 @@
 		"wikiLink": "https://runescape.wiki/w/Falador_teleport_(item)"
 	},
 	{
+		"label": "farmingcape",
+		"image": "https://i.imgur.com/u4Z7zDy.png",
+		"name": "Farming cape",
+		"breakdownNotes": "",
+		"slot": 12,
+		"wikiLink": "https://runescape.wiki/w/Farming_cape"
+	},
+	{
 		"label": "rangeblood",
 		"image": "https://i.imgur.com/YQRScqK.png",
 		"name": "Farsight blood necklace",
@@ -3062,6 +3118,14 @@
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Fire_rune"
+	},
+	{
+		"label": "fishingcape",
+		"image": "https://i.imgur.com/2QLmKri.png",
+		"name": "Fishing cape",
+		"breakdownNotes": "",
+		"slot": 12,
+		"wikiLink": "https://runescape.wiki/w/Fishing_cape"
 	},
 	{
 		"label": "fishingpotion",
@@ -3800,12 +3864,28 @@
 		"wikiLink": "https://runescape.wiki/w/Hood_of_subjugation"
 	},
 	{
+		"label": "huntercape",
+		"image": "https://i.imgur.com/myCOFKL.png",
+		"name": "Hunter cape",
+		"breakdownNotes": "",
+		"slot": 12,
+		"wikiLink": "https://runescape.wiki/w/Hunter_cape"
+	},
+	{
 		"label": "hydrix",
 		"image": "https://i.imgur.com/xbNBoDV.png",
 		"name": "Hydrix bakriminel bolts (e)",
 		"breakdownNotes": "",
 		"slot": 9,
 		"wikiLink": "https://runescape.wiki/w/Hydrix_bakriminel_bolts_(e)"
+	},
+	{
+		"label": "icenihilpouch",
+		"image": "https://i.imgur.com/PXt50t7.png",
+		"name": "Ice Nihil Pouch",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Ice_nihil_pouch"
 	},
 	{
 		"label": "kalket",
@@ -3879,14 +3959,6 @@
 		"slot": 13,
 		"wikiLink": "https://runescape.wiki/w/Illuminated_Book_of_Wisdom"
 	},
-  {
-		"label": "icenihilpouch",
-		"image": "https://i.imgur.com/PXt50t7.png",
-		"name": "Ice nihil pouch",
-		"breakdownNotes": "",
-		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Ice_nihil_pouch"
-	},
 	{
 		"label": "imcandohatchet",
 		"image": "https://i.imgur.com/Xoo3KYI.png",
@@ -3958,6 +4030,46 @@
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Infernal_puzzle_box"
+	},
+	{
+		"label": "infinityetherealtop",
+		"image": "https://i.imgur.com/RStP9To.png",
+		"name": "Infinity ethereal body",
+		"breakdownNotes": "",
+		"slot": 2,
+		"wikiLink": "https://runescape.wiki/w/Infinity_ethereal_body"
+	},
+	{
+		"label": "infinityetherealboots",
+		"image": "https://i.imgur.com/K4CP93e.png",
+		"name": "Infinity ethereal feet",
+		"breakdownNotes": "",
+		"slot": 7,
+		"wikiLink": "https://runescape.wiki/w/Infinity_ethereal_feet"
+	},
+	{
+		"label": "infinityetherealgloves",
+		"image": "https://i.imgur.com/dEKVXrZ.png",
+		"name": "Infinity ethereal hands",
+		"breakdownNotes": "",
+		"slot": 6,
+		"wikiLink": "https://runescape.wiki/w/Infinity_ethereal_hands"
+	},
+	{
+		"label": "infinityetherealhead",
+		"image": "https://i.imgur.com/unMwc1f.png",
+		"name": "Infinity ethereal head",
+		"breakdownNotes": "",
+		"slot": 1,
+		"wikiLink": "https://runescape.wiki/w/Infinity_ethereal_head"
+	},
+	{
+		"label": "infinityethereallegs",
+		"image": "https://i.imgur.com/EfhjTkv.png",
+		"name": "Infinity ethereal legs",
+		"breakdownNotes": "",
+		"slot": 3,
+		"wikiLink": "https://runescape.wiki/w/Infinity_ethereal_legs"
 	},
 	{
 		"label": "inq",
@@ -4936,12 +5048,44 @@
 		"wikiLink": "https://runescape.wiki/w/Master_constructor's_trousers"
 	},
 	{
+		"label": "masterfarmerboots",
+		"image": "https://i.imgur.com/w3SBgSA.png",
+		"name": "Master farmer boots",
+		"breakdownNotes": "",
+		"slot": 7,
+		"wikiLink": "https://runescape.wiki/w/Master_farmer_boots"
+	},
+	{
+		"label": "masterfarmergloves",
+		"image": "https://i.imgur.com/gDtDad6.png",
+		"name": "Master farmer gloves",
+		"breakdownNotes": "",
+		"slot": 6,
+		"wikiLink": "https://runescape.wiki/w/Master_farmer_gloves"
+	},
+	{
 		"label": "masterfarmerhat",
 		"image": "https://i.imgur.com/OkwR3Yv.png",
 		"name": "Master farmer hat",
 		"breakdownNotes": "",
 		"slot": 1,
 		"wikiLink": "https://runescape.wiki/w/Master_farmer_hat"
+	},
+	{
+		"label": "masterfarmertop",
+		"image": "https://i.imgur.com/z1zOYAE.png",
+		"name": "Master farmer jacket",
+		"breakdownNotes": "",
+		"slot": 2,
+		"wikiLink": "https://runescape.wiki/w/Master_farmer_jacket"
+	},
+	{
+		"label": "masterfarmerlegs",
+		"image": "https://i.imgur.com/o2SdRlR.png",
+		"name": "Master farmer legwear",
+		"breakdownNotes": "",
+		"slot": 3,
+		"wikiLink": "https://runescape.wiki/w/Master_farmer_legwear"
 	},
 	{
 		"label": "masterquestcape",
@@ -5126,6 +5270,14 @@
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Mind_rune"
+	},
+	{
+		"label": "miningcape",
+		"image": "https://i.imgur.com/J65ezCP.png",
+		"name": "Mining cape",
+		"breakdownNotes": "",
+		"slot": 12,
+		"wikiLink": "https://runescape.wiki/w/Mining_cape"
 	},
 	{
 		"label": "miscellaniateleport",
@@ -7792,6 +7944,46 @@
 		"wikiLink": "https://runescape.wiki/w/Wand_of_the_praesul_(shadow)"
 	},
 	{
+		"label": "warpedbody",
+		"image": "https://i.imgur.com/jK8LLxR.png",
+		"name": "Warped gorajan trailblazer body",
+		"breakdownNotes": "",
+		"slot": 2,
+		"wikiLink": "https://runescape.wiki/w/Warped_gorajan_trailblazer_body"
+	},
+	{
+		"label": "warpedboots",
+		"image": "https://i.imgur.com/xblfQ5F.png",
+		"name": "Warped gorajan trailblazer feet",
+		"breakdownNotes": "",
+		"slot": 7,
+		"wikiLink": "https://runescape.wiki/w/Warped_gorajan_trailblazer_feet"
+	},
+	{
+		"label": "warpedgloves",
+		"image": "https://i.imgur.com/kpR8Xpm.png",
+		"name": "Warped gorajan trailblazer hands",
+		"breakdownNotes": "",
+		"slot": 6,
+		"wikiLink": "https://runescape.wiki/w/Warped_gorajan_trailblazer_hands"
+	},
+	{
+		"label": "warpedhead",
+		"image": "https://i.imgur.com/9cT7sOQ.png",
+		"name": "Warped gorajan trailblazer head",
+		"breakdownNotes": "",
+		"slot": 1,
+		"wikiLink": "https://runescape.wiki/w/Warped_gorajan_trailblazer_head"
+	},
+	{
+		"label": "warpedlegs",
+		"image": "https://i.imgur.com/OT23qxT.png",
+		"name": "Warped gorajan trailblazer legs",
+		"breakdownNotes": "",
+		"slot": 3,
+		"wikiLink": "https://runescape.wiki/w/Warped_gorajan_trailblazer_legs"
+	},
+	{
 		"label": "wateraltarteleport",
 		"image": "https://i.imgur.com/BkETAoz.png",
 		"name": "Water altar teleport",
@@ -7902,6 +8094,14 @@
 		"breakdownNotes": "",
 		"slot": 1,
 		"wikiLink": "https://runescape.wiki/w/Witchdocter_mask"
+	},
+	{
+		"label": "woodcuttingcape",
+		"image": "https://i.imgur.com/IK3Jo3d.png",
+		"name": "Woodcutting cape",
+		"breakdownNotes": "",
+		"slot": 12,
+		"wikiLink": "https://runescape.wiki/w/Woodcutting_cape"
 	},
 	{
 		"label": "workerdistrictteleport",
