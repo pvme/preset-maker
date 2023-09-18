@@ -18,18 +18,6 @@
 		"breakdownNotes": ""
 	},
 	{
-		"label": "bunyip",
-		"image": "https://i.imgur.com/hpjldw8.png",
-		"name": "Bunyip",
-		"breakdownNotes": ""
-	},
-	{
-		"label": "gargoyle",
-		"image": "https://i.imgur.com/zLcXXcI.png",
-		"name": "Gargoyle",
-		"breakdownNotes": ""
-	},
-	{
 		"label": "bloodnihil",
 		"image": "https://i.imgur.com/a2CITlX.png",
 		"name": "Blood Nihil",
@@ -39,6 +27,18 @@
 		"label": "bloodreaver",
 		"image": "https://i.imgur.com/sxnDQng.png",
 		"name": "Blood Reaver",
+		"breakdownNotes": ""
+	},
+	{
+		"label": "bunyip",
+		"image": "https://i.imgur.com/hpjldw8.png",
+		"name": "Bunyip",
+		"breakdownNotes": ""
+	},
+	{
+		"label": "gargoyle",
+		"image": "https://i.imgur.com/zLcXXcI.png",
+		"name": "Gargoyle",
 		"breakdownNotes": ""
 	},
 	{
@@ -59,7 +59,7 @@
 		"name": "Holy Scarab",
 		"breakdownNotes": ""
 	},
-  {
+	{
 		"label": "icenihil",
 		"image": "https://i.imgur.com/PXt50t7.png",
 		"name": "Ice Nihil",
