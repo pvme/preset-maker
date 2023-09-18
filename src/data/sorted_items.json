@@ -216,6 +216,14 @@
 		"wikiLink": "https://runescape.wiki/w/Aggroverload#(6)"
 	},
 	{
+		"label": "agilitycape",
+		"image": "https://i.imgur.com/kOJc0jz.png",
+		"name": "Agility cape",
+		"breakdownNotes": "",
+		"slot": 12,
+		"wikiLink": "https://runescape.wiki/w/Agility_cape_(t)"
+	},
+	{
 		"label": "airrune",
 		"image": "https://i.imgur.com/9Nngfvj.png",
 		"name": "Air rune",
@@ -1112,6 +1120,14 @@
 		"wikiLink": "https://runescape.wiki/w/Blue_charm"
 	},
 	{
+		"label": "bluefirelighter",
+		"image": "https://i.imgur.com/SNyIwF1.png",
+		"name": "Blue firelighter",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Blue_firelighter"
+	},
+	{
 		"label": "bodyrune",
 		"image": "https://i.imgur.com/orRGsqY.png",
 		"name": "Body rune",
@@ -1440,6 +1456,14 @@
 		"wikiLink": "https://runescape.wiki/w/Completionist_cape_(t)"
 	},
 	{
+		"label": "cookingcape",
+		"image": "https://i.imgur.com/DWguQtc.png",
+		"name": "Cooking cape",
+		"breakdownNotes": "",
+		"slot": 12,
+		"wikiLink": "https://runescape.wiki/w/Cooking_cape_(t)"
+	},
+	{
 		"label": "corrupteddefender",
 		"image": "https://i.imgur.com/RPZ5ksO.png",
 		"name": "Corrupted defender",
@@ -1470,6 +1494,14 @@
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Costume_skipping_ticket"
+	},
+	{
+		"label": "craftingcape",
+		"image": "https://i.imgur.com/p93OdqM.png",
+		"name": "Crafting cape",
+		"breakdownNotes": "",
+		"slot": 12,
+		"wikiLink": "https://runescape.wiki/w/Crafting_cape_(t)"
 	},
 	{
 		"label": "cramulet(camulet)",
@@ -1544,6 +1576,14 @@
 		"wikiLink": "https://runescape.wiki/w/Cryptbloom_top"
 	},
 	{
+		"label": "crystalhammer",
+		"image": "https://i.imgur.com/yrUFH8x.png",
+		"name": "Crystal Hammer",
+		"breakdownNotes": "",
+		"slot": 4,
+		"wikiLink": "https://runescape.wiki/w/Crystal_hammer"
+	},
+	{
 		"label": "crystalhatchet",
 		"image": "https://i.imgur.com/ngoTz66.png",
 		"name": "Crystal hatchet",
@@ -1582,6 +1622,14 @@
 		"breakdownNotes": "",
 		"slot": 4,
 		"wikiLink": "https://runescape.wiki/w/Cywir_wand"
+	},
+	{
+		"label": "facetofluck",
+		"image": "https://i.imgur.com/IHgyELp.png",
+		"name": "Dark Facet of Luck",
+		"breakdownNotes": "",
+		"slot": 11,
+		"wikiLink": "https://runescape.wiki/w/Dark_Facet_of_Luck"
 	},
 	{
 		"label": "lengmh",
@@ -2536,6 +2584,14 @@
 		"wikiLink": "https://runescape.wiki/w/Elder_rune_gauntlets_+_5"
 	},
 	{
+		"label": "elderruneplate4",
+		"image": "https://i.imgur.com/orbVikx.png",
+		"name": "Elder rune platebody + 4",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Elder_rune_platebody_%2B_4"
+	},
+	{
 		"label": "elderruneshield",
 		"image": "https://i.imgur.com/cuKTG4y.png",
 		"name": "Elder rune round shield",
@@ -3120,6 +3176,14 @@
 		"wikiLink": "https://runescape.wiki/w/Fire_rune"
 	},
 	{
+		"label": "firemakingcape",
+		"image": "https://i.imgur.com/IPwQSJO.png",
+		"name": "Firemaking cape",
+		"breakdownNotes": "",
+		"slot": 12,
+		"wikiLink": "https://runescape.wiki/w/Firemaking_cape_(t)"
+	},
+	{
 		"label": "fishingcape",
 		"image": "https://i.imgur.com/2QLmKri.png",
 		"name": "Fishing cape",
@@ -3638,6 +3702,14 @@
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Green_charm"
+	},
+	{
+		"label": "greenfirelighter",
+		"image": "https://i.imgur.com/GvNLM7k.png",
+		"name": "Green firelighter",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Green_firelighter"
 	},
 	{
 		"label": "grenwallspikes",
@@ -5288,6 +5360,14 @@
 		"wikiLink": "https://runescape.wiki/w/Miscellania_Teleport"
 	},
 	{
+		"label": "modifiedblacksmithhelmet",
+		"image": "https://i.imgur.com/pjI29tb.png",
+		"name": "Modified Blacksmith's Helmet",
+		"breakdownNotes": "",
+		"slot": 1,
+		"wikiLink": "https://runescape.wiki/w/Modified_blacksmith%27s_helmet"
+	},
+	{
 		"label": "morytanialegs4",
 		"image": "https://i.imgur.com/7ZuWQzO.png",
 		"name": "Morytania legs 4",
@@ -6096,6 +6176,14 @@
 		"wikiLink": "https://runescape.wiki/w/Pure_essence"
 	},
 	{
+		"label": "purplefirelighter",
+		"image": "https://i.imgur.com/e3znHPZ.png",
+		"name": "Purple firelighter",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Purple_firelighter"
+	},
+	{
 		"label": "puzzlebox",
 		"image": "https://i.imgur.com/jiK1ZtB.png",
 		"name": "Puzzle box",
@@ -6174,6 +6262,14 @@
 		"breakdownNotes": "",
 		"slot": 8,
 		"wikiLink": "https://runescape.wiki/w/Reckless_aura"
+	},
+	{
+		"label": "redfirelighter",
+		"image": "https://i.imgur.com/f4SBGjv.png",
+		"name": "Red firelighter",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Red_firelighter"
 	},
 	{
 		"label": "reefcape",
@@ -7640,6 +7736,14 @@
 		"wikiLink": "https://runescape.wiki/w/Unfinished_smithing_item"
 	},
 	{
+		"label": "unfinishedsmithingitem",
+		"image": "https://i.imgur.com/8laCSlc.png",
+		"name": "Unfinished smithing item",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Unfinished_smithing_item"
+	},
+	{
 		"label": "uniscrolls",
 		"image": "https://i.imgur.com/0LwQ1N0.png",
 		"name": "Unicorn Stallion scroll (Healing Aura)",
@@ -8046,6 +8150,14 @@
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Whetstone"
+	},
+	{
+		"label": "whitefirelighter",
+		"image": "https://i.imgur.com/tZnEbss.png",
+		"name": "White firelighter",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/White_firelighter"
 	},
 	{
 		"label": "wickedhood",

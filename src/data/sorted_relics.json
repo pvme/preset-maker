@@ -102,5 +102,13 @@
 		"breakdownNotes": "",
 		"energy": 200,
 		"description": "When requesting a new slayer assignment, you will have a choice between the minimum and maximum assignment amounts."
+	},
+	{
+		"label": "stickyfingers",
+		"image": "https://i.imgur.com/KHLIxCJ.png",
+		"name": "Sticky Fingers",
+		"breakdownNotes": "",
+		"energy": 100,
+		"description": "The player will automatically attempt to pickpocket at a 50% faster rate after a successful attempt until they are caught."
 	}
 ]
