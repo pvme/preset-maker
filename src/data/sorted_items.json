@@ -1999,6 +1999,14 @@
 		"slot": 1,
 		"wikiLink": "https://runescape.wiki/w/Demon_slayer_circlet"
 	},
+  {
+		"label": "demonslayergloves",
+		"image": "https://i.imgur.com/qRiwQic.png",
+		"name": "Demon slayer gloves",
+		"breakdownNotes": "",
+		"slot": 6,
+		"wikiLink": "https://runescape.wiki/w/Demon_slayer_gloves"
+	},
 	{
 		"label": "demonslayerskirt",
 		"image": "https://i.imgur.com/WM49WkU.png",
@@ -3870,6 +3878,14 @@
 		"breakdownNotes": "",
 		"slot": 13,
 		"wikiLink": "https://runescape.wiki/w/Illuminated_Book_of_Wisdom"
+	},
+  {
+		"label": "icenihilpouch",
+		"image": "https://i.imgur.com/PXt50t7.png",
+		"name": "Ice nihil pouch",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Ice_nihil_pouch"
 	},
 	{
 		"label": "imcandohatchet",
