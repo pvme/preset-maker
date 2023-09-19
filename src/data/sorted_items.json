@@ -3969,7 +3969,7 @@
 	},
 	{
 		"label": "kalmej",
-		"image": "https://i.imgur.com/6EvPhe6.png",
+		"image": "https://i.imgur.com/UtXRQ2n.png",
 		"name": "Igneous Kal-Mej",
 		"breakdownNotes": "",
 		"slot": 12,
@@ -7601,11 +7601,19 @@
 	},
 	{
 		"label": "kilnmage",
-		"image": "https://i.imgur.com/zAVbabw.png",
+		"image": "https://i.imgur.com/LfWGEHL.png",
 		"name": "TokHaar-Kal-Mej",
 		"breakdownNotes": "",
 		"slot": 12,
 		"wikiLink": "https://runescape.wiki/w/TokHaar-Kal-Mej"
+	},
+	{
+		"label": "kilnnecro",
+		"image": "https://i.imgur.com/yUZKgcy.png",
+		"name": "TokHaar-Kal-Mor",
+		"breakdownNotes": "",
+		"slot": 12,
+		"wikiLink": "https://runescape.wiki/w/TokHaar-Kal-Mor"
 	},
 	{
 		"label": "kilnrange",
