@@ -2,6 +2,8 @@
 
 A web app for building RS3 presets and inventories, built with Vite.
 
+Production URL: https://pvme.github.io/preset-maker/
+
 ## Getting started
 
 Install dependencies:

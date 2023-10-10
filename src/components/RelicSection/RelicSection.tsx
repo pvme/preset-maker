@@ -138,7 +138,7 @@ export const RelicSection = (): JSX.Element => {
           }}
         />
       </div>
-      <div className="mt-auto">
+      <div className="mt-auto relic-section__alternative">
         <div>
           <strong>
             Alternative

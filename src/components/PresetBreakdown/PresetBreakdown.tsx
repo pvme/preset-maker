@@ -73,7 +73,7 @@ export const PresetBreakdown = (): JSX.Element => {
   }, [name, exportRef]);
 
   const copyBreakdownToClipboard = useCallback(async () => {
-    await copyImageToClipboard(exportRef.current, {
+    await copyImageToClipboard(exportRef.current, {}, {
       onSuccess: () => {
         enqueueSnackbar('Copied image to clipboard', {
           variant: 'success'
