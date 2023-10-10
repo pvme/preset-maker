@@ -6967,6 +6967,14 @@
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Spade"
 	},
+  {
+		"label": "spikyvambraces",
+		"image": "https://i.imgur.com/x5RZh5Y.png",
+		"name": "Spiky Vambraces",
+		"breakdownNotes": "",
+		"slot": 6,
+		"wikiLink": "https://runescape.wiki/w/Spiky_vambraces"
+	},
 	{
 		"label": "spiritattractionflask",
 		"image": "https://i.imgur.com/9oDoU6T.png",
