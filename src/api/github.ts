@@ -10,7 +10,7 @@ export async function rawGithubGetRequest (url: string): Promise<Response> {
   return res;
 }
 
-export async function rawGithubJSONRequest (url: string): Promise<string> {
+export async function rawGithubJSONRequest (url: string): Promise<any> {
   const res = await rawGithubGetRequest(url);
   return await res.json();
 }
