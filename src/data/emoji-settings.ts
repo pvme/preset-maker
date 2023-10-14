@@ -28,6 +28,11 @@ interface EmojiJson {
   categories: EmojiCategory[]
 };
 
+interface EmojiMapEntry {
+  alias: string
+  discordEmojiTag: string
+}
+
 class EmojiSettingsLoader {
   /**
    * Mapping of emoji alias to the Discord emoji ID tag, e.g. <:name:ID>.
@@ -58,24 +63,37 @@ class EmojiSettingsLoader {
     });
   }
 
-  _parseEmojis (emojiJson: EmojiJson): Array<{
-    alias: string
-    discordEmojiTag: string
-  }> {
+  _parseEmojis (emojiJson: EmojiJson): EmojiMapEntry[] {
     const flattenedEmojis = emojiJson.categories.reduce((emojis: Emoji[], category: EmojiCategory) => {
       return [
         ...emojis,
         ...category.emojis
       ];
     }, []);
-    const emojiAliasAndDiscordIds = flattenedEmojis.map((emoji) => {
-      const discordEmojiTag = `<:${emoji.emoji_name}:${emoji.emoji_id}>`;
-      return {
+    const emojiMapEntries = flattenedEmojis.reduce((emojiMapEntries: EmojiMapEntry[], emoji: Emoji) => {
+      const aliasEmojis = emoji.aliases.map((alias) => {
+        return {
+          alias,
+          discordEmojiTag: this._getDiscordEmojiTag(alias, emoji.emoji_id)
+        };
+      });
+
+      const primaryEmoji = {
         alias: emoji.emoji_name,
-        discordEmojiTag
+        discordEmojiTag: this._getDiscordEmojiTag(emoji.emoji_name, emoji.emoji_id)
       };
-    });
-    return emojiAliasAndDiscordIds;
+
+      return [
+        ...emojiMapEntries,
+        ...aliasEmojis,
+        primaryEmoji
+      ];
+    }, []);
+    return emojiMapEntries;
+  }
+
+  _getDiscordEmojiTag (alias: string, id: string): string {
+    return `<:${alias}:${id}>`;
   }
 
   _getDiscordIdFromTag (discordEmojiTag: string): string {
