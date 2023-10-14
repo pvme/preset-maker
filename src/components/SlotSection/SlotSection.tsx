@@ -35,11 +35,11 @@ const SingleSlot = ({ index, coord, className, slots, handleClickOpen, handleShi
     return `${className}-icon-container ${selectedClass}`;
   };
 
-  const slotHasImage = (slot: ItemData): boolean => {
-    return slot?.image?.length > 0;
+  const slotHasImage = (slot?: ItemData): boolean => {
+    return (slot?.image?.length ?? 0) > 0;
   };
 
-  const slotIsSelected = (slot: ItemData): boolean => {
+  const slotIsSelected = (slot?: ItemData): boolean => {
     return slot?.selected ?? false;
   };
 
@@ -100,7 +100,7 @@ const SingleSlot = ({ index, coord, className, slots, handleClickOpen, handleShi
                   userSelect: 'auto'
                 }}
               >
-                {((slots[index]?.image).length > 0)
+                {(slotHasImage(slots[index]))
                   ? <>
                     <img
                       key={index}
