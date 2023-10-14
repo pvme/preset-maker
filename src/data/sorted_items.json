@@ -5776,6 +5776,14 @@
 		"wikiLink": "https://runescape.wiki/w/Ourania_teleport"
 	},
 	{
+		"label": "overload1",
+		"image": "https://i.imgur.com/nB8MUEL.png",
+		"name": "Overload (1)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Overload#(1)"
+	},
+	{
 		"label": "overload",
 		"image": "https://i.imgur.com/gKnqcZ0.png",
 		"name": "Overload flask (6)",
@@ -6150,6 +6158,14 @@
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Powerburst_of_acceleration#(4)"
+	},
+	{
+		"label": "feats1",
+		"image": "https://i.imgur.com/yuwYBjs.png",
+		"name": "Powerburst of feats (1)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Powerburst_of_feats#(1)"
 	},
 	{
 		"label": "powerburstofmasterstroke(1)",
