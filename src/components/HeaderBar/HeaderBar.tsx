@@ -118,7 +118,7 @@ export const HeaderBar = (): JSX.Element => {
                 <img
                   width={80}
                   height={80}
-                  src={'https://i.imgur.com/DhroQD5.gif'}
+                  src={'https://img.pvme.io/images/EPzzJe2xy6.gif'}
                   onClick={onHomeClick}
                 />
                 <HelpOutlineIcon
