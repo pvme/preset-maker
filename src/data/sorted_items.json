@@ -2007,6 +2007,14 @@
 		"slot": 2,
 		"wikiLink": "https://runescape.wiki/w/Deathwarden_robe_top_(tier_90)"
 	},
+  {
+		"label": "deathwardennexus",
+		"image": "https://imgur.com/hd7YvA4",
+		"name": "Deathwarden Nexus",
+		"breakdownNotes": "",
+		"slot": 9,
+		"wikiLink": "https://runescape.wiki/w/Deathwarden_nexus"
+	},
 	{
 		"label": "deci",
 		"image": "https://i.imgur.com/BJ1Qzbt.png",
@@ -2254,6 +2262,46 @@
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Dorgesh-kaan_sphere"
+	},
+  {
+		"label": "dracolichboots",
+		"image": "https://imgur.com/iMHrk57",
+		"name": "Dracolic boots",
+		"breakdownNotes": "",
+		"slot": 7,
+		"wikiLink": "https://runescape.wiki/w/Dracolich_boots"
+	},
+  {
+		"label": "dracolichchaps",
+		"image": "https://imgur.com/NFb6IWY",
+		"name": "Dracolic chaps",
+		"breakdownNotes": "",
+		"slot": 3,
+		"wikiLink": "https://runescape.wiki/w/Dracolich_chaps"
+	},
+  {
+		"label": "dracolichcoif",
+		"image": "https://imgur.com/gIpAy1i",
+		"name": "Dracolic coif",
+		"breakdownNotes": "",
+		"slot": 1,
+		"wikiLink": "https://runescape.wiki/w/Dracolich_coif"
+	},
+  {
+		"label": "dracolichhauberk",
+		"image": "https://imgur.com/KbRjDzW",
+		"name": "Dracolic hauberk",
+		"breakdownNotes": "",
+		"slot": 2,
+		"wikiLink": "https://runescape.wiki/w/Dracolich_hauberk"
+	},
+  {
+		"label": "dracolichvambs",
+		"image": "https://imgur.com/AKGKxbL",
+		"name": "Dracolic vambraces",
+		"breakdownNotes": "",
+		"slot": 6,
+		"wikiLink": "https://runescape.wiki/w/Dracolich_vambraces"
 	},
 	{
 		"label": "driderbody",
@@ -2686,6 +2734,46 @@
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Elite_clue"
+	},
+  {
+		"label": "edracolichboots",
+		"image": "https://imgur.com/07vxUMy",
+		"name": "Elite Dracolic boots",
+		"breakdownNotes": "",
+		"slot": 7,
+		"wikiLink": "https://runescape.wiki/w/Elite_Dracolich_boots"
+	},
+  {
+		"label": "edracolichchaps",
+		"image": "https://imgur.com/VGqlhJd",
+		"name": "Elite Dracolic chaps",
+		"breakdownNotes": "",
+		"slot": 3,
+		"wikiLink": "https://runescape.wiki/w/Elite_Dracolich_chaps"
+	},
+  {
+		"label": "edracolichcoif",
+		"image": "https://imgur.com/S1sjGOu",
+		"name": "Elite Dracolic coif",
+		"breakdownNotes": "",
+		"slot": 1,
+		"wikiLink": "https://runescape.wiki/w/Elite_Dracolich_coif"
+	},
+  {
+		"label": "edracolichhauberk",
+		"image": "https://imgur.com/M5jOHR3",
+		"name": "Elite Dracolic hauberk",
+		"breakdownNotes": "",
+		"slot": 2,
+		"wikiLink": "https://runescape.wiki/w/Elite_Dracolich_hauberk"
+	},
+  {
+		"label": "edracolichvambs",
+		"image": "https://imgur.com/zJ2WxLa",
+		"name": "Elite Dracolic vambraces",
+		"breakdownNotes": "",
+		"slot": 6,
+		"wikiLink": "https://runescape.wiki/w/Elite_Dracolich_vambraces"
 	},
 	{
 		"label": "eliterangerboots",
@@ -8358,5 +8446,13 @@
 		"breakdownNotes": "",
 		"slot": 4,
 		"wikiLink": "https://runescape.wiki/w/Zaryte_bow"
+	},
+  {
+		"label": "zemoregalsnexus",
+		"image": "https://imgur.com/3pFXvMR",
+		"name": "Zemoregal's Nexus",
+		"breakdownNotes": "",
+		"slot": 9,
+		"wikiLink": "https://runescape.wiki/w/Zemouregal%27s_nexus"
 	}
 ]
