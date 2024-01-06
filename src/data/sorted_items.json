@@ -7080,6 +7080,134 @@
 		"wikiLink": "https://runescape.wiki/w/Spade"
 	},
   {
+		"label": "spellcastergloves",
+		"image": "https://i.imgur.com/Hqw9B71.png",
+		"name": "Spellcaster gloves (white)",
+		"breakdownNotes": "",
+		"slot": 6,
+		"wikiLink": "https://runescape.wiki/w/Spellcaster_gloves_(white)"
+  },
+  {
+		"label": "goliathgloves",
+		"image": "https://i.imgur.com/MLjUXrz.png",
+		"name": "Goliath gloves (black)",
+		"breakdownNotes": "",
+		"slot": 6,
+		"wikiLink": "https://runescape.wiki/w/Goliath_gloves_(black)"
+	},
+  {
+		"label": "cwbrace",
+		"image": "https://i.imgur.com/wbRvxZu.png",
+		"name": "Castle wars brace (3)",
+		"breakdownNotes": "",
+		"slot": 6,
+		"wikiLink": "https://runescape.wiki/w/Castle_wars_brace#(3)"
+	},
+  {
+		"label": "vanguardgloves",
+		"image": "https://i.imgur.com/tfzIdEx.png",
+		"name": "Vanguard gloves",
+		"breakdownNotes": "",
+		"slot": 6,
+		"wikiLink": "https://runescape.wiki/w/Vanguard_gloves"
+	},
+	{
+		"label": "zurielshood",
+		"image": "https://i.imgur.com/eM9qde2.png",
+		"name": "Zuriel's hood",
+		"breakdownNotes": "",
+		"slot": 1,
+		"wikiLink": "https://runescape.wiki/w/Zuriel's_hood"
+	},
+	{
+		"label": "morriganscoif",
+		"image": "https://i.imgur.com/e8X7JFB.png",
+		"name": "Morrigan's coif",
+		"breakdownNotes": "",
+		"slot": 1,
+		"wikiLink": "https://runescape.wiki/w/Morrigan's_coif"
+	},
+	{
+		"label": "vanguardhelm",
+		"image": "https://i.imgur.com/1xw0U3Q.png",
+		"name": "Vanguard helm",
+		"breakdownNotes": "",
+		"slot": 1,
+		"wikiLink": "https://runescape.wiki/w/Vanguard_helm"
+	},
+	{
+		"label": "vanguardboots",
+		"image": "https://i.imgur.com/oY1uCsL.png",
+		"name": "Vanguard boots",
+		"breakdownNotes": "",
+		"slot": 7,
+		"wikiLink": "https://runescape.wiki/w/Vanguard_boots"
+	},
+	{
+		"label": "team9cape",
+		"image": "https://i.imgur.com/ETkk0dP.png",
+		"name": "Team-9 cape",
+		"breakdownNotes": "",
+		"slot": 12,
+		"wikiLink": "https://runescape.wiki/w/Team-9_cape"
+	},
+	{
+		"label": "vanguardlegs",
+		"image": "https://i.imgur.com/2V8s3pM.png",
+		"name": "Vanguard legs",
+		"breakdownNotes": "",
+		"slot": 3,
+		"wikiLink": "https://runescape.wiki/w/Vanguard_legs"
+	},
+	{
+		"label": "vanguardbody",
+		"image": "https://i.imgur.com/JUlwAPL.png",
+		"name": "Vanguard body",
+		"breakdownNotes": "",
+		"slot": 2,
+		"wikiLink": "https://runescape.wiki/w/Vanguard_body"
+	},
+	{
+		"label": "numbingroot",
+		"image": "https://i.imgur.com/ZsH0BP9.png",
+		"name": "Numbing root",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Numbing_root"
+	},
+	{
+		"label": "leviathanring",
+		"image": "https://i.imgur.com/VMrf46P.png",
+		"name": "Leviathan ring",
+		"breakdownNotes": "",
+		"slot": 11,
+		"wikiLink": "https://runescape.wiki/w/Leviathan_ring"
+	},
+	{
+		"label": "gorajianmushroom",
+		"image": "https://i.imgur.com/d6f4Pxz.png",
+		"name": "Gorajian mushroom",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Gorajian_mushroom"
+	},
+  {
+    "label": "ogreflasksaltwater",
+    "image": "https://i.imgur.com/aWWEV1l.png",
+    "name": "Ogre flask (salt water) (6)",
+    "breakdownNotes": "",
+    "slot": 0,
+    "wikiLink": "https://runescape.wiki/w/Ogre_flask_(salt_water)"
+  },
+  {
+    "label": "aegisaura",
+    "image": "https://i.imgur.com/90iCiPT.png",
+    "name": "Aegis aura",
+    "breakdownNotes": "",
+    "slot": 8,
+    "wikiLink": "https://runescape.wiki/w/Aegis_aura"
+  },
+  {
 		"label": "spikyvambraces",
 		"image": "https://i.imgur.com/x5RZh5Y.png",
 		"name": "Spiky Vambraces",
