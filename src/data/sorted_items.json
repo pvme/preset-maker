@@ -2569,17 +2569,17 @@
 	},
 	{
 		"label": "elderdivfeet",
-		"image": "",
+		"image": "https://i.imgur.com/DpZXdIS.png",
 		"name": "Elder divination feet",
-		"breakdownNotes": "https://i.imgur.com/gDaxXcu.png",
+		"breakdownNotes": "",
 		"slot": 7,
 		"wikiLink": "https://runescape.wiki/w/Elder_divination_feet"
 	},
 	{
 		"label": "elderdivhands",
-		"image": "",
+		"image": "https://i.imgur.com/DxCFF31.png",
 		"name": "Elder divination hands",
-		"breakdownNotes": "https://i.imgur.com/srTFPjJ.png",
+		"breakdownNotes": "",
 		"slot": 6,
 		"wikiLink": "https://runescape.wiki/w/Elder_divination_hands"
 	},
