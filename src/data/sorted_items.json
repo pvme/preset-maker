@@ -15,14 +15,6 @@
 		"slot": 4,
 		"wikiLink": "https://runescape.wiki/w/Halberd"
 	},
-  {
-    "label": "bluedhidecoif",
-    "image": "https://i.imgur.com/oGTXY3x.png",
-    "name": "Blue dragonhide coif",
-    "breakdownNotes": "",
-    "slot": 1,
-    "wikilink": "https://runescape.wiki/w/Blue_dragonhide_coif"
-  },
 	{
 		"label": "abyssalspikes",
 		"image": "https://i.imgur.com/0WBnZ62.png",
@@ -198,6 +190,14 @@
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Adrenaline_renewal_potion#(4)"
+	},
+	{
+		"label": "aegisaura",
+		"image": "https://i.imgur.com/90iCiPT.png",
+		"name": "Aegis aura",
+		"breakdownNotes": "",
+		"slot": 8,
+		"wikiLink": "https://runescape.wiki/w/Aegis_aura"
 	},
 	{
 		"label": "aggro6",
@@ -1128,6 +1128,14 @@
 		"wikiLink": "https://runescape.wiki/w/Blue_charm"
 	},
 	{
+		"label": "bluedhidecoif",
+		"image": "https://i.imgur.com/oGTXY3x.png",
+		"name": "Blue dragonhide coif",
+		"breakdownNotes": "",
+		"slot": 1,
+		"wikilink": "https://runescape.wiki/w/Blue_dragonhide_coif"
+	},
+	{
 		"label": "bluefirelighter",
 		"image": "https://i.imgur.com/SNyIwF1.png",
 		"name": "Blue firelighter",
@@ -1326,6 +1334,14 @@
 		"breakdownNotes": "",
 		"slot": 14,
 		"wikiLink": "https://runescape.wiki/w/Caroming_perk"
+	},
+	{
+		"label": "cwbrace",
+		"image": "https://i.imgur.com/wbRvxZu.png",
+		"name": "Castle wars brace (3)",
+		"breakdownNotes": "",
+		"slot": 6,
+		"wikiLink": "https://runescape.wiki/w/Castle_wars_brace#(3)"
 	},
 	{
 		"label": "celestial",
@@ -1888,6 +1904,14 @@
 		"wikiLink": "https://runescape.wiki/w/Deathtouched_bracelet"
 	},
 	{
+		"label": "deathwardennexus",
+		"image": "https://i.imgur.com/hd7YvA4.png",
+		"name": "Deathwarden Nexus",
+		"breakdownNotes": "",
+		"slot": 9,
+		"wikiLink": "https://runescape.wiki/w/Deathwarden_nexus"
+	},
+	{
 		"label": "deathwardenbootst70",
 		"image": "https://i.imgur.com/HSvu5ig.png",
 		"name": "Deathwarden boots (tier 70)",
@@ -2006,14 +2030,6 @@
 		"breakdownNotes": "",
 		"slot": 2,
 		"wikiLink": "https://runescape.wiki/w/Deathwarden_robe_top_(tier_90)"
-	},
-  {
-		"label": "deathwardennexus",
-		"image": "https://i.imgur.com/hd7YvA4.png",
-		"name": "Deathwarden Nexus",
-		"breakdownNotes": "",
-		"slot": 9,
-		"wikiLink": "https://runescape.wiki/w/Deathwarden_nexus"
 	},
 	{
 		"label": "deci",
@@ -2263,7 +2279,7 @@
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Dorgesh-kaan_sphere"
 	},
-  {
+	{
 		"label": "dracolichboots",
 		"image": "https://i.imgur.com/iMHrk57.png",
 		"name": "Dracolich boots",
@@ -2271,7 +2287,7 @@
 		"slot": 7,
 		"wikiLink": "https://runescape.wiki/w/Dracolich_boots"
 	},
-  {
+	{
 		"label": "dracolichchaps",
 		"image": "https://i.imgur.com/NFb6IWY.png",
 		"name": "Dracolich chaps",
@@ -2279,7 +2295,7 @@
 		"slot": 3,
 		"wikiLink": "https://runescape.wiki/w/Dracolich_chaps"
 	},
-  {
+	{
 		"label": "dracolichcoif",
 		"image": "https://i.imgur.com/gIpAy1i.png",
 		"name": "Dracolich coif",
@@ -2287,7 +2303,7 @@
 		"slot": 1,
 		"wikiLink": "https://runescape.wiki/w/Dracolich_coif"
 	},
-  {
+	{
 		"label": "dracolichhauberk",
 		"image": "https://i.imgur.com/KbRjDzW.png",
 		"name": "Dracolich hauberk",
@@ -2295,7 +2311,7 @@
 		"slot": 2,
 		"wikiLink": "https://runescape.wiki/w/Dracolich_hauberk"
 	},
-  {
+	{
 		"label": "dracolichvambs",
 		"image": "https://i.imgur.com/AKGKxbL.png",
 		"name": "Dracolich vambraces",
@@ -2704,6 +2720,46 @@
 		"wikiLink": "https://runescape.wiki/w/Eldrich_crossbow_(shadow)"
 	},
 	{
+		"label": "edracolichboots",
+		"image": "https://i.imgur.com/07vxUMy.png",
+		"name": "Elite Dracolich boots",
+		"breakdownNotes": "",
+		"slot": 7,
+		"wikiLink": "https://runescape.wiki/w/Elite_Dracolich_boots"
+	},
+	{
+		"label": "edracolichchaps",
+		"image": "https://i.imgur.com/VGqlhJd.png",
+		"name": "Elite Dracolich chaps",
+		"breakdownNotes": "",
+		"slot": 3,
+		"wikiLink": "https://runescape.wiki/w/Elite_Dracolich_chaps"
+	},
+	{
+		"label": "edracolichcoif",
+		"image": "https://i.imgur.com/S1sjGOu.png",
+		"name": "Elite Dracolich coif",
+		"breakdownNotes": "",
+		"slot": 1,
+		"wikiLink": "https://runescape.wiki/w/Elite_Dracolich_coif"
+	},
+	{
+		"label": "edracolichhauberk",
+		"image": "https://i.imgur.com/M5jOHR3.png",
+		"name": "Elite Dracolich hauberk",
+		"breakdownNotes": "",
+		"slot": 2,
+		"wikiLink": "https://runescape.wiki/w/Elite_Dracolich_hauberk"
+	},
+	{
+		"label": "edracolichvambs",
+		"image": "https://i.imgur.com/zJ2WxLa.png",
+		"name": "Elite Dracolich vambraces",
+		"breakdownNotes": "",
+		"slot": 6,
+		"wikiLink": "https://runescape.wiki/w/Elite_Dracolich_vambraces"
+	},
+	{
 		"label": "erobinhoodhat",
 		"image": "https://i.imgur.com/0v6t3Rg.png",
 		"name": "Elite Robin Hood hat",
@@ -2734,46 +2790,6 @@
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Elite_clue"
-	},
-  {
-		"label": "edracolichboots",
-		"image": "https://i.imgur.com/07vxUMy.png",
-		"name": "Elite Dracolich boots",
-		"breakdownNotes": "",
-		"slot": 7,
-		"wikiLink": "https://runescape.wiki/w/Elite_Dracolich_boots"
-	},
-  {
-		"label": "edracolichchaps",
-		"image": "https://i.imgur.com/VGqlhJd.png",
-		"name": "Elite Dracolich chaps",
-		"breakdownNotes": "",
-		"slot": 3,
-		"wikiLink": "https://runescape.wiki/w/Elite_Dracolich_chaps"
-	},
-  {
-		"label": "edracolichcoif",
-		"image": "https://i.imgur.com/S1sjGOu.png",
-		"name": "Elite Dracolich coif",
-		"breakdownNotes": "",
-		"slot": 1,
-		"wikiLink": "https://runescape.wiki/w/Elite_Dracolich_coif"
-	},
-  {
-		"label": "edracolichhauberk",
-		"image": "https://i.imgur.com/M5jOHR3.png",
-		"name": "Elite Dracolich hauberk",
-		"breakdownNotes": "",
-		"slot": 2,
-		"wikiLink": "https://runescape.wiki/w/Elite_Dracolich_hauberk"
-	},
-  {
-		"label": "edracolichvambs",
-		"image": "https://i.imgur.com/zJ2WxLa.png",
-		"name": "Elite Dracolich vambraces",
-		"breakdownNotes": "",
-		"slot": 6,
-		"wikiLink": "https://runescape.wiki/w/Elite_Dracolich_vambraces"
 	},
 	{
 		"label": "eliterangerboots",
@@ -3175,7 +3191,7 @@
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Extreme_hunter#(1)"
 	},
-  {
+	{
 		"label": "extremehunterflask",
 		"image": "https://i.imgur.com/XVBSWOO.png",
 		"name": "Extreme hunter flask",
@@ -3662,6 +3678,22 @@
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Gold_seal"
+	},
+	{
+		"label": "goliathgloves",
+		"image": "https://i.imgur.com/MLjUXrz.png",
+		"name": "Goliath gloves (black)",
+		"breakdownNotes": "",
+		"slot": 6,
+		"wikiLink": "https://runescape.wiki/w/Goliath_gloves_(black)"
+	},
+	{
+		"label": "gorajianmushroom",
+		"image": "https://i.imgur.com/d6f4Pxz.png",
+		"name": "Gorajian mushroom",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Gorajian_mushroom"
 	},
 	{
 		"label": "subjgown",
@@ -4744,6 +4776,14 @@
 		"wikiLink": "https://runescape.wiki/w/Legendary_tracker_aura"
 	},
 	{
+		"label": "leviathanring",
+		"image": "https://i.imgur.com/VMrf46P.png",
+		"name": "Leviathan ring",
+		"breakdownNotes": "",
+		"slot": 11,
+		"wikiLink": "https://runescape.wiki/w/Leviathan_ring"
+	},
+	{
 		"label": "lighthouseteleport",
 		"image": "https://i.imgur.com/81jSXdP.png",
 		"name": "Lighthouse Teleport",
@@ -5472,6 +5512,14 @@
 		"wikiLink": "https://runescape.wiki/w/Modified_blacksmith%27s_helmet"
 	},
 	{
+		"label": "morriganscoif",
+		"image": "https://i.imgur.com/e8X7JFB.png",
+		"name": "Morrigan's coif",
+		"breakdownNotes": "",
+		"slot": 1,
+		"wikiLink": "https://runescape.wiki/w/Morrigan's_coif"
+	},
+	{
 		"label": "morytanialegs4",
 		"image": "https://i.imgur.com/7ZuWQzO.png",
 		"name": "Morytania legs 4",
@@ -5630,6 +5678,14 @@
 		"breakdownNotes": "",
 		"slot": 4,
 		"wikiLink": "https://runescape.wiki/w/Noxious_staff"
+	},
+	{
+		"label": "numbingroot",
+		"image": "https://i.imgur.com/ZsH0BP9.png",
+		"name": "Numbing root",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Numbing_root"
 	},
 	{
 		"label": "obliteration",
@@ -5806,6 +5862,14 @@
 		"breakdownNotes": "",
 		"slot": 5,
 		"wikiLink": "https://runescape.wiki/w/Worn_Equipment#Off-hand_slot"
+	},
+	{
+		"label": "ogreflasksaltwater",
+		"image": "https://i.imgur.com/aWWEV1l.png",
+		"name": "Ogre flask (salt water) (6)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Ogre_flask_(salt_water)"
 	},
 	{
 		"label": "ogrethermal",
@@ -7079,135 +7143,15 @@
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Spade"
 	},
-  {
+	{
 		"label": "spellcastergloves",
 		"image": "https://i.imgur.com/Hqw9B71.png",
 		"name": "Spellcaster gloves (white)",
 		"breakdownNotes": "",
 		"slot": 6,
 		"wikiLink": "https://runescape.wiki/w/Spellcaster_gloves_(white)"
-  },
-  {
-		"label": "goliathgloves",
-		"image": "https://i.imgur.com/MLjUXrz.png",
-		"name": "Goliath gloves (black)",
-		"breakdownNotes": "",
-		"slot": 6,
-		"wikiLink": "https://runescape.wiki/w/Goliath_gloves_(black)"
-	},
-  {
-		"label": "cwbrace",
-		"image": "https://i.imgur.com/wbRvxZu.png",
-		"name": "Castle wars brace (3)",
-		"breakdownNotes": "",
-		"slot": 6,
-		"wikiLink": "https://runescape.wiki/w/Castle_wars_brace#(3)"
-	},
-  {
-		"label": "vanguardgloves",
-		"image": "https://i.imgur.com/tfzIdEx.png",
-		"name": "Vanguard gloves",
-		"breakdownNotes": "",
-		"slot": 6,
-		"wikiLink": "https://runescape.wiki/w/Vanguard_gloves"
 	},
 	{
-		"label": "zurielshood",
-		"image": "https://i.imgur.com/eM9qde2.png",
-		"name": "Zuriel's hood",
-		"breakdownNotes": "",
-		"slot": 1,
-		"wikiLink": "https://runescape.wiki/w/Zuriel's_hood"
-	},
-	{
-		"label": "morriganscoif",
-		"image": "https://i.imgur.com/e8X7JFB.png",
-		"name": "Morrigan's coif",
-		"breakdownNotes": "",
-		"slot": 1,
-		"wikiLink": "https://runescape.wiki/w/Morrigan's_coif"
-	},
-	{
-		"label": "vanguardhelm",
-		"image": "https://i.imgur.com/1xw0U3Q.png",
-		"name": "Vanguard helm",
-		"breakdownNotes": "",
-		"slot": 1,
-		"wikiLink": "https://runescape.wiki/w/Vanguard_helm"
-	},
-	{
-		"label": "vanguardboots",
-		"image": "https://i.imgur.com/oY1uCsL.png",
-		"name": "Vanguard boots",
-		"breakdownNotes": "",
-		"slot": 7,
-		"wikiLink": "https://runescape.wiki/w/Vanguard_boots"
-	},
-	{
-		"label": "team9cape",
-		"image": "https://i.imgur.com/ETkk0dP.png",
-		"name": "Team-9 cape",
-		"breakdownNotes": "",
-		"slot": 12,
-		"wikiLink": "https://runescape.wiki/w/Team-9_cape"
-	},
-	{
-		"label": "vanguardlegs",
-		"image": "https://i.imgur.com/2V8s3pM.png",
-		"name": "Vanguard legs",
-		"breakdownNotes": "",
-		"slot": 3,
-		"wikiLink": "https://runescape.wiki/w/Vanguard_legs"
-	},
-	{
-		"label": "vanguardbody",
-		"image": "https://i.imgur.com/JUlwAPL.png",
-		"name": "Vanguard body",
-		"breakdownNotes": "",
-		"slot": 2,
-		"wikiLink": "https://runescape.wiki/w/Vanguard_body"
-	},
-	{
-		"label": "numbingroot",
-		"image": "https://i.imgur.com/ZsH0BP9.png",
-		"name": "Numbing root",
-		"breakdownNotes": "",
-		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Numbing_root"
-	},
-	{
-		"label": "leviathanring",
-		"image": "https://i.imgur.com/VMrf46P.png",
-		"name": "Leviathan ring",
-		"breakdownNotes": "",
-		"slot": 11,
-		"wikiLink": "https://runescape.wiki/w/Leviathan_ring"
-	},
-	{
-		"label": "gorajianmushroom",
-		"image": "https://i.imgur.com/d6f4Pxz.png",
-		"name": "Gorajian mushroom",
-		"breakdownNotes": "",
-		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Gorajian_mushroom"
-	},
-  {
-    "label": "ogreflasksaltwater",
-    "image": "https://i.imgur.com/aWWEV1l.png",
-    "name": "Ogre flask (salt water) (6)",
-    "breakdownNotes": "",
-    "slot": 0,
-    "wikiLink": "https://runescape.wiki/w/Ogre_flask_(salt_water)"
-  },
-  {
-    "label": "aegisaura",
-    "image": "https://i.imgur.com/90iCiPT.png",
-    "name": "Aegis aura",
-    "breakdownNotes": "",
-    "slot": 8,
-    "wikiLink": "https://runescape.wiki/w/Aegis_aura"
-  },
-  {
 		"label": "spikyvambraces",
 		"image": "https://i.imgur.com/x5RZh5Y.png",
 		"name": "Spiky Vambraces",
@@ -7752,6 +7696,14 @@
 		"wikiLink": "https://runescape.wiki/w/Taverly_tablet"
 	},
 	{
+		"label": "team9cape",
+		"image": "https://i.imgur.com/ETkk0dP.png",
+		"name": "Team-9 cape",
+		"breakdownNotes": "",
+		"slot": 12,
+		"wikiLink": "https://runescape.wiki/w/Team-9_cape"
+	},
+	{
 		"label": "tectohelm",
 		"image": "https://i.imgur.com/nA1Rs2s.png",
 		"name": "Tectonic mask",
@@ -8054,6 +8006,46 @@
 		"breakdownNotes": "",
 		"slot": 8,
 		"wikiLink": "https://runescape.wiki/w/Vampyrism_aura"
+	},
+	{
+		"label": "vanguardbody",
+		"image": "https://i.imgur.com/JUlwAPL.png",
+		"name": "Vanguard body",
+		"breakdownNotes": "",
+		"slot": 2,
+		"wikiLink": "https://runescape.wiki/w/Vanguard_body"
+	},
+	{
+		"label": "vanguardboots",
+		"image": "https://i.imgur.com/oY1uCsL.png",
+		"name": "Vanguard boots",
+		"breakdownNotes": "",
+		"slot": 7,
+		"wikiLink": "https://runescape.wiki/w/Vanguard_boots"
+	},
+	{
+		"label": "vanguardgloves",
+		"image": "https://i.imgur.com/tfzIdEx.png",
+		"name": "Vanguard gloves",
+		"breakdownNotes": "",
+		"slot": 6,
+		"wikiLink": "https://runescape.wiki/w/Vanguard_gloves"
+	},
+	{
+		"label": "vanguardhelm",
+		"image": "https://i.imgur.com/1xw0U3Q.png",
+		"name": "Vanguard helm",
+		"breakdownNotes": "",
+		"slot": 1,
+		"wikiLink": "https://runescape.wiki/w/Vanguard_helm"
+	},
+	{
+		"label": "vanguardlegs",
+		"image": "https://i.imgur.com/2V8s3pM.png",
+		"name": "Vanguard legs",
+		"breakdownNotes": "",
+		"slot": 3,
+		"wikiLink": "https://runescape.wiki/w/Vanguard_legs"
 	},
 	{
 		"label": "vanquish",
@@ -8575,12 +8567,20 @@
 		"slot": 4,
 		"wikiLink": "https://runescape.wiki/w/Zaryte_bow"
 	},
-  {
+	{
 		"label": "zemoregalsnexus",
 		"image": "https://i.imgur.com/3pFXvMR.png",
 		"name": "Zemoregal's Nexus",
 		"breakdownNotes": "",
 		"slot": 9,
 		"wikiLink": "https://runescape.wiki/w/Zemouregal%27s_nexus"
+	},
+	{
+		"label": "zurielshood",
+		"image": "https://i.imgur.com/eM9qde2.png",
+		"name": "Zuriel's hood",
+		"breakdownNotes": "",
+		"slot": 1,
+		"wikiLink": "https://runescape.wiki/w/Zuriel's_hood"
 	}
 ]
