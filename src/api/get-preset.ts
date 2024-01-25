@@ -42,7 +42,7 @@ const unpackData = async (stored: {
   for (let i = 0; i < stored.inventorySlots.length; i++) {
     const itemLabel = stored.inventorySlots[i].label;
     let defaultItem = { ...itemDataMap.get(itemLabel) }; //returns an empty object {} if item label not found
-    if(Object.keys(defaultItem).length < 1) { //no item found for given label
+    if(Object.keys(defaultItem).length < 1 && itemLabel != "") { //no item found for given label
       defaultItem = { ...itemDataMap.get("404item") };  //get the 404 item
       defaultItem.breakdownNotes = `Stored preset has item: ${stored.inventorySlots[i].label} which was not found by the Preset Maker.`;
     }
@@ -56,7 +56,7 @@ const unpackData = async (stored: {
   for (let i = 0; i < stored.equipmentSlots.length; i++) {
     const itemLabel = stored.equipmentSlots[i].label;
     let defaultItem = { ...itemDataMap.get(itemLabel) }; //returns an empty object {} if item label not found
-    if(Object.keys(defaultItem).length < 1) { //no item found for given label
+    if(Object.keys(defaultItem).length < 1 && itemLabel != "") { //no item found for given label
       defaultItem = { ...itemDataMap.get("404item") };  //get the 404 item
       defaultItem.breakdownNotes = `Stored preset has item: ${stored.equipmentSlots[i].label} which was not found by the Preset Maker.`;
     }
