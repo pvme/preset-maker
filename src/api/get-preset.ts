@@ -41,7 +41,7 @@ const unpackData = async (stored: {
   // loop stored preset inventory items
   for (let i = 0; i < stored.inventorySlots.length; i++) {
     const itemLabel = stored.inventorySlots[i].label;
-    const defaultItem = { ...itemDataMap.get(itemLabel) };
+    let defaultItem = { ...itemDataMap.get(itemLabel) };
     if(!defaultItem) { //no item found for given label
       defaultItem = { ...itemDataMap.get("404item") };  //get the 404 item
       defaultItem.breakdownNotes = `Stored preset has item: ${stored.inventorySlots[i].label} which was not found by the Preset Maker.`;
@@ -55,7 +55,7 @@ const unpackData = async (stored: {
   // loop stored equipment items
   for (let i = 0; i < stored.equipmentSlots.length; i++) {
     const itemLabel = stored.equipmentSlots[i].label;
-    const defaultItem = { ...itemDataMap.get(itemLabel) };
+    let defaultItem = { ...itemDataMap.get(itemLabel) };
     if(!defaultItem) { //no item found for given label
       defaultItem = { ...itemDataMap.get("404item") };  //get the 404 item
       defaultItem.breakdownNotes = `Stored preset has item: ${stored.equipmentSlots[i].label} which was not found by the Preset Maker.`;
