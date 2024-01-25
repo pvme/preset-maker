@@ -42,7 +42,11 @@ const unpackData = async (stored: {
   for (let i = 0; i < stored.inventorySlots.length; i++) {
     const itemLabel = stored.inventorySlots[i].label;
     const defaultItem = { ...itemDataMap.get(itemLabel) };
-    if (stored.inventorySlots[i].breakdownNotes !== '') {
+    if(!defaultItem) { //no item found for given label
+      defaultItem = { ...itemDataMap.get("404item") };  //get the 404 item
+      defaultItem.breakdownNotes = `Stored preset has item: ${stored.inventorySlots[i].label} which was not found by the Preset Maker.`;
+    }
+    else if (stored.inventorySlots[i].breakdownNotes !== '') {
       defaultItem.breakdownNotes = stored.inventorySlots[i].breakdownNotes;
     }
     newPreset.inventorySlots[i] = defaultItem;
@@ -52,7 +56,11 @@ const unpackData = async (stored: {
   for (let i = 0; i < stored.equipmentSlots.length; i++) {
     const itemLabel = stored.equipmentSlots[i].label;
     const defaultItem = { ...itemDataMap.get(itemLabel) };
-    if (stored.equipmentSlots[i].breakdownNotes !== '') {
+    if(!defaultItem) { //no item found for given label
+      defaultItem = { ...itemDataMap.get("404item") };  //get the 404 item
+      defaultItem.breakdownNotes = `Stored preset has item: ${stored.equipmentSlots[i].label} which was not found by the Preset Maker.`;
+    }
+    else if (stored.equipmentSlots[i].breakdownNotes !== '') {
       defaultItem.breakdownNotes = stored.equipmentSlots[i].breakdownNotes;
     }
     newPreset.equipmentSlots[i] = defaultItem;
