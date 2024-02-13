@@ -7,8 +7,5 @@
     "**/.DS_Store": true,
     "**/Thumbs.db": true
   },
-	"editor.codeActionsOnSave": {
-    "source.fixAll": true
-  },
   "eslint.validate": ["typescript"],
 }
