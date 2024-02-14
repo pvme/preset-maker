@@ -272,6 +272,14 @@
 		"wikiLink": "https://runescape.wiki/w/Akrisae's_robe_top"
 	},
 	{
+		"label": "alterationnecklace",
+		"image": "https://i.imgur.com/u1eOrjf.png",
+		"name": "Alteration necklace",
+		"breakdownNotes": "",
+		"slot": 10,
+		"wikiLink": "https://runescape.wiki/w/Alteration_necklace"
+	},
+	{
 		"label": "aminishiteleport",
 		"image": "https://i.imgur.com/UvdpmhD.png",
 		"name": "Aminishi teleport",
@@ -743,7 +751,7 @@
 		"slot": 13,
 		"wikiLink": "https://runescape.wiki/w/Attuned_ectoplasmator"
 	},
-  {
+	{
 		"label": "degradationportent",
 		"image": "https://i.imgur.com/6dKv8gJ.png",
 		"name": "Attuned portent of degradation III",
@@ -1486,6 +1494,14 @@
 		"breakdownNotes": "",
 		"slot": 12,
 		"wikiLink": "https://runescape.wiki/w/Completionist_cape_(t)"
+	},
+	{
+		"label": "conjurerammy",
+		"image": "https://i.imgur.com/UIMnph4.png",
+		"name": "Conjurer's raising amulet",
+		"breakdownNotes": "",
+		"slot": 10,
+		"wikiLink": "https://runescape.wiki/w/Conjurer%27s_raising_amulet"
 	},
 	{
 		"label": "cookingcape",
@@ -6024,6 +6040,14 @@
 		"wikiLink": "https://runescape.wiki/w/Passage_of_the_Abyss_(yellow)"
 	},
 	{
+		"label": "passingbracelet",
+		"image": "https://i.imgur.com/aZvjBlt.png",
+		"name": "Passing bracelet",
+		"breakdownNotes": "",
+		"slot": 6,
+		"wikiLink": "https://runescape.wiki/w/Passing_bracelet"
+	},
+	{
 		"label": "penance",
 		"image": "https://i.imgur.com/dMPY1FJ.png",
 		"name": "Penance aura",
@@ -6304,6 +6328,14 @@
 		"wikiLink": "https://runescape.wiki/w/Powder_of_penance"
 	},
 	{
+		"label": "protectionpowder",
+		"image": "https://i.imgur.com/3SbxYpW.png",
+		"name": "Powder of protection",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Powder_of_protection"
+	},
+	{
 		"label": "accel1",
 		"image": "https://i.imgur.com/itNElgJ.png",
 		"name": "Powerburst of acceleration (1)",
@@ -6558,6 +6590,14 @@
 		"breakdownNotes": "",
 		"slot": 11,
 		"wikiLink": "https://runescape.wiki/w/Ring_of_duelling_(c)"
+	},
+	{
+		"label": "ringofimbuing",
+		"image": "https://i.imgur.com/m6GQXkE.png",
+		"name": "Ring of imbuing",
+		"breakdownNotes": "",
+		"slot": 11,
+		"wikiLink": "https://runescape.wiki/w/Ring_of_imbuing"
 	},
 	{
 		"label": "ringofkinship",
@@ -7504,7 +7544,7 @@
 		"wikiLink": "https://runescape.wiki/w/Superior_vestas_longsword"
 	},
 	{
-		"label": "zurielshood",
+		"label": "supzurielshood",
 		"image": "https://i.imgur.com/tzSrusP.png",
 		"name": "Superior Zuriel's hood",
 		"breakdownNotes": "",
