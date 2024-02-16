@@ -8630,5 +8630,149 @@
 		"breakdownNotes": "",
 		"slot": 1,
 		"wikiLink": "https://runescape.wiki/w/Zuriel's_hood"
-	}
+	},
+	{
+		"label": "basicghostlyink",
+		"image": "https://i.imgur.com/W2RKcWb.png",
+		"name": "Basic ghostly ink",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Basic_ghostly_ink"
+	  },
+	  {
+		"label": "regularghostlyink",
+		"image": "https://i.imgur.com/74kfzy8.png",
+		"name": "Regular ghostly ink",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Regular_ghostly_ink"
+	  },
+	  {
+		"label": "greaterghostlyink",
+		"image": "https://i.imgur.com/Q2Hc3w8.png",
+		"name": "Greater ghostly ink",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Greater_ghostly_ink"
+	  },
+	  {
+		"label": "powerfulghostlyink",
+		"image": "https://i.imgur.com/UUHm7tP.png",
+		"name": "Powerful ghostly ink",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Powerful_ghostly_ink"
+	  },
+	  {
+		"label": "advancedpulsecore",
+		"image": "https://i.imgur.com/3a2TiHN.png",
+		"name": "Advanced pulse core",
+		"breakdownNotes": "",
+		"slot": 13,
+		"wikiLink": "https://runescape.wiki/w/Advanced_pulse_core"
+	  },
+	  {
+		"label": "pumpkinmask",
+		"image": "https://i.imgur.com/uXaKsID.png",
+		"name": "Pumpkin mask",
+		"breakdownNotes": "",
+		"slot": 1,
+		"wikiLink": "https://runescape.wiki/w/Pumpkin_mask"
+	  },
+	  {
+		"label": "basicritualcandle",
+		"image": "https://i.imgur.com/VZZiUnB.png",
+		"name": "Basic ritual candle",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Basic_ritual_candle"
+	  },
+	  {
+		"label": "regularritualcandle",
+		"image": "https://i.imgur.com/0jouHYH.png",
+		"name": "Regular ritual candle",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Regular_ritual_candle"
+	  },
+	  {
+		"label": "greaterritualcandle",
+		"image": "https://i.imgur.com/4b0SjfV.png",
+		"name": "Greater ritual candle",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Greater_ritual_candle"
+	  },
+	  {
+		"label": "greaterflamingskull",
+		"image": "https://i.imgur.com/uCvl6Fp.png",
+		"name": "Greater flaming skull",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Greater_flaming_skull"
+	  },
+	  {
+		"label": "nimbleheadwear",
+		"image": "https://i.imgur.com/AlK7oaM.png",
+		"name": "Nimble headwear",
+		"breakdownNotes": "",
+		"slot": 1,
+		"wikiLink": "https://runescape.wiki/w/Nimble_headwear"
+	  },
+	  {
+		"label": "necromancycape",
+		"image": "https://i.imgur.com/IGM7P1t.png",
+		"name": "Necromancy cape",
+		"breakdownNotes": "",
+		"slot": 12,
+		"wikiLink": "https://runescape.wiki/w/Necromancy_cape"
+	  },
+	  {
+		"label": "alterationnecklace",
+		"image": "https://i.imgur.com/lZUkQq7.png",
+		"name": "Alteration necklace",
+		"breakdownNotes": "",
+		"slot": 10,
+		"wikiLink": "https://runescape.wiki/w/Alteration_necklace"
+	  },
+	  {
+		"label": "nimblechestpiece",
+		"image": "https://i.imgur.com/LI9uISo.png",
+		"name": "Nimble chestpiece",
+		"breakdownNotes": "",
+		"slot": 2,
+		"wikiLink": "https://runescape.wiki/w/Nimble_chestpiece"
+	  },
+	  {
+		"label": "augmentedenhancedexcalibur",
+		"image": "https://i.imgur.com/fgNqKc3.png",
+		"name": "Augmented enhanced Excalibur",
+		"breakdownNotes": "",
+		"slot": 5,
+		"wikiLink": "https://runescape.wiki/w/Augmented_enhanced_Excalibur"
+	  },
+	  {
+		"label": "nimblelegwear",
+		"image": "https://i.imgur.com/46J5370.png",
+		"name": "Nimble legwear",
+		"breakdownNotes": "",
+		"slot": 3,
+		"wikiLink": "https://runescape.wiki/w/Nimble_legwear"
+	  },
+	  {
+		"label": "nimblegloves",
+		"image": "https://i.imgur.com/OEYXzNI.png",
+		"name": "Nimble gloves",
+		"breakdownNotes": "",
+		"slot": 6,
+		"wikiLink": "https://runescape.wiki/w/Nimble_gloves"
+	  },
+	  {
+		"label": "tomeofum2",
+		"image": "https://i.imgur.com/1j3OOw0.png",
+		"name": "Tome of Um 2",
+		"breakdownNotes": "",
+		"slot": 13,
+		"wikiLink": "https://runescape.wiki/w/Tome_of_Um_2"
+	  }
 ]
