@@ -61,6 +61,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
             <HashRouter>
               <Routes>
                 <Route path="/:id?" element={<App />} />
+                {/* TODO Add oauth callback route */}
               </Routes>
             </HashRouter>
           </SnackbarProvider>

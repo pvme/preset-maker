@@ -106,6 +106,10 @@ html, body, #root {
   margin-right: 8px;
 }
 
+.mb-32 {
+  margin-bottom: 32px;
+}
+
 .mv-8 {
   margin-top: 8px;
   margin-bottom: 8px;
@@ -129,6 +133,17 @@ html, body, #root {
 
 .cursor-pointer:hover {
   cursor: pointer;
+}
+
+.modal-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  background-color: rgb(18, 18, 18);
+  border: 2px solid rgb(0, 0, 0);
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 11px 15px -7px, rgba(0, 0, 0, 0.14) 0px 24px 38px 3px, rgba(0, 0, 0, 0.12) 0px 9px 46px 8px;
 }
 
 /* Mobile styling */

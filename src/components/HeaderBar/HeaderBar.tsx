@@ -23,6 +23,7 @@ import { sanitizeAndStringifyPreset } from '../../utility/sanitizer';
 
 import './HeaderBar.css';
 import { HelpDialog } from '../HelpDialog/HelpDialog';
+import { UserProfileButton } from '../auth/UserProfileButton/UserProfileButton';
 
 export const HeaderBar = (): JSX.Element => {
   const inputFile = useRef<HTMLInputElement>(null);
@@ -135,12 +136,13 @@ export const HeaderBar = (): JSX.Element => {
                 PVME Preset Generator
               </Typography>
               <ButtonGroup className="header-bar__json header-bar__item desktop-only">
-                <Button color="inherit" variant="outlined" onClick={importData}>
+                <UserProfileButton />
+                {/* <Button color="inherit" variant="outlined" onClick={importData}>
                   Import&nbsp;JSON
                 </Button>
                 <Button color="inherit" variant="outlined" onClick={exportData}>
                   Export&nbsp;JSON
-                </Button>
+                </Button> */}
               </ButtonGroup>
             </Toolbar>
           </Container>
