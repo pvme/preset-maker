@@ -6535,6 +6535,14 @@
 		"slot": 12,
 		"wikiLink": "https://runescape.wiki/w/Quest_cape"
 	},
+  {
+		"label": "ranarrsticks",
+		"image": "https://i.imgur.com/YihChFF.png",
+		"name": "Ranarr incense sticks",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Ranarr_incense_sticks"
+	},
 	{
 		"label": "rangecape",
 		"image": "https://i.imgur.com/mXAz21V.png",
@@ -8761,7 +8769,7 @@
 	},
   {
 		"label": "zorgothssoulring",
-		"image": "https://i.imgur.com/KFGYaSZ.png",
+		"image": "https://i.imgur.com/EGVLuFE.png",
 		"name": "Zorgoth's soul ring",
 		"breakdownNotes": "",
 		"slot": 11,
