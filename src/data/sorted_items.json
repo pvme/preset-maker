@@ -847,6 +847,14 @@
 		"slot": 5,
 		"wikiLink": "https://runescape.wiki/w/Bandos_warshield"
 	},
+  {
+		"label": "barrelchestanchor",
+		"image": "https://imgur.com/wE3rGjg.png",
+		"name": "Barrelchest Anchor",
+		"breakdownNotes": "",
+		"slot": 4,
+		"wikiLink": "https://runescape.wiki/w/Barrelchest_anchor"
+	},
 	{
 		"label": "barrowsamulet",
 		"image": "https://i.imgur.com/yQugioz.png",
@@ -5862,6 +5870,14 @@
 		"breakdownNotes": "",
 		"slot": 1,
 		"wikiLink": "https://runescape.wiki/w/Obsidian_warrior_helm"
+	},
+  {
+		"label": "occulistsring",
+		"image": "https://imgur.com/bCYjo7u.png",
+		"name": "Occulist's Ring",
+		"breakdownNotes": "",
+		"slot": 11,
+		"wikiLink": "https://runescape.wiki/w/Occultist%27s_ring"
 	},
 	{
 		"label": "ohchaoticcbow",
