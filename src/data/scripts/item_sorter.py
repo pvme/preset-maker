@@ -12,11 +12,13 @@ def find_duplicate_objects(json_array):
             labels.add(label)
     return duplicates
 
+# Additional valid domains can be added here
+valid_domains = ["https://i.imgur.com"]
 def find_invalid_domains(json_array):
     invalid_domains = []
     for obj in json_array:
         image = obj.get("image")
-        if "https://i.imgur.com" not in image:
+        if not any(image.startswith(domain) for domain in valid_domains):
           invalid_domains.append(obj.get("label") + " - " + image)
     return invalid_domains
 
@@ -32,7 +34,7 @@ with open(sorted_items_path) as f:
             print(obj)
     invalid_domains = find_invalid_domains(data)
     if invalid_domains:
-        print("The following objects have invalid domains ('i.imgur.com' must be used, not 'imgur.com):")
+        print("The following objects have invalid domains (valid domains = " + ', '.join(valid_domains, ) + "):")
         for obj in invalid_domains:
             print(obj)
 
