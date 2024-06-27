@@ -424,6 +424,14 @@
 		"wikiLink": "https://runescape.wiki/w/Anima_core_body_of_sliske"
 	},
 	{
+		"label": "zambody",
+		"image": "https://i.imgur.com/IKUPHW1.png",
+		"name": "Anima core body of Zamorak",
+		"breakdownNotes": "",
+		"slot": 2,
+		"wikiLink": "https://runescape.wiki/w/Anima_core_body_of_Zamorak"
+	},  
+	{
 		"label": "serenhelm",
 		"image": "https://i.imgur.com/VMQ89aP.png",
 		"name": "Anima core helm of seren",
@@ -463,6 +471,14 @@
 		"slot": 3,
 		"wikiLink": "https://runescape.wiki/w/Anima_core_legs_of_sliske"
 	},
+	{
+		"label": "zamlegs",
+		"image": "https://i.imgur.com/82U8FW8.png",
+		"name": "Anima core legs of Zamorak",
+		"breakdownNotes": "",
+		"slot": 3,
+		"wikiLink": "https://runescape.wiki/w/Anima_core_legs_of_Zamorak"
+	},  
 	{
 		"label": "antipsn++",
 		"image": "https://i.imgur.com/ap5QY9d.png",
