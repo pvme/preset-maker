@@ -1328,6 +1328,38 @@
 		"wikiLink": "https://runescape.wiki/w/Brimhaven_tablet"
 	},
 	{
+		"label": "bronzecrossbow",
+		"image": "https://i.imgur.com/mTDkwQt.png",
+		"name": "Bronze crossbow",
+		"breakdownNotes": "",
+		"slot": 4,
+		"wikiLink": "https://runescape.wiki/w/Bronze_crossbow"
+	},
+	{
+		"label": "bronzefullhelm",
+		"image": "https://i.imgur.com/b30UrEz.png",
+		"name": "Bronze full helm",
+		"breakdownNotes": "",
+		"slot": 1,
+		"wikiLink": "https://runescape.wiki/w/Bronze_full_helm"
+	},
+	{
+		"label": "bronzeplatebody",
+		"image": "https://i.imgur.com/GHfCVCV.png",
+		"name": "Bronze platebody",
+		"breakdownNotes": "",
+		"slot": 2,
+		"wikiLink": "https://runescape.wiki/w/Bronze_platebody"
+	},
+	{
+		"label": "bronzeplatelegs",
+		"image": "https://i.imgur.com/igh3uHE.png",
+		"name": "Bronze platelegs",
+		"breakdownNotes": "",
+		"slot": 3,
+		"wikiLink": "https://runescape.wiki/w/Bronze_platelegs"
+	},  
+	{
 		"label": "brooch",
 		"image": "https://i.imgur.com/5rpdKqL.png",
 		"name": "Brooch of the Gods",
@@ -7399,6 +7431,14 @@
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Spirit_rune"
 	},
+	{
+		"label": "spiritspider",
+		"image": "https://i.imgur.com/8uvYSyZ.png",
+		"name": "Spirit spider pouch",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Spirit_spider_pouch"
+	},  
 	{
 		"label": "spirittreere-rooter(used)",
 		"image": "https://i.imgur.com/sv8RnA7.png",
