@@ -7400,6 +7400,14 @@
 		"wikiLink": "https://runescape.wiki/w/Spade"
 	},
 	{
+		"label": "spectral",
+		"image": "https://i.imgur.com/Z4BttRK.png",
+		"name": "Spectral spirit shield",
+		"breakdownNotes": "",
+		"slot": 5,
+		"wikiLink": "https://runescape.wiki/w/Spectral_spirit_shield"
+	},
+	{
 		"label": "spellcastergloves",
 		"image": "https://i.imgur.com/mrSh3MM.png",
 		"name": "Spellcaster gloves (white)",
