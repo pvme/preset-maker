@@ -20,6 +20,11 @@ function App (): JSX.Element {
   // Preset ID is stored in URL params
   const { id } = useParams();
 
+  const imageThumbnailUrl = `http://127.0.0.1:3000/?id=${id}`;
+  document!.querySelector('meta[property="og:image"]')!.setAttribute("content", imageThumbnailUrl);
+  document!.querySelector('meta[property="twitter:image:src"]')!.setAttribute("content", imageThumbnailUrl);
+
+
   useEffect(() => {
     if (presetImported.current) {
       return;
