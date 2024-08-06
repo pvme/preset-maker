@@ -15,7 +15,7 @@
 }
 
 .breakdown-button {
-  margin: 10px;
+  margin: 5px;
 }
 
 .breakdown-inner-container {
@@ -23,7 +23,6 @@
   grid-template-columns: repeat(2, 1fr);
   margin: 10px;
   background-color: #181818;
-  padding: 10px;
 }
 
 .breakdown-inner-container div:hover {

@@ -113,11 +113,11 @@ export const HeaderBar = (): JSX.Element => {
         />
         <AppBar position="sticky">
           <Container className="header-bar__app-bar">
-            <Toolbar disableGutters className="header-bar__tool-bar">
+            <Toolbar variant="dense" disableGutters className="header-bar__tool-bar">
               <div className="header-bar__logo header-bar__item">
                 <img
-                  width={80}
-                  height={80}
+                  width={40}
+                  height={40}
                   src={'https://img.pvme.io/images/EPzzJe2xy6.gif'}
                   onClick={onHomeClick}
                 />
@@ -127,18 +127,17 @@ export const HeaderBar = (): JSX.Element => {
                 />
               </div>
               <Typography
-                variant="h5"
-                component="div"
+                component="h6"
                 fontFamily="monospace"
                 className="header-bar__item"
               >
                 PVME Preset Generator
               </Typography>
               <ButtonGroup className="header-bar__json header-bar__item desktop-only">
-                <Button color="inherit" variant="outlined" onClick={importData}>
+                <Button color="inherit" variant="outlined" onClick={importData} size="small">
                   Import&nbsp;JSON
                 </Button>
-                <Button color="inherit" variant="outlined" onClick={exportData}>
+                <Button color="inherit" variant="outlined" onClick={exportData} size="small">
                   Export&nbsp;JSON
                 </Button>
               </ButtonGroup>
