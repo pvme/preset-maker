@@ -39,6 +39,7 @@ export const PresetEditor = ({
   } = useAppSelector(selectPreset);
   const recentItems = useAppSelector(selectRecentItems);
 
+  const [selectedItem, setSelectedItem] = useState<ItemData | undefined>(undefined);
   const [dialogOpen, setDialogOpen] = useState(false);
 
   const handleSlotOpen = useCallback(
@@ -60,6 +61,7 @@ export const PresetEditor = ({
       }
 
       dispatch(updateSlotIndex(index));
+      setSelectedItem(inventorySlots[index]);
       setDialogOpen(true);
     },
     [dispatch, inventorySlots]
@@ -166,6 +168,7 @@ export const PresetEditor = ({
       </Card>
       <DialogPopup
         open={dialogOpen}
+        selectedItem={selectedItem}
         recentlySelectedItems={recentItems}
         handleClose={onDialogClose}
         handleSlotChange={changeSlot}
