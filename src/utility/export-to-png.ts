@@ -4,6 +4,7 @@ import { generateFileName } from './generate-file-name';
 
 interface ImageExportOptions {
   hiddenElements?: string[]
+  elementsToShow?: string[]
 };
 
 /**
@@ -79,6 +80,7 @@ const createCanvas = async (element: HTMLElement, options: ImageExportOptions, c
   body.style.width = `${bodyWidth}px`;
 
   toggleElementDisplay(options?.hiddenElements ?? [], false);
+  toggleElementDisplay(options?.elementsToShow ?? [], true);
 
   // Adjust the height to remove a white border at the bottom (not
   // sure where its coming from).
@@ -98,7 +100,8 @@ const createCanvas = async (element: HTMLElement, options: ImageExportOptions, c
   // not be focused.
   await new Promise((resolve) => {
     setTimeout(() => {
-      toggleElementDisplay(options?.hiddenElements ?? [], true);
+      // toggleElementDisplay(options?.hiddenElements ?? [], true);
+      // toggleElementDisplay(options?.elementsToShow ?? [], false);
       resolve(true);
     }, 500);
   });

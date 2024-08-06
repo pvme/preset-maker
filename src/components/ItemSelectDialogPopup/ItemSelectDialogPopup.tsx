@@ -266,7 +266,7 @@ export const DialogPopup = ({
       </DialogContent>
       <DialogActions>
         <Button color="error" onClick={clearCell}>
-          Clear Cell
+          Clear Cell(s)
         </Button>
         <Button onClick={handleClose}>Cancel</Button>
       </DialogActions>

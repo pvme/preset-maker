@@ -9,6 +9,10 @@
   object-fit: contain;
 }
 
+.recent-items {
+  margin-top: 4px;
+}
+
 .recent-items-title {
   text-align: center;
   margin: 4px 0 4px 0;

@@ -127,6 +127,10 @@ html, body, #root {
   cursor: pointer;
 }
 
+.export-only {
+  display: none;
+}
+
 /* Mobile styling */
 
 .mobile-only {

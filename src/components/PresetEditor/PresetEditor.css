@@ -1,10 +1,16 @@
 .relics-familiar-container {
   display: flex;
   justify-content: space-evenly;
+  flex-wrap: wrap;
   text-align: center;
   background-image: url("https://i.imgur.com/HSATCDr.png");
   padding: 4px;
   border: 1px solid rgb(100, 100, 100, 0.5);
+}
+
+.relics-familiar-container-export-notes {
+  flex-grow: 1;
+  width: 275px;
 }
 
 /* Mobile styling */

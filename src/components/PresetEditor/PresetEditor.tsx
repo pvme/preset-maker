@@ -162,6 +162,9 @@ export const PresetEditor = ({
             <div className="relics-familiar-container">
               <RelicSection />
               <FamiliarSection />
+            <div className="export-only mt-8 relics-familiar-container-export-notes">
+              Open the preset URL to view item/relic/familiar notes.
+            </div>
             </div>
           </div>
         </CardContent>

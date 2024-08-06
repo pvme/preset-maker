@@ -88,9 +88,13 @@ export const PresetActions = ({
       hasAlternativeRelics ? undefined : '.relic-section__alternative',
       hasAlternativeFamiliars ? undefined : '.familiar-section__alternative'
     ].filter(Boolean) as string[];
+    const elementsToShow = [
+      '.export-only'
+    ];
 
     await copyImageToClipboard(presetExportRef, {
-      hiddenElements
+      hiddenElements,
+      elementsToShow
     }, {
       onSuccess: () => {
         enqueueSnackbar('Copied image to clipboard', {
