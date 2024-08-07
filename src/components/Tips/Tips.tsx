@@ -4,7 +4,7 @@ import './Tips.css';
 
 export const Tips = (): JSX.Element => {
   return (
-    <fieldset className="tips">
+    <fieldset className="mt-8 fieldset">
       <legend>Tips</legend>
       <List
         sx={{

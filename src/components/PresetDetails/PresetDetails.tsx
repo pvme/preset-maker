@@ -42,7 +42,7 @@ export const PresetDetails = (): JSX.Element => {
   const value = name.length > 0 ? name : presetName;
   return (
     <>
-      <fieldset className="preset-details">
+      <fieldset className="preset-details fieldset">
         <legend>Details</legend>
         <InputLabel className="preset-details__label">
           Name

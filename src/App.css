@@ -140,6 +140,14 @@ html, body, #root {
   visibility: hidden;
 }
 
+/* Forms/fields */
+.fieldset {
+  text-align: left;
+  padding-right: 8px;
+  color: rgba(255, 255, 255, 0.85);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
 /* Mobile styling */
 
 .mobile-only {
