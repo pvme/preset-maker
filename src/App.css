@@ -119,16 +119,33 @@ html, body, #root {
   margin-right: 8px;
 }
 
+.ml-16 {
+  margin-left: 16px;
+}
+
 .mt-auto {
   margin-top: auto;
 }
 
-.ml-8 {
-  margin-right: 8px;
+.mh-auto {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .cursor-pointer:hover {
   cursor: pointer;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+/* Forms/fields */
+.fieldset {
+  text-align: left;
+  padding-right: 8px;
+  color: rgba(255, 255, 255, 0.85);
+  border-color: rgba(255, 255, 255, 0.25);
 }
 
 /* Mobile styling */

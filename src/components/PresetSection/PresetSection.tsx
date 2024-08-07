@@ -8,8 +8,12 @@ import { Fade } from '@mui/material';
 import { PresetActions } from '../PresetActions/PresetActions';
 import { PresetDetails } from '../PresetDetails/PresetDetails';
 import './PresetSection.css';
+import { useAppSelector } from '../../redux/hooks';
+import { AppMode, getMode } from '../../redux/store/reducers/setting-reducer';
+import { Tips } from '../Tips/Tips';
 
 export const PresetSection = (): JSX.Element => {
+  const mode = useAppSelector(getMode);
   const [presetExportRef, setPresetExportRef] = useState<HTMLDivElement | null>(null);
 
   const presetExportRefCallback = (ref: HTMLDivElement): void => {
@@ -19,16 +23,21 @@ export const PresetSection = (): JSX.Element => {
   return (
     <Fade in={true}>
       <div className="preset-section">
-        <PresetName />
+        {mode === AppMode.Edit && <PresetName />}
         <div className="preset-section__inner d-flex">
           <PresetEditor
             setExportRef={presetExportRefCallback}
           />
           <div className="preset-section__sidebar">
             <PresetDetails />
-            <PresetActions
-              presetExportRef={presetExportRef}
-            />
+            {mode === AppMode.Edit &&
+              <PresetActions
+                presetExportRef={presetExportRef}
+              />
+            }
+            {mode === AppMode.View &&
+              <Tips />
+            }
           </div>
         </div>
         <PresetBreakdown />
