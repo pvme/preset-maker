@@ -88,9 +88,14 @@ export const PresetActions = ({
       hasAlternativeRelics ? undefined : '.relic-section__alternative',
       hasAlternativeFamiliars ? undefined : '.familiar-section__alternative'
     ].filter(Boolean) as string[];
+
+    const hasBreakdownNotesOrPresetNotes = (() => {
+      const slots = [...inventorySlots, ...equipmentSlots];
+      return slots.some((slot) => (slot.breakdownNotes?.length ?? 0) > 0) || presetNotes.length > 0;
+    })();
     const elementsToShow = [
-      '.export-only'
-    ];
+      hasBreakdownNotesOrPresetNotes ? '.relics-familiar-container__export-notes' : undefined
+    ].filter(Boolean) as string[];
 
     await copyImageToClipboard(presetExportRef, {
       hiddenElements,
@@ -107,7 +112,7 @@ export const PresetActions = ({
         });
       }
     });
-  }, [presetExportRef, relics, familiars]);
+  }, [presetExportRef, relics, familiars, inventorySlots, equipmentSlots, presetNotes]);
 
   const generateShareableLink = async (): Promise<void> => {
     try {

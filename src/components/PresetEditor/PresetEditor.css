@@ -8,7 +8,8 @@
   border: 1px solid rgb(100, 100, 100, 0.5);
 }
 
-.relics-familiar-container-export-notes {
+.relics-familiar-container__export-notes {
+  display: none;
   flex-grow: 1;
   width: 275px;
 }

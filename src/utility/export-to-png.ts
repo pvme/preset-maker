@@ -100,8 +100,8 @@ const createCanvas = async (element: HTMLElement, options: ImageExportOptions, c
   // not be focused.
   await new Promise((resolve) => {
     setTimeout(() => {
-      // toggleElementDisplay(options?.hiddenElements ?? [], true);
-      // toggleElementDisplay(options?.elementsToShow ?? [], false);
+      toggleElementDisplay(options?.hiddenElements ?? [], true);
+      toggleElementDisplay(options?.elementsToShow ?? [], false);
       resolve(true);
     }, 500);
   });

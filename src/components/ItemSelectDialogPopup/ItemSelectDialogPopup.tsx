@@ -63,8 +63,6 @@ export const DialogPopup = ({
   const { slotType, slotIndex, inventorySlots } = useAppSelector(selectPreset);
   const [filteredItemData, setFilteredItemData] = useState<ItemData[]>(itemData);
 
-  console.error(selectedItem);
-
   // Helper function for filtering.
   const filterItemsForSlotType = (selectedSlotType: SlotType, selectedSlotIndex: number, items: ItemData[]): ItemData[] => {
     // For inventory, filter out auras.
