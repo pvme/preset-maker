@@ -149,11 +149,12 @@ export const HeaderBar = (): JSX.Element => {
                 variant="h5"
                 component="div"
                 fontFamily="monospace"
-                className="mh-auto header-bar__item"
+                className="ml-48 mr-auto header-bar__item"
               >
                 PVME Preset Generator
               </Typography>
-              {mode === AppMode.Edit &&
+              {/* Use hidden class to ensure layout is consistent */}
+              <div className={mode === AppMode.Edit ? '' : 'hidden'}>
                 <ButtonGroup className="header-bar__json header-bar__item desktop-only">
                   <Button color="inherit" variant="outlined" onClick={importData}>
                     Import&nbsp;JSON
@@ -162,7 +163,7 @@ export const HeaderBar = (): JSX.Element => {
                     Export&nbsp;JSON
                   </Button>
                 </ButtonGroup>
-              }
+              </div>
             </Toolbar>
           </Container>
         </AppBar>

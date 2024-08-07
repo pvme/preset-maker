@@ -136,6 +136,10 @@ html, body, #root {
   cursor: pointer;
 }
 
+.hidden {
+  visibility: hidden;
+}
+
 /* Mobile styling */
 
 .mobile-only {
