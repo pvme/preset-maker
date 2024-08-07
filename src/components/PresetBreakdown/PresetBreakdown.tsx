@@ -32,7 +32,7 @@ const itemHasBreakdownNotes = (item: ItemData): boolean => {
     return false;
   }
 
-  // Some necro items have a line break - those will be cleaned up
+  // For some reason, some breakdown notes have a line break inserted
   return item.breakdownNotes.trim().length > 0 && item.breakdownNotes !== '<br />';
 };
 
@@ -146,7 +146,6 @@ export const PresetBreakdown = (): JSX.Element => {
               (item) =>
                 ((item.label ?? '').length > 0) && (
                   <BreakdownListItem
-                    mode={mode}
                     key={item.label}
                     item={item}
                     type={BreakdownType.Equipment}
@@ -161,7 +160,6 @@ export const PresetBreakdown = (): JSX.Element => {
             {(uniqueInventoryItems ?? []).map((item) => {
               return (
                   <BreakdownListItem
-                    mode={mode}
                     key={item.label}
                     item={item}
                     type={BreakdownType.Inventory}

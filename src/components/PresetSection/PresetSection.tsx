@@ -10,6 +10,7 @@ import { PresetDetails } from '../PresetDetails/PresetDetails';
 import './PresetSection.css';
 import { useAppSelector } from '../../redux/hooks';
 import { AppMode, getMode } from '../../redux/store/reducers/setting-reducer';
+import { Tips } from '../Tips/Tips';
 
 export const PresetSection = (): JSX.Element => {
   const mode = useAppSelector(getMode);
@@ -28,15 +29,18 @@ export const PresetSection = (): JSX.Element => {
             setExportRef={presetExportRefCallback}
           />
           <div className="preset-section__sidebar">
-            <PresetDetails mode={mode} />
+            <PresetDetails />
             {mode === AppMode.Edit &&
               <PresetActions
                 presetExportRef={presetExportRef}
               />
             }
+            {mode === AppMode.View &&
+              <Tips />
+            }
           </div>
         </div>
-        <PresetBreakdown mode={mode} />
+        <PresetBreakdown />
       </div>
     </Fade>
   );

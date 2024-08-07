@@ -3,9 +3,9 @@ import React, { useCallback, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import './PresetDetails.css';
 
-import { selectPreset, setPresetNotes, setPresetName } from '../../redux/store/reducers/preset-reducer';
-import { NotesField } from '../NotesField/NotesField';
+import { selectPreset, setPresetName, setPresetNotes } from '../../redux/store/reducers/preset-reducer';
 import { AppMode, getMode } from '../../redux/store/reducers/setting-reducer';
+import { NotesField } from '../NotesField/NotesField';
 
 export const PresetDetails = (): JSX.Element => {
   const dispatch = useAppDispatch();
