@@ -23,14 +23,17 @@ import { sanitizeAndStringifyPreset } from '../../utility/sanitizer';
 
 import './HeaderBar.css';
 import { HelpDialog } from '../HelpDialog/HelpDialog';
-import { AppMode } from '../../App';
+import { AppMode, getMode, setMode } from '../../redux/store/reducers/setting-reducer';
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup/ToggleButtonGroup';
+import ToggleButton from '@mui/material/ToggleButton/ToggleButton';
 
-export const HeaderBar = ({ mode }: { mode: AppMode }): JSX.Element => {
+export const HeaderBar = (): JSX.Element => {
   const inputFile = useRef<HTMLInputElement>(null);
 
   const navigate = useNavigate();
 
   const dispatch = useAppDispatch();
+  const mode = useAppSelector(getMode);
   const { presetName, presetNotes, inventorySlots, equipmentSlots, relics, familiars } =
     useAppSelector(selectPreset);
   const [helpDialogOpen, setHelpDialogOpen] = useState<boolean>(false);
@@ -101,6 +104,10 @@ export const HeaderBar = ({ mode }: { mode: AppMode }): JSX.Element => {
     navigate(0);
   }, [navigate]);
 
+  const onModeChange = useCallback(() => {
+    dispatch(setMode(mode === AppMode.View ? AppMode.Edit : AppMode.View));
+  }, [mode]);
+
   return (
     <>
       <Box className="header-bar">
@@ -126,6 +133,17 @@ export const HeaderBar = ({ mode }: { mode: AppMode }): JSX.Element => {
                   className="header-bar__help-icon cursor-pointer"
                   onClick={() => { setHelpDialogOpen(true); }}
                 />
+                <div className="desktop-only ml-16">
+                  <ToggleButtonGroup
+                    color="primary"
+                    value={mode}
+                    onChange={onModeChange}
+                    aria-label="Mode"
+                  >
+                    <ToggleButton value={AppMode.View}>View</ToggleButton>
+                    <ToggleButton value={AppMode.Edit}>Edit</ToggleButton>
+                  </ToggleButtonGroup>
+                </div>
               </div>
               <Typography
                 variant="h5"

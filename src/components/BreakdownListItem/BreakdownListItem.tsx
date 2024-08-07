@@ -14,16 +14,17 @@ import { type ItemData } from '../../types/item-data';
 
 import { NotesField } from '../NotesField/NotesField';
 import './BreakdownListItem.css';
-import { AppMode } from '../../App';
+import { useAppSelector } from '../../redux/hooks';
+import { AppMode, getMode } from '../../redux/store/reducers/setting-reducer';
 
 export interface BreakdownListItemProps {
-  mode: AppMode
   item: ItemData
   type: BreakdownType
 }
 
-export const BreakdownListItem = ({ mode, item, type }: BreakdownListItemProps): JSX.Element => {
+export const BreakdownListItem = ({ item, type }: BreakdownListItemProps): JSX.Element => {
   const dispatch = useDispatch();
+  const mode = useAppSelector(getMode);
 
   const handleRecentClick = useCallback(
     (item: ItemData) => {

@@ -8,9 +8,11 @@ import { Fade } from '@mui/material';
 import { PresetActions } from '../PresetActions/PresetActions';
 import { PresetDetails } from '../PresetDetails/PresetDetails';
 import './PresetSection.css';
-import App, { AppMode } from '../../App';
+import { useAppSelector } from '../../redux/hooks';
+import { AppMode, getMode } from '../../redux/store/reducers/setting-reducer';
 
-export const PresetSection = ({ mode }: { mode: AppMode }): JSX.Element => {
+export const PresetSection = (): JSX.Element => {
+  const mode = useAppSelector(getMode);
   const [presetExportRef, setPresetExportRef] = useState<HTMLDivElement | null>(null);
 
   const presetExportRefCallback = (ref: HTMLDivElement): void => {

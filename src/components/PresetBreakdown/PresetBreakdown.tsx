@@ -18,8 +18,8 @@ import {
 } from '../../utility/export-to-png';
 
 import './PresetBreakdown.css';
-import { AppMode } from '../../App';
 import { FormControlLabel, Switch } from '@mui/material';
+import { AppMode, getMode } from '../../redux/store/reducers/setting-reducer';
 
 // This is used to map the equipmentSlots array (0-12) to a column
 // Used in getMappedEquipment
@@ -36,7 +36,7 @@ const itemHasBreakdownNotes = (item: ItemData): boolean => {
   return item.breakdownNotes.trim().length > 0 && item.breakdownNotes !== '<br />';
 };
 
-export const PresetBreakdown = ({ mode }: { mode: AppMode }): JSX.Element => {
+export const PresetBreakdown = (): JSX.Element => {
   const exportRef = useRef<HTMLDivElement>(null);
   const { enqueueSnackbar } = useSnackbar();
   const [mappedEquipment, setMappedEquipment] = useState<ItemData[]>();
@@ -45,6 +45,7 @@ export const PresetBreakdown = ({ mode }: { mode: AppMode }): JSX.Element => {
 
   const [hideEmptySlots, setHideEmptySlots] = useState(false);
 
+  const mode = useAppSelector(getMode);
   const {
     presetName: name,
     inventorySlots,

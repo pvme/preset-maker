@@ -5,10 +5,11 @@ import './PresetDetails.css';
 
 import { selectPreset, setPresetNotes, setPresetName } from '../../redux/store/reducers/preset-reducer';
 import { NotesField } from '../NotesField/NotesField';
-import { AppMode } from '../../App';
+import { AppMode, getMode } from '../../redux/store/reducers/setting-reducer';
 
-export const PresetDetails = ({ mode }: { mode: AppMode }): JSX.Element => {
+export const PresetDetails = (): JSX.Element => {
   const dispatch = useAppDispatch();
+  const mode = useAppSelector(getMode);
   const {
     presetName,
     presetNotes
