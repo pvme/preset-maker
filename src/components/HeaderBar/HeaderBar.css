@@ -43,10 +43,6 @@
   justify-content: flex-end;
 }
 
-.header-bar__item {
-  width: 500px !important;
-}
-
 .tool-bar > button {
   margin: 15px;
 }

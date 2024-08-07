@@ -31,11 +31,11 @@
 }
 
 .equipment-breakdown-container--equipment {
-  width: 600px;
+  width: 500px;
 }
 
 .equipment-breakdown-container--inventory {
-  margin-right: 10px;
+  padding-right: 10px;
 }
 
 .equipment-breakdown-container--inventory > .equipment-breakdown-container--0 > .MuiList-root {

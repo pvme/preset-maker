@@ -24,6 +24,8 @@
 }
 
 .preset-details__name > div > input {
+  /* Override text color when disabled */
+  -webkit-text-fill-color: white !important;
   font-size: 14px;
   padding: 12px;
 }

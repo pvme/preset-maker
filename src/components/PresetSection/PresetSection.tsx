@@ -8,8 +8,9 @@ import { Fade } from '@mui/material';
 import { PresetActions } from '../PresetActions/PresetActions';
 import { PresetDetails } from '../PresetDetails/PresetDetails';
 import './PresetSection.css';
+import App, { AppMode } from '../../App';
 
-export const PresetSection = (): JSX.Element => {
+export const PresetSection = ({ mode }: { mode: AppMode }): JSX.Element => {
   const [presetExportRef, setPresetExportRef] = useState<HTMLDivElement | null>(null);
 
   const presetExportRefCallback = (ref: HTMLDivElement): void => {
@@ -19,19 +20,21 @@ export const PresetSection = (): JSX.Element => {
   return (
     <Fade in={true}>
       <div className="preset-section">
-        <PresetName />
+        {mode === AppMode.Edit && <PresetName />}
         <div className="preset-section__inner d-flex">
           <PresetEditor
             setExportRef={presetExportRefCallback}
           />
           <div className="preset-section__sidebar">
-            <PresetDetails />
-            <PresetActions
-              presetExportRef={presetExportRef}
-            />
+            <PresetDetails mode={mode} />
+            {mode === AppMode.Edit &&
+              <PresetActions
+                presetExportRef={presetExportRef}
+              />
+            }
           </div>
         </div>
-        <PresetBreakdown />
+        <PresetBreakdown mode={mode} />
       </div>
     </Fade>
   );

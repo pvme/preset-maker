@@ -14,13 +14,15 @@ import { type ItemData } from '../../types/item-data';
 
 import { NotesField } from '../NotesField/NotesField';
 import './BreakdownListItem.css';
+import { AppMode } from '../../App';
 
 export interface BreakdownListItemProps {
+  mode: AppMode
   item: ItemData
   type: BreakdownType
 }
 
-export const BreakdownListItem = ({ item, type }: BreakdownListItemProps): JSX.Element => {
+export const BreakdownListItem = ({ mode, item, type }: BreakdownListItemProps): JSX.Element => {
   const dispatch = useDispatch();
 
   const handleRecentClick = useCallback(
@@ -53,6 +55,7 @@ export const BreakdownListItem = ({ item, type }: BreakdownListItemProps): JSX.E
       }}
       secondaryAction={
         <NotesField
+          disabled={mode === AppMode.View}
           placeholder={item.breakdownNotes}
           className="inner-notes-field"
           initialValue={item.breakdownNotes}
@@ -84,6 +87,7 @@ export const BreakdownListItem = ({ item, type }: BreakdownListItemProps): JSX.E
           primary={'🔗 ' + item.name}
           title="Click to open wiki page"
           onClick={() => { handleRecentClick(item); }}
+          style={{ paddingRight: '4px' }}
         />
       </ListItemButton>
     </ListItem>

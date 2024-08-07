@@ -7,6 +7,7 @@ import { emojify } from '../../utility/emojify';
 import './NotesField.css';
 
 export interface NotesFieldProps {
+  disabled: boolean
   className?: string
   placeholder?: string
   initialValue?: string
@@ -45,7 +46,7 @@ const formatInput = (input?: string): string => {
   return linkifyInput(sanitizeAndEmojifyInput(input));
 };
 
-export const NotesField = ({ className, placeholder, initialValue, onBlur }: NotesFieldProps): JSX.Element => {
+export const NotesField = ({ disabled, className, placeholder, initialValue, onBlur }: NotesFieldProps): JSX.Element => {
   const [formattedNotes, setFormattedNotes] = useState<string>(formatInput(initialValue) ?? '');
 
   const onNotesFieldChange = useCallback(
@@ -76,6 +77,7 @@ export const NotesField = ({ className, placeholder, initialValue, onBlur }: Not
 
   return (
     <ContentEditable
+      disabled={disabled}
       className={`notes-field ${className ?? ''}`}
       placeholder={placeholder}
       html={formattedNotes}

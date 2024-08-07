@@ -12,13 +12,19 @@ import { getPreset } from './api/get-preset';
 import { importDataAction } from './redux/store/reducers/preset-reducer';
 import { CircularProgress, Typography } from '@mui/material';
 
+export enum AppMode {
+  Edit = 'edit',
+  View = 'view'
+}
+
 function App (): JSX.Element {
   const dispatch = useAppDispatch();
   const [isPresetLoading, setIsPresetLoading] = useState(false);
   const presetImported = useRef(false);
 
   // Preset ID is stored in URL params
-  const { id } = useParams();
+  const { id, mode: modeParam } = useParams();
+  const mode = modeParam === 'edit' ? AppMode.Edit : AppMode.View;
 
   useEffect(() => {
     if (presetImported.current) {
@@ -52,8 +58,8 @@ function App (): JSX.Element {
         </div>
         : (
         <div className="App">
-          <HeaderBar />
-          <PresetSection />
+          <HeaderBar mode={mode}/>
+          <PresetSection mode={mode} />
         </div>
           )
       }

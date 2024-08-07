@@ -16,7 +16,7 @@
   line-height: 28px;
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   font-size: 14px;
-  width: 330px;
+  width: 200px;
 }
 
 /* Mobile styling */
@@ -32,5 +32,11 @@
   .breakdown-list-item {
     display: flex;
     flex-direction: column;
+  }
+
+  /* Left-align breakdown names on mobile so theyre aligned vertically. */
+  .breakdown-list-item > .MuiListItemButton-root {
+    display: flex;
+    width: 100%;
   }
 }

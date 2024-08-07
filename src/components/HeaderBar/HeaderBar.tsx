@@ -23,8 +23,9 @@ import { sanitizeAndStringifyPreset } from '../../utility/sanitizer';
 
 import './HeaderBar.css';
 import { HelpDialog } from '../HelpDialog/HelpDialog';
+import { AppMode } from '../../App';
 
-export const HeaderBar = (): JSX.Element => {
+export const HeaderBar = ({ mode }: { mode: AppMode }): JSX.Element => {
   const inputFile = useRef<HTMLInputElement>(null);
 
   const navigate = useNavigate();
@@ -130,18 +131,20 @@ export const HeaderBar = (): JSX.Element => {
                 variant="h5"
                 component="div"
                 fontFamily="monospace"
-                className="header-bar__item"
+                className="mh-auto header-bar__item"
               >
                 PVME Preset Generator
               </Typography>
-              <ButtonGroup className="header-bar__json header-bar__item desktop-only">
-                <Button color="inherit" variant="outlined" onClick={importData}>
-                  Import&nbsp;JSON
-                </Button>
-                <Button color="inherit" variant="outlined" onClick={exportData}>
-                  Export&nbsp;JSON
-                </Button>
-              </ButtonGroup>
+              {mode === AppMode.Edit &&
+                <ButtonGroup className="header-bar__json header-bar__item desktop-only">
+                  <Button color="inherit" variant="outlined" onClick={importData}>
+                    Import&nbsp;JSON
+                  </Button>
+                  <Button color="inherit" variant="outlined" onClick={exportData}>
+                    Export&nbsp;JSON
+                  </Button>
+                </ButtonGroup>
+              }
             </Toolbar>
           </Container>
         </AppBar>

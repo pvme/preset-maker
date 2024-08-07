@@ -5,8 +5,9 @@ import './PresetDetails.css';
 
 import { selectPreset, setPresetNotes, setPresetName } from '../../redux/store/reducers/preset-reducer';
 import { NotesField } from '../NotesField/NotesField';
+import { AppMode } from '../../App';
 
-export const PresetDetails = (): JSX.Element => {
+export const PresetDetails = ({ mode }: { mode: AppMode }): JSX.Element => {
   const dispatch = useAppDispatch();
   const {
     presetName,
@@ -46,6 +47,7 @@ export const PresetDetails = (): JSX.Element => {
           Name
         </InputLabel>
         <TextField
+          disabled={mode === AppMode.View}
           className="preset-details__name"
           placeholder={placeholder}
           value={value}
@@ -57,6 +59,7 @@ export const PresetDetails = (): JSX.Element => {
           Notes
         </InputLabel>
         <NotesField
+          disabled={mode === AppMode.View}
           placeholder="Add notes..."
           className="preset-details__notes"
           initialValue={presetNotes}
