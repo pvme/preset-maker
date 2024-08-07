@@ -15,6 +15,10 @@ export const BreakdownHeader = (): JSX.Element => {
           primaryTypographyProps={{
             style: { fontWeight: 'bold' }
           }}
+          style={{
+            marginTop: 0,
+            marginBottom: 0
+          }}
           primary="Name"
         />
         <ListItemText

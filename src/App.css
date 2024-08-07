@@ -107,6 +107,10 @@ html, body, #root {
   margin-bottom: 8px;
 }
 
+.mt-6 {
+  margin-top: 6px;
+}
+
 .mt-8 {
   margin-top: 8px;
 }

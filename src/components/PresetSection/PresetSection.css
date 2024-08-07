@@ -13,6 +13,13 @@
   margin-left: 16px;
 }
 
+.preset-section__jump-to-breakdown {
+  position: fixed;
+  top: 64px;
+  left: 16px;
+  font-size: 14px;
+}
+
 /* Mobile styling */
 
 @media (max-width: 900px) {

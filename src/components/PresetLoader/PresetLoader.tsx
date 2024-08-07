@@ -152,7 +152,7 @@ export const PresetName = (): JSX.Element => {
             )}
           />
         )}
-        <Button className="button" variant="contained" onClick={createNewPreset} size="small">
+        <Button className="button" variant="contained" onClick={createNewPreset}>
           Create&nbsp;New&nbsp;Preset
         </Button>
       </ButtonGroup>

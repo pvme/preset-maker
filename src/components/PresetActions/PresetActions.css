@@ -13,8 +13,8 @@
   width: 100%;
 }
 
-.preset-actions__button {
-  margin: 8px;
+.preset-actions__button:not(:first-of-type) {
+  margin-top: 6px !important;
 }
 
 .preset-actions__link {
@@ -29,7 +29,7 @@
 
 .preset-actions__reset {
   display: flex;
-  margin-top: 16px;
+  margin-top: 6px;
 }
 
 .preset-and-actions {

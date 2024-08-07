@@ -197,7 +197,7 @@ export const PresetActions = ({
                 Link to preset
               </Link>
             }
-            <ClipboardCopyButtonContainer className="d-flex">
+            <ClipboardCopyButtonContainer className="d-flex mt-6">
               <Button
                 className="preset-actions__button width-100"
                 variant="outlined"

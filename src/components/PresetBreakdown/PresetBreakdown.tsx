@@ -94,6 +94,7 @@ export const PresetBreakdown = (): JSX.Element => {
           className="breakdown-button"
           variant="contained"
           color="success"
+          size="small"
           onClick={() => {
             void exportBreakdown();
           }}
@@ -104,6 +105,7 @@ export const PresetBreakdown = (): JSX.Element => {
           <Button
             variant="outlined"
             color="secondary"
+            size="small"
             disabled={!clipboardSupported}
             // eslint-disable-next-line @typescript-eslint/no-misused-promises
             onClick={copyBreakdownToClipboard}
