@@ -5448,6 +5448,14 @@
 		"wikiLink": "https://runescape.wiki/w/Master_quest_cape"
 	},
 	{
+		"label": "masterwork2hsword",
+		"image": "https://i.imgur.com/s6nYSRW.png",
+		"name": "Masterwork 2h sword",
+		"breakdownNotes": "",
+		"slot": 4,
+		"wikiLink": "https://runescape.wiki/w/Masterwork_2h_sword"
+	},  
+	{
 		"label": "mwboots",
 		"image": "https://i.imgur.com/GsZmtrn.png",
 		"name": "Masterwork boots",
@@ -6375,6 +6383,14 @@
 		"slot": 4,
 		"wikiLink": "https://runescape.wiki/w/Pickaxe_of_Earth_and_Song"
 	},
+	{
+		"label": "pickaxeoflifeanddeath",
+		"image": "https://i.imgur.com/1x24vrK.png",
+		"name": "Pickaxe of Life and Death",
+		"breakdownNotes": "",
+		"slot": 4,
+		"wikiLink": "https://runescape.wiki/w/Pickaxe_of_Life_and_Death"
+	},  
 	{
 		"label": "pf",
 		"image": "https://i.imgur.com/0d9nkK4.png",
@@ -8255,6 +8271,14 @@
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Ugthanki_dung"
 	},
+	{
+		"label": "underworldgrimoire4",
+		"image": "https://i.imgur.com/FdohigN.png",
+		"name": "Underworld Grimoire 4",
+		"breakdownNotes": "",
+		"slot": 13,
+		"wikiLink": "https://runescape.wiki/w/Underworld_Grimoire_4"
+	},  
 	{
 		"label": "unfinishedrunehelm(98%)",
 		"image": "https://i.imgur.com/XBHs2Zb.png",
