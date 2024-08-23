@@ -240,6 +240,14 @@
 		"wikiLink": "https://runescape.wiki/w/Agility_cape_(t)"
 	},
 	{
+		"label": "ahrimsstaff",
+		"image": "https://i.imgur.com/FGAHn6Z.png",
+		"name": "Ahrim's staff",
+		"breakdownNotes": "",
+		"slot": 4,
+		"wikiLink": "https://runescape.wiki/w/Ahrim%27s_staff"
+	},  
+	{
 		"label": "airrune",
 		"image": "https://i.imgur.com/9Nngfvj.png",
 		"name": "Air rune",
@@ -1727,6 +1735,14 @@
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Crystal_key"
 	},
+	{
+		"label": "crystalstaff",
+		"image": "https://i.imgur.com/vAq27KK.png",
+		"name": "Crystal staff",
+		"breakdownNotes": "",
+		"slot": 4,
+		"wikiLink": "https://runescape.wiki/w/Crystal_staff"
+	},  
 	{
 		"label": "curlyroot",
 		"image": "https://i.imgur.com/FN0XHFS.png",
