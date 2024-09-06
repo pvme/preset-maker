@@ -2024,6 +2024,14 @@
 		"wikiLink": "https://runescape.wiki/w/Deathtouched_bracelet"
 	},
 	{
+		"label": "deathtoucheddart",
+		"image": "https://i.imgur.com/J0vJCb6.png",
+		"name": "Deathtouched dart",
+		"breakdownNotes": "",
+		"slot": 4,
+		"wikiLink": "https://runescape.wiki/w/Deathtouched_dart"
+	},  
+	{
 		"label": "deathwardennexus",
 		"image": "https://i.imgur.com/hd7YvA4.png",
 		"name": "Deathwarden Nexus",
