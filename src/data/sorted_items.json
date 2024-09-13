@@ -4912,6 +4912,14 @@
 		"wikiLink": "https://runescape.wiki/w/Legendary_call_of_the_sea_aura"
 	},
 	{
+		"label": "legendarydedicatedslayer",
+		"image": "https://i.imgur.com/xhGsRl0.png",
+		"name": "Legendary dedicated slayer aura",
+		"breakdownNotes": "",
+		"slot": 8,
+		"wikiLink": "https://runescape.wiki/w/Legendary_dedicated_slayer_aura"
+	},
+	{
 		"label": "legendarylumberjack",
 		"image": "https://i.imgur.com/TFKGtdh.png",
 		"name": "Legendary lumberjack aura",
