@@ -107,7 +107,10 @@ export const PresetActions = ({
 
   const generateShareableLink = async (): Promise<void> => {
     try {
-      const presetImage = await getImageFromElement(presetExportRef);
+      let presetImage = await getImageFromElement(presetExportRef);
+      if (presetImage.length > 1000000) {
+        presetImage = 'error: too large';
+      }
       const stringifiedPresetData = sanitizeAndStringifyPreset({
         presetName,
         presetNotes,
