@@ -1591,6 +1591,22 @@
 		"slot": 10,
 		"wikiLink": "https://runescape.wiki/w/Conjurer%27s_raising_amulet"
 	},
+  {
+		"label": "constitutioncape",
+		"image": "https://i.imgur.com/DFwDP3K.png",
+		"name": "Constitution cape",
+		"breakdownNotes": "",
+		"slot": 12,
+		"wikiLink": "https://runescape.wiki/w/Constitution_cape"
+	},
+  {
+		"label": "constructioncape",
+		"image": "https://i.imgur.com/8NiD54t.png",
+		"name": "Construction cape",
+		"breakdownNotes": "",
+		"slot": 12,
+		"wikiLink": "https://runescape.wiki/w/Construction_cape"
+	},
 	{
 		"label": "cookingcape",
 		"image": "https://i.imgur.com/DWguQtc.png",
@@ -1734,6 +1750,14 @@
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Crystal_key"
+	},
+  {
+		"label": "crystalskillchompa",
+		"image": "https://i.imgur.com/lAwGm1s.png",
+		"name": "Crystal skillchompa",
+		"breakdownNotes": "",
+		"slot": 4,
+		"wikiLink": "https://runescape.wiki/w/Crystal_skillchompa"
 	},
 	{
 		"label": "crystalstaff",
@@ -6942,6 +6966,14 @@
 		"breakdownNotes": "",
 		"slot": 2,
 		"wikiLink": "https://runescape.wiki/w/Robe_top_of_the_First_Necromancer"
+	},
+  {
+		"label": "rockcrushingscrimshaw",
+		"image": "https://i.imgur.com/caaJeHr.png",
+		"name": "Rock-crushing scrimshaw",
+		"breakdownNotes": "",
+		"slot": 13,
+		"wikiLink": "https://runescape.wiki/w/Rock-crushing_scrimshaw"
 	},
 	{
 		"label": "rocktail",
