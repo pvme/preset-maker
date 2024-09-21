@@ -1591,6 +1591,22 @@
 		"slot": 10,
 		"wikiLink": "https://runescape.wiki/w/Conjurer%27s_raising_amulet"
 	},
+  {
+		"label": "constitutioncape",
+		"image": "https://i.imgur.com/DFwDP3K.png",
+		"name": "Constitution cape",
+		"breakdownNotes": "",
+		"slot": 12,
+		"wikiLink": "https://runescape.wiki/w/Constitution_cape"
+	},
+  {
+		"label": "constructioncape",
+		"image": "https://i.imgur.com/8NiD54t.png",
+		"name": "Construction cape",
+		"breakdownNotes": "",
+		"slot": 12,
+		"wikiLink": "https://runescape.wiki/w/Construction_cape"
+	},
 	{
 		"label": "cookingcape",
 		"image": "https://i.imgur.com/DWguQtc.png",
@@ -1712,6 +1728,14 @@
 		"wikiLink": "https://runescape.wiki/w/Cryptbloom_top"
 	},
 	{
+		"label": "crystalbow",
+		"image": "https://i.imgur.com/JPamTwD.png",
+		"name": "Crystal bow",
+		"breakdownNotes": "",
+		"slot": 4,
+		"wikiLink": "https://runescape.wiki/w/Crystal_bow"
+	},  
+	{
 		"label": "crystalhammer",
 		"image": "https://i.imgur.com/yrUFH8x.png",
 		"name": "Crystal Hammer",
@@ -1719,6 +1743,14 @@
 		"slot": 4,
 		"wikiLink": "https://runescape.wiki/w/Crystal_hammer"
 	},
+	{
+		"label": "crystalhalberd",
+		"image": "https://i.imgur.com/uZ1RHoi.png",
+		"name": "Crystal halberd",
+		"breakdownNotes": "",
+		"slot": 4,
+		"wikiLink": "https://runescape.wiki/w/Crystal_halberd"
+	},  
 	{
 		"label": "crystalhatchet",
 		"image": "https://i.imgur.com/ngoTz66.png",
@@ -1734,6 +1766,14 @@
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Crystal_key"
+	},
+  {
+		"label": "crystalskillchompa",
+		"image": "https://i.imgur.com/lAwGm1s.png",
+		"name": "Crystal skillchompa",
+		"breakdownNotes": "",
+		"slot": 4,
+		"wikiLink": "https://runescape.wiki/w/Crystal_skillchompa"
 	},
 	{
 		"label": "crystalstaff",
@@ -6080,6 +6120,14 @@
 		"wikiLink": "https://runescape.wiki/w/Off-hand_drygore_rapier"
 	},
 	{
+		"label": "offhandrubberchicken",
+		"image": "https://i.imgur.com/K7gU5TK.png",
+		"name": "Off-hand rubber chicken",
+		"breakdownNotes": "",
+		"slot": 5,
+		"wikiLink": "https://runescape.wiki/w/Off-hand_rubber_chicken"
+	},  
+	{
 		"label": "glaiveoh",
 		"image": "https://i.imgur.com/OX5iUca.png",
 		"name": "Off-hand shadow glaive",
@@ -6943,6 +6991,14 @@
 		"slot": 2,
 		"wikiLink": "https://runescape.wiki/w/Robe_top_of_the_First_Necromancer"
 	},
+  {
+		"label": "rockcrushingscrimshaw",
+		"image": "https://i.imgur.com/caaJeHr.png",
+		"name": "Rock-crushing scrimshaw",
+		"breakdownNotes": "",
+		"slot": 13,
+		"wikiLink": "https://runescape.wiki/w/Rock-crushing_scrimshaw"
+	},
 	{
 		"label": "rocktail",
 		"image": "https://i.imgur.com/bopHhxT.png",
@@ -6959,6 +7015,14 @@
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Rocktail_soup"
 	},
+	{
+		"label": "rope",
+		"image": "https://i.imgur.com/bsu5UWt.png",
+		"name": "Rope",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Rope"
+	},  
 	{
 		"label": "royalcrossbow",
 		"image": "https://i.imgur.com/Jz8xIly.png",
@@ -7832,6 +7896,126 @@
 		"wikiLink": "https://runescape.wiki/w/Superior_Dragon_Rider_gloves"
 	},
 	{
+		"label": "superiorrockshellboots",
+		"image": "https://i.imgur.com/xEmLfUj.png",
+		"name": "Superior rock-shell boots",
+		"breakdownNotes": "",
+		"slot": 7,
+		"wikiLink": "https://runescape.wiki/w/Superior_rock-shell_boots"
+	},
+	{
+		"label": "superiorrockshellgloves",
+		"image": "https://i.imgur.com/7Fj98DT.png",
+		"name": "Superior rock-shell gloves",
+		"breakdownNotes": "",
+		"slot": 6,
+		"wikiLink": "https://runescape.wiki/w/Superior_rock-shell_gloves"
+	},
+	{
+		"label": "superiorrockshellhelm",
+		"image": "https://i.imgur.com/X77UJEU.png",
+		"name": "Superior rock-shell helm",
+		"breakdownNotes": "",
+		"slot": 1,
+		"wikiLink": "https://runescape.wiki/w/Superior_rock-shell_helm"
+	},
+	{
+		"label": "superiorrockshelllegs",
+		"image": "https://i.imgur.com/N0vD1Lj.png",
+		"name": "Superior rock-shell legs",
+		"breakdownNotes": "",
+		"slot": 3,
+		"wikiLink": "https://runescape.wiki/w/Superior_rock-shell_legs"
+	},
+	{
+		"label": "superiorrockshellplate",
+		"image": "https://i.imgur.com/5iP5Shj.png",
+		"name": "Superior rock-shell plate",
+		"breakdownNotes": "",
+		"slot": 2,
+		"wikiLink": "https://runescape.wiki/w/Superior_rock-shell_plate"
+	},  
+	{
+		"label": "superiorskeletalboots",
+		"image": "https://i.imgur.com/DA28lJb.png",
+		"name": "Superior skeletal boots",
+		"breakdownNotes": "",
+		"slot": 7,
+		"wikiLink": "https://runescape.wiki/w/Superior_skeletal_boots"
+	},  
+	{
+		"label": "superiorskeletalbottoms",
+		"image": "https://i.imgur.com/4eZOAtG.png",
+		"name": "Superior skeletal bottoms",
+		"breakdownNotes": "",
+		"slot": 3,
+		"wikiLink": "https://runescape.wiki/w/Superior_skeletal_bottoms"
+	},
+	{
+		"label": "superiorskeletalgloves",
+		"image": "https://i.imgur.com/uGRYIFf.png",
+		"name": "Superior skeletal gloves",
+		"breakdownNotes": "",
+		"slot": 6,
+		"wikiLink": "https://runescape.wiki/w/Superior_skeletal_gloves"
+	},  
+	{
+		"label": "superiorskeletalhelm",
+		"image": "https://i.imgur.com/vuEBOxA.png",
+		"name": "Superior skeletal helm",
+		"breakdownNotes": "",
+		"slot": 1,
+		"wikiLink": "https://runescape.wiki/w/Superior_skeletal_helm"
+	},
+	{
+		"label": "superiorskeletaltop",
+		"image": "https://i.imgur.com/TNnRewi.png",
+		"name": "Superior skeletal top",
+		"breakdownNotes": "",
+		"slot": 2,
+		"wikiLink": "https://runescape.wiki/w/Superior_skeletal_top"
+	},
+	{
+		"label": "superiorspinedbody",
+		"image": "https://i.imgur.com/Ht0FvHQ.png",
+		"name": "Superior spined body",
+		"breakdownNotes": "",
+		"slot": 2,
+		"wikiLink": "https://runescape.wiki/w/Superior_spined_body"
+	},
+	{
+		"label": "superiorspinedboots",
+		"image": "https://i.imgur.com/ImONCV2.png",
+		"name": "Superior spined boots",
+		"breakdownNotes": "",
+		"slot": 7,
+		"wikiLink": "https://runescape.wiki/w/Superior_spined_boots"
+	},  
+	{
+		"label": "superiorspinedchaps",
+		"image": "https://i.imgur.com/lp6l3nC.png",
+		"name": "Superior spined chaps",
+		"breakdownNotes": "",
+		"slot": 3,
+		"wikiLink": "https://runescape.wiki/w/Superior_spined_chaps"
+	},
+	{
+		"label": "superiorspinedgloves",
+		"image": "https://i.imgur.com/JuhCtuD.png",
+		"name": "Superior spined gloves",
+		"breakdownNotes": "",
+		"slot": 6,
+		"wikiLink": "https://runescape.wiki/w/Superior_spined_gloves"
+	},  
+	{
+		"label": "superiorspinedhelm",
+		"image": "https://i.imgur.com/xvOAKx4.png",
+		"name": "Superior spined helm",
+		"breakdownNotes": "",
+		"slot": 1,
+		"wikiLink": "https://runescape.wiki/w/Superior_spined_helm"
+	},  
+	{
 		"label": "swh",
 		"image": "https://i.imgur.com/buKTnb1.png",
 		"name": "Superior Statius's warhammer",
@@ -7934,14 +8118,6 @@
 		"breakdownNotes": "",
 		"slot": 2,
 		"wikiLink": "https://runescape.wiki/w/Superior_seasinger's_robe_top"
-	},
-	{
-		"label": "superiorspinedgloves",
-		"image": "https://i.imgur.com/JuhCtuD.png",
-		"name": "Superior spined gloves",
-		"breakdownNotes": "",
-		"slot": 6,
-		"wikiLink": "https://runescape.wiki/w/Superior_spined_gloves"
 	},
 	{
 		"label": "supportcape",
