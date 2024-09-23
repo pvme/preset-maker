@@ -39,6 +39,7 @@ export const PresetEditor = ({
   } = useAppSelector(selectPreset);
   const recentItems = useAppSelector(selectRecentItems);
 
+  const [selectedItem, setSelectedItem] = useState<ItemData | undefined>(undefined);
   const [dialogOpen, setDialogOpen] = useState(false);
 
   const handleSlotOpen = useCallback(
@@ -60,6 +61,7 @@ export const PresetEditor = ({
       }
 
       dispatch(updateSlotIndex(index));
+      setSelectedItem(inventorySlots[index]);
       setDialogOpen(true);
     },
     [dispatch, inventorySlots]
@@ -160,12 +162,16 @@ export const PresetEditor = ({
             <div className="relics-familiar-container">
               <RelicSection />
               <FamiliarSection />
+            <div className="mt-8 r relics-familiar-container__export-notes">
+              Open the preset link to view item/relic/familiar notes.
+            </div>
             </div>
           </div>
         </CardContent>
       </Card>
       <DialogPopup
         open={dialogOpen}
+        selectedItem={selectedItem}
         recentlySelectedItems={recentItems}
         handleClose={onDialogClose}
         handleSlotChange={changeSlot}
