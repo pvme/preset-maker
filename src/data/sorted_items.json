@@ -3242,10 +3242,10 @@
 	{
 		"label": "eofblackunorn",
 		"image": "https://i.imgur.com/jRuWtdl.png",
-		"name": "Essence of Finality amulet (black)",
+		"name": "EoF - Statius's warhammer",
 		"breakdownNotes": "",
 		"slot": 10,
-		"wikiLink": "https://runescape.wiki/w/Essence_of_Finality_amulet_(black)"
+		"wikiLink": "https://runescape.wiki/w/Statius%27s_warhammer"
 	},
 	{
 		"label": "eofblueunorn",
@@ -3274,26 +3274,26 @@
 	{
 		"label": "eofpurpleunorn",
 		"image": "https://i.imgur.com/5NxOiAg.png",
-		"name": "Essence of Finality amulet (purple)",
+		"name": "EoF - Decimation",
 		"breakdownNotes": "",
 		"slot": 10,
-		"wikiLink": "https://runescape.wiki/w/Essence_of_Finality_amulet_(purple)"
+		"wikiLink": "https://runescape.wiki/w/Decimation"
 	},
 	{
 		"label": "eofredunorn",
 		"image": "https://i.imgur.com/yUkClNY.png",
-		"name": "Essence of Finality amulet (red)",
+		"name": "EoF - Armadyl battlestaff",
 		"breakdownNotes": "",
 		"slot": 10,
-		"wikiLink": "https://runescape.wiki/w/Essence_of_Finality_amulet_(red)"
+		"wikiLink": "https://runescape.wiki/w/Armadyl_battlestaff"
 	},
 	{
 		"label": "eofyellowunorn",
 		"image": "https://i.imgur.com/YR6pLdv.png",
-		"name": "Essence of Finality amulet (yellow)",
+		"name": "EoF - Dark bow",
 		"breakdownNotes": "",
 		"slot": 10,
-		"wikiLink": "https://runescape.wiki/w/Essence_of_Finality_amulet_(yellow)"
+		"wikiLink": "https://runescape.wiki/w/Dark_bow"
 	},
 	{
 		"label": "spices",
