@@ -3154,18 +3154,18 @@
 	{
 		"label": "eofyellow",
 		"image": "https://i.imgur.com/hiC7f5F.png",
-		"name": "EoF -  Armadyl Battlestaff",
+		"name": "EoF - Iban's staff",
 		"breakdownNotes": "",
 		"slot": 10,
-		"wikiLink": "https://runescape.wiki/w/Armadyl_Battlestaff"
+		"wikiLink": "https://runescape.wiki/w/Iban%27s_staff"
 	},
 	{
 		"label": "eofgreen",
 		"image": "https://i.imgur.com/LhMlWmw.png",
-		"name": "EoF - Dark bow",
+		"name": "EoF - Zamorak bow",
 		"breakdownNotes": "",
 		"slot": 10,
-		"wikiLink": "https://runescape.wiki/w/Dark_bow"
+		"wikiLink": "https://runescape.wiki/w/Zamorak_bow"
 	},
 	{
 		"label": "eofred",
@@ -3194,7 +3194,7 @@
 	{
 		"label": "eofpurple",
 		"image": "https://i.imgur.com/nu7QSbh.png",
-		"name": "EoF - Guthix staff",
+		"name": "EoF - Guthix staff / Zamorak staff",
 		"breakdownNotes": "",
 		"slot": 10,
 		"wikiLink": "https://runescape.wiki/w/Guthix_staff"
@@ -3210,10 +3210,10 @@
 	{
 		"label": "eofblack",
 		"image": "https://i.imgur.com/iZw3Uee.png",
-		"name": "EoF - Statius warhammer",
+		"name": "EoF - Death guard",
 		"breakdownNotes": "",
 		"slot": 10,
-		"wikiLink": "https://runescape.wiki/w/Statius_warhammer"
+		"wikiLink": "https://runescape.wiki/w/Death_guard"
 	},
 	{
 		"label": "equilibriumaura",
