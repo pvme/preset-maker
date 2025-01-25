@@ -141,7 +141,7 @@ export const PresetEditor = ({
                 <img
                   width={510}
                   height={163}
-                  src="https://i.imgur.com/O7VznNO.png"
+                  src="https://img.pvme.io/images/O7VznNO.png"
                   useMap="#presetmap"
                   alt="preset background"
                   className="desktop-only"
