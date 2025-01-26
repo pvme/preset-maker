@@ -9142,5 +9142,301 @@
 		"breakdownNotes": "",
 		"slot": 1,
 		"wikiLink": "https://runescape.wiki/w/Zuriel's_hood"
+	},
+	{
+		"label": "dwarfincensesticks100",
+		"image": "https://i.imgur.com/2MfAUMc.png",
+		"name": "Dwarf weed incense sticks",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Dwarf_weed_incense_sticks"
+	},
+	{
+		"label": "dwarfincensesticks",
+		"image": "https://i.imgur.com/SmEYFOg.png",
+		"name": "Dwarf weed incense sticks",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Dwarf_weed_incense_sticks"
+	},
+	{
+		"label": "guildmastertonysmattock",
+		"image": "https://i.imgur.com/bYBabxf.png",
+		"name": "Guildmaster Tony's mattock",
+		"breakdownNotes": "",
+		"slot": 4,
+		"wikiLink": "https://runescape.wiki/w/Guildmaster_Tony%27s_mattock"
+	},
+	{
+		"label": "tetracompasspowered",
+		"image": "https://i.imgur.com/X51RUmn.png",
+		"name": "Tetracompass (powered)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Tetracompass_(powered)"
+	},
+	{
+		"label": "balarakssashbrush",
+		"image": "https://i.imgur.com/UegTwik.png",
+		"name": "Balarak's sash brush",
+		"breakdownNotes": "",
+		"slot": 4,
+		"wikiLink": "https://runescape.wiki/w/Balarak%27s_sash_brush"
+	},
+	{
+		"label": "waterfiend",
+		"image": "https://i.imgur.com/wqQjZEP.png",
+		"name": "Binding contract (waterfiend)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Binding_contract_(waterfiend)"
+	},
+	{
+		"label": "waterfiendscrolls",
+		"image": "https://i.imgur.com/Yh49qs0.png",
+		"name": "Waterfiend scroll (Straight Flush)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Waterfiend_scroll_(Straight_Flush)"
+	},
+	{
+		"label": "porterVII",
+		"image": "https://i.imgur.com/SrxNfIh.png",
+		"name": "Sign of the porter VII",
+		"breakdownNotes": "",
+		"slot": 13,
+		"wikiLink": "https://runescape.wiki/w/Sign_of_the_porter_VII"
+	},
+	{
+		"label": "ancientcasket",
+		"image": "https://i.imgur.com/Xo3lrJv.png",
+		"name": "Ancient casket",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Ancient_casket"
+	},
+	{
+		"label": "mattocktimeandspace",
+		"image": "https://i.imgur.com/iMWAXMi.png",
+		"name": "Mattock of Time and Space",
+		"breakdownNotes": "",
+		"slot": 4,
+		"wikiLink": "https://runescape.wiki/w/Mattock_of_Time_and_Space"
+	},
+	{
+		"label": "memoryshard",
+		"image": "https://i.imgur.com/rz76oSO.png",
+		"name": "Memory shard",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Memory_shard"
+	},
+	{
+		"label": "ironspirit",
+		"image": "https://i.imgur.com/OZkR7pn.png",
+		"name": "Iron stone spirit",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Iron_stone_spirit"
+	},
+	{
+		"label": "coalspirit",
+		"image": "https://i.imgur.com/RH7wyCy.png",
+		"name": "Coal stone spirit",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Coal_stone_spirit"
+	},
+	{
+		"label": "rustyswordnoted",
+		"image": "https://i.imgur.com/ektHXwM.png",
+		"name": "Rusty sword (noted)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Rusty_sword"
+	},
+	{
+		"label": "leatherbodynoted",
+		"image": "https://i.imgur.com/ABpeqUD.png",
+		"name": "Leather body (noted)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Leather_body"
+	},
+	{
+		"label": "steelstudsnoted",
+		"image": "https://i.imgur.com/JKWmSQu.png",
+		"name": "Steel studs (noted)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Steel_studs"
+	},
+	{
+		"label": "buttonsnoted",
+		"image": "https://i.imgur.com/jXctf6A.png",
+		"name": "Buttons (noted)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Buttons"
+	},
+	{
+		"label": "hamhoodnoted",
+		"image": "https://i.imgur.com/RQmvWc0.png",
+		"name": "H.A.M. hood (noted)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/H.A.M._hood"
+	},
+	{
+		"label": "hamshirtnoted",
+		"image": "https://i.imgur.com/7Iw7CNK.png",
+		"name": "H.A.M. shirt (noted)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/H.A.M._shirt"
+	},
+	{
+		"label": "hamlogonoted",
+		"image": "https://i.imgur.com/aIrm76i.png",
+		"name": "H.A.M. logo (noted)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/H.A.M._logo"
+	},
+	{
+		"label": "hamrobenoted",
+		"image": "https://i.imgur.com/nUtpmGq.png",
+		"name": "H.A.M. robe (noted)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/H.A.M._robe"
+	},
+	{
+		"label": "hamglovesnoted",
+		"image": "https://i.imgur.com/OPPBHgJ.png",
+		"name": "H.A.M. gloves (noted)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/H.A.M._gloves"
+	},
+	{
+		"label": "hamcloaknoted",
+		"image": "https://i.imgur.com/Tm0nMav.png",
+		"name": "H.A.M. cloak (noted)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/H.A.M._cloak"
+	},
+	{
+		"label": "hambootsnoted",
+		"image": "https://i.imgur.com/tTpaXG5.png",
+		"name": "H.A.M. boots (noted)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/H.A.M._boots"
+	},
+	{
+		"label": "slayerstaffnoted",
+		"image": "https://i.imgur.com/yQCsGjV.png",
+		"name": "Slayer's staff (noted)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Slayer%27s_staff"
+	},
+	{
+		"label": "damagedarmournoted",
+		"image": "https://i.imgur.com/hhDljqJ.png",
+		"name": "Damaged armour (noted)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Damaged_armour"
+	},
+	{
+		"label": "grimyguamnoted",
+		"image": "https://i.imgur.com/d1Qh7TP.png",
+		"name": "Grimy guam (noted)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Grimy_guam"
+	},
+	{
+		"label": "grimymarrentillnoted",
+		"image": "https://i.imgur.com/sz2KPTZ.png",
+		"name": "Grimy marrentill (noted)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Grimy_marrentill"
+	},
+	{
+		"label": "grimytarrominnoted",
+		"image": "https://i.imgur.com/jwlfYpo.png",
+		"name": "Grimy tarromin (noted)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Grimy_tarromin"
+	},
+	{
+		"label": "uncutjadenoted",
+		"image": "https://i.imgur.com/skcgmX2.png",
+		"name": "Uncut jade (noted)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Uncut_jade"
+	},
+	{
+		"label": "uncutopalnoted",
+		"image": "https://i.imgur.com/HaQm7YA.png",
+		"name": "Uncut opal (noted)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Uncut_opal"
+	},
+	{
+		"label": "tinybladedsteelsalvagenoted",
+		"image": "https://i.imgur.com/PPzASNB.png",
+		"name": "Tiny bladed steel salvage (noted)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Tiny_bladed_steel_salvage"
+	},
+	{
+		"label": "smallspikyironsalvagenoted",
+		"image": "https://i.imgur.com/6yDN3CR.png",
+		"name": "Small spiky iron salvage (noted)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Small_spiky_iron_salvage"
+	},
+	{
+		"label": "smallspikysteelsalvagenoted",
+		"image": "https://i.imgur.com/lYTqQ3n.png",
+		"name": "Small spiky steel salvage (noted)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Small_spiky_steel_salvage"
+	},
+	{
+		"label": "woodspirit",
+		"image": "https://i.imgur.com/vNoRaFG.png",
+		"name": "Wood spirit",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Wood_spirit"
+	},
+	{
+		"label": "oakwoodspirit",
+		"image": "https://i.imgur.com/NKJ6XrB.png",
+		"name": "Oak wood spirit",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Oak_wood_spirit"
+	},
+	{
+		"label": "rellekkatablet50",
+		"image": "https://i.imgur.com/vsPx2wb.png",
+		"name": "Rellekka tablet",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Rellekka_tablet"
 	}
 ]
