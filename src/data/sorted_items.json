@@ -1591,6 +1591,14 @@
 		"slot": 10,
 		"wikiLink": "https://runescape.wiki/w/Conjurer%27s_raising_amulet"
 	},
+	{
+		"label": "consecratedkeris",
+		"image": "https://img.pvme.io/images/gHB8MrYNn7.png",
+		"name": "Consecrated keris",
+		"breakdownNotes": "",
+		"slot": 4,
+		"wikiLink": "https://runescape.wiki/w/Consecrated_keris"
+	},  
   {
 		"label": "constitutioncape",
 		"image": "https://img.pvme.io/images/DFwDP3K.png",
@@ -6671,6 +6679,14 @@
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Primal_feast"
 	},
+	{
+		"label": "primedkeris",
+		"image": "https://img.pvme.io/images/G5XzISfZXa.png",
+		"name": "Primed keris",
+		"breakdownNotes": "",
+		"slot": 4,
+		"wikiLink": "https://runescape.wiki/w/Primed_keris"
+	},  
 	{
 		"label": "pumpkinmask",
 		"image": "https://img.pvme.io/images/E8OOdBb.png",
