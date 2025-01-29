@@ -14,6 +14,8 @@ import { type ItemData } from '../../types/item-data';
 
 import { NotesField } from '../NotesField/NotesField';
 import './BreakdownListItem.css';
+import { useAppSelector } from '../../redux/hooks';
+import { AppMode, getMode } from '../../redux/store/reducers/setting-reducer';
 
 export interface BreakdownListItemProps {
   item: ItemData
@@ -22,6 +24,7 @@ export interface BreakdownListItemProps {
 
 export const BreakdownListItem = ({ item, type }: BreakdownListItemProps): JSX.Element => {
   const dispatch = useDispatch();
+  const mode = useAppSelector(getMode);
 
   const handleRecentClick = useCallback(
     (item: ItemData) => {
@@ -53,6 +56,7 @@ export const BreakdownListItem = ({ item, type }: BreakdownListItemProps): JSX.E
       }}
       secondaryAction={
         <NotesField
+          disabled={mode === AppMode.View}
           placeholder={item.breakdownNotes}
           className="inner-notes-field"
           initialValue={item.breakdownNotes}
@@ -84,6 +88,7 @@ export const BreakdownListItem = ({ item, type }: BreakdownListItemProps): JSX.E
           primary={'🔗 ' + item.name}
           title="Click to open wiki page"
           onClick={() => { handleRecentClick(item); }}
+          style={{ paddingRight: '4px' }}
         />
       </ListItemButton>
     </ListItem>
