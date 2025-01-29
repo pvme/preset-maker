@@ -89,8 +89,17 @@ export const PresetActions = ({
       hasAlternativeFamiliars ? undefined : '.familiar-section__alternative'
     ].filter(Boolean) as string[];
 
+    const hasBreakdownNotesOrPresetNotes = (() => {
+      const slots = [...inventorySlots, ...equipmentSlots];
+      return slots.some((slot) => (slot.breakdownNotes?.length ?? 0) > 0) || presetNotes.length > 0;
+    })();
+    const elementsToShow = [
+      hasBreakdownNotesOrPresetNotes ? '.relics-familiar-container__export-notes' : undefined
+    ].filter(Boolean) as string[];
+
     await copyImageToClipboard(presetExportRef, {
-      hiddenElements
+      hiddenElements,
+      elementsToShow
     }, {
       onSuccess: () => {
         enqueueSnackbar('Copied image to clipboard', {
@@ -103,7 +112,7 @@ export const PresetActions = ({
         });
       }
     });
-  }, [presetExportRef, relics, familiars]);
+  }, [presetExportRef, relics, familiars, inventorySlots, equipmentSlots, presetNotes]);
 
   const generateShareableLink = async (): Promise<void> => {
     try {
@@ -191,7 +200,7 @@ export const PresetActions = ({
                 Link to preset
               </Link>
             }
-            <ClipboardCopyButtonContainer className="d-flex">
+            <ClipboardCopyButtonContainer className="d-flex mt-6">
               <Button
                 className="preset-actions__button width-100"
                 variant="outlined"
