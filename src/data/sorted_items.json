@@ -1591,6 +1591,14 @@
 		"slot": 10,
 		"wikiLink": "https://runescape.wiki/w/Conjurer%27s_raising_amulet"
 	},
+	{
+		"label": "consecratedkeris",
+		"image": "https://img.pvme.io/images/gHB8MrYNn7.png",
+		"name": "Consecrated keris",
+		"breakdownNotes": "",
+		"slot": 4,
+		"wikiLink": "https://runescape.wiki/w/Consecrated_keris"
+	},  
   {
 		"label": "constitutioncape",
 		"image": "https://img.pvme.io/images/DFwDP3K.png",
@@ -1689,7 +1697,7 @@
 	},
 	{
 		"label": "cryptbloomboots",
-		"image": "https://img.pvme.io/images/1MkR1qn.png",
+		"image": "https://img.pvme.io/images/cXlCjcohsJ.png",
 		"name": "Cryptbloom boots",
 		"breakdownNotes": "",
 		"slot": 7,
@@ -1697,7 +1705,7 @@
 	},
 	{
 		"label": "cryptbloomgloves",
-		"image": "https://img.pvme.io/images/yHxz8PD.png",
+		"image": "https://img.pvme.io/images/p6Fwg2MItg.png",
 		"name": "Cryptbloom gloves",
 		"breakdownNotes": "",
 		"slot": 6,
@@ -1705,7 +1713,7 @@
 	},
 	{
 		"label": "cryptbloomhelm",
-		"image": "https://img.pvme.io/images/xNXHeIN.png",
+		"image": "https://img.pvme.io/images/zqJhRU7E8N.png",
 		"name": "Cryptbloom helm",
 		"breakdownNotes": "",
 		"slot": 1,
@@ -1713,7 +1721,7 @@
 	},
 	{
 		"label": "cryptbloomlegs",
-		"image": "https://img.pvme.io/images/h07wgr8.png",
+		"image": "https://img.pvme.io/images/YRNwG9fvN5.png",
 		"name": "Cryptbloom legs",
 		"breakdownNotes": "",
 		"slot": 3,
@@ -1721,7 +1729,7 @@
 	},
 	{
 		"label": "cryptbloomtop",
-		"image": "https://img.pvme.io/images/G07AY4A.png",
+		"image": "https://img.pvme.io/images/SQFVVkgKsw.png",
 		"name": "Cryptbloom top",
 		"breakdownNotes": "",
 		"slot": 2,
@@ -6671,6 +6679,14 @@
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Primal_feast"
 	},
+	{
+		"label": "primedkeris",
+		"image": "https://img.pvme.io/images/G5XzISfZXa.png",
+		"name": "Primed keris",
+		"breakdownNotes": "",
+		"slot": 4,
+		"wikiLink": "https://runescape.wiki/w/Primed_keris"
+	},  
 	{
 		"label": "pumpkinmask",
 		"image": "https://img.pvme.io/images/E8OOdBb.png",
