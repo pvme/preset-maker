@@ -3,11 +3,13 @@ import React, { useCallback, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import './PresetDetails.css';
 
-import { selectPreset, setPresetNotes, setPresetName } from '../../redux/store/reducers/preset-reducer';
+import { selectPreset, setPresetName, setPresetNotes } from '../../redux/store/reducers/preset-reducer';
+import { AppMode, getMode } from '../../redux/store/reducers/setting-reducer';
 import { NotesField } from '../NotesField/NotesField';
 
 export const PresetDetails = (): JSX.Element => {
   const dispatch = useAppDispatch();
+  const mode = useAppSelector(getMode);
   const {
     presetName,
     presetNotes
@@ -40,12 +42,13 @@ export const PresetDetails = (): JSX.Element => {
   const value = name.length > 0 ? name : presetName;
   return (
     <>
-      <fieldset className="preset-details">
+      <fieldset className="preset-details fieldset">
         <legend>Details</legend>
         <InputLabel className="preset-details__label">
           Name
         </InputLabel>
         <TextField
+          disabled={mode === AppMode.View}
           className="preset-details__name"
           placeholder={placeholder}
           value={value}
@@ -57,6 +60,7 @@ export const PresetDetails = (): JSX.Element => {
           Notes
         </InputLabel>
         <NotesField
+          disabled={mode === AppMode.View}
           placeholder="Add notes..."
           className="preset-details__notes"
           initialValue={presetNotes}
