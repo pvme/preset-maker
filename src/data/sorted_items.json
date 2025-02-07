@@ -7552,6 +7552,14 @@
 		"wikiLink": "https://runescape.wiki/w/Soulbound_lantern"
 	},
 	{
+		"label": "soulboundlanternbarrows",
+		"image": "https://img.pvme.io/images/VFFNpTkVox.png",
+		"name": "Soulbound lantern (Barrows)",
+		"breakdownNotes": "",
+		"slot": 5,
+		"wikiLink": "https://runescape.wiki/w/Soulbound_lantern_(Barrows)"
+	},  
+	{
 		"label": "spade",
 		"image": "https://img.pvme.io/images/3Hzb1UG.png",
 		"name": "Spade",
