@@ -60,7 +60,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
             <CssBaseline />
             <HashRouter>
               <Routes>
-                <Route path="/:id?" element={<App />} />
+                <Route path="/:id?/:mode?" element={<App />} />
               </Routes>
             </HashRouter>
           </SnackbarProvider>
