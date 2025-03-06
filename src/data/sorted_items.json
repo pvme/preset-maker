@@ -9463,6 +9463,14 @@
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Rellekka_tablet"
 	},
+  	{
+		"label": "thievingcape",
+		"image": "https://img.pvme.io/images/gUYUShnCqI.png",
+		"name": "Thieving cape",
+		"breakdownNotes": "",
+		"slot": 12,
+		"wikiLink": "https://runescape.wiki/w/Thieving_cape"
+	},
   {
 		"label": "hispecmonocle",
 		"image": "https://img.pvme.io/images/di9l8BrQmW.png",
