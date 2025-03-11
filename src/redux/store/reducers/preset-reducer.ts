@@ -33,7 +33,7 @@ interface SwapSlots {
   targetIndex: number
 }
 type FamiliarSlot = IndexedSlot<FamiliarData>;
-type RelicSlot = IndexedSlot<RelicData>;
+type RelicSlot = IndexedSlot<RelicData | null>;
 
 const fillArrayWithSlotData = (numItems: number): any[] =>
   new Array(numItems).fill({
@@ -104,10 +104,18 @@ export const presetSlice = createSlice({
       state.equipmentSlots[action.payload.index] = action.payload.value;
     },
     setPrimaryRelic: (state: PresetState, action: PayloadAction<RelicSlot>) => {
-      state.relics.primaryRelics[action.payload.index] = action.payload.value;
+      if (action.payload.value != null) {
+        state.relics.primaryRelics[action.payload.index] = action.payload.value;
+      } else {
+        state.relics.primaryRelics.splice(action.payload.index, 1);
+      }
     },
     setAlternativeRelic: (state: PresetState, action: PayloadAction<RelicSlot>) => {
-      state.relics.alternativeRelics[action.payload.index] = action.payload.value;
+      if (action.payload.value != null) {
+        state.relics.alternativeRelics[action.payload.index] = action.payload.value;
+      } else {
+        state.relics.alternativeRelics.splice(action.payload.index, 1);
+      }
     },
     setPrimaryFamiliar: (state: PresetState, action: PayloadAction<FamiliarSlot>) => {
       state.familiars.primaryFamiliars[action.payload.index] = action.payload.value;
