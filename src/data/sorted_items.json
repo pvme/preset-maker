@@ -8312,6 +8312,14 @@
 		"wikiLink": "https://runescape.wiki/w/Timber_fungus_soup"
 	},
 	{
+		"label": "timerune",
+		"image": "https://img.pvme.io/images/uhPTmJEBGW.png",
+		"name": "Time rune",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Time_rune"
+	},  
+	{
 		"label": "quiver1",
 		"image": "https://img.pvme.io/images/2SRcIeI.png",
 		"name": "Tirannwn quiver 1",
