@@ -11,6 +11,7 @@ import { useAppDispatch } from './redux/hooks';
 import { getPreset } from './api/get-preset';
 import { importDataAction } from './redux/store/reducers/preset-reducer';
 import { CircularProgress, Typography } from '@mui/material';
+import { AppMode, setMode } from './redux/store/reducers/setting-reducer';
 
 function App (): JSX.Element {
   const dispatch = useAppDispatch();
@@ -18,7 +19,9 @@ function App (): JSX.Element {
   const presetImported = useRef(false);
 
   // Preset ID is stored in URL params
-  const { id } = useParams();
+  const { id, mode: modeParam } = useParams();
+  const mode = modeParam === 'edit' ? AppMode.Edit : AppMode.View;
+  dispatch(setMode(mode));
 
   useEffect(() => {
     if (presetImported.current) {
