@@ -89,10 +89,10 @@ export const RelicSection = (): JSX.Element => {
     setDialogOpen(false);
   }, []);
 
-  const handleRelicSelection = useCallback((indexedSelection: IndexedSelection, relic: RelicData) => {
+  const handleRelicSelection = useCallback((indexedSelection: IndexedSelection, relic: RelicData | null) => {
     if (indexedSelection.primaryOrAlternative === PrimaryOrAlternative.Primary) {
       // Prevent duplicates.
-      if (relics.primaryRelics.includes(relic)) {
+      if ((relic != null) && relics.primaryRelics.includes(relic)) {
         return;
       }
 
@@ -102,7 +102,7 @@ export const RelicSection = (): JSX.Element => {
       }));
     } else if (indexedSelection.primaryOrAlternative === PrimaryOrAlternative.Alternative) {
       // Prevent duplicates.
-      if (relics.alternativeRelics.includes(relic)) {
+      if ((relic != null) && relics.alternativeRelics.includes(relic)) {
         return;
       }
 
