@@ -27,7 +27,7 @@ interface RelicSelectDialogProps {
   open: boolean
   indexedSelection: IndexedSelection
   handleClose: () => void
-  handleSelection: (indexedSelection: IndexedSelection, relic: RelicData) => void
+  handleSelection: (indexedSelection: IndexedSelection, relic: RelicData | null) => void
 }
 
 const dialogBaseHeight = 130;
@@ -102,13 +102,7 @@ export const RelicSelectDialog = ({
   );
 
   const clearCell = useCallback(() => {
-    handleSelection(indexedSelection, {
-      name: '',
-      image: '',
-      label: '',
-      breakdownNotes: '',
-      energy: undefined
-    });
+    handleSelection(indexedSelection, null);
     handleClose();
   }, [indexedSelection]);
 
