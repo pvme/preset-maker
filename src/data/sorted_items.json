@@ -5728,6 +5728,14 @@
 		"wikiLink": "https://runescape.wiki/w/Masterwork_boots"
 	},
 	{
+		"label": "masterworkbow",
+		"image": "https://img.pvme.io/images/54mcx5goSK.png",
+		"name": "Masterwork bow",
+		"breakdownNotes": "",
+		"slot": 4,
+		"wikiLink": "https://runescape.wiki/w/Masterwork_bow"
+	},  
+	{
 		"label": "mwgloves",
 		"image": "https://img.pvme.io/images/cHM0RNa.png",
 		"name": "Masterwork gloves",
@@ -5766,6 +5774,14 @@
 		"breakdownNotes": "",
 		"slot": 4,
 		"wikiLink": "https://runescape.wiki/w/Masterwork_spear_of_annihilation"
+	},
+	{
+		"label": "masterworkstaff",
+		"image": "https://img.pvme.io/images/Mfh8l535Gf.png",
+		"name": "Masterwork staff",
+		"breakdownNotes": "",
+		"slot": 4,
+		"wikiLink": "https://runescape.wiki/w/Masterwork_staff"
 	},
 	{
 		"label": "masutaspear",
