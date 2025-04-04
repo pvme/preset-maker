@@ -1400,6 +1400,14 @@
 		"wikiLink": "https://runescape.wiki/w/Brooch_of_the_Gods"
 	},
 	{
+		"label": "bullseyelantern",
+		"image": "https://img.pvme.io/images/CZaNoVfVAh.png",
+		"name": "Bullseye lantern",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Bullseye_lantern_(lit)"
+	},
+	{
 		"label": "bunyippouch",
 		"image": "https://img.pvme.io/images/ThhI7qf.png",
 		"name": "Bunyip pouch",
@@ -9344,6 +9352,14 @@
 		"wikiLink": "https://runescape.wiki/w/Wicked_hood"
 	},
 	{
+		"label": "wilderpie",
+		"image": "https://img.pvme.io/images/3Dy2811xhQ.png",
+		"name": "Wilder pie",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Wilder_pie"
+	},
+	{
 		"label": "wildernesssword1",
 		"image": "https://img.pvme.io/images/u7wViXz.png",
 		"name": "Wilderness Sword 1",
@@ -9376,20 +9392,20 @@
 		"wikiLink": "https://runescape.wiki/w/Wilderness_sword_4"
 	},
 	{
-		"label": "wilderpie",
-		"image": "https://img.pvme.io/images/3Dy2811xhQ.png",
-		"name": "Wilder pie",
-		"breakdownNotes": "",
-		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Wilder_pie"
-	},  
-	{
 		"label": "witchdoctermask",
 		"image": "https://img.pvme.io/images/nxi7XVo.png",
 		"name": "Witchdocter mask",
 		"breakdownNotes": "",
 		"slot": 1,
 		"wikiLink": "https://runescape.wiki/w/Witchdocter_mask"
+	},
+	{
+		"label": "witchwoodicon",
+		"image": "https://img.pvme.io/images/e7mEkYmC46.png",
+		"name": "Witchwood icon",
+		"breakdownNotes": "",
+		"slot": 10,
+		"wikiLink": "https://runescape.wiki/w/Witchwood_icon"
 	},
 	{
 		"label": "woodspirit",
