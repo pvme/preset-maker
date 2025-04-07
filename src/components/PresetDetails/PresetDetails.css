@@ -6,7 +6,7 @@
 }
 
 .preset-details__label {
-  margin: 6px;
+  margin: 2px;
 }
 
 .preset-details__label:first-of-type {
@@ -14,7 +14,6 @@
 }
 
 .preset-details__notes {
-  margin-top: 8px;
   background: none;
   width: 100%;
   max-width: 278px;
