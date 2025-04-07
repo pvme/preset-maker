@@ -47,7 +47,7 @@
 		"energy": 150,
 		"description": "5% damage reduction when your life points are below 50%; 10% damage reduction when they are below 25%."
 	},
-  {
+	{
 		"label": "flowstate",
 		"image": "https://img.pvme.io/images/7yQkguFWZ0.png",
 		"name": "Flow State",
