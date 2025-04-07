@@ -9542,5 +9542,29 @@
 		"breakdownNotes": "",
 		"slot": 1,
 		"wikiLink": "https://runescape.wiki/w/Zuriel's_hood"
+	},	
+	{
+		"label": "cosmicaccumulator",
+		"image": "https://img.pvme.io/images/GZUPqgW709.png",
+		"name": "Cosmic accumulator",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Cosmic_accumulator"
+	},
+	{
+		"label": "leelasfavour",
+		"image": "https://img.pvme.io/images/1oseglS9jr.png",
+		"name": "Leela's favour",
+		"breakdownNotes": "",
+		"slot": 6,
+		"wikiLink": "https://runescape.wiki/w/Leela's_favour"
+	},
+	{
+		"label": "hispecmonocle4",
+		"image": "https://img.pvme.io/images/Tw99td6ffe.png",
+		"name": "Hi-spec monocle",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Hi-spec_monocle"
 	}
 ]
