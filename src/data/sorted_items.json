@@ -1680,6 +1680,14 @@
 		"wikiLink": "https://runescape.wiki/w/Corrupted_defender"
 	},
 	{
+		"label": "cosmicaccumulator",
+		"image": "https://img.pvme.io/images/GZUPqgW709.png",
+		"name": "Cosmic accumulator",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Cosmic_accumulator"
+	},
+	{
 		"label": "cosmicaltarteleport",
 		"image": "https://img.pvme.io/images/bURJ0uQ.png",
 		"name": "Cosmic altar teleport",
@@ -4416,6 +4424,14 @@
 		"wikiLink": "https://runescape.wiki/w/Hi-spec_monocle"
 	},
 	{
+		"label": "hispecmonocle4",
+		"image": "https://img.pvme.io/images/Tw99td6ffe.png",
+		"name": "Hi-spec monocle",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Hi-spec_monocle"
+	},
+	{
 		"label": "holyaggroverload",
 		"image": "https://img.pvme.io/images/x2G1m0Q.png",
 		"name": "Holy aggroverload (6)",
@@ -5144,6 +5160,14 @@
 		"wikiLink": "https://runescape.wiki/w/Leather_body"
 	},
 	{
+		"label": "leelasfavour",
+		"image": "https://img.pvme.io/images/1oseglS9jr.png",
+		"name": "Leela's favour",
+		"breakdownNotes": "",
+		"slot": 6,
+		"wikiLink": "https://runescape.wiki/w/Leela's_favour"
+	},
+	{
 		"label": "legendarycallofthesea",
 		"image": "https://img.pvme.io/images/fsSx8Aa.png",
 		"name": "Legendary call of the sea aura",
@@ -5742,7 +5766,7 @@
 		"breakdownNotes": "",
 		"slot": 4,
 		"wikiLink": "https://runescape.wiki/w/Masterwork_bow"
-	},  
+	},
 	{
 		"label": "mwgloves",
 		"image": "https://img.pvme.io/images/cHM0RNa.png",
@@ -9542,29 +9566,5 @@
 		"breakdownNotes": "",
 		"slot": 1,
 		"wikiLink": "https://runescape.wiki/w/Zuriel's_hood"
-	},	
-	{
-		"label": "cosmicaccumulator",
-		"image": "https://img.pvme.io/images/GZUPqgW709.png",
-		"name": "Cosmic accumulator",
-		"breakdownNotes": "",
-		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Cosmic_accumulator"
-	},
-	{
-		"label": "leelasfavour",
-		"image": "https://img.pvme.io/images/1oseglS9jr.png",
-		"name": "Leela's favour",
-		"breakdownNotes": "",
-		"slot": 6,
-		"wikiLink": "https://runescape.wiki/w/Leela's_favour"
-	},
-	{
-		"label": "hispecmonocle4",
-		"image": "https://img.pvme.io/images/Tw99td6ffe.png",
-		"name": "Hi-spec monocle",
-		"breakdownNotes": "",
-		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Hi-spec_monocle"
 	}
 ]
