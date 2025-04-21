@@ -42,6 +42,9 @@ const unpackData = async (stored: {
   for (let i = 0; i < stored.inventorySlots.length; i++) {
     const itemLabel = stored.inventorySlots[i].label;
     let defaultItem = { ...itemDataMap.get(itemLabel) }; //returns an empty object {} if item label not found
+    if(itemLabel == "zemoregalsnexus") { //workaround for fixing a label typo that is used in many presets
+      defaultItem = { ...itemDataMap.get("zemouregalsnexus") };
+    }
     if(itemLabel && Object.keys(defaultItem).length < 1) { //label is real (not just empty slot) and no item found for given label
       defaultItem = { ...itemDataMap.get("404item") };  //get the 404 item
       defaultItem.breakdownNotes = `Stored preset has item: ${stored.inventorySlots[i].label} which was not found by the Preset Maker.`;
@@ -56,6 +59,9 @@ const unpackData = async (stored: {
   for (let i = 0; i < stored.equipmentSlots.length; i++) {
     const itemLabel = stored.equipmentSlots[i].label;
     let defaultItem = { ...itemDataMap.get(itemLabel) }; //returns an empty object {} if item label not found
+    if(itemLabel == "zemoregalsnexus") { //workaround for fixing a label typo that is used in many presets
+      defaultItem = { ...itemDataMap.get("zemouregalsnexus") };
+    }
     if(itemLabel && Object.keys(defaultItem).length < 1) { //label is real (not just empty slot) and no item found for given label
       defaultItem = { ...itemDataMap.get("404item") };  //get the 404 item
       defaultItem.breakdownNotes = `Stored preset has item: ${stored.equipmentSlots[i].label} which was not found by the Preset Maker.`;
