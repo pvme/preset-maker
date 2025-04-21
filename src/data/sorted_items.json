@@ -5161,7 +5161,7 @@
 	},
 	{
 		"label": "leelasfavour",
-		"image": "https://img.pvme.io/images/1oseglS9jr.png",
+		"image": "https://img.pvme.io/images/AMEBwepV3P.png",
 		"name": "Leela's favour",
 		"breakdownNotes": "",
 		"slot": 6,
@@ -9544,9 +9544,9 @@
 		"wikiLink": "https://runescape.wiki/w/Zaryte_bow"
 	},
 	{
-		"label": "zemoregalsnexus",
+		"label": "zemouregalsnexus",
 		"image": "https://img.pvme.io/images/3pFXvMR.png",
-		"name": "Zemoregal's Nexus",
+		"name": "Zemouregal's Nexus",
 		"breakdownNotes": "",
 		"slot": 9,
 		"wikiLink": "https://runescape.wiki/w/Zemouregal%27s_nexus"
@@ -9566,5 +9566,149 @@
 		"breakdownNotes": "",
 		"slot": 1,
 		"wikiLink": "https://runescape.wiki/w/Zuriel's_hood"
+	},
+  {
+		"label": "mysticalsandseed",
+		"image": "https://img.pvme.io/images/FmCfHlNLch.png",
+		"name": "Mystical sand seed",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Mystical_sand_seed"
+	},
+  {
+		"label": "ugthankidung",
+		"image": "https://img.pvme.io/images/xlJsLcmheD.png",
+		"name": "Ugthanki dung",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Ugthanki_dung"
+	},
+  {
+		"label": "shark1noted",
+		"image": "https://img.pvme.io/images/zLMjsYjXpr.png",
+		"name": "Shark (noted)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Shark"
+	},
+  {
+		"label": "dragonbones1noted",
+		"image": "https://img.pvme.io/images/atFi2uJiaO.png",
+		"name": "Dragon bones (noted)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Dragon_bones"
+	},
+  {
+		"label": "unpoweredorb1noted",
+		"image": "https://img.pvme.io/images/bXLKVTUk7G.png",
+		"name": "Unpowered orb",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Unpowered_orb"
+	},
+  {
+		"label": "bowstring1noted",
+		"image": "https://img.pvme.io/images/Ubd1rYIggd.png",
+		"name": "Bowstring (noted)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Bowstring"
+	},
+  {
+		"label": "summerpie1noted",
+		"image": "https://img.pvme.io/images/6zsCkFtqaN.png",
+		"name": "Summer pie (noted)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Summer_pie"
+	},
+  {
+		"label": "goldspirit",
+		"image": "https://img.pvme.io/images/YkXeaHvRiP.png",
+		"name": "Gold stone spirit",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Gold_stone_spirit"
+	},
+  {
+		"label": "adamantitespirit",
+		"image": "https://img.pvme.io/images/RacwiPqSAD.png",
+		"name": "Adamantite stone spirit",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Adamantite_stone_spirit"
+	},  
+  {
+		"label": "accursedashes1noted",
+		"image": "https://img.pvme.io/images/JiBstmM4RU.png",
+		"name": "Accursed ashes (noted)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Accursed_ashes"
+	},
+  {
+		"label": "agil1dosenoted",
+		"image": "https://img.pvme.io/images/RxKcNSdYM9.png",
+		"name": "Agility potion (1) (noted)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Agility_potion#(1)"
+	},
+  {
+		"label": "supdef1dosenoted",
+		"image": "https://img.pvme.io/images/tfPSv6BCnN.png",
+		"name": "Super defence (1) (noted)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Super_defence#(1)"
+	},
+  {
+		"label": "supstr1dosenoted",
+		"image": "https://img.pvme.io/images/cwVpRHrvAH.png",
+		"name": "Super strength (1) (noted)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Super_strength#(1)"
+	},
+  {
+		"label": "supatt1dosenoted",
+		"image": "https://img.pvme.io/images/cYEC3xdoX3.png",
+		"name": "Super attack (1) (noted)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Super_attack_potion#(1)"
+	},
+  {
+		"label": "restore1dosenoted",
+		"image": "https://img.pvme.io/images/AvcDiXb4cQ.png",
+		"name": "Super restore (1) (noted)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Super_restore#(1)"
+	},
+  {
+		"label": "supran1dosenoted",
+		"image": "https://img.pvme.io/images/KrWNELlQQw.png",
+		"name": "Super ranging potion (1) (noted)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Super_ranging_potion#(1)"
+	},
+  {
+		"label": "supmag1dosenoted",
+		"image": "https://img.pvme.io/images/Id8NtO8Mlb.png",
+		"name": "Super magic potion (1) (noted)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Super_magic_potion#(1)"
+	},
+  {
+		"label": "dwarvenstoutmnoted",
+		"image": "https://img.pvme.io/images/Anz8RJhAce.png",
+		"name": "Dwarven stout (m) (noted)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Dwarven_stout_(m)"
 	}
 ]
