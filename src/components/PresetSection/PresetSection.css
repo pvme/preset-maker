@@ -6,11 +6,18 @@
 }
 
 .preset-section > div {
-  margin: 10px;
+  margin-top: 10px;
 }
 
 .preset-section__sidebar {
   margin-left: 16px;
+}
+
+.preset-section__jump-to-breakdown {
+  position: fixed;
+  top: 64px;
+  left: 16px;
+  font-size: 14px;
 }
 
 /* Mobile styling */

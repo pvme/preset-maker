@@ -28,6 +28,7 @@ import { ItemType, SlotType } from '../../types/slot-type';
 import './ItemSelectDialogPopup.css';
 interface DialogPopupProps {
   open: boolean
+  selectedItem?: ItemData
   recentlySelectedItems: ItemData[]
   handleClose: () => void
   handleSlotChange: (indices: number[], item: ItemData) => void
@@ -54,6 +55,7 @@ const slotIndexToSlotEnumMap = new Map<number, ItemType>([
 
 export const DialogPopup = ({
   open,
+  selectedItem,
   recentlySelectedItems,
   handleClose,
   handleSlotChange
@@ -167,10 +169,10 @@ export const DialogPopup = ({
     >
       {selectedIndices.length > 1
         ? (
-        <DialogTitle>Assign multiple items</DialogTitle>
+        <DialogTitle padding='8px'>Assign multiple items</DialogTitle>
           )
         : (
-        <DialogTitle>Assign an item</DialogTitle>
+        <DialogTitle padding='8px'>Assign an item</DialogTitle>
           )}
       <DialogContent
         className="dialog__content"
@@ -192,7 +194,7 @@ export const DialogPopup = ({
             <TextField
               {...params}
               autoFocus
-              label="Item list"
+              label="Search for an item..."
               inputProps={{
                 ...params.inputProps,
                 autoComplete: 'new-password' // disable autocomplete and autofill
@@ -225,10 +227,10 @@ export const DialogPopup = ({
           )}
         />
         {filteredRecentItems.length > 0 && (
-          <div className="recent-items-title">
-            <Typography className="recent-items-title">
-              Recent Items
-            </Typography>
+          <span className="d-flex flex-center recent-items">
+            <strong className="recent-items-title">
+              Recent:
+            </strong>
             {filteredRecentItems.map((item: ItemData) =>
               (item.image.length > 0)
                 ? (
@@ -254,12 +256,15 @@ export const DialogPopup = ({
                   )
                 : null
             )}
-          </div>
+          </span>
+        )}
+        {selectedItem?.name !== '' && (
+          <div><strong>Selected</strong>: {selectedItem?.name}</div>
         )}
       </DialogContent>
       <DialogActions>
         <Button color="error" onClick={clearCell}>
-          Clear Cell
+          Clear Cell(s)
         </Button>
         <Button onClick={handleClose}>Cancel</Button>
       </DialogActions>
