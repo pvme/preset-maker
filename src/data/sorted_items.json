@@ -4217,7 +4217,7 @@
 	},
 	{
 		"label": "grimyavantoe1noted",
-		"image": "https://img.pvme.io/images/cPoMobG.png",
+		"image": "https://img.pvme.io/images/EEsG2bq9ym.png",
 		"name": "Grimy avantoe",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -4225,7 +4225,7 @@
 	},
 	{
 		"label": "grimycadantine1noted",
-		"image": "https://img.pvme.io/images/XpmkeB1.png",
+		"image": "https://img.pvme.io/images/reGWPkH5iC.png",
 		"name": "Grimy cadantine",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -4233,7 +4233,7 @@
 	},
 	{
 		"label": "grimydwarfweed1noted",
-		"image": "https://img.pvme.io/images/ByV98Gd.png",
+		"image": "https://img.pvme.io/images/1UndjKAYRw.png",
 		"name": "Grimy dwarf weed",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -4241,7 +4241,7 @@
 	},
 	{
 		"label": "grimyguamnoted",
-		"image": "https://img.pvme.io/images/sql8vn9UPm.png",
+		"image": "https://img.pvme.io/images/s4nDPaqRlM.png",
 		"name": "Grimy guam (noted)",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -4249,7 +4249,7 @@
 	},
 	{
 		"label": "grimyirit1noted",
-		"image": "https://img.pvme.io/images/CEuJ1Oc.png",
+		"image": "https://img.pvme.io/images/1cQUDmUboe.png",
 		"name": "Grimy irit",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -4257,7 +4257,7 @@
 	},
 	{
 		"label": "grimylantadyme1noted",
-		"image": "https://img.pvme.io/images/vliP2On.png",
+		"image": "https://img.pvme.io/images/wvcl13Rllt.png",
 		"name": "Grimy lantadyme",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -4265,7 +4265,7 @@
 	},
 	{
 		"label": "grimymarrentillnoted",
-		"image": "https://img.pvme.io/images/pcJZfQhzyf.png",
+		"image": "https://img.pvme.io/images/VSxuIdB6kF.png",
 		"name": "Grimy marrentill (noted)",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -4273,7 +4273,7 @@
 	},
 	{
 		"label": "grimytarrominnoted",
-		"image": "https://img.pvme.io/images/LYWxVwd34n.png",
+		"image": "https://img.pvme.io/images/yPJ4nbCRYw.png",
 		"name": "Grimy tarromin (noted)",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -4281,7 +4281,7 @@
 	},
 	{
 		"label": "grimytoadflax1noted",
-		"image": "https://img.pvme.io/images/0KTRRES.png",
+		"image": "https://img.pvme.io/images/ePgC4ZrAPp.png",
 		"name": "Grimy toadflax",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -9702,6 +9702,22 @@
 		"breakdownNotes": "",
 		"slot": 11,
 		"wikiLink": "https://runescape.wiki/w/Zorgoth%27s_soul_ring"
+	},
+	{
+		"label": "crystalbindingrod",
+		"image": "https://img.pvme.io/images/iyg8JD5vKu.png",
+		"name": "Crystal binding rod",
+		"breakdownNotes": "",
+		"slot": 4,
+		"wikiLink": "https://runescape.wiki/w/Crystal_binding_rod"
+	},
+	{
+		"label": "mushroomypickpocketingbag",
+		"image": "https://img.pvme.io/images/PzKgt5nJL9.png",
+		"name": "Mushroomy pickpocketing bag",
+		"breakdownNotes": "",
+		"slot": 4,
+		"wikiLink": "https://runescape.wiki/w/Mushroomy_pickpocketing_bag"
 	},
 	{
 		"label": "zurielshood",
