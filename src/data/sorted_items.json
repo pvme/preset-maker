@@ -8825,11 +8825,11 @@
 	},
 	{
 		"label": "toadflaxpotionunf",
-		"image": "https://img.pvme.io/images/S0ENqzv.png",
-		"name": "Toadflax potion (unf)",
+		"image": "https://img.pvme.io/images/2Z1zyYNAt6.png",
+		"name": "Toadflax potion (unfinished)",
 		"breakdownNotes": "",
 		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Toadflax_potion_(unf)"
+		"wikiLink": "https://runescape.wiki/w/Toadflax_potion_(unfinished)"
 	},
 	{
 		"label": "kilnmelee",
@@ -8913,11 +8913,11 @@
 	},
 	{
 		"label": "torstolpotionunf",
-		"image": "https://img.pvme.io/images/fAvXNbz.png",
-		"name": "Torstol potion (unf)",
+		"image": "https://img.pvme.io/images/TVJp0NRZMq.png",
+		"name": "Torstol potion (unfinished)",
 		"breakdownNotes": "",
 		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Torstol_potion_(unf)"
+		"wikiLink": "https://runescape.wiki/w/Torstol_potion_(unfinished)"
 	},
 	{
 		"label": "towerskippingticket",
@@ -9718,6 +9718,14 @@
 		"breakdownNotes": "",
 		"slot": 4,
 		"wikiLink": "https://runescape.wiki/w/Mushroomy_pickpocketing_bag"
+	},
+  {
+		"label": "materialmanual",
+		"image": "https://img.pvme.io/images/cU73ZhJBhA.png",
+		"name": "Material manual",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Material_manual"
 	},
 	{
 		"label": "zurielshood",
