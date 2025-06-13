@@ -117,13 +117,13 @@ export const PresetActions = (): JSX.Element => {
             onClick={copyBreakdownToClipboard}
             disabled={!clipboardSupported}
           >
-            Copy Breakdown to Clipboard
+            Copy image to clipboard
           </Button>
           <Button
             variant="outlined"
             onClick={exportBreakdown}
           >
-            Download Breakdown as PNG
+            Download as image
           </Button>
         </ButtonGroup>
 
