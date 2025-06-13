@@ -102,12 +102,7 @@ export const FamiliarSelectDialog = ({
   );
 
   const clearCell = useCallback(() => {
-    handleSelection(indexedSelection, {
-      name: '',
-      image: '',
-      label: '',
-      breakdownNotes: ''
-    });
+    handleSelection(indexedSelection, null);
     handleClose();
   }, [indexedSelection]);
 

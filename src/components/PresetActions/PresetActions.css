@@ -1,50 +1,14 @@
-.preset-actions__fieldset {
+/* src/components/PresetActions/PresetActions.css */
+
+.preset-export {
+  margin-top: 20px;
   text-align: left;
-  padding-right: 8px;
+  padding: 8px;
   color: rgba(255, 255, 255, 0.85);
-  border-color: rgba(255, 255, 255, 0.25);
 }
 
-.preset-actions__fieldset:not(:first-of-type) {
-  margin-top: 8px;
-}
-
-.preset-actions__button-group {
-  width: 100%;
-}
-
-.preset-actions__button {
-  margin: 8px;
-}
-
-.preset-actions__link {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 8px;
-}
-
-.preset-actions__link:hover {
-  color: rgba(255, 255, 255, 0.75);
-}
-
-.preset-actions__reset {
-  display: flex;
-  margin-top: 16px;
-}
-
-.preset-and-actions {
-  display: flex;
-}
-
-
-/* Responsive + mobile styling */
-
-@media (max-width: 931px) {
-  .preset-actions {
-    margin: 10px;
-  }
-
-  .preset-and-actions {
-    flex-direction: column;
-  }
+.preset-export > legend {
+  padding: 0 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
 }

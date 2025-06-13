@@ -1,28 +1,30 @@
-import { type Familiars } from './familiar';
-import { type ItemData } from './item-data';
-import { type Relics } from './relic';
+// src/types/saved-preset-data.ts
+
+import { ItemData } from './item-data';
+import { Relics }   from './relic';
+import { Familiars } from './familiar';
 
 /**
- * Represents saved data for a preset, both in localStorage and on the backend.
+ * A preset that lives in either localStorage or comes
+ * back from the server. All arrays are exact lengths—
+ * empty slots are represented by an "empty" ItemData.
  */
 export interface SavedPresetData {
-  presetName: string
-  inventorySlots: ItemData[]
-  equipmentSlots: ItemData[]
+  /** Populated by the server; absent on brand-new local saved */
+  presetId?: string;
 
-  /**
-   * Optional fields below.
-   * New fields should be added here for backwards compatibility.
-   */
+  presetName:   string;
+  /** optional in both cases */
+  presetNotes?: string;
 
-  relics?: Relics
-  familiars?: Familiars
-  /**
-   * Base64-encoded string.
-   */
-  presetImage?: string
-  /**
-   * Notes, with emoji and link support.
-   */
-  presetNotes?: string
+  /** Always length 28 */
+  inventorySlots:  ItemData[];
+  /** Always length 13 */
+  equipmentSlots:  ItemData[];
+
+  relics?:    Relics;
+  familiars?: Familiars;
+
+  /** Only used by share-link flow; not persisted server-side */
+  presetImage?: string;
 }

@@ -10,25 +10,15 @@ import { PresetDetails } from '../PresetDetails/PresetDetails';
 import './PresetSection.css';
 
 export const PresetSection = (): JSX.Element => {
-  const [presetExportRef, setPresetExportRef] = useState<HTMLDivElement | null>(null);
-
-  const presetExportRefCallback = (ref: HTMLDivElement): void => {
-    setPresetExportRef(ref);
-  };
-
   return (
     <Fade in={true}>
       <div className="preset-section">
         <PresetName />
         <div className="preset-section__inner d-flex">
-          <PresetEditor
-            setExportRef={presetExportRefCallback}
-          />
+          <PresetEditor />
           <div className="preset-section__sidebar">
             <PresetDetails />
-            <PresetActions
-              presetExportRef={presetExportRef}
-            />
+            <PresetActions />
           </div>
         </div>
         <PresetBreakdown />

@@ -35,6 +35,13 @@ interface SwapSlots {
 type FamiliarSlot = IndexedSlot<FamiliarData>;
 type RelicSlot = IndexedSlot<RelicData | null>;
 
+function blankRelic(): RelicData {
+  return { label: "", name: "", image: "", breakdownNotes: "", energy: 0, description: "" };
+}
+function blankFamiliar(): FamiliarData {
+  return { label: "", name: "", image: "", breakdownNotes: "" };
+}
+
 const fillArrayWithSlotData = (numItems: number): any[] =>
   new Array(numItems).fill({
     name: '',
@@ -104,24 +111,21 @@ export const presetSlice = createSlice({
       state.equipmentSlots[action.payload.index] = action.payload.value;
     },
     setPrimaryRelic: (state: PresetState, action: PayloadAction<RelicSlot>) => {
-      if (action.payload.value != null) {
-        state.relics.primaryRelics[action.payload.index] = action.payload.value;
-      } else {
-        state.relics.primaryRelics.splice(action.payload.index, 1);
-      }
+      const { index, value } = action.payload
+      state.relics.primaryRelics[index] = value ?? blankRelic()
     },
     setAlternativeRelic: (state: PresetState, action: PayloadAction<RelicSlot>) => {
-      if (action.payload.value != null) {
-        state.relics.alternativeRelics[action.payload.index] = action.payload.value;
-      } else {
-        state.relics.alternativeRelics.splice(action.payload.index, 1);
-      }
+      const { index, value } = action.payload
+      // keep the same length; blank out the slot rather than remove
+      state.relics.alternativeRelics[index] = value ?? blankRelic()
     },
     setPrimaryFamiliar: (state: PresetState, action: PayloadAction<FamiliarSlot>) => {
-      state.familiars.primaryFamiliars[action.payload.index] = action.payload.value;
+      const { index, value } = action.payload
+      state.familiars.primaryFamiliars[index] = value ?? blankFamiliar()
     },
     setAlternativeFamiliar: (state: PresetState, action: PayloadAction<FamiliarSlot>) => {
-      state.familiars.alternativeFamiliars[action.payload.index] = action.payload.value;
+      const { index, value } = action.payload
+      state.familiars.alternativeFamiliars[index] = value ?? blankFamiliar()
     },
     setPresetNotes: (state: PresetState, action: PayloadAction<string>) => {
       state.presetNotes = action.payload;

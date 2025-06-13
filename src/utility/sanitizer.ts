@@ -40,6 +40,7 @@ export const sanitizeFamiliarData = (familiarDataArr: FamiliarData[] | undefined
 
 export const sanitizePresetData = (presetData: SavedPresetData): SavedPresetData => {
   return {
+    presetId: presetData.presetId,
     presetName: presetData.presetName,
     presetNotes: presetData.presetNotes,
     inventorySlots: sanitizeEntityData(presetData.inventorySlots),

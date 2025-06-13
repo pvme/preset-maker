@@ -43,7 +43,8 @@
     "redux": "^4.2.0",
     "sanitize-html": "^2.10.0",
     "typescript-json": "^3.3.43",
-    "typia": "^3.8.3"
+    "typia": "^3.8.3",
+    "zod": "^3.25.64"
   },
   "devDependencies": {
     "@rollup/plugin-typescript": "^10.0.1",
@@ -56,7 +57,7 @@
     "@types/sanitize-html": "^2.9.0",
     "@typescript-eslint/eslint-plugin": "^5.43.0",
     "@typescript-eslint/parser": "^5.57.1",
-    "@vitejs/plugin-react": "^2.2.0",
+    "@vitejs/plugin-react": "^4.5.2",
     "eslint-config-standard-with-typescript": "^34.0.1",
     "eslint-import-resolver-typescript": "^3.5.5",
     "eslint-plugin-import": "^2.27.5",
@@ -64,12 +65,12 @@
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "gh-pages": "^4.0.0",
+    "gh-pages": "^6.3.0",
     "ts-node": "^10.9.1",
     "ts-patch": "^2.1.0",
     "tslib": "^2.4.1",
     "ttsc": "^0.3.1",
     "typescript": "4.9.5",
-    "vite": "^3.2.7"
+    "vite": "^6.3.5"
   }
 }

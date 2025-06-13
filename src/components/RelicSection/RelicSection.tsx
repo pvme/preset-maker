@@ -58,7 +58,8 @@ export const RelicSection = (): JSX.Element => {
     relics
   } = useAppSelector(selectPreset);
 
-  const visibleAlternativeRelics = relics.alternativeRelics.filter((relic) => relic.name);
+  const primaryRelics = relics.primaryRelics;
+  const visibleAlternativeRelics = relics.alternativeRelics.filter((r): r is NonNullable<typeof r> => r !== null && !!r.name);
 
   const [dialogOpen, setDialogOpen] = useState(false);
   const [indexedSelection, setIndexedSelection] = useState({
@@ -131,12 +132,33 @@ export const RelicSection = (): JSX.Element => {
         Relics
       </Typography>
       <div className="d-flex flex-col">
-        <RelicSectionList
-          relics={relics.primaryRelics}
-          onClick={(event, index) => {
-            openRelicDialog(event, PrimaryOrAlternative.Primary, index);
-          }}
-        />
+        {primaryRelics.map((relic, i) => (
+          <div
+            key={i}
+            className="d-flex flex-center relic-section__list-item"
+            onClick={(e) => openRelicDialog(e, PrimaryOrAlternative.Primary, i)}
+          >
+            {relic.label
+              ? <>
+                  {relic.image && <img className="relic-section__list-item-image" src={relic.image} />}
+                  <span className="relic-section__list-item-name">{relic.name}</span>
+                  {(relic.energy ?? 0) > 0 && (
+                    <span className="relic-section__list-item-energy">
+                      &nbsp;({relic.energy})
+                    </span>
+                  )}
+                </>
+              : (
+                  <Tooltip title="Add relic">
+                    <AddIcon
+                      className="cursor-pointer relic-section__add-relic"
+                      htmlColor="#646464"
+                    />
+                  </Tooltip>
+                )
+            }
+          </div>
+        ))}
       </div>
       <div className="mt-auto relic-section__alternative">
         <div>

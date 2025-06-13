@@ -5,6 +5,13 @@
   border-color: rgba(255, 255, 255, 0.25);
 }
 
+
+.preset-details > legend {
+  padding: 0 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
 .preset-details__label {
   margin: 6px;
 }

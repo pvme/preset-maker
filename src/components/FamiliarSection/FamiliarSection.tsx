@@ -54,7 +54,8 @@ export const FamiliarSection = (): JSX.Element => {
     familiars
   } = useAppSelector(selectPreset);
 
-  const visibleAlternativeFamiliars = familiars.alternativeFamiliars.filter((familiar) => familiar.name);
+  const primaryFamiliars = familiars.primaryFamiliars;
+  const visibleAlternativeFamiliars = familiars.alternativeFamiliars.filter((f): f is NonNullable<typeof f> => f !== null && !!f.name);
 
   const [dialogOpen, setDialogOpen] = useState(false);
   const [indexedSelection, setIndexedSelection] = useState({
@@ -127,12 +128,30 @@ export const FamiliarSection = (): JSX.Element => {
         Familiar
       </Typography>
       <div className="familiar-section__primary">
-        <FamiliarSectionList
-          familiars={familiars.primaryFamiliars}
-          onClick={(event, index) => {
-            openFamiliarDialog(event, PrimaryOrAlternative.Primary, index);
-          }}
-        />
+        {primaryFamiliars.map((fam, i) => (
+          <div
+            key={i}
+            className="d-flex flex-center familiar-section__list-item"
+            onClick={(e) => openFamiliarDialog(e, PrimaryOrAlternative.Primary, i)}
+          >
+            {fam.label
+              ? <>
+                  {fam.image && (
+                    <img className="familiar-section__list-item-image" src={fam.image} />
+                  )}
+                  <span className="familiar-section__list-item-name">{fam.name}</span>
+                </>
+              : (
+                  <Tooltip title="Add familiar">
+                    <AddIcon
+                      className="cursor-pointer familiar-section__add-familiar"
+                      htmlColor="#646464"
+                    />
+                  </Tooltip>
+                )
+            }
+          </div>
+        ))}
       </div>
       <div className="familiar-section__alternative">
         <div>

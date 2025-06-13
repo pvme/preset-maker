@@ -24,10 +24,11 @@ export enum SavePresetDialogState {
 }
 
 interface SavePresetDialogProps {
-  open: boolean
-  state: SavePresetDialogState
-  onSave?: () => void
-  onClose: () => void
+  open: boolean;
+  state: SavePresetDialogState;
+  /** now receives the new name */
+  onSave?: (newName: string) => void;
+  onClose: () => void;
 }
 
 export const SavePresetDialog = ({
@@ -52,9 +53,9 @@ export const SavePresetDialog = ({
 
   const onPresetNameChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
-      const errored = event.currentTarget.value.length === 0 ?? false;
-      setError(errored);
-      setName(event.currentTarget.value);
+      const value = event.currentTarget.value;
+      setError(value.length === 0);
+      setName(value);
     },
     []
   );
@@ -69,8 +70,10 @@ export const SavePresetDialog = ({
         return;
       }
 
+      // Update the redux state
       dispatch(setPresetName(name));
 
+      // Persist locally and/or fire the onSave callback
       const didSave = LocalStorage.savePresetWithConfirmation({
         presetName: name,
         inventorySlots,
@@ -78,24 +81,25 @@ export const SavePresetDialog = ({
         relics,
         familiars
       });
+
       if (didSave) {
         enqueueSnackbar('Successfully saved your preset', {
           variant: 'success'
         });
-        if (onSave != null) {
-          onSave();
-        }
+        // Pass the new name back to the caller
+        onSave?.(name);
       }
 
       onClose();
     },
-    [name, presetName, inventorySlots, equipmentSlots]
+    [name, inventorySlots, equipmentSlots, relics, familiars, dispatch, enqueueSnackbar, onSave, onClose]
   );
 
   const dialogTitle =
     state === SavePresetDialogState.ExistingPreset
       ? 'Save preset as'
       : 'Create new preset';
+
   return (
     <Dialog open={open} onClose={onClose}>
       <form>
@@ -108,7 +112,7 @@ export const SavePresetDialog = ({
             onChange={onPresetNameChange}
             fullWidth
             error={error}
-            helperText={error ? 'Please set a name for your preset.' : null}
+            helperText={error ? 'Please set a name for your preset.' : undefined}
           />
         </DialogContent>
         <DialogActions>

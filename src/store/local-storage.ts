@@ -53,6 +53,11 @@ class LocalStorage {
     return true;
   }
 
+  saveAllPresets(presets: SavedPresetData[]) {
+    window.localStorage.setItem(this.PRESETS_KEY, JSON.stringify(presets));
+  }
+
+
   _replacePreset (currentPresets: SavedPresetData[], presetToReplace: SavedPresetData): SavedPresetData[] {
     return currentPresets.map((preset) => {
       if (preset.presetName === presetToReplace.presetName) {
