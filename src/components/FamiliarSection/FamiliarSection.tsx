@@ -86,8 +86,21 @@ export const FamiliarSection = (): JSX.Element => {
     setDialogOpen(false);
   }, []);
 
-  const handleFamiliarSelection = useCallback((indexedSelection: IndexedSelection, familiar: FamiliarData) => {
+  const handleFamiliarSelection = useCallback((
+    indexedSelection: IndexedSelection,
+    familiar: FamiliarData | null
+  ) => {
     if (indexedSelection.primaryOrAlternative === PrimaryOrAlternative.Primary) {
+      // if we got `null`, clear the slot
+      if (familiar === null) {
+        dispatch(setPrimaryFamiliar({
+          index: indexedSelection.index,
+          value: null
+        }));
+        setIndexedSelection({ primaryOrAlternative: PrimaryOrAlternative.None, index: -1 });
+        setDialogOpen(false);
+        return;
+      }
       // Prevent duplicates.
       if (familiars.primaryFamiliars.includes(familiar)) {
         return;
@@ -98,6 +111,16 @@ export const FamiliarSection = (): JSX.Element => {
         value: familiar
       }));
     } else if (indexedSelection.primaryOrAlternative === PrimaryOrAlternative.Alternative) {
+      // if we got `null`, clear the slot
+      if (familiar === null) {
+        dispatch(setAlternativeFamiliar({
+          index: indexedSelection.index,
+          value: null
+        }));
+        setIndexedSelection({ primaryOrAlternative: PrimaryOrAlternative.None, index: -1 });
+        setDialogOpen(false);
+        return;
+      }
       // Prevent duplicates.
       if (familiars.alternativeFamiliars.includes(familiar)) {
         return;

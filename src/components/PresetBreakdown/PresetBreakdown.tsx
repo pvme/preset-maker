@@ -64,54 +64,8 @@ export const PresetBreakdown = (): JSX.Element => {
     getUniqueInventoryItems();
   }, [inventorySlots, equipmentSlots]);
 
-  const exportBreakdown = useCallback(async () => {
-    await exportAsImage(
-      exportRef.current,
-      `BREAK_DOWN_${name.replaceAll(' ', '_')}`
-
-    );
-  }, [name, exportRef]);
-
-  const copyBreakdownToClipboard = useCallback(async () => {
-    await copyImageToClipboard(exportRef.current, {}, {
-      onSuccess: () => {
-        enqueueSnackbar('Copied image to clipboard', {
-          variant: 'success'
-        });
-      },
-      onError: () => {
-        enqueueSnackbar('Failed to copy image to clipboard', {
-          variant: 'error'
-        });
-      }
-    });
-  }, [exportRef]);
-
   return (
     <div className="breakdown-container">
-      <div className="breakdown-header desktop-only">
-        <Button
-          className="breakdown-button"
-          variant="contained"
-          color="success"
-          onClick={() => {
-            void exportBreakdown();
-          }}
-        >
-          Save Breakdown as PNG
-        </Button>
-        <ClipboardCopyButtonContainer className="breakdown-button">
-          <Button
-            variant="outlined"
-            color="secondary"
-            disabled={!clipboardSupported}
-            // eslint-disable-next-line @typescript-eslint/no-misused-promises
-            onClick={copyBreakdownToClipboard}
-          >
-            Copy Breakdown to Clipboard
-          </Button>
-        </ClipboardCopyButtonContainer>
-      </div>
       <div className="breakdown-inner-container" ref={exportRef}>
         <div className="equipment-breakdown-container--equipment">
           <List className="breakdown-list" dense>

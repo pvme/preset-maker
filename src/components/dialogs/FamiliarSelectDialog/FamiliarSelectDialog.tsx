@@ -27,7 +27,7 @@ interface FamiliarSelectDialogProps {
   open: boolean
   indexedSelection: IndexedSelection
   handleClose: () => void
-  handleSelection: (indexedSelection: IndexedSelection, familiar: FamiliarData) => void
+  handleSelection: (indexedSelection: IndexedSelection, familiar: FamiliarData | null) => void
 }
 
 const dialogBaseHeight = 130;

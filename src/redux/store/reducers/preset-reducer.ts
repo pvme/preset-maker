@@ -32,8 +32,16 @@ interface SwapSlots {
   sourceIndex: number
   targetIndex: number
 }
-type FamiliarSlot = IndexedSlot<FamiliarData>;
-type RelicSlot = IndexedSlot<RelicData | null>;
+
+type FamiliarSlot = {
+  index: number
+  value: FamiliarData | null
+};
+
+type RelicSlot = {
+  index: number
+  value: RelicData | null
+};
 
 function blankRelic(): RelicData {
   return { label: "", name: "", image: "", breakdownNotes: "", energy: 0, description: "" };
@@ -116,7 +124,6 @@ export const presetSlice = createSlice({
     },
     setAlternativeRelic: (state: PresetState, action: PayloadAction<RelicSlot>) => {
       const { index, value } = action.payload
-      // keep the same length; blank out the slot rather than remove
       state.relics.alternativeRelics[index] = value ?? blankRelic()
     },
     setPrimaryFamiliar: (state: PresetState, action: PayloadAction<FamiliarSlot>) => {

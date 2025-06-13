@@ -8,6 +8,10 @@ import LinkIcon from '@mui/icons-material/Link';
 
 import { Button, ButtonGroup } from '@mui/material';
 
+import { usePresetExport } from '../../hooks/usePresetExport';
+import ImageIcon from '@mui/icons-material/Image';
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+
 import { uploadPreset } from '../../api/upload-preset';
 import { useAppSelector } from '../../redux/hooks';
 import { selectPreset } from '../../redux/store/reducers/preset-reducer';
@@ -76,6 +80,12 @@ export const PresetActions = (): JSX.Element => {
     enqueueSnackbar('Embed link copied!', { variant: 'success' });
   }, [id, enqueueSnackbar]);
 
+  const {
+    exportBreakdown,
+    copyBreakdownToClipboard,
+    clipboardSupported
+  } = usePresetExport();
+
   return (
     <div className="preset-actions">
       {/* …other panels above… */}
@@ -102,7 +112,21 @@ export const PresetActions = (): JSX.Element => {
           >
             Copy Embed Link
           </Button>
+          <Button
+            variant="outlined"
+            onClick={copyBreakdownToClipboard}
+            disabled={!clipboardSupported}
+          >
+            Copy Breakdown to Clipboard
+          </Button>
+          <Button
+            variant="outlined"
+            onClick={exportBreakdown}
+          >
+            Download Breakdown as PNG
+          </Button>
         </ButtonGroup>
+
       </fieldset>
 
       <SavePresetDialog
