@@ -1,5 +1,5 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
-import { type ItemData } from '../../../types/item-data';
+import { type Item as ItemData } from '../../../schemas/item-data';
 import { type ApplicationState } from '../store';
 
 interface RecentItemState {

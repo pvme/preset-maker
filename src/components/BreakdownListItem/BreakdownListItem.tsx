@@ -9,8 +9,8 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 
 import { setBreakdown } from '../../redux/store/reducers/preset-reducer';
-import { type BreakdownType } from '../../types/breakdown';
-import { type ItemData } from '../../types/item-data';
+import { type BreakdownType } from '../../schemas/breakdown';
+import { type Item as ItemData } from '../../schemas/item-data';
 
 import { NotesField } from '../NotesField/NotesField';
 import './BreakdownListItem.css';

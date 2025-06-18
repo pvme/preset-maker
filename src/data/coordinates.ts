@@ -1,4 +1,4 @@
-import { type Coord } from '../types/coord';
+import { type Coord } from '../schemas/coord';
 
 export const inventoryCoords: Coord[] = [
   { x1: 11, y1: 7, x2: 47, y2: 39 },

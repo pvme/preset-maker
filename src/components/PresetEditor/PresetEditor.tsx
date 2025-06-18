@@ -13,8 +13,8 @@ import {
   addToQueue,
   selectRecentItems
 } from '../../redux/store/reducers/recent-item-reducer';
-import { type ItemData } from '../../types/item-data';
-import { SlotType } from '../../types/slot-type';
+import { type Item as ItemData } from '../../schemas/item-data';
+import { SlotType } from '../../schemas/slot-type';
 import { DialogPopup } from '../ItemSelectDialogPopup/ItemSelectDialogPopup';
 import { Equipment, Inventory } from '../SlotSection/SlotSection';
 

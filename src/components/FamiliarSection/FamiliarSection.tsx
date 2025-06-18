@@ -6,10 +6,10 @@ import familiarIconPath from '../../assets/familiar.png';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { selectPreset, setAlternativeFamiliar, setPrimaryFamiliar } from '../../redux/store/reducers/preset-reducer';
 
-import { type FamiliarData } from '../../types/familiar';
+import { type Familiar as FamiliarData } from '../../schemas/familiar';
 import './FamiliarSection.css';
 import Tooltip from '@mui/material/Tooltip/Tooltip';
-import { type IndexedSelection, PrimaryOrAlternative } from '../../types/util';
+import { type IndexedSelection, PrimaryOrAlternative } from '../../schemas/util';
 import { FamiliarSelectDialog } from '../dialogs/FamiliarSelectDialog/FamiliarSelectDialog';
 import { isMobile } from '../../utility/window-utils';
 

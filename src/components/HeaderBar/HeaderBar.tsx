@@ -17,7 +17,7 @@ import {
   importDataAction,
   selectPreset
 } from '../../redux/store/reducers/preset-reducer';
-import { type SavedPresetData } from '../../types/saved-preset-data';
+import { type SavedPreset as SavedPresetData } from '../../schemas/saved-preset-data';
 import { exportAsJson } from '../../utility/export-to-json';
 import { sanitizeAndStringifyPreset } from '../../utility/sanitizer';
 

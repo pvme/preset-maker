@@ -1,3 +1,5 @@
+// src/components/PresetActions/PresetActions.tsx
+
 import React, { useCallback, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
@@ -17,10 +19,24 @@ import { useAppSelector } from '../../redux/hooks';
 import { selectPreset } from '../../redux/store/reducers/preset-reducer';
 
 import { SavePresetDialog, SavePresetDialogState } from '../SavePresetDialog/SavePresetDialog';
+import { PresetSummary } from '../../schemas/preset-summary';
 import './PresetActions.css';
 
+const LOCAL_STORAGE_KEY = 'recentPresets';
+
+function updateRecentPresetsDropdownLabel(newLabel: string) {
+  const select = document.querySelector('.MuiSelect-select span');
+  if (select) select.textContent = newLabel;
+}
+
+function saveToRecentPresets(summary: PresetSummary) {
+  const prev = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY) || '[]') as PresetSummary[];
+  const updated = [summary, ...prev.filter(p => p.presetId !== summary.presetId)].slice(0, 20);
+  localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(updated));
+  updateRecentPresetsDropdownLabel(summary.presetName);
+}
+
 export const PresetActions = (): JSX.Element => {
-  // 1) grab "id" from the route, not presetId
   const { id } = useParams<{ id?: string }>();
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
@@ -28,7 +44,6 @@ export const PresetActions = (): JSX.Element => {
   const preset = useAppSelector(selectPreset);
   const [saveAsOpen, setSaveAsOpen] = useState(false);
 
-  // 2) Save in-place if we have an ID, otherwise open Save As
   const handleSave = useCallback(async () => {
     if (!id) {
       setSaveAsOpen(true);
@@ -36,6 +51,7 @@ export const PresetActions = (): JSX.Element => {
     }
     try {
       await uploadPreset(preset, id);
+      saveToRecentPresets({ presetId: id, presetName: preset.presetName });
       enqueueSnackbar('Preset saved!', { variant: 'success' });
     } catch (err: any) {
       console.error('Save error:', err);
@@ -43,33 +59,28 @@ export const PresetActions = (): JSX.Element => {
     }
   }, [preset, id, enqueueSnackbar]);
 
-  // 3) Just open the dialog
   const handleSaveAs = useCallback(() => {
     setSaveAsOpen(true);
   }, []);
 
-  // 4) On Save-As submit: POST without id, then navigate to new ID
   const handleSaveAsSubmit = useCallback(
     async (newName: string) => {
-      let newId: string | undefined;
       try {
         const payload = { ...preset, presetName: newName };
-        newId = await uploadPreset(payload);
+        const { id: newId } = await uploadPreset(payload);
+        saveToRecentPresets({ presetId: newId, presetName: newName });
         enqueueSnackbar('Preset cloned!', { variant: 'success' });
+        navigate(`/${newId}`);
       } catch (err: any) {
         console.error('Save As error:', err);
         enqueueSnackbar(`Save As failed: ${err.message}`, { variant: 'error' });
       } finally {
         setSaveAsOpen(false);
-        if (newId) {
-          navigate(`/${newId}`);
-        }
       }
     },
     [preset, navigate, enqueueSnackbar]
   );
 
-  // 5) Copy embed link—only if we already have an ID
   const handleCopyEmbedLink = useCallback(() => {
     if (!id) return;
     const host = import.meta.env.DEV
@@ -88,9 +99,6 @@ export const PresetActions = (): JSX.Element => {
 
   return (
     <div className="preset-actions">
-      {/* …other panels above… */}
-
-      {/* Export panel, styled exactly like PresetDetails */}
       <fieldset className="preset-details preset-export">
         <legend>Export</legend>
         <ButtonGroup
@@ -100,10 +108,10 @@ export const PresetActions = (): JSX.Element => {
           className="preset-export__group"
         >
           <Button startIcon={<SaveIcon />} onClick={handleSave}>
-            Save
+            Save to Cloud
           </Button>
           <Button startIcon={<SaveAsIcon />} onClick={handleSaveAs}>
-            Save As
+            Save As New Copy
           </Button>
           <Button
             startIcon={<LinkIcon />}
@@ -116,17 +124,18 @@ export const PresetActions = (): JSX.Element => {
             variant="outlined"
             onClick={copyBreakdownToClipboard}
             disabled={!clipboardSupported}
+            startIcon={<ContentCopyIcon />}
           >
-            Copy image to clipboard
+            Copy as Image
           </Button>
           <Button
             variant="outlined"
             onClick={exportBreakdown}
+            startIcon={<ImageIcon />}
           >
-            Download as image
+            Download as Image
           </Button>
         </ButtonGroup>
-
       </fieldset>
 
       <SavePresetDialog

@@ -7,6 +7,7 @@ import { selectPreset } from '../redux/store/reducers/preset-reducer';
 import { uploadPreset } from '../api/upload-preset';
 import { canCopyImagesToClipboard } from 'copy-image-clipboard';
 import { useParams } from 'react-router-dom';
+import { getPresetImageUrl } from '../api/upload-preset';
 
 export const usePresetExport = () => {
   const { enqueueSnackbar } = useSnackbar();
@@ -19,7 +20,7 @@ export const usePresetExport = () => {
       throw new Error('No preset ID provided');
     }
     // Re-use uploadPreset: server will render PNG, upload it, and return its URL
-    const imageUrl = await uploadPreset(preset, id);
+    const imageUrl = await getPresetImageUrl(preset, id);
     if (!imageUrl) {
       throw new Error('No image URL returned from server');
     }

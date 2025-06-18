@@ -19,16 +19,17 @@ import DialogActions from '@mui/material/DialogActions';
 import Tooltip from '@mui/material/Tooltip';
 import { type FilterOptionsState } from '@mui/material/useAutocomplete';
 
-import { type ItemData } from '../../types/item-data';
+import { type Item as ItemData } from '../../schemas/item-data';
 import itemData from '../../data/sorted_items.json';
 import { useAppSelector } from '../../redux/hooks';
 import { selectPreset } from '../../redux/store/reducers/preset-reducer';
-import { ItemType, SlotType } from '../../types/slot-type';
+import { ItemType, SlotType } from '../../schemas/slot-type';
 
 import './ItemSelectDialogPopup.css';
+
 interface DialogPopupProps {
   open: boolean
-  recentlySelectedItems: ItemData[]
+  recentlySelectedItems?: ItemData[]
   handleClose: () => void
   handleSlotChange: (indices: number[], item: ItemData) => void
 }
@@ -54,16 +55,22 @@ const slotIndexToSlotEnumMap = new Map<number, ItemType>([
 
 export const DialogPopup = ({
   open,
-  recentlySelectedItems,
+  recentlySelectedItems = [],
   handleClose,
   handleSlotChange
 }: DialogPopupProps): JSX.Element => {
-  const { slotType, slotIndex, inventorySlots } = useAppSelector(selectPreset);
+  const {
+    slotType,
+    slotIndex,
+    inventorySlots = []
+  } = useAppSelector(selectPreset);
   const [filteredItemData, setFilteredItemData] = useState<ItemData[]>(itemData);
 
-  // Helper function for filtering.
-  const filterItemsForSlotType = (selectedSlotType: SlotType, selectedSlotIndex: number, items: ItemData[]): ItemData[] => {
-    // For inventory, filter out auras.
+  const filterItemsForSlotType = (
+    selectedSlotType: SlotType,
+    selectedSlotIndex: number,
+    items: ItemData[]
+  ): ItemData[] => {
     if (selectedSlotType === SlotType.Inventory) {
       return items.filter((item) => item.slot !== ItemType.AURA);
     } else {
@@ -71,41 +78,33 @@ export const DialogPopup = ({
     }
   };
 
-  // Ensure that recent items aren't for a different slot.
   const filteredRecentItems = filterItemsForSlotType(slotType, slotIndex, recentlySelectedItems);
 
   useEffect(() => {
     setFilteredItemData(filterItemsForSlotType(slotType, slotIndex, itemData));
   }, [itemData, slotType, slotIndex]);
 
-  const selectedInventorySlots = inventorySlots
+  const selectedInventorySlots = (inventorySlots || [])
     .map((slot: ItemData, index: number) => (slot.selected === true ? index : undefined))
     .filter((entry): entry is number => entry !== undefined);
-  const selectedIndices = (selectedInventorySlots.length > 0)
+
+  const selectedIndices = selectedInventorySlots.length > 0
     ? selectedInventorySlots
     : [slotIndex];
 
-  const [dialogHeight, setDialogHeight] = useState(
-    // Initialize dialogHeight state with the value of the dialogBaseHeight
-    // constant.
-    dialogBaseHeight
-  );
+  const [dialogHeight, setDialogHeight] = useState(dialogBaseHeight);
 
   const handleAutocompleteOpen = useCallback(() => {
-    // Update the height of the Dialog box to fit the options dropdown of the Autocomplete component
     setDialogHeight(dialogExpandedHeight);
-  }, [dialogExpandedHeight]);
+  }, []);
 
   const handleAutocompleteClose = useCallback(() => {
-    // Update the height of the Dialog box to the default height
     setDialogHeight(dialogBaseHeight);
-  }, [dialogBaseHeight]);
+  }, []);
 
   const filterOptions = useCallback(
     (options: ItemData[], state: FilterOptionsState<ItemData>): ItemData[] => {
-      if (state.inputValue.length === 0) {
-        return options;
-      }
+      if (state.inputValue.length === 0) return options;
 
       const filteredOptions = fuzzysort.go<ItemData>(
         state.inputValue,
@@ -117,26 +116,19 @@ export const DialogPopup = ({
         }
       );
 
-      return Array.from(filteredOptions).map((i) => i.obj);
+      return filteredOptions.map((i) => i.obj);
     },
     []
   );
 
   const onChange = useCallback(
-    (
-      _event: React.SyntheticEvent,
-      value: ItemData | null,
-      _reason: AutocompleteChangeReason,
-      _details?: AutocompleteChangeDetails<ItemData>
-    ) => {
-      if (value === null) {
-        return;
+    (_event: React.SyntheticEvent, value: ItemData | null) => {
+      if (value) {
+        handleSlotChange(selectedIndices, value);
+        handleClose();
       }
-
-      handleSlotChange(selectedIndices, value);
-      handleClose();
     },
-    [slotType, selectedIndices]
+    [selectedIndices, handleSlotChange, handleClose]
   );
 
   const handleRecentClick = useCallback(
@@ -144,7 +136,7 @@ export const DialogPopup = ({
       handleSlotChange(selectedIndices, item);
       handleClose();
     },
-    [slotType, selectedIndices]
+    [selectedIndices, handleSlotChange, handleClose]
   );
 
   const clearCell = useCallback(() => {
@@ -155,28 +147,20 @@ export const DialogPopup = ({
       breakdownNotes: ''
     });
     handleClose();
-  }, [selectedIndices]);
+  }, [selectedIndices, handleSlotChange, handleClose]);
 
   return (
     <Dialog
-      classes={{
-        paper: 'dialog__paper'
-      }}
+      classes={{ paper: 'dialog__paper' }}
       open={open}
       onClose={handleClose}
     >
-      {selectedIndices.length > 1
-        ? (
-        <DialogTitle>Assign multiple items</DialogTitle>
-          )
-        : (
-        <DialogTitle>Assign an item</DialogTitle>
-          )}
+      <DialogTitle>
+        {selectedIndices.length > 1 ? 'Assign multiple items' : 'Assign an item'}
+      </DialogTitle>
       <DialogContent
         className="dialog__content"
-        sx={{
-          height: dialogHeight
-        }}
+        sx={{ height: dialogHeight }}
       >
         <Autocomplete
           className="dialog__auto-complete"
@@ -195,14 +179,13 @@ export const DialogPopup = ({
               label="Item list"
               inputProps={{
                 ...params.inputProps,
-                autoComplete: 'new-password' // disable autocomplete and autofill
+                autoComplete: 'new-password'
               }}
             />
           )}
           renderOption={(
             props: React.HTMLAttributes<HTMLLIElement>,
-            option: ItemData,
-            _state: AutocompleteRenderOptionState
+            option: ItemData
           ) => (
             <Box
               key={`option-${option.name}`}
@@ -211,8 +194,6 @@ export const DialogPopup = ({
               {...props}
             >
               <img
-                id={`option-${option.image}`}
-                key={`option-${option.image}`}
                 className="item-icon"
                 loading="lazy"
                 width={20}
@@ -224,43 +205,34 @@ export const DialogPopup = ({
             </Box>
           )}
         />
+
         {filteredRecentItems.length > 0 && (
           <div className="recent-items-title">
-            <Typography className="recent-items-title">
-              Recent Items
-            </Typography>
+            <Typography className="recent-items-title">Recent Items</Typography>
             {filteredRecentItems.map((item: ItemData) =>
-              (item.image.length > 0)
-                ? (
+              item.image.length > 0 ? (
                 <Tooltip key={item.name} title={item.name}>
                   <Button
-                    classes={{
-                      startIcon: 'recent-item-button'
-                    }}
+                    className="recent-item-button"
                     key={`recent-${item.name}`}
                     startIcon={
                       <Avatar
                         key={`recent-${item.image}`}
                         variant="square"
                         src={item.image}
-                        classes={{
-                          img: 'recent-item-image'
-                        }}
+                        className="recent-item-image"
                       />
                     }
-                    onClick={() => { handleRecentClick(item); }}
-                  ></Button>
+                    onClick={() => handleRecentClick(item)}
+                  />
                 </Tooltip>
-                  )
-                : null
+              ) : null
             )}
           </div>
         )}
       </DialogContent>
       <DialogActions>
-        <Button color="error" onClick={clearCell}>
-          Clear Cell
-        </Button>
+        <Button color="error" onClick={clearCell}>Clear Cell</Button>
         <Button onClick={handleClose}>Cancel</Button>
       </DialogActions>
     </Dialog>

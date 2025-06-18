@@ -17,11 +17,11 @@ import TextField from '@mui/material/TextField';
 import { type FilterOptionsState } from '@mui/material/useAutocomplete';
 
 import sortedRelics from '../../../data/sorted_relics.json';
-import { type RelicData } from '../../../types/relic';
+import { type Relic as RelicData } from '../../../schemas/relic';
 import './RelicSelectDialog.css';
 import { useAppSelector } from '../../../redux/hooks';
 import { selectPreset } from '../../../redux/store/reducers/preset-reducer';
-import { type IndexedSelection, PrimaryOrAlternative } from '../../../types/util';
+import { type IndexedSelection, PrimaryOrAlternative } from '../../../schemas/util';
 
 interface RelicSelectDialogProps {
   open: boolean

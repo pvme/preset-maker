@@ -6,10 +6,10 @@ import relicIconPath from '../../assets/relic.png';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { selectPreset, setAlternativeRelic, setPrimaryRelic } from '../../redux/store/reducers/preset-reducer';
 
-import { type RelicData } from '../../types/relic';
+import { type Relic as RelicData } from '../../schemas/relic';
 import './RelicSection.css';
 import Tooltip from '@mui/material/Tooltip/Tooltip';
-import { type IndexedSelection, PrimaryOrAlternative } from '../../types/util';
+import { type IndexedSelection, PrimaryOrAlternative } from '../../schemas/util';
 import { RelicSelectDialog } from '../dialogs/RelicSelectDialogPopup/RelicSelectDialog';
 import { isMobile } from '../../utility/window-utils';
 

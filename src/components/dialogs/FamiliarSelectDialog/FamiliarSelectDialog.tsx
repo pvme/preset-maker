@@ -17,11 +17,11 @@ import TextField from '@mui/material/TextField';
 import { type FilterOptionsState } from '@mui/material/useAutocomplete';
 
 import sortedFamiliars from '../../../data/sorted_familiars.json';
-import { type FamiliarData } from '../../../types/familiar';
+import { type Familiar as FamiliarData } from '../../../schemas/familiar';
 import './FamiliarSelectDialog.css';
 import { useAppSelector } from '../../../redux/hooks';
 import { selectPreset } from '../../../redux/store/reducers/preset-reducer';
-import { type IndexedSelection, PrimaryOrAlternative } from '../../../types/util';
+import { type IndexedSelection, PrimaryOrAlternative } from '../../../schemas/util';
 
 interface FamiliarSelectDialogProps {
   open: boolean

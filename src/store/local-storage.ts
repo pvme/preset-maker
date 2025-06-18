@@ -1,4 +1,4 @@
-import { type SavedPresetData } from '../types/saved-preset-data';
+import { type SavedPreset as SavedPresetData } from '../schemas/saved-preset-data';
 import { sanitizePresetData } from '../utility/sanitizer';
 
 /**

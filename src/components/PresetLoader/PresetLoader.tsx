@@ -1,171 +1,189 @@
 // src/components/PresetLoader/PresetLoader.tsx
 
-import React, { useCallback, useEffect, useState } from 'react';
-import { useNavigate, useParams }            from 'react-router-dom';
-import { useSnackbar }                       from 'notistack';
-
-import Autocomplete, {
-  type AutocompleteChangeDetails,
-  type AutocompleteChangeReason,
-  type AutocompleteRenderInputParams
-} from '@mui/material/Autocomplete';
-import Button      from '@mui/material/Button';
-import ButtonGroup from '@mui/material/ButtonGroup';
-import IconButton  from '@mui/material/IconButton';
-import TextField   from '@mui/material/TextField';
-import CloseIcon   from '@mui/icons-material/Close';
-
-import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import React, { useState, useEffect, useRef } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import { useSnackbar } from 'notistack';
 import {
-  importDataAction,
-  selectPreset
-} from '../../redux/store/reducers/preset-reducer';
-import { type SavedPresetData }          from '../../types/saved-preset-data';
+  TextField, MenuItem, Box, Button, Dialog, DialogTitle, DialogActions, Chip, IconButton, InputLabel, FormControl, Select, SelectChangeEvent
+} from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
 
+import { useAppSelector, useAppDispatch } from '../../redux/hooks';
+import { selectPreset, importDataAction } from '../../redux/store/reducers/preset-reducer';
+
+import { SavePresetDialog, SavePresetDialogState } from '../SavePresetDialog/SavePresetDialog';
+import { getPreset } from '../../api/get-preset';
+import { PresetSummary } from '../../schemas/preset-summary';
+import { presetsAreEqual } from '../../utility/comparePresets';
 import './PresetLoader.css';
-import {
-  SavePresetDialog,
-  SavePresetDialogState
-} from '../SavePresetDialog/SavePresetDialog';
-import { LocalStorage } from '../../store/local-storage';
 
-export const PresetName = (): JSX.Element => {
-  const dispatch = useAppDispatch();
+const LOCAL_STORAGE_KEY = 'recentPresets';
+
+export const PresetLoader = (): JSX.Element => {
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
-  const { presetId } = useParams<{ presetId?: string }>();
+  const dispatch = useAppDispatch();
+  const { id } = useParams<{ id?: string }>();
 
-  const [presets, setPresets]             = useState<SavedPresetData[]>([]);
-  const [presetNames, setPresetNames]     = useState<string[]>([]);
-  const [selectedPreset, setSelectedPreset] = useState<string>('');
-  const [saveDialogOpen, setSaveDialogOpen] = useState<boolean>(false);
+  const preset = useAppSelector(selectPreset) as any;
+  const [cloudPresets, setCloudPresets] = useState<PresetSummary[]>([]);
+  const [selected, setSelected] = useState<string>('');
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [confirmDiscardOpen, setConfirmDiscardOpen] = useState(false);
+  const [isDirty, setIsDirty] = useState<boolean | null>(null);
+  const lastSavedRef = useRef<any>(null);
 
-  // load from localStorage
-  useEffect(() => {
-    const data = LocalStorage.loadPresets();
-    setPresets(data);
-    setPresetNames(data.map(p => p.presetName));
-    // if URL has an id, select it
-    if (presetId) {
-      const found = data.find(p => p.presetId === presetId);
-      if (found) {
-        setSelectedPreset(found.presetName);
-      }
+  const saveToRecentPresets = (summary: PresetSummary) => {
+    const prev = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY) || '[]') as PresetSummary[];
+    const updated = [summary, ...prev.filter(p => p.presetId !== summary.presetId)].slice(0, 20);
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(updated));
+    setCloudPresets(updated);
+    setSelected(summary.presetName);
+  };
+
+  const handleRemovePreset = (presetId: string) => {
+    const updated = cloudPresets.filter(p => p.presetId !== presetId);
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(updated));
+    setCloudPresets(updated);
+    if (selected && cloudPresets.find(p => p.presetId === presetId)?.presetName === selected) {
+      setSelected('');
     }
-  }, [presetId]);
+  };
 
-  const onPresetChange = useCallback(
-    (
-      _e: React.SyntheticEvent,
-      value: string | null,
-      _r: AutocompleteChangeReason,
-      _d?: AutocompleteChangeDetails<string>
-    ) => {
-      if (!value) return;
-      const found = presets.find(p => p.presetName === value);
-      if (!found) {
-        enqueueSnackbar('Unable to find preset', { variant: 'error' });
+  useEffect(() => {
+    const stored = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY) || '[]') as PresetSummary[];
+    setCloudPresets(stored);
+  }, []);
+
+  useEffect(() => {
+    if (!id) return;
+    getPreset(id)
+      .then(presetData => {
+        if (!presetData.presetId || !presetData.presetName) {
+          console.warn('[PresetLoader] Missing presetId or presetName in loaded preset:', presetData);
+          return;
+        }
+        dispatch(importDataAction(presetData));
+        lastSavedRef.current = JSON.parse(JSON.stringify(presetData));
+        saveToRecentPresets({ presetId: presetData.presetId, presetName: presetData.presetName });
+        setIsDirty(false);
+      })
+      .catch(err => {
+        console.warn('[PresetLoader] Failed to load preset from URL:', err);
+        enqueueSnackbar('Failed to load preset from URL.', { variant: 'error' });
+      });
+  }, [id, dispatch, enqueueSnackbar]);
+
+  useEffect(() => {
+    if (lastSavedRef.current) {
+      const dirty = !presetsAreEqual(preset, lastSavedRef.current);
+      console.log('[PresetLoader] Checking dirty state:', { dirty, current: preset, saved: lastSavedRef.current });
+      setIsDirty(dirty);
+    }
+  }, [preset]);
+
+  useEffect(() => {
+    if (!isDirty && preset.presetId && preset.presetName) {
+      console.log('[PresetLoader] Saving to recent presets because not dirty.');
+      saveToRecentPresets({ presetId: preset.presetId, presetName: preset.presetName });
+    }
+  }, [isDirty, preset.presetId, preset.presetName]);
+
+  const handleSelectCloud = async (e: SelectChangeEvent<string>) => {
+    const name = e.target.value;
+    const found = cloudPresets.find(p => p.presetName === name);
+    if (!found) {
+      enqueueSnackbar('Preset not found in recent list', { variant: 'error' });
+      return;
+    }
+    try {
+      const data = await getPreset(found.presetId);
+      if (!data.presetId || !data.presetName) {
+        console.warn('[PresetLoader] Missing presetId or presetName in selected preset:', data);
+        enqueueSnackbar('Preset is missing required fields.', { variant: 'error' });
         return;
       }
-      // load into Redux
-      dispatch(importDataAction(found));
-      // update URL
-      navigate(`/${found.presetId}`, { replace: true });
-      enqueueSnackbar('Loaded preset', { variant: 'success' });
-    },
-    [presets, dispatch, enqueueSnackbar, navigate]
-  );
+      lastSavedRef.current = JSON.parse(JSON.stringify(data));
+      dispatch(importDataAction(data));
+      navigate(`/${data.presetId}`, { replace: true });
+      saveToRecentPresets({ presetId: data.presetId, presetName: data.presetName });
+      setIsDirty(false);
+    } catch (err) {
+      console.warn('[PresetLoader] Failed to load selected preset:', err);
+      enqueueSnackbar('Failed to load selected preset.', { variant: 'error' });
+    }
+  };
 
-  const createNewPreset = useCallback(() => {
-    setSaveDialogOpen(true);
-  }, []);
+  const handleCreateNew = () => {
+    if (isDirty) {
+      setConfirmDiscardOpen(true);
+    } else {
+      navigate('/');
+    }
+  };
 
-  const removePreset = useCallback(
-    (e: React.MouseEvent, name: string) => {
-      e.preventDefault();
-      e.stopPropagation();
-      let data = LocalStorage.loadPresets();
-      data = data.filter(p => p.presetName !== name);
-      LocalStorage.saveAllPresets(data);
-      setPresets(data);
-      setPresetNames(data.map(p => p.presetName));
-      enqueueSnackbar('Deleted preset', { variant: 'success' });
-    },
-    [enqueueSnackbar]
-  );
-
-  const handleDialogClose = useCallback(() => {
-    setSaveDialogOpen(false);
-  }, []);
-
-  const handleSaveNew = useCallback(
-    (newName: string) => {
-      // SavePresetDialog will have put a new entry into localStorage
-      const data = LocalStorage.loadPresets();
-      setPresets(data);
-      setPresetNames(data.map(p => p.presetName));
-
-      // find the one we just created
-      const justMade = data.find(p => p.presetName === newName);
-      if (justMade) {
-        dispatch(importDataAction(justMade));
-        navigate(`/${justMade.presetId}`, { replace: true });
-        enqueueSnackbar('Created and loaded new preset', { variant: 'success' });
-      }
-      setSaveDialogOpen(false);
-    },
-    [dispatch, enqueueSnackbar, navigate]
-  );
+  const confirmNewPreset = () => {
+    setConfirmDiscardOpen(false);
+    navigate('/');
+  };
 
   return (
-    <div className="input-group desktop-only">
-      <ButtonGroup>
-        <Autocomplete
-          className="autocomplete-field mr-8"
-          disablePortal
-          autoHighlight
-          disableClearable
-          freeSolo
-          forcePopupIcon
-          value={selectedPreset}
-          onChange={onPresetChange}
-          options={presetNames}
-          renderInput={(params: AutocompleteRenderInputParams) => (
-            <TextField
-              {...params}
-              label="Load existing preset"
-              inputProps={{
-                ...params.inputProps,
-                autoComplete: 'off'
-              }}
-            />
-          )}
-          renderOption={(props, option) => (
-            <li {...props} className="option-list">
-              {option}
-              <IconButton
-                size="small"
-                onClick={e => removePreset(e, option)}
-              >
-                <CloseIcon fontSize="small" />
-              </IconButton>
-            </li>
-          )}
-        />
-        <Button variant="contained" onClick={createNewPreset}>
-          Create New Preset
-        </Button>
-      </ButtonGroup>
+    <Box className="preset-menubar" display="flex" alignItems="center" gap={2} p={1}>
+      <FormControl size="small" sx={{ minWidth: 240 }}>
+        <InputLabel>Recent Presets</InputLabel>
+        <Select
+          label="Recent Presets"
+          value={selected || ''}
+          onChange={handleSelectCloud}
+          renderValue={(value) => <span>{value}</span>}
+        >
+          {cloudPresets.map(p => (
+            <MenuItem key={p.presetId} value={p.presetName}>
+              <Box display="flex" justifyContent="space-between" alignItems="left" width="100%">
+                <span>{p.presetName}</span>
+                <IconButton
+                  size="small"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleRemovePreset(p.presetId);
+                  }}
+                >
+                  <CloseIcon fontSize="small" />
+                </IconButton>
+              </Box>
+            </MenuItem>
+          ))}
+        </Select>
+      </FormControl>
+
+      <Button variant="contained" onClick={handleCreateNew}>
+        New Preset
+      </Button>
+
+      {isDirty === true && (
+        <Chip label="Unsaved Changes" color="warning" size="small" sx={{ ml: 1 }} />
+      )}
+      {isDirty === false && (
+        <Chip label="No Changes" color="success" size="small" sx={{ ml: 1 }} />
+      )}
+
+      <Dialog open={confirmDiscardOpen} onClose={() => setConfirmDiscardOpen(false)}>
+        <DialogTitle>Discard current changes and create a new preset?</DialogTitle>
+        <DialogActions>
+          <Button onClick={() => setConfirmDiscardOpen(false)}>Cancel</Button>
+          <Button color="error" onClick={confirmNewPreset}>Discard & New</Button>
+        </DialogActions>
+      </Dialog>
 
       <SavePresetDialog
-        open={saveDialogOpen}
+        open={dialogOpen}
         state={SavePresetDialogState.NewPreset}
-        onSave={handleSaveNew}
-        onClose={handleDialogClose}
+        onSave={() => setDialogOpen(false)}
+        onClose={() => setDialogOpen(false)}
       />
-    </div>
+    </Box>
   );
 };
 
-// also default‐export so import paths are flexible
+export const PresetName = PresetLoader;
 export default PresetName;

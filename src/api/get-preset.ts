@@ -2,10 +2,10 @@
 
 import axios from "axios";
 import itemData from "../data/sorted_items.json";
-import { type SavedPresetData } from "../types/saved-preset-data";
-import { type Relics, type RelicData } from "../types/relic";
-import { type Familiars, type FamiliarData } from "../types/familiar";
-import { type ItemData } from "../types/item-data";
+import { type SavedPreset as SavedPresetData } from "../schemas/saved-preset-data";
+import { type Relics, type Relic as RelicData } from "../schemas/relic";
+import { type Familiars, type Familiar as FamiliarData } from "../schemas/familiar";
+import { type Item as ItemData } from "../schemas/item-data";
 
 const {
   VITE_FIREBASE_EMULATOR_HOST,
