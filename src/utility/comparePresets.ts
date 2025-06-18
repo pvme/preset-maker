@@ -15,7 +15,8 @@ export function presetsAreEqual(a: any, b: any): boolean {
     return isEmpty ? null : cleaned;
   };
 
-  const cleanArray = (arr: any[] = []) => (arr ?? []).map(cleanItem);
+  const cleanArray = (arr: any[] = []) =>
+    (arr ?? []).map(cleanItem).map(x => x ?? {}).slice(0); // keep position, allow undo detection
 
   const cleanRelic = (relic: any): any => {
     const {
@@ -31,7 +32,7 @@ export function presetsAreEqual(a: any, b: any): boolean {
     } = relic ?? {};
 
     const cleaned = {
-      energy,
+      energy: Number(energy) || 0,
       description: (description ?? '').trim(),
       breakdownNotes: (breakdownNotes ?? '').trim(),
       label: (label ?? '').trim(),
@@ -41,16 +42,17 @@ export function presetsAreEqual(a: any, b: any): boolean {
     };
 
     const isEmpty = Object.values(cleaned).every(
-      val => val === '' || val === null || val === undefined
+      val => val === '' || val === null || val === undefined || val === 0
     );
     return isEmpty ? null : cleaned;
   };
 
-  const cleanRelicArray = (arr: any[] = []) => (arr ?? []).map(cleanRelic);
+  const cleanRelicArray = (arr: any[] = []) =>
+    arr.map(cleanRelic).map(x => x ?? {});
 
   const cleanRelics = (relics: any = {}) => ({
-    primaryRelics: cleanRelicArray(relics.primaryRelics),
-    alternativeRelics: cleanRelicArray(relics.alternativeRelics),
+    primaryRelics: cleanRelicArray(relics.primaryRelics ?? []),
+    alternativeRelics: cleanRelicArray(relics.alternativeRelics ?? [])
   });
 
   const cleanFamiliar = (familiar: any): any => {
@@ -78,19 +80,16 @@ export function presetsAreEqual(a: any, b: any): boolean {
     return isEmpty ? null : cleaned;
   };
 
-  const cleanFamiliarArray = (arr: any[] = []) => (arr ?? []).map(cleanFamiliar);
+  const cleanFamiliarArray = (arr: any[] = []) =>
+    arr.map(cleanFamiliar).map(x => x ?? {});
 
   const cleanFamiliars = (familiars: any = {}) => ({
-    primaryFamiliars: cleanFamiliarArray(familiars.primaryFamiliars),
-    alternativeFamiliars: cleanFamiliarArray(familiars.alternativeFamiliars),
+    primaryFamiliars: cleanFamiliarArray(familiars.primaryFamiliars ?? []),
+    alternativeFamiliars: cleanFamiliarArray(familiars.alternativeFamiliars ?? [])
   });
 
   const cleanPreset = (p: any): any => {
-    const {
-      slotType,
-      slotIndex,
-      ...rest
-    } = p ?? {};
+    const { slotType, slotIndex, ...rest } = p ?? {};
 
     return {
       presetName: (rest.presetName ?? '').trim(),

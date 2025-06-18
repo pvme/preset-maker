@@ -111,15 +111,17 @@ export const presetSlice = createSlice({
     },
     swapInventorySlots: (state: PresetState, action: PayloadAction<SwapSlots>) => {
       const { sourceIndex, targetIndex } = action.payload;
-      if (sourceIndex === undefined || targetIndex === undefined) {
-        return;
-      }
+      if (sourceIndex === undefined || targetIndex === undefined) return;
+    
+      const clean = (item: ItemData) => {
+        const { selected, ...rest } = item;
+        return rest;
+      };
 
-      const sourceSlot = state.inventorySlots[sourceIndex];
-      const targetSlot = state.inventorySlots[targetIndex];
+      const temp = clean(state.inventorySlots[sourceIndex]);
+      state.inventorySlots[sourceIndex] = clean(state.inventorySlots[targetIndex]);
+      state.inventorySlots[targetIndex] = temp;
 
-      state.inventorySlots[targetIndex] = sourceSlot;
-      state.inventorySlots[sourceIndex] = targetSlot;
     },
     setEquipmentSlot: (state: PresetState, action: PayloadAction<SetSlot>) => {
       state.equipmentSlots[action.payload.index] = action.payload.value;

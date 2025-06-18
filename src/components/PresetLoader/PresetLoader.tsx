@@ -60,7 +60,6 @@ export const PresetLoader = (): JSX.Element => {
     getPreset(id)
       .then(presetData => {
         if (!presetData.presetId || !presetData.presetName) {
-          console.warn('[PresetLoader] Missing presetId or presetName in loaded preset:', presetData);
           return;
         }
         dispatch(importDataAction(presetData));
@@ -69,7 +68,6 @@ export const PresetLoader = (): JSX.Element => {
         setIsDirty(false);
       })
       .catch(err => {
-        console.warn('[PresetLoader] Failed to load preset from URL:', err);
         enqueueSnackbar('Failed to load preset from URL.', { variant: 'error' });
       });
   }, [id, dispatch, enqueueSnackbar]);
@@ -77,14 +75,12 @@ export const PresetLoader = (): JSX.Element => {
   useEffect(() => {
     if (lastSavedRef.current) {
       const dirty = !presetsAreEqual(preset, lastSavedRef.current);
-      console.log('[PresetLoader] Checking dirty state:', { dirty, current: preset, saved: lastSavedRef.current });
       setIsDirty(dirty);
     }
   }, [preset]);
 
   useEffect(() => {
     if (!isDirty && preset.presetId && preset.presetName) {
-      console.log('[PresetLoader] Saving to recent presets because not dirty.');
       saveToRecentPresets({ presetId: preset.presetId, presetName: preset.presetName });
     }
   }, [isDirty, preset.presetId, preset.presetName]);
@@ -99,7 +95,6 @@ export const PresetLoader = (): JSX.Element => {
     try {
       const data = await getPreset(found.presetId);
       if (!data.presetId || !data.presetName) {
-        console.warn('[PresetLoader] Missing presetId or presetName in selected preset:', data);
         enqueueSnackbar('Preset is missing required fields.', { variant: 'error' });
         return;
       }
@@ -109,7 +104,6 @@ export const PresetLoader = (): JSX.Element => {
       saveToRecentPresets({ presetId: data.presetId, presetName: data.presetName });
       setIsDirty(false);
     } catch (err) {
-      console.warn('[PresetLoader] Failed to load selected preset:', err);
       enqueueSnackbar('Failed to load selected preset.', { variant: 'error' });
     }
   };
@@ -135,11 +129,13 @@ export const PresetLoader = (): JSX.Element => {
           label="Recent Presets"
           value={selected || ''}
           onChange={handleSelectCloud}
-          renderValue={(value) => <span>{value}</span>}
+          renderValue={(value) => <Box textAlign="left">{value}</Box>}
+          MenuProps={{ PaperProps: { sx: { textAlign: 'left' } } }}
+          sx={{ height: 40, textAlign: 'left' }}
         >
           {cloudPresets.map(p => (
-            <MenuItem key={p.presetId} value={p.presetName}>
-              <Box display="flex" justifyContent="space-between" alignItems="left" width="100%">
+            <MenuItem key={p.presetId} value={p.presetName} sx={{ justifyContent: 'space-between' }}>
+              <Box display="flex" justifyContent="space-between" alignItems="center" width="100%">
                 <span>{p.presetName}</span>
                 <IconButton
                   size="small"
@@ -156,16 +152,28 @@ export const PresetLoader = (): JSX.Element => {
         </Select>
       </FormControl>
 
-      <Button variant="contained" onClick={handleCreateNew}>
-        New Preset
-      </Button>
-
       {isDirty === true && (
-        <Chip label="Unsaved Changes" color="warning" size="small" sx={{ ml: 1 }} />
+        <Chip label="Unsaved Changes" color="warning" size="medium" sx={{
+          height: 40,
+          px: 2,
+          borderRadius: '20px',
+          boxShadow: '0 1px 3px rgba(0,0,0,0.2)',
+          fontSize: '0.9rem'
+        }} />
       )}
       {isDirty === false && (
-        <Chip label="No Changes" color="success" size="small" sx={{ ml: 1 }} />
+        <Chip label="No Changes" color="success" size="medium" sx={{
+          height: 40,
+          px: 2,
+          borderRadius: '20px',
+          boxShadow: '0 1px 3px rgba(0,0,0,0.2)',
+          fontSize: '0.9rem'
+        }} />
       )}
+
+      <Button variant="contained" onClick={handleCreateNew} sx={{ height: 40 }}>
+        New Preset
+      </Button>
 
       <Dialog open={confirmDiscardOpen} onClose={() => setConfirmDiscardOpen(false)}>
         <DialogTitle>Discard current changes and create a new preset?</DialogTitle>
