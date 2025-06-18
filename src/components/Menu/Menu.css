@@ -1,0 +1,21 @@
+.preset-menu__chip {
+  padding:17px 15px;
+  border-width: 2px;
+  border-radius: 6px;
+}
+
+.preset-menu__paper {
+  padding: 16px;
+  box-shadow: var(--mui-shadow-3);
+}
+
+.preset-menu__menu {
+  min-width: 220px;
+  border-radius: 12px;
+  padding: 4px 0;
+  box-shadow: var(--mui-shadow-3);
+}
+
+.preset-menu__divider {
+  margin: 4px 0;
+}

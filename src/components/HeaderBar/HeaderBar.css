@@ -1,72 +1,179 @@
+/* HeaderBar Component Styles */
+
 .header-bar {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background-color: rgb(26, 32, 39);
+  position: relative;
+  z-index: 1100;
 }
 
 .header-bar__app-bar {
-  max-width: 100%;
-  background-color: #191d1d;
+  background: rgb(27 28 28);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.header-bar__tool-bar {
-  display: flex;
-  flex-direction: row;
+.header-bar__toolbar {
   justify-content: space-between;
   align-items: center;
+  width: 100%;
+  position: relative;
 }
 
-.header-bar__logo {
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-  justify-content: flex-start;
+/* Logo Section */
+.header-bar__logo-section {
+  flex-shrink: 0;
 }
 
-.header-bar__logo > img {
+.header-bar__logo-button {
+  padding: 4px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.header-bar__logo-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: scale(1.05);
+}
+
+.header-bar__logo-image {
+  border-radius: 8px;
+  transition: all 0.3s ease;
   cursor: pointer;
 }
 
-.header-bar__help-icon {
-  margin-left: 10px;
+.header-bar__logo-image:hover {
+  filter: brightness(1.1);
 }
 
-.header-bar__help-icon:hover {
-  color: #747bff;
+.header-bar__help-button {
+  transition: all 0.3s ease;
 }
 
-.header-bar__json {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
+.header-bar__help-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: scale(1.1);
 }
 
-.header-bar__item {
-  width: 500px !important;
+/* Title Section */
+.header-bar__title {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  letter-spacing: 0.5px;
+  user-select: none;
 }
 
-.tool-bar > button {
-  margin: 15px;
+/* Actions Section */
+.header-bar__actions {
+  flex-shrink: 0;
 }
 
-/* Mobile styling */
+.header-bar__button-group {
+  border-color: rgba(255, 255, 255, 0.5);
+}
 
-@media (max-width: 600px) {
-  .tool-bar {
-    flex-direction: column;
-    justify-content: center;
-    flex-wrap: wrap;
-    justify-content: flex-start;
+.header-bar__button-group .MuiButton-root {
+  border-color: rgba(255, 255, 255, 0.5);
+  color: white;
+  font-weight: 500;
+  text-transform: none;
+  padding: 8px 16px;
+  transition: all 0.3s ease;
+}
+
+.header-bar__button-group .MuiButton-root:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.8);
+  transform: translateY(-1px);
+}
+
+.header-bar__button-group .MuiButton-root:active {
+  transform: translateY(0);
+}
+
+/* Mobile Icon Buttons */
+.header-bar__import-button,
+.header-bar__export-button {
+  transition: all 0.3s ease;
+}
+
+.header-bar__import-button:hover,
+.header-bar__export-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: scale(1.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .header-bar__title {
+    font-size: 1.25rem;
+    margin: 0 8px;
   }
-
-  .sub-item {
-    font-size: 20px;
-    width: fit-content !important;
+  
+  .header-bar__logo-section {
+    gap: 4px;
   }
+}
 
-  .button-container {
-    margin: 10px;
+@media (max-width: 480px) {
+  .header-bar__title {
+    font-size: 1.1rem;
+    text-align: center;
+    flex: 1;
+  }
+  
+  .header-bar__toolbar {
+    padding: 0 8px;
+  }
+}
+
+/* Animation for smooth transitions */
+.header-bar * {
+  box-sizing: border-box;
+}
+
+/* Focus styles for accessibility */
+.header-bar__logo-button:focus-visible,
+.header-bar__help-button:focus-visible,
+.header-bar__import-button:focus-visible,
+.header-bar__export-button:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.8);
+  outline-offset: 2px;
+}
+
+.header-bar__button-group .MuiButton-root:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.8);
+  outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .header-bar__app-bar {
+    background: #1565c0;
+    border-bottom: 2px solid white;
+  }
+  
+  .header-bar__button-group .MuiButton-root {
+    border-color: white;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .header-bar__logo-button,
+  .header-bar__help-button,
+  .header-bar__import-button,
+  .header-bar__export-button,
+  .header-bar__button-group .MuiButton-root,
+  .header-bar__logo-image {
+    transition: none;
+  }
+  
+  .header-bar__logo-button:hover,
+  .header-bar__help-button:hover,
+  .header-bar__import-button:hover,
+  .header-bar__export-button:hover {
+    transform: none;
+  }
+  
+  .header-bar__button-group .MuiButton-root:hover {
+    transform: none;
   }
 }

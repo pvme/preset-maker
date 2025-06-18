@@ -7,13 +7,21 @@ import { useSnackbar } from 'notistack';
 import SaveIcon from '@mui/icons-material/Save';
 import SaveAsIcon from '@mui/icons-material/SaveAs';
 import LinkIcon from '@mui/icons-material/Link';
-
-import { Button, ButtonGroup } from '@mui/material';
-
-import { usePresetExport } from '../../hooks/usePresetExport';
 import ImageIcon from '@mui/icons-material/Image';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 
+import { 
+  Button, 
+  Card, 
+  CardContent, 
+  Typography, 
+  Divider, 
+  Stack,
+  Box 
+} from '@mui/material';
+
+import { usePresetExport } from '../../hooks/usePresetExport';
 import { uploadPreset } from '../../api/upload-preset';
 import { useAppSelector } from '../../redux/hooks';
 import { selectPreset } from '../../redux/store/reducers/preset-reducer';
@@ -98,45 +106,154 @@ export const PresetActions = (): JSX.Element => {
   } = usePresetExport();
 
   return (
-    <div className="preset-actions">
-      <fieldset className="preset-details preset-export">
-        <legend>Export</legend>
-        <ButtonGroup
-          orientation="vertical"
-          variant="outlined"
-          fullWidth
-          className="preset-export__group"
+    <Card className="preset-actions" elevation={0}>
+      <CardContent>
+        <Typography 
+          variant="h6" 
+          component="h2"
+          gutterBottom
+          sx={{ mb: 3, fontWeight: 500 }}
         >
-          <Button startIcon={<SaveIcon />} onClick={handleSave}>
-            Save to Cloud
-          </Button>
-          <Button startIcon={<SaveAsIcon />} onClick={handleSaveAs}>
-            Save As New Copy
-          </Button>
-          <Button
-            startIcon={<LinkIcon />}
-            onClick={handleCopyEmbedLink}
-            disabled={!id}
-          >
-            Copy Embed Link
-          </Button>
-          <Button
-            variant="outlined"
-            onClick={copyBreakdownToClipboard}
-            disabled={!clipboardSupported}
-            startIcon={<ContentCopyIcon />}
-          >
-            Copy as Image
-          </Button>
-          <Button
-            variant="outlined"
-            onClick={exportBreakdown}
-            startIcon={<ImageIcon />}
-          >
-            Download as Image
-          </Button>
-        </ButtonGroup>
-      </fieldset>
+          Export & Share
+        </Typography>
+        
+        <Stack spacing={3}>
+          {/* Cloud Actions */}
+          <Box>
+            <Typography 
+              variant="body2" 
+              component="label"
+              sx={{ mb: 2, display: 'block', fontWeight: 500, color: 'text.secondary' }}
+            >
+              Cloud Storage
+            </Typography>
+            <Stack direction="row" spacing={1.5}>
+              <Button 
+                startIcon={<CloudUploadIcon />} 
+                onClick={handleSave}
+                variant="contained"
+                fullWidth
+                sx={{ 
+                  py: 1.5,
+                  fontWeight: 500,
+                  textTransform: 'none',
+                  borderRadius: 2,
+                  boxShadow: 1,
+                  '&:hover': {
+                    boxShadow: 2,
+                  }
+                }}
+              >
+                Save
+              </Button>
+              <Button 
+                startIcon={<SaveAsIcon />} 
+                onClick={handleSaveAs}
+                variant="outlined"
+                fullWidth
+                sx={{ 
+                  py: 1.5,
+                  fontWeight: 500,
+                  textTransform: 'none',
+                  borderRadius: 2,
+                  borderColor: 'divider',
+                  '&:hover': {
+                    borderColor: 'primary.main',
+                    backgroundColor: 'action.hover',
+                  }
+                }}
+              >
+                Save As
+              </Button>
+            </Stack>
+          </Box>
+
+          <Divider sx={{ my: 1 }} />
+
+          {/* Share Actions */}
+          <Box>
+            <Typography 
+              variant="body2" 
+              component="label"
+              sx={{ mb: 2, display: 'block', fontWeight: 500, color: 'text.secondary' }}
+            >
+              Share & Export
+            </Typography>
+            <Stack spacing={1.5}>
+              <Button
+                startIcon={<LinkIcon />}
+                onClick={handleCopyEmbedLink}
+                disabled={!id}
+                variant="outlined"
+                fullWidth
+                sx={{ 
+                  py: 1.5,
+                  fontWeight: 500,
+                  textTransform: 'none',
+                  borderRadius: 2,
+                  borderColor: 'divider',
+                  '&:hover': {
+                    borderColor: 'primary.main',
+                    backgroundColor: 'action.hover',
+                  },
+                  '&:disabled': {
+                    borderColor: 'divider',
+                    color: 'text.disabled',
+                  }
+                }}
+              >
+                Copy Embed Link
+              </Button>
+              
+              <Stack direction="row" spacing={1.5}>
+                <Button
+                  onClick={copyBreakdownToClipboard}
+                  disabled={!clipboardSupported}
+                  startIcon={<ContentCopyIcon />}
+                  variant="outlined"
+                  fullWidth
+                  sx={{ 
+                    py: 1.5,
+                    fontWeight: 500,
+                    textTransform: 'none',
+                    borderRadius: 2,
+                    borderColor: 'divider',
+                    '&:hover': {
+                      borderColor: 'primary.main',
+                      backgroundColor: 'action.hover',
+                    },
+                    '&:disabled': {
+                      borderColor: 'divider',
+                      color: 'text.disabled',
+                    }
+                  }}
+                >
+                  Copy Image
+                </Button>
+                <Button
+                  onClick={exportBreakdown}
+                  startIcon={<ImageIcon />}
+                  variant="outlined"
+                  fullWidth
+                  sx={{ 
+                    py: 1.5,
+                    fontWeight: 500,
+                    textTransform: 'none',
+                    borderRadius: 2,
+                    borderColor: 'divider',
+                    '&:hover': {
+                      borderColor: 'primary.main',
+                      backgroundColor: 'action.hover',
+                    }
+                  }}
+                >
+                  Download
+                </Button>
+              </Stack>
+            </Stack>
+          </Box>
+        </Stack>
+      </CardContent>
 
       <SavePresetDialog
         open={saveAsOpen}
@@ -144,6 +261,6 @@ export const PresetActions = (): JSX.Element => {
         onSave={handleSaveAsSubmit}
         onClose={() => setSaveAsOpen(false)}
       />
-    </div>
+    </Card>
   );
 };

@@ -1,97 +1,34 @@
 import { useSnackbar } from 'notistack';
 import React, { useCallback, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { validate } from 'typescript-json';
 
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import ButtonGroup from '@mui/material/ButtonGroup';
-import Container from '@mui/material/Container';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
-
-import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import {
-  importDataAction,
-  selectPreset
-} from '../../redux/store/reducers/preset-reducer';
-import { type SavedPreset as SavedPresetData } from '../../schemas/saved-preset-data';
-import { exportAsJson } from '../../utility/export-to-json';
-import { sanitizeAndStringifyPreset } from '../../utility/sanitizer';
-
+  AppBar,
+  Box,
+  Button,
+  ButtonGroup,
+  Container,
+  Toolbar,
+  Typography,
+  IconButton,
+  useTheme,
+  useMediaQuery,
+  Stack,
+  Tooltip
+} from '@mui/material';
+import {
+  HelpOutline as HelpOutlineIcon,
+  Home as HomeIcon
+} from '@mui/icons-material';
 import './HeaderBar.css';
 import { HelpDialog } from '../HelpDialog/HelpDialog';
 
 export const HeaderBar = (): JSX.Element => {
-  const inputFile = useRef<HTMLInputElement>(null);
-
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const navigate = useNavigate();
-
-  const dispatch = useAppDispatch();
-  const { presetName, presetNotes, inventorySlots, equipmentSlots, relics, familiars } =
-    useAppSelector(selectPreset);
   const [helpDialogOpen, setHelpDialogOpen] = useState<boolean>(false);
   const { enqueueSnackbar } = useSnackbar();
-
-  const exportData = useCallback(() => {
-    const stringifiedPresetData = sanitizeAndStringifyPreset({
-      presetName,
-      presetNotes,
-      equipmentSlots,
-      inventorySlots,
-      relics,
-      familiars
-    });
-    exportAsJson(
-      `PRESET_${presetName.replaceAll(' ', '_')}`,
-      stringifiedPresetData
-    );
-  }, [presetName, presetNotes, inventorySlots, equipmentSlots, relics, familiars]);
-
-  const importData = useCallback(() => {
-    inputFile.current?.click();
-  }, []);
-
-  const onFileUpload = useCallback(
-    (event: React.ChangeEvent<HTMLInputElement>) => {
-      if (event.target.files == null) {
-        return;
-      }
-
-      const reader = new FileReader();
-      reader.onload = (event) => {
-        if (event.target?.result === null || event.target?.result === undefined) {
-          enqueueSnackbar(
-            'Internal Server Error - Send your .json to nullopt#2057',
-            { variant: 'error' }
-          );
-          return;
-        }
-
-        const data = JSON.parse(event.target.result as string);
-        const validationResult = validate<SavedPresetData>(data);
-        if (!validationResult.success) {
-          console.error(validationResult.errors);
-          enqueueSnackbar('Invalid JSON data.', { variant: 'error' });
-          return;
-        }
-
-        // import the json data into the preset editor
-        dispatch(importDataAction(data));
-        enqueueSnackbar('Successfully imported your preset.', {
-          variant: 'success'
-        });
-      };
-
-      reader.readAsText(event.target.files[0]);
-
-      // Reset the file input so users can upload the same json
-      event.target.value = '';
-    },
-    []
-  );
 
   const onHomeClick = useCallback(() => {
     // go to root
@@ -100,55 +37,96 @@ export const HeaderBar = (): JSX.Element => {
     navigate(0);
   }, [navigate]);
 
+  const handleHelpOpen = useCallback(() => {
+    setHelpDialogOpen(true);
+  }, []);
+
+  const handleHelpClose = useCallback(() => {
+    setHelpDialogOpen(false);
+  }, []);
+
   return (
     <>
       <Box className="header-bar">
-        <input
-          type="file"
-          id="file"
-          ref={inputFile}
-          style={{ display: 'none' }}
-          accept="application/JSON"
-          onChange={onFileUpload}
-        />
-        <AppBar position="sticky">
-          <Container className="header-bar__app-bar">
-            <Toolbar disableGutters className="header-bar__tool-bar">
-              <div className="header-bar__logo header-bar__item">
-                <img
-                  width={80}
-                  height={80}
-                  src={'https://img.pvme.io/images/EPzzJe2xy6.gif'}
-                  onClick={onHomeClick}
-                />
-                <HelpOutlineIcon
-                  className="header-bar__help-icon cursor-pointer"
-                  onClick={() => { setHelpDialogOpen(true); }}
-                />
-              </div>
+        <AppBar 
+          position="sticky" 
+          className="header-bar__app-bar"
+          elevation={2}
+        >
+          <Container maxWidth="xl">
+            <Toolbar 
+              disableGutters 
+              className="header-bar__toolbar"
+              sx={{ 
+                minHeight: { xs: 64, sm: 80 },
+                px: { xs: 1, sm: 2 }
+              }}
+            >
+              {/* Logo Section */}
+              <Stack 
+                direction="row" 
+                alignItems="center" 
+                spacing={1}
+                className="header-bar__logo-section"
+              >
+                <Tooltip title="Go to Home">
+                  <IconButton
+                    onClick={onHomeClick}
+                    className="header-bar__logo-button"
+                    size="large"
+                    edge="start"
+                  >
+                    <Box
+                      component="img"
+                      src="https://img.pvme.io/images/EPzzJe2xy6.gif"
+                      alt="PVME Logo"
+                      className="header-bar__logo-image"
+                      sx={{
+                        width: { xs: 60, sm: 80 },
+                        height: { xs: 60, sm: 80 }
+                      }}
+                    />
+                  </IconButton>
+                </Tooltip>
+              </Stack>
+
+              {/* Title Section */}
               <Typography
-                variant="h5"
-                component="div"
-                fontFamily="monospace"
-                className="header-bar__item"
+                variant={isMobile ? 'h6' : 'h5'}
+                component="h1"
+                className="header-bar__title"
+                sx={{
+                  fontFamily: 'monospace',
+                  fontWeight: 600,
+                  flexGrow: 1,
+                  textAlign: { xs: 'center', md: 'left' },
+                  ml: { xs: 0, md: 2 }
+                }}
               >
                 PVME Preset Generator
               </Typography>
-              <ButtonGroup className="header-bar__json header-bar__item desktop-only">
-                <Button color="inherit" variant="outlined" onClick={importData}>
-                  Import&nbsp;JSON
-                </Button>
-                <Button color="inherit" variant="outlined" onClick={exportData}>
-                  Export&nbsp;JSON
-                </Button>
-              </ButtonGroup>
+
+              {/* Actions Section */}
+              <Box className="header-bar__actions">
+                <Tooltip title="Help">
+                  <IconButton
+                    onClick={handleHelpOpen}
+                    className="header-bar__help-button"
+                    color="inherit"
+                    size={isMobile ? 'small' : 'medium'}
+                  >
+                    <HelpOutlineIcon />
+                  </IconButton>
+                </Tooltip>
+              </Box>
             </Toolbar>
           </Container>
         </AppBar>
       </Box>
+      
       <HelpDialog
         open={helpDialogOpen}
-        onClose={() => { setHelpDialogOpen(false); }}
+        onClose={handleHelpClose}
       />
     </>
   );
