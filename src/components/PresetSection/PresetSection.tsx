@@ -28,7 +28,7 @@ export const PresetSection = (): JSX.Element => {
                 sx={{
                   '& .MuiPaper-root': {
                     borderTopLeftRadius: 0,
-                    borderBottomLeftRadius: 0
+                    borderBottomLeftRadius: 0,
                     marginTop: 2
                   },
                 }}
