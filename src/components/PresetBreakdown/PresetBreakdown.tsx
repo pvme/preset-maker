@@ -39,9 +39,11 @@ export const PresetBreakdown = (): JSX.Element => {
   const [lastValidEquipment, setLastValidEquipment] = useState<ItemData[]>([]);
 
   useEffect(() => {
-
     if (inventorySlots.length > 0) {
-      setLastValidInventory(inventorySlots);
+      const filteredInventory = inventorySlots.filter(
+        (item) => (item.label ?? '').length > 0
+      );
+      setLastValidInventory(filteredInventory);
     }
 
     if (equipmentSlots.length > 0) {
