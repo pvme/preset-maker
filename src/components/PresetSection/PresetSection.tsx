@@ -11,7 +11,7 @@ import './PresetSection.css';
 export const PresetSection = (): JSX.Element => {
   return (
     <Fade in={true}>
-      <Container maxWidth="lg" className="preset-section">
+      <Container className="preset-section">
         
         <Grid container spacing={2} direction="column">
           <Grid item>

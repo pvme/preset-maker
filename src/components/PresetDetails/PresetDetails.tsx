@@ -48,24 +48,24 @@ export const PresetDetails = (): JSX.Element => {
   return (
     <Card className="preset-details" elevation={0}>
       <CardContent>
-<Stack direction="row" alignItems="center" spacing={1} sx={{ mb: 3 }}>
-  <InfoOutlinedIcon fontSize="small" color="action" />
-  <Typography
-    component="h2"
-    sx={{
-      textTransform: 'uppercase',
-      letterSpacing: '0.05em',
-      color: 'text.secondary',
-    }}
-  >
-    Preset Info
-  </Typography>
-</Stack>
+        <Stack direction="row" alignItems="center" spacing={1} sx={{ mb: 3 }}>
+          <InfoOutlinedIcon fontSize="small" color="action" />
+          <Typography
+            component="h2"
+            sx={{
+              textTransform: 'uppercase',
+              letterSpacing: '0.05em',
+              color: 'text.secondary',
+            }}
+          >
+            Preset Info
+          </Typography>
+        </Stack>
 
         <Stack spacing={4}>
           <TextField
-            label="Preset Name"
-            placeholder="Add a name..."
+            label="Name"
+            placeholder="Give your preset a name..."
             value={name}
             fullWidth
             variant="outlined"
@@ -76,7 +76,7 @@ export const PresetDetails = (): JSX.Element => {
 
           <TextField
             label="Notes"
-            placeholder="Add notes..."
+            placeholder="Add any general preset notes here..."
             value={notes}
             fullWidth
             multiline

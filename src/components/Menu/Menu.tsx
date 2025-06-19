@@ -334,7 +334,7 @@ export const PresetMenu = (): JSX.Element => {
                   onChange={handleFileUpload}
                 />
               </MenuItem>            </Menu>
-            <Button onClick={handleSave} startIcon={<SaveIcon />} variant="contained" color="success" size="medium">
+            <Button disabled={!isDirty} onClick={handleSave} startIcon={<SaveIcon />} variant="contained" color="success" size="medium">
               Save
             </Button>
             <StatusChip isDirty={isDirty} />
