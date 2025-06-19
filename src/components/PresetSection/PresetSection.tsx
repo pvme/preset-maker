@@ -12,25 +12,29 @@ export const PresetSection = (): JSX.Element => {
   return (
     <Fade in={true}>
       <Container maxWidth="lg" className="preset-section">
+        
         <Grid container spacing={2} direction="column">
           <Grid item>
             <PresetMenu />
           </Grid>
 
           <Grid item>
-            <Grid container spacing={2} direction={{ xs: 'column', md: 'row' }}>
-              <Grid item xs={12} md={8}>
-                <Paper elevation={1} sx={{ p: 2 }}>
-                  <PresetEditor />
-                </Paper>
+            <Grid container direction="row">
+              <Grid item>
+                <PresetEditor />
               </Grid>
-              <Grid item xs={12} md={4}>
-                <Paper elevation={1} sx={{ p: 2 }}>
-                  <PresetDetails />
-                </Paper>
+              <Grid item xs
+              sx={{
+                '& .MuiPaper-root': {
+                  borderTopLeftRadius: 0,
+                  borderBottomLeftRadius: 0,
+                },
+              }}>
+                <PresetDetails />
               </Grid>
             </Grid>
           </Grid>
+
 
           <Grid item>
             <PresetBreakdown />

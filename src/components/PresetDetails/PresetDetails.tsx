@@ -1,28 +1,27 @@
 import React, { useCallback, useState } from 'react';
 import {
-  Box,
   Card,
   CardContent,
   TextField,
   Typography,
-  Stack
+  Stack,
 } from '@mui/material';
+import {
+  InfoOutlined as InfoOutlinedIcon,
+} from '@mui/icons-material';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
-import { selectPreset, setPresetNotes, setPresetName } from '../../redux/store/reducers/preset-reducer';
-import { NotesField } from '../NotesField/NotesField';
+import {
+  selectPreset,
+  setPresetNotes,
+  setPresetName
+} from '../../redux/store/reducers/preset-reducer';
 import './PresetDetails.css';
 
 export const PresetDetails = (): JSX.Element => {
   const dispatch = useAppDispatch();
   const { presetName, presetNotes } = useAppSelector(selectPreset);
   const [name, setName] = useState<string>(presetName);
-
-  const onNotesBlur = useCallback(
-    (formattedNotes: string) => {
-      dispatch(setPresetNotes(formattedNotes));
-    },
-    [dispatch]
-  );
+  const [notes, setNotes] = useState<string>(presetNotes);
 
   const onNameChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -35,45 +34,58 @@ export const PresetDetails = (): JSX.Element => {
     dispatch(setPresetName(name));
   }, [dispatch, name]);
 
+  const onNotesChange = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      setNotes(event.target.value);
+    },
+    []
+  );
+
+  const onNotesBlur = useCallback(() => {
+    dispatch(setPresetNotes(notes));
+  }, [dispatch, notes]);
+
   return (
     <Card className="preset-details" elevation={0}>
       <CardContent>
-        <Typography 
-          variant="h6" 
-          component="h2" 
-          gutterBottom
-          sx={{ mb: 3, fontWeight: 500 }}
-        >
-          Details
-        </Typography>
-        
-        <Stack spacing={3}>
+<Stack direction="row" alignItems="center" spacing={1} sx={{ mb: 3 }}>
+  <InfoOutlinedIcon fontSize="small" color="action" />
+  <Typography
+    component="h2"
+    sx={{
+      textTransform: 'uppercase',
+      letterSpacing: '0.05em',
+      color: 'text.secondary',
+    }}
+  >
+    Preset Info
+  </Typography>
+</Stack>
+
+        <Stack spacing={4}>
           <TextField
-            label="Name"
-            placeholder={presetName || 'Add a name...'}
-            value={name || presetName}
+            label="Preset Name"
+            placeholder="Add a name..."
+            value={name}
             fullWidth
             variant="outlined"
             onChange={onNameChange}
             onBlur={onNameBlur}
-            size="small"
+            size="medium"
           />
-          
-          <Box>
-            <Typography 
-              variant="body2" 
-              component="label" 
-              sx={{ mb: 1, display: 'block', fontWeight: 500 }}
-            >
-              Notes
-            </Typography>
-            <NotesField
-              placeholder="Add notes..."
-              className="preset-details__notes"
-              initialValue={presetNotes}
-              onBlur={onNotesBlur}
-            />
-          </Box>
+
+          <TextField
+            label="Notes"
+            placeholder="Add notes..."
+            value={notes}
+            fullWidth
+            multiline
+            rows={4}
+            variant="outlined"
+            onChange={onNotesChange}
+            onBlur={onNotesBlur}
+            size="medium"
+          />
         </Stack>
       </CardContent>
     </Card>

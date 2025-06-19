@@ -198,6 +198,8 @@ export const PresetMenu = (): JSX.Element => {
     try {
       await uploadPreset(preset, id);
       saveToRecentPresets({ presetId: id, presetName: preset.presetName });
+      lastSavedRef.current = JSON.parse(JSON.stringify(preset));
+      setIsDirty(false);
       enqueueSnackbar('Preset saved!', { variant: 'success' });
     } catch (err: any) {
       enqueueSnackbar(`Save failed: ${err.message}`, { variant: 'error' });
@@ -251,9 +253,9 @@ export const PresetMenu = (): JSX.Element => {
 
   return (
     <Paper className="preset-menu__paper">
-      <Grid container spacing={2} alignItems="center" justifyContent="space-between" sx={{ fontSize: '2rem' }}>
+      <Grid container alignItems="center" justifyContent="space-between" sx={{ padding: "16px" }}>
         <Grid item md="auto">
-          <Stack direction="row" spacing={2} alignItems="center">
+          <Stack direction="row" spacing={3} alignItems="center">
             <Button onClick={handleNew} startIcon={<AddIcon />} variant="contained" size="medium">
               New
             </Button>
@@ -295,8 +297,11 @@ export const PresetMenu = (): JSX.Element => {
         </Grid>
 
         <Grid item md="auto">
-          <Stack direction="row" spacing={2} alignItems="center">
-            <Button onClick={e => setAnchorExport(e.currentTarget)} endIcon={<ArrowDropDown />}>
+          <Stack direction="row" spacing={3} alignItems="center">
+            <Button
+              onClick={e => setAnchorExport(e.currentTarget)}
+              endIcon={<ArrowDropDown />}
+            >
               Export
             </Button>
             <Menu anchorEl={anchorExport} open={Boolean(anchorExport)} onClose={() => setAnchorExport(null)}>
@@ -304,6 +309,7 @@ export const PresetMenu = (): JSX.Element => {
                 <ListItemIcon><LinkIcon fontSize="small" /></ListItemIcon>
                 <ListItemText primary="Copy Embed Link" />
               </MenuItem>
+              <Divider />
               <MenuItem onClick={copyBreakdownToClipboard} disabled={!clipboardSupported}>
                 <ListItemIcon><ContentCopyIcon fontSize="small" /></ListItemIcon>
                 <ListItemText primary="Copy Image" />
@@ -313,6 +319,10 @@ export const PresetMenu = (): JSX.Element => {
                 <ListItemText primary="Download Image" />
               </MenuItem>
               <Divider />
+              <MenuItem onClick={exportData}>
+                <ListItemIcon><FileDownloadIcon fontSize="small" /></ListItemIcon>
+                <ListItemText primary="Export JSON" />
+              </MenuItem>
               <MenuItem onClick={importData}>
                 <ListItemIcon><FileUploadIcon fontSize="small" /></ListItemIcon>
                 <ListItemText primary="Import JSON" />
@@ -323,12 +333,7 @@ export const PresetMenu = (): JSX.Element => {
                   style={{ display: 'none' }}
                   onChange={handleFileUpload}
                 />
-              </MenuItem>
-              <MenuItem onClick={exportData}>
-                <ListItemIcon><FileDownloadIcon fontSize="small" /></ListItemIcon>
-                <ListItemText primary="Export JSON" />
-              </MenuItem>
-            </Menu>
+              </MenuItem>            </Menu>
             <Button onClick={handleSave} startIcon={<SaveIcon />} variant="contained" color="success" size="medium">
               Save
             </Button>
