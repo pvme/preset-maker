@@ -41,6 +41,7 @@ import {
   FileUpload as FileUploadIcon,
   FileDownload as FileDownloadIcon,
 } from '@mui/icons-material';
+import CircularProgress from '@mui/material/CircularProgress';
 
 import { validate } from 'typescript-json';
 import { type SavedPreset as SavedPresetData } from '../../schemas/saved-preset-data';
@@ -100,6 +101,7 @@ export const PresetMenu = (): JSX.Element => {
   const [anchorSave, setAnchorSave] = useState<null | HTMLElement>(null);
   const [confirmDiscardOpen, setConfirmDiscardOpen] = useState(false);
   const [isDirty, setIsDirty] = useState<boolean | null>(null);
+  const [isSaving, setIsSaving] = useState(false);
   const lastSavedRef = useRef<any>(null);
 
   const {
@@ -195,6 +197,7 @@ export const PresetMenu = (): JSX.Element => {
 
   const handleSave = async () => {
     if (!id) return setSaveAsOpen(true);
+    setIsSaving(true);
     try {
       await uploadPreset(preset, id);
       saveToRecentPresets({ presetId: id, presetName: preset.presetName });
@@ -203,6 +206,8 @@ export const PresetMenu = (): JSX.Element => {
       enqueueSnackbar('Preset saved!', { variant: 'success' });
     } catch (err: any) {
       enqueueSnackbar(`Save failed: ${err.message}`, { variant: 'error' });
+    } finally {
+      setIsSaving(false);
     }
   };
 
@@ -334,9 +339,16 @@ export const PresetMenu = (): JSX.Element => {
                   onChange={handleFileUpload}
                 />
               </MenuItem>            </Menu>
-            <Button disabled={!isDirty} onClick={handleSave} startIcon={<SaveIcon />} variant="contained" color="success" size="medium">
-              Save
-            </Button>
+              <Button
+                disabled={!isDirty || isSaving}
+                onClick={handleSave}
+                startIcon={isSaving ? undefined : <SaveIcon />}
+                variant="contained"
+                color="success"
+                size="medium"
+              >
+                {isSaving ? <CircularProgress size={20} color="inherit" /> : 'Save'}
+              </Button>
             <StatusChip isDirty={isDirty} />
           </Stack>
         </Grid>
