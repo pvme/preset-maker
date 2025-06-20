@@ -1,3 +1,10 @@
-.preset-details__notes {
-	
+.notes-field-wrapper {
+  position: relative;
+}
+
+.notes-field__placeholder {
+  position: absolute;
+  pointer-events: none;
+  color: #999;
+  padding: 12px;
 }

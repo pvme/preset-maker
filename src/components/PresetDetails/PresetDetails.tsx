@@ -1,4 +1,5 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useRef, useState, useEffect } from 'react';
+import { emojify } from '../../utility/emojify';
 import {
   Card,
   CardContent,
@@ -6,6 +7,8 @@ import {
   Typography,
   Stack,
 } from '@mui/material';
+import ContentEditable, { type ContentEditableEvent } from 'react-contenteditable';
+import sanitizeHtml from 'sanitize-html';
 import {
   InfoOutlined as InfoOutlinedIcon,
 } from '@mui/icons-material';
@@ -21,7 +24,21 @@ export const PresetDetails = (): JSX.Element => {
   const dispatch = useAppDispatch();
   const { presetName, presetNotes } = useAppSelector(selectPreset);
   const [name, setName] = useState<string>(presetName);
-  const [notes, setNotes] = useState<string>(presetNotes);
+  const [rawNotes, setRawNotes] = useState<string>(presetNotes);
+  const [notesHtml, setNotesHtml] = useState<string>(emojify(presetNotes));
+  const notesRef = useRef<HTMLDivElement>(null);
+
+  const sanitizeAndEmojifyInput = (input: string): string => {
+    const cleaned = sanitizeHtml(input, {
+      allowedTags: ['img', 'a', 'b', 'i', 'u', 'em', 'strong', 'br', 'div', 'span'],
+      allowedAttributes: {
+        img: ['src', 'alt', 'class'],
+        a: ['href', 'target'],
+        '*': ['style']
+      }
+    });
+    return emojify(cleaned);
+  }
 
   const onNameChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -31,19 +48,33 @@ export const PresetDetails = (): JSX.Element => {
   );
 
   const onNameBlur = useCallback(() => {
-    dispatch(setPresetName(name));
-  }, [dispatch, name]);
+    dispatch(setPresetNotes(rawNotes));
+  }, [dispatch, rawNotes]);
 
-  const onNotesChange = useCallback(
-    (event: React.ChangeEvent<HTMLInputElement>) => {
-      setNotes(event.target.value);
-    },
-    []
-  );
+  useEffect(() => {
+    setRawNotes(presetNotes);
+    setNotesHtml(emojify(presetNotes));
+  }, [presetNotes]);
 
+  const onNotesChange = useCallback((event: ContentEditableEvent) => {
+    const raw = event.currentTarget.innerHTML;
+    setRawNotes(event.currentTarget.innerText); // for saving raw text
+    setNotesHtml(sanitizeAndEmojifyInput(raw));
+  }, []);
+  
   const onNotesBlur = useCallback(() => {
-    dispatch(setPresetNotes(notes));
-  }, [dispatch, notes]);
+    const raw = notesRef.current?.innerHTML ?? '';
+    const cleaned = sanitizeHtml(raw, {
+      allowedTags: ['img', 'a', 'b', 'i', 'u', 'em', 'strong', 'br', 'div', 'span'],
+      allowedAttributes: {
+        img: ['src', 'alt', 'class'],
+        a: ['href', 'target'],
+        '*': ['style']
+      }
+    });
+    dispatch(setPresetNotes(cleaned));
+    setNotesHtml(emojify(cleaned));
+  }, [dispatch]);
 
   return (
     <Card className="preset-details" elevation={0}>
@@ -74,18 +105,28 @@ export const PresetDetails = (): JSX.Element => {
             size="medium"
           />
 
-          <TextField
-            label="Notes"
-            placeholder="Add any general preset notes here..."
-            value={notes}
-            fullWidth
-            multiline
-            rows={4}
-            variant="outlined"
-            onChange={onNotesChange}
-            onBlur={onNotesBlur}
-            size="medium"
-          />
+          <div className="notes-field-wrapper" style={{ position: 'relative' }}>
+            {notesHtml.trim() === '' && (
+              <div
+                className="notes-field__placeholder"
+                style={{
+                  position: 'absolute',
+                  pointerEvents: 'none',
+                  color: '#999',
+                  padding: '12px',
+                }}
+              >
+                Add any general preset notes here...
+              </div>
+            )}
+            <ContentEditable
+              innerRef={notesRef}
+              className="notes-field"
+              html={notesHtml}
+              onBlur={onNotesBlur}
+              onChange={onNotesChange}
+            />
+          </div>
         </Stack>
       </CardContent>
     </Card>
