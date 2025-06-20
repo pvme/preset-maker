@@ -3,6 +3,7 @@ import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
 import { HeaderBar } from './components/HeaderBar/HeaderBar'
 import { PresetSection } from './components/PresetSection/PresetSection'
+import { useSnackbar } from 'notistack';
 import { useParams } from 'react-router-dom'
 import { useAppDispatch } from './redux/hooks'
 import { getPreset } from './api/get-preset'
@@ -13,6 +14,9 @@ import './Dialog.css'
 
 function App(): JSX.Element {
   const dispatch = useAppDispatch()
+
+  const { enqueueSnackbar } = useSnackbar();
+
   const [isPresetLoading, setIsPresetLoading] = useState(false)
   const [loadingProgress, setLoadingProgress] = useState(0)
   const [loadingPhrase, setLoadingPhrase] = useState('')
@@ -49,25 +53,37 @@ function App(): JSX.Element {
   }, [isPresetLoading])
 
   useEffect(() => {
+    let didCancel = false;
+
     if (!id) {
-      dispatch(resetToInitialState())
-      return
+      dispatch(resetToInitialState());
+      return;
     }
 
-    setIsPresetLoading(true)
-    setLoadingPhrase(loadingPhrases[Math.floor(Math.random() * loadingPhrases.length)])
+    setIsPresetLoading(true);
+    setLoadingPhrase(loadingPhrases[Math.floor(Math.random() * loadingPhrases.length)]);
 
     getPreset(id)
       .then(response => {
-        dispatch(importDataAction(response))
-        setLoadingProgress(100)
-        setTimeout(() => setIsPresetLoading(false), 300)
+        if (!didCancel) {
+          dispatch(importDataAction(response));
+          setLoadingProgress(100);
+          setTimeout(() => setIsPresetLoading(false), 300);
+        }
       })
       .catch(err => {
-        console.error('Failed to load preset', err)
-        setIsPresetLoading(false)
-      })
-  }, [id, dispatch])
+        if (!didCancel) {
+          enqueueSnackbar("Oops, we couldn't find that preset!", { variant: 'error' });
+          console.error('Failed to load preset', err);
+          setIsPresetLoading(false);
+        }
+      });
+
+    return () => {
+      didCancel = true;
+    };
+  }, [id, dispatch]);
+
 
   return (
     <DndProvider backend={HTML5Backend}>

@@ -1,3 +1,5 @@
+// src/api/upload-preset.ts
+
 import axios from 'axios';
 import { presetSchema } from '../schemas/preset';
 
@@ -7,34 +9,32 @@ interface UploadPresetResponse {
 }
 
 const {
-  VITE_FIREBASE_EMULATOR_HOST,
-  VITE_FIREBASE_PROJECT_ID,
-  VITE_API_BASE_URL,
+  VITE_UPLOAD_PRESET_URL,
+  VITE_DEV_SECRET,
+  MODE
 } = import.meta.env;
 
-const useEmulator =
-  import.meta.env.DEV &&
-  !!VITE_FIREBASE_EMULATOR_HOST &&
-  !!VITE_FIREBASE_PROJECT_ID;
+const isDev = MODE === 'development';
 
-const API_BASE = useEmulator
-  ? `http://${VITE_FIREBASE_EMULATOR_HOST}/${VITE_FIREBASE_PROJECT_ID}/us-central1`
-  : VITE_API_BASE_URL;
+function getHeaders(): Record<string, string> {
+  const headers: Record<string, string> = {
+    'Content-Type': 'application/json',
+  };
+  if (isDev && VITE_DEV_SECRET) {
+    headers['X-Dev-Secret'] = VITE_DEV_SECRET;
+  }
+  return headers;
+}
 
 export async function uploadPreset(
   data: unknown,
   id?: string
 ): Promise<UploadPresetResponse> {
   const payload = typeof data === 'string' ? JSON.parse(data) : data;
-  const preset = presetSchema.parse(payload); // ✅ use central schema
+  const preset = presetSchema.parse(payload);
 
-  const url = `${API_BASE}/uploadPreset${id ? `?id=${encodeURIComponent(id)}` : ''}`;
-
-  const resp = await axios.post<UploadPresetResponse>(url, preset, {
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  });
+  const url = `${VITE_UPLOAD_PRESET_URL}${id ? `?id=${encodeURIComponent(id)}` : ''}`;
+  const resp = await axios.post<UploadPresetResponse>(url, preset, { headers: getHeaders() });
 
   return resp.data;
 }
@@ -44,9 +44,8 @@ export async function getPresetImageUrl(
   id: string
 ): Promise<string> {
   const parsed = presetSchema.parse(preset);
-  const url = `${API_BASE}/uploadPreset?id=${encodeURIComponent(id)}`;
-  const resp = await axios.post<UploadPresetResponse>(url, parsed, {
-    headers: { 'Content-Type': 'application/json' }
-  });
+  const url = `${VITE_UPLOAD_PRESET_URL}?id=${encodeURIComponent(id)}`;
+  const resp = await axios.post<UploadPresetResponse>(url, parsed, { headers: getHeaders() });
+
   return resp.data.imageUrl;
 }

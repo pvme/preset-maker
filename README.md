@@ -12,10 +12,16 @@ Install dependencies:
 yarn install
 ```
 
-Run the development server:
+Run a local development front-end server connected to a local back-end server:
 
 ```sh
 yarn run dev
+```
+
+Run a local development front-end server connected to the production back-end server:
+
+```sh
+yarn run dev:prod
 ```
 
 ## Sorting JSON

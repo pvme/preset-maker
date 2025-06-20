@@ -8,18 +8,21 @@ import { type Familiars, type Familiar as FamiliarData } from "../schemas/famili
 import { type Item as ItemData } from "../schemas/item-data";
 
 const {
-  VITE_FIREBASE_EMULATOR_HOST,
-  VITE_FIREBASE_PROJECT_ID,
-  VITE_API_BASE_URL,
+  VITE_GET_PRESET_URL,
+  VITE_DEV_SECRET,
+  MODE
 } = import.meta.env;
 
-// pick the right base URL for emulator vs production
-const BASE =
-  import.meta.env.DEV && VITE_FIREBASE_EMULATOR_HOST && VITE_FIREBASE_PROJECT_ID
-    ? `http://${VITE_FIREBASE_EMULATOR_HOST}/${VITE_FIREBASE_PROJECT_ID}/us-central1`
-    : VITE_API_BASE_URL;
+const isDev = MODE === 'development';
+const API_URL = `${VITE_GET_PRESET_URL}?id=`;
 
-const API_URL = `${BASE}/getPreset?id=`;
+function getHeaders(): Record<string, string> {
+  const headers: Record<string, string> = {};
+  if (isDev && VITE_DEV_SECRET) {
+    headers['X-Dev-Secret'] = VITE_DEV_SECRET;
+  }
+  return headers;
+}
 
 interface RawStoredPreset {
   presetId: string;
@@ -33,31 +36,28 @@ interface RawStoredPreset {
 
 export async function getPreset(id: string): Promise<SavedPresetData> {
   const resp = await axios.get<RawStoredPreset>(
-    `${API_URL}${encodeURIComponent(id)}`
+    `${API_URL}${encodeURIComponent(id)}`,
+    { headers: getHeaders() }
   );
   return unpackData(resp.data);
 }
 
 async function unpackData(stored: RawStoredPreset): Promise<SavedPresetData> {
-  // build the item lookup
   const itemMap = new Map<string, ItemData>();
   itemData.forEach((itm) => itemMap.set(itm.label, itm));
 
-  // --- Helpers for inventory/equipment slots ---
-  function mapItemSlot(
-    slot: { label?: string; breakdownNotes?: string } | null
-  ): ItemData | null {
+  function mapItemSlot(slot: { label?: string; breakdownNotes?: string } | null): ItemData | null {
     if (!slot || !slot.label) return null;
     const base = itemMap.get(slot.label) ?? itemMap.get("404item")!;
     const result: ItemData = { ...base };
     if (slot.breakdownNotes) result.breakdownNotes = slot.breakdownNotes;
     return result;
   }
+
   function blankItem(): ItemData {
     return { name: "", label: "", image: "", breakdownNotes: undefined, wikiLink: "" };
   }
 
-  // --- Helpers for relics ---
   function mapRelicSlot(slot: RelicData | null): RelicData | null {
     if (!slot || !slot.label) return null;
     return {
@@ -69,11 +69,11 @@ async function unpackData(stored: RawStoredPreset): Promise<SavedPresetData> {
       description: slot.description || ""
     };
   }
+
   function blankRelic(): RelicData {
     return { label: "", name: "", image: "", breakdownNotes: "", energy: 0, description: "" };
   }
 
-  // --- Helpers for familiars ---
   function mapFamiliarSlot(slot: FamiliarData | null): FamiliarData | null {
     if (!slot || !slot.label) return null;
     return {
@@ -83,35 +83,32 @@ async function unpackData(stored: RawStoredPreset): Promise<SavedPresetData> {
       breakdownNotes: slot.breakdownNotes || ""
     };
   }
+
   function blankFamiliar(): FamiliarData {
     return { label: "", name: "", image: "", breakdownNotes: "" };
   }
 
-  // --- Fixed‐length inventory / equipment ---
   const inventorySlots: ItemData[] = Array.from({ length: 28 }).map((_, i) =>
-    mapItemSlot(stored.inventorySlots[i] ?? null) ?? blankItem()
+    mapItemSlot(stored.inventorySlots?.[i] ?? null) ?? blankItem()
   );
+
   const equipmentSlots: ItemData[] = Array.from({ length: 13 }).map((_, i) =>
-    mapItemSlot(stored.equipmentSlots[i] ?? null) ?? blankItem()
+    mapItemSlot(stored.equipmentSlots?.[i] ?? null) ?? blankItem()
   );
 
-  // --- Primary relics: exactly 3 slots ---
   const primaryRelics: RelicData[] = Array.from({ length: 3 }).map((_, i) =>
-    mapRelicSlot(stored.relics.primaryRelics[i] ?? null) ?? blankRelic()
+    mapRelicSlot(stored.relics?.primaryRelics?.[i] ?? null) ?? blankRelic()
   );
 
-  // --- Alternative relics: as many as the stored array ---
-  const alternativeRelics: RelicData[] = (stored.relics.alternativeRelics || [])
+  const alternativeRelics: RelicData[] = (stored.relics?.alternativeRelics || [])
     .map(mapRelicSlot)
     .filter((r): r is RelicData => r !== null);
 
-  // --- Primary familiars: exactly 1 slot ---
   const primaryFamiliars: FamiliarData[] = [
-    mapFamiliarSlot(stored.familiars.primaryFamiliars[0] ?? null) ?? blankFamiliar(),
+    mapFamiliarSlot(stored.familiars?.primaryFamiliars?.[0] ?? null) ?? blankFamiliar()
   ];
 
-  // --- Alternative familiars: as many as the stored array ---
-  const alternativeFamiliars: FamiliarData[] = (stored.familiars.alternativeFamiliars || [])
+  const alternativeFamiliars: FamiliarData[] = (stored.familiars?.alternativeFamiliars || [])
     .map(mapFamiliarSlot)
     .filter((f): f is FamiliarData => f !== null);
 
@@ -123,11 +120,12 @@ async function unpackData(stored: RawStoredPreset): Promise<SavedPresetData> {
     equipmentSlots,
     relics: {
       primaryRelics,
-      alternativeRelics,
+      alternativeRelics
     },
     familiars: {
       primaryFamiliars,
-      alternativeFamiliars,
-    },
+      alternativeFamiliars
+    }
   };
 }
+
