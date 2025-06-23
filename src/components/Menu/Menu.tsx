@@ -210,6 +210,7 @@ export const PresetMenu = (): JSX.Element => {
     try {
       await uploadPreset(preset, id);
       saveToRecentPresets({ presetId: id, presetName: preset.presetName });
+      setSelected(preset.presetName);
       lastSavedRef.current = JSON.parse(JSON.stringify(preset));
       setIsDirty(false);
       enqueueSnackbar('Preset saved!', { variant: 'success' });
