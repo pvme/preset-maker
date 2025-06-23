@@ -7,22 +7,10 @@ import { type Relics, type Relic as RelicData } from "../schemas/relic";
 import { type Familiars, type Familiar as FamiliarData } from "../schemas/familiar";
 import { type Item as ItemData } from "../schemas/item-data";
 
-const {
-  VITE_GET_PRESET_URL,
-  VITE_DEV_SECRET,
-  MODE
-} = import.meta.env;
+import { FunctionURLs } from './function-urls';
+import { getDevHeaders } from './get-headers';
 
-const isDev = MODE === 'development';
-const API_URL = `${VITE_GET_PRESET_URL}?id=`;
-
-function getHeaders(): Record<string, string> {
-  const headers: Record<string, string> = {};
-  if (isDev && VITE_DEV_SECRET) {
-    headers['X-Dev-Secret'] = VITE_DEV_SECRET;
-  }
-  return headers;
-}
+const API_URL = `${FunctionURLs.getPreset}?id=`;
 
 interface RawStoredPreset {
   presetId: string;
@@ -36,8 +24,8 @@ interface RawStoredPreset {
 
 export async function getPreset(id: string): Promise<SavedPresetData> {
   const resp = await axios.get<RawStoredPreset>(
-    `${API_URL}${encodeURIComponent(id)}`,
-    { headers: getHeaders() }
+  `${API_URL}${encodeURIComponent(id)}`,
+    { headers: getDevHeaders() }
   );
   return unpackData(resp.data);
 }

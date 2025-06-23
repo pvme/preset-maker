@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "dev:prod": "dotenv -e .env.production -- vite",
+    "dev:prod": "vite --mode production",
     "start": "npm run dev",
     "build": "tsc && vite build",
     "preview": "vite preview",

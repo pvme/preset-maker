@@ -56,6 +56,7 @@ import { SavePresetDialog, SavePresetDialogState } from '../SavePresetDialog/Sav
 import { presetsAreEqual } from '../../utility/comparePresets';
 import { PresetSummary } from '../../schemas/preset-summary';
 import './Menu.css';
+import { FunctionURLs } from '../../api/function-urls';
 
 const LOCAL_STORAGE_KEY = 'recentPresets';
 const MAX_RECENT_PRESETS = 20;
@@ -227,10 +228,8 @@ export const PresetMenu = (): JSX.Element => {
 
   const handleCopyEmbedLink = () => {
     if (!id) return;
-    const host = import.meta.env.DEV
-      ? `http://${import.meta.env.VITE_FIREBASE_EMULATOR_HOST}/${import.meta.env.VITE_FIREBASE_PROJECT_ID}/us-central1`
-      : 'https://presetembed-3iiueetvuq-uc.a.run.app';
-    navigator.clipboard.writeText(`${host}/presetEmbed?id=${encodeURIComponent(id)}`);
+    const url = `${FunctionURLs.presetEmbed}?id=${encodeURIComponent(id)}`;
+    navigator.clipboard.writeText(url);
     enqueueSnackbar('Embed link copied!', { variant: 'success' });
   };
 
@@ -258,7 +257,7 @@ export const PresetMenu = (): JSX.Element => {
 
   return (
     <Paper className="preset-menu__paper">
-      <Grid container alignItems="center" justifyContent="space-between" sx={{ padding: "16px" }}>
+      <Grid container alignItems="center" justifyContent="space-between" sx={{ marginTop: "16px", padding: "16px" }}>
         <Grid item md="auto">
           <Stack direction="row" spacing={3} alignItems="center">
             <Button onClick={handleNew} startIcon={<AddIcon />} variant="contained" size="medium">
