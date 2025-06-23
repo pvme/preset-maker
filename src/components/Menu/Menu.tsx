@@ -279,6 +279,7 @@ export const PresetMenu = (): JSX.Element => {
                 onChange={handleSelectCloud}
                 label="Recent Presets"
                 renderValue={(value) => <span>{value}</span>}
+                MenuProps={{ disableScrollLock: true }}
               >
                 {cloudPresets.length === 0 ? (
                   <MenuItem disabled>No recent presets</MenuItem>
@@ -316,7 +317,7 @@ export const PresetMenu = (): JSX.Element => {
             >
               Export
             </Button>
-            <Menu anchorEl={anchorExport} open={Boolean(anchorExport)} onClose={() => setAnchorExport(null)}>
+            <Menu anchorEl={anchorExport} open={Boolean(anchorExport)} onClose={() => setAnchorExport(null)} disableScrollLock>
               <MenuItem onClick={handleCopyEmbedLink} disabled={!id}>
                 <ListItemIcon><LinkIcon fontSize="small" /></ListItemIcon>
                 <ListItemText primary="Copy Embed Link" />
