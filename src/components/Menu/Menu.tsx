@@ -143,6 +143,13 @@ export const PresetMenu = (): JSX.Element => {
     }
   }, [preset]);
 
+  useEffect(() => {
+    if (!id && lastSavedRef.current === null) {
+      lastSavedRef.current = JSON.parse(JSON.stringify(preset));
+      setIsDirty(false);
+    }
+  }, [id, preset]);
+
   const fileInputRef = useRef<HTMLInputElement>(null);
   const handleFileUpload = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -247,8 +254,39 @@ export const PresetMenu = (): JSX.Element => {
   };
 
   const resetToBlankPreset = () => {
-    dispatch(importDataAction(blankPreset));
-    lastSavedRef.current = blankPreset; // force dirty state detection
+    dispatch(importDataAction({
+      ...blankPreset,
+      relics: {
+        primaryRelics: preset.relics.primaryRelics?.map(() => ({
+          name: '',
+          label: '',
+          image: '',
+          energy: 0,
+        })) ?? [],
+
+        alternativeRelics: preset.relics.alternativeRelics?.map(() => ({
+          name: '',
+          label: '',
+          image: '',
+          energy: 0,
+        })) ?? [],
+      },
+      familiars: {
+        primaryFamiliars: preset.familiars.primaryFamiliars?.map(() => ({
+          name: '',
+          label: '',
+          image: '',
+        })) ?? [],
+
+        alternativeFamiliars: preset.familiars.alternativeFamiliars?.map(() => ({
+          name: '',
+          label: '',
+          image: '',
+        })) ?? [],
+      }
+    }));
+
+    lastSavedRef.current = JSON.parse(JSON.stringify(blankPreset));
     setSelected('');
     navigate('/');
     enqueueSnackbar('Created new preset', { variant: 'info' });

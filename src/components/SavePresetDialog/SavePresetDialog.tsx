@@ -1,5 +1,5 @@
 import { useSnackbar } from 'notistack';
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useState, useEffect } from 'react';
 
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
@@ -29,27 +29,35 @@ interface SavePresetDialogProps {
   /** now receives the new name */
   onSave?: (newName: string) => void;
   onClose: () => void;
+  defaultName?: string;
 }
 
 export const SavePresetDialog = ({
   open,
   state,
   onSave,
-  onClose
+  onClose,
+  defaultName
 }: SavePresetDialogProps): JSX.Element => {
   const dispatch = useAppDispatch();
   const { enqueueSnackbar } = useSnackbar();
 
-  const [name, setName] = useState<string>('');
+  const [name, setName] = useState<string>(defaultName || '');
   const [error, setError] = useState<boolean>(false);
 
   const {
-    presetName,
     inventorySlots,
     equipmentSlots,
     relics,
     familiars
   } = useAppSelector(selectPreset);
+
+  useEffect(() => {
+    if (open) {
+      setName(defaultName || '');
+      setError(false);
+    }
+  }, [open, defaultName]);
 
   const onPresetNameChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -70,10 +78,8 @@ export const SavePresetDialog = ({
         return;
       }
 
-      // Update the redux state
       dispatch(setPresetName(name));
 
-      // Persist locally and/or fire the onSave callback
       const didSave = LocalStorage.savePresetWithConfirmation({
         presetName: name,
         inventorySlots,
@@ -86,7 +92,6 @@ export const SavePresetDialog = ({
         enqueueSnackbar('Successfully saved your preset', {
           variant: 'success'
         });
-        // Pass the new name back to the caller
         onSave?.(name);
       }
 
