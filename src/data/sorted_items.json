@@ -7304,6 +7304,14 @@
 		"wikiLink": "https://runescape.wiki/w/Ring_of_respawn_(c)"
 	},
 	{
+		"label": "ringofretribution",
+		"image": "https://img.pvme.io/images/5FQsCjXxp7.png",
+		"name": "Ring of retribution",
+		"breakdownNotes": "",
+		"slot": 11,
+		"wikiLink": "https://runescape.wiki/w/Ring_of_retribution"
+	},  
+	{
 		"label": "ringofslaying",
 		"image": "https://img.pvme.io/images/jSXTuBq.png",
 		"name": "Ring of slaying",
