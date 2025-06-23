@@ -3314,10 +3314,10 @@
 	{
 		"label": "eofredunorn",
 		"image": "https://img.pvme.io/images/yUkClNY.png",
-		"name": "EoF - Armadyl battlestaff",
+		"name": "Essence of Finality amulet (red)",
 		"breakdownNotes": "",
 		"slot": 10,
-		"wikiLink": "https://runescape.wiki/w/Armadyl_battlestaff"
+		"wikiLink": "https://runescape.wiki/w/Essence_of_Finality_amulet_(red)"
 	},
 	{
 		"label": "eofyellowunorn",
@@ -3354,10 +3354,10 @@
 	{
 		"label": "eofor",
 		"image": "https://img.pvme.io/images/xPypDhQ.png",
-		"name": "EoF - Ek-ZekKil",
+		"name": "Essence of Finality amulet (ornament)",
 		"breakdownNotes": "",
 		"slot": 10,
-		"wikiLink": "https://runescape.wiki/w/Ek-ZekKil"
+		"wikiLink": "https://runescape.wiki/w/Essence_of_Finality_amulet_(or)"
 	},
 	{
 		"label": "eofpink",
@@ -7303,6 +7303,14 @@
 		"slot": 11,
 		"wikiLink": "https://runescape.wiki/w/Ring_of_respawn_(c)"
 	},
+	{
+		"label": "ringofretribution",
+		"image": "https://img.pvme.io/images/5FQsCjXxp7.png",
+		"name": "Ring of retribution",
+		"breakdownNotes": "",
+		"slot": 11,
+		"wikiLink": "https://runescape.wiki/w/Ring_of_retribution"
+	},  
 	{
 		"label": "ringofslaying",
 		"image": "https://img.pvme.io/images/jSXTuBq.png",
