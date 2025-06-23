@@ -24,6 +24,12 @@ Run a local development front-end server connected to the production back-end se
 yarn run dev:prod
 ```
 
+Build & push to repo (branch: gh-pages)
+
+```sh
+npm run build && npm run deploy
+```
+
 ## Sorting JSON
 
 To sort everything:
