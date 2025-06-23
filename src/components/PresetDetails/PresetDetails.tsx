@@ -9,9 +9,7 @@ import {
 } from '@mui/material';
 import ContentEditable, { type ContentEditableEvent } from 'react-contenteditable';
 import sanitizeHtml from 'sanitize-html';
-import {
-  InfoOutlined as InfoOutlinedIcon,
-} from '@mui/icons-material';
+import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import {
   selectPreset,
