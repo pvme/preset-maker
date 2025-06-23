@@ -45,6 +45,8 @@ import CircularProgress from '@mui/material/CircularProgress';
 
 import { validate } from 'typescript-json';
 import { type SavedPreset as SavedPresetData } from '../../schemas/saved-preset-data';
+import { PresetSummary } from '../../schemas/preset-summary';
+import { blankPreset } from '../../schemas/preset';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { usePresetExport } from '../../hooks/usePresetExport';
 import { uploadPreset } from '../../api/upload-preset';
@@ -54,7 +56,6 @@ import { exportAsJson } from '../../utility/export-to-json';
 import { sanitizeAndStringifyPreset } from '../../utility/sanitizer';
 import { SavePresetDialog, SavePresetDialogState } from '../SavePresetDialog/SavePresetDialog';
 import { presetsAreEqual } from '../../utility/comparePresets';
-import { PresetSummary } from '../../schemas/preset-summary';
 import './Menu.css';
 import { FunctionURLs } from '../../api/function-urls';
 
@@ -245,14 +246,21 @@ export const PresetMenu = (): JSX.Element => {
     setIsDirty(false);
   };
 
+  const resetToBlankPreset = () => {
+    dispatch(importDataAction(blankPreset));
+    lastSavedRef.current = blankPreset; // force dirty state detection
+    setSelected('');
+    navigate('/');
+    enqueueSnackbar('Created new preset', { variant: 'info' });
+  };
+
   const handleNew = () => {
-    isDirty ? setConfirmDiscardOpen(true) : navigate('/');
+    isDirty ? setConfirmDiscardOpen(true) : resetToBlankPreset();
   };
 
   const confirmNewPreset = () => {
     setConfirmDiscardOpen(false);
-    navigate('/');
-    enqueueSnackbar('Created new preset', { variant: 'info' });
+    resetToBlankPreset();
   };
 
   return (

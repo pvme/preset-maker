@@ -29,3 +29,28 @@ export const presetSchema = z.object({
 });
 
 export type Preset = z.infer<typeof presetSchema>;
+
+const emptyItem = {
+  name: '',
+  label: '',
+  image: '',
+  breakdownNotes: '',
+  wikiLink: '',
+  selected: false,
+  slot: undefined,
+};
+
+export const blankPreset = {
+  presetName: '',
+  presetNotes: '',
+  inventorySlots: Array.from({ length: 28 }, () => ({ ...emptyItem })),
+  equipmentSlots: Array.from({ length: 13 }, () => ({ ...emptyItem })),
+  relics: {
+    primaryRelics: [],
+    alternativeRelics: [],
+  },
+  familiars: {
+    primaryFamiliars: [],
+    alternativeFamiliars: [],
+  },
+} satisfies Preset;

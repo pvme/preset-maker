@@ -42,14 +42,20 @@ export const PresetDetails = (): JSX.Element => {
 
   const onNameChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
-      setName(event.target.value);
+      const newName = event.target.value;
+      setName(newName);
+      dispatch(setPresetName(newName)); // <-- add this line
     },
-    []
+    [dispatch]
   );
 
   const onNameBlur = useCallback(() => {
     dispatch(setPresetNotes(rawNotes));
   }, [dispatch, rawNotes]);
+
+  useEffect(() => {
+    setName(presetName);
+  }, [presetName]);
 
   useEffect(() => {
     setRawNotes(presetNotes);
