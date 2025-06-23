@@ -425,6 +425,7 @@ export const PresetMenu = (): JSX.Element => {
         state={SavePresetDialogState.NewPreset}
         onSave={handleSaveAsSubmit}
         onClose={() => setSaveAsOpen(false)}
+        defaultName={preset.presetName}
       />
 
       <Dialog open={confirmDiscardOpen} onClose={() => setConfirmDiscardOpen(false)}>
