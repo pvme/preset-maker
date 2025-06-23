@@ -177,11 +177,7 @@ export const FamiliarSection = (): JSX.Element => {
         ))}
       </div>
       <div className="familiar-section__alternative">
-        <div>
-          <strong>
-            Alternative
-          </strong>
-        </div>
+        <div className="familiar-section__alternative__title">Alternative</div>
         <FamiliarSectionList
           familiars={visibleAlternativeFamiliars}
           onClick={(event, index) => {

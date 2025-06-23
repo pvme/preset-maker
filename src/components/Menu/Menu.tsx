@@ -107,10 +107,10 @@ export const PresetMenu = (): JSX.Element => {
   const lastSavedRef = useRef<any>(null);
 
   const {
-    exportBreakdown,
-    copyBreakdownToClipboard,
+    copyImage,
+    downloadImage,
     clipboardSupported
-  } = usePresetExport();
+  } = usePresetExport(presetName);
 
   useEffect(() => {
     const stored = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY) || '[]') as PresetSummary[];
@@ -322,11 +322,31 @@ export const PresetMenu = (): JSX.Element => {
                 <ListItemText primary="Copy Embed Link" />
               </MenuItem>
               <Divider />
-              <MenuItem onClick={copyBreakdownToClipboard} disabled={!clipboardSupported}>
+              <MenuItem
+                onClick={async () => {
+                  try {
+                    await copyImage();
+                    enqueueSnackbar('Image copied to clipboard!', { variant: 'success' });
+                  } catch (err: any) {
+                    enqueueSnackbar('Failed to copy image.', { variant: 'error' });
+                  }
+                }}
+                disabled={!clipboardSupported}
+              >
                 <ListItemIcon><ContentCopyIcon fontSize="small" /></ListItemIcon>
                 <ListItemText primary="Copy Image" />
               </MenuItem>
-              <MenuItem onClick={exportBreakdown}>
+
+              <MenuItem
+                onClick={async () => {
+                  try {
+                    await downloadImage();
+                    enqueueSnackbar('Image downloaded.', { variant: 'success' });
+                  } catch (err: any) {
+                    enqueueSnackbar('Failed to download image.', { variant: 'error' });
+                  }
+                }}
+              >
                 <ListItemIcon><ImageIcon fontSize="small" /></ListItemIcon>
                 <ListItemText primary="Download Image" />
               </MenuItem>

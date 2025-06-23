@@ -24,3 +24,8 @@
 .relic-section__list-item:hover > .relic-section__add-relic {
   color: white;
 }
+
+.relic-section__alternative__title {
+  font-weight: bold;
+  margin-top: 10px;
+}

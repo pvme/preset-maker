@@ -161,11 +161,7 @@ export const RelicSection = (): JSX.Element => {
         ))}
       </div>
       <div className="mt-auto relic-section__alternative">
-        <div>
-          <strong>
-            Alternative
-          </strong>
-        </div>
+        <div className="relic-section__alternative__title">Alternative</div>
         <RelicSectionList
           relics={visibleAlternativeRelics}
           onClick={(event, index) => {
