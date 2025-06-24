@@ -1,3 +1,5 @@
+// src/components/ItemSelectDialogPopup.tsx
+
 import React, { useCallback, useEffect, useState } from 'react';
 import fuzzysort from 'fuzzysort';
 
@@ -149,6 +151,11 @@ export const DialogPopup = ({
     handleClose();
   }, [selectedIndices, handleSlotChange, handleClose]);
 
+  const omitKey = <T extends object>(props: T): Omit<T, 'key'> => {
+    const { key, ...rest } = props as any;
+    return rest;
+  };
+
   return (
     <Dialog
       classes={{ paper: 'dialog__paper' }}
@@ -188,10 +195,10 @@ export const DialogPopup = ({
             option: ItemData
           ) => (
             <Box
-              key={`option-${option.name}`}
+              key={`${option.name}-${option.image}`}
               className="image-container"
               component="li"
-              {...props}
+              {...omitKey(props)}
             >
               <img
                 className="item-icon"

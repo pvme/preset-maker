@@ -107,6 +107,12 @@ export const PresetDetails = (): JSX.Element => {
             onChange={onNameChange}
             onBlur={onNameBlur}
             size="medium"
+            InputProps={{
+              sx: { fontSize: '16px' }
+            }}
+            InputLabelProps={{
+              sx: { fontSize: '16px' }
+            }}
           />
 
           <div className="notes-field-wrapper" style={{ position: 'relative' }}>

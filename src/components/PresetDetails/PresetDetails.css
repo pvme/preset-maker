@@ -1,10 +1,10 @@
-.notes-field-wrapper {
-  position: relative;
+.notes-field {
+  font-size: 16px;
+  white-space: pre-wrap !important;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
 }
 
 .notes-field__placeholder {
-  position: absolute;
-  pointer-events: none;
-  color: #999;
-  padding: 12px;
+  font-size: 16px !important;
 }

@@ -6,8 +6,9 @@ import { PresetSection } from './components/PresetSection/PresetSection'
 import { useSnackbar } from 'notistack';
 import { useParams } from 'react-router-dom'
 import { useAppDispatch } from './redux/hooks'
-import { getPreset } from './api/get-preset'
+import { loadPresetById } from './storage/preset-storage';
 import { importDataAction, resetToInitialState } from './redux/store/reducers/preset-reducer'
+import { StorageModeProvider } from './storage/StorageModeContext'
 import { Typography } from '@mui/material'
 import './App.css'
 import './Dialog.css'
@@ -63,10 +64,10 @@ function App(): JSX.Element {
     setIsPresetLoading(true);
     setLoadingPhrase(loadingPhrases[Math.floor(Math.random() * loadingPhrases.length)]);
 
-    getPreset(id)
-      .then(response => {
+    loadPresetById(id)
+      .then(({ data, source }) => {
         if (!didCancel) {
-          dispatch(importDataAction(response));
+          dispatch(importDataAction(data));
           setLoadingProgress(100);
           setTimeout(() => setIsPresetLoading(false), 300);
         }
@@ -86,52 +87,54 @@ function App(): JSX.Element {
 
 
   return (
-    <DndProvider backend={HTML5Backend}>
-      <div className="app-container">
-        <div className="background-gradient"></div>
-        <div className="floating-shapes">
-          <div className="shape shape-1"></div>
-          <div className="shape shape-2"></div>
-          <div className="shape shape-3"></div>
-        </div>
+    <StorageModeProvider>
+      <DndProvider backend={HTML5Backend}>
+        <div className="app-container">
+          <div className="background-gradient"></div>
+          <div className="floating-shapes">
+            <div className="shape shape-1"></div>
+            <div className="shape shape-2"></div>
+            <div className="shape shape-3"></div>
+          </div>
 
-        {isPresetLoading ? (
-          <div className="loading-container">
-            <div className="loading-card">
-              <div className="loading-spinner-wrapper">
-                <div className="modern-spinner">
-                  <div className="spinner-ring"></div>
-                  <div className="spinner-ring"></div>
-                  <div className="spinner-ring"></div>
+          {isPresetLoading ? (
+            <div className="loading-container">
+              <div className="loading-card">
+                <div className="loading-spinner-wrapper">
+                  <div className="modern-spinner">
+                    <div className="spinner-ring"></div>
+                    <div className="spinner-ring"></div>
+                    <div className="spinner-ring"></div>
+                  </div>
                 </div>
-              </div>
-              <div className="loading-content">
-                <Typography variant="h5" className="loading-title">
-                  Loading Your Preset
-                </Typography>
-                <Typography variant="body1" className="loading-subtitle">
-                  {loadingPhrase}
-                </Typography>
-                <div className="progress-bar">
-                  <div
-                    className="progress-fill"
-                    style={{ width: `${loadingProgress}%` }}
-                  ></div>
+                <div className="loading-content">
+                  <Typography variant="h5" className="loading-title">
+                    Loading Your Preset
+                  </Typography>
+                  <Typography variant="body1" className="loading-subtitle">
+                    {loadingPhrase}
+                  </Typography>
+                  <div className="progress-bar">
+                    <div
+                      className="progress-fill"
+                      style={{ width: `${loadingProgress}%` }}
+                    ></div>
+                  </div>
+                  <Typography variant="body2" className="progress-text">
+                    {Math.round(loadingProgress)}%
+                  </Typography>
                 </div>
-                <Typography variant="body2" className="progress-text">
-                  {Math.round(loadingProgress)}%
-                </Typography>
               </div>
             </div>
-          </div>
-        ) : (
-          <div className="app-content">
-            <HeaderBar />
-            <PresetSection />
-          </div>
-        )}
-      </div>
-    </DndProvider>
+          ) : (
+            <div className="app-content">
+              <HeaderBar />
+              <PresetSection />
+            </div>
+          )}
+        </div>
+      </DndProvider>
+    </StorageModeProvider>
   )
 }
 

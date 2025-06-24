@@ -1,6 +1,10 @@
 // src/components/Menu/Menu.tsx
 
 import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { RecentPresetDropdown } from './RecentPresetDropdown';
+import { addRecentPreset, removeRecentPreset } from '../../storage/recent-presets';
+import { loadPresetById } from '../../storage/preset-storage';
+
 import { useParams, useNavigate } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
 
@@ -18,6 +22,7 @@ import IconButton from '@mui/material/IconButton';
 import InputLabel from '@mui/material/InputLabel';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
+import CloudIcon from '@mui/icons-material/Cloud';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Paper from '@mui/material/Paper';
@@ -57,14 +62,9 @@ import { presetsAreEqual } from '../../utility/comparePresets';
 import './Menu.css';
 import { FunctionURLs } from '../../api/function-urls';
 
-const LOCAL_STORAGE_KEY = 'recentPresets';
-const MAX_RECENT_PRESETS = 20;
-
-function saveToRecentPresets(summary: PresetSummary) {
-  const prev = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY) || '[]') as PresetSummary[];
-  const updated = [summary, ...prev.filter(p => p.presetId !== summary.presetId)].slice(0, MAX_RECENT_PRESETS);
-  localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(updated));
-}
+import { useStorageMode } from '../../storage/StorageModeContext';
+import { LocalPresetStorage } from '../../storage/LocalPresetStorage';
+import { CloudPresetStorage } from '../../storage/CloudPresetStorage';
 
 const StatusChip = ({ isDirty }: { isDirty: boolean | null }) => {
   const theme = useTheme();
@@ -86,6 +86,12 @@ const StatusChip = ({ isDirty }: { isDirty: boolean | null }) => {
 };
 
 export const PresetMenu = (): JSX.Element => {
+  const { mode, setMode } = useStorageMode();
+  const getStorage = () =>
+    mode === 'cloud' ? CloudPresetStorage : LocalPresetStorage;
+
+  const [recentSelection, setRecentSelection] = useState('');
+
   const { id } = useParams<{ id?: string }>();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
@@ -95,13 +101,13 @@ export const PresetMenu = (): JSX.Element => {
   const preset = useAppSelector(selectPreset);
 
   const [selected, setSelected] = useState('');
-  const [cloudPresets, setCloudPresets] = useState<PresetSummary[]>([]);
   const [saveAsOpen, setSaveAsOpen] = useState(false);
   const [anchorExport, setAnchorExport] = useState<null | HTMLElement>(null);
   const [anchorSave, setAnchorSave] = useState<null | HTMLElement>(null);
   const [confirmDiscardOpen, setConfirmDiscardOpen] = useState(false);
   const [isDirty, setIsDirty] = useState<boolean | null>(null);
   const [isSaving, setIsSaving] = useState(false);
+  const [selectModeOpen, setSelectModeOpen] = useState(false);
   const lastSavedRef = useRef<any>(null);
 
   const {
@@ -110,30 +116,42 @@ export const PresetMenu = (): JSX.Element => {
     clipboardSupported
   } = usePresetExport(presetName);
 
-  useEffect(() => {
-    const stored = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY) || '[]') as PresetSummary[];
-    setCloudPresets(stored);
-  }, []);
-
+  // Handler for initial load (if ID defined)
   useEffect(() => {
     if (!id) return;
 
-    getPreset(id).then(presetData => {
-      dispatch(importDataAction(presetData));
-      lastSavedRef.current = JSON.parse(JSON.stringify(presetData));
-      setSelected(presetData.presetName);
-      setIsDirty(false);
-
-      if (typeof presetData.presetId === 'string' && typeof presetData.presetName === 'string') {
-        saveToRecentPresets({
-          presetId: presetData.presetId,
-          presetName: presetData.presetName
-        });
-      } else {
-        console.warn('Invalid presetData returned from getPreset():', presetData);
+    const fetchById = async () => {
+      try {
+        const { data, source } = await loadPresetById(id);
+        dispatch(importDataAction(data));
+        lastSavedRef.current = JSON.parse(JSON.stringify(data));
+        setSelected(data.presetName);
+        setRecentSelection(data.presetId!);
+        setMode(source);
+        setIsDirty(false);
+        addRecentPreset({ presetId: data.presetId!, presetName: data.presetName, source });
+      } catch {
+        enqueueSnackbar(`Preset not found for ID ${id}`, { variant: 'error' });
       }
-    });
-  }, [id, dispatch]);
+    };
+    fetchById();
+  }, [id, dispatch, enqueueSnackbar, setMode]);
+
+  // Handler for dropdown selection
+  const loadRecent = async (p: PresetSummary) => {
+    try {
+      const loader = p.source === 'local' ? LocalPresetStorage : CloudPresetStorage;
+      const data = await loader.getPreset(p.presetId);
+      dispatch(importDataAction(data));
+      setSelected(data.presetName);
+      setRecentSelection(data.presetId!);
+      setMode(p.source);
+      setIsDirty(false);
+      window.location.hash = `#/${data.presetId}`;
+    } catch {
+      enqueueSnackbar(`Failed to load ${p.presetName}`, { variant: 'error' });
+    }
+  };
 
   useEffect(() => {
     if (lastSavedRef.current) {
@@ -206,8 +224,8 @@ export const PresetMenu = (): JSX.Element => {
     if (!id) return setSaveAsOpen(true);
     setIsSaving(true);
     try {
-      await uploadPreset(preset, id);
-      saveToRecentPresets({ presetId: id, presetName: preset.presetName });
+      await getStorage().savePreset(preset, id);
+      addRecentPreset({ presetId: id!, presetName: preset.presetName, source: mode });
       setSelected(preset.presetName);
       lastSavedRef.current = JSON.parse(JSON.stringify(preset));
       setIsDirty(false);
@@ -220,15 +238,17 @@ export const PresetMenu = (): JSX.Element => {
   };
 
   const handleSaveAsSubmit = async (name: string) => {
+    setIsSaving(true);
     try {
       const payload = { ...preset, presetName: name };
-      const { id: newId } = await uploadPreset(payload);
-      saveToRecentPresets({ presetId: newId, presetName: name });
+      const newId = await getStorage().savePreset(payload);
+      addRecentPreset({ presetId: newId, presetName: name, source: mode });
       window.location.hash = `#/${newId}`;
       enqueueSnackbar('Preset cloned!', { variant: 'success' });
     } catch (err: any) {
       enqueueSnackbar(`Save As failed: ${err.message}`, { variant: 'error' });
     } finally {
+      setIsSaving(false);
       setSaveAsOpen(false);
     }
   };
@@ -238,18 +258,6 @@ export const PresetMenu = (): JSX.Element => {
     const url = `${FunctionURLs.presetEmbed}?id=${encodeURIComponent(id)}`;
     navigator.clipboard.writeText(url);
     enqueueSnackbar('Embed link copied!', { variant: 'success' });
-  };
-
-  const handleSelectCloud = async (e: any) => {
-    const name = e.target.value;
-    const found = cloudPresets.find(p => p.presetName === name);
-    if (!found) return;
-    const data = await getPreset(found.presetId);
-    lastSavedRef.current = JSON.parse(JSON.stringify(data));
-    dispatch(importDataAction(data));
-    window.location.hash = `#/${data.presetId}`;
-    setSelected(data.presetName);
-    setIsDirty(false);
   };
 
   const resetToBlankPreset = () => {
@@ -292,12 +300,16 @@ export const PresetMenu = (): JSX.Element => {
   };
 
   const handleNew = () => {
-    isDirty ? setConfirmDiscardOpen(true) : resetToBlankPreset();
+    if (isDirty) {
+      setConfirmDiscardOpen(true);
+    } else {
+      setSelectModeOpen(true);
+    }
   };
 
   const confirmNewPreset = () => {
     setConfirmDiscardOpen(false);
-    resetToBlankPreset();
+    setSelectModeOpen(true);
   };
 
   return (
@@ -306,43 +318,12 @@ export const PresetMenu = (): JSX.Element => {
         <Grid item md="auto">
           <Stack direction="row" spacing={3} alignItems="center">
             <Button onClick={handleNew} startIcon={<AddIcon />} variant="contained" size="medium">
-              New
+              New Preset
             </Button>
-            <FormControl size="small" sx={{ minWidth: 350 }}>
-              <InputLabel id="recent-label">Recent Presets</InputLabel>
-              <Select
-                labelId="recent-label"
-                value={selected || ''}
-                onChange={handleSelectCloud}
-                label="Recent Presets"
-                renderValue={(value) => <span>{value}</span>}
-                MenuProps={{ disableScrollLock: true }}
-              >
-                {cloudPresets.length === 0 ? (
-                  <MenuItem disabled>No recent presets</MenuItem>
-                ) : (
-                  cloudPresets.map(p => (
-                    <MenuItem key={p.presetId} value={p.presetName}>
-                      <Box display="flex" justifyContent="space-between" alignItems="center" width="100%">
-                        <span>{p.presetName}</span>
-                        <IconButton
-                          size="small"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            const updated = cloudPresets.filter(cp => cp.presetId !== p.presetId);
-                            localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(updated));
-                            setCloudPresets(updated);
-                            if (selected === p.presetName) setSelected('');
-                          }}
-                        >
-                          <CloseIcon fontSize="small" />
-                        </IconButton>
-                      </Box>
-                    </MenuItem>
-                  ))
-                )}
-              </Select>
-            </FormControl>
+            <RecentPresetDropdown
+              selected={recentSelection}
+              onSelect={loadRecent}
+            />
           </Stack>
         </Grid>
 
@@ -355,6 +336,32 @@ export const PresetMenu = (): JSX.Element => {
               Export
             </Button>
             <Menu anchorEl={anchorExport} open={Boolean(anchorExport)} onClose={() => setAnchorExport(null)} disableScrollLock>
+              {mode === 'local' && id && (
+                <>
+                  <MenuItem
+                    onClick={async () => {
+                      try {
+                        const newId = await CloudPresetStorage.savePreset(preset);
+                        addRecentPreset({ presetId: newId, presetName: preset.presetName, source: 'cloud' });
+                        localStorage.removeItem(`preset:${id}`);
+                        removeRecentPreset(id);
+                        window.location.hash = `#/${newId}`;
+                        setMode('cloud');
+                        enqueueSnackbar('Uploaded to cloud and removed local copy', { variant: 'success' });
+                      } catch (err: any) {
+                        enqueueSnackbar(`Failed to upload to cloud: ${err.message}`, { variant: 'error' });
+                      }
+                    }}
+                  >
+                    <ListItemIcon>
+                      <CloudIcon fontSize="small" />
+                    </ListItemIcon>
+                    <ListItemText primary="Upload to Cloud" />
+                  </MenuItem>
+                  <Divider />
+                </>
+              )}
+
               <MenuItem onClick={handleCopyEmbedLink} disabled={!id}>
                 <ListItemIcon><LinkIcon fontSize="small" /></ListItemIcon>
                 <ListItemText primary="Copy Embed Link" />
@@ -403,17 +410,18 @@ export const PresetMenu = (): JSX.Element => {
                   style={{ display: 'none' }}
                   onChange={handleFileUpload}
                 />
-              </MenuItem>            </Menu>
-              <Button
-                disabled={!isDirty || isSaving}
-                onClick={handleSave}
-                startIcon={isSaving ? undefined : <SaveIcon />}
-                variant="contained"
-                color="success"
-                size="medium"
-              >
-                {isSaving ? <CircularProgress size={20} color="inherit" /> : 'Save'}
-              </Button>
+              </MenuItem>
+            </Menu>
+            <Button
+              disabled={!isDirty || isSaving}
+              onClick={mode === 'local' ? handleSave : () => setSaveAsOpen(true)}
+              startIcon={isSaving ? undefined : <SaveIcon />}
+              variant="contained"
+              color="success"
+              size="medium"
+            >
+              {isSaving ? <CircularProgress size={20} color="inherit" /> : mode === 'local' ? 'Save' : 'Save As'}
+            </Button>
             <StatusChip isDirty={isDirty} />
           </Stack>
         </Grid>
@@ -444,6 +452,43 @@ export const PresetMenu = (): JSX.Element => {
           </Button>
         </DialogActions>
       </Dialog>
+
+      <Dialog open={selectModeOpen} onClose={() => setSelectModeOpen(false)}>
+        <DialogTitle>
+          <Stack direction="row" alignItems="center" spacing={1}>
+            <AddIcon />
+            <Typography variant="h6">New Preset</Typography>
+          </Stack>
+        </DialogTitle>
+        <DialogContent>
+          <Typography>Where should the new preset be stored?</Typography>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={() => setSelectModeOpen(false)}>Cancel</Button>
+          <Button
+            onClick={() => {
+              setMode('local');
+              resetToBlankPreset();
+              setSelectModeOpen(false);
+            }}
+            variant="contained"
+          >
+            Local
+          </Button>
+          <Button
+            onClick={() => {
+              setMode('cloud');
+              resetToBlankPreset();
+              setSelectModeOpen(false);
+            }}
+            variant="contained"
+            startIcon={<CloudIcon />}
+          >
+            Cloud
+          </Button>
+        </DialogActions>
+      </Dialog>
+
     </Paper>
   );
 };

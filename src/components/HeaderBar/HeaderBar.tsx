@@ -1,3 +1,5 @@
+// src/components/HeaderBar.tsx
+
 import { useSnackbar } from 'notistack';
 import React, { useCallback, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';

@@ -8,13 +8,8 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import TextField from '@mui/material/TextField';
 
-import { useAppDispatch, useAppSelector } from '../../redux/hooks';
-import {
-  selectPreset,
-  setPresetName
-} from '../../redux/store/reducers/preset-reducer';
-
-import { LocalStorage } from '../../store/local-storage';
+import { useAppDispatch } from '../../redux/hooks';
+import { setPresetName } from '../../redux/store/reducers/preset-reducer';
 import './SavePresetDialog.css';
 
 export enum SavePresetDialogState {
@@ -45,13 +40,6 @@ export const SavePresetDialog = ({
   const [name, setName] = useState<string>(defaultName || '');
   const [error, setError] = useState<boolean>(false);
 
-  const {
-    inventorySlots,
-    equipmentSlots,
-    relics,
-    familiars
-  } = useAppSelector(selectPreset);
-
   useEffect(() => {
     if (open) {
       setName(defaultName || '');
@@ -79,25 +67,11 @@ export const SavePresetDialog = ({
       }
 
       dispatch(setPresetName(name));
-
-      const didSave = LocalStorage.savePresetWithConfirmation({
-        presetName: name,
-        inventorySlots,
-        equipmentSlots,
-        relics,
-        familiars
-      });
-
-      if (didSave) {
-        enqueueSnackbar('Successfully saved your preset', {
-          variant: 'success'
-        });
-        onSave?.(name);
-      }
-
+      onSave?.(name);
+      enqueueSnackbar('Preset name set.', { variant: 'success' });
       onClose();
     },
-    [name, inventorySlots, equipmentSlots, relics, familiars, dispatch, enqueueSnackbar, onSave, onClose]
+    [name, dispatch, onSave, onClose, enqueueSnackbar]
   );
 
   const dialogTitle =
