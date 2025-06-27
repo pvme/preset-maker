@@ -5848,6 +5848,46 @@
 		"wikiLink": "https://runescape.wiki/w/Masterwork_helm"
 	},
 	{
+		"label": "masterworkmagicboots",
+		"image": "https://img.pvme.io/images/cBV2kLYpTX.png",
+		"name": "Masterwork magic boots",
+		"breakdownNotes": "",
+		"slot": 7,
+		"wikiLink": "https://runescape.wiki/w/Masterwork_magic_boots"
+	},
+	{
+		"label": "masterworkmagicgloves",
+		"image": "https://img.pvme.io/images/lGnJVtDZiF.png",
+		"name": "Masterwork magic gloves",
+		"breakdownNotes": "",
+		"slot": 6,
+		"wikiLink": "https://runescape.wiki/w/Masterwork_magic_gloves"
+	},
+	{
+		"label": "masterworkmagichat",
+		"image": "https://img.pvme.io/images/Cihr5OBloG.png",
+		"name": "Masterwork magic hat",
+		"breakdownNotes": "",
+		"slot": 1,
+		"wikiLink": "https://runescape.wiki/w/Masterwork_magic_hat"
+	},
+	{
+		"label": "masterworkmagicrobebottom",
+		"image": "https://img.pvme.io/images/5doAQqxFO1.png",
+		"name": "Masterwork magic robe bottom",
+		"breakdownNotes": "",
+		"slot": 3,
+		"wikiLink": "https://runescape.wiki/w/Masterwork_magic_robe_bottom"
+	},
+	{
+		"label": "masterworkmagicrobetop",
+		"image": "https://img.pvme.io/images/J3IPJAzIRE.png",
+		"name": "Masterwork magic robe top",
+		"breakdownNotes": "",
+		"slot": 2,
+		"wikiLink": "https://runescape.wiki/w/Masterwork_magic_robe_top"
+	},  
+	{
 		"label": "mwtop",
 		"image": "https://img.pvme.io/images/ALe1PIE.png",
 		"name": "Masterwork platebody",
@@ -6903,6 +6943,14 @@
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Portable_fairy_ring#inactive"
 	},
+	{
+		"label": "portentofdeath",
+		"image": "https://img.pvme.io/images/cMT0FGmJeS.png",
+		"name": "Portent of death",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Portent_of_death"
+	},  
 	{
 		"label": "portentitemprotection",
 		"image": "https://img.pvme.io/images/TFvRsJF.png",
