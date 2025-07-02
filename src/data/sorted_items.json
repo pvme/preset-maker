@@ -680,52 +680,12 @@
 		"wikiLink": "https://runescape.wiki/w/Ascension_crossbow"
 	},
 	{
-		"label": "primkey",
+		"label": "ascensionkeystone",
 		"image": "https://img.pvme.io/images/zcGK9BZ.png",
-		"name": "Ascension keystone primus",
+		"name": "Ascension Keystone",
 		"breakdownNotes": "",
 		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Ascension_keystone_primus"
-	},
-	{
-		"label": "quartkey",
-		"image": "https://img.pvme.io/images/mfKIlJ5.png",
-		"name": "Ascension keystone quartus",
-		"breakdownNotes": "",
-		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Ascension_keystone_quartus"
-	},
-	{
-		"label": "quinkey",
-		"image": "https://img.pvme.io/images/DaDiMWv.png",
-		"name": "Ascension keystone quintus",
-		"breakdownNotes": "",
-		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Ascension_keystone_quintus"
-	},
-	{
-		"label": "seckey",
-		"image": "https://img.pvme.io/images/sepfJZf.png",
-		"name": "Ascension keystone secundus",
-		"breakdownNotes": "",
-		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Ascension_keystone_secundus"
-	},
-	{
-		"label": "sextkey",
-		"image": "https://img.pvme.io/images/hEb9765.png",
-		"name": "Ascension keystone sextus",
-		"breakdownNotes": "",
-		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Ascension_keystone_sextus"
-	},
-	{
-		"label": "tertkey",
-		"image": "https://img.pvme.io/images/gnYVyY0.png",
-		"name": "Ascension keystone tertius",
-		"breakdownNotes": "",
-		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Ascension_keystone_tertius"
+		"wikiLink": "https://runescape.wiki/w/Ascension_Keystone"
 	},
 	{
 		"label": "ascshard",
