@@ -680,52 +680,12 @@
 		"wikiLink": "https://runescape.wiki/w/Ascension_crossbow"
 	},
 	{
-		"label": "primkey",
+		"label": "ascensionkeystone",
 		"image": "https://img.pvme.io/images/zcGK9BZ.png",
-		"name": "Ascension keystone primus",
+		"name": "Ascension Keystone",
 		"breakdownNotes": "",
 		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Ascension_keystone_primus"
-	},
-	{
-		"label": "quartkey",
-		"image": "https://img.pvme.io/images/mfKIlJ5.png",
-		"name": "Ascension keystone quartus",
-		"breakdownNotes": "",
-		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Ascension_keystone_quartus"
-	},
-	{
-		"label": "quinkey",
-		"image": "https://img.pvme.io/images/DaDiMWv.png",
-		"name": "Ascension keystone quintus",
-		"breakdownNotes": "",
-		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Ascension_keystone_quintus"
-	},
-	{
-		"label": "seckey",
-		"image": "https://img.pvme.io/images/sepfJZf.png",
-		"name": "Ascension keystone secundus",
-		"breakdownNotes": "",
-		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Ascension_keystone_secundus"
-	},
-	{
-		"label": "sextkey",
-		"image": "https://img.pvme.io/images/hEb9765.png",
-		"name": "Ascension keystone sextus",
-		"breakdownNotes": "",
-		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Ascension_keystone_sextus"
-	},
-	{
-		"label": "tertkey",
-		"image": "https://img.pvme.io/images/gnYVyY0.png",
-		"name": "Ascension keystone tertius",
-		"breakdownNotes": "",
-		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Ascension_keystone_tertius"
+		"wikiLink": "https://runescape.wiki/w/Ascension_Keystone"
 	},
 	{
 		"label": "ascshard",
@@ -4081,7 +4041,7 @@
 	},
 	{
 		"label": "graspingpouch",
-		"image": "https://img.pvme.io/images/Mk7jbjC.png",
+		"image": "https://img.pvme.io/images/WkFQ7nSUa3.png",
 		"name": "Grasping rune pouch",
 		"breakdownNotes": "",
 		"slot": 9,
@@ -4089,7 +4049,7 @@
 	},
 	{
 		"label": "graspingpouchblack",
-		"image": "https://img.pvme.io/images/hvhOeDs.png",
+		"image": "https://img.pvme.io/images/hxQ7DadacM.png",
 		"name": "Grasping rune pouch (black)",
 		"breakdownNotes": "Blood | Astral | Body | Soul",
 		"slot": 9,
@@ -4097,7 +4057,7 @@
 	},
 	{
 		"label": "graspingpouchblue",
-		"image": "https://img.pvme.io/images/gDZtYb4.png",
+		"image": "https://img.pvme.io/images/1JjM2xHyOj.png",
 		"name": "Grasping rune pouch (blue)",
 		"breakdownNotes": "Chaos | Air | Water | Fire",
 		"slot": 9,
@@ -4105,7 +4065,7 @@
 	},
 	{
 		"label": "graspingpouchgreen",
-		"image": "https://img.pvme.io/images/fWzGXLF.png",
+		"image": "https://img.pvme.io/images/9F4FESqkFm.png",
 		"name": "Grasping rune pouch (green)",
 		"breakdownNotes": "Time | Nature | Air | Earth",
 		"slot": 9,
@@ -4113,7 +4073,7 @@
 	},
 	{
 		"label": "graspingpouchorange",
-		"image": "https://img.pvme.io/images/9JNBvSP.png",
+		"image": "https://img.pvme.io/images/0fSMdoXHBT.png",
 		"name": "Grasping rune pouch (orange)",
 		"breakdownNotes": "",
 		"slot": 9,
@@ -4121,7 +4081,7 @@
 	},
 	{
 		"label": "graspingpouchpink",
-		"image": "https://img.pvme.io/images/yrnlR2T.png",
+		"image": "https://img.pvme.io/images/cMrBUILe61.png",
 		"name": "Grasping rune pouch (pink)",
 		"breakdownNotes": "Death | Earth | Law | Cosmic",
 		"slot": 9,
@@ -4129,7 +4089,7 @@
 	},
 	{
 		"label": "graspingpouchpurple",
-		"image": "https://img.pvme.io/images/gCf8SPg.png",
+		"image": "https://img.pvme.io/images/bpCcM3PORS.png",
 		"name": "Grasping rune pouch (purple)",
 		"breakdownNotes": "",
 		"slot": 9,
@@ -4137,7 +4097,7 @@
 	},
 	{
 		"label": "graspingpouchred",
-		"image": "https://img.pvme.io/images/6nJNred.png",
+		"image": "https://img.pvme.io/images/t6fjalFfk9.png",
 		"name": "Grasping rune pouch (red)",
 		"breakdownNotes": "",
 		"slot": 9,
@@ -4145,7 +4105,7 @@
 	},
 	{
 		"label": "graspingpouchyellow",
-		"image": "https://img.pvme.io/images/N1tQnRc.png",
+		"image": "https://img.pvme.io/images/iGpAq6ZDZM.png",
 		"name": "Grasping rune pouch (yellow)",
 		"breakdownNotes": "",
 		"slot": 9,
@@ -5848,6 +5808,46 @@
 		"wikiLink": "https://runescape.wiki/w/Masterwork_helm"
 	},
 	{
+		"label": "masterworkmagicboots",
+		"image": "https://img.pvme.io/images/cBV2kLYpTX.png",
+		"name": "Masterwork magic boots",
+		"breakdownNotes": "",
+		"slot": 7,
+		"wikiLink": "https://runescape.wiki/w/Masterwork_magic_boots"
+	},
+	{
+		"label": "masterworkmagicgloves",
+		"image": "https://img.pvme.io/images/lGnJVtDZiF.png",
+		"name": "Masterwork magic gloves",
+		"breakdownNotes": "",
+		"slot": 6,
+		"wikiLink": "https://runescape.wiki/w/Masterwork_magic_gloves"
+	},
+	{
+		"label": "masterworkmagichat",
+		"image": "https://img.pvme.io/images/Cihr5OBloG.png",
+		"name": "Masterwork magic hat",
+		"breakdownNotes": "",
+		"slot": 1,
+		"wikiLink": "https://runescape.wiki/w/Masterwork_magic_hat"
+	},
+	{
+		"label": "masterworkmagicrobebottom",
+		"image": "https://img.pvme.io/images/5doAQqxFO1.png",
+		"name": "Masterwork magic robe bottom",
+		"breakdownNotes": "",
+		"slot": 3,
+		"wikiLink": "https://runescape.wiki/w/Masterwork_magic_robe_bottom"
+	},
+	{
+		"label": "masterworkmagicrobetop",
+		"image": "https://img.pvme.io/images/J3IPJAzIRE.png",
+		"name": "Masterwork magic robe top",
+		"breakdownNotes": "",
+		"slot": 2,
+		"wikiLink": "https://runescape.wiki/w/Masterwork_magic_robe_top"
+	},  
+	{
 		"label": "mwtop",
 		"image": "https://img.pvme.io/images/ALe1PIE.png",
 		"name": "Masterwork platebody",
@@ -6903,6 +6903,14 @@
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Portable_fairy_ring#inactive"
 	},
+	{
+		"label": "portentofdeath",
+		"image": "https://img.pvme.io/images/cMT0FGmJeS.png",
+		"name": "Portent of death",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Portent_of_death"
+	},  
 	{
 		"label": "portentitemprotection",
 		"image": "https://img.pvme.io/images/TFvRsJF.png",
