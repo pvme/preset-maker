@@ -18,12 +18,23 @@ import {
 } from '../../utility/export-to-png';
 
 import './PresetBreakdown.css';
+import { FormControlLabel, Switch } from '@mui/material';
+import { AppMode, getMode } from '../../redux/store/reducers/setting-reducer';
 
 // This is used to map the equipmentSlots array (0-12) to a column
 // Used in getMappedEquipment
 const customOrder: number[] = [0, 4, 6, 7, 8, 2, 9, 1, 3, 5, 10, 11, 12];
 
 const clipboardSupported = canCopyImagesToClipboard();
+
+const itemHasBreakdownNotes = (item: ItemData): boolean => {
+  if (item.breakdownNotes === undefined || item.breakdownNotes === null) {
+    return false;
+  }
+
+  // For some reason, some breakdown notes have a line break inserted
+  return item.breakdownNotes.trim().length > 0 && item.breakdownNotes !== '<br />';
+};
 
 export const PresetBreakdown = (): JSX.Element => {
   const exportRef = useRef<HTMLDivElement>(null);
@@ -32,6 +43,9 @@ export const PresetBreakdown = (): JSX.Element => {
   const [uniqueInventoryItems, setUniqueInventoryItems] =
     useState<ItemData[]>();
 
+  const [hideEmptySlots, setHideEmptySlots] = useState(false);
+
+  const mode = useAppSelector(getMode);
   const {
     presetName: name,
     inventorySlots,
@@ -47,7 +61,10 @@ export const PresetBreakdown = (): JSX.Element => {
         reorderedArray[i] = equipmentSlots[orderIndex];
       }
 
-      setMappedEquipment(reorderedArray);
+      const filteredArray = reorderedArray
+        .filter((item) => !hideEmptySlots || (itemHasBreakdownNotes(item)));
+
+      setMappedEquipment(filteredArray);
     };
 
     const getUniqueInventoryItems = (): void => {
@@ -57,12 +74,15 @@ export const PresetBreakdown = (): JSX.Element => {
         );
       });
 
-      setUniqueInventoryItems(uniqueItemData);
+      const filteredArray = uniqueItemData
+        .filter((item) => !hideEmptySlots || (itemHasBreakdownNotes(item)));
+
+      setUniqueInventoryItems(filteredArray);
     };
 
     getMappedEquipment();
     getUniqueInventoryItems();
-  }, [inventorySlots, equipmentSlots]);
+  }, [inventorySlots, equipmentSlots, hideEmptySlots]);
 
   const exportBreakdown = useCallback(async () => {
     await exportAsImage(
@@ -89,6 +109,11 @@ export const PresetBreakdown = (): JSX.Element => {
 
   return (
     <div className="breakdown-container">
+      <FormControlLabel
+        control={<Switch onChange={(event) => { setHideEmptySlots(event.target.checked); }} />}
+        label="Hide items without notes"
+      />
+      {mode === AppMode.Edit && (
       <div className="breakdown-header desktop-only">
         <Button
           className="breakdown-button"
@@ -112,6 +137,7 @@ export const PresetBreakdown = (): JSX.Element => {
           </Button>
         </ClipboardCopyButtonContainer>
       </div>
+      )}
       <div className="breakdown-inner-container" ref={exportRef}>
         <div className="equipment-breakdown-container--equipment">
           <List className="breakdown-list" dense>
