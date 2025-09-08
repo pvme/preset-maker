@@ -1303,6 +1303,14 @@
 		"slot": 7,
 		"wikiLink": "https://runescape.wiki/w/Boots_of_Trials"
 	},
+ 	{
+		"label": "tumekenboots",
+		"image": "https://img.pvme.io/images/OBTrhWAa2M.png",
+		"name": "Boots of Tumeken's resplendence",
+		"breakdownNotes": "",
+		"slot": 7,
+		"wikiLink": "https://runescape.wiki/w/Boots_of_Tumeken%27s_resplendence"
+	}, 
 	{
 		"label": "subjboots",
 		"image": "https://img.pvme.io/images/7XWA1eE.png",
@@ -2383,6 +2391,14 @@
 		"slot": 10,
 		"wikiLink": "https://runescape.wiki/w/Desert_amulet_4"
 	},
+ 	{
+		"label": "devourersguard",
+		"image": "https://img.pvme.io/images/4JhPfydPPJ.png",
+		"name": "Devourer's Guard",
+		"breakdownNotes": "",
+		"slot": 4,
+		"wikiLink": "https://runescape.wiki/w/Devourer%27s_Guard"
+	}, 
 	{
 		"label": "diamond",
 		"image": "https://img.pvme.io/images/s637l2j.png",
@@ -3943,6 +3959,14 @@
 		"slot": 6,
 		"wikiLink": "https://runescape.wiki/w/Gloves_of_subjugation"
 	},
+ 	{
+		"label": "tumekengloves",
+		"image": "https://img.pvme.io/images/T28B23e7Kl.png",
+		"name": "Gloves of Tumeken's resplendence",
+		"breakdownNotes": "",
+		"slot": 6,
+		"wikiLink": "https://runescape.wiki/w/Gloves_of_Tumeken%27s_resplendence"
+	}, 
 	{
 		"label": "goblinvillagesphere",
 		"image": "https://img.pvme.io/images/4FOxSHk.png",
@@ -5590,6 +5614,14 @@
 		"breakdownNotes": "",
 		"slot": 1,
 		"wikiLink": "https://runescape.wiki/w/Mask_of_the_Kura"
+	},
+  {
+		"label": "tumekenmask",
+		"image": "https://img.pvme.io/images/pPm6gvnblB.png",
+		"name": "Mask of Tumeken's resplendence",
+		"breakdownNotes": "",
+		"slot": 1,
+		"wikiLink": "https://runescape.wiki/w/Mask_of_Tumeken%27s_resplendence"
 	},
 	{
 		"label": "masterarchaeologistsjacket",
@@ -7367,6 +7399,14 @@
 		"slot": 3,
 		"wikiLink": "https://runescape.wiki/w/Robe_bottom_of_the_First_Necromancer"
 	},
+ 	{
+		"label": "tumekenrobebottom",
+		"image": "https://img.pvme.io/images/ozNOXe1k1t.png",
+		"name": "Robe bottom of Tumeken's resplendence",
+		"breakdownNotes": "",
+		"slot": 3,
+		"wikiLink": "https://runescape.wiki/w/Robe_bottom_of_Tumeken%27s_resplendence"
+	}, 
 	{
 		"label": "t95necrotop",
 		"image": "https://img.pvme.io/images/VwEHIYQ.png",
@@ -7375,6 +7415,14 @@
 		"slot": 2,
 		"wikiLink": "https://runescape.wiki/w/Robe_top_of_the_First_Necromancer"
 	},
+ 	{
+		"label": "tumekenrobetop",
+		"image": "https://img.pvme.io/images/pNqN5aiYwr.png",
+		"name": "Robe top of Tumeken's resplendence",
+		"breakdownNotes": "",
+		"slot": 2,
+		"wikiLink": "https://runescape.wiki/w/Robe_top_of_Tumeken%27s_resplendence"
+	}, 
 	{
 		"label": "rockcrushingscrimshaw",
 		"image": "https://img.pvme.io/images/caaJeHr.png",
@@ -8783,6 +8831,14 @@
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Tetracompass_(powered)"
 	},
+ 	{
+		"label": "devourersnexus",
+		"image": "https://img.pvme.io/images/eirYlnU.png",
+		"name": "The Devourer's Nexus",
+		"breakdownNotes": "",
+		"slot": 9,
+		"wikiLink": "https://runescape.wiki/w/The_Devourer%27s_Nexus"
+	}, 
 	{
 		"label": "theheartteleport",
 		"image": "https://img.pvme.io/images/eirYlnU.png",
@@ -9023,6 +9079,14 @@
 		"slot": 3,
 		"wikiLink": "https://runescape.wiki/w/Trimmed_masterwork_platelegs"
 	},
+ 	{
+		"label": "tumekenslight",
+		"image": "https://img.pvme.io/images/lVVjHYAmiS.png",
+		"name": "Tumeken's Light",
+		"breakdownNotes": "",
+		"slot": 4,
+		"wikiLink": "https://runescape.wiki/w/Tumeken%27s_Light"
+	}, 
 	{
 		"label": "ugthankidung",
 		"image": "https://img.pvme.io/images/PrcTHTb.png",
