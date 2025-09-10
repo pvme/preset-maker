@@ -1880,6 +1880,14 @@
 		"wikiLink": "https://runescape.wiki/w/Cywir_wand"
 	},
 	{
+		"label": "dksteleport",
+		"image": "https://img.pvme.io/images/WybIH5cKeP.png",
+		"name": "Dagannoth Kings teleport",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Dagannoth_Kings_teleport"
+	},
+	{
 		"label": "damagedarmournoted",
 		"image": "https://img.pvme.io/images/qzQyPALQRN.png",
 		"name": "Damaged armour (noted)",
@@ -1966,6 +1974,14 @@
 		"breakdownNotes": "",
 		"slot": 13,
 		"wikiLink": "https://runescape.wiki/w/Dave's_spellbook"
+	},
+	{
+		"label": "deacondemonpouch",
+		"image": "https://img.pvme.io/images/5MZPj7F7ip.png",
+		"name": "Deacon demon pouch",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Deacon_demon_pouch"
 	},
 	{
 		"label": "deathguardt70",
@@ -2838,6 +2854,14 @@
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Earth_rune"
+	},
+	{
+		"label": "easternanachroniateleport",
+		"image": "https://img.pvme.io/images/93sRx4RSK3.png",
+		"name": "Eastern anachronia teleport",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Eastern_anachronia_teleport_(item)"
 	},
 	{
 		"label": "easyclue",
@@ -5256,6 +5280,14 @@
 		"wikiLink": "https://runescape.wiki/w/Legendary_tracker_aura"
 	},
 	{
+		"label": "lesserdemonscrolls500",
+		"image": "https://img.pvme.io/images/2SKjqYspC4.png",
+		"name": "Lesser Demon scroll (Ring of Fire)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Lesser_Demon_scroll_(Ring_of_Fire)"
+	},
+	{
 		"label": "leviathanring",
 		"image": "https://img.pvme.io/images/OwpbyOe.png",
 		"name": "Leviathan ring",
@@ -6238,6 +6270,22 @@
 		"breakdownNotes": "",
 		"slot": 3,
 		"wikiLink": "https://runescape.wiki/w/Nimble_legwear"
+	},
+	{
+		"label": "nwanachroniateleport",
+		"image": "https://img.pvme.io/images/XLJvjJIgx1.png",
+		"name": "North-western anachronia teleport",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/North-western_anachronia_teleport_(item)"
+	},
+	{
+		"label": "northernlostgroveteleport",
+		"image": "https://img.pvme.io/images/A6NgrUVPcC.png",
+		"name": "Northern lost grove teleport",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Northern_lost_grove_teleport_(item)"
 	},
 	{
 		"label": "noteditems",
