@@ -9016,14 +9016,6 @@
 		"wikiLink": "https://runescape.wiki/w/Tokkul-zo"
 	},
 	{
-		"label": "tomeofum2",
-		"image": "https://img.pvme.io/images/ITR8cN1.png",
-		"name": "Tome of Um 2",
-		"breakdownNotes": "",
-		"slot": 13,
-		"wikiLink": "https://runescape.wiki/w/Tome_of_Um_2"
-	},
-	{
 		"label": "grimpage",
 		"image": "https://img.pvme.io/images/wD7BGd2.png",
 		"name": "Torn grimoire page",
@@ -9166,6 +9158,14 @@
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Uncut_opal"
+	},
+	{
+		"label": "underworldgrimoire2",
+		"image": "https://img.pvme.io/images/ITR8cN1.png",
+		"name": "Underworld Grimoire 2",
+		"breakdownNotes": "",
+		"slot": 13,
+		"wikiLink": "https://runescape.wiki/w/Underworld_Grimoire_2"
 	},
 	{
 		"label": "underworldgrimoire4",
