@@ -61,7 +61,7 @@
 	},
 	{
 		"label": "icenihil",
-		"image": "https://img.pvme.io/images/PXt50t7.png",
+		"image": "https://img.pvme.io/images/es9PExMDy1.png",
 		"name": "Ice Nihil",
 		"breakdownNotes": ""
 	},
@@ -75,6 +75,12 @@
 		"label": "legendpetscav",
 		"image": "https://img.pvme.io/images/KWIawjY.png",
 		"name": "Legendary Pet (Scavenge)",
+		"breakdownNotes": ""
+	},
+	{
+		"label": "lesserdemondeacon",
+		"image": "https://img.pvme.io/images/exNEDsDd7B.png",
+		"name": "Lesser demon deacon",
 		"breakdownNotes": ""
 	},
 	{
@@ -133,7 +139,7 @@
 	},
 	{
 		"label": "waterfiend",
-		"image": "https://img.pvme.io/images/Br1FoaP0EC.png",
+		"image": "https://img.pvme.io/images/ocq8xfZoLV.png",
 		"name": "Waterfiend",
 		"breakdownNotes": ""
 	}

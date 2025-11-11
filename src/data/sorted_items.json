@@ -664,6 +664,14 @@
 		"wikiLink": "https://runescape.wiki/w/Ascendri_bolts_(e)"
 	},
 	{
+		"label": "ascensionkeystone",
+		"image": "https://img.pvme.io/images/zcGK9BZ.png",
+		"name": "Ascension Keystone",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Ascension_Keystone"
+	},
+	{
 		"label": "ascbolts",
 		"image": "https://img.pvme.io/images/qrqZ9ZH.png",
 		"name": "Ascension bolts",
@@ -678,54 +686,6 @@
 		"breakdownNotes": "",
 		"slot": 4,
 		"wikiLink": "https://runescape.wiki/w/Ascension_crossbow"
-	},
-	{
-		"label": "primkey",
-		"image": "https://img.pvme.io/images/zcGK9BZ.png",
-		"name": "Ascension keystone primus",
-		"breakdownNotes": "",
-		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Ascension_keystone_primus"
-	},
-	{
-		"label": "quartkey",
-		"image": "https://img.pvme.io/images/mfKIlJ5.png",
-		"name": "Ascension keystone quartus",
-		"breakdownNotes": "",
-		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Ascension_keystone_quartus"
-	},
-	{
-		"label": "quinkey",
-		"image": "https://img.pvme.io/images/DaDiMWv.png",
-		"name": "Ascension keystone quintus",
-		"breakdownNotes": "",
-		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Ascension_keystone_quintus"
-	},
-	{
-		"label": "seckey",
-		"image": "https://img.pvme.io/images/sepfJZf.png",
-		"name": "Ascension keystone secundus",
-		"breakdownNotes": "",
-		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Ascension_keystone_secundus"
-	},
-	{
-		"label": "sextkey",
-		"image": "https://img.pvme.io/images/hEb9765.png",
-		"name": "Ascension keystone sextus",
-		"breakdownNotes": "",
-		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Ascension_keystone_sextus"
-	},
-	{
-		"label": "tertkey",
-		"image": "https://img.pvme.io/images/gnYVyY0.png",
-		"name": "Ascension keystone tertius",
-		"breakdownNotes": "",
-		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Ascension_keystone_tertius"
 	},
 	{
 		"label": "ascshard",
@@ -1344,6 +1304,14 @@
 		"wikiLink": "https://runescape.wiki/w/Boots_of_Trials"
 	},
 	{
+		"label": "tumekenboots",
+		"image": "https://img.pvme.io/images/OBTrhWAa2M.png",
+		"name": "Boots of Tumeken's resplendence",
+		"breakdownNotes": "",
+		"slot": 7,
+		"wikiLink": "https://runescape.wiki/w/Boots_of_Tumeken%27s_resplendence"
+	},
+	{
 		"label": "subjboots",
 		"image": "https://img.pvme.io/images/7XWA1eE.png",
 		"name": "Boots of subjugation",
@@ -1912,6 +1880,14 @@
 		"wikiLink": "https://runescape.wiki/w/Cywir_wand"
 	},
 	{
+		"label": "dksteleport",
+		"image": "https://img.pvme.io/images/WybIH5cKeP.png",
+		"name": "Dagannoth Kings teleport",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Dagannoth_Kings_teleport"
+	},
+	{
 		"label": "damagedarmournoted",
 		"image": "https://img.pvme.io/images/qzQyPALQRN.png",
 		"name": "Damaged armour (noted)",
@@ -1998,6 +1974,14 @@
 		"breakdownNotes": "",
 		"slot": 13,
 		"wikiLink": "https://runescape.wiki/w/Dave's_spellbook"
+	},
+	{
+		"label": "deacondemonpouch",
+		"image": "https://img.pvme.io/images/5MZPj7F7ip.png",
+		"name": "Deacon demon pouch",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Deacon_demon_pouch"
 	},
 	{
 		"label": "deathguardt70",
@@ -2422,6 +2406,14 @@
 		"breakdownNotes": "",
 		"slot": 10,
 		"wikiLink": "https://runescape.wiki/w/Desert_amulet_4"
+	},
+	{
+		"label": "devourersguard",
+		"image": "https://img.pvme.io/images/4JhPfydPPJ.png",
+		"name": "Devourer's Guard",
+		"breakdownNotes": "",
+		"slot": 4,
+		"wikiLink": "https://runescape.wiki/w/Devourer%27s_Guard"
 	},
 	{
 		"label": "diamond",
@@ -2862,6 +2854,14 @@
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Earth_rune"
+	},
+	{
+		"label": "easternanachroniateleport",
+		"image": "https://img.pvme.io/images/93sRx4RSK3.png",
+		"name": "Eastern anachronia teleport",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Eastern_anachronia_teleport_(item)"
 	},
 	{
 		"label": "easyclue",
@@ -3312,14 +3312,6 @@
 		"wikiLink": "https://runescape.wiki/w/Iban%27s_staff"
 	},
 	{
-		"label": "eofredunorn",
-		"image": "https://img.pvme.io/images/yUkClNY.png",
-		"name": "EoF - Armadyl battlestaff",
-		"breakdownNotes": "",
-		"slot": 10,
-		"wikiLink": "https://runescape.wiki/w/Armadyl_battlestaff"
-	},
-	{
 		"label": "eofyellowunorn",
 		"image": "https://img.pvme.io/images/YR6pLdv.png",
 		"name": "EoF - Dark bow",
@@ -3350,14 +3342,6 @@
 		"breakdownNotes": "",
 		"slot": 10,
 		"wikiLink": "https://runescape.wiki/w/Dragon_claws"
-	},
-	{
-		"label": "eofor",
-		"image": "https://img.pvme.io/images/xPypDhQ.png",
-		"name": "EoF - Ek-ZekKil",
-		"breakdownNotes": "",
-		"slot": 10,
-		"wikiLink": "https://runescape.wiki/w/Ek-ZekKil"
 	},
 	{
 		"label": "eofpink",
@@ -3440,12 +3424,28 @@
 		"wikiLink": "https://runescape.wiki/w/Essence_of_Finality_amulet_(green)"
 	},
 	{
+		"label": "eofor",
+		"image": "https://img.pvme.io/images/xPypDhQ.png",
+		"name": "Essence of Finality amulet (ornament)",
+		"breakdownNotes": "",
+		"slot": 10,
+		"wikiLink": "https://runescape.wiki/w/Essence_of_Finality_amulet_(or)"
+	},
+	{
 		"label": "eofpinkunorn",
 		"image": "https://img.pvme.io/images/tzIqWlO.png",
 		"name": "Essence of Finality amulet (pink)",
 		"breakdownNotes": "",
 		"slot": 10,
 		"wikiLink": "https://runescape.wiki/w/Essence_of_Finality_amulet_(pink)"
+	},
+	{
+		"label": "eofredunorn",
+		"image": "https://img.pvme.io/images/yUkClNY.png",
+		"name": "Essence of Finality amulet (red)",
+		"breakdownNotes": "",
+		"slot": 10,
+		"wikiLink": "https://runescape.wiki/w/Essence_of_Finality_amulet_(red)"
 	},
 	{
 		"label": "spices",
@@ -3968,6 +3968,14 @@
 		"wikiLink": "https://runescape.wiki/w/Globetrotter_shorts"
 	},
 	{
+		"label": "tumekengloves",
+		"image": "https://img.pvme.io/images/T28B23e7Kl.png",
+		"name": "Gloves of Tumeken's resplendence",
+		"breakdownNotes": "",
+		"slot": 6,
+		"wikiLink": "https://runescape.wiki/w/Gloves_of_Tumeken%27s_resplendence"
+	},
+	{
 		"label": "glovesofpassage",
 		"image": "https://img.pvme.io/images/U4Wa7vb.png",
 		"name": "Gloves of passage",
@@ -4081,7 +4089,7 @@
 	},
 	{
 		"label": "graspingpouch",
-		"image": "https://img.pvme.io/images/Mk7jbjC.png",
+		"image": "https://img.pvme.io/images/WkFQ7nSUa3.png",
 		"name": "Grasping rune pouch",
 		"breakdownNotes": "",
 		"slot": 9,
@@ -4089,7 +4097,7 @@
 	},
 	{
 		"label": "graspingpouchblack",
-		"image": "https://img.pvme.io/images/hvhOeDs.png",
+		"image": "https://img.pvme.io/images/hxQ7DadacM.png",
 		"name": "Grasping rune pouch (black)",
 		"breakdownNotes": "Blood | Astral | Body | Soul",
 		"slot": 9,
@@ -4097,7 +4105,7 @@
 	},
 	{
 		"label": "graspingpouchblue",
-		"image": "https://img.pvme.io/images/gDZtYb4.png",
+		"image": "https://img.pvme.io/images/1JjM2xHyOj.png",
 		"name": "Grasping rune pouch (blue)",
 		"breakdownNotes": "Chaos | Air | Water | Fire",
 		"slot": 9,
@@ -4105,7 +4113,7 @@
 	},
 	{
 		"label": "graspingpouchgreen",
-		"image": "https://img.pvme.io/images/fWzGXLF.png",
+		"image": "https://img.pvme.io/images/9F4FESqkFm.png",
 		"name": "Grasping rune pouch (green)",
 		"breakdownNotes": "Time | Nature | Air | Earth",
 		"slot": 9,
@@ -4113,7 +4121,7 @@
 	},
 	{
 		"label": "graspingpouchorange",
-		"image": "https://img.pvme.io/images/9JNBvSP.png",
+		"image": "https://img.pvme.io/images/0fSMdoXHBT.png",
 		"name": "Grasping rune pouch (orange)",
 		"breakdownNotes": "",
 		"slot": 9,
@@ -4121,7 +4129,7 @@
 	},
 	{
 		"label": "graspingpouchpink",
-		"image": "https://img.pvme.io/images/yrnlR2T.png",
+		"image": "https://img.pvme.io/images/cMrBUILe61.png",
 		"name": "Grasping rune pouch (pink)",
 		"breakdownNotes": "Death | Earth | Law | Cosmic",
 		"slot": 9,
@@ -4129,7 +4137,7 @@
 	},
 	{
 		"label": "graspingpouchpurple",
-		"image": "https://img.pvme.io/images/gCf8SPg.png",
+		"image": "https://img.pvme.io/images/bpCcM3PORS.png",
 		"name": "Grasping rune pouch (purple)",
 		"breakdownNotes": "",
 		"slot": 9,
@@ -4137,7 +4145,7 @@
 	},
 	{
 		"label": "graspingpouchred",
-		"image": "https://img.pvme.io/images/6nJNred.png",
+		"image": "https://img.pvme.io/images/t6fjalFfk9.png",
 		"name": "Grasping rune pouch (red)",
 		"breakdownNotes": "",
 		"slot": 9,
@@ -4145,7 +4153,7 @@
 	},
 	{
 		"label": "graspingpouchyellow",
-		"image": "https://img.pvme.io/images/N1tQnRc.png",
+		"image": "https://img.pvme.io/images/iGpAq6ZDZM.png",
 		"name": "Grasping rune pouch (yellow)",
 		"breakdownNotes": "",
 		"slot": 9,
@@ -5272,6 +5280,14 @@
 		"wikiLink": "https://runescape.wiki/w/Legendary_tracker_aura"
 	},
 	{
+		"label": "lesserdemonscrolls500",
+		"image": "https://img.pvme.io/images/2SKjqYspC4.png",
+		"name": "Lesser Demon scroll (Ring of Fire)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Lesser_Demon_scroll_(Ring_of_Fire)"
+	},
+	{
 		"label": "leviathanring",
 		"image": "https://img.pvme.io/images/OwpbyOe.png",
 		"name": "Leviathan ring",
@@ -5584,6 +5600,14 @@
 		"wikiLink": "https://runescape.wiki/w/Mask_of_Reflection"
 	},
 	{
+		"label": "tumekenmask",
+		"image": "https://img.pvme.io/images/pPm6gvnblB.png",
+		"name": "Mask of Tumeken's resplendence",
+		"breakdownNotes": "",
+		"slot": 1,
+		"wikiLink": "https://runescape.wiki/w/Mask_of_Tumeken%27s_resplendence"
+	},
+	{
 		"label": "abyssalmask",
 		"image": "https://img.pvme.io/images/VTRqx5Y.png",
 		"name": "Mask of the Abyss",
@@ -5846,6 +5870,46 @@
 		"breakdownNotes": "",
 		"slot": 1,
 		"wikiLink": "https://runescape.wiki/w/Masterwork_helm"
+	},
+	{
+		"label": "masterworkmagicboots",
+		"image": "https://img.pvme.io/images/cBV2kLYpTX.png",
+		"name": "Masterwork magic boots",
+		"breakdownNotes": "",
+		"slot": 7,
+		"wikiLink": "https://runescape.wiki/w/Masterwork_magic_boots"
+	},
+	{
+		"label": "masterworkmagicgloves",
+		"image": "https://img.pvme.io/images/lGnJVtDZiF.png",
+		"name": "Masterwork magic gloves",
+		"breakdownNotes": "",
+		"slot": 6,
+		"wikiLink": "https://runescape.wiki/w/Masterwork_magic_gloves"
+	},
+	{
+		"label": "masterworkmagichat",
+		"image": "https://img.pvme.io/images/Cihr5OBloG.png",
+		"name": "Masterwork magic hat",
+		"breakdownNotes": "",
+		"slot": 1,
+		"wikiLink": "https://runescape.wiki/w/Masterwork_magic_hat"
+	},
+	{
+		"label": "masterworkmagicrobebottom",
+		"image": "https://img.pvme.io/images/5doAQqxFO1.png",
+		"name": "Masterwork magic robe bottom",
+		"breakdownNotes": "",
+		"slot": 3,
+		"wikiLink": "https://runescape.wiki/w/Masterwork_magic_robe_bottom"
+	},
+	{
+		"label": "masterworkmagicrobetop",
+		"image": "https://img.pvme.io/images/J3IPJAzIRE.png",
+		"name": "Masterwork magic robe top",
+		"breakdownNotes": "",
+		"slot": 2,
+		"wikiLink": "https://runescape.wiki/w/Masterwork_magic_robe_top"
 	},
 	{
 		"label": "mwtop",
@@ -6206,6 +6270,22 @@
 		"breakdownNotes": "",
 		"slot": 3,
 		"wikiLink": "https://runescape.wiki/w/Nimble_legwear"
+	},
+	{
+		"label": "nwanachroniateleport",
+		"image": "https://img.pvme.io/images/XLJvjJIgx1.png",
+		"name": "North-western anachronia teleport",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/North-western_anachronia_teleport_(item)"
+	},
+	{
+		"label": "northernlostgroveteleport",
+		"image": "https://img.pvme.io/images/A6NgrUVPcC.png",
+		"name": "Northern lost grove teleport",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Northern_lost_grove_teleport_(item)"
 	},
 	{
 		"label": "noteditems",
@@ -6904,6 +6984,14 @@
 		"wikiLink": "https://runescape.wiki/w/Portable_fairy_ring#inactive"
 	},
 	{
+		"label": "portentofdeath",
+		"image": "https://img.pvme.io/images/cMT0FGmJeS.png",
+		"name": "Portent of death",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Portent_of_death"
+	},
+	{
 		"label": "portentitemprotection",
 		"image": "https://img.pvme.io/images/TFvRsJF.png",
 		"name": "Portent of item protection",
@@ -7304,6 +7392,14 @@
 		"wikiLink": "https://runescape.wiki/w/Ring_of_respawn_(c)"
 	},
 	{
+		"label": "ringofretribution",
+		"image": "https://img.pvme.io/images/5FQsCjXxp7.png",
+		"name": "Ring of retribution",
+		"breakdownNotes": "",
+		"slot": 11,
+		"wikiLink": "https://runescape.wiki/w/Ring_of_retribution"
+	},
+	{
 		"label": "ringofslaying",
 		"image": "https://img.pvme.io/images/jSXTuBq.png",
 		"name": "Ring of slaying",
@@ -7344,12 +7440,28 @@
 		"wikiLink": "https://runescape.wiki/w/Roar_of_Awakening"
 	},
 	{
+		"label": "tumekenrobebottom",
+		"image": "https://img.pvme.io/images/ozNOXe1k1t.png",
+		"name": "Robe bottom of Tumeken's resplendence",
+		"breakdownNotes": "",
+		"slot": 3,
+		"wikiLink": "https://runescape.wiki/w/Robe_bottom_of_Tumeken%27s_resplendence"
+	},
+	{
 		"label": "t95necrolegs",
 		"image": "https://img.pvme.io/images/s0Acz4g.png",
 		"name": "Robe bottom of the First Necromancer",
 		"breakdownNotes": "",
 		"slot": 3,
 		"wikiLink": "https://runescape.wiki/w/Robe_bottom_of_the_First_Necromancer"
+	},
+	{
+		"label": "tumekenrobetop",
+		"image": "https://img.pvme.io/images/pNqN5aiYwr.png",
+		"name": "Robe top of Tumeken's resplendence",
+		"breakdownNotes": "",
+		"slot": 2,
+		"wikiLink": "https://runescape.wiki/w/Robe_top_of_Tumeken%27s_resplendence"
 	},
 	{
 		"label": "t95necrotop",
@@ -8768,6 +8880,14 @@
 		"wikiLink": "https://runescape.wiki/w/Tetracompass_(powered)"
 	},
 	{
+		"label": "devourersnexus",
+		"image": "https://img.pvme.io/images/b4A3pZdcWR.png",
+		"name": "The Devourer's Nexus",
+		"breakdownNotes": "",
+		"slot": 9,
+		"wikiLink": "https://runescape.wiki/w/The_Devourer%27s_Nexus"
+	},
+	{
 		"label": "theheartteleport",
 		"image": "https://img.pvme.io/images/eirYlnU.png",
 		"name": "The Heart teleport",
@@ -8896,14 +9016,6 @@
 		"wikiLink": "https://runescape.wiki/w/Tokkul-zo"
 	},
 	{
-		"label": "tomeofum2",
-		"image": "https://img.pvme.io/images/ITR8cN1.png",
-		"name": "Tome of Um 2",
-		"breakdownNotes": "",
-		"slot": 13,
-		"wikiLink": "https://runescape.wiki/w/Tome_of_Um_2"
-	},
-	{
 		"label": "grimpage",
 		"image": "https://img.pvme.io/images/wD7BGd2.png",
 		"name": "Torn grimoire page",
@@ -9008,6 +9120,14 @@
 		"wikiLink": "https://runescape.wiki/w/Trimmed_masterwork_platelegs"
 	},
 	{
+		"label": "tumekenslight",
+		"image": "https://img.pvme.io/images/lVVjHYAmiS.png",
+		"name": "Tumeken's Light",
+		"breakdownNotes": "",
+		"slot": 4,
+		"wikiLink": "https://runescape.wiki/w/Tumeken%27s_Light"
+	},
+	{
 		"label": "ugthankidung",
 		"image": "https://img.pvme.io/images/xlJsLcmheD.png",
 		"name": "Ugthanki dung",
@@ -9030,6 +9150,14 @@
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Uncut_opal"
+	},
+	{
+		"label": "underworldgrimoire2",
+		"image": "https://img.pvme.io/images/ITR8cN1.png",
+		"name": "Underworld Grimoire 2",
+		"breakdownNotes": "",
+		"slot": 13,
+		"wikiLink": "https://runescape.wiki/w/Underworld_Grimoire_2"
 	},
 	{
 		"label": "underworldgrimoire4",
