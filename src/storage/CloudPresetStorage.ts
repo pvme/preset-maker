@@ -11,7 +11,8 @@ export const CloudPresetStorage: PresetStorage = {
     return await getPreset(id);
   },
   async savePreset(preset: SavedPreset, id?: string): Promise<string> {
-    const result = await uploadPreset(preset, id);
+    const presetCopy = structuredClone(preset);
+    const result = await uploadPreset(presetCopy, id);
     return result.id;
   },
   async listRecentPresets(): Promise<PresetSummary[]> {
