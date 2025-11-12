@@ -7,7 +7,7 @@ export const entitySchema = z.object({
   image: z.string().optional().default(''),
   breakdownNotes: z.string().optional().default(''),
   wikiLink: z.string().optional().default(''),
-  selected: z.boolean().optional().default(false),
+  selected: z.boolean().default(false),
   slot: z.number().optional(),
 });
 
