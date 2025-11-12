@@ -15,15 +15,24 @@ export interface IndexedSelection {
 /**
  * Wraps a base Zod schema to allow optional, nullable, or blank objects.
  * - null / undefined → treated as missing
- * - empty or partial objects → filled with default values
- * - valid objects → passed through unchanged
+ * - objects with no label or image → treated as missing
+ * - valid objects → filled with safe defaults
  */
 export function makeMaybe<T extends z.ZodTypeAny>(base: T) {
+  const unionSchema = z.union([base, z.null(), z.undefined()]);
+
   return z.preprocess((val) => {
     if (val == null) return undefined;
 
     if (typeof val === 'object') {
       const v = val as Record<string, unknown>;
+      const hasLabel = typeof v.label === 'string' && v.label.trim().length > 0;
+      const hasImage = typeof v.image === 'string' && v.image.trim().length > 0;
+
+      // Treat blank / placeholder objects (e.g., { selected: false }) as undefined
+      if (!hasLabel && !hasImage) return undefined;
+
+      // Fill in defaults for real items
       return {
         name: v.name ?? '',
         label: v.label ?? '',
@@ -36,5 +45,5 @@ export function makeMaybe<T extends z.ZodTypeAny>(base: T) {
     }
 
     return val;
-  }, z.union([base, z.undefined()]));
+  }, unionSchema);
 }

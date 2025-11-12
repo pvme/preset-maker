@@ -5,34 +5,38 @@ import { entitySchema } from './entity-data';
 import { familiarSchema } from './familiar';
 import { relicSchema } from './relic';
 
-// You can reuse entitySchema directly for items (if appropriate)
 const maybeItem = makeMaybe(entitySchema);
 const maybeRelic = makeMaybe(relicSchema);
 const maybeFamiliar = makeMaybe(familiarSchema);
+
+function normalizeArray<T>(arr: T[] | undefined, len: number): T[] {
+  return Array.from({ length: len }, (_, i) => (arr?.[i] ?? {} as T));
+}
 
 export const presetSchema = z.object({
   presetName: z.string().min(1, 'Name is required'),
   presetNotes: z.string().optional(),
 
-  inventorySlots: z.preprocess((val) => {
-    if (!Array.isArray(val)) return Array(28).fill({});
-    return Array.from({ length: 28 }, (_, i) => val[i] ?? {});
-  }, z.array(maybeItem).length(28)),
+  // Normalized slot arrays
+  inventorySlots: z.preprocess(
+    (val) => normalizeArray(val as any[], 28),
+    z.array(maybeItem).length(28)
+  ),
 
-  equipmentSlots: z.preprocess((val) => {
-    if (!Array.isArray(val)) return Array(13).fill({});
-    return Array.from({ length: 13 }, (_, i) => val[i] ?? {});
-  }, z.array(maybeItem).length(13)),
+  equipmentSlots: z.preprocess(
+    (val) => normalizeArray(val as any[], 13),
+    z.array(maybeItem).length(13)
+  ),
 
   relics: z.object({
-    primaryRelics: z.array(maybeRelic).optional(),
-    alternativeRelics: z.array(maybeRelic).optional()
+    primaryRelics: z.array(maybeRelic).default([]),
+    alternativeRelics: z.array(maybeRelic).default([]),
   }),
 
   familiars: z.object({
-    primaryFamiliars: z.array(maybeFamiliar).optional(),
-    alternativeFamiliars: z.array(maybeFamiliar).optional()
-  })
+    primaryFamiliars: z.array(maybeFamiliar).default([]),
+    alternativeFamiliars: z.array(maybeFamiliar).default([]),
+  }),
 });
 
 export type Preset = z.infer<typeof presetSchema>;
