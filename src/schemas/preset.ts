@@ -14,8 +14,15 @@ export const presetSchema = z.object({
   presetName: z.string().min(1, 'Name is required'),
   presetNotes: z.string().optional(),
 
-  inventorySlots: z.array(maybeItem).length(28),
-  equipmentSlots: z.array(maybeItem).length(13),
+  inventorySlots: z.preprocess((val) => {
+    if (!Array.isArray(val)) return Array(28).fill({});
+    return Array.from({ length: 28 }, (_, i) => val[i] ?? {});
+  }, z.array(maybeItem).length(28)),
+
+  equipmentSlots: z.preprocess((val) => {
+    if (!Array.isArray(val)) return Array(13).fill({});
+    return Array.from({ length: 13 }, (_, i) => val[i] ?? {});
+  }, z.array(maybeItem).length(13)),
 
   relics: z.object({
     primaryRelics: z.array(maybeRelic).optional(),

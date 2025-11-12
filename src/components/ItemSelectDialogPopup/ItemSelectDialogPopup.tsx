@@ -146,7 +146,9 @@ export const DialogPopup = ({
       name: '',
       image: '',
       label: '',
-      breakdownNotes: ''
+      breakdownNotes: '',
+      wikiLink: '',
+      selected: false
     });
     handleClose();
   }, [selectedIndices, handleSlotChange, handleClose]);

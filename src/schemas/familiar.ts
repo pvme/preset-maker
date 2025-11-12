@@ -8,8 +8,10 @@ export const familiarSchema = z.object({
   breakdownNotes: z.string().default(''),
 });
 
+export const familiarsSchema = z.object({
+  primaryFamiliars: z.array(familiarSchema).default([]),
+  alternativeFamiliars: z.array(familiarSchema).default([]),
+});
+
 export type Familiar = z.infer<typeof familiarSchema>;
-export type Familiars = {
-  primaryFamiliars?: Familiar[];
-  alternativeFamiliars?: Familiar[];
-};
+export type Familiars = z.infer<typeof familiarsSchema>;

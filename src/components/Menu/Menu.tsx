@@ -268,14 +268,18 @@ export const PresetMenu = (): JSX.Element => {
           name: '',
           label: '',
           image: '',
+          breakdownNotes: '',
           energy: 0,
+          description: '',
         })) ?? [],
 
         alternativeRelics: preset.relics.alternativeRelics?.map(() => ({
           name: '',
           label: '',
           image: '',
+          breakdownNotes: '',
           energy: 0,
+          description: '',
         })) ?? [],
       },
       familiars: {
@@ -283,12 +287,14 @@ export const PresetMenu = (): JSX.Element => {
           name: '',
           label: '',
           image: '',
+          breakdownNotes: '',
         })) ?? [],
 
         alternativeFamiliars: preset.familiars.alternativeFamiliars?.map(() => ({
           name: '',
           label: '',
           image: '',
+          breakdownNotes: '',
         })) ?? [],
       }
     }));

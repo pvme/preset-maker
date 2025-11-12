@@ -66,8 +66,9 @@ const initialState: PresetState = {
     name: '',
     image: '',
     label: '',
+    breakdownNotes: '',
+    wikiLink: '',
     selected: false,
-    breakdownNotes: ''
   })),
   equipmentSlots: fillArrayWithSlotData(13),
   familiars: {

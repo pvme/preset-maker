@@ -1,5 +1,4 @@
 // src/schemas/relic.ts
-import { z } from 'zod'
 import { z } from 'zod';
 
 export const relicSchema = z.object({
@@ -11,8 +10,10 @@ export const relicSchema = z.object({
   description: z.string().default(''),
 });
 
+export const relicsSchema = z.object({
+  primaryRelics: z.array(relicSchema).default([]),
+  alternativeRelics: z.array(relicSchema).default([]),
+});
+
 export type Relic = z.infer<typeof relicSchema>;
-export type Relics = {
-  primaryRelics?: Relic[];
-  alternativeRelics?: Relic[];
-};
+export type Relics = z.infer<typeof relicsSchema>;

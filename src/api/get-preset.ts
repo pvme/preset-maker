@@ -43,7 +43,7 @@ async function unpackData(stored: RawStoredPreset): Promise<SavedPresetData> {
   }
 
   function blankItem(): ItemData {
-    return { name: "", label: "", image: "", breakdownNotes: undefined, wikiLink: "" };
+    return { name: "", label: "", image: "", breakdownNotes: "", wikiLink: "" };
   }
 
   function mapRelicSlot(slot: RelicData | null): RelicData | null {
