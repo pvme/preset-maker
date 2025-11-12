@@ -13,6 +13,10 @@ export async function uploadPreset(
   id?: string
 ): Promise<UploadPresetResponse> {
   const payload = typeof data === 'string' ? JSON.parse(data) : data;
+
+  payload.equipmentSlots = (payload.equipmentSlots || []).slice(0, 13);
+  payload.inventorySlots = (payload.inventorySlots || []).slice(0, 28);
+
   const preset = presetSchema.parse(payload);
 
   const url = `${FunctionURLs.uploadPreset}${id ? `?id=${encodeURIComponent(id)}` : ''}`;
