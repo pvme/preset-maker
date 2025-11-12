@@ -7,7 +7,11 @@ export const entitySchema = z.object({
   image: z.string().optional().default(''),
   breakdownNotes: z.string().optional().default(''),
   wikiLink: z.string().optional().default(''),
-  selected: z.boolean().default(false),
+  // Allow undefined for TS, but normalize to false at runtime
+  selected: z.preprocess(
+    (v) => (v === undefined ? false : v),
+    z.boolean()
+  ).optional(),
   slot: z.number().optional(),
 });
 
