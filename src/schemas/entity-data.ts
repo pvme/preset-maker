@@ -2,12 +2,12 @@
 import { z } from 'zod';
 
 export const entitySchema = z.object({
-  name: z.string().default(''),
-  label: z.string().default(''),
-  image: z.string().default(''),
-  breakdownNotes: z.string().default(''),
-  wikiLink: z.string().default(''),
-  selected: z.boolean().default(false).optional(),
+  name: z.string().optional().default(''),
+  label: z.string().optional().default(''),
+  image: z.string().optional().default(''),
+  breakdownNotes: z.string().optional().default(''),
+  wikiLink: z.string().optional().default(''),
+  selected: z.boolean().optional().default(false),
   slot: z.number().optional(),
 });
 
