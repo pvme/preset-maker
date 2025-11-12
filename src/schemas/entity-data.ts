@@ -1,12 +1,14 @@
 // src/schemas/entity-data.ts
-import { z } from 'zod'
+import { z } from 'zod';
 
 export const entitySchema = z.object({
-  name: z.string().min(1),
-  label: z.string().min(1),
+  name: z.string().default(''),
+  label: z.string().default(''),
   image: z.string().default(''),
-  breakdownNotes: z.string().optional(),
-  wikiLink: z.string().optional()
-})
+  breakdownNotes: z.string().default(''),
+  wikiLink: z.string().default(''),
+  selected: z.boolean().default(false).optional(),
+  slot: z.number().optional(),
+});
 
-export type Entity = z.infer<typeof entitySchema>
+export type Entity = z.infer<typeof entitySchema>;
