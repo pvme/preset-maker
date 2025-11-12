@@ -12,7 +12,9 @@ export async function uploadPreset(
   data: unknown,
   id?: string
 ): Promise<UploadPresetResponse> {
-  const payload = typeof data === 'string' ? JSON.parse(data) : data;
+  const payload = structuredClone(
+    typeof data === 'string' ? JSON.parse(data) : data
+  );
 
   payload.equipmentSlots = (payload.equipmentSlots || []).slice(0, 13);
   payload.inventorySlots = (payload.inventorySlots || []).slice(0, 28);
