@@ -11,10 +11,16 @@ function run(cmd) {
   }
 }
 
+// Get last tag (e.g. "v1.4.0")
 const tag = run("git describe --tags --abbrev=0") ?? "v0.0.0";
+
+// Count commits since the tag
 const count = run(`git rev-list ${tag}..HEAD --count`) ?? "0";
+
+// Final pretty version: v1.4.0.12
 const version = `${tag}.${count}`;
 
-writeFileSync("./src/.version", version);
+// Write into Vite's source tree so frontend can import it
+writeFileSync("./src/version.txt", version);
 
-console.log(version);
+console.log("Generated version:", version);
