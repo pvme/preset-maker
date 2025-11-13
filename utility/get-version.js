@@ -19,4 +19,4 @@ const count = run(`git rev-list ${tag}..HEAD --count`) ?? "0";
 // Final pretty version: v1.4.0.12
 const version = `${tag}.${count}`;
 
-console.log(version);   // IMPORTANT: output ONLY the version
+console.log(version);

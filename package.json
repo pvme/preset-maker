@@ -7,7 +7,7 @@
     "dev": "vite",
     "dev:prod": "vite --mode production",
     "start": "npm run dev",
-    "build": "node ./utility/get-version.js > .version && cross-env-shell \"export REACT_APP_VERSION=$(cat .version)\" \"tsc && vite build\"",
+    "build": "node ./utility/get-version.js > .version && cross-env-shell \"export VITE_APP_VERSION=$(cat .version)\" \"tsc && vite build\"",
     "preview": "vite preview",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
