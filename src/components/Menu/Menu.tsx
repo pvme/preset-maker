@@ -332,8 +332,7 @@ export const PresetMenu = (): JSX.Element => {
 
   const handleCopyDirectLink = () => {
     if (!id) return;
-    
-    const url = window.location.origin + import.meta.env.BASE_URL + `?id=${encodeURIComponent(id)}`;
+    const url = window.location.origin + import.meta.env.BASE_URL + `#${encodeURIComponent(id)}`;
     navigator.clipboard.writeText(url);
     enqueueSnackbar('Link copied!', { variant: 'success' });
   };
