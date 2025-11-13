@@ -20,12 +20,13 @@ import { LocalPresetStorage } from '../../storage/LocalPresetStorage';
 interface Props {
   selected: string;
   onSelect: (preset: PresetSummary) => void;
+  items: PresetSummary[];
 }
 
-export const RecentPresetDropdown = ({ selected, onSelect }: Props) => {
+export const RecentPresetDropdown = ({ selected, onSelect, items }: Props) => {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [presetToRemove, setPresetToRemove] = useState<PresetSummary | null>(null);
-  const [recent, setRecent] = useState(getRecentPresets());
+  const recent = items;
 
   const handleConfirmRemove = async () => {
     if (!presetToRemove) return;
@@ -39,7 +40,6 @@ export const RecentPresetDropdown = ({ selected, onSelect }: Props) => {
     }
 
     removeRecentPreset(presetToRemove.presetId);
-    setRecent(getRecentPresets());
     if (selected === presetToRemove.presetId) {
       onSelect({ presetId: '', presetName: '', source: 'local' });
     }
@@ -54,12 +54,12 @@ export const RecentPresetDropdown = ({ selected, onSelect }: Props) => {
           labelId="recent-label"
           value={selected || ''}
           onChange={(e) => {
-            const item = recent.find(r => r.presetId === e.target.value);
+            const item = recent.find((r: PresetSummary) => r.presetId === e.target.value);
             if (item) onSelect(item);
           }}
           label="Recent Presets"
           renderValue={(v) => {
-            const match = recent.find(p => p.presetId === v);
+            const match = recent.find((p: PresetSummary) => p.presetId === v);
             if (!match) return '';
             return (
               <Box display="flex" alignItems="center">
@@ -70,7 +70,7 @@ export const RecentPresetDropdown = ({ selected, onSelect }: Props) => {
           }}
         >
           {recent.length === 0 && <MenuItem disabled>No recent presets</MenuItem>}
-          {recent.map(p => (
+          {recent.map((p: PresetSummary) => (
             <MenuItem key={p.presetId} value={p.presetId}>
               <Box display="flex" justifyContent="space-between" width="100%" alignItems="center">
                 <Box display="flex" alignItems="center">
