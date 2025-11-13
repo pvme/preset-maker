@@ -1,3 +1,5 @@
+// src/components/PresetBreakdown/PresetBreakdown.tsx
+
 import React, { useEffect, useRef, useState } from 'react';
 import { canCopyImagesToClipboard } from 'copy-image-clipboard';
 import { useSnackbar } from 'notistack';
@@ -96,7 +98,7 @@ export const PresetBreakdown = (): JSX.Element => {
       <div className="breakdown-inner-container" ref={exportRef}>
         <div className="equipment-breakdown-container--inventory">
           <List className="breakdown-list" dense>
-            <BreakdownHeader />
+            <BreakdownHeader itemLabel="Equipment" />
             {lastValidInventory.map((item, i) => (
               <BreakdownListItem
                 key={item.label + i}
@@ -108,7 +110,7 @@ export const PresetBreakdown = (): JSX.Element => {
         </div>
         <div className="equipment-breakdown-container--equipment">
           <List className="breakdown-list" dense>
-            <BreakdownHeader />
+            <BreakdownHeader itemLabel="Inventory" />
             {lastValidEquipment.map((item, i) =>
               (item.label ?? '').length > 0 ? (
                 <BreakdownListItem

@@ -1,26 +1,24 @@
+// src/components/BreakdownHeader/BreakdownHeader.tsx
+
 import React from 'react';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 
-export const BreakdownHeader = (): JSX.Element => {
+export interface BreakdownHeaderProps {
+  itemLabel: string;
+}
+
+export const BreakdownHeader = ({ itemLabel }: BreakdownHeaderProps): JSX.Element => {
   return (
     <ListItem disablePadding className="desktop-only">
-      <ListItemButton
-        style={{
-          textAlign: 'center'
-        }}
-      >
+      <ListItemButton style={{ textAlign: 'center' }}>
         <ListItemText
-          primaryTypographyProps={{
-            style: { fontWeight: 'bold' }
-          }}
-          primary="Name"
+          primaryTypographyProps={{ style: { fontWeight: 'bold' } }}
+          primary={itemLabel}
         />
         <ListItemText
-          primaryTypographyProps={{
-            style: { fontWeight: 'bold' }
-          }}
+          primaryTypographyProps={{ style: { fontWeight: 'bold' } }}
           primary="Notes"
         />
       </ListItemButton>
