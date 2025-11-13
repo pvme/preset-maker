@@ -1,3 +1,5 @@
+// hooks/usePresetExport.ts
+
 import html2canvas from 'html2canvas';
 
 export const usePresetExport = (presetName: string) => {
@@ -9,9 +11,12 @@ export const usePresetExport = (presetName: string) => {
     await Promise.all(
       images
         .filter(img => !img.complete)
-        .map(img => new Promise(resolve => {
-          img.onload = img.onerror = () => resolve(true);
-        }))
+        .map(
+          img =>
+            new Promise(resolve => {
+              img.onload = img.onerror = () => resolve(true);
+            })
+        )
     );
   };
 
@@ -24,7 +29,9 @@ export const usePresetExport = (presetName: string) => {
     // Backup styles
     const originalPadding = element.style.padding;
     const originalMargin = element.style.marginBottom;
-    const cardContent = element.querySelector('.MuiCardContent-root') as HTMLElement | null;
+    const cardContent = element.querySelector('.MuiCardContent-root') as
+      | HTMLElement
+      | null;
     const originalCardContentPadding = cardContent?.style.padding;
 
     // Remove padding/margin
@@ -33,12 +40,39 @@ export const usePresetExport = (presetName: string) => {
     if (cardContent) cardContent.style.padding = '0px';
 
     // Step 1: Hide all add buttons
-    const addButtons = Array.from(element.querySelectorAll(
-      '.relic-section__list-item--add, .familiar-section__list-item--add'
-    )) as HTMLElement[];
-    addButtons.forEach(el => el.style.display = 'none');
+    const addButtons = Array.from(
+      element.querySelectorAll(
+        '.relic-section__list-item--add, .familiar-section__list-item--add'
+      )
+    ) as HTMLElement[];
+    addButtons.forEach(el => (el.style.display = 'none'));
 
-    // Step 2 & 3: Hide entire .alternative section if list has no real items
+    // Step 1.5: Remove empty relic/familiar rows entirely
+    const allRows = Array.from(
+      element.querySelectorAll(
+        '.relic-section__list-item, .familiar-section__list-item'
+      )
+    ) as HTMLElement[];
+
+    const removedRows: {
+      parent: HTMLElement;
+      node: HTMLElement;
+      next: ChildNode | null;
+    }[] = [];
+
+    allRows.forEach(row => {
+      const hasItem = !!row.querySelector('img'); // filled slot has an <img>
+      if (!hasItem) {
+        removedRows.push({
+          parent: row.parentElement!,
+          node: row,
+          next: row.nextSibling,
+        });
+        row.parentElement!.removeChild(row);
+      }
+    });
+
+    // Step 2: Hide alternative sections if fully empty
     const altSections = Array.from(
       element.querySelectorAll(
         '.relic-section__alternative, .familiar-section__alternative'
@@ -48,7 +82,9 @@ export const usePresetExport = (presetName: string) => {
     const hiddenSections: HTMLElement[] = [];
 
     altSections.forEach(section => {
-      const list = section.querySelector('.relic-section__list, .familiar-section__list') as HTMLElement | null;
+      const list = section.querySelector(
+        '.relic-section__list, .familiar-section__list'
+      ) as HTMLElement | null;
       if (!list) return;
 
       const realItems = Array.from(list.children).filter(child =>
@@ -65,7 +101,7 @@ export const usePresetExport = (presetName: string) => {
     // Render canvas
     const canvas = await html2canvas(element, {
       useCORS: true,
-      backgroundColor: null
+      backgroundColor: null,
     });
 
     // Trim bottom 16px
@@ -83,8 +119,17 @@ export const usePresetExport = (presetName: string) => {
     if (cardContent && originalCardContentPadding !== undefined)
       cardContent.style.padding = originalCardContentPadding;
 
-    addButtons.forEach(el => el.style.display = '');
-    hiddenSections.forEach(section => section.style.display = '');
+    // Restore removed rows to exact original DOM positions
+    removedRows.forEach(({ parent, node, next }) => {
+      if (next) parent.insertBefore(node, next);
+      else parent.appendChild(node);
+    });
+
+    // Restore alternative sections
+    hiddenSections.forEach(section => (section.style.display = ''));
+
+    // Restore add buttons
+    addButtons.forEach(el => (el.style.display = ''));
 
     return trimmedCanvas;
   };
@@ -93,10 +138,12 @@ export const usePresetExport = (presetName: string) => {
     const canvas = await renderCanvas();
     if (!canvas) return;
 
-    const blob = await new Promise<Blob | null>(resolve => canvas.toBlob(resolve));
+    const blob = await new Promise<Blob | null>(resolve =>
+      canvas.toBlob(resolve)
+    );
     if (blob) {
       await navigator.clipboard.write([
-        new ClipboardItem({ 'image/png': blob })
+        new ClipboardItem({ 'image/png': blob }),
       ]);
     }
   };
