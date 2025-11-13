@@ -64,7 +64,7 @@ export const HelpDialog = ({
         </DialogContent>
         <DialogActions sx={{ justifyContent: "space-between", px: 2 }}>
           <Typography variant="caption" sx={{ opacity: 0.6 }}>
-            v{APP_VERSION}
+            {APP_VERSION}
           </Typography>
           <Button onClick={onClose}>Close</Button>
         </DialogActions>
