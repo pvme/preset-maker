@@ -1,5 +1,5 @@
 // src/utility/version.ts
 
-export const APP_VERSION =
-  import.meta.env.VITE_APP_VERSION ??
-  'dev';
+import rawVersion from '../.version?raw';
+
+export const APP_VERSION = rawVersion.trim();
