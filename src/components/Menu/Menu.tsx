@@ -330,11 +330,19 @@ export const PresetMenu = (): JSX.Element => {
     }
   };
 
+  const handleCopyDirectLink = () => {
+    if (!id) return;
+    
+    const url = window.location.origin + import.meta.env.BASE_URL + `?id=${encodeURIComponent(id)}`;
+    navigator.clipboard.writeText(url);
+    enqueueSnackbar('Link copied!', { variant: 'success' });
+  };
+
   const handleCopyEmbedLink = () => {
     if (!id) return;
     const url = `${FunctionURLs.presetEmbed}?id=${encodeURIComponent(id)}`;
     navigator.clipboard.writeText(url);
-    enqueueSnackbar('Embed link copied!', { variant: 'success' });
+    enqueueSnackbar('Link copied!', { variant: 'success' });
   };
 
   const resetToBlankPreset = () => {
@@ -463,11 +471,17 @@ export const PresetMenu = (): JSX.Element => {
                 </>
               )}
 
+              <MenuItem onClick={handleCopyDirectLink} disabled={!id}>
+                <ListItemIcon><LinkIcon fontSize="small" /></ListItemIcon>
+                <ListItemText primary="Copy Direct Link" />
+              </MenuItem>
               <MenuItem onClick={handleCopyEmbedLink} disabled={!id}>
                 <ListItemIcon><LinkIcon fontSize="small" /></ListItemIcon>
                 <ListItemText primary="Copy Embed Link" />
               </MenuItem>
+
               <Divider />
+
               <MenuItem
                 onClick={async () => {
                   try {
@@ -482,7 +496,6 @@ export const PresetMenu = (): JSX.Element => {
                 <ListItemIcon><ContentCopyIcon fontSize="small" /></ListItemIcon>
                 <ListItemText primary="Copy Image" />
               </MenuItem>
-
               <MenuItem
                 onClick={async () => {
                   try {
@@ -496,7 +509,9 @@ export const PresetMenu = (): JSX.Element => {
                 <ListItemIcon><ImageIcon fontSize="small" /></ListItemIcon>
                 <ListItemText primary="Download Image" />
               </MenuItem>
+
               <Divider />
+
               <MenuItem onClick={exportData}>
                 <ListItemIcon><FileDownloadIcon fontSize="small" /></ListItemIcon>
                 <ListItemText primary="Export JSON" />
@@ -512,6 +527,7 @@ export const PresetMenu = (): JSX.Element => {
                   onChange={handleFileUpload}
                 />
               </MenuItem>
+
             </Menu>
             <Button
               disabled={!isDirty || isSaving}
