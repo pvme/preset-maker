@@ -1,19 +1,24 @@
 // hooks/usePresetExport.ts
 
-import html2canvas from 'html2canvas';
+import html2canvas from "html2canvas";
 
 export const usePresetExport = (presetName: string) => {
-  const getEditorElement = () =>
-    document.querySelector('.preset-editor__card') as HTMLElement | null;
+  const LOGGING = false;
+  const log = (...a: any[]) => LOGGING && console.log("[Export]", ...a);
 
-  const ensureImagesLoaded = async (element: HTMLElement) => {
-    const images = Array.from(element.querySelectorAll('img'));
+  const getEditorElement = () =>
+    document.querySelector(".preset-editor__card") as HTMLElement | null;
+
+  const ensureImagesLoaded = async (el: HTMLElement) => {
+    const images = Array.from(el.querySelectorAll("img"));
+    log("Waiting for images:", images.length);
+
     await Promise.all(
       images
-        .filter(img => !img.complete)
+        .filter((img) => !img.complete)
         .map(
-          img =>
-            new Promise(resolve => {
+          (img) =>
+            new Promise((resolve) => {
               img.onload = img.onerror = () => resolve(true);
             })
         )
@@ -24,138 +29,148 @@ export const usePresetExport = (presetName: string) => {
     const element = getEditorElement();
     if (!element) return null;
 
+    log("Starting renderCanvas()");
     await ensureImagesLoaded(element);
 
-    // Backup styles
+    // Backup layout
     const originalPadding = element.style.padding;
     const originalMargin = element.style.marginBottom;
-    const cardContent = element.querySelector('.MuiCardContent-root') as
-      | HTMLElement
-      | null;
+
+    const cardContent = element.querySelector(
+      ".MuiCardContent-root"
+    ) as HTMLElement | null;
     const originalCardContentPadding = cardContent?.style.padding;
 
-    // Remove padding/margin
-    element.style.padding = '0px';
-    element.style.marginBottom = '0px';
-    if (cardContent) cardContent.style.padding = '0px';
-
-    // Step 1: Hide all add buttons
     const addButtons = Array.from(
       element.querySelectorAll(
-        '.relic-section__list-item--add, .familiar-section__list-item--add'
+        ".relic-section__list-item--add, .familiar-section__list-item--add"
       )
     ) as HTMLElement[];
-    addButtons.forEach(el => (el.style.display = 'none'));
 
-    // Step 1.5: Remove empty relic/familiar rows entirely
-    const allRows = Array.from(
+    const listRows = Array.from(
       element.querySelectorAll(
-        '.relic-section__list-item, .familiar-section__list-item'
+        ".relic-section__list-item, .familiar-section__list-item"
       )
     ) as HTMLElement[];
 
-    const removedRows: {
-      parent: HTMLElement;
-      node: HTMLElement;
-      next: ChildNode | null;
-    }[] = [];
-
-    allRows.forEach(row => {
-      const hasItem = !!row.querySelector('img'); // filled slot has an <img>
-      if (!hasItem) {
-        removedRows.push({
-          parent: row.parentElement!,
-          node: row,
-          next: row.nextSibling,
-        });
-        row.parentElement!.removeChild(row);
-      }
-    });
-
-    // Step 2: Hide alternative sections if fully empty
     const altSections = Array.from(
       element.querySelectorAll(
-        '.relic-section__alternative, .familiar-section__alternative'
+        ".relic-section__alternative, .familiar-section__alternative"
       )
     ) as HTMLElement[];
 
+    // restore stores
+    const hiddenRows: HTMLElement[] = [];
     const hiddenSections: HTMLElement[] = [];
 
-    altSections.forEach(section => {
-      const list = section.querySelector(
-        '.relic-section__list, .familiar-section__list'
-      ) as HTMLElement | null;
-      if (!list) return;
+    try {
+      // Hide add buttons
+      log("Hiding add buttons:", addButtons.length);
+      addButtons.forEach((b) => (b.style.display = "none"));
 
-      const realItems = Array.from(list.children).filter(child =>
-        child.classList.contains('relic-section__list-item') ||
-        child.classList.contains('familiar-section__list-item')
-      );
+      // Hide empty rows (no img + not add)
+      log("Checking list rows:", listRows.length);
+      listRows.forEach((row) => {
+        const isAdd = row.classList.contains("relic-section__list-item--add") ||
+                      row.classList.contains("familiar-section__list-item--add");
 
-      if (realItems.length === 0) {
-        section.style.display = 'none';
-        hiddenSections.push(section);
-      }
-    });
+        const hasImage = !!row.querySelector("img");
 
-    // Render canvas
-    const canvas = await html2canvas(element, {
-      useCORS: true,
-      backgroundColor: null,
-    });
+        if (!isAdd && !hasImage) {
+          log("Hiding empty row:", row);
+          row.style.display = "none";
+          hiddenRows.push(row);
+        }
+      });
 
-    // Trim bottom 16px
-    const trimmedCanvas = document.createElement('canvas');
-    trimmedCanvas.width = canvas.width;
-    trimmedCanvas.height = canvas.height - 16;
-    const ctx = trimmedCanvas.getContext('2d');
-    if (ctx) {
-      ctx.drawImage(canvas, 0, 0);
-    }
+      // Hide empty alt-sections
+      log("Checking alt sections:", altSections.length);
+      altSections.forEach((section) => {
+        const list = section.querySelector(
+          ".relic-section__list, .familiar-section__list"
+        ) as HTMLElement | null;
 
-    // Restore styles
-    element.style.padding = originalPadding;
-    element.style.marginBottom = originalMargin;
-    if (cardContent && originalCardContentPadding !== undefined)
-      cardContent.style.padding = originalCardContentPadding;
+        if (!list) {
+          section.style.display = "none";
+          hiddenSections.push(section);
+          return;
+        }
 
-    // Restore removed rows to exact original DOM positions
-    removedRows.forEach(({ parent, node, next }) => {
-      if (next) parent.insertBefore(node, next);
-      else parent.appendChild(node);
-    });
+        const realItems = Array.from(list.children).filter((child) =>
+          child.querySelector("img")
+        );
 
-    // Restore alternative sections
-    hiddenSections.forEach(section => (section.style.display = ''));
+        if (realItems.length === 0) {
+          log("Hiding empty alt section:", section);
+          section.style.display = "none";
+          hiddenSections.push(section);
+        }
+      });
 
-    // Restore add buttons
-    addButtons.forEach(el => (el.style.display = ''));
+      // Tighten layout
+      element.style.padding = "0px";
+      element.style.marginBottom = "0px";
+      if (cardContent) cardContent.style.padding = "0px";
 
-    return trimmedCanvas;
-  };
+      log("Running html2canvas…");
+      const canvas = await html2canvas(element, {
+        useCORS: true,
+        backgroundColor: null,
+      });
 
-  const copyImage = async () => {
-    const canvas = await renderCanvas();
-    if (!canvas) return;
+      log("Canvas captured.");
 
-    const blob = await new Promise<Blob | null>(resolve =>
-      canvas.toBlob(resolve)
-    );
-    if (blob) {
-      await navigator.clipboard.write([
-        new ClipboardItem({ 'image/png': blob }),
-      ]);
+      // Trim 16px bottom
+      const trimmed = document.createElement("canvas");
+      trimmed.width = canvas.width;
+      trimmed.height = canvas.height - 16;
+
+      const ctx = trimmed.getContext("2d");
+      if (ctx) ctx.drawImage(canvas, 0, 0);
+
+      return trimmed;
+    } finally {
+      log("Restoring DOM...");
+
+      element.style.padding = originalPadding;
+      element.style.marginBottom = originalMargin;
+      if (cardContent) cardContent.style.padding = originalCardContentPadding ?? "";
+
+      addButtons.forEach((b) => (b.style.display = ""));
+      hiddenRows.forEach((r) => (r.style.display = ""));
+      hiddenSections.forEach((s) => (s.style.display = ""));
+
+      log("DOM fully restored.");
     }
   };
 
   const downloadImage = async () => {
+    log("downloadImage() called");
     const canvas = await renderCanvas();
     if (!canvas) return;
 
-    const link = document.createElement('a');
-    link.download = `PRESET_${presetName.replaceAll(' ', '_')}.png`;
-    link.href = canvas.toDataURL('image/png');
+    const link = document.createElement("a");
+    link.download = `PRESET_${presetName.replaceAll(" ", "_")}.png`;
+    link.href = canvas.toDataURL("image/png");
     link.click();
+
+    log("Download OK");
+  };
+
+  const copyImage = async () => {
+    log("copyImage() called");
+    const canvas = await renderCanvas();
+    if (!canvas) return;
+
+    const blob = await new Promise<Blob | null>((resolve) =>
+      canvas.toBlob(resolve)
+    );
+    if (blob)
+      await navigator.clipboard.write([
+        new ClipboardItem({ "image/png": blob }),
+      ]);
+
+    log("Copied OK");
   };
 
   return {
