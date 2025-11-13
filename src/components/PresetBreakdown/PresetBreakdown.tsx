@@ -94,6 +94,18 @@ export const PresetBreakdown = (): JSX.Element => {
   return (
     <div className="breakdown-container">
       <div className="breakdown-inner-container" ref={exportRef}>
+        <div className="equipment-breakdown-container--inventory">
+          <List className="breakdown-list" dense>
+            <BreakdownHeader />
+            {lastValidInventory.map((item, i) => (
+              <BreakdownListItem
+                key={item.label + i}
+                item={item}
+                type={BreakdownType.Inventory}
+              />
+            ))}
+          </List>
+        </div>
         <div className="equipment-breakdown-container--equipment">
           <List className="breakdown-list" dense>
             <BreakdownHeader />
@@ -106,18 +118,6 @@ export const PresetBreakdown = (): JSX.Element => {
                 />
               ) : null
             )}
-          </List>
-        </div>
-        <div className="equipment-breakdown-container--inventory">
-          <List className="breakdown-list" dense>
-            <BreakdownHeader />
-            {lastValidInventory.map((item, i) => (
-              <BreakdownListItem
-                key={item.label + i}
-                item={item}
-                type={BreakdownType.Inventory}
-              />
-            ))}
           </List>
         </div>
       </div>
