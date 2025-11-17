@@ -12,7 +12,7 @@ let app: any = null;
 function ensureFirebase() {
   if (!app) {
     app = initializeApp({
-      apiKey: "AIzaSyA23nxzVuxxx5SDmC-C2Kxg4_8R7FzHkaU",
+      apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
       authDomain: "pvmebackend.firebaseapp.com",
       projectId: "pvmebackend",
     });
