@@ -152,7 +152,7 @@ export const HeaderBar = (): JSX.Element => {
                     <Box
                       component="img"
                       src="https://img.pvme.io/images/EPzzJe2xy6.gif"
-                      alt="PVME Logo"
+                      alt="PvME Logo"
                       className="header-bar__logo-image"
                       sx={{
                         width: { xs: 60, sm: 80 },
