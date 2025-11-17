@@ -13,9 +13,14 @@ jobs:
       - name: Checkout 🛎️
         uses: actions/checkout@v3
 
-      - name: Load Secrets 🔑
+      - name: Load Env Vars/Secrets 🔑
         run: |
           echo "VITE_FIREBASE_API_KEY=${{ secrets.FIREBASE_API_KEY }}" >> $GITHUB_ENV
+          echo "VITE_GET_PRESET_URL=${{ vars.VITE_GET_PRESET_URL }}" >> $GITHUB_ENV
+          echo "VITE_UPLOAD_PRESET_URL=${{ vars.VITE_UPLOAD_PRESET_URL }}" >> $GITHUB_ENV
+          echo "VITE_PRESET_EMBED_URL=${{ vars.VITE_PRESET_EMBED_URL }}" >> $GITHUB_ENV
+          echo "VITE_RENDER_PRESET_IMAGE_URL=${{ vars.VITE_RENDER_PRESET_IMAGE_URL }}" >> $GITHUB_ENV
+          echo "VITE_ON_PRESET_WRITE_URL=${{ vars.VITE_ON_PRESET_WRITE_URL }}" >> $GITHUB_ENV
 
       - name: Install and Build 🔧
         run: |
