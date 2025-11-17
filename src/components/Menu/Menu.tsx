@@ -68,6 +68,8 @@ import { useStorageMode } from '../../storage/StorageModeContext';
 import { LocalPresetStorage } from '../../storage/LocalPresetStorage';
 import { CloudPresetStorage } from '../../storage/CloudPresetStorage';
 
+import { getAuth, onAuthStateChanged } from "../../utility/firebase-init";
+
 declare global {
   interface Window {
     _presetLoadStale?: boolean;
@@ -120,6 +122,14 @@ export const PresetMenu = (): JSX.Element => {
   const [isSaving, setIsSaving] = useState(false);
   const [selectModeOpen, setSelectModeOpen] = useState(false);
   const lastSavedRef = useRef<any>(null);
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    return onAuthStateChanged(getAuth(), (user) => {
+      setIsLoggedIn(!!user);
+    });
+  }, []);
 
   const {
     copyImage,
@@ -533,15 +543,26 @@ export const PresetMenu = (): JSX.Element => {
               onClick={
                 mode === 'local'
                   ? (id ? handleSave : () => setSaveAsOpen(true))
-                  : () => setSaveAsOpen(true)
+                  : (
+                      isLoggedIn
+                        ? handleSave
+                        : () => setSaveAsOpen(true)
+                    )
               }
               startIcon={isSaving ? undefined : <SaveIcon />}
               variant="contained"
               color="success"
               size="medium"
             >
-              {isSaving ? <CircularProgress size={20} color="inherit" /> : mode === 'local' ? 'Save' : 'Save As'}
+              {isSaving ? (
+                <CircularProgress size={20} color="inherit" />
+              ) : mode === 'local' ? (
+                'Save'
+              ) : (
+                isLoggedIn ? 'Save' : 'Save As'   // *** ADDED: change label ***
+              )}
             </Button>
+
             <StatusChip isDirty={isDirty} />
           </Stack>
         </Grid>
