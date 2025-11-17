@@ -1,13 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 
-import { type ItemData } from '../../../types/item-data';
+import { type Item as ItemData } from '../../../schemas/item-data';
 import { type ApplicationState } from '../store';
-import { type SavedPresetData } from '../../../types/saved-preset-data';
-import { SlotType } from '../../../types/slot-type';
-import { type Breakdown, BreakdownType } from '../../../types/breakdown';
-import { type FamiliarData, type Familiars } from '../../../types/familiar';
-import { type RelicData, type Relics } from '../../../types/relic';
+import { type SavedPreset as SavedPresetData } from '../../../schemas/saved-preset-data';
+import { SlotType } from '../../../schemas/slot-type';
+import { type Breakdown, BreakdownType } from '../../../schemas/breakdown';
+import { type Familiar as FamiliarData, type Familiars } from '../../../schemas/familiar';
+import { type Relic as RelicData, type Relics } from '../../../schemas/relic';
 
 // Define a type for the slice state
 interface PresetState {
@@ -32,8 +32,23 @@ interface SwapSlots {
   sourceIndex: number
   targetIndex: number
 }
-type FamiliarSlot = IndexedSlot<FamiliarData>;
-type RelicSlot = IndexedSlot<RelicData | null>;
+
+type FamiliarSlot = {
+  index: number
+  value: FamiliarData | null
+};
+
+type RelicSlot = {
+  index: number
+  value: RelicData | null
+};
+
+function blankRelic(): RelicData {
+  return { label: "", name: "", image: "", breakdownNotes: "", energy: 0, description: "" };
+}
+function blankFamiliar(): FamiliarData {
+  return { label: "", name: "", image: "", breakdownNotes: "" };
+}
 
 const fillArrayWithSlotData = (numItems: number): any[] =>
   new Array(numItems).fill({
@@ -51,8 +66,9 @@ const initialState: PresetState = {
     name: '',
     image: '',
     label: '',
+    breakdownNotes: '',
+    wikiLink: '',
     selected: false,
-    breakdownNotes: ''
   })),
   equipmentSlots: fillArrayWithSlotData(13),
   familiars: {
@@ -74,13 +90,19 @@ export const presetSlice = createSlice({
   initialState,
   reducers: {
     resetToInitialState: (state: PresetState) => {
-      state.presetName = initialState.presetName;
-      state.presetNotes = initialState.presetNotes;
-      state.inventorySlots = initialState.inventorySlots;
-      state.equipmentSlots = initialState.equipmentSlots;
-      state.relics = initialState.relics;
-      state.familiars = initialState.familiars;
-      state.breakdown = initialState.breakdown;
+      state.presetName = '';
+      state.presetNotes = '';
+      state.inventorySlots = fillArrayWithSlotData(28);
+      state.equipmentSlots = fillArrayWithSlotData(13);
+      state.relics = {
+        primaryRelics: fillArrayWithSlotData(3),
+        alternativeRelics: fillArrayWithSlotData(3)
+      };
+      state.familiars = {
+        primaryFamiliars: fillArrayWithSlotData(1),
+        alternativeFamiliars: fillArrayWithSlotData(3)
+      };
+      state.breakdown = [];
     },
     setPresetName: (state: PresetState, action: PayloadAction<string>) => {
       state.presetName = action.payload;
@@ -90,38 +112,36 @@ export const presetSlice = createSlice({
     },
     swapInventorySlots: (state: PresetState, action: PayloadAction<SwapSlots>) => {
       const { sourceIndex, targetIndex } = action.payload;
-      if (sourceIndex === undefined || targetIndex === undefined) {
-        return;
-      }
+      if (sourceIndex === undefined || targetIndex === undefined) return;
+    
+      const clean = (item: ItemData) => {
+        const { selected, ...rest } = item;
+        return rest;
+      };
 
-      const sourceSlot = state.inventorySlots[sourceIndex];
-      const targetSlot = state.inventorySlots[targetIndex];
+      const temp = clean(state.inventorySlots[sourceIndex]);
+      state.inventorySlots[sourceIndex] = clean(state.inventorySlots[targetIndex]);
+      state.inventorySlots[targetIndex] = temp;
 
-      state.inventorySlots[targetIndex] = sourceSlot;
-      state.inventorySlots[sourceIndex] = targetSlot;
     },
     setEquipmentSlot: (state: PresetState, action: PayloadAction<SetSlot>) => {
       state.equipmentSlots[action.payload.index] = action.payload.value;
     },
     setPrimaryRelic: (state: PresetState, action: PayloadAction<RelicSlot>) => {
-      if (action.payload.value != null) {
-        state.relics.primaryRelics[action.payload.index] = action.payload.value;
-      } else {
-        state.relics.primaryRelics.splice(action.payload.index, 1);
-      }
+      const { index, value } = action.payload
+      state.relics.primaryRelics[index] = value ?? blankRelic()
     },
     setAlternativeRelic: (state: PresetState, action: PayloadAction<RelicSlot>) => {
-      if (action.payload.value != null) {
-        state.relics.alternativeRelics[action.payload.index] = action.payload.value;
-      } else {
-        state.relics.alternativeRelics.splice(action.payload.index, 1);
-      }
+      const { index, value } = action.payload
+      state.relics.alternativeRelics[index] = value ?? blankRelic()
     },
     setPrimaryFamiliar: (state: PresetState, action: PayloadAction<FamiliarSlot>) => {
-      state.familiars.primaryFamiliars[action.payload.index] = action.payload.value;
+      const { index, value } = action.payload
+      state.familiars.primaryFamiliars[index] = value ?? blankFamiliar()
     },
     setAlternativeFamiliar: (state: PresetState, action: PayloadAction<FamiliarSlot>) => {
-      state.familiars.alternativeFamiliars[action.payload.index] = action.payload.value;
+      const { index, value } = action.payload
+      state.familiars.alternativeFamiliars[index] = value ?? blankFamiliar()
     },
     setPresetNotes: (state: PresetState, action: PayloadAction<string>) => {
       state.presetNotes = action.payload;
@@ -146,17 +166,26 @@ export const presetSlice = createSlice({
     },
     importDataAction: (
       state: PresetState,
-      action: PayloadAction<SavedPresetData>
+      action: PayloadAction<Partial<SavedPresetData>>
     ) => {
-      state.presetName = action.payload.presetName;
-      state.presetNotes = action.payload.presetNotes ?? '';
-      state.inventorySlots = action.payload.inventorySlots;
-      state.equipmentSlots = action.payload.equipmentSlots;
-      // New state properties must be defaulted to `initialState` as it
-      // will not exist in older saved presets.
+      // Skip if essential slot data is missing
+      if (
+        !action.payload.inventorySlots?.length &&
+        !action.payload.equipmentSlots?.length
+      ) {
+        console.warn('[importDataAction] Ignoring incomplete preset payload');
+        console.trace();
+        return;
+      }
+
+      state.presetName = action.payload.presetName ?? initialState.presetName;
+      state.presetNotes = action.payload.presetNotes ?? initialState.presetNotes;
+      state.inventorySlots = action.payload.inventorySlots ?? initialState.inventorySlots;
+      state.equipmentSlots = action.payload.equipmentSlots ?? initialState.equipmentSlots;
       state.relics = action.payload.relics ?? initialState.relics;
       state.familiars = action.payload.familiars ?? initialState.familiars;
     },
+
     updateSlotType: (state: PresetState, action: PayloadAction<SlotType>) => {
       state.slotType = action.payload;
     },

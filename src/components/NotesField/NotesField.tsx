@@ -77,10 +77,10 @@ export const NotesField = ({ className, placeholder, initialValue, onBlur }: Not
   return (
     <ContentEditable
       className={`notes-field ${className ?? ''}`}
-      placeholder={placeholder}
       html={formattedNotes}
       onChange={onNotesFieldChange}
       onBlur={onNotesFieldBlur}
+      data-placeholder={placeholder}
     />
   );
 };

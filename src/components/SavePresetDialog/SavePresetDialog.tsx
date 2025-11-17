@@ -1,5 +1,5 @@
 import { useSnackbar } from 'notistack';
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useState, useEffect } from 'react';
 
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
@@ -8,13 +8,8 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import TextField from '@mui/material/TextField';
 
-import { useAppDispatch, useAppSelector } from '../../redux/hooks';
-import {
-  selectPreset,
-  setPresetName
-} from '../../redux/store/reducers/preset-reducer';
-
-import { LocalStorage } from '../../store/local-storage';
+import { useAppDispatch } from '../../redux/hooks';
+import { setPresetName } from '../../redux/store/reducers/preset-reducer';
 import './SavePresetDialog.css';
 
 export enum SavePresetDialogState {
@@ -24,37 +19,39 @@ export enum SavePresetDialogState {
 }
 
 interface SavePresetDialogProps {
-  open: boolean
-  state: SavePresetDialogState
-  onSave?: () => void
-  onClose: () => void
+  open: boolean;
+  state: SavePresetDialogState;
+  /** now receives the new name */
+  onSave?: (newName: string) => void;
+  onClose: () => void;
+  defaultName?: string;
 }
 
 export const SavePresetDialog = ({
   open,
   state,
   onSave,
-  onClose
+  onClose,
+  defaultName
 }: SavePresetDialogProps): JSX.Element => {
   const dispatch = useAppDispatch();
   const { enqueueSnackbar } = useSnackbar();
 
-  const [name, setName] = useState<string>('');
+  const [name, setName] = useState<string>(defaultName || '');
   const [error, setError] = useState<boolean>(false);
 
-  const {
-    presetName,
-    inventorySlots,
-    equipmentSlots,
-    relics,
-    familiars
-  } = useAppSelector(selectPreset);
+  useEffect(() => {
+    if (open) {
+      setName(defaultName || '');
+      setError(false);
+    }
+  }, [open, defaultName]);
 
   const onPresetNameChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
-      const errored = event.currentTarget.value.length === 0 ?? false;
-      setError(errored);
-      setName(event.currentTarget.value);
+      const value = event.currentTarget.value;
+      setError(value.length === 0);
+      setName(value);
     },
     []
   );
@@ -70,32 +67,18 @@ export const SavePresetDialog = ({
       }
 
       dispatch(setPresetName(name));
-
-      const didSave = LocalStorage.savePresetWithConfirmation({
-        presetName: name,
-        inventorySlots,
-        equipmentSlots,
-        relics,
-        familiars
-      });
-      if (didSave) {
-        enqueueSnackbar('Successfully saved your preset', {
-          variant: 'success'
-        });
-        if (onSave != null) {
-          onSave();
-        }
-      }
-
+      onSave?.(name);
+      enqueueSnackbar('Preset name set.', { variant: 'success' });
       onClose();
     },
-    [name, presetName, inventorySlots, equipmentSlots]
+    [name, dispatch, onSave, onClose, enqueueSnackbar]
   );
 
   const dialogTitle =
     state === SavePresetDialogState.ExistingPreset
       ? 'Save preset as'
       : 'Create new preset';
+
   return (
     <Dialog open={open} onClose={onClose}>
       <form>
@@ -108,7 +91,7 @@ export const SavePresetDialog = ({
             onChange={onPresetNameChange}
             fullWidth
             error={error}
-            helperText={error ? 'Please set a name for your preset.' : null}
+            helperText={error ? 'Please set a name for your preset.' : undefined}
           />
         </DialogContent>
         <DialogActions>

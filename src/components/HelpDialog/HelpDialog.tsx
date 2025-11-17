@@ -1,10 +1,11 @@
-
 import React from 'react';
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import ForumIcon from '@mui/icons-material/Forum';
+
+import { APP_VERSION } from '../../utility/version';
 
 import './HelpDialog.css';
 import { Button, DialogActions, Divider, Link, Typography } from '@mui/material';
@@ -61,7 +62,10 @@ export const HelpDialog = ({
             </Typography>
           </div>
         </DialogContent>
-        <DialogActions>
+        <DialogActions sx={{ justifyContent: "space-between", px: 2 }}>
+          <Typography variant="caption" sx={{ opacity: 0.6 }}>
+            {APP_VERSION}
+          </Typography>
           <Button onClick={onClose}>Close</Button>
         </DialogActions>
       </form>

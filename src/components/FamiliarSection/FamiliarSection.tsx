@@ -6,10 +6,10 @@ import familiarIconPath from '../../assets/familiar.png';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { selectPreset, setAlternativeFamiliar, setPrimaryFamiliar } from '../../redux/store/reducers/preset-reducer';
 
-import { type FamiliarData } from '../../types/familiar';
+import { type Familiar as FamiliarData } from '../../schemas/familiar';
 import './FamiliarSection.css';
 import Tooltip from '@mui/material/Tooltip/Tooltip';
-import { type IndexedSelection, PrimaryOrAlternative } from '../../types/util';
+import { type IndexedSelection, PrimaryOrAlternative } from '../../schemas/util';
 import { FamiliarSelectDialog } from '../dialogs/FamiliarSelectDialog/FamiliarSelectDialog';
 import { isMobile } from '../../utility/window-utils';
 
@@ -54,7 +54,8 @@ export const FamiliarSection = (): JSX.Element => {
     familiars
   } = useAppSelector(selectPreset);
 
-  const visibleAlternativeFamiliars = familiars.alternativeFamiliars.filter((familiar) => familiar.name);
+  const primaryFamiliars = familiars.primaryFamiliars;
+  const visibleAlternativeFamiliars = familiars.alternativeFamiliars.filter((f): f is NonNullable<typeof f> => f !== null && !!f.name);
 
   const [dialogOpen, setDialogOpen] = useState(false);
   const [indexedSelection, setIndexedSelection] = useState({
@@ -85,8 +86,21 @@ export const FamiliarSection = (): JSX.Element => {
     setDialogOpen(false);
   }, []);
 
-  const handleFamiliarSelection = useCallback((indexedSelection: IndexedSelection, familiar: FamiliarData) => {
+  const handleFamiliarSelection = useCallback((
+    indexedSelection: IndexedSelection,
+    familiar: FamiliarData | null
+  ) => {
     if (indexedSelection.primaryOrAlternative === PrimaryOrAlternative.Primary) {
+      // if we got `null`, clear the slot
+      if (familiar === null) {
+        dispatch(setPrimaryFamiliar({
+          index: indexedSelection.index,
+          value: null
+        }));
+        setIndexedSelection({ primaryOrAlternative: PrimaryOrAlternative.None, index: -1 });
+        setDialogOpen(false);
+        return;
+      }
       // Prevent duplicates.
       if (familiars.primaryFamiliars.includes(familiar)) {
         return;
@@ -97,6 +111,16 @@ export const FamiliarSection = (): JSX.Element => {
         value: familiar
       }));
     } else if (indexedSelection.primaryOrAlternative === PrimaryOrAlternative.Alternative) {
+      // if we got `null`, clear the slot
+      if (familiar === null) {
+        dispatch(setAlternativeFamiliar({
+          index: indexedSelection.index,
+          value: null
+        }));
+        setIndexedSelection({ primaryOrAlternative: PrimaryOrAlternative.None, index: -1 });
+        setDialogOpen(false);
+        return;
+      }
       // Prevent duplicates.
       if (familiars.alternativeFamiliars.includes(familiar)) {
         return;
@@ -127,19 +151,33 @@ export const FamiliarSection = (): JSX.Element => {
         Familiar
       </Typography>
       <div className="familiar-section__primary">
-        <FamiliarSectionList
-          familiars={familiars.primaryFamiliars}
-          onClick={(event, index) => {
-            openFamiliarDialog(event, PrimaryOrAlternative.Primary, index);
-          }}
-        />
+        {primaryFamiliars.map((fam, i) => (
+          <div
+            key={i}
+            className="d-flex flex-center familiar-section__list-item"
+            onClick={(e) => openFamiliarDialog(e, PrimaryOrAlternative.Primary, i)}
+          >
+            {fam.label
+              ? <>
+                  {fam.image && (
+                    <img className="familiar-section__list-item-image" src={fam.image} />
+                  )}
+                  <span className="familiar-section__list-item-name">{fam.name}</span>
+                </>
+              : (
+                  <Tooltip title="Add familiar">
+                    <AddIcon
+                      className="cursor-pointer familiar-section__add-familiar"
+                      htmlColor="#646464"
+                    />
+                  </Tooltip>
+                )
+            }
+          </div>
+        ))}
       </div>
       <div className="familiar-section__alternative">
-        <div>
-          <strong>
-            Alternative
-          </strong>
-        </div>
+        <div className="familiar-section__alternative__title">Alternative</div>
         <FamiliarSectionList
           familiars={visibleAlternativeFamiliars}
           onClick={(event, index) => {

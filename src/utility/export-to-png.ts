@@ -1,3 +1,5 @@
+// src/utility/export-to-png.ts
+
 import html2canvas from 'html2canvas';
 
 import { generateFileName } from './generate-file-name';

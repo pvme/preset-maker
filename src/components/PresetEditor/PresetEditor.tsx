@@ -13,8 +13,8 @@ import {
   addToQueue,
   selectRecentItems
 } from '../../redux/store/reducers/recent-item-reducer';
-import { type ItemData } from '../../types/item-data';
-import { SlotType } from '../../types/slot-type';
+import { type Item as ItemData } from '../../schemas/item-data';
+import { SlotType } from '../../schemas/slot-type';
 import { DialogPopup } from '../ItemSelectDialogPopup/ItemSelectDialogPopup';
 import { Equipment, Inventory } from '../SlotSection/SlotSection';
 
@@ -24,11 +24,7 @@ import './PresetEditor.css';
 import genericBackground from '../../assets/bg_large.png';
 import mobilePresetMapBackground from '../../assets/presetmap_mobile.png';
 
-export const PresetEditor = ({
-  setExportRef
-}: {
-  setExportRef: (ref: HTMLDivElement) => void
-}): JSX.Element => {
+export const PresetEditor = (): JSX.Element => {
   const dispatch = useAppDispatch();
 
   const {
@@ -123,7 +119,7 @@ export const PresetEditor = ({
     <>
       <Card className="preset-editor__card">
         <CardContent data-id="content" className="preset-container">
-          <div className="preset-editor__export-container" ref={setExportRef}>
+          <div className="preset-editor__export-container">
             <div className="preset-map-container" style={{
               backgroundImage: `url(${genericBackground})`
             }}>

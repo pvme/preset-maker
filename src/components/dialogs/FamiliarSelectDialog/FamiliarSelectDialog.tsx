@@ -17,17 +17,17 @@ import TextField from '@mui/material/TextField';
 import { type FilterOptionsState } from '@mui/material/useAutocomplete';
 
 import sortedFamiliars from '../../../data/sorted_familiars.json';
-import { type FamiliarData } from '../../../types/familiar';
+import { type Familiar as FamiliarData } from '../../../schemas/familiar';
 import './FamiliarSelectDialog.css';
 import { useAppSelector } from '../../../redux/hooks';
 import { selectPreset } from '../../../redux/store/reducers/preset-reducer';
-import { type IndexedSelection, PrimaryOrAlternative } from '../../../types/util';
+import { type IndexedSelection, PrimaryOrAlternative } from '../../../schemas/util';
 
 interface FamiliarSelectDialogProps {
   open: boolean
   indexedSelection: IndexedSelection
   handleClose: () => void
-  handleSelection: (indexedSelection: IndexedSelection, familiar: FamiliarData) => void
+  handleSelection: (indexedSelection: IndexedSelection, familiar: FamiliarData | null) => void
 }
 
 const dialogBaseHeight = 130;
@@ -102,12 +102,7 @@ export const FamiliarSelectDialog = ({
   );
 
   const clearCell = useCallback(() => {
-    handleSelection(indexedSelection, {
-      name: '',
-      image: '',
-      label: '',
-      breakdownNotes: ''
-    });
+    handleSelection(indexedSelection, null);
     handleClose();
   }, [indexedSelection]);
 

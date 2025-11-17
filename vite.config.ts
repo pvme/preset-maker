@@ -3,8 +3,9 @@ import react from "@vitejs/plugin-react";
 import typescript from "@rollup/plugin-typescript";
 import ttsc from "ttsc";
 import dns from "dns";
+import path from 'path';
 
-dns.setDefaultResultOrder('verbatim')
+dns.setDefaultResultOrder('verbatim');
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -15,10 +16,16 @@ export default defineConfig({
       typescript: ttsc,
     }),
   ],
-  // Defaults to 127.0.0.1 which will cause Imgur requests
-  // to fail.
+  resolve: {
+    alias: {
+      fs: path.resolve(__dirname, "utility/empty-module.js"),
+      path: path.resolve(__dirname, "utility/empty-module.js"),
+      url: path.resolve(__dirname, "utility/empty-module.js"),
+      'source-map-js': path.resolve(__dirname, "utility/empty-module.js"),
+    },
+  },
   server: {
     host: 'localhost',
-    port: 3000
-  }
+    port: 3000,
+  },
 });

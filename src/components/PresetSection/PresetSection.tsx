@@ -1,38 +1,52 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import { PresetBreakdown } from '../PresetBreakdown/PresetBreakdown';
 import { PresetEditor } from '../PresetEditor/PresetEditor';
-import { PresetName } from '../PresetLoader/PresetLoader';
-
-import { Fade } from '@mui/material';
-import { PresetActions } from '../PresetActions/PresetActions';
 import { PresetDetails } from '../PresetDetails/PresetDetails';
+import PresetMenu from '../Menu/Menu';
+
+import { Container, Fade, Grid } from '@mui/material';
 import './PresetSection.css';
 
 export const PresetSection = (): JSX.Element => {
-  const [presetExportRef, setPresetExportRef] = useState<HTMLDivElement | null>(null);
-
-  const presetExportRefCallback = (ref: HTMLDivElement): void => {
-    setPresetExportRef(ref);
-  };
-
   return (
-    <Fade in={true}>
-      <div className="preset-section">
-        <PresetName />
-        <div className="preset-section__inner d-flex">
-          <PresetEditor
-            setExportRef={presetExportRefCallback}
-          />
-          <div className="preset-section__sidebar">
-            <PresetDetails />
-            <PresetActions
-              presetExportRef={presetExportRef}
-            />
-          </div>
-        </div>
-        <PresetBreakdown />
-      </div>
-    </Fade>
+    <>
+      <Container>
+        <Grid container spacing={2} direction="column">
+          <Grid item>
+            <PresetMenu />
+          </Grid>
+
+          <Grid item>
+            <Grid container direction="row">
+              <Grid item>
+                <PresetEditor />
+              </Grid>
+              <Grid
+                item
+                xs
+                sx={{
+                  '& .MuiPaper-root': {
+                    borderTopLeftRadius: 0,
+                    borderBottomLeftRadius: 0,
+                    marginTop: 2
+                  },
+                }}
+              >
+                <PresetDetails />
+              </Grid>
+            </Grid>
+          </Grid>
+        </Grid>
+      </Container>
+
+      <Container maxWidth={false}>
+        <Grid container sx={{ marginBottom: 3}} >
+          <Grid item xs={12}>
+            <PresetBreakdown />
+          </Grid>
+        </Grid>
+      </Container>
+    </>
   );
 };

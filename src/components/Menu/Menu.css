@@ -1,0 +1,21 @@
+.preset-menu__chip {
+  padding:17px 15px;
+  border-width: 2px;
+  border-radius: 6px;
+}
+
+.preset-menu__divider {
+  margin: 4px 0;
+}
+
+@keyframes preset-loader-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 193, 7, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(255, 193, 7, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 193, 7, 0);
+  }
+}

@@ -1,8 +1,8 @@
-import { type EntityData } from '../types/entity-data';
-import { type FamiliarData, type Familiars } from '../types/familiar';
-import { type ItemData } from '../types/item-data';
-import { type RelicData, type Relics } from '../types/relic';
-import { type SavedPresetData } from '../types/saved-preset-data';
+import { type Entity as EntityData } from '../schemas/entity-data'
+import { type Familiar as FamiliarData, type Familiars } from '../schemas/familiar'
+import { type Item as ItemData } from '../schemas/item-data'
+import { type Relic as RelicData, type Relics } from '../schemas/relic'
+import { type SavedPreset as SavedPresetData} from '../schemas/saved-preset-data'
 import { generateDateString } from './generate-file-name';
 
 const DEFAULT_ENTITY_DATA: EntityData = {
@@ -19,14 +19,9 @@ export const sanitizeEntityData = (entityDataArr: EntityData[] | undefined): Ent
   );
 };
 export const sanitizeRelicData = (relicDataArr: RelicData[] | undefined): RelicData[] => {
-  return (relicDataArr ?? []).map((relicData?: RelicData) =>
-    (relicData === null || relicData === undefined)
-      ? {
-          ...DEFAULT_ENTITY_DATA,
-          energy: 0
-        }
-      : relicData
-  );
+  return (relicDataArr ?? [])
+    .filter((r): r is RelicData => r !== null && r !== undefined)
+    .map((relicData) => relicData)
 };
 export const sanitizeFamiliarData = (familiarDataArr: FamiliarData[] | undefined): FamiliarData[] => {
   return (familiarDataArr ?? []).map((familiarData?: FamiliarData) =>
@@ -40,6 +35,7 @@ export const sanitizeFamiliarData = (familiarDataArr: FamiliarData[] | undefined
 
 export const sanitizePresetData = (presetData: SavedPresetData): SavedPresetData => {
   return {
+    presetId: presetData.presetId,
     presetName: presetData.presetName,
     presetNotes: presetData.presetNotes,
     inventorySlots: sanitizeEntityData(presetData.inventorySlots),
