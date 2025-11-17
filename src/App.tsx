@@ -20,6 +20,14 @@ function App (): JSX.Element {
   // Preset ID is stored in URL params
   const { id } = useParams();
 
+  try {
+    const imageThumbnailUrl = `https://preset-proxy-ce0ae08456f7.herokuapp.com/?id=${id}`;
+    document!.querySelector('meta[property="og:image"]')!.setAttribute("content", imageThumbnailUrl);
+    document!.querySelector('meta[property="twitter:image:src"]')!.setAttribute("content", imageThumbnailUrl);
+  } catch (e) {
+    console.warn(e);
+  }
+
   useEffect(() => {
     if (presetImported.current) {
       return;
