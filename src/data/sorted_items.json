@@ -9854,5 +9854,93 @@
 		"breakdownNotes": "",
 		"slot": 1,
 		"wikiLink": "https://runescape.wiki/w/Zuriel's_hood"
-	}
+	},
+  {
+		"label": "waterskin",
+		"image": "https://img.pvme.io/images/ST0zXIdzcp.png",
+		"name": "Waterskin",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Waterskin"
+	},
+  {
+		"label": "vitalspark",
+		"image": "https://img.pvme.io/images/qDohEMPwiw.png",
+		"name": "Vital spark",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Vital_spark"
+	},
+  {
+		"label": "ringofvitur",
+		"image": "https://img.pvme.io/images/poa5bkGGKt.png",
+		"name": "Ring of Vitur",
+		"breakdownNotes": "",
+		"slot": 11,
+		"wikiLink": "https://runescape.wiki/w/Ring_of_Vitur"
+	},
+  {
+		"label": "potatocactus",
+		"image": "https://img.pvme.io/images/YqMJwpYLHc.png",
+		"name": "Potato cactus",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Potato_cactus"
+	},
+  {
+		"label": "menaphitegiftofferingmedium",
+		"image": "https://img.pvme.io/images/QIYlL99G92.png",
+		"name": "Menaphite gift offering (medium)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Menaphite_gift_offering_(medium)"
+	},
+  {
+		"label": "menaphitegiftofferingsmall",
+		"image": "https://img.pvme.io/images/SZMjuQyTah.png",
+		"name": "Menaphite gift offering (small)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Menaphite_gift_offering_(small)"
+	},
+  {
+		"label": "magpiepouch",
+		"image": "https://img.pvme.io/images/4XhgCbFbSc.png",
+		"name": "Magpie pouch",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Magpie_pouch"
+	},
+    {
+		"label": "largebladedadamantsalvage",
+		"image": "https://img.pvme.io/images/iTcnfQn9ij.png",
+		"name": "Large bladed adamant salvage",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Large_bladed_adamant_salvage"
+	},
+  {
+		"label": "extrafinesand",
+		"image": "https://img.pvme.io/images/oI3o2xrvpi.png",
+		"name": "Extra fine sand",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Extra_fine_sand"
+	},
+	{
+		"label": "acadiawoodspirit",
+		"image": "https://img.pvme.io/images/X8C70ia6wo.png",
+		"name": "Acadia wood spirit",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Acadia_wood_spirit"
+	},
+  {
+		"label": "legendaryfivefingerdiscountaura",
+		"image": "https://img.pvme.io/images/1OTYKXSJ3t.png",
+		"name": "Legendary five-finger discount aura",
+		"breakdownNotes": "",
+		"slot": 8,
+		"wikiLink": "https://runescape.wiki/w/Legendary_five-finger_discount_aura"
+	}  
 ]
