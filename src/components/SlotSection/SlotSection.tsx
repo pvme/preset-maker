@@ -37,8 +37,8 @@ const SingleSlot = ({ index, coord, className, slots, handleClickOpen, handleShi
   }
 
   const { getEmojiUrl } = useEmojiMap();
-  const emojiUrl = getEmojiUrl(slot.name);
-
+  const emojiUrl = slot.image || getEmojiUrl(slot.name);
+ 
   const getClassName = (slot: ItemData): string => {
     const selectedClass = slot.selected ? `${className}-icon-container--selected` : '';
     return `${className}-icon-container ${selectedClass}`;
