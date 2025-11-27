@@ -340,13 +340,6 @@ export const PresetMenu = (): JSX.Element => {
     }
   };
 
-  const handleCopyDirectLink = () => {
-    if (!id) return;
-    const url = window.location.origin + import.meta.env.BASE_URL + `#${encodeURIComponent(id)}`;
-    navigator.clipboard.writeText(url);
-    enqueueSnackbar('Link copied!', { variant: 'success' });
-  };
-
   const handleCopyEmbedLink = () => {
     if (!id) return;
     const url = `${FunctionURLs.presetEmbed}?id=${encodeURIComponent(id)}`;
@@ -480,10 +473,6 @@ export const PresetMenu = (): JSX.Element => {
                 </>
               )}
 
-              <MenuItem onClick={handleCopyDirectLink} disabled={!id}>
-                <ListItemIcon><LinkIcon fontSize="small" /></ListItemIcon>
-                <ListItemText primary="Copy Direct Link" />
-              </MenuItem>
               <MenuItem onClick={handleCopyEmbedLink} disabled={!id}>
                 <ListItemIcon><LinkIcon fontSize="small" /></ListItemIcon>
                 <ListItemText primary="Copy Embed Link" />
