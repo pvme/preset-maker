@@ -27,7 +27,7 @@ yarn run dev:prod
 Build & push to repo (branch: gh-pages)
 
 ```sh
-npm run build && npm run deploy
+npm run deploy
 ```
 
 ## Sorting JSON
