@@ -5953,7 +5953,7 @@
 	},
 	{
 		"label": "materialmanual",
-		"image": "https://img.pvme.io/images/cU73ZhJBhA.png",
+		"image": "https://img.pvme.io/images/CLI66N4xb2.png",
 		"name": "Material manual",
 		"breakdownNotes": "",
 		"slot": 0,
@@ -9942,5 +9942,13 @@
 		"breakdownNotes": "",
 		"slot": 8,
 		"wikiLink": "https://runescape.wiki/w/Legendary_five-finger_discount_aura"
+	},
+  {
+		"label": "necklaceofshadows",
+		"image": "https://img.pvme.io/images/CR0KP8tfqn.png",
+		"name": "Necklace of Shadows",
+		"breakdownNotes": "",
+		"slot": 10,
+		"wikiLink": "https://runescape.wiki/w/Necklace_of_Shadows"
 	}  
 ]
