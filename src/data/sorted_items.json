@@ -40,6 +40,14 @@
 		"wikiLink": "https://runescape.wiki/w/Abyssal_wand"
 	},
 	{
+		"label": "acadiawoodspirit",
+		"image": "https://img.pvme.io/images/X8C70ia6wo.png",
+		"name": "Acadia wood spirit",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Acadia_wood_spirit"
+	},
+	{
 		"label": "accursedashes1noted",
 		"image": "https://img.pvme.io/images/JiBstmM4RU.png",
 		"name": "Accursed ashes (noted)",
@@ -3488,6 +3496,14 @@
 		"wikiLink": "https://runescape.wiki/w/Explorer's_ring_4"
 	},
 	{
+		"label": "extrafinesand",
+		"image": "https://img.pvme.io/images/oI3o2xrvpi.png",
+		"name": "Extra fine sand",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Extra_fine_sand"
+	},
+	{
 		"label": "extattack",
 		"image": "https://img.pvme.io/images/bbhu0Wx.png",
 		"name": "Extreme attack (4)",
@@ -3966,6 +3982,14 @@
 		"breakdownNotes": "",
 		"slot": 3,
 		"wikiLink": "https://runescape.wiki/w/Globetrotter_shorts"
+	},
+	{
+		"label": "gloomfirebow",
+		"image": "https://img.pvme.io/images/OQRlXQpzhT.png",
+		"name": "Gloomfire bow",
+		"breakdownNotes": "",
+		"slot": 4,
+		"wikiLink": "https://runescape.wiki/w/Gloomfire_bow"
 	},
 	{
 		"label": "tumekengloves",
@@ -5128,6 +5152,14 @@
 		"wikiLink": "https://runescape.wiki/w/Lantadyme_incense_sticks"
 	},
 	{
+		"label": "largebladedadamantsalvage",
+		"image": "https://img.pvme.io/images/iTcnfQn9ij.png",
+		"name": "Large bladed adamant salvage",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Large_bladed_adamant_salvage"
+	},
+	{
 		"label": "pouch",
 		"image": "https://img.pvme.io/images/lBTTP01.png",
 		"name": "Large rune pouch",
@@ -5254,6 +5286,14 @@
 		"breakdownNotes": "",
 		"slot": 8,
 		"wikiLink": "https://runescape.wiki/w/Legendary_dedicated_slayer_aura"
+	},
+	{
+		"label": "legendaryfivefingerdiscountaura",
+		"image": "https://img.pvme.io/images/1OTYKXSJ3t.png",
+		"name": "Legendary five-finger discount aura",
+		"breakdownNotes": "",
+		"slot": 8,
+		"wikiLink": "https://runescape.wiki/w/Legendary_five-finger_discount_aura"
 	},
 	{
 		"label": "legendarylumberjack",
@@ -5502,6 +5542,14 @@
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Magic_whistle"
+	},
+	{
+		"label": "magpiepouch",
+		"image": "https://img.pvme.io/images/4XhgCbFbSc.png",
+		"name": "Magpie pouch",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Magpie_pouch"
 	},
 	{
 		"label": "mahj",
@@ -6040,6 +6088,22 @@
 		"wikiLink": "https://runescape.wiki/w/Memory_shard"
 	},
 	{
+		"label": "menaphitegiftofferingmedium",
+		"image": "https://img.pvme.io/images/QIYlL99G92.png",
+		"name": "Menaphite gift offering (medium)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Menaphite_gift_offering_(medium)"
+	},
+	{
+		"label": "menaphitegiftofferingsmall",
+		"image": "https://img.pvme.io/images/SZMjuQyTah.png",
+		"name": "Menaphite gift offering (small)",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Menaphite_gift_offering_(small)"
+	},
+	{
 		"label": "menaphosjournal",
 		"image": "https://img.pvme.io/images/EuRZLF2.png",
 		"name": "Menaphos journal",
@@ -6222,6 +6286,14 @@
 		"breakdownNotes": "",
 		"slot": 10,
 		"wikiLink": "https://runescape.wiki/w/Necklace_of_Salamancy"
+	},
+	{
+		"label": "necklaceofshadows",
+		"image": "https://img.pvme.io/images/CR0KP8tfqn.png",
+		"name": "Necklace of Shadows",
+		"breakdownNotes": "",
+		"slot": 10,
+		"wikiLink": "https://runescape.wiki/w/Necklace_of_Shadows"
 	},
 	{
 		"label": "necrocape",
@@ -7000,6 +7072,14 @@
 		"wikiLink": "https://runescape.wiki/w/Portent_of_item_protection"
 	},
 	{
+		"label": "potatocactus",
+		"image": "https://img.pvme.io/images/YqMJwpYLHc.png",
+		"name": "Potato cactus",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Potato_cactus"
+	},
+	{
 		"label": "potionreservoir",
 		"image": "https://img.pvme.io/images/uIF03Iz.png",
 		"name": "Potion reservoir",
@@ -7104,12 +7184,60 @@
 		"wikiLink": "https://runescape.wiki/w/Primal_abyssal_armour_spikes"
 	},
 	{
+		"label": "primalarmouredboots5",
+		"image": "https://img.pvme.io/images/5XvthpRv3p.png",
+		"name": "Primal armoured boots + 5",
+		"breakdownNotes": "",
+		"slot": 7,
+		"wikiLink": "https://runescape.wiki/w/Primal_armoured_boots_%2B_5"
+	},
+	{
 		"label": "feast",
 		"image": "https://img.pvme.io/images/ZtPaUJq.png",
 		"name": "Primal feast",
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Primal_feast"
+	},
+	{
+		"label": "primalfullhelm5",
+		"image": "https://img.pvme.io/images/vf7KIpZNyV.png",
+		"name": "Primal full helm + 5",
+		"breakdownNotes": "",
+		"slot": 1,
+		"wikiLink": "https://runescape.wiki/w/Primal_full_helm_%2B_5"
+	},
+	{
+		"label": "primalgauntlets5",
+		"image": "https://img.pvme.io/images/vYUVKiDGej.png",
+		"name": "Primal gauntlets + 5",
+		"breakdownNotes": "",
+		"slot": 6,
+		"wikiLink": "https://runescape.wiki/w/Primal_gauntlets_%2B_5"
+	},
+	{
+		"label": "primalkiteshield5",
+		"image": "https://img.pvme.io/images/S4goeeUgva.png",
+		"name": "Primal kiteshield + 5",
+		"breakdownNotes": "",
+		"slot": 5,
+		"wikiLink": "https://runescape.wiki/w/Primal_kiteshield_%2B_5"
+	},
+	{
+		"label": "primalplatebody5",
+		"image": "https://img.pvme.io/images/IyoMWDW0JA.png",
+		"name": "Primal platebody + 5",
+		"breakdownNotes": "",
+		"slot": 2,
+		"wikiLink": "https://runescape.wiki/w/Primal_platebody_%2B_5"
+	},
+	{
+		"label": "primalplatelegs5",
+		"image": "https://img.pvme.io/images/lIDGmXKBE3.png",
+		"name": "Primal platelegs + 5",
+		"breakdownNotes": "",
+		"slot": 3,
+		"wikiLink": "https://runescape.wiki/w/Primal_platelegs_%2B_5"
 	},
 	{
 		"label": "primedkeris",
@@ -7310,6 +7438,14 @@
 		"breakdownNotes": "",
 		"slot": 11,
 		"wikiLink": "https://runescape.wiki/w/Ring_of_Fortune"
+	},
+	{
+		"label": "ringofvitur",
+		"image": "https://img.pvme.io/images/poa5bkGGKt.png",
+		"name": "Ring of Vitur",
+		"breakdownNotes": "",
+		"slot": 11,
+		"wikiLink": "https://runescape.wiki/w/Ring_of_Vitur"
 	},
 	{
 		"label": "ringofwealth",
@@ -9432,6 +9568,22 @@
 		"wikiLink": "https://runescape.wiki/w/Virtus_robe_top"
 	},
 	{
+		"label": "visageofthefirstnecromancer",
+		"image": "https://img.pvme.io/images/nXvi24RIua.png",
+		"name": "Visage of the First Necromancer",
+		"breakdownNotes": "",
+		"slot": 1,
+		"wikiLink": "https://runescape.wiki/w/Visage_of_the_First_Necromancer"
+	},
+	{
+		"label": "vitalspark",
+		"image": "https://img.pvme.io/images/qDohEMPwiw.png",
+		"name": "Vital spark",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Vital_spark"
+	},
+	{
 		"label": "sparkenhancers",
 		"image": "https://img.pvme.io/images/z9ssNId.png",
 		"name": "Vital spark drop enhancer",
@@ -9606,6 +9758,14 @@
 		"breakdownNotes": "",
 		"slot": 0,
 		"wikiLink": "https://runescape.wiki/w/Waterfiend_scroll_(Straight_Flush)"
+	},
+	{
+		"label": "waterskin",
+		"image": "https://img.pvme.io/images/ST0zXIdzcp.png",
+		"name": "Waterskin",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Waterskin"
 	},
 	{
 		"label": "poison1",
@@ -9854,101 +10014,5 @@
 		"breakdownNotes": "",
 		"slot": 1,
 		"wikiLink": "https://runescape.wiki/w/Zuriel's_hood"
-	},
-  {
-		"label": "waterskin",
-		"image": "https://img.pvme.io/images/ST0zXIdzcp.png",
-		"name": "Waterskin",
-		"breakdownNotes": "",
-		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Waterskin"
-	},
-  {
-		"label": "vitalspark",
-		"image": "https://img.pvme.io/images/qDohEMPwiw.png",
-		"name": "Vital spark",
-		"breakdownNotes": "",
-		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Vital_spark"
-	},
-  {
-		"label": "ringofvitur",
-		"image": "https://img.pvme.io/images/poa5bkGGKt.png",
-		"name": "Ring of Vitur",
-		"breakdownNotes": "",
-		"slot": 11,
-		"wikiLink": "https://runescape.wiki/w/Ring_of_Vitur"
-	},
-  {
-		"label": "potatocactus",
-		"image": "https://img.pvme.io/images/YqMJwpYLHc.png",
-		"name": "Potato cactus",
-		"breakdownNotes": "",
-		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Potato_cactus"
-	},
-  {
-		"label": "menaphitegiftofferingmedium",
-		"image": "https://img.pvme.io/images/QIYlL99G92.png",
-		"name": "Menaphite gift offering (medium)",
-		"breakdownNotes": "",
-		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Menaphite_gift_offering_(medium)"
-	},
-  {
-		"label": "menaphitegiftofferingsmall",
-		"image": "https://img.pvme.io/images/SZMjuQyTah.png",
-		"name": "Menaphite gift offering (small)",
-		"breakdownNotes": "",
-		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Menaphite_gift_offering_(small)"
-	},
-  {
-		"label": "magpiepouch",
-		"image": "https://img.pvme.io/images/4XhgCbFbSc.png",
-		"name": "Magpie pouch",
-		"breakdownNotes": "",
-		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Magpie_pouch"
-	},
-    {
-		"label": "largebladedadamantsalvage",
-		"image": "https://img.pvme.io/images/iTcnfQn9ij.png",
-		"name": "Large bladed adamant salvage",
-		"breakdownNotes": "",
-		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Large_bladed_adamant_salvage"
-	},
-  {
-		"label": "extrafinesand",
-		"image": "https://img.pvme.io/images/oI3o2xrvpi.png",
-		"name": "Extra fine sand",
-		"breakdownNotes": "",
-		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Extra_fine_sand"
-	},
-	{
-		"label": "acadiawoodspirit",
-		"image": "https://img.pvme.io/images/X8C70ia6wo.png",
-		"name": "Acadia wood spirit",
-		"breakdownNotes": "",
-		"slot": 0,
-		"wikiLink": "https://runescape.wiki/w/Acadia_wood_spirit"
-	},
-  {
-		"label": "legendaryfivefingerdiscountaura",
-		"image": "https://img.pvme.io/images/1OTYKXSJ3t.png",
-		"name": "Legendary five-finger discount aura",
-		"breakdownNotes": "",
-		"slot": 8,
-		"wikiLink": "https://runescape.wiki/w/Legendary_five-finger_discount_aura"
-	},
-  {
-		"label": "necklaceofshadows",
-		"image": "https://img.pvme.io/images/CR0KP8tfqn.png",
-		"name": "Necklace of Shadows",
-		"breakdownNotes": "",
-		"slot": 10,
-		"wikiLink": "https://runescape.wiki/w/Necklace_of_Shadows"
-	}  
+	}
 ]
