@@ -328,6 +328,14 @@
 		"wikiLink": "https://runescape.wiki/w/Alteration_necklace"
 	},
 	{
+		"label": "amhej",
+		"image": "https://img.pvme.io/images/2IikUpvpaK.png",
+		"name": "Am-hej",
+		"breakdownNotes": "",
+		"slot": 10,
+		"wikiLink": "https://runescape.wiki/w/Am-hej"
+	},  
+	{
 		"label": "aminishiteleport",
 		"image": "https://img.pvme.io/images/UvdpmhD.png",
 		"name": "Aminishi teleport",
