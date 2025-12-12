@@ -1,22 +1,43 @@
 // src/storage/preset-storage.ts
 
-import { LocalPresetStorage } from './LocalPresetStorage';
-import { CloudPresetStorage } from './CloudPresetStorage';
-import { SavedPreset } from '../schemas/saved-preset-data';
-import { PresetSummary } from '../schemas/preset-summary';
+import { LocalPresetStorage } from "./LocalPresetStorage";
+import { CloudPresetStorage } from "./CloudPresetStorage";
+import { normalizePreset } from "../redux/store/reducers/normalizePreset";
+import { type Preset } from "../schemas/preset";
+import { type PresetSummary } from "../schemas/preset-summary";
+import { type SavedPreset } from "../schemas/saved-preset-data";
 
 export const loadPresetById = async (
   id: string
-): Promise<{ data: SavedPreset; source: 'local' | 'cloud' }> => {
+): Promise<{
+  data: Preset;
+  presetId: string;
+  source: "local" | "cloud";
+}> => {
   try {
-    const data = await LocalPresetStorage.getPreset(id);
-    return { data, source: 'local' };
+    const raw: SavedPreset = await LocalPresetStorage.getPreset(id);
+    const normalised = await normalizePreset(raw);
+
+    return {
+      data: normalised,
+      presetId: raw.presetId ?? id,
+      source: "local",
+    };
   } catch {
-    const data = await CloudPresetStorage.getPreset(id);
-    return { data, source: 'cloud' };
+    const raw: SavedPreset = await CloudPresetStorage.getPreset(id);
+    const normalised = await normalizePreset(raw);
+
+    return {
+      data: normalised,
+      presetId: raw.presetId ?? id,
+      source: "cloud",
+    };
   }
 };
 
+//
+// Storage adapter contract (RAW only)
+//
 export interface PresetStorage {
   getPreset(id: string): Promise<SavedPreset>;
   savePreset(preset: SavedPreset, id?: string): Promise<string>;

@@ -1,44 +1,31 @@
 // src/redux/store/reducers/preset-reducer.ts
 
-import { createSlice } from "@reduxjs/toolkit";
-import type { PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
-import { type Item } from "../../../schemas/item-data";
-import { type ApplicationState } from "../store";
-import { type SavedPreset } from "../../../schemas/saved-preset-data";
 import { SlotType } from "../../../schemas/slot-type";
 import { type BreakdownEntry } from "../../../schemas/breakdown";
-import { type Familiars, type Familiar } from "../../../schemas/familiar";
-import { type Relics, type Relic } from "../../../schemas/relic";
+import { type Preset } from "../../../schemas/preset";
+import { type Item } from "../../../schemas/item-data";
+import { type Familiar } from "../../../schemas/familiar";
+import { type Relic } from "../../../schemas/relic";
+import { type ApplicationState } from "../store";
 
-interface PresetState {
-  presetName: string;
-  presetNotes: string;
-
-  inventorySlots: Item[];
-  equipmentSlots: Item[];
-
-  familiars: Familiars;
-  relics: Relics;
-
-  breakdown: BreakdownEntry[];
-
+interface PresetState extends Preset {
   slotType: SlotType;
   slotIndex: number;
-
   selectedSlots: string[];
   slotKey: string;
 }
 
 //
-// Blank creators (ID-only)
+// Blank creators
 //
 const blankItem = (): Item => ({ id: "" });
 const blankFamiliar = (): Familiar => ({ id: "" });
 const blankRelic = (): Relic => ({ id: "" });
 
 //
-// Initial State
+// Initial State (UI-safe, fully normalised)
 //
 const initialState: PresetState = {
   presetName: "",
@@ -61,8 +48,6 @@ const initialState: PresetState = {
 
   slotType: SlotType.Inventory,
   slotIndex: -1,
-
-  /** Multi-select initially empty */
   selectedSlots: [],
   slotKey: "",
 };
@@ -150,7 +135,7 @@ export const presetSlice = createSlice({
     },
 
     //
-    // Breakdown System
+    // Breakdown
     //
     setBreakdownEntry: (state, action: PayloadAction<BreakdownEntry>) => {
       const existing = state.breakdown.find(
@@ -167,7 +152,8 @@ export const presetSlice = createSlice({
     },
 
     removeBreakdownEntry: (
-        state, action: PayloadAction<{ slotType: "inventory" | "equipment"; slotIndex: number }>
+      state,
+      action: PayloadAction<{ slotType: "inventory" | "equipment"; slotIndex: number }>
     ) => {
       state.breakdown = state.breakdown.filter(
         (b) =>
@@ -179,24 +165,18 @@ export const presetSlice = createSlice({
     },
 
     //
-    // Importing a preset
+    // Import (expects NORMALISED data)
     //
-    importDataAction: (state, action: PayloadAction<Partial<SavedPreset>>) => {
-      state.presetName = action.payload.presetName ?? "";
-      state.presetNotes = action.payload.presetNotes ?? "";
+    importDataAction: (state, action: PayloadAction<Preset>) => {
+      state.presetName = action.payload.presetName;
+      state.presetNotes = action.payload.presetNotes;
 
-      state.inventorySlots =
-        action.payload.inventorySlots ?? initialState.inventorySlots;
+      state.inventorySlots = action.payload.inventorySlots;
+      state.equipmentSlots = action.payload.equipmentSlots;
+      state.relics = action.payload.relics;
+      state.familiars = action.payload.familiars;
+      state.breakdown = action.payload.breakdown;
 
-      state.equipmentSlots =
-        action.payload.equipmentSlots ?? initialState.equipmentSlots;
-
-      state.relics = action.payload.relics ?? initialState.relics;
-      state.familiars = action.payload.familiars ?? initialState.familiars;
-
-      state.breakdown = action.payload.breakdown ?? [];
-
-      // Always clear selection when a preset loads
       state.selectedSlots = [];
     },
 
@@ -215,16 +195,11 @@ export const presetSlice = createSlice({
       state.slotKey = action.payload;
     },
 
-    //
-    // Multi-selection controls
-    //
     toggleSlotSelection: (state, action: PayloadAction<string>) => {
       const index = action.payload;
-      if (state.selectedSlots.includes(index)) {
-        state.selectedSlots = state.selectedSlots.filter((i) => i !== index);
-      } else {
-        state.selectedSlots.push(index);
-      }
+      state.selectedSlots = state.selectedSlots.includes(index)
+        ? state.selectedSlots.filter((i) => i !== index)
+        : [...state.selectedSlots, index];
     },
 
     clearSelectedSlots: (state) => {
@@ -262,7 +237,6 @@ export const {
   setSelectedSlots,
 } = presetSlice.actions;
 
-export const selectPreset = (state: ApplicationState): PresetState =>
-  state.preset;
+export const selectPreset = (state: ApplicationState) => state.preset;
 
 export default presetSlice.reducer;

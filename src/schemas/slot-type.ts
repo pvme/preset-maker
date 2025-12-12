@@ -3,6 +3,8 @@
 export enum SlotType {
   Inventory,
   Equipment,
+  Familiar,
+  Relic,
 }
 
 export enum ItemType {
