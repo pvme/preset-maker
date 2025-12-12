@@ -10,8 +10,10 @@ interface Options {
 
 const allowedTags = ["img", "br", "div", "span"];
 const allowedAttributes = {
-  img: ["src", "alt", "class"],
+  img: ["src", "alt", "class", "data-emoji"],
 };
+
+const DE_EMOJIFY_REGEX = /<img[^>]*data-emoji="([^"]+)"[^>]*>/g;
 
 export function useEmojiEditableField({
   value,
@@ -19,14 +21,14 @@ export function useEmojiEditableField({
   onCommit,
 }: Options) {
   const ref = useRef<HTMLDivElement>(null);
+  const isFocused = useRef(false);
 
-  const [raw, setRaw] = useState(value);
-  const [html, setHtml] = useState(emojify(value));
+  const [html, setHtml] = useState(() => emojify(value ?? ""));
 
-  // Sync from Redux when value genuinely changes
+  // Sync from external value ONLY when not editing
   useEffect(() => {
-    setRaw(value);
-    setHtml(emojify(value));
+    if (isFocused.current) return;
+    setHtml(emojify(value ?? ""));
   }, [value]);
 
   const sanitise = (input: string) => {
@@ -43,25 +45,30 @@ export function useEmojiEditableField({
     });
   };
 
-  // Live typing: browser updates DOM, we mirror it
-  const onChange = useCallback((e: any) => {
-    const nextHtml = e.currentTarget.innerHTML;
-    const cleaned = sanitise(nextHtml);
-    const rendered = emojify(cleaned);
-
-    setHtml(rendered);
-    setRaw(e.currentTarget.innerText ?? "");
+  const onFocus = useCallback(() => {
+    isFocused.current = true;
   }, []);
 
-  // Commit on blur only
+  const onChange = useCallback(() => {
+    // Intentionally empty — browser owns DOM while focused
+  }, []);
+
   const onBlur = useCallback(() => {
-    onCommit(raw);
-  }, [raw, onCommit]);
+    if (!ref.current) return;
+    isFocused.current = false;
+
+    const htmlValue = ref.current.innerHTML ?? "";
+    const textValue = htmlValue.replace(DE_EMOJIFY_REGEX, "$1");
+    const clean = sanitise(textValue).trim();
+
+    setHtml(emojify(clean));
+    onCommit(clean);
+  }, [onCommit]);
 
   return {
     ref,
     html,
-    raw,
+    onFocus,
     onChange,
     onBlur,
   };

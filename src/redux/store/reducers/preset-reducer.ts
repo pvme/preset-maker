@@ -17,16 +17,10 @@ interface PresetState extends Preset {
   slotKey: string;
 }
 
-//
-// Blank creators
-//
 const blankItem = (): Item => ({ id: "" });
 const blankFamiliar = (): Familiar => ({ id: "" });
 const blankRelic = (): Relic => ({ id: "" });
 
-//
-// Initial State (UI-safe, fully normalised)
-//
 const initialState: PresetState = {
   presetName: "",
   presetNotes: "",
@@ -52,18 +46,12 @@ const initialState: PresetState = {
   slotKey: "",
 };
 
-//
-// Slice
-//
 export const presetSlice = createSlice({
   name: "preset",
   initialState,
   reducers: {
     resetToInitialState: () => initialState,
 
-    //
-    // Basic fields
-    //
     setPresetName: (state, action: PayloadAction<string>) => {
       state.presetName = action.payload;
     },
@@ -72,9 +60,6 @@ export const presetSlice = createSlice({
       state.presetNotes = action.payload;
     },
 
-    //
-    // Slot assignment
-    //
     setInventorySlot: (
       state,
       action: PayloadAction<{ index: number; value: Item }>
@@ -99,9 +84,6 @@ export const presetSlice = createSlice({
       state.inventorySlots[targetIndex] = tmp;
     },
 
-    //
-    // Relics / Familiars
-    //
     setPrimaryRelic: (
       state,
       action: PayloadAction<{ index: number; value: Relic | null }>
@@ -134,20 +116,25 @@ export const presetSlice = createSlice({
         action.payload.value ?? blankFamiliar();
     },
 
-    //
-    // Breakdown
-    //
     setBreakdownEntry: (state, action: PayloadAction<BreakdownEntry>) => {
-      const existing = state.breakdown.find(
+      const index = state.breakdown.findIndex(
         (b) =>
           b.slotType === action.payload.slotType &&
           b.slotIndex === action.payload.slotIndex
       );
 
-      if (existing) {
-        existing.description = action.payload.description;
+      if (index !== -1) {
+        state.breakdown[index] = {
+          slotType: action.payload.slotType,
+          slotIndex: action.payload.slotIndex,
+          description: action.payload.description,
+        };
       } else {
-        state.breakdown.push(action.payload);
+        state.breakdown.push({
+          slotType: action.payload.slotType,
+          slotIndex: action.payload.slotIndex,
+          description: action.payload.description,
+        });
       }
     },
 
@@ -164,25 +151,17 @@ export const presetSlice = createSlice({
       );
     },
 
-    //
-    // Import (expects NORMALISED data)
-    //
     importDataAction: (state, action: PayloadAction<Preset>) => {
       state.presetName = action.payload.presetName;
       state.presetNotes = action.payload.presetNotes;
-
       state.inventorySlots = action.payload.inventorySlots;
       state.equipmentSlots = action.payload.equipmentSlots;
       state.relics = action.payload.relics;
       state.familiars = action.payload.familiars;
       state.breakdown = action.payload.breakdown;
-
       state.selectedSlots = [];
     },
 
-    //
-    // UI controls
-    //
     updateSlotType: (state, action: PayloadAction<SlotType>) => {
       state.slotType = action.payload;
     },
@@ -212,9 +191,6 @@ export const presetSlice = createSlice({
   },
 });
 
-//
-// Exports
-//
 export const {
   resetToInitialState,
   setPresetName,
@@ -238,5 +214,4 @@ export const {
 } = presetSlice.actions;
 
 export const selectPreset = (state: ApplicationState) => state.preset;
-
 export default presetSlice.reducer;

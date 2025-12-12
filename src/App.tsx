@@ -1,8 +1,8 @@
 // src/App.tsx
 
 import React, { useEffect, useState } from "react";
-import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
+import { DndProvider } from "react-dnd";  // Move this down
 import { HeaderBar } from "./components/HeaderBar/HeaderBar";
 import { PresetSection } from "./components/PresetSection/PresetSection";
 import {
@@ -107,57 +107,58 @@ function AppContent(): JSX.Element {
   return (
     <div className="app-container">
       <div className="background-gradient"></div>
-      
+
       <div className="floating-shapes">
         <div className="shape shape-1"></div>
         <div className="shape shape-2"></div>
         <div className="shape shape-3"></div>
       </div>
 
-        {showOverlay ? (
-          <div className="loading-container">
-            <div className="loading-card">
-              <div className="loading-spinner-wrapper">
-                <div className="modern-spinner">
-                  <div className="spinner-ring"></div>
-                  <div className="spinner-ring"></div>
-                  <div className="spinner-ring"></div>
-                </div>
-              </div>
-
-              <div className="loading-content">
-                <Typography variant="h5" className="loading-title">
-                  {isGlobalLoading ? "Saving Preset" : "Loading Your Preset"}
-                </Typography>
-
-                <Typography variant="body1" className="loading-subtitle">
-                  {isGlobalLoading
-                    ? loadingText || "Saving to cloud…"
-                    : loadingPhrase}
-                </Typography>
-
-                {!isGlobalLoading && (
-                  <>
-                    <div className="progress-bar">
-                      <div
-                        className="progress-fill"
-                        style={{ width: `${loadingProgress}%` }}
-                      />
-                    </div>
-                    <Typography variant="body2" className="progress-text">
-                      {Math.round(loadingProgress)}%
-                    </Typography>
-                  </>
-                )}
+      {showOverlay ? (
+        <div className="loading-container">
+          <div className="loading-card">
+            <div className="loading-spinner-wrapper">
+              <div className="modern-spinner">
+                <div className="spinner-ring"></div>
+                <div className="spinner-ring"></div>
+                <div className="spinner-ring"></div>
               </div>
             </div>
-          </div>
-        ) : (
 
-        <div className="app-content">
-          <HeaderBar />
-          <PresetSection />
+            <div className="loading-content">
+              <Typography variant="h5" className="loading-title">
+                {isGlobalLoading ? "Saving Preset" : "Loading Your Preset"}
+              </Typography>
+
+              <Typography variant="body1" className="loading-subtitle">
+                {isGlobalLoading
+                  ? loadingText || "Saving to cloud…"
+                  : loadingPhrase}
+              </Typography>
+
+              {!isGlobalLoading && (
+                <>
+                  <div className="progress-bar">
+                    <div
+                      className="progress-fill"
+                      style={{ width: `${loadingProgress}%` }}
+                    />
+                  </div>
+                  <Typography variant="body2" className="progress-text">
+                    {Math.round(loadingProgress)}%
+                  </Typography>
+                </>
+              )}
+            </div>
+          </div>
         </div>
+      ) : (
+        <DndProvider backend={HTML5Backend}>
+          <div className="app-content">
+            <HeaderBar />
+            <PresetSection />
+          </div>
+        </DndProvider>
       )}
     </div>
   );
@@ -168,9 +169,7 @@ function App(): JSX.Element {
     <GlobalLoadingProvider>
       <StorageModeProvider>
         <PresetLoadProvider>
-          <DndProvider backend={HTML5Backend}>
-            <AppContent />
-          </DndProvider>
+          <AppContent />
         </PresetLoadProvider>
       </StorageModeProvider>
     </GlobalLoadingProvider>

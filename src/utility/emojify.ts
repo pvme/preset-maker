@@ -6,7 +6,6 @@ export function emojify(text: string): string {
   const emojis = getEmojiIndex();
   if (!emojis) return text;
 
-  // Match :alias: OR ;alias;
   const aliasRegex = /[:;]([a-zA-Z0-9_-]+)[:;]/g;
 
   return text.replace(aliasRegex, (fullMatch, rawAlias: string) => {
@@ -24,7 +23,6 @@ export function emojify(text: string): string {
 
     if (!emoji) return fullMatch;
 
-    // Determine image URL
     let url = "";
     if (emoji.image) {
       url = emoji.image.startsWith("http")
@@ -35,7 +33,13 @@ export function emojify(text: string): string {
     } else {
       return fullMatch;
     }
-
-    return `<img class="disc-emoji" alt="${emoji.name}" title="${emoji.name}" src="${url}" />`;
+    
+    return `<img
+      class="disc-emoji"
+      src="${url}"
+      alt="${emoji.name}"
+      title="${emoji.name}"
+      data-emoji="${fullMatch}"
+    />`;
   });
 }

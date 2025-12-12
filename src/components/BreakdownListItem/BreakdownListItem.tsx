@@ -1,36 +1,35 @@
-// src/components/BreakdownListItem/BreakdownListItem.tsx
-
 import React from "react";
 import ListItem from "@mui/material/ListItem";
-import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import Link from "@mui/material/Link";
+import ContentEditable from "react-contenteditable";
 
-import { useEmojiMap } from "../../hooks/useEmojiMap";
-import { type BreakdownEntry } from "../../schemas/breakdown";
+import { useEmojiEditableField } from "../../hooks/useEmojiEditableField";
+import { type EmojiMaps } from "../../hooks/useEmojiMap";
 
 interface Props {
-  entry: BreakdownEntry;
+  emojiMap: EmojiMaps;
+  description: string;
   itemId: string;
-  onChange: (description: string) => void;
+  onCommit: (description: string) => void;
 }
 
 export const BreakdownListItem = ({
-  entry,
+  emojiMap,
+  description,
   itemId,
-  onChange
+  onCommit,
 }: Props): JSX.Element | null => {
-  const maps = useEmojiMap();
+  const field = useEmojiEditableField({
+    value: description,
+    allowMultiline: true,
+    onCommit,
+  });
 
-  // Still loading?
-  if (!maps) return null;
-
-  const emoji = maps.get(itemId);
+  const emoji = emojiMap.get(itemId);
   if (!emoji) return null;
 
-  const imageUrl = maps.getUrl(itemId);
-
-  // Construct wiki link from emoji name
+  const imageUrl = emojiMap.getUrl(itemId);
   const wikiName = emoji.name.replace(/ /g, "_");
   const wikiUrl = `https://runescape.wiki/w/${encodeURIComponent(wikiName)}`;
 
@@ -40,9 +39,7 @@ export const BreakdownListItem = ({
         className="breakdown-item-left"
         sx={{ display: "flex", alignItems: "center", gap: 1 }}
       >
-        {imageUrl && (
-          <img src={imageUrl} alt={emoji.name} width={38} />
-        )}
+        {imageUrl && <img src={imageUrl} alt={emoji.name} width={38} />}
 
         <Box sx={{ display: "flex", flexDirection: "column" }}>
           <span>{emoji.name}</span>
@@ -58,12 +55,16 @@ export const BreakdownListItem = ({
         </Box>
       </Box>
 
-      <TextField
-        value={entry.description}
-        fullWidth
-        size="small"
-        onChange={(e) => onChange(e.target.value)}
-      />
+      <Box className="breakdown-description-wrapper">
+        <ContentEditable
+          innerRef={field.ref}
+          html={field.html}
+          className="breakdown-description-editable"
+          onFocus={field.onFocus}
+          onChange={field.onChange}
+          onBlur={field.onBlur}
+        />
+      </Box>
     </ListItem>
   );
 };

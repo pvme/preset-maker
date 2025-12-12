@@ -26,7 +26,7 @@
   transform: translate(11px, -9px) scale(0.75);
 
   pointer-events: none;
-  z-index: 2;
+  z-index: 3;
 }
 
 /* --------------------------------------------------
@@ -84,6 +84,7 @@
   text-overflow: ellipsis;
 }
 
+
 /* --------------------------------------------------
    NAME-SPECIFIC LABEL & PLACEHOLDER
 -------------------------------------------------- */
@@ -104,4 +105,18 @@
 
 .notes-field-placeholder {
   color: #999;
+}
+
+/* Ensure editable sits above placeholder */
+.field-editable,
+.breakdown-description-editable {
+  position: relative;
+  z-index: 2;
+}
+
+/* Placeholder sits underneath and never blocks input */
+.field-placeholder {
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.7;
 }

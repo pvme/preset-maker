@@ -19,21 +19,21 @@ import {
 import { useEmojiEditableField } from "../../hooks/useEmojiEditableField";
 import "./PresetDetails.css";
 
+const isEmpty = (ref: React.RefObject<HTMLDivElement>) =>
+  !ref.current || ref.current.innerText.trim() === "";
+
 export const PresetDetails = (): JSX.Element => {
   const dispatch = useAppDispatch();
   const preset = useAppSelector(selectPreset);
 
-  const presetName = preset?.presetName ?? "";
-  const presetNotes = preset?.presetNotes ?? "";
-
   const nameField = useEmojiEditableField({
-    value: presetName,
+    value: preset?.presetName ?? "",
     allowMultiline: false,
     onCommit: (raw) => dispatch(setPresetName(raw)),
   });
 
   const notesField = useEmojiEditableField({
-    value: presetNotes,
+    value: preset?.presetNotes ?? "",
     allowMultiline: true,
     onCommit: (raw) => dispatch(setPresetNotes(raw)),
   });
@@ -56,7 +56,7 @@ export const PresetDetails = (): JSX.Element => {
         <Stack spacing={4}>
           {/* NAME */}
           <div className="field-wrapper name-field-wrapper">
-            {nameField.raw.trim() === "" && (
+            {isEmpty(nameField.ref) && (
               <div className="field-placeholder name-field-placeholder">
                 Give your preset a name...
               </div>
@@ -64,8 +64,9 @@ export const PresetDetails = (): JSX.Element => {
 
             <ContentEditable
               innerRef={nameField.ref}
-              className="field-editable name-field"
               html={nameField.html}
+              className="field-editable name-field"
+              onFocus={nameField.onFocus}
               onChange={nameField.onChange}
               onBlur={nameField.onBlur}
             />
@@ -73,7 +74,7 @@ export const PresetDetails = (): JSX.Element => {
 
           {/* NOTES */}
           <div className="field-wrapper notes-field-wrapper">
-            {notesField.raw.trim() === "" && (
+            {isEmpty(notesField.ref) && (
               <div className="field-placeholder notes-field-placeholder">
                 Add any general preset notes here...
               </div>
@@ -81,8 +82,9 @@ export const PresetDetails = (): JSX.Element => {
 
             <ContentEditable
               innerRef={notesField.ref}
-              className="field-editable notes-field"
               html={notesField.html}
+              className="field-editable notes-field"
+              onFocus={notesField.onFocus}
               onChange={notesField.onChange}
               onBlur={notesField.onBlur}
             />

@@ -1,143 +1,127 @@
 // src/components/PresetBreakdown/PresetBreakdown.tsx
 
-import React from "react";
-
+import React, { useEffect, useMemo, useState } from "react";
 import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemText from "@mui/material/ListItemText";
 import Box from "@mui/material/Box";
 
 import { BreakdownListItem } from "../BreakdownListItem/BreakdownListItem";
-
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { selectPreset, setBreakdownEntry } from "../../redux/store/reducers/preset-reducer";
+import { useEmojiMap } from "../../hooks/useEmojiMap";
 
 import "./PresetBreakdown.css";
 
-//
-// INLINE BREAKDOWN HEADER
-//
-const BreakdownHeader = ({ title }: { title?: string }) => (
-  <ListItem disablePadding className="desktop-only">
-    <ListItemButton style={{ textAlign: "center" }}>
-      <ListItemText
-        primaryTypographyProps={{ style: { fontWeight: "bold" } }}
-        primary={title ?? "Item"}
-      />
-      <ListItemText
-        primaryTypographyProps={{ style: { fontWeight: "bold" } }}
-        primary="Notes"
-      />
-    </ListItemButton>
-  </ListItem>
-);
+type DraftKey = `${"inventory" | "equipment"}-${number}`;
 
-export const PresetBreakdown = (): JSX.Element => {
+interface Row {
+  key: DraftKey;
+  itemId: string;
+  slotType: "inventory" | "equipment";
+  slotIndex: number;
+  description: string;
+}
+
+export const PresetBreakdown = (): JSX.Element | null => {
   const dispatch = useAppDispatch();
   const preset = useAppSelector(selectPreset);
+  const emojiMap = useEmojiMap();
 
-  //
-  // INVENTORY ROWS
-  //
-  const inventoryRows = preset.inventorySlots
-    .map((slot, index) => {
-      if (!slot.id) return null;
-      const breakdown = preset.breakdown.find(
-        (b) => b.slotType === "inventory" && b.slotIndex === index
-      );
+  const [drafts, setDrafts] = useState<Record<DraftKey, string>>({});
 
-      return {
-        slotType: "inventory" as const,
-        slotIndex: index,
-        itemId: slot.id,
-        description: breakdown?.description ?? "",
-      };
-    })
-    .filter(Boolean) as {
-    slotType: "inventory";
-    slotIndex: number;
-    itemId: string;
-    description: string;
-  }[];
+  // Sync drafts from Redux
+  useEffect(() => {
+    const next: Record<DraftKey, string> = {};
 
-  //
-  // EQUIPMENT ROWS
-  //
-  const equipmentRows = preset.equipmentSlots
-    .map((slot, index) => {
-      if (!slot.id) return null;
-      const breakdown = preset.breakdown.find(
-        (b) => b.slotType === "equipment" && b.slotIndex === index
-      );
+    for (const b of preset.breakdown) {
+      next[`${b.slotType}-${b.slotIndex}`] = b.description;
+    }
 
-      return {
-        slotType: "equipment" as const,
-        slotIndex: index,
-        itemId: slot.id,
-        description: breakdown?.description ?? "",
-      };
-    })
-    .filter(Boolean) as {
-    slotType: "equipment";
-    slotIndex: number;
-    itemId: string;
-    description: string;
-  }[];
+    setDrafts(next);
+  }, [preset.breakdown]);
+
+  const inventoryRows = useMemo<Row[]>(() => {
+    return preset.inventorySlots.flatMap((slot, index) => {
+      if (!slot.id) return [];
+
+      const key = `inventory-${index}` as DraftKey;
+
+      return [
+        {
+          key,
+          itemId: slot.id,
+          slotType: "inventory",
+          slotIndex: index,
+          description: drafts[key] ?? "",
+        },
+      ];
+    });
+  }, [preset.inventorySlots, drafts]);
+
+  const equipmentRows = useMemo<Row[]>(() => {
+    return preset.equipmentSlots.flatMap((slot, index) => {
+      if (!slot.id) return [];
+
+      const key = `equipment-${index}` as DraftKey;
+
+      return [
+        {
+          key,
+          itemId: slot.id,
+          slotType: "equipment",
+          slotIndex: index,
+          description: drafts[key] ?? "",
+        },
+      ];
+    });
+  }, [preset.equipmentSlots, drafts]);
+
+  const commit = (
+    slotType: "inventory" | "equipment",
+    slotIndex: number,
+    description: string
+  ) => {
+    dispatch(
+      setBreakdownEntry({
+        slotType,
+        slotIndex,
+        description,
+      })
+    );
+  };
+
+  if (!emojiMap) return null;
 
   return (
     <Box className="breakdown-container">
-      {/* Column headers */}
       <div className="breakdown-table-header">
         <div className="breakdown-col-header">Inventory</div>
         <div className="breakdown-col-header">Equipment</div>
       </div>
 
-      {/* Two-column grid */}
       <div className="breakdown-grid">
-        {/* Inventory list */}
         <List className="breakdown-list">
           {inventoryRows.map((row) => (
             <BreakdownListItem
-              key={`inv-${row.slotIndex}`}
-              entry={{
-                slotType: "inventory",
-                slotIndex: row.slotIndex,
-                description: row.description,
-              }}
+              key={row.key}
+              emojiMap={emojiMap}
               itemId={row.itemId}
-              onChange={(description) =>
-                dispatch(
-                  setBreakdownEntry({
-                    slotType: "inventory",
-                    slotIndex: row.slotIndex,
-                    description,
-                  })
-                )
+              description={row.description}
+              onCommit={(desc) =>
+                commit(row.slotType, row.slotIndex, desc)
               }
             />
           ))}
         </List>
 
-        {/* Equipment list */}
         <List className="breakdown-list">
           {equipmentRows.map((row) => (
             <BreakdownListItem
-              key={`eq-${row.slotIndex}`}
-              entry={{
-                slotType: "equipment",
-                slotIndex: row.slotIndex,
-                description: row.description,
-              }}
+              key={row.key}
+              emojiMap={emojiMap}
               itemId={row.itemId}
-              onChange={(description) =>
-                dispatch(
-                  setBreakdownEntry({
-                    slotType: "equipment",
-                    slotIndex: row.slotIndex,
-                    description,
-                  })
-                )
+              description={row.description}
+              onCommit={(desc) =>
+                commit(row.slotType, row.slotIndex, desc)
               }
             />
           ))}
