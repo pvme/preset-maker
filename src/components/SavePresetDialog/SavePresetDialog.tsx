@@ -83,7 +83,7 @@ export const SavePresetDialog = ({
     <Dialog open={open} onClose={onClose}>
       <form>
         <DialogTitle>{dialogTitle}</DialogTitle>
-        <DialogContent>
+        <DialogContent className="name-wrapper">
           <TextField
             className="name-field"
             label="Preset Name"

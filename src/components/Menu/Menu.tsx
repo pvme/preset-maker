@@ -64,12 +64,6 @@ import { FunctionURLs } from "../../api/function-urls";
 
 import "./Menu.css";
 
-declare global {
-  interface Window {
-    _presetLoadStale?: boolean;
-  }
-}
-
 //
 // Status Indicator
 //
@@ -146,7 +140,7 @@ export const PresetMenu = (): JSX.Element => {
     const load = async () => {
       try {
         const { data, presetId, source } = await loadPresetById(id);
-        if (stale || window._presetLoadStale) return;
+        if (stale) return;
 
         dispatch(importDataAction(data));
         lastSavedRef.current = JSON.parse(JSON.stringify(data));
@@ -204,10 +198,14 @@ export const PresetMenu = (): JSX.Element => {
   // Dirty flag tracking
   //
   useEffect(() => {
-    if (lastSavedRef.current) {
-      setIsDirty(!presetsAreEqual(preset, lastSavedRef.current));
+    if (!lastSavedRef.current) {
+      setIsDirty(true);
+      return;
     }
+
+    setIsDirty(!presetsAreEqual(preset, lastSavedRef.current));
   }, [preset]);
+
 
   useEffect(() => {
     if (lastSavedRef.current === null) {
@@ -323,10 +321,15 @@ export const PresetMenu = (): JSX.Element => {
         addRecentPreset({ presetId: newId, presetName: newName, source: mode });
         setRecentList(JSON.parse(localStorage.getItem("recentPresets") || "[]"));
 
-        setTimeout(() => {
-          window._presetLoadStale = true;
-          window.location.hash = `#/${newId}`;
-        }, 0);
+        const savedPreset = { ...preset, presetName: newName };
+
+        dispatch(importDataAction(savedPreset));
+
+        lastSavedRef.current = JSON.parse(JSON.stringify(savedPreset));
+        setIsDirty(false);
+        setRecentSelection(newId);
+
+        navigate(`/${newId}`, { replace: true });
 
         enqueueSnackbar("Preset saved!", { variant: "success" });
       } catch (err: any) {
@@ -337,8 +340,9 @@ export const PresetMenu = (): JSX.Element => {
         endGlobalSave();
       }
     },
-    [preset, mode, enqueueSnackbar]
+    [preset, mode, enqueueSnackbar, navigate]
   );
+
 
   //
   // Copy embed link
@@ -354,19 +358,22 @@ export const PresetMenu = (): JSX.Element => {
   // Reset to blank preset
   //
   const resetToBlankPreset = () => {
-    dispatch(
-      importDataAction({
-        ...blankPreset,
-        breakdown: [],
-      })
-    );
+    navigate("/");
 
-    lastSavedRef.current = JSON.parse(JSON.stringify(blankPreset));
+    const fresh = {
+      ...blankPreset,
+      breakdown: [],
+    };
+
+    dispatch(importDataAction(fresh));
+
+    lastSavedRef.current = null;
     setRecentSelection("");
     setIsDirty(true);
-    navigate("/");
+
     enqueueSnackbar("New preset created", { variant: "info" });
   };
+
 
   //
   // New Preset button
@@ -378,7 +385,11 @@ export const PresetMenu = (): JSX.Element => {
 
   const confirmNewPreset = () => {
     setConfirmDiscardOpen(false);
-    setSelectModeOpen(true);
+
+    // allow state to flush before opening next dialog
+    setTimeout(() => {
+      setSelectModeOpen(true);
+    }, 0);
   };
 
   //
@@ -412,11 +423,77 @@ export const PresetMenu = (): JSX.Element => {
             >
               {isSaving ? <CircularProgress size={20} color="inherit" /> : "Save"}
             </Button>
-
             <StatusChip isDirty={isDirty} />
           </Stack>
         </Grid>
       </Grid>
+
+      <Dialog
+        open={selectModeOpen}
+        onClose={() => setSelectModeOpen(false)}
+      >
+        <DialogTitle>Select preset storage</DialogTitle>
+
+        <DialogContent dividers>
+          <Stack spacing={2}>
+            <Button
+              startIcon={<CloudIcon />}
+              onClick={() => {
+                setSelectModeOpen(false);
+                setMode("cloud");
+                resetToBlankPreset();
+              }}
+            >
+              Cloud preset
+            </Button>
+
+            <Button
+              startIcon={<FileDownloadIcon />}
+              onClick={() => {
+                setSelectModeOpen(false);
+                setMode("local");
+                resetToBlankPreset();
+              }}
+            >
+              Local preset
+            </Button>
+          </Stack>
+        </DialogContent>
+      </Dialog>
+
+      <Dialog
+        open={confirmDiscardOpen}
+        onClose={() => setConfirmDiscardOpen(false)}
+      >
+        <DialogTitle>Discard changes?</DialogTitle>
+
+        <DialogContent dividers>
+          <Typography>
+            You have unsaved changes. Creating a new preset will discard them.
+          </Typography>
+        </DialogContent>
+
+        <DialogActions>
+          <Button onClick={() => setConfirmDiscardOpen(false)}>
+            Cancel
+          </Button>
+
+          <Button
+            color="warning"
+            onClick={confirmNewPreset}
+          >
+            Discard & Continue
+          </Button>
+        </DialogActions>
+      </Dialog>
+
+      <SavePresetDialog
+        open={saveAsOpen}
+        state={SavePresetDialogState.NewPreset}
+        defaultName={presetName}
+        onSave={handleSaveAsSubmit}
+        onClose={() => setSaveAsOpen(false)}
+      />
     </Paper>
   );
 };
