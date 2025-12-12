@@ -1,3 +1,5 @@
+// src/schemas/slot-type.ts
+
 export enum SlotType {
   Inventory,
   Equipment,

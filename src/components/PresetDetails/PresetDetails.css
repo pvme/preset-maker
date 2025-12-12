@@ -1,10 +1,107 @@
-.notes-field {
+/* --------------------------------------------------
+   SHARED FIELD WRAPPER (Name + Notes)
+-------------------------------------------------- */
+.field-wrapper {
+  width: 100%;
+  position: relative;
+  margin-top: 24px !important;
+}
+
+/* Floating label for both fields */
+.field-wrapper::before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: #121212;
+  padding: 0 4px;
+
+  /* MUI InputLabel style */
+  color: rgba(255, 255, 255, 0.7);
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.4375em;
+
+  transform-origin: top left;
+  transform: translate(11px, -9px) scale(0.75);
+
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* --------------------------------------------------
+   SHARED CONTENTEDITABLE FIELDS (Name + Notes)
+-------------------------------------------------- */
+.field-editable {
+  width: 100%;
+  display: block;
+
   font-size: 16px;
   white-space: pre-wrap !important;
   word-wrap: break-word !important;
   overflow-wrap: break-word !important;
+
+  padding: 12px 14px;
+  min-height: 48px;
+
+  color: #fff;
+  background: #121212;
+
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.23);
+  outline: none;
+
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.4375em;
+  box-sizing: border-box;
 }
 
-.notes-field__placeholder {
-  font-size: 16px !important;
+/* Focus highlight */
+.field-editable:focus {
+  border-color: var(--accentColour);
+}
+
+/* Emoji inline images */
+.field-editable img.disc-emoji {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+}
+
+/* --------------------------------------------------
+   SHARED PLACEHOLDER
+-------------------------------------------------- */
+.field-placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  padding: 12px 14px;
+  font-size: 16px;
+  pointer-events: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* --------------------------------------------------
+   NAME-SPECIFIC LABEL & PLACEHOLDER
+-------------------------------------------------- */
+.name-field-wrapper::before {
+  content: "Name";
+}
+
+.name-field-placeholder {
+  color: #777;
+}
+
+/* --------------------------------------------------
+   NOTES-SPECIFIC LABEL & PLACEHOLDER
+-------------------------------------------------- */
+.notes-field-wrapper::before {
+  content: "Notes";
+}
+
+.notes-field-placeholder {
+  color: #999;
 }

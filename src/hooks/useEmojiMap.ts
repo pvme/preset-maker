@@ -1,35 +1,32 @@
-import { useEffect, useState } from 'react'
+// src/hooks/useEmojiMap.ts
+import { useEffect, useState } from "react";
+import { loadEmojis, type EmojiMaps, type EmojiEntry } from "../emoji";
+import { setEmojiIndex } from "../emoji/globalEmojiIndex";
 
-import sortedItems from '../data/sorted_items.json'
-import sortedRelics from '../data/sorted_relics.json'
-import sortedFamiliars from '../data/sorted_familiars.json'
-
-type EmojiMap = Record<string, string>
-
-function mergeEmojiSources(...sources: any[]): EmojiMap {
-  const result: EmojiMap = {}
-  for (const list of sources) {
-    for (const entry of list) {
-      if (entry.name && entry.image) {
-        result[entry.name.toLowerCase()] = entry.image
-      }
-    }
-  }
-  return result
-}
-
-const fullEmojiMap: EmojiMap = mergeEmojiSources(
-  sortedItems,
-  sortedRelics,
-  sortedFamiliars
-)
+/**
+ * Re-export types so other modules can import from here.
+ */
+export type { EmojiMaps, EmojiEntry };
 
 export function useEmojiMap() {
-  const [emojiMap] = useState<EmojiMap>(fullEmojiMap)
+  const [maps, setMaps] = useState<EmojiMaps | null>(null);
 
-  function getEmojiUrl(name: string): string | undefined {
-    return emojiMap[name.toLowerCase()]
-  }
+  useEffect(() => {
+    let cancelled = false;
 
-  return { emojiMap, getEmojiUrl }
+    loadEmojis().then((loaded) => {
+      if (!loaded || cancelled) return;
+
+      const list = Object.values(loaded.byId ?? {});
+      setEmojiIndex(list);
+
+      setMaps(loaded);
+    });
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  return maps;
 }

@@ -1,119 +1,48 @@
 // src/api/get-preset.ts
-
 import axios from "axios";
-import itemData from "../data/sorted_items.json";
-import { type SavedPreset as SavedPresetData } from "../schemas/saved-preset-data";
-import { type Relics, type Relic as RelicData } from "../schemas/relic";
-import { type Familiars, type Familiar as FamiliarData } from "../schemas/familiar";
-import { type Item as ItemData } from "../schemas/item-data";
+import { type SavedPreset } from "../schemas/saved-preset-data";
+import { loadEmojis } from "../emoji";
 
-import { FunctionURLs } from './function-urls';
-import { getDevHeaders } from './get-headers';
+export async function getPreset(id: string): Promise<SavedPreset> {
+  const url = `/api/presets/${id}`;
+  const { data } = await axios.get(url);
 
-const API_URL = `${FunctionURLs.getPreset}?id=`;
+  const emojis = await loadEmojis();
 
-interface RawStoredPreset {
-  presetId: string;
-  presetName: string;
-  presetNotes?: string;
-  inventorySlots: Array<{ label?: string; breakdownNotes?: string } | null>;
-  equipmentSlots: Array<{ label?: string; breakdownNotes?: string } | null>;
-  relics: Relics;
-  familiars: Familiars;
-}
+  function migrateSlot(slot: any) {
+    if (!slot) return { id: "" };
 
-export async function getPreset(id: string): Promise<SavedPresetData> {
-  const resp = await axios.get<RawStoredPreset>(
-  `${API_URL}${encodeURIComponent(id)}`,
-    { headers: getDevHeaders() }
-  );
-  return unpackData(resp.data);
-}
+    // Any legacy fields collapse to a raw string we feed into resolver
+    const raw =
+      slot?.id ??
+      slot?.label ??    // legacy
+      slot?.name ??     // legacy
+      slot ??           // very old format: string
+      "";
 
-async function unpackData(stored: RawStoredPreset): Promise<SavedPresetData> {
-  const itemMap = new Map<string, ItemData>();
-  itemData.forEach((itm) => itemMap.set(itm.label, itm));
-
-  function mapItemSlot(slot: { label?: string; breakdownNotes?: string } | null): ItemData | null {
-    if (!slot || !slot.label) return null;
-    const base = itemMap.get(slot.label) ?? itemMap.get("404item")!;
-    const result: ItemData = { ...base };
-    if (slot.breakdownNotes) result.breakdownNotes = slot.breakdownNotes;
-    return result;
+    const resolved = emojis.resolve(raw.toString().toLowerCase());
+    return { id: resolved };
   }
 
-  function blankItem(): ItemData {
-    return { name: "", label: "", image: "", breakdownNotes: "", wikiLink: "" };
-  }
+  const migrated: SavedPreset = {
+    presetName: data.presetName ?? "",
+    presetNotes: data.presetNotes ?? "",
 
-  function mapRelicSlot(slot: RelicData | null): RelicData | null {
-    if (!slot || !slot.label) return null;
-    return {
-      label: slot.label,
-      name: slot.name,
-      image: slot.image,
-      breakdownNotes: slot.breakdownNotes || "",
-      energy: slot.energy ?? 0,
-      description: slot.description || ""
-    };
-  }
+    inventorySlots: (data.inventorySlots || []).map(migrateSlot),
+    equipmentSlots: (data.equipmentSlots || []).map(migrateSlot),
 
-  function blankRelic(): RelicData {
-    return { label: "", name: "", image: "", breakdownNotes: "", energy: 0, description: "" };
-  }
-
-  function mapFamiliarSlot(slot: FamiliarData | null): FamiliarData | null {
-    if (!slot || !slot.label) return null;
-    return {
-      label: slot.label,
-      name: slot.name,
-      image: slot.image,
-      breakdownNotes: slot.breakdownNotes || ""
-    };
-  }
-
-  function blankFamiliar(): FamiliarData {
-    return { label: "", name: "", image: "", breakdownNotes: "" };
-  }
-
-  const inventorySlots: ItemData[] = Array.from({ length: 28 }).map((_, i) =>
-    mapItemSlot(stored.inventorySlots?.[i] ?? null) ?? blankItem()
-  );
-
-  const equipmentSlots: ItemData[] = Array.from({ length: 13 }).map((_, i) =>
-    mapItemSlot(stored.equipmentSlots?.[i] ?? null) ?? blankItem()
-  );
-
-  const primaryRelics: RelicData[] = Array.from({ length: 3 }).map((_, i) =>
-    mapRelicSlot(stored.relics?.primaryRelics?.[i] ?? null) ?? blankRelic()
-  );
-
-  const alternativeRelics: RelicData[] = (stored.relics?.alternativeRelics || [])
-    .map(mapRelicSlot)
-    .filter((r): r is RelicData => r !== null);
-
-  const primaryFamiliars: FamiliarData[] = [
-    mapFamiliarSlot(stored.familiars?.primaryFamiliars?.[0] ?? null) ?? blankFamiliar()
-  ];
-
-  const alternativeFamiliars: FamiliarData[] = (stored.familiars?.alternativeFamiliars || [])
-    .map(mapFamiliarSlot)
-    .filter((f): f is FamiliarData => f !== null);
-
-  return {
-    presetId:       stored.presetId,
-    presetName:     stored.presetName,
-    presetNotes:    stored.presetNotes || "",
-    inventorySlots,
-    equipmentSlots,
-    relics: {
-      primaryRelics,
-      alternativeRelics
-    },
     familiars: {
-      primaryFamiliars,
-      alternativeFamiliars
-    }
-  };
-}
+      primaryFamiliars: (data.familiars?.primaryFamiliars || []).map(migrateSlot),
+      alternativeFamiliars: (data.familiars?.alternativeFamiliars || []).map(migrateSlot),
+    },
 
+    relics: {
+      primaryRelics: (data.relics?.primaryRelics || []).map(migrateSlot),
+      alternativeRelics: (data.relics?.alternativeRelics || []).map(migrateSlot),
+    },
+
+    breakdown: data.breakdown ?? [],
+  };
+
+  return migrated;
+}

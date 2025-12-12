@@ -1,44 +1,60 @@
-.inventory-icon-container {
+.inventory-icon-container,
+.equipment-icon-container {
   position: absolute;
-  pointer-events: none;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  /* Hover + selected borders */
+  border: 2px solid transparent;
+  transition: border-color 120ms ease;
+
+  /* allow hover! */
+  pointer-events: auto;
+}
+
+.inventory-icon-container {
   width: 38px;
   height: 34px;
 }
 
-.inventory-icon-container--selected {
-  border: 1px solid white;
-}
-
 .equipment-icon-container {
-  position: absolute;
-  pointer-events: none;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   width: 32px;
   height: 32px;
 }
 
+area:hover + .inventory-icon-container,
+area:hover + .equipment-icon-container {
+  border-color: rgba(255,255,255,0.4);
+}
+
+/* Selected outline */
+.inventory-icon-container.selected,
+.equipment-icon-container.selected {
+  border-color: var(--accentColour);
+}
+
+/* Icons should NOT block clicks */
+.inventory-icon,
+.equipment-icon {
+  pointer-events: none;
+}
+
+/* INVENTORY icon */
 .inventory-icon {
   width: 38px;
   height: 34px;
   object-fit: contain;
 }
 
+/* EQUIPMENT icon with frame */
 .equipment-icon {
-  width: 36px;
-  height: 34px;
+  width: 31px;
+  height: 31px;
   object-fit: contain;
-  background: url("https://img.pvme.io/images/udNECPk.png") no-repeat;
-  background-position: center;
+  background: url("https://img.pvme.io/images/udNECPk.png") no-repeat center;
   background-size: 31px 31px;
-  background-position-x: center;
-  background-position-y: center;
 }
 
 .inventory--mobile {

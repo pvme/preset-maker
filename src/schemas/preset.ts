@@ -1,61 +1,69 @@
 // src/schemas/preset.ts
-import { z } from 'zod';
-import { makeMaybe } from './util';
-import { entitySchema } from './entity-data';
-import { familiarSchema } from './familiar';
-import { relicSchema } from './relic';
+import { z } from "zod";
+import { BreakdownEntrySchema } from "./breakdown";
 
-const maybeItem = makeMaybe(entitySchema);
-const maybeRelic = makeMaybe(relicSchema);
-const maybeFamiliar = makeMaybe(familiarSchema);
+//
+// ID-only schemas
+//
+const itemSchema = z.object({
+  id: z.string().default(""),
+});
 
-function normalizeArray<T>(arr: T[] | undefined, len: number): T[] {
-  return Array.from({ length: len }, (_, i) => (arr?.[i] ?? {} as T));
+const familiarSchema = z.object({
+  id: z.string().default(""),
+});
+
+const relicSchema = z.object({
+  id: z.string().default(""),
+});
+
+//
+// Helpers
+//
+function normalize<T>(arr: T[] | undefined, len: number, blank: () => T): T[] {
+  return Array.from({ length: len }, (_, i) => arr?.[i] ?? blank());
 }
 
+//
+// Main schema
+//
 export const presetSchema = z.object({
-  presetName: z.string().min(1, 'Name is required'),
-  presetNotes: z.string().optional(),
+  presetName: z.string().default(""),
+  presetNotes: z.string().default(""),
 
-  // Normalized slot arrays
   inventorySlots: z.preprocess(
-    (val) => normalizeArray(val as any[], 28),
-    z.array(maybeItem).length(28)
+    (val) => normalize(val as any[], 28, () => ({ id: "" })),
+    z.array(itemSchema).length(28)
   ),
 
   equipmentSlots: z.preprocess(
-    (val) => normalizeArray(val as any[], 13),
-    z.array(maybeItem).length(13)
+    (val) => normalize(val as any[], 13, () => ({ id: "" })),
+    z.array(itemSchema).length(13)
   ),
 
   relics: z.object({
-    primaryRelics: z.array(maybeRelic).default([]),
-    alternativeRelics: z.array(maybeRelic).default([]),
+    primaryRelics: z.array(relicSchema).default([]),
+    alternativeRelics: z.array(relicSchema).default([]),
   }),
 
   familiars: z.object({
-    primaryFamiliars: z.array(maybeFamiliar).default([]),
-    alternativeFamiliars: z.array(maybeFamiliar).default([]),
+    primaryFamiliars: z.array(familiarSchema).default([]),
+    alternativeFamiliars: z.array(familiarSchema).default([]),
   }),
+
+  breakdown: z.array(BreakdownEntrySchema).default([]),
 });
 
 export type Preset = z.infer<typeof presetSchema>;
 
-const emptyItem = {
-  name: '',
-  label: '',
-  image: '',
-  breakdownNotes: '',
-  wikiLink: '',
-  selected: false,
-  slot: undefined,
-};
-
-export const blankPreset = {
-  presetName: '',
-  presetNotes: '',
-  inventorySlots: Array.from({ length: 28 }, () => ({ ...emptyItem })),
-  equipmentSlots: Array.from({ length: 13 }, () => ({ ...emptyItem })),
+//
+// Blank preset used when creating new
+//
+export const blankPreset: Preset = {
+  presetName: "",
+  presetNotes: "",
+  inventorySlots: Array.from({ length: 28 }, () => ({ id: "" })),
+  equipmentSlots: Array.from({ length: 13 }, () => ({ id: "" })),
   relics: {
     primaryRelics: [],
     alternativeRelics: [],
@@ -64,4 +72,5 @@ export const blankPreset = {
     primaryFamiliars: [],
     alternativeFamiliars: [],
   },
-} satisfies Preset;
+  breakdown: [],
+};

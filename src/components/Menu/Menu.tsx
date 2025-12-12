@@ -16,25 +16,15 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import Divider from '@mui/material/Divider';
-import FormControl from '@mui/material/FormControl';
 import Grid from '@mui/material/Grid';
-import IconButton from '@mui/material/IconButton';
-import InputLabel from '@mui/material/InputLabel';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import CloudIcon from '@mui/icons-material/Cloud';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Paper from '@mui/material/Paper';
-import Select from '@mui/material/Select';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-import useTheme from '@mui/material/styles/useTheme';
-import { alpha } from '@mui/material/styles';
 import CircularProgress from '@mui/material/CircularProgress';
 
 import SaveIcon from '@mui/icons-material/Save';
-import SaveAsIcon from '@mui/icons-material/SaveAs';
 import AddIcon from '@mui/icons-material/Add';
 import LinkIcon from '@mui/icons-material/Link';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
@@ -42,9 +32,11 @@ import ImageIcon from '@mui/icons-material/Image';
 import ArrowDropDown from '@mui/icons-material/ArrowDropDown';
 import WarningIcon from '@mui/icons-material/Warning';
 import CheckIcon from '@mui/icons-material/Check';
-import CloseIcon from '@mui/icons-material/Close';
 import FileUploadIcon from '@mui/icons-material/FileUpload';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import CloudIcon from '@mui/icons-material/Cloud';
 
 import { validate } from 'typescript-json';
 import { type SavedPreset as SavedPresetData } from '../../schemas/saved-preset-data';
@@ -52,23 +44,21 @@ import { PresetSummary } from '../../schemas/preset-summary';
 import { blankPreset } from '../../schemas/preset';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { usePresetExport } from '../../hooks/usePresetExport';
-import { uploadPreset } from '../../api/upload-preset';
-import { getPreset } from '../../api/get-preset';
 import { selectPreset, importDataAction } from '../../redux/store/reducers/preset-reducer';
 import { exportAsJson } from '../../utility/export-to-json';
 import { sanitizeAndStringifyPreset } from '../../utility/sanitizer';
 import { SavePresetDialog, SavePresetDialogState } from '../SavePresetDialog/SavePresetDialog';
 import { presetsAreEqual } from '../../utility/comparePresets';
+
 import './Menu.css';
-import { FunctionURLs } from '../../api/function-urls';
 
 import { useGlobalLoading } from '../../storage/GlobalLoadingContext';
-
 import { useStorageMode } from '../../storage/StorageModeContext';
 import { LocalPresetStorage } from '../../storage/LocalPresetStorage';
 import { CloudPresetStorage } from '../../storage/CloudPresetStorage';
 
 import { getAuth, onAuthStateChanged } from "../../utility/firebase-init";
+import { FunctionURLs } from '../../api/function-urls';
 
 declare global {
   interface Window {
@@ -76,8 +66,10 @@ declare global {
   }
 }
 
+//
+// Status Indicator
+//
 const StatusChip = ({ isDirty }: { isDirty: boolean | null }) => {
-  const theme = useTheme();
   if (isDirty === null) return null;
   return (
     <Chip
@@ -87,14 +79,13 @@ const StatusChip = ({ isDirty }: { isDirty: boolean | null }) => {
       variant="outlined"
       size="small"
       className="preset-menu__chip"
-      sx={isDirty ? {
-        backgroundColor: alpha(theme.palette.warning.main, 0.1),
-        animation: 'preset-loader-pulse 2s infinite',
-      } : {}}
     />
   );
 };
 
+//
+// MAIN COMPONENT
+//
 export const PresetMenu = (): JSX.Element => {
   const { mode, setMode } = useStorageMode();
   const { beginGlobalSave, endGlobalSave } = useGlobalLoading();
@@ -102,34 +93,27 @@ export const PresetMenu = (): JSX.Element => {
   const getStorage = () =>
     mode === 'cloud' ? CloudPresetStorage : LocalPresetStorage;
 
-  const [recentSelection, setRecentSelection] = useState('');
-  const [recentList, setRecentList] = useState<PresetSummary[]>([]);
-
-  const { id } = useParams<{ id?: string }>();
-  const navigate = useNavigate();
-  const dispatch = useAppDispatch();
-  const { presetName, presetNotes, inventorySlots, equipmentSlots, relics, familiars } =
-    useAppSelector(selectPreset);
   const { enqueueSnackbar } = useSnackbar();
-  const preset = useAppSelector(selectPreset);
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const { id } = useParams<{ id?: string }>();
 
-  const [selected, setSelected] = useState('');
+  const preset = useAppSelector(selectPreset);
+  const { presetName, presetNotes, inventorySlots, equipmentSlots, relics, familiars } = preset;
+
+  const [recentList, setRecentList] = useState<PresetSummary[]>([]);
+  const [recentSelection, setRecentSelection] = useState('');
+
   const [saveAsOpen, setSaveAsOpen] = useState(false);
   const [anchorExport, setAnchorExport] = useState<null | HTMLElement>(null);
-  const [anchorSave, setAnchorSave] = useState<null | HTMLElement>(null);
   const [confirmDiscardOpen, setConfirmDiscardOpen] = useState(false);
+  const [selectModeOpen, setSelectModeOpen] = useState(false);
+
   const [isDirty, setIsDirty] = useState<boolean | null>(null);
   const [isSaving, setIsSaving] = useState(false);
-  const [selectModeOpen, setSelectModeOpen] = useState(false);
   const lastSavedRef = useRef<any>(null);
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  useEffect(() => {
-    return onAuthStateChanged(getAuth(), (user) => {
-      setIsLoggedIn(!!user);
-    });
-  }, []);
 
   const {
     copyImage,
@@ -137,269 +121,221 @@ export const PresetMenu = (): JSX.Element => {
     clipboardSupported
   } = usePresetExport(presetName);
 
-  // Handler for initial load (if ID defined)
+  //
+  // LOGIN STATE
+  //
+  useEffect(() =>
+    onAuthStateChanged(getAuth(), (user) => setIsLoggedIn(!!user)),
+    []
+  );
+
+  //
+  // RECENT LIST LOAD
+  //
+  useEffect(() => {
+    setRecentList(JSON.parse(localStorage.getItem("recentPresets") || "[]"));
+  }, []);
+
+  //
+  // Load preset if URL contains an ID
+  //
   useEffect(() => {
     if (!id) return;
 
-    let isStale = false; // mark this effect instance as active
-    const requestedId = id;
-
-    const fetchById = async () => {
+    let stale = false;
+    const load = async () => {
       try {
-        const { data, source } = await loadPresetById(requestedId);
-
-        const currentHashId = window.location.hash.replace('#/', '');
-
-        if (
-          isStale ||
-          window._presetLoadStale ||      // ← NEW
-          currentHashId !== requestedId
-        ) return;
+        const { data, source } = await loadPresetById(id);
+        if (stale || window._presetLoadStale) return;
 
         dispatch(importDataAction(data));
         lastSavedRef.current = JSON.parse(JSON.stringify(data));
-        setSelected(data.presetId!);
+
         setRecentSelection(data.presetId!);
         setMode(source);
         setIsDirty(false);
+
         addRecentPreset({ presetId: data.presetId!, presetName: data.presetName, source });
       } catch {
-        const currentHashId = window.location.hash.replace('#/', '');
-
-        if (
-          isStale ||
-          window._presetLoadStale ||      // ← NEW
-          currentHashId !== requestedId
-        ) return;
-
-        enqueueSnackbar(`Preset not found for ID ${requestedId}`, { variant: 'error' });
+        if (!stale) enqueueSnackbar(`Preset not found for ID ${id}`, { variant: 'error' });
       }
     };
 
-    fetchById();
-
-    return () => {
-      isStale = true;
-    };
+    load();
+    return () => { stale = true; };
   }, [id, dispatch, enqueueSnackbar, setMode]);
 
-  // Handler for dropdown selection
-  const loadRecent = async (p: PresetSummary) => {
+  //
+  // Recent dropdown handler
+  //
+  const loadRecent = useCallback(async (p: PresetSummary) => {
     try {
-      const loader = p.source === 'local' ? LocalPresetStorage : CloudPresetStorage;
-      const data = await loader.getPreset(p.presetId);
+      const storage = p.source === "local" ? LocalPresetStorage : CloudPresetStorage;
+      const data = await storage.getPreset(p.presetId);
 
       dispatch(importDataAction(data));
       lastSavedRef.current = JSON.parse(JSON.stringify(data));
-      setSelected(data.presetId!);
-      setRecentSelection(data.presetId!);
+
+      setRecentSelection(p.presetId);
       setMode(p.source);
       setIsDirty(false);
 
-      window.location.hash = `#/${data.presetId}`;
+      window.location.hash = `#/${p.presetId}`;
     } catch {
       enqueueSnackbar(`Failed to load ${p.presetName}`, { variant: 'error' });
     }
-  };
+  }, [dispatch, enqueueSnackbar, setMode]);
 
-  // Track dirty changes
+  //
+  // Dirty flag tracking
+  //
   useEffect(() => {
     if (lastSavedRef.current) {
       setIsDirty(!presetsAreEqual(preset, lastSavedRef.current));
     }
   }, [preset]);
 
-  // Baseline on first mount
   useEffect(() => {
     if (lastSavedRef.current === null) {
       lastSavedRef.current = JSON.parse(JSON.stringify(preset));
     }
   }, []);
 
-  useEffect(() => {
-    const stored = JSON.parse(localStorage.getItem("recentPresets") || "[]");
-    setRecentList(stored);
-  }, []);
-
-  // Baseline after loading a specific preset by id
-  useEffect(() => {
-    if (id && lastSavedRef.current === null) {
-      lastSavedRef.current = JSON.parse(JSON.stringify(preset));
-      setIsDirty(false);
-    }
-  }, [id, preset]);
-
+  //
+  // File upload handler
+  //
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const handleFileUpload = useCallback(
-    (event: React.ChangeEvent<HTMLInputElement>) => {
-      if (event.target.files == null) return;
 
-      const reader = new FileReader();
-      reader.onload = (event) => {
-        if (event.target?.result === null || event.target?.result === undefined) {
-          enqueueSnackbar(
-            'Internal Server Error - Send your .json to nullopt#2057',
-            { variant: 'error' }
-          );
-          return;
-        }
+  const handleFileUpload = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
+    if (!event.target.files?.length) return;
 
-        const data = JSON.parse(event.target.result as string);
-        const validationResult = validate<SavedPresetData>(data);
-        if (!validationResult.success) {
-          console.error(validationResult.errors);
-          enqueueSnackbar('Invalid JSON data.', { variant: 'error' });
-          return;
-        }
+    const reader = new FileReader();
+    reader.onload = (ev) => {
+      if (!ev.target?.result) {
+        enqueueSnackbar("Invalid file.", { variant: "error" });
+        return;
+      }
 
-        dispatch(importDataAction(data));
-        enqueueSnackbar('Successfully imported your preset.', {
-          variant: 'success'
-        });
-      };
+      const data = JSON.parse(ev.target.result as string);
+      const result = validate<SavedPresetData>(data);
 
-      reader.readAsText(event.target.files[0]);
-      event.target.value = '';
-    },
-    [dispatch, enqueueSnackbar]
-  );
+      if (!result.success) {
+        enqueueSnackbar("Invalid preset JSON.", { variant: "error" });
+        return;
+      }
 
-  const importData = useCallback(() => {
-    fileInputRef.current?.click();
-  }, []);
+      dispatch(importDataAction(data));
+      enqueueSnackbar("Preset imported", { variant: "success" });
+    };
 
+    reader.readAsText(event.target.files[0]);
+    event.target.value = '';
+  }, [dispatch, enqueueSnackbar]);
+
+  const importData = useCallback(() => fileInputRef.current?.click(), []);
+
+  //
+  // Export JSON
+  //
   const exportData = useCallback(() => {
-    const stringifiedPresetData = sanitizeAndStringifyPreset({
+    const str = sanitizeAndStringifyPreset({
       presetName,
       presetNotes,
-      equipmentSlots,
       inventorySlots,
+      equipmentSlots,
       relics,
-      familiars
+      familiars,
+      breakdown: preset.breakdown,
     });
-    exportAsJson(
-      `PRESET_${presetName.replaceAll(' ', '_')}`,
-      stringifiedPresetData
-    );
-  }, [presetName, presetNotes, inventorySlots, equipmentSlots, relics, familiars]);
+    exportAsJson(`PRESET_${presetName.replaceAll(" ", "_")}`, str);
+  }, [presetName, presetNotes, inventorySlots, equipmentSlots, relics, familiars, preset.breakdown]);
 
-  const handleSave = async () => {
+  //
+  // Save preset
+  //
+  const handleSave = useCallback(async () => {
     if (!id) return setSaveAsOpen(true);
 
     setIsSaving(true);
-
-    if (mode === 'cloud') beginGlobalSave("Saving to cloud…");
+    if (mode === "cloud") beginGlobalSave("Saving…");
 
     try {
       await getStorage().savePreset(preset, id);
 
-      addRecentPreset({ presetId: id!, presetName: preset.presetName, source: mode });
-
+      addRecentPreset({ presetId: id, presetName, source: mode });
       setRecentList(JSON.parse(localStorage.getItem("recentPresets") || "[]"));
 
-      setRecentSelection(id);
-      setSelected(id);
       lastSavedRef.current = JSON.parse(JSON.stringify(preset));
       setIsDirty(false);
-      enqueueSnackbar('Preset saved!', { variant: 'success' });
-
+      enqueueSnackbar("Preset saved!", { variant: "success" });
     } catch (err: any) {
-      enqueueSnackbar(`Save failed: ${err.message}`, { variant: 'error' });
+      enqueueSnackbar(`Save failed: ${err.message}`, { variant: "error" });
     } finally {
       setIsSaving(false);
-      if (mode === 'cloud') endGlobalSave();
+      if (mode === "cloud") endGlobalSave();
     }
-  };
+  }, [id, preset, presetName, mode, enqueueSnackbar]);
 
-  const handleSaveAsSubmit = async (name: string) => {
+  //
+  // Save As
+  //
+  const handleSaveAsSubmit = useCallback(async (newName: string) => {
     setIsSaving(true);
-    
-    beginGlobalSave("Saving to cloud…");
-
+    beginGlobalSave("Saving…");
     try {
-      const payload = { ...preset, presetName: name };
+      const payload = { ...preset, presetName: newName };
       const newId = await getStorage().savePreset(payload);
-      addRecentPreset({ presetId: newId, presetName: name, source: mode });
 
+      addRecentPreset({ presetId: newId, presetName: newName, source: mode });
       setRecentList(JSON.parse(localStorage.getItem("recentPresets") || "[]"));
 
-      setRecentSelection(newId);
-      setSelected(newId);
       setTimeout(() => {
         window._presetLoadStale = true;
         window.location.hash = `#/${newId}`;
       }, 0);
 
-      enqueueSnackbar('Preset cloned!', { variant: 'success' });
+      enqueueSnackbar("Preset saved!", { variant: "success" });
     } catch (err: any) {
-      enqueueSnackbar(`Save As failed: ${err.message}`, { variant: 'error' });
+      enqueueSnackbar(`Save failed: ${err.message}`, { variant: "error" });
     } finally {
-      setIsSaving(false);
       setSaveAsOpen(false);
+      setIsSaving(false);
       endGlobalSave();
     }
-  };
+  }, [preset, mode, enqueueSnackbar]);
 
+  //
+  // Copy embed link
+  //
   const handleCopyEmbedLink = () => {
     if (!id) return;
     const url = `${FunctionURLs.presetEmbed}?id=${encodeURIComponent(id)}`;
     navigator.clipboard.writeText(url);
-    enqueueSnackbar('Link copied!', { variant: 'success' });
+    enqueueSnackbar("Embed link copied", { variant: "success" });
   };
 
+  //
+  // Reset to blank preset
+  //
   const resetToBlankPreset = () => {
     dispatch(importDataAction({
       ...blankPreset,
-      relics: {
-        primaryRelics: preset.relics.primaryRelics?.map(() => ({
-          name: '',
-          label: '',
-          image: '',
-          breakdownNotes: '',
-          energy: 0,
-          description: '',
-        })) ?? [],
-
-        alternativeRelics: preset.relics.alternativeRelics?.map(() => ({
-          name: '',
-          label: '',
-          image: '',
-          breakdownNotes: '',
-          energy: 0,
-          description: '',
-        })) ?? [],
-      },
-      familiars: {
-        primaryFamiliars: preset.familiars.primaryFamiliars?.map(() => ({
-          name: '',
-          label: '',
-          image: '',
-          breakdownNotes: '',
-        })) ?? [],
-
-        alternativeFamiliars: preset.familiars.alternativeFamiliars?.map(() => ({
-          name: '',
-          label: '',
-          image: '',
-          breakdownNotes: '',
-        })) ?? [],
-      }
+      breakdown: []
     }));
 
     lastSavedRef.current = JSON.parse(JSON.stringify(blankPreset));
-    setSelected('');
-    setRecentSelection('');
+    setRecentSelection("");
     setIsDirty(true);
-    navigate('/');
-    enqueueSnackbar('Created new preset', { variant: 'info' });
+    navigate("/");
+    enqueueSnackbar("New preset created", { variant: "info" });
   };
 
+  //
+  // New Preset button
+  //
   const handleNew = () => {
-    if (isDirty) {
-      setConfirmDiscardOpen(true);
-    } else {
-      setSelectModeOpen(true);
-    }
+    if (isDirty) setConfirmDiscardOpen(true);
+    else setSelectModeOpen(true);
   };
 
   const confirmNewPreset = () => {
@@ -407,14 +343,18 @@ export const PresetMenu = (): JSX.Element => {
     setSelectModeOpen(true);
   };
 
+  //
+  // RENDER
+  //
   return (
     <Paper className="preset-menu__paper">
-      <Grid container alignItems="center" justifyContent="space-between" sx={{ marginTop: "16px", padding: "16px" }}>
+      <Grid container alignItems="center" justifyContent="space-between" sx={{ mt: 2, p: 2 }}>
         <Grid item md="auto">
           <Stack direction="row" spacing={3} alignItems="center">
-            <Button onClick={handleNew} startIcon={<AddIcon />} variant="contained" size="medium">
+            <Button onClick={handleNew} startIcon={<AddIcon />} variant="contained">
               New Preset
             </Button>
+
             <RecentPresetDropdown
               selected={recentSelection}
               onSelect={loadRecent}
@@ -425,33 +365,31 @@ export const PresetMenu = (): JSX.Element => {
 
         <Grid item md="auto">
           <Stack direction="row" spacing={3} alignItems="center">
-            <Button
-              onClick={e => setAnchorExport(e.currentTarget)}
-              endIcon={<ArrowDropDown />}
-            >
+
+            {/* EXPORT MENU */}
+            <Button onClick={e => setAnchorExport(e.currentTarget)} endIcon={<ArrowDropDown />}>
               Export
             </Button>
-            <Menu anchorEl={anchorExport} open={Boolean(anchorExport)} onClose={() => setAnchorExport(null)} disableScrollLock>
-              {mode === 'local' && id && (
+            <Menu anchorEl={anchorExport} open={!!anchorExport} onClose={() => setAnchorExport(null)}>
+
+              {mode === "local" && id && (
                 <>
                   <MenuItem
                     onClick={async () => {
-                      beginGlobalSave("Saving to cloud…");
+                      beginGlobalSave("Saving…");
+
                       try {
                         const newId = await CloudPresetStorage.savePreset(preset);
 
-                        addRecentPreset({ presetId: newId, presetName: preset.presetName, source: 'cloud' });
+                        addRecentPreset({ presetId: newId, presetName, source: "cloud" });
                         localStorage.removeItem(`preset:${id}`);
                         removeRecentPreset(id);
+
                         setRecentList(JSON.parse(localStorage.getItem("recentPresets") || "[]"));
+                        setMode("cloud");
 
-                        setMode('cloud');
+                        enqueueSnackbar("Uploaded to cloud", { variant: "success" });
 
-                        enqueueSnackbar('Uploaded to cloud and removed local copy', {
-                          variant: 'success'
-                        });
-
-                        // keep overlay up until navigation finishes
                         setTimeout(() => {
                           window._presetLoadStale = true;
                           window.location.hash = `#/${newId}`;
@@ -459,14 +397,12 @@ export const PresetMenu = (): JSX.Element => {
                         }, 400);
 
                       } catch (err: any) {
-                        enqueueSnackbar(`Failed to upload to cloud: ${err.message}`, { variant: 'error' });
+                        enqueueSnackbar(`Upload failed: ${err.message}`, { variant: "error" });
                         endGlobalSave();
                       }
                     }}
                   >
-                    <ListItemIcon>
-                      <CloudIcon fontSize="small" />
-                    </ListItemIcon>
+                    <ListItemIcon><CloudIcon fontSize="small" /></ListItemIcon>
                     <ListItemText primary="Upload to Cloud" />
                   </MenuItem>
                   <Divider />
@@ -481,29 +417,28 @@ export const PresetMenu = (): JSX.Element => {
               <Divider />
 
               <MenuItem
+                disabled={!clipboardSupported}
                 onClick={async () => {
                   try {
                     await copyImage();
-                    enqueueSnackbar('Image copied to clipboard!', { variant: 'success' });
-                  } catch (err: any) {
-                    enqueueSnackbar('Failed to copy image.', { variant: 'error' });
+                    enqueueSnackbar("Copied image!", { variant: "success" });
+                  } catch {
+                    enqueueSnackbar("Failed to copy image", { variant: "error" });
                   }
-                }}
-                disabled={!clipboardSupported}
-              >
+                }}>
                 <ListItemIcon><ContentCopyIcon fontSize="small" /></ListItemIcon>
                 <ListItemText primary="Copy Image" />
               </MenuItem>
+
               <MenuItem
                 onClick={async () => {
                   try {
                     await downloadImage();
-                    enqueueSnackbar('Image downloaded.', { variant: 'success' });
-                  } catch (err: any) {
-                    enqueueSnackbar('Failed to download image.', { variant: 'error' });
+                    enqueueSnackbar("Downloaded!", { variant: "success" });
+                  } catch {
+                    enqueueSnackbar("Failed to download image", { variant: "error" });
                   }
-                }}
-              >
+                }}>
                 <ListItemIcon><ImageIcon fontSize="small" /></ListItemIcon>
                 <ListItemText primary="Download Image" />
               </MenuItem>
@@ -514,6 +449,7 @@ export const PresetMenu = (): JSX.Element => {
                 <ListItemIcon><FileDownloadIcon fontSize="small" /></ListItemIcon>
                 <ListItemText primary="Export JSON" />
               </MenuItem>
+
               <MenuItem onClick={importData}>
                 <ListItemIcon><FileUploadIcon fontSize="small" /></ListItemIcon>
                 <ListItemText primary="Import JSON" />
@@ -521,34 +457,30 @@ export const PresetMenu = (): JSX.Element => {
                   type="file"
                   accept="application/json"
                   ref={fileInputRef}
-                  style={{ display: 'none' }}
+                  style={{ display: "none" }}
                   onChange={handleFileUpload}
                 />
               </MenuItem>
-
             </Menu>
+
+            {/* SAVE BUTTON */}
             <Button
               disabled={!isDirty || isSaving}
               onClick={
-                mode === 'local'
+                mode === "local"
                   ? (id ? handleSave : () => setSaveAsOpen(true))
-                  : (
-                      isLoggedIn
-                        ? handleSave
-                        : () => setSaveAsOpen(true)
-                    )
+                  : (isLoggedIn ? handleSave : () => setSaveAsOpen(true))
               }
               startIcon={isSaving ? undefined : <SaveIcon />}
               variant="contained"
               color="success"
-              size="medium"
             >
               {isSaving ? (
                 <CircularProgress size={20} color="inherit" />
-              ) : mode === 'local' ? (
-                'Save'
+              ) : mode === "local" ? (
+                "Save"
               ) : (
-                isLoggedIn ? 'Save' : 'Save As'   // *** ADDED: change label ***
+                isLoggedIn ? "Save" : "Save As"
               )}
             </Button>
 
@@ -557,14 +489,16 @@ export const PresetMenu = (): JSX.Element => {
         </Grid>
       </Grid>
 
+      {/* SAVE AS DIALOG */}
       <SavePresetDialog
         open={saveAsOpen}
         state={SavePresetDialogState.NewPreset}
         onSave={handleSaveAsSubmit}
         onClose={() => setSaveAsOpen(false)}
-        defaultName={preset.presetName}
+        defaultName={presetName}
       />
 
+      {/* UNSAVED CHANGES DIALOG */}
       <Dialog open={confirmDiscardOpen} onClose={() => setConfirmDiscardOpen(false)}>
         <DialogTitle>
           <Stack direction="row" alignItems="center" spacing={1}>
@@ -573,7 +507,7 @@ export const PresetMenu = (): JSX.Element => {
           </Stack>
         </DialogTitle>
         <DialogContent>
-          <Typography>You have unsaved changes. Discard and create a new preset?</Typography>
+          <Typography>Discard changes and create a new preset?</Typography>
         </DialogContent>
         <DialogActions>
           <Button onClick={() => setConfirmDiscardOpen(false)}>Cancel</Button>
@@ -583,6 +517,7 @@ export const PresetMenu = (): JSX.Element => {
         </DialogActions>
       </Dialog>
 
+      {/* SELECT STORAGE MODE */}
       <Dialog open={selectModeOpen} onClose={() => setSelectModeOpen(false)}>
         <DialogTitle>
           <Stack direction="row" alignItems="center" spacing={1}>
@@ -595,9 +530,10 @@ export const PresetMenu = (): JSX.Element => {
         </DialogContent>
         <DialogActions>
           <Button onClick={() => setSelectModeOpen(false)}>Cancel</Button>
+
           <Button
             onClick={() => {
-              setMode('local');
+              setMode("local");
               resetToBlankPreset();
               setSelectModeOpen(false);
             }}
@@ -605,9 +541,10 @@ export const PresetMenu = (): JSX.Element => {
           >
             Local
           </Button>
+
           <Button
             onClick={() => {
-              setMode('cloud');
+              setMode("cloud");
               resetToBlankPreset();
               setSelectModeOpen(false);
             }}

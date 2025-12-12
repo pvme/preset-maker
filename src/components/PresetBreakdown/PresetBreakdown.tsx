@@ -1,128 +1,148 @@
 // src/components/PresetBreakdown/PresetBreakdown.tsx
 
-import React, { useEffect, useRef, useState } from 'react';
-import { canCopyImagesToClipboard } from 'copy-image-clipboard';
-import { useSnackbar } from 'notistack';
+import React from "react";
 
-import Button from '@mui/material/Button';
-import List from '@mui/material/List';
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemText from "@mui/material/ListItemText";
+import Box from "@mui/material/Box";
 
-import { BreakdownHeader } from '../BreakdownHeader/BreakdownHeader';
-import { BreakdownListItem } from '../BreakdownListItem/BreakdownListItem';
-import { ClipboardCopyButtonContainer } from '../ClipboardCopyButtonContainer/ClipboardCopyButtonContainer';
-import { useAppSelector } from '../../redux/hooks';
-import { selectPreset } from '../../redux/store/reducers/preset-reducer';
-import { type Item as ItemData } from '../../schemas/item-data';
-import { BreakdownType } from '../../schemas/breakdown';
-import {
-  copyImageToClipboard,
-  exportAsImage
-} from '../../utility/export-to-png';
+import { BreakdownListItem } from "../BreakdownListItem/BreakdownListItem";
 
-import './PresetBreakdown.css';
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { selectPreset, setBreakdownEntry } from "../../redux/store/reducers/preset-reducer";
 
-const customOrder: number[] = [0, 4, 6, 7, 8, 2, 9, 1, 3, 5, 10, 11, 12];
+import "./PresetBreakdown.css";
 
-const clipboardSupported = canCopyImagesToClipboard();
+//
+// INLINE BREAKDOWN HEADER
+//
+const BreakdownHeader = ({ title }: { title?: string }) => (
+  <ListItem disablePadding className="desktop-only">
+    <ListItemButton style={{ textAlign: "center" }}>
+      <ListItemText
+        primaryTypographyProps={{ style: { fontWeight: "bold" } }}
+        primary={title ?? "Item"}
+      />
+      <ListItemText
+        primaryTypographyProps={{ style: { fontWeight: "bold" } }}
+        primary="Notes"
+      />
+    </ListItemButton>
+  </ListItem>
+);
 
 export const PresetBreakdown = (): JSX.Element => {
-  const exportRef = useRef<HTMLDivElement>(null);
-  const { enqueueSnackbar } = useSnackbar();
+  const dispatch = useAppDispatch();
+  const preset = useAppSelector(selectPreset);
 
-  const {
-    presetName: name,
-    inventorySlots = [],
-    equipmentSlots = []
-  } = useAppSelector(selectPreset);
-
-  const [mappedEquipment, setMappedEquipment] = useState<ItemData[]>([]);
-  const [uniqueInventoryItems, setUniqueInventoryItems] = useState<ItemData[]>([]);
-  const [lastValidInventory, setLastValidInventory] = useState<ItemData[]>([]);
-  const [lastValidEquipment, setLastValidEquipment] = useState<ItemData[]>([]);
-
-  useEffect(() => {
-    if (inventorySlots.length > 0) {
-      const filteredInventory = inventorySlots.filter(
-        (item) => (item.label ?? '').length > 0
+  //
+  // INVENTORY ROWS
+  //
+  const inventoryRows = preset.inventorySlots
+    .map((slot, index) => {
+      if (!slot.id) return null;
+      const breakdown = preset.breakdown.find(
+        (b) => b.slotType === "inventory" && b.slotIndex === index
       );
-      setLastValidInventory(filteredInventory);
-    }
 
-    if (equipmentSlots.length > 0) {
-      setLastValidEquipment(equipmentSlots);
-    }
-
-    if (inventorySlots.length === 0 && equipmentSlots.length === 0) {
-      console.warn('Skipping render update — received empty slot arrays');
-      return;
-    }
-
-    const reorderedArray: ItemData[] = customOrder.map((orderIndex) => {
-      return equipmentSlots[orderIndex] ?? {
-        name: '',
-        image: '',
-        label: '',
-        breakdownNotes: ''
+      return {
+        slotType: "inventory" as const,
+        slotIndex: index,
+        itemId: slot.id,
+        description: breakdown?.description ?? "",
       };
-    });
+    })
+    .filter(Boolean) as {
+    slotType: "inventory";
+    slotIndex: number;
+    itemId: string;
+    description: string;
+  }[];
 
-    setMappedEquipment((prev) => {
-      if (
-        prev?.length === reorderedArray.length &&
-        prev.every((item, i) => item.name === reorderedArray[i].name)
-      ) {
-        return prev;
-      }
-      return reorderedArray;
-    });
-
-    const uniqueItemData: ItemData[] = inventorySlots.filter((item, index, self) => {
-      return (
-        self.findIndex((i) => i.name === item.name) === index && item.name
+  //
+  // EQUIPMENT ROWS
+  //
+  const equipmentRows = preset.equipmentSlots
+    .map((slot, index) => {
+      if (!slot.id) return null;
+      const breakdown = preset.breakdown.find(
+        (b) => b.slotType === "equipment" && b.slotIndex === index
       );
-    });
 
-    setUniqueInventoryItems((prev) => {
-      if (
-        prev?.length === uniqueItemData.length &&
-        prev.every((item, i) => item.name === uniqueItemData[i].name)
-      ) {
-        return prev;
-      }
-      return uniqueItemData;
-    });
-  }, [inventorySlots, equipmentSlots]);
+      return {
+        slotType: "equipment" as const,
+        slotIndex: index,
+        itemId: slot.id,
+        description: breakdown?.description ?? "",
+      };
+    })
+    .filter(Boolean) as {
+    slotType: "equipment";
+    slotIndex: number;
+    itemId: string;
+    description: string;
+  }[];
 
   return (
-    <div className="breakdown-container">
-      <div className="breakdown-inner-container" ref={exportRef}>
-        <div className="equipment-breakdown-container--inventory">
-          <List className="breakdown-list" dense>
-            <BreakdownHeader itemLabel="Inventory Item" />
-            {lastValidInventory.map((item, i) => (
-              <BreakdownListItem
-                key={item.label + i}
-                item={item}
-                type={BreakdownType.Inventory}
-              />
-            ))}
-          </List>
-        </div>
-        <div className="equipment-breakdown-container--equipment">
-          <List className="breakdown-list" dense>
-            <BreakdownHeader itemLabel="Equipment Item" />
-            {lastValidEquipment.map((item, i) =>
-              (item.label ?? '').length > 0 ? (
-                <BreakdownListItem
-                  key={item.label + i}
-                  item={item}
-                  type={BreakdownType.Equipment}
-                />
-              ) : null
-            )}
-          </List>
-        </div>
+    <Box className="breakdown-container">
+      {/* Column headers */}
+      <div className="breakdown-table-header">
+        <div className="breakdown-col-header">Inventory</div>
+        <div className="breakdown-col-header">Equipment</div>
       </div>
-    </div>
+
+      {/* Two-column grid */}
+      <div className="breakdown-grid">
+        {/* Inventory list */}
+        <List className="breakdown-list">
+          {inventoryRows.map((row) => (
+            <BreakdownListItem
+              key={`inv-${row.slotIndex}`}
+              entry={{
+                slotType: "inventory",
+                slotIndex: row.slotIndex,
+                description: row.description,
+              }}
+              itemId={row.itemId}
+              onChange={(description) =>
+                dispatch(
+                  setBreakdownEntry({
+                    slotType: "inventory",
+                    slotIndex: row.slotIndex,
+                    description,
+                  })
+                )
+              }
+            />
+          ))}
+        </List>
+
+        {/* Equipment list */}
+        <List className="breakdown-list">
+          {equipmentRows.map((row) => (
+            <BreakdownListItem
+              key={`eq-${row.slotIndex}`}
+              entry={{
+                slotType: "equipment",
+                slotIndex: row.slotIndex,
+                description: row.description,
+              }}
+              itemId={row.itemId}
+              onChange={(description) =>
+                dispatch(
+                  setBreakdownEntry({
+                    slotType: "equipment",
+                    slotIndex: row.slotIndex,
+                    description,
+                  })
+                )
+              }
+            />
+          ))}
+        </List>
+      </div>
+    </Box>
   );
 };

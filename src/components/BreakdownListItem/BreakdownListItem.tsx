@@ -1,91 +1,69 @@
-import React, { useCallback } from 'react';
+// src/components/BreakdownListItem/BreakdownListItem.tsx
 
-import { useDispatch } from 'react-redux';
+import React from "react";
+import ListItem from "@mui/material/ListItem";
+import TextField from "@mui/material/TextField";
+import Box from "@mui/material/Box";
+import Link from "@mui/material/Link";
 
-import Avatar from '@mui/material/Avatar';
-import ListItem from '@mui/material/ListItem';
-import ListItemAvatar from '@mui/material/ListItemAvatar';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemText from '@mui/material/ListItemText';
+import { useEmojiMap } from "../../hooks/useEmojiMap";
+import { type BreakdownEntry } from "../../schemas/breakdown";
 
-import { setBreakdown } from '../../redux/store/reducers/preset-reducer';
-import { type BreakdownType } from '../../schemas/breakdown';
-import { type Item as ItemData } from '../../schemas/item-data';
-
-import { NotesField } from '../NotesField/NotesField';
-import './BreakdownListItem.css';
-
-export interface BreakdownListItemProps {
-  item: ItemData
-  type: BreakdownType
+interface Props {
+  entry: BreakdownEntry;
+  itemId: string;
+  onChange: (description: string) => void;
 }
 
-export const BreakdownListItem = ({ item, type }: BreakdownListItemProps): JSX.Element => {
-  const dispatch = useDispatch();
+export const BreakdownListItem = ({
+  entry,
+  itemId,
+  onChange
+}: Props): JSX.Element | null => {
+  const maps = useEmojiMap();
 
-  const handleRecentClick = useCallback(
-    (item: ItemData) => {
-      window.open(item.wikiLink, '_blank');
-    },
-    []
-  );
+  // Still loading?
+  if (!maps) return null;
 
-  const onNotesBlur = useCallback(
-    (formattedNotes: string) => {
-      dispatch(
-        setBreakdown({
-          breakdownType: type,
-          itemName: item.label,
-          description: formattedNotes
-        })
-      );
-    },
-    [type, item.label]
-  );
+  const emoji = maps.get(itemId);
+  if (!emoji) return null;
+
+  const imageUrl = maps.getUrl(itemId);
+
+  // Construct wiki link from emoji name
+  const wikiName = emoji.name.replace(/ /g, "_");
+  const wikiUrl = `https://runescape.wiki/w/${encodeURIComponent(wikiName)}`;
 
   return (
-    <ListItem
-      key={item.name}
-      tabIndex={-1}
-      classes={{
-        root: 'breakdown-list-item',
-        secondaryAction: 'notes-field-outer-two'
-      }}
-      secondaryAction={
-        <NotesField
-          placeholder={item.breakdownNotes}
-          className="inner-notes-field"
-          initialValue={item.breakdownNotes}
-          onBlur={onNotesBlur}
-        />
-      }
-      disablePadding
-    >
-      <ListItemButton tabIndex={-1}>
-        {(item.image.length > 0)
-          ? (
-          <ListItemAvatar tabIndex={-1}>
-            <Avatar
-              imgProps={{ style: { objectFit: 'scale-down' } }}
-              variant="square"
-              alt={item.label}
-              src={item.image}
-              title="Click to open wiki page"
-              onClick={() => { handleRecentClick(item); }}
-            />
-          </ListItemAvatar>
-            )
-          : (
-          <div style={{ height: '40px' }}></div>
-            )}
-        <ListItemText
-          tabIndex={-1}
-          primaryTypographyProps={{ maxWidth: '225px' }}
-          primary={'🔗 ' + item.name}
-          title="Click to open wiki page"
-          onClick={() => { handleRecentClick(item); }}
-        />
-      </ListItemButton>
+    <ListItem className="breakdown-list-item">
+      <Box
+        className="breakdown-item-left"
+        sx={{ display: "flex", alignItems: "center", gap: 1 }}
+      >
+        {imageUrl && (
+          <img src={imageUrl} alt={emoji.name} width={38} />
+        )}
+
+        <Box sx={{ display: "flex", flexDirection: "column" }}>
+          <span>{emoji.name}</span>
+          <Link
+            href={wikiUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            underline="hover"
+            sx={{ fontSize: "0.75rem", opacity: 0.8 }}
+          >
+            Open on Wiki
+          </Link>
+        </Box>
+      </Box>
+
+      <TextField
+        value={entry.description}
+        fullWidth
+        size="small"
+        onChange={(e) => onChange(e.target.value)}
+      />
     </ListItem>
   );
 };

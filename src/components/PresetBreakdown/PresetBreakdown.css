@@ -1,73 +1,68 @@
+/* MAIN WRAPPER */
 .breakdown-container {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-top: 10px !important;
+  width: 100%;
+  margin-top: 1rem;
 }
 
-.breakdown-header {
-  display: flex;
-  justify-content: center;
-  width: 95%;
-  margin: 0 auto;
-}
-
-.breakdown-button {
-  margin: 10px;
-}
-
-.breakdown-inner-container {
+/* 2-column header */
+.breakdown-table-header {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  margin: 10px;
-  background-color: #181818;
-  padding: 10px;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 0.5rem;
+  padding: 0 1rem;
 }
 
-.breakdown-inner-container div:hover {
-  background-color: #181818;
+.breakdown-col-header {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1rem;
 }
 
-.equipment-breakdown-container--equipment {
-  width: 600px;
+/* 2-column content */
+.breakdown-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
 }
 
-.equipment-breakdown-container--inventory {
-  margin-right: 10px;
-}
-
-.equipment-breakdown-container--inventory > .equipment-breakdown-container--0 > .MuiList-root {
-  padding-bottom: 0px;
-}
-
-.equipment-breakdown-container--inventory > .equipment-breakdown-container--1 > .MuiList-root {
-  padding-top: 0px;
-}
-
+/* Individual list */
 .breakdown-list {
   width: 100%;
 }
 
-/* Mobile styling */
+.breakdown-item-left span {
+  white-space: normal;  /* allow wrapping */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
+/* MOBILE: stack vertically */
 @media (max-width: 800px) {
-  .breakdown-container {
-    width: 100vw;
-    margin: 0;
-    overflow: hidden;
+  .breakdown-table-header {
+    display: none; /* hide double header */
   }
 
-  .breakdown-inner-container {
-    padding: 0;
+  .breakdown-grid {
+    grid-template-columns: 1fr;
   }
+}
 
-  .breakdown-list {
-    width: 100vw;
-  }
+.breakdown-list-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
 
-  .equipment-breakdown-container--equipment {
-    max-width: 100%;
-  }
+.breakdown-item-left {
+  flex: 0 0 30%;
+  max-width: 30%;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  min-width: 0;
+}
+
+.breakdown-list-item .MuiFormControl-root {
+  flex: 0 0 70%;
+  max-width: 70%;
 }
