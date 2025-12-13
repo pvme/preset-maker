@@ -153,10 +153,16 @@ export const PresetMenu = (): JSX.Element => {
   /* ---------------------------------------------
      Recent presets
   --------------------------------------------- */
+  
+  const refreshRecentList = useCallback(() => {
+    setRecentList(
+      JSON.parse(localStorage.getItem("recentPresets") || "[]")
+    );
+  }, []);
 
   useEffect(() => {
-    setRecentList(JSON.parse(localStorage.getItem("recentPresets") || "[]"));
-  }, []);
+    refreshRecentList();
+  }, [refreshRecentList]);
 
   /* ---------------------------------------------
      Load preset by URL
@@ -445,6 +451,7 @@ export const PresetMenu = (): JSX.Element => {
               selected={recentSelection}
               onSelect={loadRecent}
               items={recentList}
+              onRemoved={refreshRecentList}
             />
           </Stack>
         </Grid>

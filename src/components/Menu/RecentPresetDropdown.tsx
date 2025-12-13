@@ -21,9 +21,15 @@ interface Props {
   selected: string;
   onSelect: (preset: PresetSummary) => void;
   items: PresetSummary[];
+  onRemoved: () => void;
 }
 
-export const RecentPresetDropdown = ({ selected, onSelect, items }: Props) => {
+export const RecentPresetDropdown = ({
+  selected,
+  onSelect,
+  items,
+  onRemoved,
+}: Props) => {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [presetToRemove, setPresetToRemove] = useState<PresetSummary | null>(null);
   const recent = items;
@@ -40,9 +46,12 @@ export const RecentPresetDropdown = ({ selected, onSelect, items }: Props) => {
     }
 
     removeRecentPreset(presetToRemove.presetId);
+    onRemoved();
+
     if (selected === presetToRemove.presetId) {
       onSelect({ presetId: '', presetName: '', source: 'local' });
     }
+
     setDialogOpen(false);
   };
 
