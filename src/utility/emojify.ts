@@ -28,7 +28,7 @@ export function emojify(text: string): string {
       url = emoji.image.startsWith("http")
         ? emoji.image
         : `https://img.pvme.io/images/${emoji.image}`;
-    } else if (emoji.emoji_id && emoji.emoji_server) {
+    } else if (emoji.emoji_id) {
       url = `https://cdn.discordapp.com/emojis/${emoji.emoji_id}.png?size=96&quality=lossless`;
     } else {
       return fullMatch;

@@ -1,4 +1,5 @@
 // src/emoji/loadEmojis.ts
+
 import { EmojiEntry, EmojiMaps } from "./types";
 import { createIdResolver } from "./idResolver";
 
@@ -7,7 +8,8 @@ let cached: EmojiMaps | null = null;
 const EMOJI_URL =
   "https://raw.githubusercontent.com/pvme/pvme-settings/refs/heads/master/emojis/emojis_v2.json";
 
-const CDN_PREFIX = "https://img.pvme.io/images/";
+const PVME_CDN = "https://img.pvme.io/images/";
+const DISCORD_CDN = "https://cdn.discordapp.com/emojis/";
 
 export async function loadEmojis(): Promise<EmojiMaps> {
   if (cached) return cached;
@@ -29,11 +31,17 @@ export async function loadEmojis(): Promise<EmojiMaps> {
 
   for (const e of all) {
     const id = resolver.resolve(e.id);
+
     const entry: EmojiEntry = {
       ...e,
       id,
-      image: e.image || undefined,
-      preset_type: e.preset_type || undefined,
+
+      // Preserve both sources
+      image: e.image ?? undefined,
+      emoji_id: e.emoji_id ?? undefined,
+      emoji_server: e.emoji_server ?? undefined,
+
+      preset_type: e.preset_type ?? undefined,
       preset_slot: e.preset_slot ?? null,
     };
 
@@ -54,16 +62,40 @@ export async function loadEmojis(): Promise<EmojiMaps> {
     return byId[id];
   }
 
-  function getUrl(id: string) {
+  /**
+   * Returns the preferred image URL for an emoji.
+   * - PVME image takes precedence if present
+   * - Falls back to Discord CDN
+   */
+  function getUrl(id: string): string | undefined {
     const e = byId[id];
-    if (!e?.image) return undefined;
-    return CDN_PREFIX + e.image;
+    if (!e) return undefined;
+
+    if (e.image) {
+      return e.image.startsWith("http")
+        ? e.image
+        : `${PVME_CDN}${e.image}`;
+    }
+
+    if (e.emoji_id) {
+      return `${DISCORD_CDN}${e.emoji_id}.png`;
+    }
+
+    return undefined;
   }
 
   function resolveId(input: string) {
     return resolver.resolve(input);
   }
 
-  cached = { byId, byAlias, byType, getUrl, get, resolve: resolveId };
+  cached = {
+    byId,
+    byAlias,
+    byType,
+    getUrl,
+    get,
+    resolve: resolveId,
+  };
+
   return cached;
 }
