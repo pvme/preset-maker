@@ -73,7 +73,7 @@ export const RecentPresetDropdown = ({
             return (
               <Box display="flex" alignItems="center">
                 {match.source === 'cloud' && <CloudIcon fontSize="small" />}
-                <Box ml={match.source === 'cloud' ? 1 : 0}>{match.presetName}</Box>
+                <Box ml={match.source === 'cloud' ? 1 : 0}>{match.presetName.length > 50 ? `${match.presetName.slice(0, 47)}…` : match.presetName }</Box>
               </Box>
             );
           }}
