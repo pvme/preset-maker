@@ -6352,6 +6352,14 @@
 		"wikiLink": "https://runescape.wiki/w/Nimble_legwear"
 	},
 	{
+		"label": "nodonspikeharness",
+		"image": "https://img.pvme.io/images/8blP0nVgQ4.png",
+		"name": "Nodon spike harness",
+		"breakdownNotes": "",
+		"slot": 9,
+		"wikiLink": "https://runescape.wiki/w/Nodon_spike_harness"
+	},  
+	{
 		"label": "nwanachroniateleport",
 		"image": "https://img.pvme.io/images/XLJvjJIgx1.png",
 		"name": "North-western anachronia teleport",
@@ -8480,6 +8488,14 @@
 		"wikiLink": "https://runescape.wiki/w/Sunspear_(melee)"
 	},
 	{
+		"label": "superadrenalinepotion",
+		"image": "https://img.pvme.io/images/aPnhvrhkKx.png",
+		"name": "Super adrenaline potion",
+		"breakdownNotes": "",
+		"slot": 0,
+		"wikiLink": "https://runescape.wiki/w/Super_adrenaline_potion#(4)"
+	},  
+	{
 		"label": "gbrew",
 		"image": "https://img.pvme.io/images/dPf2fLt.png",
 		"name": "Super Guthix brew flask (6)",
@@ -9447,6 +9463,14 @@
 		"slot": 4,
 		"wikiLink": "https://runescape.wiki/w/Vanquish_(ranged)"
 	},
+	{
+		"label": "varanussmercy",
+		"image": "https://img.pvme.io/images/ouhVo6zKZ6.png",
+		"name": "Varanus's Mercy",
+		"breakdownNotes": "",
+		"slot": 4,
+		"wikiLink": "https://runescape.wiki/w/Varanus%27s_Mercy"
+	},  
 	{
 		"label": "varrocktele100",
 		"image": "https://img.pvme.io/images/hRnhbj5.png",
