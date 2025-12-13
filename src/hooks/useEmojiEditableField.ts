@@ -25,10 +25,20 @@ export function useEmojiEditableField({
 
   const [html, setHtml] = useState(() => emojify(value ?? ""));
 
-  // Sync from external value ONLY when not editing
+  // Initial + external sync (ONLY when not editing)
   useEffect(() => {
     if (isFocused.current) return;
+
     setHtml(emojify(value ?? ""));
+
+    // 🔁 Retry once after emoji index initialises
+    const t = setTimeout(() => {
+      if (!isFocused.current) {
+        setHtml(emojify(value ?? ""));
+      }
+    }, 0);
+
+    return () => clearTimeout(t);
   }, [value]);
 
   const sanitise = (input: string) => {
@@ -50,7 +60,7 @@ export function useEmojiEditableField({
   }, []);
 
   const onChange = useCallback(() => {
-    // Intentionally empty — browser owns DOM while focused
+    // Browser owns DOM while focused
   }, []);
 
   const onBlur = useCallback(() => {
