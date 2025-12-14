@@ -1,23 +1,24 @@
 // src/schemas/saved-preset-data.ts
+import { type BreakdownEntry } from "./breakdown";
+import { type Item } from "./item-data";
+import { type Relics } from "./relic";
+import { type Familiars } from "./familiar";
 
-import { z } from 'zod'
-import { itemSchema } from './item-data'
-import { relicsSchema } from './relic'
-import { familiarsSchema } from './familiar'
+export interface SavedPreset {
+  presetId?: string;
 
-export const savedPresetSchema = z.object({
-  presetId: z.string().optional(),
+  presetName: string;
+  presetNotes: string;
 
-  presetName: z.string().min(1),
-  presetNotes: z.string().optional(),
+  inventorySlots: Item[];
+  equipmentSlots: Item[];
 
-  inventorySlots: z.array(itemSchema).length(28),
-  equipmentSlots: z.array(itemSchema).length(13),
+  relics: Relics;
+  familiars: Familiars;
 
-  relics: relicsSchema.optional(),
-  familiars: familiarsSchema.optional(),
+  breakdown: BreakdownEntry[];
 
-  presetImage: z.string().optional()
-})
-
-export type SavedPreset = z.infer<typeof savedPresetSchema>
+  // legacy field — retained only for compatibility when loading old presets,
+  // but NEVER saved any more
+  presetImage?: string;
+}

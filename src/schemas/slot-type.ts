@@ -1,6 +1,10 @@
+// src/schemas/slot-type.ts
+
 export enum SlotType {
   Inventory,
   Equipment,
+  Familiar,
+  Relic,
 }
 
 export enum ItemType {

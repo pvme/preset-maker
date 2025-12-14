@@ -1,55 +1,51 @@
-import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
-import { type Item as ItemData } from '../../../schemas/item-data';
-import { type ApplicationState } from '../store';
+import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
+import { type Item as ItemData } from "../../../schemas/item-data";
+import { type ApplicationState } from "../store";
 
 interface RecentItemState {
-  itemQueue: ItemData[]
+  itemQueue: ItemData[];
 }
 
 const initialState: RecentItemState = {
-  itemQueue: []
+  itemQueue: [],
 };
 
 export const recentItemSlice = createSlice({
-  name: 'recent-item',
+  name: "recent-item",
   initialState,
   reducers: {
     addToQueue: (state: RecentItemState, action: PayloadAction<ItemData>) => {
-      // Check if the item has all empty values
-      if (Object.values(action.payload).every((value) => value === undefined || value === null)) {
-        // If it does, return without adding it to the queue
-        return;
+      const { id } = action.payload;
+
+      // Do not add empty slots
+      if (!id || id.trim() === "") return;
+
+      // Remove duplicate if already present
+      const existingIndex = state.itemQueue.findIndex((i) => i.id === id);
+      if (existingIndex !== -1) {
+        state.itemQueue.splice(existingIndex, 1);
       }
 
-      // Check if the queue is at its size limit
+      // Ensure size limit of 5
       if (state.itemQueue.length === 5) {
-        // If it is, remove the last item in the queue to make room for the new item
         state.itemQueue.pop();
       }
 
-      // Check if the item already exists in the queue
-      const sameIndex = state.itemQueue.map((i) => i.name).indexOf(action.payload.name);
-      if (sameIndex !== -1) {
-        // If it does, remove it from the queue
-        // So we can put it at the front of the queue
-        state.itemQueue.splice(sameIndex, 1);
-      }
-
-      // Add item to the front of thequeue
-      state.itemQueue.unshift(action.payload);
+      // Add new item to the front
+      state.itemQueue.unshift({ id });
     },
+
     popQueue: (state: RecentItemState) => {
-      // Check if the queue is empty
       if (state.itemQueue.length > 0) {
-        // If it's not, remove the last item in the queue
         state.itemQueue.pop();
       }
-    }
-  }
+    },
+  },
 });
 
 export const { addToQueue, popQueue } = recentItemSlice.actions;
 
-export const selectRecentItems = (state: ApplicationState): ItemData[] => state.recentItem.itemQueue;
+export const selectRecentItems = (state: ApplicationState): ItemData[] =>
+  state.recentItem.itemQueue;
 
 export default recentItemSlice.reducer;

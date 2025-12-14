@@ -1,152 +1,188 @@
-import React, { useCallback } from 'react';
-import { DragPreviewImage, useDrag, useDrop } from 'react-dnd';
+// src/components/SlotSection/SlotSection.tsx
 
-import { equipmentCoords, equipmentCoordsMobile, inventoryCoords, inventoryCoordsMobile } from '../../data/coordinates';
-import { type Coord } from '../../schemas/coord';
-import { type Item as ItemData } from '../../schemas/item-data';
-import { isMobile } from '../../utility/window-utils';
+import React, { useCallback } from "react";
+import { DragPreviewImage, useDrag, useDrop } from "react-dnd";
 
-import { useEmojiMap } from '../../hooks/useEmojiMap'
+import {
+  equipmentCoords,
+  equipmentCoordsMobile,
+  inventoryCoords,
+  inventoryCoordsMobile,
+} from "../../data/coordinates";
 
-import './SlotSection.css';
+import { type Coord } from "../../schemas/coord";
+import { type Item as ItemData } from "../../schemas/item-data";
+import { isMobile } from "../../utility/window-utils";
+
+import { useEmojiMap } from "../../hooks/useEmojiMap";
+import { useAppSelector } from "../../redux/hooks";
+import { selectPreset } from "../../redux/store/reducers/preset-reducer";
+
+import "./SlotSection.css";
 
 interface SlotProps {
-  slots: ItemData[]
-  handleClickOpen: (event: React.MouseEvent<HTMLAreaElement>, index: number, className: string) => void
-  handleDragAndDrop?: (dragIndex: number, dropIndex: number) => void
-  handleShiftClick?: (event: React.MouseEvent<HTMLAreaElement>, index: number, className: string) => void
+  slots: ItemData[];
+  handleClickOpen: (e: any, index: number, slotGroup: string) => void;
+  handleDragAndDrop?: (
+    dragItem: { fromGroup: string; index: number; id: string },
+    targetGroup: string,
+    targetIndex: number
+  ) => void;
+  handleShiftClick?: (e: any, index: number, slotGroup: string) => void;
 }
 
 interface SlotSectionProps extends SlotProps {
-  coords: Coord[]
-  className: string
-  rootClassName: string
+  coords: Coord[];
+  slotGroup: string;
 }
 
 interface SingleSlotProps extends SlotProps {
-  index: number
-  coord: Coord
-  className: string
+  index: number;
+  coord: Coord;
+  slotGroup: string;
 }
 
-const SingleSlot = ({ index, coord, className, slots, handleClickOpen, handleShiftClick, handleDragAndDrop }: SingleSlotProps): JSX.Element | null => {
+const SingleSlot = ({
+  index,
+  coord,
+  slotGroup,
+  slots,
+  handleClickOpen,
+  handleShiftClick,
+  handleDragAndDrop,
+}: SingleSlotProps): JSX.Element | null => {
   const slot = slots[index];
-  if (!slot) {
-    console.error(`SingleSlot: undefined slot at index ${index}`);
-    return null;
-  }
+  if (!slot) return null;
 
-  const { getEmojiUrl } = useEmojiMap();
-  const emojiUrl = slot.image || getEmojiUrl(slot.name);
- 
-  const getClassName = (slot: ItemData): string => {
-    const selectedClass = slot.selected ? `${className}-icon-container--selected` : '';
-    return `${className}-icon-container ${selectedClass}`;
-  };
+  const maps = useEmojiMap();
+  const { selectedSlots } = useAppSelector(selectPreset);
 
-  const slotHasImage = Boolean(emojiUrl);
-  const slotIsSelected = slot.selected ?? false;
+  const entry = slot.id && maps ? maps.get(slot.id) : undefined;
+  const emojiUrl = entry && maps ? maps.getUrl(entry.id) ?? "" : "";
 
-  const onSlotSelect = useCallback((event: React.MouseEvent<HTMLAreaElement>, index: number) => {
-    if (event.shiftKey && handleShiftClick) {
-      handleShiftClick(event, index, className);
-    } else {
-      handleClickOpen(event, index, className);
-    }
-  }, [handleShiftClick, handleClickOpen, className]);
+  const slotKey = `${slotGroup}:${index}`;
+  const slotIsSelected = selectedSlots.includes(slotKey);
 
+  const getClassName = () =>
+    `${slotGroup}-icon-container ${
+      slotIsSelected ? "selected" : ""
+    }`;
+
+
+  const onSlotSelect = useCallback(
+    (e: React.MouseEvent<HTMLAreaElement>) => {
+      if (e.shiftKey && handleShiftClick) {
+        handleShiftClick(e, index, slotGroup);
+      } else {
+        handleClickOpen(e, index, slotGroup);
+      }
+    },
+    [handleShiftClick, handleClickOpen, index, slotGroup]
+  );
+
+  //
+  // DRAG SOURCE — unified type "SLOT_ITEM"
+  //
   const [{ opacity }, dragRef, dragPreview] = useDrag(
     () => ({
-      type: 'INVENTORY_SLOT',
-      item: { slot, index },
+      type: "SLOT_ITEM",
+      item: {
+        fromGroup: slotGroup,
+        index,
+        id: slot.id,
+      },
       collect: (monitor) => ({
-        slot,
         opacity: monitor.isDragging() ? 0.5 : 1,
       }),
     }),
-    [slots]
+    [slotGroup, index, slot.id]
   );
 
-  const [, dropRef] = useDrop(() => ({
-    accept: 'INVENTORY_SLOT',
-    drop: (item: { index: number }) => {
-      if (handleDragAndDrop) handleDragAndDrop(item.index, index);
-    }
-  }), [slots]);
+  //
+  // DROP TARGET — accepts any SLOT_ITEM
+  //
+  const [, dropRef] = useDrop(
+    () => ({
+      accept: "SLOT_ITEM",
+      drop: (dragItem: { fromGroup: string; index: number; id: string }) => {
+        if (handleDragAndDrop) {
+          handleDragAndDrop(dragItem, slotGroup, index);
+        }
+      },
+    }),
+    [handleDragAndDrop, slotGroup, index]
+  );
 
   return (
     <>
       {emojiUrl && <DragPreviewImage connect={dragPreview} src={emojiUrl} />}
-      <div ref={dropRef}>
-        <div key={index + new Date().getTime()} style={{ position: 'relative' }} ref={dragRef}>
+
+      <div ref={dropRef} style={{ position: "relative" }}>
+        <div ref={dragRef}>
           <area
-            title={slot.name}
-            key={`${coord.x1},${coord.y1},${coord.x2},${coord.y2}`}
-            style={{ cursor: 'pointer', opacity, userSelect: 'auto' }}
             shape="rect"
             coords={`${coord.x1},${coord.y1},${coord.x2},${coord.y2}`}
-            onClick={(event: React.MouseEvent<HTMLAreaElement>) => { onSlotSelect(event, index); }}
+            title={entry?.name ?? ""}
+            style={{ cursor: "pointer", opacity, userSelect: "auto" }}
+            onClick={onSlotSelect}
           />
-          {(slotHasImage || slotIsSelected) && (
-            <div
-              className={getClassName(slot)}
-              style={{ top: coord.y1, left: coord.x1, userSelect: 'auto' }}
-            >
-              {slotHasImage && (
-                <img
-                  key={index}
-                  className={`${className}-icon`}
-                  style={{ userSelect: 'auto' }}
-                  src={emojiUrl}
-                  alt={slot.name}
-                />
-              )}
-            </div>
-          )}
+
+          <div
+            className={getClassName()}
+            style={{
+              position: "absolute",
+              top: coord.y1,
+              left: coord.x1,
+              pointerEvents: "none",
+            }}
+          >
+            {emojiUrl && (
+              <img
+                className={`${slotGroup}-icon`}
+                src={emojiUrl}
+                alt={entry?.name ?? ""}
+              />
+            )}
+          </div>
+
         </div>
       </div>
     </>
   );
 };
 
-const SlotSection = ({ slots, handleClickOpen, handleShiftClick, handleDragAndDrop, coords, className, rootClassName }: SlotSectionProps): JSX.Element => {
+const SlotSection = ({
+  slots,
+  coords,
+  slotGroup,
+  handleClickOpen,
+  handleShiftClick,
+  handleDragAndDrop,
+}: SlotSectionProps): JSX.Element => {
   return (
-    <div className={rootClassName}>
-      {Array.isArray(slots) && Array.isArray(coords) && coords.map((coord: Coord, index: number) => {
-        const slot = slots[index];
-        if (!slot) {
-          console.warn(`Skipping index ${index} — no slot defined`, { index, coord });
-          return null;
-        }
-
-        return (
-          <SingleSlot
-            key={index}
-            slots={slots}
-            coord={coord}
-            index={index}
-            className={className}
-            handleClickOpen={handleClickOpen}
-            handleShiftClick={handleShiftClick}
-            handleDragAndDrop={handleDragAndDrop}
-          />
-        );
-      })}
-    </div>
+    <>
+      {coords.map((coord, index) => (
+        <SingleSlot
+          key={index}
+          slots={slots}
+          coord={coord}
+          index={index}
+          slotGroup={slotGroup}
+          handleClickOpen={handleClickOpen}
+          handleShiftClick={handleShiftClick}
+          handleDragAndDrop={handleDragAndDrop}
+        />
+      ))}
+    </>
   );
 };
 
-export const Inventory = (props: SlotProps): JSX.Element => {
-  const coordsToUse = isMobile() ? inventoryCoordsMobile : inventoryCoords;
-  const className = isMobile() ? 'inventory inventory--mobile' : 'inventory';
-
-  return (
-    <SlotSection {...props} coords={coordsToUse} className="inventory" rootClassName={className} />
-  );
+export const Inventory = (props: SlotProps) => {
+  const coords = isMobile() ? inventoryCoordsMobile : inventoryCoords;
+  return <SlotSection {...props} coords={coords} slotGroup="inventory" />;
 };
 
-export const Equipment = (props: SlotProps): JSX.Element => {
-  const coordsToUse = isMobile() ? equipmentCoordsMobile : equipmentCoords;
-  const className = isMobile() ? 'equipment equipment--mobile' : 'equipment';
-  return <SlotSection {...props} coords={coordsToUse} className="equipment" rootClassName={className} />;
+export const Equipment = (props: SlotProps) => {
+  const coords = isMobile() ? equipmentCoordsMobile : equipmentCoords;
+  return <SlotSection {...props} coords={coords} slotGroup="equipment" />;
 };

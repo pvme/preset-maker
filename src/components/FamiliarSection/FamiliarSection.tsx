@@ -1,194 +1,161 @@
-import React, { useCallback, useState } from 'react';
-import Typography from '@mui/material/Typography/Typography';
-import AddIcon from '@mui/icons-material/Add';
+// src/components/FamiliarSection/FamiliarSection.tsx
+import React, { useCallback, useState } from "react";
+import Typography from "@mui/material/Typography";
+import AddIcon from "@mui/icons-material/Add";
+import Tooltip from "@mui/material/Tooltip";
 
-import familiarIconPath from '../../assets/familiar.png';
-import { useAppDispatch, useAppSelector } from '../../redux/hooks';
-import { selectPreset, setAlternativeFamiliar, setPrimaryFamiliar } from '../../redux/store/reducers/preset-reducer';
+import familiarIconPath from "../../assets/familiar.png";
 
-import { type Familiar as FamiliarData } from '../../schemas/familiar';
-import './FamiliarSection.css';
-import Tooltip from '@mui/material/Tooltip/Tooltip';
-import { type IndexedSelection, PrimaryOrAlternative } from '../../schemas/util';
-import { FamiliarSelectDialog } from '../dialogs/FamiliarSelectDialog/FamiliarSelectDialog';
-import { isMobile } from '../../utility/window-utils';
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import {
+  selectPreset,
+  setPrimaryFamiliar,
+  setAlternativeFamiliar,
+} from "../../redux/store/reducers/preset-reducer";
 
-export type FamiliarSectionListClickHandler = (
-  _event: React.MouseEvent<HTMLDivElement>,
-  index: number
-) => void;
+import { type Familiar as FamiliarData } from "../../schemas/familiar";
+import { type IndexedSelection, PrimaryOrAlternative } from "../../schemas/util";
+
+import { EmojiSelectDialog } from "../EmojiSelectDialog/EmojiSelectDialog";
+import { useEmojiMap } from "../../hooks/useEmojiMap";
+import { isMobile } from "../../utility/window-utils";
+
+import "./FamiliarSection.css";
 
 const isMobileScreen = isMobile();
 
-const FamiliarSectionList = ({ familiars, onClick }: { familiars: FamiliarData[], onClick: FamiliarSectionListClickHandler }): JSX.Element => {
-  const onSelectionClick = useCallback((event: React.MouseEvent<HTMLDivElement>, index: number) => {
-    if (isMobileScreen) {
-      return;
-    }
-
-    onClick(event, index);
-  }, [onClick]);
-
-  return (
-    <div className="familiar-section__list">
-      {familiars.map((familiarData, index) => (
-        <div
-          key={`${familiarData.label}${index}`}
-          className="d-flex flex-center familiar-section__list-item"
-          onClick={(event) => { onSelectionClick(event, index); }}
-        >
-          {familiarData.image.length > 0 && (
-            <img className="familiar-section__list-item-image" src={familiarData.image}></img>
-          )}
-          <span className="familiar-section__list-item-name">{familiarData.name}</span>
-        </div>
-      ))}
-    </div>
-  );
-};
-
 export const FamiliarSection = (): JSX.Element => {
   const dispatch = useAppDispatch();
+  const { familiars } = useAppSelector(selectPreset);
 
-  const {
-    familiars
-  } = useAppSelector(selectPreset);
-
-  const primaryFamiliars = familiars.primaryFamiliars;
-  const visibleAlternativeFamiliars = familiars.alternativeFamiliars.filter((f): f is NonNullable<typeof f> => f !== null && !!f.name);
+  const maps = useEmojiMap();  // must always run
+  const primary = familiars.primaryFamiliars;
+  const alt = familiars.alternativeFamiliars.filter(f => f && f.id);
 
   const [dialogOpen, setDialogOpen] = useState(false);
-  const [indexedSelection, setIndexedSelection] = useState({
+  const [selection, setSelection] = useState<IndexedSelection>({
     primaryOrAlternative: PrimaryOrAlternative.None,
-    index: -1
+    index: -1,
   });
 
-  const openFamiliarDialog = useCallback(
-    (
-      _event: React.MouseEvent<HTMLDivElement>,
-      primaryOrAlternative: PrimaryOrAlternative,
-      index: number
-    ) => {
-      if (isMobileScreen) {
-        return;
-      }
-
-      setIndexedSelection({
-        primaryOrAlternative,
-        index
-      });
+  const openDialog = useCallback(
+    (type: PrimaryOrAlternative, index: number) => {
+      if (isMobileScreen) return;
+      setSelection({ primaryOrAlternative: type, index });
       setDialogOpen(true);
     },
-    [indexedSelection]
+    []
   );
 
-  const closeFamiliarDialog = useCallback(() => {
-    setDialogOpen(false);
-  }, []);
+  const closeDialog = useCallback(() => setDialogOpen(false), []);
 
-  const handleFamiliarSelection = useCallback((
-    indexedSelection: IndexedSelection,
-    familiar: FamiliarData | null
-  ) => {
-    if (indexedSelection.primaryOrAlternative === PrimaryOrAlternative.Primary) {
-      // if we got `null`, clear the slot
-      if (familiar === null) {
-        dispatch(setPrimaryFamiliar({
-          index: indexedSelection.index,
-          value: null
-        }));
-        setIndexedSelection({ primaryOrAlternative: PrimaryOrAlternative.None, index: -1 });
-        setDialogOpen(false);
-        return;
-      }
-      // Prevent duplicates.
-      if (familiars.primaryFamiliars.includes(familiar)) {
-        return;
+  const onSelect = useCallback(
+    (ids: string[]) => {
+      const id = ids[0] ?? "";
+      const fam: FamiliarData | null = id ? { id } : null;
+
+      if (selection.primaryOrAlternative === PrimaryOrAlternative.Primary) {
+        dispatch(setPrimaryFamiliar({ index: selection.index, value: fam }));
+      } else {
+        dispatch(setAlternativeFamiliar({ index: selection.index, value: fam }));
       }
 
-      dispatch(setPrimaryFamiliar({
-        index: indexedSelection.index,
-        value: familiar
-      }));
-    } else if (indexedSelection.primaryOrAlternative === PrimaryOrAlternative.Alternative) {
-      // if we got `null`, clear the slot
-      if (familiar === null) {
-        dispatch(setAlternativeFamiliar({
-          index: indexedSelection.index,
-          value: null
-        }));
-        setIndexedSelection({ primaryOrAlternative: PrimaryOrAlternative.None, index: -1 });
-        setDialogOpen(false);
-        return;
-      }
-      // Prevent duplicates.
-      if (familiars.alternativeFamiliars.includes(familiar)) {
-        return;
-      }
+      setSelection({ primaryOrAlternative: PrimaryOrAlternative.None, index: -1 });
+      setDialogOpen(false);
+    },
+    [dispatch, selection]
+  );
 
-      dispatch(setAlternativeFamiliar({
-        index: indexedSelection.index,
-        value: familiar
-      }));
-    }
-
-    setIndexedSelection({
-      primaryOrAlternative: PrimaryOrAlternative.None,
-      index: -1
-    });
-    setDialogOpen(false);
-  }, [familiars, indexedSelection]);
+  //
+  // Safe lookups — maps may be null initially
+  //
+  const safeGet = (id: string) => maps?.get(id);
+  const safeUrl = (id: string) => maps?.getUrl(id) ?? "";
 
   return (
     <div className="width-50 familiar-section">
       <Typography className="d-flex flex-center" variant="h6">
-        <img
-          className="m-8"
-          width={24}
-          height={24}
-          src={familiarIconPath}
-        />
+        <img className="m-8" width={24} height={24} src={familiarIconPath} />
         Familiar
       </Typography>
+
+      {/* PRIMARY */}
       <div className="familiar-section__primary">
-        {primaryFamiliars.map((fam, i) => (
-          <div
-            key={i}
-            className="d-flex flex-center familiar-section__list-item"
-            onClick={(e) => openFamiliarDialog(e, PrimaryOrAlternative.Primary, i)}
-          >
-            {fam.label
-              ? <>
-                  {fam.image && (
-                    <img className="familiar-section__list-item-image" src={fam.image} />
-                  )}
-                  <span className="familiar-section__list-item-name">{fam.name}</span>
-                </>
-              : (
-                  <Tooltip title="Add familiar">
-                    <AddIcon
-                      className="cursor-pointer familiar-section__add-familiar"
-                      htmlColor="#646464"
-                    />
-                  </Tooltip>
-                )
-            }
-          </div>
-        ))}
+        {primary.map((f, i) => {
+          const entry = f.id ? safeGet(f.id) : undefined;
+
+          if (!entry) {
+            return (
+              <div
+                key={i}
+                className="d-flex flex-center familiar-section__list-item"
+                onClick={() => openDialog(PrimaryOrAlternative.Primary, i)}
+              >
+                <Tooltip title="Add familiar">
+                  <AddIcon
+                    className="cursor-pointer familiar-section__add-familiar"
+                    htmlColor="#646464"
+                  />
+                </Tooltip>
+              </div>
+            );
+          }
+
+          const url = safeUrl(entry.id);
+
+          return (
+            <div
+              key={i}
+              className="d-flex flex-center familiar-section__list-item"
+              onClick={() => openDialog(PrimaryOrAlternative.Primary, i)}
+            >
+              <img
+                className="familiar-section__list-item-image"
+                src={url}
+                alt={entry.name}
+              />
+              <span className="familiar-section__list-item-name">
+                {entry.name}
+              </span>
+            </div>
+          );
+        })}
       </div>
+
+      {/* ALTERNATIVE */}
       <div className="familiar-section__alternative">
         <div className="familiar-section__alternative__title">Alternative</div>
-        <FamiliarSectionList
-          familiars={visibleAlternativeFamiliars}
-          onClick={(event, index) => {
-            openFamiliarDialog(event, PrimaryOrAlternative.Alternative, index);
-          }}
-        />
+
+        {alt.map((f, i) => {
+          const entry = safeGet(f.id);
+          if (!entry) return null;
+
+          const url = safeUrl(entry.id);
+
+          return (
+            <div
+              key={i}
+              className="d-flex flex-center familiar-section__list-item"
+              onClick={() => openDialog(PrimaryOrAlternative.Alternative, i)}
+            >
+              <img
+                className="familiar-section__list-item-image"
+                src={url}
+                alt={entry.name}
+              />
+              <span className="familiar-section__list-item-name">
+                {entry.name}
+              </span>
+            </div>
+          );
+        })}
+
+        {/* ADD NEW ALTERNATIVE */}
         <div
           className="d-flex flex-center familiar-section__list-item familiar-section__list-item--add"
-          onClick={(event) => {
-            openFamiliarDialog(event, PrimaryOrAlternative.Alternative, visibleAlternativeFamiliars.length);
-          }}
+          onClick={() =>
+            openDialog(PrimaryOrAlternative.Alternative, alt.length)
+          }
         >
           <Tooltip title="Add alternative familiar">
             <AddIcon
@@ -198,11 +165,16 @@ export const FamiliarSection = (): JSX.Element => {
           </Tooltip>
         </div>
       </div>
-      <FamiliarSelectDialog
+
+      <EmojiSelectDialog
         open={dialogOpen}
-        indexedSelection={indexedSelection}
-        handleClose={closeFamiliarDialog}
-        handleSelection={handleFamiliarSelection}
+        onClose={closeDialog}
+        onSelect={onSelect}
+        slotType={"familiar"}
+        slotKey=""
+        slotIndex={selection.index}
+        selectedIndices={[`${selection.index}`]}
+        recentlySelected={[]}
       />
     </div>
   );

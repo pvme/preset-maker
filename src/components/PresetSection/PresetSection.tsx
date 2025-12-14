@@ -40,7 +40,7 @@ export const PresetSection = (): JSX.Element => {
         </Grid>
       </Container>
 
-      <Container maxWidth={false}>
+      <Container maxWidth={'xl'}>
         <Grid container sx={{ marginBottom: 3}} >
           <Grid item xs={12}>
             <PresetBreakdown />

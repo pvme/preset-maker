@@ -1,128 +1,132 @@
 // src/components/PresetBreakdown/PresetBreakdown.tsx
 
-import React, { useEffect, useRef, useState } from 'react';
-import { canCopyImagesToClipboard } from 'copy-image-clipboard';
-import { useSnackbar } from 'notistack';
+import React, { useEffect, useMemo, useState } from "react";
+import List from "@mui/material/List";
+import Box from "@mui/material/Box";
 
-import Button from '@mui/material/Button';
-import List from '@mui/material/List';
+import { BreakdownListItem } from "../BreakdownListItem/BreakdownListItem";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { selectPreset, setBreakdownEntry } from "../../redux/store/reducers/preset-reducer";
+import { useEmojiMap } from "../../hooks/useEmojiMap";
 
-import { BreakdownHeader } from '../BreakdownHeader/BreakdownHeader';
-import { BreakdownListItem } from '../BreakdownListItem/BreakdownListItem';
-import { ClipboardCopyButtonContainer } from '../ClipboardCopyButtonContainer/ClipboardCopyButtonContainer';
-import { useAppSelector } from '../../redux/hooks';
-import { selectPreset } from '../../redux/store/reducers/preset-reducer';
-import { type Item as ItemData } from '../../schemas/item-data';
-import { BreakdownType } from '../../schemas/breakdown';
-import {
-  copyImageToClipboard,
-  exportAsImage
-} from '../../utility/export-to-png';
+import "./PresetBreakdown.css";
 
-import './PresetBreakdown.css';
+type DraftKey = `${"inventory" | "equipment"}-${number}`;
 
-const customOrder: number[] = [0, 4, 6, 7, 8, 2, 9, 1, 3, 5, 10, 11, 12];
+interface Row {
+  key: DraftKey;
+  itemId: string;
+  slotType: "inventory" | "equipment";
+  slotIndex: number;
+  description: string;
+}
 
-const clipboardSupported = canCopyImagesToClipboard();
+export const PresetBreakdown = (): JSX.Element | null => {
+  const dispatch = useAppDispatch();
+  const preset = useAppSelector(selectPreset);
+  const emojiMap = useEmojiMap();
 
-export const PresetBreakdown = (): JSX.Element => {
-  const exportRef = useRef<HTMLDivElement>(null);
-  const { enqueueSnackbar } = useSnackbar();
+  const [drafts, setDrafts] = useState<Record<DraftKey, string>>({});
 
-  const {
-    presetName: name,
-    inventorySlots = [],
-    equipmentSlots = []
-  } = useAppSelector(selectPreset);
-
-  const [mappedEquipment, setMappedEquipment] = useState<ItemData[]>([]);
-  const [uniqueInventoryItems, setUniqueInventoryItems] = useState<ItemData[]>([]);
-  const [lastValidInventory, setLastValidInventory] = useState<ItemData[]>([]);
-  const [lastValidEquipment, setLastValidEquipment] = useState<ItemData[]>([]);
-
+  // Sync drafts from Redux
   useEffect(() => {
-    if (inventorySlots.length > 0) {
-      const filteredInventory = inventorySlots.filter(
-        (item) => (item.label ?? '').length > 0
-      );
-      setLastValidInventory(filteredInventory);
+    const next: Record<DraftKey, string> = {};
+
+    for (const b of preset.breakdown) {
+      next[`${b.slotType}-${b.slotIndex}`] = b.description;
     }
 
-    if (equipmentSlots.length > 0) {
-      setLastValidEquipment(equipmentSlots);
-    }
+    setDrafts(next);
+  }, [preset.breakdown]);
 
-    if (inventorySlots.length === 0 && equipmentSlots.length === 0) {
-      console.warn('Skipping render update — received empty slot arrays');
-      return;
-    }
+  const inventoryRows = useMemo<Row[]>(() => {
+    return preset.inventorySlots.flatMap((slot, index) => {
+      if (!slot.id) return [];
 
-    const reorderedArray: ItemData[] = customOrder.map((orderIndex) => {
-      return equipmentSlots[orderIndex] ?? {
-        name: '',
-        image: '',
-        label: '',
-        breakdownNotes: ''
-      };
+      const key = `inventory-${index}` as DraftKey;
+
+      return [
+        {
+          key,
+          itemId: slot.id,
+          slotType: "inventory",
+          slotIndex: index,
+          description: drafts[key] ?? "",
+        },
+      ];
     });
+  }, [preset.inventorySlots, drafts]);
 
-    setMappedEquipment((prev) => {
-      if (
-        prev?.length === reorderedArray.length &&
-        prev.every((item, i) => item.name === reorderedArray[i].name)
-      ) {
-        return prev;
-      }
-      return reorderedArray;
-    });
+  const equipmentRows = useMemo<Row[]>(() => {
+    return preset.equipmentSlots.flatMap((slot, index) => {
+      if (!slot.id) return [];
 
-    const uniqueItemData: ItemData[] = inventorySlots.filter((item, index, self) => {
-      return (
-        self.findIndex((i) => i.name === item.name) === index && item.name
-      );
-    });
+      const key = `equipment-${index}` as DraftKey;
 
-    setUniqueInventoryItems((prev) => {
-      if (
-        prev?.length === uniqueItemData.length &&
-        prev.every((item, i) => item.name === uniqueItemData[i].name)
-      ) {
-        return prev;
-      }
-      return uniqueItemData;
+      return [
+        {
+          key,
+          itemId: slot.id,
+          slotType: "equipment",
+          slotIndex: index,
+          description: drafts[key] ?? "",
+        },
+      ];
     });
-  }, [inventorySlots, equipmentSlots]);
+  }, [preset.equipmentSlots, drafts]);
+
+  const commit = (
+    slotType: "inventory" | "equipment",
+    slotIndex: number,
+    description: string
+  ) => {
+    dispatch(
+      setBreakdownEntry({
+        slotType,
+        slotIndex,
+        description,
+      })
+    );
+  };
+
+  if (!emojiMap) return null;
 
   return (
-    <div className="breakdown-container">
-      <div className="breakdown-inner-container" ref={exportRef}>
-        <div className="equipment-breakdown-container--inventory">
-          <List className="breakdown-list" dense>
-            <BreakdownHeader itemLabel="Inventory Item" />
-            {lastValidInventory.map((item, i) => (
-              <BreakdownListItem
-                key={item.label + i}
-                item={item}
-                type={BreakdownType.Inventory}
-              />
-            ))}
-          </List>
-        </div>
-        <div className="equipment-breakdown-container--equipment">
-          <List className="breakdown-list" dense>
-            <BreakdownHeader itemLabel="Equipment Item" />
-            {lastValidEquipment.map((item, i) =>
-              (item.label ?? '').length > 0 ? (
-                <BreakdownListItem
-                  key={item.label + i}
-                  item={item}
-                  type={BreakdownType.Equipment}
-                />
-              ) : null
-            )}
-          </List>
-        </div>
+    <Box className="breakdown-container">
+      <div className="breakdown-table-header">
+        <div className="breakdown-col-header">Inventory</div>
+        <div className="breakdown-col-header">Equipment</div>
       </div>
-    </div>
+
+      <div className="breakdown-grid">
+        <List className="breakdown-list">
+          {inventoryRows.map((row) => (
+            <BreakdownListItem
+              key={row.key}
+              emojiMap={emojiMap}
+              itemId={row.itemId}
+              description={row.description}
+              onCommit={(desc) =>
+                commit(row.slotType, row.slotIndex, desc)
+              }
+            />
+          ))}
+        </List>
+
+        <List className="breakdown-list">
+          {equipmentRows.map((row) => (
+            <BreakdownListItem
+              key={row.key}
+              emojiMap={emojiMap}
+              itemId={row.itemId}
+              description={row.description}
+              onCommit={(desc) =>
+                commit(row.slotType, row.slotIndex, desc)
+              }
+            />
+          ))}
+        </List>
+      </div>
+    </Box>
   );
 };

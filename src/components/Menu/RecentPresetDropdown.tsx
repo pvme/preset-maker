@@ -21,9 +21,15 @@ interface Props {
   selected: string;
   onSelect: (preset: PresetSummary) => void;
   items: PresetSummary[];
+  onRemoved: () => void;
 }
 
-export const RecentPresetDropdown = ({ selected, onSelect, items }: Props) => {
+export const RecentPresetDropdown = ({
+  selected,
+  onSelect,
+  items,
+  onRemoved,
+}: Props) => {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [presetToRemove, setPresetToRemove] = useState<PresetSummary | null>(null);
   const recent = items;
@@ -40,9 +46,12 @@ export const RecentPresetDropdown = ({ selected, onSelect, items }: Props) => {
     }
 
     removeRecentPreset(presetToRemove.presetId);
+    onRemoved();
+
     if (selected === presetToRemove.presetId) {
       onSelect({ presetId: '', presetName: '', source: 'local' });
     }
+
     setDialogOpen(false);
   };
 
@@ -64,7 +73,7 @@ export const RecentPresetDropdown = ({ selected, onSelect, items }: Props) => {
             return (
               <Box display="flex" alignItems="center">
                 {match.source === 'cloud' && <CloudIcon fontSize="small" />}
-                <Box ml={match.source === 'cloud' ? 1 : 0}>{match.presetName}</Box>
+                <Box ml={match.source === 'cloud' ? 1 : 0}>{match.presetName.length > 50 ? `${match.presetName.slice(0, 47)}…` : match.presetName }</Box>
               </Box>
             );
           }}

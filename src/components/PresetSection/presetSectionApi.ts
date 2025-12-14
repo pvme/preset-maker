@@ -1,54 +1,51 @@
-import axios from 'axios';
-import { type SavedPreset as SavedPresetData } from '../../schemas/saved-preset-data';
-import itemData from '../../data/sorted_items.json';
+// src/components/PresetSection/presetSectionApi.ts
+
+import axios from "axios";
+import { type SavedPreset as SavedPresetData } from "../../schemas/saved-preset-data";
+import { loadEmojis } from "../../emoji";
 
 const apiUrl =
-  'https://us-central1-pvmebackend.cloudfunctions.net/getPreset?id=';
+  "https://us-central1-pvmebackend.cloudfunctions.net/getPreset?id=";
 
 export const GetPreset = async (id: string): Promise<SavedPresetData> => {
   const response = await axios.get(`${apiUrl}${id}`);
-  const storedPreset = response.data;
-  const unpackedPreset = await unpackData(storedPreset);
-  return unpackedPreset;
+  return await unpackData(response.data);
 };
 
-const unpackData = async (stored: {
-  equipmentSlots: any
-  presetName: any
-  presetNotes: string
-  inventorySlots: string | any[]
-}): Promise<SavedPresetData> => {
-  const newPreset: SavedPresetData = {
-    presetName: '',
-    inventorySlots: [],
-    equipmentSlots: [],
-    presetNotes: ''
+const unpackData = async (stored: any): Promise<SavedPresetData> => {
+  const emojis = await loadEmojis();
+
+  const convertSlot = (slot: any) => {
+    if (!slot) return { id: "" };
+
+    const raw =
+      slot?.id ??
+      slot?.label ??    // legacy
+      slot?.name ??     // legacy
+      slot ??           // string fallback
+      "";
+
+    const resolved = emojis.resolve(raw.toString().toLowerCase());
+    return { id: resolved };
   };
-  // create a map of all item labels to their default object
-  const itemDataMap = new Map();
-  itemData.forEach((element) => {
-    itemDataMap.set(element.label, element);
-  });
 
-  // loop stored preset inventory items
-  for (let i = 0; i < stored.inventorySlots.length; i++) {
-    const itemLabel = stored.inventorySlots[i].label;
-    const defaultItem = { ...itemDataMap.get(itemLabel) };
-    if (stored.inventorySlots[i].breakdownNotes !== '') {
-      defaultItem.breakdownNotes = stored.inventorySlots[i].breakdownNotes;
-    }
-    newPreset.inventorySlots[i] = defaultItem;
-  }
+  return {
+    presetName: stored.presetName ?? "",
+    presetNotes: stored.presetNotes ?? "",
 
-  // loop stored equipment items
-  for (let i = 0; i < stored.equipmentSlots.length; i++) {
-    const itemLabel = stored.equipmentSlots[i].label;
-    const defaultItem = { ...itemDataMap.get(itemLabel) };
-    if (stored.equipmentSlots[i].breakdownNotes !== '') {
-      defaultItem.breakdownNotes = stored.equipmentSlots[i].breakdownNotes;
-    }
-    newPreset.equipmentSlots[i] = defaultItem;
-  }
+    inventorySlots: (stored.inventorySlots ?? []).map(convertSlot),
+    equipmentSlots: (stored.equipmentSlots ?? []).map(convertSlot),
 
-  return newPreset;
+    familiars: {
+      primaryFamiliars: (stored.familiars?.primaryFamiliars ?? []).map(convertSlot),
+      alternativeFamiliars: (stored.familiars?.alternativeFamiliars ?? []).map(convertSlot),
+    },
+
+    relics: {
+      primaryRelics: (stored.relics?.primaryRelics ?? []).map(convertSlot),
+      alternativeRelics: (stored.relics?.alternativeRelics ?? []).map(convertSlot),
+    },
+
+    breakdown: stored.breakdown ?? [],
+  };
 };

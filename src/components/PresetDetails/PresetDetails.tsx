@@ -1,140 +1,92 @@
-import React, { useCallback, useRef, useState, useEffect } from 'react';
-import { emojify } from '../../utility/emojify';
+import React from "react";
 import {
   Card,
   CardContent,
-  TextField,
   Typography,
   Stack,
-} from '@mui/material';
-import ContentEditable, { type ContentEditableEvent } from 'react-contenteditable';
-import sanitizeHtml from 'sanitize-html';
-import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
-import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+} from "@mui/material";
+
+import ContentEditable from "react-contenteditable";
+import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
+
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import {
   selectPreset,
   setPresetNotes,
-  setPresetName
-} from '../../redux/store/reducers/preset-reducer';
-import './PresetDetails.css';
+  setPresetName,
+} from "../../redux/store/reducers/preset-reducer";
+
+import { useEmojiEditableField } from "../../hooks/useEmojiEditableField";
+import "./PresetDetails.css";
+
+const isEmpty = (ref: React.RefObject<HTMLDivElement>) =>
+  !ref.current || ref.current.innerText.trim() === "";
 
 export const PresetDetails = (): JSX.Element => {
   const dispatch = useAppDispatch();
-  const { presetName, presetNotes } = useAppSelector(selectPreset);
-  const [name, setName] = useState<string>(presetName);
-  const [rawNotes, setRawNotes] = useState<string>(presetNotes);
-  const [notesHtml, setNotesHtml] = useState<string>(emojify(presetNotes));
-  const notesRef = useRef<HTMLDivElement>(null);
+  const preset = useAppSelector(selectPreset);
 
-  const sanitizeAndEmojifyInput = (input: string): string => {
-    const cleaned = sanitizeHtml(input, {
-      allowedTags: ['img', 'a', 'b', 'i', 'u', 'em', 'strong', 'br', 'div', 'span'],
-      allowedAttributes: {
-        img: ['src', 'alt', 'class'],
-        a: ['href', 'target'],
-        '*': ['style']
-      }
-    });
-    return emojify(cleaned);
-  }
+  const nameField = useEmojiEditableField({
+    value: preset?.presetName ?? "",
+    allowMultiline: false,
+    onCommit: (raw) => dispatch(setPresetName(raw)),
+  });
 
-  const onNameChange = useCallback(
-    (event: React.ChangeEvent<HTMLInputElement>) => {
-      const newName = event.target.value;
-      setName(newName);
-      dispatch(setPresetName(newName)); // <-- add this line
-    },
-    [dispatch]
-  );
-
-  const onNameBlur = useCallback(() => {
-    dispatch(setPresetNotes(rawNotes));
-  }, [dispatch, rawNotes]);
-
-  useEffect(() => {
-    setName(presetName);
-  }, [presetName]);
-
-  useEffect(() => {
-    setRawNotes(presetNotes);
-    setNotesHtml(emojify(presetNotes));
-  }, [presetNotes]);
-
-  const onNotesChange = useCallback((event: ContentEditableEvent) => {
-    const raw = event.currentTarget.innerHTML;
-    setRawNotes(event.currentTarget.innerText); // for saving raw text
-    setNotesHtml(sanitizeAndEmojifyInput(raw));
-  }, []);
-  
-  const onNotesBlur = useCallback(() => {
-    const raw = notesRef.current?.innerHTML ?? '';
-    const cleaned = sanitizeHtml(raw, {
-      allowedTags: ['img', 'a', 'b', 'i', 'u', 'em', 'strong', 'br', 'div', 'span'],
-      allowedAttributes: {
-        img: ['src', 'alt', 'class'],
-        a: ['href', 'target'],
-        '*': ['style']
-      }
-    });
-    dispatch(setPresetNotes(cleaned));
-    setNotesHtml(emojify(cleaned));
-  }, [dispatch]);
+  const notesField = useEmojiEditableField({
+    value: preset?.presetNotes ?? "",
+    allowMultiline: true,
+    onCommit: (raw) => dispatch(setPresetNotes(raw)),
+  });
 
   return (
     <Card className="preset-details" elevation={0}>
       <CardContent>
-        <Stack direction="row" alignItems="center" spacing={1} sx={{ mb: 3 }}>
+        <Stack
+          direction="row"
+          alignItems="center"
+          spacing={1}
+          className="preset-details__header"
+        >
           <InfoOutlinedIcon fontSize="small" color="action" />
-          <Typography
-            component="h2"
-            sx={{
-              textTransform: 'uppercase',
-              letterSpacing: '0.05em',
-              color: 'text.secondary',
-            }}
-          >
+          <Typography component="h2" className="preset-details__title">
             Preset Info
           </Typography>
         </Stack>
 
         <Stack spacing={4}>
-          <TextField
-            label="Name"
-            placeholder="Give your preset a name..."
-            value={name}
-            fullWidth
-            variant="outlined"
-            onChange={onNameChange}
-            onBlur={onNameBlur}
-            size="medium"
-            InputProps={{
-              sx: { fontSize: '16px' }
-            }}
-            InputLabelProps={{
-              sx: { fontSize: '16px' }
-            }}
-          />
+          {/* NAME */}
+          <div className="field-wrapper name-field-wrapper">
+            {isEmpty(nameField.ref) && (
+              <div className="field-placeholder name-field-placeholder">
+                Give your preset a name...
+              </div>
+            )}
 
-          <div className="notes-field-wrapper" style={{ position: 'relative' }}>
-            {notesHtml.trim() === '' && (
-              <div
-                className="notes-field__placeholder"
-                style={{
-                  position: 'absolute',
-                  pointerEvents: 'none',
-                  color: '#999',
-                  padding: '12px',
-                }}
-              >
+            <ContentEditable
+              innerRef={nameField.ref}
+              html={nameField.html}
+              className="field-editable name-field"
+              onFocus={nameField.onFocus}
+              onChange={nameField.onChange}
+              onBlur={nameField.onBlur}
+            />
+          </div>
+
+          {/* NOTES */}
+          <div className="field-wrapper notes-field-wrapper">
+            {isEmpty(notesField.ref) && (
+              <div className="field-placeholder notes-field-placeholder">
                 Add any general preset notes here...
               </div>
             )}
+
             <ContentEditable
-              innerRef={notesRef}
-              className="notes-field"
-              html={notesHtml}
-              onBlur={onNotesBlur}
-              onChange={onNotesChange}
+              innerRef={notesField.ref}
+              html={notesField.html}
+              className="field-editable notes-field"
+              onFocus={notesField.onFocus}
+              onChange={notesField.onChange}
+              onBlur={notesField.onBlur}
             />
           </div>
         </Stack>

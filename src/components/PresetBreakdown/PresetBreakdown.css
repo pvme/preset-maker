@@ -1,73 +1,155 @@
+/* ==================================================
+   MAIN WRAPPER
+================================================== */
+
 .breakdown-container {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-top: 10px !important;
+  width: 100%;
+  margin-top: 1rem;
 }
 
-.breakdown-header {
-  display: flex;
-  justify-content: center;
-  width: 95%;
-  margin: 0 auto;
-}
+/* ==================================================
+   TABLE HEADER (DESKTOP ONLY)
+================================================== */
 
-.breakdown-button {
-  margin: 10px;
-}
-
-.breakdown-inner-container {
+.breakdown-table-header {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  margin: 10px;
-  background-color: #181818;
-  padding: 10px;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 0.5rem;
+  padding: 0 1rem;
 }
 
-.breakdown-inner-container div:hover {
-  background-color: #181818;
+.breakdown-col-header {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1rem;
 }
 
-.equipment-breakdown-container--equipment {
-  width: 600px;
-}
+/* ==================================================
+   GRID LAYOUT
+================================================== */
 
-.equipment-breakdown-container--inventory {
-  margin-right: 10px;
-}
-
-.equipment-breakdown-container--inventory > .equipment-breakdown-container--0 > .MuiList-root {
-  padding-bottom: 0px;
-}
-
-.equipment-breakdown-container--inventory > .equipment-breakdown-container--1 > .MuiList-root {
-  padding-top: 0px;
+.breakdown-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
 }
 
 .breakdown-list {
   width: 100%;
 }
 
-/* Mobile styling */
+/* ==================================================
+   LIST ITEMS
+================================================== */
+
+.breakdown-list-item {
+  display: flex;
+  align-items: center; /* vertical centring */
+  gap: 1rem;
+  width: 100%;
+}
+
+/* ==================================================
+   LEFT COLUMN (ICON + NAME)
+================================================== */
+
+.breakdown-item-left {
+  flex: 0 0 30%;
+  max-width: 30%;
+
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  min-width: 0; /* allow wrapping */
+}
+
+.breakdown-item-left span {
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ==================================================
+   RIGHT COLUMN (DESCRIPTION INPUT)
+================================================== */
+
+.breakdown-description-wrapper {
+  flex: 0 0 70%;
+  max-width: 70%;
+
+  display: flex;
+  align-items: center;
+}
+
+/* ContentEditable styled to match .field-editable */
+.breakdown-description-editable {
+  width: 100%;
+  display: block;
+
+  /* Typography */
+  font-size: 16px;
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.4375em;
+
+  /* Text wrapping */
+  white-space: pre-wrap !important;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+
+  /* Spacing */
+  padding: 10px 14px;
+  min-height: 40px;
+
+  /* Colours */
+  color: #fff;
+  background: #121212;
+
+  /* Border */
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.23);
+  outline: none;
+
+  box-sizing: border-box;
+}
+
+/* Focus highlight (match Name / Notes) */
+.breakdown-description-editable:focus {
+  border-color: var(--accentColour);
+}
+
+/* Emoji inline images */
+.breakdown-description-editable img.disc-emoji {
+  width: 18px;
+  height: 18px;
+  vertical-align: middle;
+}
+
+/* ==================================================
+   MOBILE
+================================================== */
 
 @media (max-width: 800px) {
-  .breakdown-container {
-    width: 100vw;
-    margin: 0;
-    overflow: hidden;
+  .breakdown-table-header {
+    display: none;
   }
 
-  .breakdown-inner-container {
-    padding: 0;
+  .breakdown-grid {
+    grid-template-columns: 1fr;
   }
 
-  .breakdown-list {
-    width: 100vw;
+  .breakdown-list-item {
+    flex-direction: column;
+    align-items: stretch;
   }
 
-  .equipment-breakdown-container--equipment {
+  .breakdown-item-left {
+    flex: none;
+    max-width: 100%;
+  }
+
+  .breakdown-description-wrapper {
+    flex: none;
     max-width: 100%;
   }
 }

@@ -20,17 +20,16 @@ import App from './App';
 import { ReduxStore } from './redux/store/store';
 
 import './index.css';
-import { EmojiSettings } from './data/emoji-settings';
 
 interface SnackBarAction {
-  snackbarKey: SnackbarKey
+  snackbarKey: SnackbarKey;
 }
 
-function SnackbarCloseButton ({ snackbarKey }: SnackBarAction): JSX.Element {
+function SnackbarCloseButton({ snackbarKey }: SnackBarAction): JSX.Element {
   const { closeSnackbar } = useSnackbar();
 
   return (
-    <IconButton onClick={() => { closeSnackbar(snackbarKey); }}>
+    <IconButton onClick={() => closeSnackbar(snackbarKey)}>
       <CloseIcon htmlColor="white" />
     </IconButton>
   );
@@ -41,9 +40,6 @@ const darkTheme = createTheme({
     mode: 'dark'
   }
 });
-
-// Fetch emojis on page load.
-void EmojiSettings.load();
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>

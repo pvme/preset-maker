@@ -1,0 +1,94 @@
+/* =========================
+   Dialog sizing & anchoring
+   ========================= */
+
+.dialog__paper {
+  width: 520px;
+  max-width: 90vw;
+
+  /* Prevent vertical re-centring when height changes */
+  margin-top: 10vh;
+  margin-bottom: auto;
+}
+
+/* Allow floating labels to escape */
+.dialog__paper .MuiDialogContent-root {
+  overflow: visible;
+}
+
+/* =========================
+   Content height handling
+   ========================= */
+
+.dialog__content {
+  overflow-x: hidden;
+  transition: height 0.2s ease;
+  padding-top: 8px;
+}
+
+.dialog--collapsed .dialog__content {
+  height: 180px;
+}
+
+.dialog--expanded .dialog__content {
+  height: 400px;
+}
+
+/* Ensure floating label sits above outline */
+.dialog__content
+  .MuiInputLabel-root.MuiInputLabel-outlined {
+  z-index: 200;
+}
+
+/* =========================
+   Autocomplete options
+   ========================= */
+
+.dialog__content .MuiAutocomplete-root {
+  width: 100%;
+}
+
+.dialog__option {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 8px;
+}
+
+.dialog__list__image {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+/* =========================
+   Recent section
+   ========================= */
+
+.recent-items-title {
+  text-align: centre;
+  margin: 12px 0 4px 0;
+}
+
+.recent-item-button {
+  margin: 0 4px;
+  padding: 0 !important;
+  min-width: 0 !important;
+}
+
+.recent-item-image {
+  width: 32px !important;
+  height: 32px !important;
+  object-fit: contain !important;
+}
+
+/* =========================
+   Dialog actions
+   ========================= */
+
+.dialog__actions {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}

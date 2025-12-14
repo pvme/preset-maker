@@ -1,91 +1,70 @@
-import React, { useCallback } from 'react';
+import React from "react";
+import ListItem from "@mui/material/ListItem";
+import Box from "@mui/material/Box";
+import Link from "@mui/material/Link";
+import ContentEditable from "react-contenteditable";
 
-import { useDispatch } from 'react-redux';
+import { useEmojiEditableField } from "../../hooks/useEmojiEditableField";
+import { type EmojiMaps } from "../../hooks/useEmojiMap";
 
-import Avatar from '@mui/material/Avatar';
-import ListItem from '@mui/material/ListItem';
-import ListItemAvatar from '@mui/material/ListItemAvatar';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemText from '@mui/material/ListItemText';
-
-import { setBreakdown } from '../../redux/store/reducers/preset-reducer';
-import { type BreakdownType } from '../../schemas/breakdown';
-import { type Item as ItemData } from '../../schemas/item-data';
-
-import { NotesField } from '../NotesField/NotesField';
-import './BreakdownListItem.css';
-
-export interface BreakdownListItemProps {
-  item: ItemData
-  type: BreakdownType
+interface Props {
+  emojiMap: EmojiMaps;
+  description: string;
+  itemId: string;
+  onCommit: (description: string) => void;
 }
 
-export const BreakdownListItem = ({ item, type }: BreakdownListItemProps): JSX.Element => {
-  const dispatch = useDispatch();
+export const BreakdownListItem = ({
+  emojiMap,
+  description,
+  itemId,
+  onCommit,
+}: Props): JSX.Element | null => {
+  const field = useEmojiEditableField({
+    value: description,
+    allowMultiline: true,
+    onCommit,
+  });
 
-  const handleRecentClick = useCallback(
-    (item: ItemData) => {
-      window.open(item.wikiLink, '_blank');
-    },
-    []
-  );
+  const emoji = emojiMap.get(itemId);
+  if (!emoji) return null;
 
-  const onNotesBlur = useCallback(
-    (formattedNotes: string) => {
-      dispatch(
-        setBreakdown({
-          breakdownType: type,
-          itemName: item.label,
-          description: formattedNotes
-        })
-      );
-    },
-    [type, item.label]
-  );
+  const imageUrl = emojiMap.getUrl(itemId);
+  const wikiName = emoji.name.replace(/ /g, "_");
+  const wikiUrl = `https://runescape.wiki/w/${encodeURIComponent(wikiName)}`;
 
   return (
-    <ListItem
-      key={item.name}
-      tabIndex={-1}
-      classes={{
-        root: 'breakdown-list-item',
-        secondaryAction: 'notes-field-outer-two'
-      }}
-      secondaryAction={
-        <NotesField
-          placeholder={item.breakdownNotes}
-          className="inner-notes-field"
-          initialValue={item.breakdownNotes}
-          onBlur={onNotesBlur}
+    <ListItem className="breakdown-list-item">
+      <Box
+        className="breakdown-item-left"
+        sx={{ display: "flex", alignItems: "center", gap: 1 }}
+      >
+        {imageUrl && <img src={imageUrl} alt={emoji.name} width={38} />}
+
+        <Box sx={{ display: "flex", flexDirection: "column" }}>
+          <span>{emoji.name}</span>
+          <Link
+            href={wikiUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            underline="hover"
+            sx={{ fontSize: "0.75rem", opacity: 0.8 }}
+          >
+            Open on Wiki
+          </Link>
+        </Box>
+      </Box>
+
+      <Box className="breakdown-description-wrapper">
+        <ContentEditable
+          innerRef={field.ref}
+          html={field.html}
+          className="breakdown-description-editable"
+          onFocus={field.onFocus}
+          onChange={field.onChange}
+          onBlur={field.onBlur}
         />
-      }
-      disablePadding
-    >
-      <ListItemButton tabIndex={-1}>
-        {(item.image.length > 0)
-          ? (
-          <ListItemAvatar tabIndex={-1}>
-            <Avatar
-              imgProps={{ style: { objectFit: 'scale-down' } }}
-              variant="square"
-              alt={item.label}
-              src={item.image}
-              title="Click to open wiki page"
-              onClick={() => { handleRecentClick(item); }}
-            />
-          </ListItemAvatar>
-            )
-          : (
-          <div style={{ height: '40px' }}></div>
-            )}
-        <ListItemText
-          tabIndex={-1}
-          primaryTypographyProps={{ maxWidth: '225px' }}
-          primary={'🔗 ' + item.name}
-          title="Click to open wiki page"
-          onClick={() => { handleRecentClick(item); }}
-        />
-      </ListItemButton>
+      </Box>
     </ListItem>
   );
 };
