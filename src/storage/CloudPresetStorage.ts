@@ -6,9 +6,15 @@ import { type PresetSummary } from "../schemas/preset-summary";
 import { uploadPreset } from "../api/upload-preset";
 import axios from "axios";
 
+import { FunctionURLs } from "../api/function-urls";
+import { getDevHeaders } from "../api/get-headers";
+
 export const CloudPresetStorage: PresetStorage = {
   async getPreset(id: string): Promise<SavedPreset> {
-    const { data } = await axios.get(`/api/presets/${id}`);
+    const { data } = await axios.get(
+      `${FunctionURLs.getPreset}?id=${encodeURIComponent(id)}`,
+      { headers: getDevHeaders() }
+    );
     return data;
   },
 
