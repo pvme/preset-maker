@@ -2,9 +2,42 @@
 
 import { presetSchema, type Preset } from "../../../schemas/preset";
 import { loadEmojis } from "../../../emoji";
+import type { z } from "zod";
+import { BreakdownEntrySchema } from "../../../schemas/breakdown";
+type BreakdownEntry = z.infer<typeof BreakdownEntrySchema>;
 
-export async function normalizePreset(raw: any): Promise<Preset> {
-  const emojis = await loadEmojis();
+  export async function normalizePreset(raw: any): Promise<Preset> {
+    const emojis = await loadEmojis();
+
+  function migrateLegacyBreakdown(raw: any): BreakdownEntry[] {
+    if (Array.isArray(raw?.breakdown) && raw.breakdown.length > 0) {
+      return raw.breakdown;
+    }
+
+    const breakdown: BreakdownEntry[] = [];
+
+    raw?.inventorySlots?.forEach((slot: any, index: number) => {
+      if (typeof slot?.breakdownNotes === "string" && slot.breakdownNotes.trim()) {
+        breakdown.push({
+          slotType: "inventory",
+          slotIndex: index,
+          description: slot.breakdownNotes,
+        });
+      }
+    });
+
+    raw?.equipmentSlots?.forEach((slot: any, index: number) => {
+      if (typeof slot?.breakdownNotes === "string" && slot.breakdownNotes.trim()) {
+        breakdown.push({
+          slotType: "equipment",
+          slotIndex: index,
+          description: slot.breakdownNotes,
+        });
+      }
+    });
+
+    return breakdown;
+  }
 
   function migrateSlot(slot: any) {
     const rawId =
@@ -50,7 +83,7 @@ export async function normalizePreset(raw: any): Promise<Preset> {
         : [],
     },
 
-    breakdown: raw?.breakdown,
+    breakdown: migrateLegacyBreakdown(raw),
   };
 
   return presetSchema.parse(migrated);
