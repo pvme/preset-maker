@@ -77,10 +77,9 @@
   min-width: 0 !important;
 }
 
-.recent-item-image {
-  width: 32px !important;
-  height: 32px !important;
-  object-fit: contain !important;
+.recent-item-image img {
+  max-height: 31px;
+  object-fit: contain;
 }
 
 /* =========================
