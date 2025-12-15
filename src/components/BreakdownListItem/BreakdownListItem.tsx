@@ -39,7 +39,7 @@ export const BreakdownListItem = ({
         className="breakdown-item-left"
         sx={{ display: "flex", alignItems: "center", gap: 1 }}
       >
-        {imageUrl && <div class="breakdown-image-wrapper"><img src={imageUrl} alt={emoji.name} width={38} /></div>}
+        {imageUrl && <div className="breakdown-image-wrapper"><img src={imageUrl} alt={emoji.name} width={38} /></div>}
 
         <Box sx={{ display: "flex", flexDirection: "column" }}>
           <span>{emoji.name}</span>
