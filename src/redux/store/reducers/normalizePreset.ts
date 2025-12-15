@@ -6,8 +6,8 @@ import type { z } from "zod";
 import { BreakdownEntrySchema } from "../../../schemas/breakdown";
 type BreakdownEntry = z.infer<typeof BreakdownEntrySchema>;
 
-  export async function normalizePreset(raw: any): Promise<Preset> {
-    const emojis = await loadEmojis();
+export async function normalizePreset(raw: any): Promise<Preset> {
+  const emojis = await loadEmojis();
 
   function migrateLegacyBreakdown(raw: any): BreakdownEntry[] {
     if (Array.isArray(raw?.breakdown) && raw.breakdown.length > 0) {
