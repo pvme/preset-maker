@@ -49,6 +49,15 @@
   width: 100%;
 }
 
+.breakdown-image-wrapper {
+  width: 31px;
+}
+
+.breakdown-image-wrapper img {
+  max-height: 31px;
+  object-fit: contain;
+}
+
 /* ==================================================
    LEFT COLUMN (ICON + NAME)
 ================================================== */
