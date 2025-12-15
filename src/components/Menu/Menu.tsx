@@ -137,6 +137,7 @@ export const PresetMenu = (): JSX.Element => {
   const lastSavedRef = useRef<any>(null);
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const canSaveCloud = mode !== "cloud" || isLoggedIn;
 
   const { copyImage, downloadImage, clipboardSupported } =
     usePresetExport(presetName);
@@ -236,6 +237,16 @@ export const PresetMenu = (): JSX.Element => {
     },
     [dispatch, enqueueSnackbar, navigate, setMode]
   );
+
+  useEffect(() => {
+    if (lastSavedRef.current) return;
+
+    lastSavedRef.current = stripUIState(
+      JSON.parse(JSON.stringify(preset))
+    );
+
+    setIsDirty(false);
+  }, []);
 
   /* ---------------------------------------------
      Dirty tracking
@@ -412,8 +423,14 @@ export const PresetMenu = (): JSX.Element => {
       })
     );
 
-    lastSavedRef.current = null;
     setRecentSelection("");
+
+    lastSavedRef.current = stripUIState(
+      JSON.parse(JSON.stringify({
+        ...blankPreset,
+        breakdown: [],
+      }))
+    );
     setIsDirty(false);
 
     enqueueSnackbar("New preset created", { variant: "info" });
@@ -556,7 +573,7 @@ export const PresetMenu = (): JSX.Element => {
 
             <Button
               onClick={handleSave}
-              disabled={!isDirty || isSaving}
+              disabled={!isDirty || isSaving || !canSaveCloud }
               startIcon={isSaving ? undefined : <SaveIcon />}
               variant="contained"
               color="success"
