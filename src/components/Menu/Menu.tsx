@@ -113,6 +113,7 @@ export const PresetMenu = (): JSX.Element => {
   const { importJson } = usePresetJsonImport({
     markClean,
     setRecentSelection,
+    setMode,
   });
 
   const fileInputRef = useRef<HTMLInputElement>(null);

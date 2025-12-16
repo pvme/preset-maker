@@ -14,12 +14,13 @@ import { type SavedPreset as SavedPresetData } from "../../schemas/saved-preset-
 export function usePresetJsonImport({
   markClean,
   setRecentSelection,
+  setMode,
 }: {
   markClean: (preset: any) => void;
   setRecentSelection: (id: string) => void;
+  setMode: (mode: "local" | "cloud") => void;
 }) {
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
 
   const importJson = useCallback(
@@ -38,9 +39,9 @@ export function usePresetJsonImport({
 
         dispatch(importDataAction(normalised));
         markClean(normalised);
-
+        setMode("local");
         setRecentSelection("");
-        
+
         enqueueSnackbar("Preset imported", { variant: "success" });
       } catch (err: any) {
         enqueueSnackbar(
@@ -49,7 +50,7 @@ export function usePresetJsonImport({
         );
       }
     },
-    [dispatch, enqueueSnackbar, navigate, markClean, setRecentSelection]
+    [dispatch, enqueueSnackbar, markClean, setRecentSelection, setMode]
   );
 
   return { importJson };
