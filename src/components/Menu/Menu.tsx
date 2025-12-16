@@ -16,6 +16,7 @@ import {
   MenuItem,
   Paper,
   Stack,
+  Tooltip,
   Typography,
   CircularProgress,
   ListItemIcon,
@@ -135,6 +136,18 @@ export const PresetMenu = (): JSX.Element => {
   );
 
   /* ---------------------------------------------
+     Can't save because...
+  --------------------------------------------- */
+
+  const saveDisabledReason = (() => {
+    if (isSaving) return "Saving in progress";
+    if (!isDirty) return "No outstanding changes to save";
+    if (mode === "cloud" && !isLoggedIn)
+      return "You must be logged in to update cloud presets";
+    return null;
+  })();
+
+  /* ---------------------------------------------
      Render
   --------------------------------------------- */
 
@@ -178,15 +191,24 @@ export const PresetMenu = (): JSX.Element => {
               </MenuItem>
             </Menu>
 
-            <Button
-              onClick={() => (id ? save() : setSaveAsOpen(true))}
-              disabled={!isDirty || isSaving || !canSaveCloud}
-              startIcon={isSaving ? undefined : <SaveIcon />}
-              variant="contained"
-              color="success"
+            <Tooltip
+              title={saveDisabledReason ?? ""}
+              disableHoverListener={!saveDisabledReason}
+              arrow
             >
-              {isSaving ? <CircularProgress size={20} /> : "Save"}
-            </Button>
+              <span>
+                <Button
+                  onClick={() => (id ? save() : setSaveAsOpen(true))}
+                  disabled={!isDirty || isSaving || !canSaveCloud}
+                  startIcon={isSaving ? undefined : <SaveIcon />}
+                  variant="contained"
+                  color="success"
+                >
+                  {isSaving ? <CircularProgress size={20} /> : "Save"}
+                </Button>
+              </span>
+            </Tooltip>
+
 
             <StatusChip isDirty={isDirty} />
           </Stack>
