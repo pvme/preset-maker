@@ -40,8 +40,7 @@ export function usePresetJsonImport({
         markClean(normalised);
 
         setRecentSelection("");
-        navigate("/");
-
+        
         enqueueSnackbar("Preset imported", { variant: "success" });
       } catch (err: any) {
         enqueueSnackbar(
