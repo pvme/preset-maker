@@ -117,7 +117,7 @@ export const PresetMenu = (): JSX.Element => {
 
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  usePresetLoader({
+  const { loadRecent } = usePresetLoader({
     id,
     markClean,
     setRecentSelection,
@@ -147,10 +147,12 @@ export const PresetMenu = (): JSX.Element => {
             <Button startIcon={<AddIcon />} variant="contained">
               New Preset
             </Button>
-
             <RecentPresetDropdown
               selected={recentSelection}
-              onSelect={() => {}}
+              onSelect={(p) => {
+                if (!p.presetId) return;
+                loadRecent(p);
+              }}
               items={recentList}
               onRemoved={refresh}
             />
