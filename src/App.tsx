@@ -5,6 +5,7 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 import { DndProvider } from "react-dnd";  // Move this down
 import { HeaderBar } from "./components/HeaderBar/HeaderBar";
 import { PresetSection } from "./components/PresetSection/PresetSection";
+import { AuthProvider } from "./auth/AuthContext";
 import {
   GlobalLoadingProvider,
   useGlobalLoading,
@@ -166,13 +167,15 @@ function AppContent(): JSX.Element {
 
 function App(): JSX.Element {
   return (
-    <GlobalLoadingProvider>
-      <StorageModeProvider>
-        <PresetLoadProvider>
-          <AppContent />
-        </PresetLoadProvider>
-      </StorageModeProvider>
-    </GlobalLoadingProvider>
+    <AuthProvider>
+      <GlobalLoadingProvider>
+        <StorageModeProvider>
+          <PresetLoadProvider>
+            <AppContent />
+          </PresetLoadProvider>
+        </StorageModeProvider>
+      </GlobalLoadingProvider>
+    </AuthProvider>
   );
 }
 

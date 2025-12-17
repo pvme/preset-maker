@@ -39,6 +39,8 @@ import { SavePresetDialog, SavePresetDialogState } from "../SavePresetDialog/Sav
 import { useAppSelector } from "../../redux/hooks";
 import { selectPreset } from "../../redux/store/reducers/preset-reducer";
 
+import { useAuth } from "../../auth/AuthContext";
+
 import { useStorageMode } from "../../storage/StorageModeContext";
 import { CloudPresetStorage } from "../../storage/CloudPresetStorage";
 import { addRecentPreset } from "../../storage/recent-presets";
@@ -87,6 +89,8 @@ export const PresetMenu = (): JSX.Element => {
 
   const { mode, setMode } = useStorageMode();
 
+  const { isLoggedIn } = useAuth();
+
   const { recentList, refresh, setRecentList } = useRecentPresets();
   const { isDirty, markClean } = usePresetDirtyState(preset);
 
@@ -103,7 +107,9 @@ export const PresetMenu = (): JSX.Element => {
   const [saveAsOpen, setSaveAsOpen] = useState(false);
   const [anchorExport, setAnchorExport] = useState<null | HTMLElement>(null);
 
-  const canSaveCloud = mode !== "cloud";
+  const canSave =
+    mode === "local" ||
+    (mode === "cloud" && isLoggedIn);
 
   const { copyImage, downloadImage, clipboardSupported } =
     usePresetExport(presetName);
@@ -131,7 +137,7 @@ export const PresetMenu = (): JSX.Element => {
   const saveDisabledReason = (() => {
     if (isSaving) return "Saving in progress";
     if (!isDirty) return "No outstanding changes to save";
-    if (mode === "cloud" && !canSaveCloud)
+    if (mode === "cloud" && !isLoggedIn)
       return "You must be logged in to update cloud presets";
     return null;
   })();
@@ -286,7 +292,7 @@ export const PresetMenu = (): JSX.Element => {
               <span>
                 <Button
                   onClick={() => (id ? save() : setSaveAsOpen(true))}
-                  disabled={!isDirty || isSaving || !canSaveCloud}
+                  disabled={!isDirty || isSaving || !canSave}
                   startIcon={isSaving ? undefined : <SaveIcon />}
                   variant="contained"
                   color="success"
