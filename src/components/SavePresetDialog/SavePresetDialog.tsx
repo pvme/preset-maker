@@ -1,16 +1,28 @@
-import { useSnackbar } from 'notistack';
-import React, { useCallback, useState, useEffect } from 'react';
+// src/components/SavePresetDialog/SavePresetDialog.tsx
 
-import Button from '@mui/material/Button';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogTitle from '@mui/material/DialogTitle';
-import TextField from '@mui/material/TextField';
+import React, { useCallback, useEffect, useState } from "react";
 
-import { useAppDispatch } from '../../redux/hooks';
-import { setPresetName } from '../../redux/store/reducers/preset-reducer';
-import './SavePresetDialog.css';
+import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  TextField,
+  Stack,
+  FormControl,
+  FormLabel,
+  RadioGroup,
+  FormControlLabel,
+  Radio,
+  FormHelperText,
+  Tooltip,
+} from "@mui/material";
+
+import { useAppDispatch } from "../../redux/hooks";
+import { setPresetName } from "../../redux/store/reducers/preset-reducer";
+
+import "./SavePresetDialog.css";
 
 export enum SavePresetDialogState {
   None,
@@ -18,13 +30,14 @@ export enum SavePresetDialogState {
   ExistingPreset,
 }
 
+export type NewPresetMode = "duplicate" | "fresh";
+
 interface SavePresetDialogProps {
   open: boolean;
   state: SavePresetDialogState;
-  /** now receives the new name */
-  onSave?: (newName: string) => void;
+  onSave?: (newName: string, mode: NewPresetMode) => void;
   onClose: () => void;
-  defaultName?: string;
+  defaultName?: string; // kept for compatibility
 }
 
 export const SavePresetDialog = ({
@@ -32,26 +45,26 @@ export const SavePresetDialog = ({
   state,
   onSave,
   onClose,
-  defaultName
 }: SavePresetDialogProps): JSX.Element => {
   const dispatch = useAppDispatch();
-  const { enqueueSnackbar } = useSnackbar();
 
-  const [name, setName] = useState<string>(defaultName || '');
-  const [error, setError] = useState<boolean>(false);
+  const [name, setName] = useState("");
+  const [error, setError] = useState(false);
+  const [mode, setMode] = useState<NewPresetMode>("duplicate");
 
   useEffect(() => {
     if (open) {
-      setName(defaultName || '');
+      setName("");
       setError(false);
+      setMode("duplicate");
     }
-  }, [open, defaultName]);
+  }, [open]);
 
   const onPresetNameChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
       const value = event.currentTarget.value;
-      setError(value.length === 0);
       setName(value);
+      setError(value.trim().length === 0);
     },
     []
   );
@@ -61,44 +74,94 @@ export const SavePresetDialog = ({
       event.preventDefault();
       event.stopPropagation();
 
-      if (name.length === 0) {
+      const finalName = name.trim();
+      if (!finalName) {
         setError(true);
         return;
       }
 
-      dispatch(setPresetName(name));
-      onSave?.(name);
-      enqueueSnackbar('Preset name set.', { variant: 'success' });
-      onClose();
+      dispatch(setPresetName(finalName));
+      onSave?.(finalName, mode);
     },
-    [name, dispatch, onSave, onClose, enqueueSnackbar]
+    [name, mode, dispatch, onSave]
   );
 
   const dialogTitle =
     state === SavePresetDialogState.ExistingPreset
-      ? 'Save preset as'
-      : 'Create new preset';
+      ? "Save preset as"
+      : "Create new preset";
+
+  const canCreate = name.trim().length > 0;
 
   return (
     <Dialog open={open} onClose={onClose}>
       <form>
         <DialogTitle>{dialogTitle}</DialogTitle>
-        <DialogContent className="name-wrapper">
-          <TextField
-            className="name-field"
-            label="Preset Name"
-            value={name}
-            onChange={onPresetNameChange}
-            fullWidth
-            error={error}
-            helperText={error ? 'Please set a name for your preset.' : undefined}
-          />
+
+        <DialogContent sx={{ overflow: "visible", pt: 2 }}>
+          <Stack spacing={3}>
+            <TextField
+              label="Preset Name"
+              value={name}
+              onChange={onPresetNameChange}
+              fullWidth
+              error={error}
+              helperText={
+                error ? "Please set a name for your preset." : undefined
+              }
+              autoFocus
+            />
+
+            <FormControl>
+              <FormLabel>Starting point</FormLabel>
+              <RadioGroup
+                value={mode}
+                onChange={(e) =>
+                  setMode(e.target.value as NewPresetMode)
+                }
+              >
+                <FormControlLabel
+                  value="duplicate"
+                  control={<Radio />}
+                  label="Duplicate current preset"
+                />
+                <FormControlLabel
+                  value="fresh"
+                  control={<Radio />}
+                  label="Start with a fresh preset"
+                />
+              </RadioGroup>
+
+              <FormHelperText>
+                New presets are created locally. Upload to cloud to
+                share with others.
+              </FormHelperText>
+            </FormControl>
+          </Stack>
         </DialogContent>
+
         <DialogActions>
           <Button onClick={onClose}>Cancel</Button>
-          <Button type="submit" onClick={handleSave}>
-            Save
-          </Button>
+
+          <Tooltip
+            title={
+              canCreate
+                ? ""
+                : "Enter a preset name to enable creation"
+            }
+            disableHoverListener={canCreate}
+            arrow
+          >
+            <span>
+              <Button
+                type="submit"
+                onClick={handleSave}
+                disabled={!canCreate}
+              >
+                Create
+              </Button>
+            </span>
+          </Tooltip>
         </DialogActions>
       </form>
     </Dialog>
