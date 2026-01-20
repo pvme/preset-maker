@@ -91,3 +91,11 @@
   justify-content: space-between;
   width: 100%;
 }
+
+/* =========================
+   Focused (Mui-focused) state
+   ========================= */
+
+.MuiAutocomplete-listbox .Mui-focused {
+  background-color: #313131;
+}
