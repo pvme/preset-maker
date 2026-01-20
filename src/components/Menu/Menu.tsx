@@ -46,7 +46,10 @@ import { selectPreset } from "../../redux/store/reducers/preset-reducer";
 import { useAuth } from "../../auth/AuthContext";
 import { useStorageMode } from "../../storage/StorageModeContext";
 import { CloudPresetStorage } from "../../storage/CloudPresetStorage";
-import { addRecentPreset } from "../../storage/recent-presets";
+import {
+  addRecentPreset,
+  removeRecentPreset,
+} from "../../storage/recent-presets";
 
 import { usePresetDirtyState } from "./usePresetDirtyState";
 import { usePresetSave } from "./usePresetSave";
@@ -108,6 +111,7 @@ export const PresetMenu = (): JSX.Element => {
   const [recentSelection, setRecentSelection] = useState("");
   const [saveAsOpen, setSaveAsOpen] = useState(false);
   const [anchorExport, setAnchorExport] = useState<null | HTMLElement>(null);
+  const [isUploading, setIsUploading] = useState(false);
 
   const canSave = mode === "local" || (mode === "cloud" && isLoggedIn);
 
@@ -181,19 +185,35 @@ export const PresetMenu = (): JSX.Element => {
               {mode === "local" && id && (
                 <>
                   <MenuItem
+                    disabled={isUploading}
                     onClick={async () => {
+                      if (isUploading) return;
+
+                      setAnchorExport(null);
+                      setIsUploading(true);
+
                       try {
                         const newId = await CloudPresetStorage.savePreset(
                           preset as any,
                         );
 
+                        // remove local preset storage
+                        localStorage.removeItem(`preset:${id}`);
+
+                        // remove old local preset from recents
+                        removeRecentPreset(id);
+
+                        // add new cloud preset
                         addRecentPreset({
                           presetId: newId,
                           presetName,
                           source: "cloud",
                         });
 
-                        localStorage.removeItem(`preset:${id}`);
+                        // refresh dropdown state
+                        setRecentSelection("");
+                        refresh();
+
                         setMode("cloud");
                         navigate(`/${newId}`);
                         enqueueSnackbar("Uploaded to cloud", {
@@ -206,13 +226,21 @@ export const PresetMenu = (): JSX.Element => {
                             : "Upload failed",
                           { variant: "error" },
                         );
+                      } finally {
+                        setIsUploading(false);
                       }
                     }}
                   >
                     <ListItemIcon>
-                      <CloudIcon fontSize="small" />
+                      {isUploading ? (
+                        <CircularProgress size={18} />
+                      ) : (
+                        <CloudIcon fontSize="small" />
+                      )}
                     </ListItemIcon>
-                    <ListItemText primary="Upload to Cloud" />
+                    <ListItemText
+                      primary={isUploading ? "Uploading…" : "Upload to Cloud"}
+                    />
                   </MenuItem>
                   <Divider />
                 </>
