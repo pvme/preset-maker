@@ -35,8 +35,7 @@
 }
 
 /* Ensure floating label sits above outline */
-.dialog__content
-  .MuiInputLabel-root.MuiInputLabel-outlined {
+.dialog__content .MuiInputLabel-root.MuiInputLabel-outlined {
   z-index: 200;
 }
 
@@ -90,4 +89,12 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
+}
+
+/* =========================
+   Focused (Mui-focused) state
+   ========================= */
+
+.MuiAutocomplete-listbox .Mui-focused {
+  background-color: #313131;
 }
