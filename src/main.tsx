@@ -1,25 +1,22 @@
-import { SnackbarProvider, useSnackbar, type SnackbarKey } from 'notistack';
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { Provider } from 'react-redux';
-import {
-  HashRouter,
-  Route, Routes
-} from 'react-router-dom';
+import { SnackbarProvider, useSnackbar, type SnackbarKey } from "notistack";
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { Provider } from "react-redux";
+import { HashRouter, Route, Routes } from "react-router-dom";
 
-import CloseIcon from '@mui/icons-material/Close';
-import CssBaseline from '@mui/material/CssBaseline';
-import IconButton from '@mui/material/IconButton';
+import CloseIcon from "@mui/icons-material/Close";
+import CssBaseline from "@mui/material/CssBaseline";
+import IconButton from "@mui/material/IconButton";
 import {
   createTheme,
   StyledEngineProvider,
-  ThemeProvider
-} from '@mui/material/styles';
+  ThemeProvider,
+} from "@mui/material/styles";
 
-import App from './App';
-import { ReduxStore } from './redux/store/store';
+import App from "./App";
+import { ReduxStore } from "./redux/store/store";
 
-import './index.css';
+import "./index.css";
 
 interface SnackBarAction {
   snackbarKey: SnackbarKey;
@@ -37,11 +34,11 @@ function SnackbarCloseButton({ snackbarKey }: SnackBarAction): JSX.Element {
 
 const darkTheme = createTheme({
   palette: {
-    mode: 'dark'
-  }
+    mode: "dark",
+  },
 });
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <ThemeProvider theme={darkTheme}>
       <StyledEngineProvider injectFirst>
@@ -54,7 +51,12 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
             autoHideDuration={3000}
           >
             <CssBaseline />
-            <HashRouter>
+            <HashRouter
+              future={{
+                v7_relativeSplatPath: true,
+                v7_startTransition: true,
+              }}
+            >
               <Routes>
                 <Route path="/:id?" element={<App />} />
               </Routes>
@@ -63,5 +65,5 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
         </Provider>
       </StyledEngineProvider>
     </ThemeProvider>
-  </React.StrictMode>
+  </React.StrictMode>,
 );
