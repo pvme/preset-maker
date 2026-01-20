@@ -155,9 +155,9 @@ export const useEmojiFilter = ({
   // Title text
   //
   const dialogTitle = useMemo(() => {
-    if (slotType === "relic") return "Choose a relic";
-    if (slotType === "familiar") return "Choose a familiar";
-    return "Choose an item";
+    if (slotType === "relic") return "Select relic";
+    if (slotType === "familiar") return "Select familiar";
+    return "Select item";
   }, [slotType]);
 
   return {

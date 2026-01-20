@@ -26,7 +26,7 @@
 
 area:hover + .inventory-icon-container,
 area:hover + .equipment-icon-container {
-  border-color: rgba(255,255,255,0.4);
+  border-color: rgba(255, 255, 255, 0.4);
 }
 
 /* Selected outline */
@@ -39,6 +39,8 @@ area:hover + .equipment-icon-container {
 .inventory-icon,
 .equipment-icon {
   pointer-events: none;
+  max-height: 34px;
+  max-width: 38px;
 }
 
 /* EQUIPMENT icon with frame */
