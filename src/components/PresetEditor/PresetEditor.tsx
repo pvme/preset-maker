@@ -1,5 +1,3 @@
-// src/components/PresetEditor/PresetEditor.tsx
-
 import React, { useCallback, useState } from "react";
 
 import Card from "@mui/material/Card";
@@ -38,6 +36,25 @@ import genericBackground from "../../assets/bg_large.png";
 import mobilePresetMapBackground from "../../assets/presetmap_mobile.png";
 import { useEmojiMap } from "../../hooks/useEmojiMap";
 
+/**
+ * Equipment UI slot order (must match <Equipment /> render order)
+ */
+const EQUIPMENT_UI_ORDER = [
+  0,  // helm
+  1,  // cape
+  2,  // necklace
+  3,  // main-hand
+  4,  // body
+  5,  // off-hand
+  6,  // legs
+  7,  // gloves
+  8,  // boots
+  9,  // ring
+  10, // ammo
+  11, // aura
+  12, // pocket
+];
+
 export const PresetEditor = (): JSX.Element => {
   const dispatch = useAppDispatch();
   const maps = useEmojiMap();
@@ -53,6 +70,7 @@ export const PresetEditor = (): JSX.Element => {
   const recentItems = useAppSelector(selectRecentItems);
 
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [multiFill, setMultiFill] = useState(false);
 
   //
   // SHIFT-CLICK — toggles selection only (inventory only)
@@ -61,13 +79,12 @@ export const PresetEditor = (): JSX.Element => {
     (
       _event: React.MouseEvent<HTMLAreaElement>,
       index: number,
-      slotGroup: string
+      slotGroup: string,
     ) => {
       const key = `${slotGroup}:${index}`;
 
       // Equipment slots can never be multi-selected
       if (slotGroup !== "inventory") {
-        // Turn into a clean single-select
         dispatch(clearSelectedSlots());
         dispatch(toggleSlotSelection(key));
         dispatch(updateSlotKey(key));
@@ -76,81 +93,81 @@ export const PresetEditor = (): JSX.Element => {
         return;
       }
 
-      // Prevent mixing groups: if anything selected that's not inventory → reset
-      const hasNonInventory = selectedSlots.some(k => !k.startsWith("inventory"));
+      const hasNonInventory = selectedSlots.some(
+        (k) => !k.startsWith("inventory"),
+      );
       if (hasNonInventory) {
         dispatch(clearSelectedSlots());
       }
 
-      // Normal inventory multi-select
       dispatch(updateSlotType(SlotType.Inventory));
       dispatch(toggleSlotSelection(key));
       dispatch(updateSlotKey(key));
       dispatch(updateSlotIndex(index));
     },
-    [dispatch, selectedSlots]
+    [dispatch, selectedSlots],
   );
 
-
   //
-  // SLOT CLICK — Opens dialog and selects only that slot
+  // SLOT CLICK — Opens dialog
   //
   const handleSlotOpen = useCallback(
     (
       _event: React.MouseEvent<HTMLAreaElement>,
       index: number,
-      slotGroup: string
+      slotGroup: string,
     ) => {
       const key = `${slotGroup}:${index}`;
 
-      // If clicking a slot *already in* a multi-selection → keep the multi-selection
-      const isInSelection = selectedSlots.includes(key);
-      const inInventoryMulti =
-        selectedSlots.length > 1 &&
-        selectedSlots.every(k => k.startsWith("inventory"));
+      dispatch(
+        updateSlotType(
+          slotGroup === "inventory"
+            ? SlotType.Inventory
+            : SlotType.Equipment,
+        ),
+      );
 
-      dispatch(updateSlotType(
-        slotGroup === "inventory" ? SlotType.Inventory : SlotType.Equipment
-      ));
-
-      if (isInSelection && inInventoryMulti) {
-        // Keep multi-selection and open the dialog
-        dispatch(updateSlotKey(key));
-        dispatch(updateSlotIndex(index));
-        setDialogOpen(true);
-        return;
-      }
-
-      // Otherwise: normal single-select behaviour
       dispatch(clearSelectedSlots());
       dispatch(toggleSlotSelection(key));
       dispatch(updateSlotKey(key));
       dispatch(updateSlotIndex(index));
       setDialogOpen(true);
     },
-    [dispatch, selectedSlots]
+    [dispatch],
   );
 
-
-
   //
-  // preset_slot → UI equipment slot mapping
+  // NEXT SLOT (multi-fill helper)
   //
-  const presetToUI: Record<number, number> = {
-    1: 0,   // HELM
-    12: 1,  // CAPE
-    10: 2,  // NECKLACE
-    4: 3,   // MH_WEAPON
-    2: 4,   // BODY
-    5: 5,   // OH_WEAPON
-    3: 6,   // LEGS
-    6: 7,   // GLOVES
-    7: 8,   // BOOTS
-    11: 9,  // RING
-    9: 10,  // AMMO
-    8: 11,  // AURA
-    13: 12, // POCKET
-  };
+  const getNextSlotKey = useCallback(
+    (currentKey: string) => {
+      const [group, raw] = currentKey.split(":");
+      const index = Number(raw);
+
+      // Inventory → sequential
+      if (group === "inventory") {
+        const next = index + 1;
+        if (next < inventorySlots.length) {
+          return `inventory:${next}`;
+        }
+        return null;
+      }
+
+      // Equipment → UI order
+      if (group === "equipment") {
+        const pos = EQUIPMENT_UI_ORDER.indexOf(index);
+        if (pos === -1) return null;
+
+        const nextIndex = EQUIPMENT_UI_ORDER[pos + 1];
+        if (nextIndex !== undefined) {
+          return `equipment:${nextIndex}`;
+        }
+      }
+
+      return null;
+    },
+    [inventorySlots.length],
+  );
 
   //
   // DRAG & DROP — inventory ↔ equipment
@@ -159,58 +176,54 @@ export const PresetEditor = (): JSX.Element => {
     (
       dragItem: { fromGroup: string; index: number; id: string },
       targetGroup: string,
-      targetIndex: number
+      targetIndex: number,
     ) => {
-      const from = dragItem.fromGroup;
-      const to = targetGroup;
-
       if (!dragItem.id) return;
 
       const entry = maps?.get(dragItem.id);
-      const presetSlot = entry?.preset_slot ?? 0;
+      const presetSlot = entry?.preset_slot ?? -1;
 
-      const uiSlot = presetToUI[presetSlot] ?? -1;
+      if (dragItem.fromGroup === "inventory" && targetGroup === "equipment") {
+        if (presetSlot !== targetIndex) return;
 
-      //
-      // Inventory → Equipment
-      //
-      if (from === "inventory" && to === "equipment") {
-        if (uiSlot !== targetIndex) return;
-
-        dispatch(setEquipmentSlot({ index: targetIndex, value: { id: dragItem.id } }));
-        dispatch(setInventorySlot({ index: dragItem.index, value: { id: "" } }));
+        dispatch(
+          setEquipmentSlot({ index: targetIndex, value: { id: dragItem.id } }),
+        );
+        dispatch(
+          setInventorySlot({ index: dragItem.index, value: { id: "" } }),
+        );
         return;
       }
 
-      //
-      // Equipment → Inventory
-      //
-      if (from === "equipment" && to === "inventory") {
-        dispatch(setInventorySlot({ index: targetIndex, value: { id: dragItem.id } }));
-        dispatch(setEquipmentSlot({ index: dragItem.index, value: { id: "" } }));
+      if (dragItem.fromGroup === "equipment" && targetGroup === "inventory") {
+        dispatch(
+          setInventorySlot({ index: targetIndex, value: { id: dragItem.id } }),
+        );
+        dispatch(
+          setEquipmentSlot({ index: dragItem.index, value: { id: "" } }),
+        );
         return;
       }
 
-      //
-      // Equipment → Equipment
-      //
-      if (from === "equipment" && to === "equipment") {
-        if (uiSlot !== targetIndex) return;
+      if (dragItem.fromGroup === "equipment" && targetGroup === "equipment") {
+        if (presetSlot !== targetIndex) return;
 
-        dispatch(setEquipmentSlot({ index: targetIndex, value: { id: dragItem.id } }));
-        dispatch(setEquipmentSlot({ index: dragItem.index, value: { id: "" } }));
+        dispatch(
+          setEquipmentSlot({ index: targetIndex, value: { id: dragItem.id } }),
+        );
+        dispatch(
+          setEquipmentSlot({ index: dragItem.index, value: { id: "" } }),
+        );
         return;
       }
 
-      //
-      // Inventory → Inventory
-      //
-      if (from === "inventory" && to === "inventory") {
-        dispatch(swapInventorySlots({ sourceIndex: dragItem.index, targetIndex }));
-        return;
+      if (dragItem.fromGroup === "inventory" && targetGroup === "inventory") {
+        dispatch(
+          swapInventorySlots({ sourceIndex: dragItem.index, targetIndex }),
+        );
       }
     },
-    [dispatch, maps, presetToUI]
+    [dispatch, maps],
   );
 
   //
@@ -221,9 +234,8 @@ export const PresetEditor = (): JSX.Element => {
     dispatch(clearSelectedSlots());
   }, [dispatch]);
 
-
   //
-  // APPLY chosen emoji/item to all selected slots
+  // APPLY chosen emoji/item
   //
   const changeSlot = useCallback(
     (indices: string[], item: ItemData) => {
@@ -240,9 +252,25 @@ export const PresetEditor = (): JSX.Element => {
       });
 
       dispatch(addToQueue(item));
+
+      if (!multiFill) {
+        dispatch(clearSelectedSlots());
+        return;
+      }
+
+      const nextKey = getNextSlotKey(indices[0]);
+      if (!nextKey) {
+        dispatch(clearSelectedSlots());
+        return;
+      }
+
+      const [, raw] = nextKey.split(":");
       dispatch(clearSelectedSlots());
+      dispatch(toggleSlotSelection(nextKey));
+      dispatch(updateSlotKey(nextKey));
+      dispatch(updateSlotIndex(Number(raw)));
     },
-    [dispatch]
+    [dispatch, multiFill, getNextSlotKey],
   );
 
   return (
@@ -255,8 +283,6 @@ export const PresetEditor = (): JSX.Element => {
               style={{ backgroundImage: `url(${genericBackground})` }}
             >
               <map name="presetmap" className="preset-map">
-
-                {/* INVENTORY */}
                 <Inventory
                   slots={inventorySlots}
                   handleClickOpen={handleSlotOpen}
@@ -264,7 +290,6 @@ export const PresetEditor = (): JSX.Element => {
                   handleDragAndDrop={handleDragAndDrop}
                 />
 
-                {/* EQUIPMENT */}
                 <Equipment
                   slots={equipmentSlots}
                   handleClickOpen={handleSlotOpen}
@@ -272,7 +297,6 @@ export const PresetEditor = (): JSX.Element => {
                   handleDragAndDrop={handleDragAndDrop}
                 />
 
-                {/* Background images */}
                 <img
                   width={510}
                   height={163}
@@ -291,7 +315,6 @@ export const PresetEditor = (): JSX.Element => {
                     alt="preset mobile"
                   />
                 </div>
-
               </map>
             </div>
 
@@ -299,21 +322,23 @@ export const PresetEditor = (): JSX.Element => {
               <RelicSection />
               <FamiliarSection />
             </div>
-
           </div>
         </CardContent>
       </Card>
 
-      {/* EMOJI SELECTOR */}
       <EmojiSelectDialog
         open={dialogOpen}
         onClose={onDialogClose}
-        onSelect={(ids) => changeSlot(selectedSlots as string[], { id: ids[0] })}
+        onSelect={(ids) =>
+          changeSlot(selectedSlots as string[], { id: ids[0] })
+        }
         slotType={slotType}
         slotIndex={slotIndex}
         slotKey={selectedSlots[0] ?? ""}
         selectedIndices={selectedSlots}
         recentlySelected={recentItems}
+        multiFill={multiFill}
+        onToggleMultiFill={setMultiFill}
       />
     </>
   );
