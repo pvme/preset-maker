@@ -71,14 +71,14 @@ export async function loadEmojis(): Promise<EmojiMaps> {
     const e = byId[id];
     if (!e) return undefined;
 
+    if (e.emoji_id) {
+      return `${DISCORD_CDN}${e.emoji_id}.png`;
+    }
+
     if (e.image) {
       return e.image.startsWith("http")
         ? e.image
         : `${PVME_CDN}${e.image}`;
-    }
-
-    if (e.emoji_id) {
-      return `${DISCORD_CDN}${e.emoji_id}.png`;
     }
 
     return undefined;

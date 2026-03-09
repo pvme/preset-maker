@@ -112,9 +112,9 @@ export const useEmojiFilter = ({
       }));
 
       const results = fuzzysort.go(state.inputValue, enriched, {
-        keys: ["name"],
+        keys: ['name', 'id', 'id_aliases'],
         limit: 100,
-        threshold: -100,
+        threshold: -100
       });
 
       return results.map((r: any) => ({ id: r.obj.id }));
