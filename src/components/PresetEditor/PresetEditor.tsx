@@ -8,6 +8,7 @@ import {
   toggleSlotSelection,
   clearSelectedSlots,
   selectPreset,
+  moveSlot,
   setEquipmentSlot,
   setInventorySlot,
   swapInventorySlots,
@@ -187,20 +188,25 @@ export const PresetEditor = (): JSX.Element => {
         if (presetSlot !== targetIndex) return;
 
         dispatch(
-          setEquipmentSlot({ index: targetIndex, value: { id: dragItem.id } }),
-        );
-        dispatch(
-          setInventorySlot({ index: dragItem.index, value: { id: "" } }),
+          moveSlot({
+            fromType: dragItem.fromGroup,
+            fromIndex: dragItem.index,
+            toType: targetGroup,
+            toIndex: targetIndex,
+          })
         );
         return;
       }
 
       if (dragItem.fromGroup === "equipment" && targetGroup === "inventory") {
+
         dispatch(
-          setInventorySlot({ index: targetIndex, value: { id: dragItem.id } }),
-        );
-        dispatch(
-          setEquipmentSlot({ index: dragItem.index, value: { id: "" } }),
+          moveSlot({
+            fromType: dragItem.fromGroup,
+            fromIndex: dragItem.index,
+            toType: targetGroup,
+            toIndex: targetIndex,
+          })
         );
         return;
       }
@@ -209,10 +215,12 @@ export const PresetEditor = (): JSX.Element => {
         if (presetSlot !== targetIndex) return;
 
         dispatch(
-          setEquipmentSlot({ index: targetIndex, value: { id: dragItem.id } }),
-        );
-        dispatch(
-          setEquipmentSlot({ index: dragItem.index, value: { id: "" } }),
+          moveSlot({
+            fromType: dragItem.fromGroup,
+            fromIndex: dragItem.index,
+            toType: targetGroup,
+            toIndex: targetIndex,
+          })
         );
         return;
       }

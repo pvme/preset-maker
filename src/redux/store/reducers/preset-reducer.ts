@@ -46,6 +46,58 @@ const initialState: PresetState = {
   slotKey: "",
 };
 
+function moveBreakdownEntry(
+  breakdown: BreakdownEntry[],
+  fromType: "inventory" | "equipment",
+  fromIndex: number,
+  toType: "inventory" | "equipment",
+  toIndex: number
+): void {
+  const sourceIndex = breakdown.findIndex(
+    (b) => b.slotType === fromType && b.slotIndex === fromIndex
+  );
+
+  const targetIndex = breakdown.findIndex(
+    (b) => b.slotType === toType && b.slotIndex === toIndex
+  );
+
+  if (sourceIndex === -1 && targetIndex === -1) return;
+
+  if (sourceIndex !== -1 && targetIndex === -1) {
+    breakdown[sourceIndex] = {
+      ...breakdown[sourceIndex],
+      slotType: toType,
+      slotIndex: toIndex,
+    };
+    return;
+  }
+
+  if (sourceIndex === -1 && targetIndex !== -1) {
+    breakdown[targetIndex] = {
+      ...breakdown[targetIndex],
+      slotType: fromType,
+      slotIndex: fromIndex,
+    };
+    return;
+  }
+
+  if (sourceIndex !== -1 && targetIndex !== -1) {
+    const temp = breakdown[sourceIndex];
+
+    breakdown[sourceIndex] = {
+      ...breakdown[targetIndex],
+      slotType: fromType,
+      slotIndex: fromIndex,
+    };
+
+    breakdown[targetIndex] = {
+      ...temp,
+      slotType: toType,
+      slotIndex: toIndex,
+    };
+  }
+}
+
 export const presetSlice = createSlice({
   name: "preset",
   initialState,
@@ -82,6 +134,47 @@ export const presetSlice = createSlice({
       const tmp = state.inventorySlots[sourceIndex];
       state.inventorySlots[sourceIndex] = state.inventorySlots[targetIndex];
       state.inventorySlots[targetIndex] = tmp;
+      const a = state.breakdown.find(
+        (b) => b.slotType === "inventory" && b.slotIndex === sourceIndex
+      );
+
+      const b = state.breakdown.find(
+        (b) => b.slotType === "inventory" && b.slotIndex === targetIndex
+      );
+
+      if (a) a.slotIndex = targetIndex;
+      if (b) b.slotIndex = sourceIndex;
+    },
+
+    moveSlot: (
+      state,
+      action: PayloadAction<{
+        fromType: "inventory" | "equipment";
+        fromIndex: number;
+        toType: "inventory" | "equipment";
+        toIndex: number;
+      }>
+    ) => {
+      const { fromType, fromIndex, toType, toIndex } = action.payload;
+
+      const source =
+        fromType === "inventory"
+          ? state.inventorySlots[fromIndex]
+          : state.equipmentSlots[fromIndex];
+
+      if (toType === "inventory") {
+        state.inventorySlots[toIndex] = source;
+      } else {
+        state.equipmentSlots[toIndex] = source;
+      }
+
+      if (fromType === "inventory") {
+        state.inventorySlots[fromIndex] = blankItem();
+      } else {
+        state.equipmentSlots[fromIndex] = blankItem();
+      }
+
+      moveBreakdownEntry(state.breakdown, fromType, fromIndex, toType, toIndex);
     },
 
     setPrimaryRelic: (
@@ -197,6 +290,7 @@ export const {
   setPresetNotes,
   setInventorySlot,
   swapInventorySlots,
+  moveSlot,
   setEquipmentSlot,
   setPrimaryRelic,
   setAlternativeRelic,
