@@ -9,7 +9,7 @@ import type { EmojiEntry, EmojiMaps } from "../../emoji/types";
 interface Params {
   maps: EmojiMaps | null;
   slotType: SlotType | "relic" | "familiar";
-  slotIndex: number;       // UI equipment index (0–12)
+  slotIndex: number; // UI equipment index (0–12)
   selectedIndices: string[];
   slotKey: string;
 }
@@ -19,27 +19,22 @@ interface Params {
 //
 
 const uiToPresetSlot: number[] = [
-  1,   // UI 0 → HELM
-  12,  // UI 1 → CAPE
-  10,  // UI 2 → NECKLACE
-  4,   // UI 3 → MH_WEAPON
-  2,   // UI 4 → BODY
-  5,   // UI 5 → OH_WEAPON
-  3,   // UI 6 → LEGS
-  6,   // UI 7 → GLOVES
-  7,   // UI 8 → BOOTS
-  11,  // UI 9 → RING
-  9,   // UI 10 → AMMO
-  8,   // UI 11 → AURA
-  13,  // UI 12 → POCKET
+  1, // UI 0 → HELM
+  12, // UI 1 → CAPE
+  10, // UI 2 → NECKLACE
+  4, // UI 3 → MH_WEAPON
+  2, // UI 4 → BODY
+  5, // UI 5 → OH_WEAPON
+  3, // UI 6 → LEGS
+  6, // UI 7 → GLOVES
+  7, // UI 8 → BOOTS
+  11, // UI 9 → RING
+  9, // UI 10 → AMMO
+  8, // UI 11 → AURA
+  13, // UI 12 → POCKET
 ];
 
-export const useEmojiFilter = ({
-  maps,
-  slotType,
-  slotIndex,
-}: Params) => {
-
+export const useEmojiFilter = ({ maps, slotType, slotIndex }: Params) => {
   //
   // Full emoji list
   //
@@ -75,12 +70,10 @@ export const useEmojiFilter = ({
         // includes everything EXCEPT:
         //   - aura slot items (preset_slot = 8)
         //   - relics
-        //   - familiars
         //
         if (slotType === SlotType.Inventory) {
-          if (e.preset_slot === 8) return false;        // no aura
-          if (e.preset_type === "relic") return false;
-          if (e.preset_type === "familiar") return false;
+          if (e.preset_slot === 8) return false; // no auras
+          if (e.preset_type === "relic") return false; // no relics
           return true;
         }
 
@@ -112,14 +105,14 @@ export const useEmojiFilter = ({
       }));
 
       const results = fuzzysort.go(state.inputValue, enriched, {
-        keys: ['name', 'id', 'id_aliases'],
+        keys: ["name", "id", "id_aliases"],
         limit: 100,
-        threshold: -100
+        threshold: -100,
       });
 
       return results.map((r: any) => ({ id: r.obj.id }));
     },
-    [maps]
+    [maps],
   );
 
   //
@@ -135,9 +128,8 @@ export const useEmojiFilter = ({
       if (slotType === "familiar") return e.preset_type === "familiar";
 
       if (slotType === SlotType.Inventory) {
-        if (e.preset_slot === 8) return false; // aura
-        if (e.preset_type === "relic") return false;
-        if (e.preset_type === "familiar") return false;
+        if (e.preset_slot === 8) return false; // no auras
+        if (e.preset_type === "relic") return false; // no relics
         return true;
       }
 
@@ -148,7 +140,7 @@ export const useEmojiFilter = ({
 
       return false;
     },
-    [maps, slotType, slotIndex]
+    [maps, slotType, slotIndex],
   );
 
   //
