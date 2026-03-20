@@ -37,20 +37,22 @@ import genericBackground from "../../assets/bg_large.png";
 import mobilePresetMapBackground from "../../assets/presetmap_mobile.png";
 import { useEmojiMap } from "../../hooks/useEmojiMap";
 
+import { UI_TO_PRESET_SLOT } from "./equipmentSlots";
+
 /**
  * Equipment UI slot order (must match <Equipment /> render order)
  */
 const EQUIPMENT_UI_ORDER = [
-  0,  // helm
-  1,  // cape
-  2,  // necklace
-  3,  // main-hand
-  4,  // body
-  5,  // off-hand
-  6,  // legs
-  7,  // gloves
-  8,  // boots
-  9,  // ring
+  0, // helm
+  1, // cape
+  2, // necklace
+  3, // main-hand
+  4, // body
+  5, // off-hand
+  6, // legs
+  7, // gloves
+  8, // boots
+  9, // ring
   10, // ammo
   11, // aura
   12, // pocket
@@ -60,13 +62,8 @@ export const PresetEditor = (): JSX.Element => {
   const dispatch = useAppDispatch();
   const maps = useEmojiMap();
 
-  const {
-    inventorySlots,
-    equipmentSlots,
-    slotType,
-    selectedSlots,
-    slotIndex,
-  } = useAppSelector(selectPreset);
+  const { inventorySlots, equipmentSlots, slotType, selectedSlots, slotIndex } =
+    useAppSelector(selectPreset);
 
   const recentItems = useAppSelector(selectRecentItems);
 
@@ -122,9 +119,7 @@ export const PresetEditor = (): JSX.Element => {
 
       dispatch(
         updateSlotType(
-          slotGroup === "inventory"
-            ? SlotType.Inventory
-            : SlotType.Equipment,
+          slotGroup === "inventory" ? SlotType.Inventory : SlotType.Equipment,
         ),
       );
 
@@ -183,9 +178,13 @@ export const PresetEditor = (): JSX.Element => {
 
       const entry = maps?.get(dragItem.id);
       const presetSlot = entry?.preset_slot ?? -1;
+      const expectedPresetSlot =
+        targetGroup === "equipment"
+          ? (UI_TO_PRESET_SLOT[targetIndex] ?? -1)
+          : -1;
 
       if (dragItem.fromGroup === "inventory" && targetGroup === "equipment") {
-        if (presetSlot !== targetIndex) return;
+        if (presetSlot !== expectedPresetSlot) return;
 
         dispatch(
           moveSlot({
@@ -193,26 +192,25 @@ export const PresetEditor = (): JSX.Element => {
             fromIndex: dragItem.index,
             toType: targetGroup,
             toIndex: targetIndex,
-          })
+          }),
         );
         return;
       }
 
       if (dragItem.fromGroup === "equipment" && targetGroup === "inventory") {
-
         dispatch(
           moveSlot({
             fromType: dragItem.fromGroup,
             fromIndex: dragItem.index,
             toType: targetGroup,
             toIndex: targetIndex,
-          })
+          }),
         );
         return;
       }
 
       if (dragItem.fromGroup === "equipment" && targetGroup === "equipment") {
-        if (presetSlot !== targetIndex) return;
+        if (presetSlot !== expectedPresetSlot) return;
 
         dispatch(
           moveSlot({
@@ -220,7 +218,7 @@ export const PresetEditor = (): JSX.Element => {
             fromIndex: dragItem.index,
             toType: targetGroup,
             toIndex: targetIndex,
-          })
+          }),
         );
         return;
       }

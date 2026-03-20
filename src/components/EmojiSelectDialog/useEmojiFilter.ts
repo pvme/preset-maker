@@ -5,6 +5,7 @@ import fuzzysort from "fuzzysort";
 
 import { SlotType } from "../../schemas/slot-type";
 import type { EmojiEntry, EmojiMaps } from "../../emoji/types";
+import { UI_TO_PRESET_SLOT } from "../PresetEditor/equipmentSlots";
 
 interface Params {
   maps: EmojiMaps | null;
@@ -13,26 +14,6 @@ interface Params {
   selectedIndices: string[];
   slotKey: string;
 }
-
-//
-// UI → preset_slot mapping
-//
-
-const uiToPresetSlot: number[] = [
-  1, // UI 0 → HELM
-  12, // UI 1 → CAPE
-  10, // UI 2 → NECKLACE
-  4, // UI 3 → MH_WEAPON
-  2, // UI 4 → BODY
-  5, // UI 5 → OH_WEAPON
-  3, // UI 6 → LEGS
-  6, // UI 7 → GLOVES
-  7, // UI 8 → BOOTS
-  11, // UI 9 → RING
-  9, // UI 10 → AMMO
-  8, // UI 11 → AURA
-  13, // UI 12 → POCKET
-];
 
 export const useEmojiFilter = ({ maps, slotType, slotIndex }: Params) => {
   //
@@ -82,7 +63,7 @@ export const useEmojiFilter = ({ maps, slotType, slotIndex }: Params) => {
         // strict match: preset_slot === mapped slot
         //
         if (slotType === SlotType.Equipment) {
-          const expectedPresetSlot = uiToPresetSlot[slotIndex];
+          const expectedPresetSlot = UI_TO_PRESET_SLOT[slotIndex];
           return e.preset_slot === expectedPresetSlot;
         }
 
@@ -134,7 +115,7 @@ export const useEmojiFilter = ({ maps, slotType, slotIndex }: Params) => {
       }
 
       if (slotType === SlotType.Equipment) {
-        const expectedPresetSlot = uiToPresetSlot[slotIndex];
+        const expectedPresetSlot = UI_TO_PRESET_SLOT[slotIndex];
         return e.preset_slot === expectedPresetSlot;
       }
 
