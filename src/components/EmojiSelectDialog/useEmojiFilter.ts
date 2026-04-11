@@ -5,7 +5,10 @@ import fuzzysort from "fuzzysort";
 
 import { SlotType } from "../../schemas/slot-type";
 import type { EmojiEntry, EmojiMaps } from "../../emoji/types";
-import { UI_TO_PRESET_SLOT } from "../PresetEditor/equipmentSlots";
+import {
+  UI_TO_PRESET_SLOT,
+  UI_TO_EQUIPMENT_SLOT_LABEL,
+} from "../PresetEditor/equipmentSlots";
 
 interface Params {
   maps: EmojiMaps | null;
@@ -130,8 +133,12 @@ export const useEmojiFilter = ({ maps, slotType, slotIndex }: Params) => {
   const dialogTitle = useMemo(() => {
     if (slotType === "relic") return "Select relic";
     if (slotType === "familiar") return "Select familiar";
-    return "Select item";
-  }, [slotType]);
+    if (slotType === SlotType.Equipment) {
+      const label = UI_TO_EQUIPMENT_SLOT_LABEL[slotIndex];
+      return label ? `Select ${label} slot` : "Select worn slot";
+    }
+    return "Select backpack item";
+  }, [slotType, slotIndex]);
 
   return {
     ready: !!maps,
