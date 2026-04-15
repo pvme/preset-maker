@@ -15,3 +15,11 @@ export const UI_TO_EQUIPMENT_SLOT_LABEL = [
   "ammo",
   "pocket",
 ] as const;
+
+export const SLOT_LABEL_TO_PRESET_SLOT: Record<string, number> =
+  Object.fromEntries(
+    UI_TO_EQUIPMENT_SLOT_LABEL.map((label, i) => [
+      label,
+      UI_TO_PRESET_SLOT[i],
+    ])
+  );

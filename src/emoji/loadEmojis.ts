@@ -2,8 +2,10 @@
 
 import { EmojiEntry, EmojiMaps } from "./types";
 import { createIdResolver } from "./idResolver";
+import { SLOT_LABEL_TO_PRESET_SLOT } from "../components/PresetEditor/equipmentSlots";
 
 let cached: EmojiMaps | null = null;
+let loadingPromise: Promise<EmojiMaps> | null = null;
 
 const EMOJI_URL =
   "https://raw.githubusercontent.com/pvme/pvme-settings/refs/heads/master/emojis/emojis_v2.json";
@@ -13,89 +15,124 @@ const DISCORD_CDN = "https://cdn.discordapp.com/emojis/";
 
 export async function loadEmojis(): Promise<EmojiMaps> {
   if (cached) return cached;
+  if (loadingPromise) return loadingPromise;
 
-  const res = await fetch(EMOJI_URL);
-  const json = await res.json();
+  loadingPromise = (async () => {
+    const res = await fetch(EMOJI_URL);
+    const json = await res.json();
 
-  // Flatten categories → array of EmojiEntry
-  const all: EmojiEntry[] = [];
-  for (const cat of json.categories) {
-    for (const e of cat.emojis) all.push(e);
-  }
+    // Flatten categories → array of EmojiEntry
+    const all: EmojiEntry[] = [];
+    for (const cat of json.categories) {
+      for (const e of cat.emojis) all.push(e);
+    }
 
-  const resolver = createIdResolver(all);
+    const resolver = createIdResolver(all);
 
-  const byId: Record<string, EmojiEntry> = {};
-  const byAlias: Record<string, string> = {};
-  const byType: Record<string, EmojiEntry[]> = {};
+    const byId: Record<string, EmojiEntry> = {};
+    const byAlias: Record<string, string> = {};
+    const byType: Record<string, EmojiEntry[]> = {};
+    const bySlot: Record<number, EmojiEntry[]> = {};
 
-  for (const e of all) {
-    const id = resolver.resolve(e.id);
+    for (const e of all) {
+      const id = resolver.resolve(e.id);
 
-    const entry: EmojiEntry = {
-      ...e,
-      id,
+      const entry: EmojiEntry = {
+        ...e,
+        id,
+        image: e.image ?? undefined,
+        emoji_id: e.emoji_id ?? undefined,
+        emoji_server: e.emoji_server ?? undefined,
+        preset_type: e.preset_type ?? undefined,
+        preset_slot: e.preset_slot ?? null,
+      };
 
-      // Preserve both sources
-      image: e.image ?? undefined,
-      emoji_id: e.emoji_id ?? undefined,
-      emoji_server: e.emoji_server ?? undefined,
+      byId[id] = entry;
 
-      preset_type: e.preset_type ?? undefined,
-      preset_slot: e.preset_slot ?? null,
-    };
+      if (Array.isArray(e.id_aliases)) {
+        for (const alias of e.id_aliases) {
+          byAlias[alias.toLowerCase()] = id;
+        }
+      }
 
-    byId[id] = entry;
+      const type = entry.preset_type || "misc";
+      if (!byType[type]) byType[type] = [];
+      byType[type].push(entry);
 
-    if (Array.isArray(e.id_aliases)) {
-      for (const alias of e.id_aliases) {
-        byAlias[alias.toLowerCase()] = id;
+      if (entry.preset_slot != null) {
+        if (!bySlot[entry.preset_slot]) bySlot[entry.preset_slot] = [];
+        bySlot[entry.preset_slot].push(entry);
       }
     }
 
-    const type = entry.preset_type || "misc";
-    if (!byType[type]) byType[type] = [];
-    byType[type].push(entry);
-  }
+    function get(input: string): EmojiEntry | undefined {
+      const key = input.toLowerCase().trim();
 
-  function get(id: string) {
-    return byId[id];
-  }
+      if (byId[key]) return byId[key];
 
-  /**
-   * Returns the preferred image URL for an emoji.
-   * - PVME image takes precedence if present
-   * - Falls back to Discord CDN
-   */
-  function getUrl(id: string): string | undefined {
-    const e = byId[id];
-    if (!e) return undefined;
+      if (key in SLOT_LABEL_TO_PRESET_SLOT) {
+        const slot = SLOT_LABEL_TO_PRESET_SLOT[key];
+        return bySlot[slot]?.[0];
+      }
 
-    if (e.emoji_id) {
-      return `${DISCORD_CDN}${e.emoji_id}.png`;
+      const num = Number(key);
+      if (!Number.isNaN(num)) {
+        return bySlot[num]?.[0];
+      }
+
+      return undefined;
     }
 
-    if (e.image) {
-      return e.image.startsWith("http")
-        ? e.image
-        : `${PVME_CDN}${e.image}`;
+    function getUrl(input: string): string | undefined {
+      const e = get(input);
+      if (!e) return undefined;
+
+      if (e.emoji_id) {
+        return `${DISCORD_CDN}${e.emoji_id}.png`;
+      }
+
+      if (e.image) {
+        return e.image.startsWith("http")
+          ? e.image
+          : `${PVME_CDN}${e.image}`;
+      }
+
+      return undefined;
     }
 
-    return undefined;
+    function resolveId(input: string) {
+      const key = input.toLowerCase().trim();
+
+      const aliasMatch = byAlias[key];
+      if (aliasMatch) return aliasMatch;
+
+      const resolved = resolver.resolve(key);
+      if (byId[resolved]) return resolved;
+
+      if (key in SLOT_LABEL_TO_PRESET_SLOT) return key;
+
+      const num = Number(key);
+      if (!Number.isNaN(num) && bySlot[num]?.length) return key;
+
+      return resolved;
+    }
+
+    cached = {
+      byId,
+      byAlias,
+      byType,
+      bySlot,
+      getUrl,
+      get,
+      resolve: resolveId,
+    };
+
+    return cached;
+  })();
+
+  try {
+    return await loadingPromise;
+  } finally {
+    loadingPromise = null;
   }
-
-  function resolveId(input: string) {
-    return resolver.resolve(input);
-  }
-
-  cached = {
-    byId,
-    byAlias,
-    byType,
-    getUrl,
-    get,
-    resolve: resolveId,
-  };
-
-  return cached;
 }
