@@ -4,20 +4,50 @@ import { presetSchema, type Preset } from "../../../schemas/preset";
 import { loadEmojis } from "../../../emoji";
 import type { z } from "zod";
 import { BreakdownEntrySchema } from "../../../schemas/breakdown";
+
 type BreakdownEntry = z.infer<typeof BreakdownEntrySchema>;
 
 export async function normalizePreset(raw: any): Promise<Preset> {
   const emojis = await loadEmojis();
+  const usesLegacyAuraLayout =
+    Array.isArray(raw?.equipmentSlots) && raw.equipmentSlots.length >= 13;
+
+  function migrateEquipmentSlotIndex(index: number): number | null {
+    if (!usesLegacyAuraLayout) return index;
+
+    // Legacy layout:
+    // 0..10 unchanged, 11 = aura (drop), 12 = pocket -> 11
+    if (index === 11) return null;
+    if (index > 11) return index - 1;
+    return index;
+  }
 
   function migrateLegacyBreakdown(raw: any): BreakdownEntry[] {
     if (Array.isArray(raw?.breakdown) && raw.breakdown.length > 0) {
-      return raw.breakdown;
+      return raw.breakdown.flatMap((entry: any) => {
+        if (entry?.slotType !== "equipment") {
+          return [entry];
+        }
+
+        const nextIndex = migrateEquipmentSlotIndex(entry.slotIndex);
+        if (nextIndex === null) return [];
+
+        return [
+          {
+            ...entry,
+            slotIndex: nextIndex,
+          },
+        ];
+      });
     }
 
     const breakdown: BreakdownEntry[] = [];
 
     raw?.inventorySlots?.forEach((slot: any, index: number) => {
-      if (typeof slot?.breakdownNotes === "string" && slot.breakdownNotes.trim()) {
+      if (
+        typeof slot?.breakdownNotes === "string" &&
+        slot.breakdownNotes.trim()
+      ) {
         breakdown.push({
           slotType: "inventory",
           slotIndex: index,
@@ -27,10 +57,16 @@ export async function normalizePreset(raw: any): Promise<Preset> {
     });
 
     raw?.equipmentSlots?.forEach((slot: any, index: number) => {
-      if (typeof slot?.breakdownNotes === "string" && slot.breakdownNotes.trim()) {
+      const nextIndex = migrateEquipmentSlotIndex(index);
+      if (nextIndex === null) return;
+
+      if (
+        typeof slot?.breakdownNotes === "string" &&
+        slot.breakdownNotes.trim()
+      ) {
         breakdown.push({
           slotType: "equipment",
-          slotIndex: index,
+          slotIndex: nextIndex,
           description: slot.breakdownNotes,
         });
       }
@@ -41,9 +77,7 @@ export async function normalizePreset(raw: any): Promise<Preset> {
 
   function migrateSlot(slot: any) {
     const rawId =
-      slot?.id ??
-      slot?.label ??
-      (typeof slot === "string" ? slot : "");
+      slot?.id ?? slot?.label ?? (typeof slot === "string" ? slot : "");
 
     if (!rawId || typeof rawId !== "string") {
       return { id: "" };
@@ -53,6 +87,14 @@ export async function normalizePreset(raw: any): Promise<Preset> {
     return { id: resolved ?? "" };
   }
 
+  const rawEquipmentSlots: any[] = Array.isArray(raw?.equipmentSlots)
+    ? raw.equipmentSlots
+    : [];
+
+  const migratedEquipmentSlots = rawEquipmentSlots
+    .map(migrateSlot)
+    .filter((slot, index: number) => migrateEquipmentSlotIndex(index) !== null);
+
   const migrated = {
     presetName: raw?.presetName,
     presetNotes: raw?.presetNotes,
@@ -61,9 +103,7 @@ export async function normalizePreset(raw: any): Promise<Preset> {
       ? raw.inventorySlots.map(migrateSlot)
       : [],
 
-    equipmentSlots: Array.isArray(raw?.equipmentSlots)
-      ? raw.equipmentSlots.map(migrateSlot)
-      : [],
+    equipmentSlots: migratedEquipmentSlots,
 
     relics: {
       primaryRelics: Array.isArray(raw?.relics?.primaryRelics)

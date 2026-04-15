@@ -1,4 +1,5 @@
 // src/schemas/preset.ts
+
 import { z } from "zod";
 import { BreakdownEntrySchema } from "./breakdown";
 
@@ -33,12 +34,12 @@ export const presetSchema = z.object({
 
   inventorySlots: z.preprocess(
     (val) => normalize(val as any[], 28, () => ({ id: "" })),
-    z.array(itemSchema).length(28)
+    z.array(itemSchema).length(28),
   ),
 
   equipmentSlots: z.preprocess(
-    (val) => normalize(val as any[], 13, () => ({ id: "" })),
-    z.array(itemSchema).length(13)
+    (val) => normalize(val as any[], 12, () => ({ id: "" })),
+    z.array(itemSchema).length(12),
   ),
 
   relics: z.object({
@@ -63,7 +64,7 @@ export const blankPreset: Preset = {
   presetName: "",
   presetNotes: "",
   inventorySlots: Array.from({ length: 28 }, () => ({ id: "" })),
-  equipmentSlots: Array.from({ length: 13 }, () => ({ id: "" })),
+  equipmentSlots: Array.from({ length: 12 }, () => ({ id: "" })),
   relics: {
     primaryRelics: [],
     alternativeRelics: [],

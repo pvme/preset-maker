@@ -16,7 +16,7 @@ export enum ItemType {
   OH_WEAPON = 5,
   GLOVES = 6,
   BOOTS = 7,
-  AURA = 8,
+  AURA = 8, // legacy database value retained for compatibility only
   AMMO = 9,
   NECKLACE = 10,
   RING = 11,

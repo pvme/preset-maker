@@ -201,9 +201,7 @@ export const EmojiSelectDialog = (
                   control={
                     <Checkbox
                       checked={multiFill}
-                      onChange={(e) =>
-                        onToggleMultiFill(e.target.checked)
-                      }
+                      onChange={(e) => onToggleMultiFill(e.target.checked)}
                       size="small"
                     />
                   }
@@ -215,7 +213,6 @@ export const EmojiSelectDialog = (
             {/* RECENT */}
             {recentlySelected.length > 0 && (
               <>
-
                 <div className="dialog__recent">
                   <Typography
                     variant="caption"
@@ -269,7 +266,16 @@ export const EmojiSelectDialog = (
           Clear slot
         </Button>
 
-        <Button onClick={onClose}>Close</Button>
+        <Button
+          onMouseDown={(e) => e.preventDefault()}
+          onClick={() => {
+            setListOpen(false);
+            inputRef.current?.blur();
+            onClose();
+          }}
+        >
+          Close
+        </Button>
       </DialogActions>
     </Dialog>
   );

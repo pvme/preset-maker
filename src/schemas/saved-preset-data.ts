@@ -25,7 +25,7 @@ export interface SavedPreset {
 }
 
 /* -------------------------------------------------------------------------- */
-/* Canonical empty preset (MUST match reducer shape)                           */
+/* Canonical empty preset (MUST match reducer shape)                          */
 /* -------------------------------------------------------------------------- */
 
 export const EMPTY_SAVED_PRESET: SavedPreset = {
@@ -33,7 +33,7 @@ export const EMPTY_SAVED_PRESET: SavedPreset = {
   presetNotes: "",
 
   inventorySlots: Array.from({ length: 28 }, () => ({ id: "" })),
-  equipmentSlots: Array.from({ length: 13 }, () => ({ id: "" })),
+  equipmentSlots: Array.from({ length: 12 }, () => ({ id: "" })),
 
   relics: {
     primaryRelics: Array.from({ length: 3 }, () => ({ id: "" })),

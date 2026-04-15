@@ -4,12 +4,7 @@
     "composite": true,
     "module": "ESNext",
     "moduleResolution": "Node",
-    "allowSyntheticDefaultImports": true,
-    "plugins": [
-      {
-        "transform": "typescript-json/lib/transform"
-      }
-    ]
+    "allowSyntheticDefaultImports": true
   },
   "include": ["vite.config.ts"]
 }

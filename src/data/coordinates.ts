@@ -86,10 +86,8 @@ export const equipmentCoordsMobile: Coord[] = [
   { x1: 136, y1: 189, x2: 408, y2: 115 },
   // Ammo/rune pouch
   { x1: 116, y1: 67, x2: 454, y2: 115 },
-  // Aura
-  { x1: 37, y1: 24, x2: 500, y2: 115 },
   // Pocket slot
-  { x1: 117, y1: 24, x2: 362, y2: 152 }
+  { x1: 115, y1: 27, x2: 362, y2: 152 }
 ];
 
 /**

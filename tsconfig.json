@@ -19,14 +19,6 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "plugins": [
-      {
-        "transform": "typescript-json/lib/transform"
-      },
-      {
-        "transform": "typia/lib/transform"
-      }
-    ],
     "strictNullChecks": true
   },
   "include": [

@@ -34,6 +34,7 @@ import { RelicSection } from "../RelicSection/RelicSection";
 
 import "./PresetEditor.css";
 import genericBackground from "../../assets/bg_large.png";
+import desktopPresetMapBackground from "../../assets/presetmap_desktop.png";
 import mobilePresetMapBackground from "../../assets/presetmap_mobile.png";
 import { useEmojiMap } from "../../hooks/useEmojiMap";
 
@@ -54,8 +55,7 @@ const EQUIPMENT_UI_ORDER = [
   8, // boots
   9, // ring
   10, // ammo
-  11, // aura
-  12, // pocket
+  11, // pocket
 ];
 
 export const PresetEditor = (): JSX.Element => {
@@ -306,7 +306,7 @@ export const PresetEditor = (): JSX.Element => {
                 <img
                   width={510}
                   height={163}
-                  src="https://img.pvme.io/images/O7VznNO.png"
+                  src={desktopPresetMapBackground}
                   useMap="#presetmap"
                   alt="preset"
                   className="desktop-only"

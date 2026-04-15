@@ -26,7 +26,7 @@ const initialState: PresetState = {
   presetNotes: "",
 
   inventorySlots: Array.from({ length: 28 }, blankItem),
-  equipmentSlots: Array.from({ length: 13 }, blankItem),
+  equipmentSlots: Array.from({ length: 12 }, blankItem),
 
   familiars: {
     primaryFamiliars: Array.from({ length: 1 }, blankFamiliar),
@@ -51,14 +51,14 @@ function moveBreakdownEntry(
   fromType: "inventory" | "equipment",
   fromIndex: number,
   toType: "inventory" | "equipment",
-  toIndex: number
+  toIndex: number,
 ): void {
   const sourceIndex = breakdown.findIndex(
-    (b) => b.slotType === fromType && b.slotIndex === fromIndex
+    (b) => b.slotType === fromType && b.slotIndex === fromIndex,
   );
 
   const targetIndex = breakdown.findIndex(
-    (b) => b.slotType === toType && b.slotIndex === toIndex
+    (b) => b.slotType === toType && b.slotIndex === toIndex,
   );
 
   if (sourceIndex === -1 && targetIndex === -1) return;
@@ -114,32 +114,36 @@ export const presetSlice = createSlice({
 
     setInventorySlot: (
       state,
-      action: PayloadAction<{ index: number; value: Item }>
+      action: PayloadAction<{ index: number; value: Item }>,
     ) => {
-      state.inventorySlots[action.payload.index] = { id: action.payload.value.id };
+      state.inventorySlots[action.payload.index] = {
+        id: action.payload.value.id,
+      };
     },
 
     setEquipmentSlot: (
       state,
-      action: PayloadAction<{ index: number; value: Item }>
+      action: PayloadAction<{ index: number; value: Item }>,
     ) => {
-      state.equipmentSlots[action.payload.index] = { id: action.payload.value.id };
+      state.equipmentSlots[action.payload.index] = {
+        id: action.payload.value.id,
+      };
     },
 
     swapInventorySlots: (
       state,
-      action: PayloadAction<{ sourceIndex: number; targetIndex: number }>
+      action: PayloadAction<{ sourceIndex: number; targetIndex: number }>,
     ) => {
       const { sourceIndex, targetIndex } = action.payload;
       const tmp = state.inventorySlots[sourceIndex];
       state.inventorySlots[sourceIndex] = state.inventorySlots[targetIndex];
       state.inventorySlots[targetIndex] = tmp;
       const a = state.breakdown.find(
-        (b) => b.slotType === "inventory" && b.slotIndex === sourceIndex
+        (b) => b.slotType === "inventory" && b.slotIndex === sourceIndex,
       );
 
       const b = state.breakdown.find(
-        (b) => b.slotType === "inventory" && b.slotIndex === targetIndex
+        (b) => b.slotType === "inventory" && b.slotIndex === targetIndex,
       );
 
       if (a) a.slotIndex = targetIndex;
@@ -153,7 +157,7 @@ export const presetSlice = createSlice({
         fromIndex: number;
         toType: "inventory" | "equipment";
         toIndex: number;
-      }>
+      }>,
     ) => {
       const { fromType, fromIndex, toType, toIndex } = action.payload;
 
@@ -179,7 +183,7 @@ export const presetSlice = createSlice({
 
     setPrimaryRelic: (
       state,
-      action: PayloadAction<{ index: number; value: Relic | null }>
+      action: PayloadAction<{ index: number; value: Relic | null }>,
     ) => {
       state.relics.primaryRelics[action.payload.index] =
         action.payload.value ?? blankRelic();
@@ -187,7 +191,7 @@ export const presetSlice = createSlice({
 
     setAlternativeRelic: (
       state,
-      action: PayloadAction<{ index: number; value: Relic | null }>
+      action: PayloadAction<{ index: number; value: Relic | null }>,
     ) => {
       state.relics.alternativeRelics[action.payload.index] =
         action.payload.value ?? blankRelic();
@@ -195,7 +199,7 @@ export const presetSlice = createSlice({
 
     setPrimaryFamiliar: (
       state,
-      action: PayloadAction<{ index: number; value: Familiar | null }>
+      action: PayloadAction<{ index: number; value: Familiar | null }>,
     ) => {
       state.familiars.primaryFamiliars[action.payload.index] =
         action.payload.value ?? blankFamiliar();
@@ -203,7 +207,7 @@ export const presetSlice = createSlice({
 
     setAlternativeFamiliar: (
       state,
-      action: PayloadAction<{ index: number; value: Familiar | null }>
+      action: PayloadAction<{ index: number; value: Familiar | null }>,
     ) => {
       state.familiars.alternativeFamiliars[action.payload.index] =
         action.payload.value ?? blankFamiliar();
@@ -213,7 +217,7 @@ export const presetSlice = createSlice({
       const index = state.breakdown.findIndex(
         (b) =>
           b.slotType === action.payload.slotType &&
-          b.slotIndex === action.payload.slotIndex
+          b.slotIndex === action.payload.slotIndex,
       );
 
       if (index !== -1) {
@@ -233,14 +237,17 @@ export const presetSlice = createSlice({
 
     removeBreakdownEntry: (
       state,
-      action: PayloadAction<{ slotType: "inventory" | "equipment"; slotIndex: number }>
+      action: PayloadAction<{
+        slotType: "inventory" | "equipment";
+        slotIndex: number;
+      }>,
     ) => {
       state.breakdown = state.breakdown.filter(
         (b) =>
           !(
             b.slotType === action.payload.slotType &&
             b.slotIndex === action.payload.slotIndex
-          )
+          ),
       );
     },
 

@@ -13,10 +13,12 @@ import {
 interface Params {
   maps: EmojiMaps | null;
   slotType: SlotType | "relic" | "familiar";
-  slotIndex: number; // UI equipment index (0–12)
+  slotIndex: number; // UI equipment index (0–11)
   selectedIndices: string[];
   slotKey: string;
 }
+
+const AURA_PRESET_SLOT = 8;
 
 export const useEmojiFilter = ({ maps, slotType, slotIndex }: Params) => {
   //
@@ -52,21 +54,24 @@ export const useEmojiFilter = ({ maps, slotType, slotIndex }: Params) => {
         //
         // INVENTORY:
         // includes everything EXCEPT:
-        //   - aura slot items (preset_slot = 8)
+        //   - aura slot items
         //   - relics
         //
         if (slotType === SlotType.Inventory) {
-          if (e.preset_slot === 8) return false; // no auras
-          if (e.preset_type === "relic") return false; // no relics
+          if (e.preset_slot === AURA_PRESET_SLOT) return false;
+          if (e.preset_type === "relic") return false;
           return true;
         }
 
         //
         // EQUIPMENT:
         // strict match: preset_slot === mapped slot
+        // aura is no longer represented by any UI slot
         //
         if (slotType === SlotType.Equipment) {
           const expectedPresetSlot = UI_TO_PRESET_SLOT[slotIndex];
+          if (expectedPresetSlot == null) return false;
+          if (e.preset_slot === AURA_PRESET_SLOT) return false;
           return e.preset_slot === expectedPresetSlot;
         }
 
@@ -112,13 +117,15 @@ export const useEmojiFilter = ({ maps, slotType, slotIndex }: Params) => {
       if (slotType === "familiar") return e.preset_type === "familiar";
 
       if (slotType === SlotType.Inventory) {
-        if (e.preset_slot === 8) return false; // no auras
-        if (e.preset_type === "relic") return false; // no relics
+        if (e.preset_slot === AURA_PRESET_SLOT) return false;
+        if (e.preset_type === "relic") return false;
         return true;
       }
 
       if (slotType === SlotType.Equipment) {
         const expectedPresetSlot = UI_TO_PRESET_SLOT[slotIndex];
+        if (expectedPresetSlot == null) return false;
+        if (e.preset_slot === AURA_PRESET_SLOT) return false;
         return e.preset_slot === expectedPresetSlot;
       }
 

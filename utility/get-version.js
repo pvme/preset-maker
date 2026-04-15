@@ -1,26 +1,20 @@
 // utility/get-version.js
 
-import { execSync } from "child_process";
-import { writeFileSync } from "fs";
+import { writeFileSync, readFileSync } from "fs";
 
-function run(cmd) {
+function getPackageVersion() {
   try {
-    return execSync(cmd).toString().trim();
+    const pkg = JSON.parse(readFileSync("./package.json", "utf8"));
+    return String(pkg.version || "0");
   } catch {
-    return null;
+    return "0";
   }
 }
 
-// Get last tag (e.g. "v1.4.0")
-const tag = run("git describe --tags --abbrev=0") ?? "v0.0.0";
+const majorVersion = getPackageVersion();
+const runNumber = process.env.GITHUB_RUN_NUMBER ?? "0";
+const version = `v${majorVersion}.${runNumber}`;
 
-// Count commits since the tag
-const count = run(`git rev-list ${tag}..HEAD --count`) ?? "0";
-
-// Final pretty version: v1.4.0.12
-const version = `${tag}.${count}`;
-
-// Write into Vite's source tree so frontend can import it
-writeFileSync("./src/version.txt", version);
+writeFileSync("./src/version.txt", `${version}\n`);
 
 console.log("Generated version:", version);
