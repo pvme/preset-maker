@@ -1,6 +1,7 @@
 // src/utility/sanitizer.ts
 
 import { type SavedPreset } from "../schemas/saved-preset-data";
+import { Item } from "../schemas/item-data";
 
 const sanitizeSlots = (
   slots: Array<{ id?: string }> | undefined,
@@ -28,23 +29,9 @@ export const sanitizePresetData = (preset: SavedPreset): SavedPreset => {
     inventorySlots: sanitizeSlots(preset.inventorySlots, 28),
     equipmentSlots: sanitizeSlots(preset.equipmentSlots, 12),
 
-    relics: {
-      primaryRelics:
-        preset.relics?.primaryRelics?.map((r) => ({ id: r.id ?? "" })) ?? [],
-      alternativeRelics:
-        preset.relics?.alternativeRelics?.map((r) => ({ id: r.id ?? "" })) ??
-        [],
-    },
+    relics: (preset.relics ?? []).map((r: Item) => ({ id: r.id ?? "" })),
 
-    familiars: {
-      primaryFamiliars:
-        preset.familiars?.primaryFamiliars?.map((f) => ({ id: f.id ?? "" })) ??
-        [],
-      alternativeFamiliars:
-        preset.familiars?.alternativeFamiliars?.map((f) => ({
-          id: f.id ?? "",
-        })) ?? [],
-    },
+    familiar: preset.familiar ? { id: preset.familiar.id ?? "" } : undefined,
 
     breakdown: preset.breakdown ?? [],
 

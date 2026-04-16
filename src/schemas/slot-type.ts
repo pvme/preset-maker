@@ -5,6 +5,8 @@ export enum SlotType {
   Equipment,
   Familiar,
   Relic,
+  Aspect,
+  AmmoSpells,
 }
 
 export enum ItemType {

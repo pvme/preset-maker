@@ -1,4 +1,4 @@
-// src/components/PresetSection/presetSectionApi.ts
+// src/components/PresetPage/PresetPageApi.ts
 
 import axios from "axios";
 import { type SavedPreset as SavedPresetData } from "../../schemas/saved-preset-data";
@@ -20,9 +20,9 @@ const unpackData = async (stored: any): Promise<SavedPresetData> => {
 
     const raw =
       slot?.id ??
-      slot?.label ??    // legacy
-      slot?.name ??     // legacy
-      slot ??           // string fallback
+      slot?.label ?? // legacy
+      slot?.name ?? // legacy
+      slot ?? // string fallback
       "";
 
     const resolved = emojis.resolve(raw.toString().toLowerCase());
@@ -36,15 +36,18 @@ const unpackData = async (stored: any): Promise<SavedPresetData> => {
     inventorySlots: (stored.inventorySlots ?? []).map(convertSlot),
     equipmentSlots: (stored.equipmentSlots ?? []).map(convertSlot),
 
-    familiars: {
-      primaryFamiliars: (stored.familiars?.primaryFamiliars ?? []).map(convertSlot),
-      alternativeFamiliars: (stored.familiars?.alternativeFamiliars ?? []).map(convertSlot),
-    },
+    familiar: convertSlot(
+      stored.familiar ??
+        stored.familiars?.primaryFamiliars?.[0] ??
+        stored.familiars?.alternativeFamiliars?.[0],
+    ),
 
-    relics: {
-      primaryRelics: (stored.relics?.primaryRelics ?? []).map(convertSlot),
-      alternativeRelics: (stored.relics?.alternativeRelics ?? []).map(convertSlot),
-    },
+    relics: Array.isArray(stored.relics)
+      ? stored.relics.map(convertSlot)
+      : [
+          ...(stored.relics?.primaryRelics ?? []).map(convertSlot),
+          ...(stored.relics?.alternativeRelics ?? []).map(convertSlot),
+        ],
 
     breakdown: stored.breakdown ?? [],
   };

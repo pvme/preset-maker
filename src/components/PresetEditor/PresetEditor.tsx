@@ -1,4 +1,7 @@
+// src/components/PresetEditor/PresetEditor.tsx
+
 import React, { useCallback, useState } from "react";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
@@ -15,6 +18,10 @@ import {
   updateSlotIndex,
   updateSlotType,
   updateSlotKey,
+  setFamiliar,
+  setRelic,
+  setAspect,
+  setAmmoSpells,
 } from "../../redux/store/reducers/preset-reducer";
 
 import {
@@ -28,51 +35,60 @@ import { SlotType } from "../../schemas/slot-type";
 import { EmojiSelectDialog } from "../EmojiSelectDialog/EmojiSelectDialog";
 
 import { Equipment, Inventory } from "../SlotSection/SlotSection";
-
-import { FamiliarSection } from "../FamiliarSection/FamiliarSection";
-import { RelicSection } from "../RelicSection/RelicSection";
+import { PresetExtras } from "../PresetExtras/PresetExtras";
 
 import "./PresetEditor.css";
+import borderSide from "../../assets/border-side.png";
+import borderTop from "../../assets/border-top.png";
+import cornerPath from "../../assets/corner.png";
+import smallBackground from "../../assets/bg.png";
 import genericBackground from "../../assets/bg_large.png";
 import desktopPresetMapBackground from "../../assets/presetmap_desktop.png";
 import mobilePresetMapBackground from "../../assets/presetmap_mobile.png";
+import familiarIconPath from "../../assets/familiar.png";
+import relicIconPath from "../../assets/relic.png";
 import { useEmojiMap } from "../../hooks/useEmojiMap";
 
 import { UI_TO_PRESET_SLOT } from "./equipmentSlots";
 
-/**
- * Equipment UI slot order (must match <Equipment /> render order)
- */
-const EQUIPMENT_UI_ORDER = [
-  0, // helm
-  1, // cape
-  2, // necklace
-  3, // main-hand
-  4, // body
-  5, // off-hand
-  6, // legs
-  7, // gloves
-  8, // boots
-  9, // ring
-  10, // ammo
-  11, // pocket
-];
+const EQUIPMENT_UI_ORDER = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 
 export const PresetEditor = (): JSX.Element => {
   const dispatch = useAppDispatch();
   const maps = useEmojiMap();
+  const isCompactLayout = useMediaQuery("(max-width:900px)");
 
-  const { inventorySlots, equipmentSlots, slotType, selectedSlots, slotIndex } =
-    useAppSelector(selectPreset);
+  const {
+    inventorySlots,
+    equipmentSlots,
+    familiar,
+    relics,
+    aspect,
+    AmmoSpells,
+    slotType,
+    selectedSlots,
+    slotIndex,
+  } = useAppSelector(selectPreset);
 
   const recentItems = useAppSelector(selectRecentItems);
 
   const [dialogOpen, setDialogOpen] = useState(false);
   const [multiFill, setMultiFill] = useState(false);
 
-  //
-  // SHIFT-CLICK — toggles selection only (inventory only)
-  //
+  const panelFrame = (
+    <div className="preset-layout__frame" aria-hidden="true">
+      <span className="preset-layout__frame-corner preset-layout__frame-corner--tl" />
+      <span className="preset-layout__frame-corner preset-layout__frame-corner--tr" />
+      <span className="preset-layout__frame-corner preset-layout__frame-corner--bl" />
+      <span className="preset-layout__frame-corner preset-layout__frame-corner--br" />
+
+      <span className="preset-layout__frame-edge preset-layout__frame-edge--top" />
+      <span className="preset-layout__frame-edge preset-layout__frame-edge--right" />
+      <span className="preset-layout__frame-edge preset-layout__frame-edge--bottom" />
+      <span className="preset-layout__frame-edge preset-layout__frame-edge--left" />
+    </div>
+  );
+
   const handleSlotSelection = useCallback(
     (
       _event: React.MouseEvent<HTMLAreaElement>,
@@ -81,7 +97,6 @@ export const PresetEditor = (): JSX.Element => {
     ) => {
       const key = `${slotGroup}:${index}`;
 
-      // Equipment slots can never be multi-selected
       if (slotGroup !== "inventory") {
         dispatch(clearSelectedSlots());
         dispatch(toggleSlotSelection(key));
@@ -106,12 +121,9 @@ export const PresetEditor = (): JSX.Element => {
     [dispatch, selectedSlots],
   );
 
-  //
-  // SLOT CLICK — Opens dialog
-  //
   const handleSlotOpen = useCallback(
     (
-      _event: React.MouseEvent<HTMLAreaElement>,
+      _event: React.MouseEvent<HTMLAreaElement | HTMLElement>,
       index: number,
       slotGroup: string,
     ) => {
@@ -123,24 +135,30 @@ export const PresetEditor = (): JSX.Element => {
         ),
       );
 
+      const isAlreadySelected = selectedSlots.includes(key);
+      const hasMultiSelection = selectedSlots.length > 1;
+
+      if (isAlreadySelected && hasMultiSelection) {
+        dispatch(updateSlotKey(key));
+        dispatch(updateSlotIndex(index));
+        setDialogOpen(true);
+        return;
+      }
+
       dispatch(clearSelectedSlots());
       dispatch(toggleSlotSelection(key));
       dispatch(updateSlotKey(key));
       dispatch(updateSlotIndex(index));
       setDialogOpen(true);
     },
-    [dispatch],
+    [dispatch, selectedSlots],
   );
 
-  //
-  // NEXT SLOT (multi-fill helper)
-  //
   const getNextSlotKey = useCallback(
     (currentKey: string) => {
       const [group, raw] = currentKey.split(":");
       const index = Number(raw);
 
-      // Inventory → sequential
       if (group === "inventory") {
         const next = index + 1;
         if (next < inventorySlots.length) {
@@ -149,7 +167,6 @@ export const PresetEditor = (): JSX.Element => {
         return null;
       }
 
-      // Equipment → UI order
       if (group === "equipment") {
         const pos = EQUIPMENT_UI_ORDER.indexOf(index);
         if (pos === -1) return null;
@@ -165,9 +182,6 @@ export const PresetEditor = (): JSX.Element => {
     [inventorySlots.length],
   );
 
-  //
-  // DRAG & DROP — inventory ↔ equipment
-  //
   const handleDragAndDrop = useCallback(
     (
       dragItem: { fromGroup: string; index: number; id: string },
@@ -232,17 +246,11 @@ export const PresetEditor = (): JSX.Element => {
     [dispatch, maps],
   );
 
-  //
-  // CLOSE dialog
-  //
   const onDialogClose = useCallback(() => {
     setDialogOpen(false);
     dispatch(clearSelectedSlots());
   }, [dispatch]);
 
-  //
-  // APPLY chosen emoji/item
-  //
   const changeSlot = useCallback(
     (indices: string[], item: ItemData) => {
       indices.forEach((key) => {
@@ -282,13 +290,26 @@ export const PresetEditor = (): JSX.Element => {
   return (
     <>
       <Card className="preset-editor__card">
-        <CardContent data-id="content" className="preset-container">
-          <div className="preset-editor__export-container">
+        <CardContent data-id="content" className="preset-layout__content">
+          <div
+            className="preset-layout"
+            style={{
+              ["--preset-slot-bg" as string]: isCompactLayout
+                ? "#2f2924"
+                : `url(${smallBackground})`,
+              ["--preset-extras-bg" as string]: `url(${genericBackground})`,
+              ["--preset-frame-border-top" as string]: `url(${borderTop})`,
+              ["--preset-frame-border-side" as string]: `url(${borderSide})`,
+              ["--preset-frame-corner" as string]: `url(${cornerPath})`,
+            }}
+          >
             <div
-              className="preset-map-container"
+              className="preset-layout__slots preset-layout__panel"
               style={{ backgroundImage: `url(${genericBackground})` }}
             >
-              <map name="presetmap" className="preset-map">
+              {panelFrame}
+
+              <map name="presetmap" className="preset-slots">
                 <Inventory
                   slots={inventorySlots}
                   handleClickOpen={handleSlotOpen}
@@ -303,30 +324,65 @@ export const PresetEditor = (): JSX.Element => {
                   handleDragAndDrop={handleDragAndDrop}
                 />
 
-                <img
-                  width={510}
-                  height={163}
-                  src={desktopPresetMapBackground}
-                  useMap="#presetmap"
-                  alt="preset"
-                  className="desktop-only"
-                />
-
-                <div className="preset-image-container mobile-only">
+                {isCompactLayout ? (
+                  <div className="preset-slots__mobile-image">
+                    <img
+                      width={194}
+                      height={487}
+                      src={mobilePresetMapBackground}
+                      useMap="#presetmap"
+                      alt="preset mobile"
+                    />
+                  </div>
+                ) : (
                   <img
-                    width={183}
-                    height={512}
-                    src={mobilePresetMapBackground}
+                    width={472}
+                    height={162}
+                    src={desktopPresetMapBackground}
                     useMap="#presetmap"
-                    alt="preset mobile"
+                    alt="preset"
                   />
-                </div>
+                )}
               </map>
             </div>
 
-            <div className="relics-familiar-container">
-              <RelicSection />
-              <FamiliarSection />
+            <div className="preset-layout__extras preset-layout__panel">
+              {panelFrame}
+
+              <PresetExtras
+                title="Relics"
+                slotType={SlotType.Relic}
+                items={relics}
+                maxItems={3}
+                setItem={setRelic}
+                indexed
+                showNames
+              />
+              <PresetExtras
+                title="Familiar"
+                slotType={SlotType.Familiar}
+                items={[familiar]}
+                maxItems={1}
+                setItem={setFamiliar}
+                showNames
+              />
+              <PresetExtras
+                title="Aspect"
+                slotType={SlotType.Aspect}
+                items={[aspect]}
+                maxItems={1}
+                setItem={setAspect}
+                showNames
+              />
+              <PresetExtras
+                title="Ammo / Spells"
+                slotType={SlotType.AmmoSpells}
+                items={AmmoSpells}
+                maxItems={3}
+                setItem={setAmmoSpells}
+                showNames
+                indexed
+              />
             </div>
           </div>
         </CardContent>

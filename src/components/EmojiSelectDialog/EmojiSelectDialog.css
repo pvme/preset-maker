@@ -9,16 +9,18 @@
   margin-bottom: auto;
 }
 
-
 /* Collapsed / expanded heights */
 .dialog--collapsed .dialog__content {
-  height: 280px;
+  height: 30vh;
 }
 
 .dialog--expanded .dialog__content {
-  height: 420px;
+  height: 30vh;
 }
 
+.MuiAutocomplete-listbox {
+  max-height: 20vh;
+}
 
 /* =========================
    Core layout

@@ -1,9 +1,10 @@
-// src/components/SlotSection/SlotSection.tsx
-
 import React, { useCallback } from "react";
 import { DragPreviewImage, useDrag, useDrop } from "react-dnd";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import Tooltip from "@mui/material/Tooltip";
 
 import {
+  SLOT_METRICS,
   equipmentCoords,
   equipmentCoordsMobile,
   inventoryCoords,
@@ -12,34 +13,37 @@ import {
 
 import { type Coord } from "../../schemas/coord";
 import { type Item as ItemData } from "../../schemas/item-data";
-import { isMobile } from "../../utility/window-utils";
 
 import { useEmojiMap } from "../../hooks/useEmojiMap";
 import { useAppSelector } from "../../redux/hooks";
 import { selectPreset } from "../../redux/store/reducers/preset-reducer";
+import { useStorageMode } from "../../storage/StorageModeContext";
 
+import { tooltipSlotProps } from "../Tooltip/tooltipStyles";
 import "./SlotSection.css";
+
+type SlotGroup = "inventory" | "equipment";
 
 interface SlotProps {
   slots: ItemData[];
-  handleClickOpen: (e: any, index: number, slotGroup: string) => void;
+  handleClickOpen: (e: any, index: number, slotGroup: SlotGroup) => void;
   handleDragAndDrop?: (
     dragItem: { fromGroup: string; index: number; id: string },
     targetGroup: string,
-    targetIndex: number
+    targetIndex: number,
   ) => void;
-  handleShiftClick?: (e: any, index: number, slotGroup: string) => void;
+  handleShiftClick?: (e: any, index: number, slotGroup: SlotGroup) => void;
 }
 
 interface SlotSectionProps extends SlotProps {
   coords: Coord[];
-  slotGroup: string;
+  slotGroup: SlotGroup;
 }
 
 interface SingleSlotProps extends SlotProps {
   index: number;
   coord: Coord;
-  slotGroup: string;
+  slotGroup: SlotGroup;
 }
 
 const SingleSlot = ({
@@ -54,35 +58,42 @@ const SingleSlot = ({
   const slot = slots[index];
   if (!slot) return null;
 
+  const metrics = SLOT_METRICS[slotGroup];
+
   const maps = useEmojiMap();
   const { selectedSlots } = useAppSelector(selectPreset);
+  const { isPresetEditable } = useStorageMode();
 
   const entry = slot.id && maps ? maps.get(slot.id) : undefined;
-  const emojiUrl = entry && maps ? maps.getUrl(entry.id) ?? "" : "";
+  const emojiUrl = entry && maps ? (maps.getUrl(entry.id) ?? "") : "";
 
   const slotKey = `${slotGroup}:${index}`;
-  const slotIsSelected = selectedSlots.includes(slotKey);
+  const slotIsSelected = isPresetEditable && selectedSlots.includes(slotKey);
 
   const getClassName = () =>
-    `${slotGroup}-icon-container ${
-      slotIsSelected ? "selected" : ""
-    }`;
-
+    [
+      "preset-slots__slot",
+      `preset-slots__slot--${slotGroup}`,
+      emojiUrl ? "preset-slots__slot--filled" : "",
+      slotIsSelected ? "preset-slots__slot--selected" : "",
+      isPresetEditable ? "preset-slots__slot--editable" : "",
+    ]
+      .filter(Boolean)
+      .join(" ");
 
   const onSlotSelect = useCallback(
-    (e: React.MouseEvent<HTMLAreaElement>) => {
+    (e: React.MouseEvent<HTMLElement>) => {
+      if (!isPresetEditable) return;
+
       if (e.shiftKey && handleShiftClick) {
         handleShiftClick(e, index, slotGroup);
       } else {
         handleClickOpen(e, index, slotGroup);
       }
     },
-    [handleShiftClick, handleClickOpen, index, slotGroup]
+    [isPresetEditable, handleShiftClick, handleClickOpen, index, slotGroup],
   );
 
-  //
-  // DRAG SOURCE — unified type "SLOT_ITEM"
-  //
   const [{ opacity }, dragRef, dragPreview] = useDrag(
     () => ({
       type: "SLOT_ITEM",
@@ -91,64 +102,109 @@ const SingleSlot = ({
         index,
         id: slot.id,
       },
+      canDrag: isPresetEditable,
       collect: (monitor) => ({
         opacity: monitor.isDragging() ? 0.5 : 1,
       }),
     }),
-    [slotGroup, index, slot.id]
+    [slotGroup, index, slot.id, isPresetEditable],
   );
 
-  //
-  // DROP TARGET — accepts any SLOT_ITEM
-  //
   const [, dropRef] = useDrop(
     () => ({
       accept: "SLOT_ITEM",
+      canDrop: () => isPresetEditable,
       drop: (dragItem: { fromGroup: string; index: number; id: string }) => {
-        if (handleDragAndDrop) {
+        if (isPresetEditable && handleDragAndDrop) {
           handleDragAndDrop(dragItem, slotGroup, index);
         }
       },
     }),
-    [handleDragAndDrop, slotGroup, index]
+    [handleDragAndDrop, slotGroup, index, isPresetEditable],
   );
 
-  return (
+  const content = (
     <>
-      {emojiUrl && <DragPreviewImage connect={dragPreview} src={emojiUrl} />}
+      {isPresetEditable && emojiUrl && (
+        <DragPreviewImage connect={dragPreview} src={emojiUrl} />
+      )}
 
-      <div ref={dropRef} style={{ position: "relative" }}>
-        <div ref={dragRef}>
-          <area
-            shape="rect"
-            coords={`${coord.x1},${coord.y1},${coord.x2},${coord.y2}`}
-            title={entry?.name ?? ""}
-            style={{ cursor: "pointer", opacity, userSelect: "auto" }}
-            onClick={onSlotSelect}
-          />
+      <div
+        ref={isPresetEditable ? dropRef : undefined}
+        style={{ position: "relative" }}
+      >
+        <div ref={isPresetEditable ? dragRef : undefined}>
+          {isPresetEditable && (
+            <area
+              shape="rect"
+              coords={`${coord.x},${coord.y},${coord.x + metrics.slotBoxWidth},${coord.y + metrics.slotBoxHeight}`}
+              title=""
+              style={{
+                cursor: "pointer",
+                opacity,
+                userSelect: "auto",
+              }}
+              onClick={onSlotSelect}
+            />
+          )}
 
-          <div
-            className={getClassName()}
-            style={{
-              position: "absolute",
-              top: coord.y1,
-              left: coord.x1,
-              pointerEvents: "none",
-            }}
-          >
-            {emojiUrl && (
-              <img
-                className={`${slotGroup}-icon`}
-                src={emojiUrl}
-                alt={entry?.name ?? ""}
-              />
-            )}
-          </div>
-
+          {entry ? (
+            <Tooltip
+              title={entry.name}
+              placement="top"
+              arrow
+              disableInteractive
+              slotProps={tooltipSlotProps}
+              leaveDelay={0}
+            >
+              <div
+                className={getClassName()}
+                style={{
+                  position: "absolute",
+                  top: coord.y,
+                  left: coord.x,
+                  width: metrics.width,
+                  height: metrics.height,
+                  opacity,
+                  cursor: isPresetEditable ? "pointer" : "default",
+                }}
+                onClick={isPresetEditable ? onSlotSelect : undefined}
+              >
+                <img
+                  className={[
+                    "preset-slots__icon",
+                    slotGroup === "equipment"
+                      ? "preset-slots__icon--equipment"
+                      : "",
+                  ]
+                    .filter(Boolean)
+                    .join(" ")}
+                  src={emojiUrl}
+                  alt={entry.name}
+                />
+              </div>
+            </Tooltip>
+          ) : (
+            <div
+              className={getClassName()}
+              style={{
+                position: "absolute",
+                top: coord.y,
+                left: coord.x,
+                width: metrics.width,
+                height: metrics.height,
+                opacity,
+                cursor: isPresetEditable ? "pointer" : "default",
+              }}
+              onClick={isPresetEditable ? onSlotSelect : undefined}
+            />
+          )}
         </div>
       </div>
     </>
   );
+
+  return content;
 };
 
 const SlotSection = ({
@@ -178,11 +234,15 @@ const SlotSection = ({
 };
 
 export const Inventory = (props: SlotProps) => {
-  const coords = isMobile() ? inventoryCoordsMobile : inventoryCoords;
+  const isMobile = useMediaQuery("(max-width:900px)");
+  const coords = isMobile ? inventoryCoordsMobile : inventoryCoords;
+
   return <SlotSection {...props} coords={coords} slotGroup="inventory" />;
 };
 
 export const Equipment = (props: SlotProps) => {
-  const coords = isMobile() ? equipmentCoordsMobile : equipmentCoords;
+  const isMobile = useMediaQuery("(max-width:900px)");
+  const coords = isMobile ? equipmentCoordsMobile : equipmentCoords;
+
   return <SlotSection {...props} coords={coords} slotGroup="equipment" />;
 };

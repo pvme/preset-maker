@@ -1,0 +1,124 @@
+.preset-extras {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 8px 6px;
+}
+
+.preset-extras__title {
+  margin-bottom: 6px;
+  text-align: center;
+  line-height: 1.15;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.preset-extras__items {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+}
+
+.preset-extras--slots-3 .preset-extras__items {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.preset-extras--slots-1 .preset-extras__items {
+  grid-template-columns: 1fr;
+}
+
+.preset-extras__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  min-height: 56px;
+  padding: 6px 8px;
+  border-radius: 8px;
+  transition: background-color 0.15s ease;
+  background: rgb(255 255 255 / 1%);
+  border: 1px solid rgb(255 255 255 / 6%);
+}
+
+.preset-extras__item:hover {
+  background: rgb(255 255 255 / 5%);
+}
+
+.preset-extras--show-names .preset-extras__item {
+  flex-direction: column;
+  gap: 4px;
+}
+
+.preset-extras--icons-only .preset-extras__item {
+  flex-direction: row;
+  gap: 0;
+}
+
+.preset-extras__item-image {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  flex: 0 0 30px;
+}
+
+.preset-extras__item-name {
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 0.8rem;
+  line-height: 1.1;
+}
+
+.preset-extras__add {
+  opacity: 0.75;
+  transition: opacity 0.15s ease;
+}
+
+.preset-extras__item:hover .preset-extras__add {
+  opacity: 1;
+}
+
+.preset-extras__tooltip-anchor {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.preset-extras--editable .preset-extras__item {
+  cursor: pointer;
+}
+
+.preset-extras--readonly .preset-extras__item {
+  cursor: default;
+}
+
+@media (max-width: 900px) {
+  .preset-extras {
+    padding: 10px 4px;
+  }
+
+  .preset-extras__title {
+    margin-bottom: 4px;
+    font-size: 0.85rem;
+    line-height: 1.1;
+  }
+
+  .preset-extras__items {
+    gap: 4px;
+  }
+
+  .preset-extras__item {
+    min-height: 56px;
+    padding: 4px 6px;
+  }
+
+  .preset-extras__item-name {
+    font-size: 0.72rem;
+  }
+
+  .preset-extras--slots-3 .preset-extras__items {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

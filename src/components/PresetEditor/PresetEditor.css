@@ -1,35 +1,193 @@
-.relics-familiar-container {
+.preset-layout {
+  width: 100%;
+  max-width: 472px;
+  margin: 0 auto;
   display: flex;
-  justify-content: space-evenly;
+  flex-direction: column;
+  gap: 0px;
+}
+
+.preset-layout__slots {
+  width: 100%;
+}
+
+.preset-layout__panel {
+  position: relative;
+  overflow: visible;
+}
+
+.preset-layout__extras {
+  overflow: hidden;
+}
+
+.preset-layout__panel > *:not(.preset-layout__frame) {
+  position: relative;
+  z-index: 1;
+}
+
+.preset-layout__frame {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.preset-layout__frame-corner,
+.preset-layout__frame-edge {
+  position: absolute;
+  background-repeat: no-repeat;
+  image-rendering: pixelated;
+}
+
+.preset-layout__frame-corner {
+  z-index: 100;
+  width: 4px;
+  height: 4px;
+  background-image: var(--preset-frame-corner);
+  background-size: 4px 4px;
+  transform-origin: center;
+}
+
+.preset-layout__frame-corner--tl {
+  top: 0;
+  left: 0;
+}
+
+.preset-layout__frame-corner--tr {
+  top: 0;
+  right: 0;
+  transform: scaleX(-1);
+}
+
+.preset-layout__frame-corner--bl {
+  bottom: 0;
+  left: 0;
+  transform: scaleY(-1);
+}
+
+.preset-layout__frame-corner--br {
+  right: 0;
+  bottom: 0;
+  transform: scale(-1, -1);
+}
+
+.preset-layout__frame-edge--top,
+.preset-layout__frame-edge--bottom {
+  left: 4px;
+  width: calc(100% - 8px);
+  height: 4px;
+  background-image: var(--preset-frame-border-top);
+  background-size: 3px 4px;
+  background-repeat: repeat-x;
+}
+
+.preset-layout__frame-edge--top {
+  top: 0;
+}
+
+.preset-layout__frame-edge--bottom {
+  bottom: 0;
+  transform: scaleY(-1);
+  transform-origin: center;
+}
+
+.preset-layout__frame-edge--left,
+.preset-layout__frame-edge--right {
+  top: 4px;
+  width: 4px;
+  height: calc(100% - 8px);
+  background-image: var(--preset-frame-border-side);
+  background-size: 4px 3px;
+  background-repeat: repeat-y;
+}
+
+.preset-layout__frame-edge--left {
+  left: 0;
+}
+
+.preset-layout__frame-edge--right {
+  right: 0;
+  transform: scaleX(-1);
+  transform-origin: center;
+}
+
+.preset-layout__extras {
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 1fr);
+  grid-template-areas:
+    "relics familiar"
+    "ammo aspect";
+  gap: 10px 4px;
+  align-items: stretch;
   text-align: center;
-  background-image: url("https://img.pvme.io/images/HSATCDr.png");
-  padding: 4px;
-  border: 1px solid rgb(100, 100, 100, 0.5);
+  background-image: var(--preset-extras-bg);
+  padding: 8px;
 }
 
-.preset-container {
-  padding-bottom: 16px !important;
+.preset-layout__slots .preset-slots__mobile-image img,
+.preset-layout__slots > img {
+  display: block;
 }
 
-/* Mobile styling */
+.preset-layout__extras > :nth-child(2) {
+  grid-area: relics;
+}
 
-@media (max-width: 600px) {
+.preset-layout__extras > :nth-child(3) {
+  grid-area: familiar;
+}
+
+.preset-layout__extras > :nth-child(4) {
+  grid-area: aspect;
+}
+
+.preset-layout__extras > :nth-child(5) {
+  grid-area: ammo;
+}
+
+.preset-layout__content {
+  padding: 10px !important;
+}
+
+.preset-layout__content:last-child {
+  padding-bottom: 10px !important;
+}
+
+/* Tablet/Mobile styling */
+@media (max-width: 900px) {
   .preset-editor__card {
-    width: 100vw;
+    width: 100%;
   }
 
-  .preset-map-container {
+  .preset-layout {
+    max-width: 194px;
+  }
+
+  .preset-layout__slots {
     display: flex;
     justify-content: center;
   }
 
-  .preset-map {
+  .preset-slots {
     display: block;
-    width: 183px;
+    width: 194px;
   }
 
-  .relics-familiar-container {
-    max-width: 100vw;
-    flex-direction: column;
+  .preset-layout__extras {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-areas:
+      "relics relics"
+      "familiar aspect"
+      "ammo ammo";
+    gap: 0;
+    padding: 15px 5px;
+  }
+
+  .preset-layout__extras > :nth-child(2),
+  .preset-layout__extras > :nth-child(3),
+  .preset-layout__extras > :nth-child(4),
+  .preset-layout__extras > :nth-child(5) {
+    min-width: 0;
   }
 }

@@ -13,6 +13,26 @@ import {
   EMPTY_SAVED_PRESET,
 } from "../../schemas/saved-preset-data";
 
+function trimFilled(list: { id: string }[] | undefined, max?: number) {
+  const safe = Array.isArray(list) ? list : [];
+  const trimmed = safe.filter((item) => item?.id);
+  return typeof max === "number" ? trimmed.slice(0, max) : trimmed;
+}
+
+function toSavedPreset(preset: any): SavedPreset {
+  return {
+    presetName: preset?.presetName ?? "",
+    presetNotes: preset?.presetNotes ?? "",
+    inventorySlots: (preset?.inventorySlots ?? []).slice(0, 28),
+    equipmentSlots: (preset?.equipmentSlots ?? []).slice(0, 12),
+    familiar: preset?.familiar?.id ? { id: preset.familiar.id } : { id: "" },
+    relics: trimFilled(preset?.relics, 3),
+    aspect: preset?.aspect?.id ? { id: preset.aspect.id } : { id: "" },
+    AmmoSpells: trimFilled(preset?.AmmoSpells, 3),
+    breakdown: Array.isArray(preset?.breakdown) ? preset.breakdown : [],
+  };
+}
+
 export function usePresetSave({
   preset,
   presetName,
@@ -32,10 +52,6 @@ export function usePresetSave({
   const { beginGlobalSave, endGlobalSave } = useGlobalLoading();
   const [isSaving, setIsSaving] = useState(false);
 
-  /* ------------------------------------------------------------------------ */
-  /* Save EXISTING preset (respects mode)                                     */
-  /* ------------------------------------------------------------------------ */
-
   const save = useCallback(async () => {
     if (!id) return;
 
@@ -46,12 +62,10 @@ export function usePresetSave({
       const storage =
         mode === "cloud" ? CloudPresetStorage : LocalPresetStorage;
 
-      await storage.savePreset(preset as SavedPreset, id);
+      await storage.savePreset(toSavedPreset(preset), id);
 
       addRecentPreset({ presetId: id, presetName, source: mode });
-      setRecentList(
-        JSON.parse(localStorage.getItem("recentPresets") || "[]")
-      );
+      setRecentList(JSON.parse(localStorage.getItem("recentPresets") || "[]"));
 
       markClean();
       enqueueSnackbar("Preset saved!", { variant: "success" });
@@ -73,10 +87,6 @@ export function usePresetSave({
     setRecentList,
   ]);
 
-  /* ------------------------------------------------------------------------ */
-  /* Create NEW preset (duplicate) — ALWAYS local                              */
-  /* ------------------------------------------------------------------------ */
-
   const saveAs = useCallback(
     async (newName: string) => {
       setIsSaving(true);
@@ -84,7 +94,7 @@ export function usePresetSave({
 
       try {
         const payload: SavedPreset = {
-          ...preset,
+          ...toSavedPreset(preset),
           presetName: newName,
         };
 
@@ -97,7 +107,7 @@ export function usePresetSave({
         });
 
         setRecentList(
-          JSON.parse(localStorage.getItem("recentPresets") || "[]")
+          JSON.parse(localStorage.getItem("recentPresets") || "[]"),
         );
 
         markClean();
@@ -117,12 +127,8 @@ export function usePresetSave({
       endGlobalSave,
       markClean,
       setRecentList,
-    ]
+    ],
   );
-
-  /* ------------------------------------------------------------------------ */
-  /* Create NEW preset (fresh) — ALWAYS local                                  */
-  /* ------------------------------------------------------------------------ */
 
   const saveFresh = useCallback(
     async (newName: string) => {
@@ -144,7 +150,7 @@ export function usePresetSave({
         });
 
         setRecentList(
-          JSON.parse(localStorage.getItem("recentPresets") || "[]")
+          JSON.parse(localStorage.getItem("recentPresets") || "[]"),
         );
 
         markClean();
@@ -157,13 +163,7 @@ export function usePresetSave({
         endGlobalSave();
       }
     },
-    [
-      enqueueSnackbar,
-      beginGlobalSave,
-      endGlobalSave,
-      markClean,
-      setRecentList,
-    ]
+    [enqueueSnackbar, beginGlobalSave, endGlobalSave, markClean, setRecentList],
   );
 
   return {

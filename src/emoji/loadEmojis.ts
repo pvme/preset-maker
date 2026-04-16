@@ -7,8 +7,7 @@ import { SLOT_LABEL_TO_PRESET_SLOT } from "../components/PresetEditor/equipmentS
 let cached: EmojiMaps | null = null;
 let loadingPromise: Promise<EmojiMaps> | null = null;
 
-const EMOJI_URL =
-  "https://raw.githubusercontent.com/pvme/pvme-settings/refs/heads/master/emojis/emojis_v2.json";
+const EMOJI_URL = `https://raw.githubusercontent.com/pvme/pvme-settings/refs/heads/master/emojis/emojis_v2.json?v=${Date.now()}`;
 
 const PVME_CDN = "https://img.pvme.io/images/";
 const DISCORD_CDN = "https://cdn.discordapp.com/emojis/";
@@ -18,7 +17,7 @@ export async function loadEmojis(): Promise<EmojiMaps> {
   if (loadingPromise) return loadingPromise;
 
   loadingPromise = (async () => {
-    const res = await fetch(EMOJI_URL);
+    const res = await fetch(EMOJI_URL, { cache: "no-store" });
     const json = await res.json();
 
     // Flatten categories → array of EmojiEntry
@@ -92,9 +91,7 @@ export async function loadEmojis(): Promise<EmojiMaps> {
       }
 
       if (e.image) {
-        return e.image.startsWith("http")
-          ? e.image
-          : `${PVME_CDN}${e.image}`;
+        return e.image.startsWith("http") ? e.image : `${PVME_CDN}${e.image}`;
       }
 
       return undefined;

@@ -1,0 +1,51 @@
+.preset-page {
+  width: 100%;
+}
+
+.preset-page__menu {
+  margin-bottom: 16px;
+}
+
+.preset-page__top {
+  margin-bottom: 24px;
+}
+
+.preset-page__bottom {
+  margin-bottom: 24px;
+}
+
+.preset-page__info {
+  min-width: 0;
+  z-index: 1;
+  flex: 1 1 0;
+}
+
+.preset-page__editor {
+  z-index: 5;
+  flex: 0 0 auto;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.623);
+}
+
+.preset-page__top-grid {
+  align-items: flex-start;
+  flex-wrap: nowrap;
+}
+
+@media (max-width: 900px) {
+  .preset-page__top-grid {
+    flex-direction: column;
+    align-items: stretch;
+    flex-wrap: wrap;
+  }
+
+  .preset-page__info {
+    order: 1;
+    width: 100%;
+    margin-bottom: 16px;
+  }
+
+  .preset-page__editor {
+    order: 2;
+    width: 100%;
+  }
+}

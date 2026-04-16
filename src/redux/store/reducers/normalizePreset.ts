@@ -14,17 +14,14 @@ export async function normalizePreset(raw: any): Promise<Preset> {
 
   function migrateEquipmentSlotIndex(index: number): number | null {
     if (!usesLegacyAuraLayout) return index;
-
-    // Legacy layout:
-    // 0..10 unchanged, 11 = aura (drop), 12 = pocket -> 11
     if (index === 11) return null;
     if (index > 11) return index - 1;
     return index;
   }
 
-  function migrateLegacyBreakdown(raw: any): BreakdownEntry[] {
-    if (Array.isArray(raw?.breakdown) && raw.breakdown.length > 0) {
-      return raw.breakdown.flatMap((entry: any) => {
+  function migrateLegacyBreakdown(rawInput: any): BreakdownEntry[] {
+    if (Array.isArray(rawInput?.breakdown) && rawInput.breakdown.length > 0) {
+      return rawInput.breakdown.flatMap((entry: any) => {
         if (entry?.slotType !== "equipment") {
           return [entry];
         }
@@ -43,7 +40,7 @@ export async function normalizePreset(raw: any): Promise<Preset> {
 
     const breakdown: BreakdownEntry[] = [];
 
-    raw?.inventorySlots?.forEach((slot: any, index: number) => {
+    rawInput?.inventorySlots?.forEach((slot: any, index: number) => {
       if (
         typeof slot?.breakdownNotes === "string" &&
         slot.breakdownNotes.trim()
@@ -56,7 +53,7 @@ export async function normalizePreset(raw: any): Promise<Preset> {
       }
     });
 
-    raw?.equipmentSlots?.forEach((slot: any, index: number) => {
+    rawInput?.equipmentSlots?.forEach((slot: any, index: number) => {
       const nextIndex = migrateEquipmentSlotIndex(index);
       if (nextIndex === null) return;
 
@@ -87,13 +84,26 @@ export async function normalizePreset(raw: any): Promise<Preset> {
     return { id: resolved ?? "" };
   }
 
+  function migrateSlotArray(input: any, max?: number) {
+    const arr = Array.isArray(input) ? input.map(migrateSlot) : [];
+    return typeof max === "number" ? arr.slice(0, max) : arr;
+  }
+
   const rawEquipmentSlots: any[] = Array.isArray(raw?.equipmentSlots)
     ? raw.equipmentSlots
     : [];
 
   const migratedEquipmentSlots = rawEquipmentSlots
     .map(migrateSlot)
-    .filter((slot, index: number) => migrateEquipmentSlotIndex(index) !== null);
+    .filter((_, index: number) => migrateEquipmentSlotIndex(index) !== null);
+
+  const legacyPrimaryFamiliar = Array.isArray(raw?.familiars?.primaryFamiliars)
+    ? raw.familiars.primaryFamiliars[0]
+    : undefined;
+
+  const legacyPrimaryRelics = Array.isArray(raw?.relics?.primaryRelics)
+    ? raw.relics.primaryRelics
+    : [];
 
   const migrated = {
     presetName: raw?.presetName,
@@ -105,23 +115,20 @@ export async function normalizePreset(raw: any): Promise<Preset> {
 
     equipmentSlots: migratedEquipmentSlots,
 
-    relics: {
-      primaryRelics: Array.isArray(raw?.relics?.primaryRelics)
-        ? raw.relics.primaryRelics.map(migrateSlot)
-        : [],
-      alternativeRelics: Array.isArray(raw?.relics?.alternativeRelics)
-        ? raw.relics.alternativeRelics.map(migrateSlot)
-        : [],
-    },
+    familiar: raw?.familiar
+      ? migrateSlot(raw.familiar)
+      : legacyPrimaryFamiliar
+        ? migrateSlot(legacyPrimaryFamiliar)
+        : { id: "" },
 
-    familiars: {
-      primaryFamiliars: Array.isArray(raw?.familiars?.primaryFamiliars)
-        ? raw.familiars.primaryFamiliars.map(migrateSlot)
-        : [],
-      alternativeFamiliars: Array.isArray(raw?.familiars?.alternativeFamiliars)
-        ? raw.familiars.alternativeFamiliars.map(migrateSlot)
-        : [],
-    },
+    relics:
+      Array.isArray(raw?.relics) && !raw?.relics?.primaryRelics
+        ? migrateSlotArray(raw.relics, 3)
+        : migrateSlotArray(legacyPrimaryRelics, 3),
+
+    aspect: raw?.aspect ? migrateSlot(raw.aspect) : { id: "" },
+
+    AmmoSpells: migrateSlotArray(raw?.AmmoSpells, 3),
 
     breakdown: migrateLegacyBreakdown(raw),
   };

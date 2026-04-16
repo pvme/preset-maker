@@ -10,7 +10,7 @@ export function usePresetJsonExport(preset: {
   inventorySlots: any[];
   equipmentSlots: any[];
   relics: any;
-  familiars: any;
+  familiar: any;
   breakdown: any[];
 }) {
   const exportJson = useCallback(() => {
@@ -20,14 +20,11 @@ export function usePresetJsonExport(preset: {
       inventorySlots: preset.inventorySlots,
       equipmentSlots: preset.equipmentSlots,
       relics: preset.relics,
-      familiars: preset.familiars,
+      familiar: preset.familiar,
       breakdown: preset.breakdown,
     });
 
-    exportAsJson(
-      `PRESET_${preset.presetName.replaceAll(" ", "_")}`,
-      str
-    );
+    exportAsJson(`PRESET_${preset.presetName.replaceAll(" ", "_")}`, str);
   }, [preset]);
 
   return {

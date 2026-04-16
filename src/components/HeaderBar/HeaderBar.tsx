@@ -1,29 +1,29 @@
-import { useSnackbar } from 'notistack';
-import React, { useCallback, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useSnackbar } from "notistack";
+import React, { useCallback, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import IconButton from '@mui/material/IconButton';
-import useTheme from '@mui/material/styles/useTheme';
-import useMediaQuery from '@mui/material/useMediaQuery';
-import Stack from '@mui/material/Stack';
-import Tooltip from '@mui/material/Tooltip';
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
+import IconButton from "@mui/material/IconButton";
+import useTheme from "@mui/material/styles/useTheme";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import Stack from "@mui/material/Stack";
+import Tooltip from "@mui/material/Tooltip";
 
-import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
+import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
 
-import './HeaderBar.css';
-import { HelpDialog } from '../HelpDialog/HelpDialog';
+import "./HeaderBar.css";
+import { HelpDialog } from "../HelpDialog/HelpDialog";
 
 import { getAuth, signInWithCustomToken } from "../../utility/firebase-init";
 
 export const HeaderBar = (): JSX.Element => {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const navigate = useNavigate();
   const [helpDialogOpen, setHelpDialogOpen] = useState<boolean>(false);
   const { enqueueSnackbar } = useSnackbar();
@@ -31,7 +31,7 @@ export const HeaderBar = (): JSX.Element => {
   const [username, setUsername] = React.useState<string | null>(null);
 
   const onHomeClick = useCallback(() => {
-    navigate('/');
+    navigate("/");
     navigate(0);
   }, [navigate]);
 
@@ -81,7 +81,7 @@ export const HeaderBar = (): JSX.Element => {
         window.history.replaceState({}, "", cleanUrl);
 
         // Extract username from claims
-        auth.currentUser?.getIdTokenResult().then(r => {
+        auth.currentUser?.getIdTokenResult().then((r) => {
           const uname = (r.claims as any).username;
           setUsername(typeof uname === "string" ? uname : null);
         });
@@ -99,7 +99,9 @@ export const HeaderBar = (): JSX.Element => {
     const err = url.searchParams.get("auth_error");
 
     if (err === "unauthorised") {
-      enqueueSnackbar("You're not authorised to access admin features.", { variant: "error" });
+      enqueueSnackbar("You're not authorised to access admin features.", {
+        variant: "error",
+      });
 
       url.searchParams.delete("auth_error");
       window.history.replaceState({}, "", url.toString());
@@ -122,23 +124,19 @@ export const HeaderBar = (): JSX.Element => {
   return (
     <>
       <Box className="header-bar">
-        <AppBar 
-          position="sticky" 
-          className="header-bar__app-bar"
-          elevation={2}
-        >
+        <AppBar position="sticky" className="header-bar__app-bar" elevation={2}>
           <Container maxWidth="xl">
-            <Toolbar 
-              disableGutters 
+            <Toolbar
+              disableGutters
               className="header-bar__toolbar"
-              sx={{ 
+              sx={{
                 minHeight: { xs: 64, sm: 80 },
-                px: { xs: 1, sm: 2 }
+                px: { xs: 1, sm: 2 },
               }}
             >
-              <Stack 
-                direction="row" 
-                alignItems="center" 
+              <Stack
+                direction="row"
+                alignItems="center"
                 spacing={1}
                 className="header-bar__logo-section"
               >
@@ -156,7 +154,7 @@ export const HeaderBar = (): JSX.Element => {
                       className="header-bar__logo-image"
                       sx={{
                         width: { xs: 60, sm: 80 },
-                        height: { xs: 60, sm: 80 }
+                        height: { xs: 60, sm: 80 },
                       }}
                     />
                   </IconButton>
@@ -164,25 +162,25 @@ export const HeaderBar = (): JSX.Element => {
               </Stack>
 
               <Typography
-                variant={isMobile ? 'h6' : 'h5'}
+                variant={isMobile ? "h6" : "h5"}
                 component="h1"
                 className="header-bar__title"
                 sx={{
-                  fontFamily: 'monospace',
+                  fontFamily: "monospace",
                   fontWeight: 600,
                   flexGrow: 1,
-                  textAlign: { xs: 'center', md: 'left' },
-                  ml: { xs: 0, md: 2 }
+                  textAlign: { xs: "center", md: "left" },
+                  ml: { xs: 0, md: 2 },
                 }}
               >
                 PvME Preset Generator
               </Typography>
 
               <Box className="header-bar__actions">
-
                 {username ? (
                   <Typography
                     variant="body2"
+                    className="header-bar__username"
                     sx={{ opacity: 0.7, mr: 2 }}
                   >
                     Logged in as {username}
@@ -190,6 +188,7 @@ export const HeaderBar = (): JSX.Element => {
                 ) : (
                   <Tooltip title="Admin Login">
                     <IconButton
+                      className="header-bar__admin-button"
                       onClick={() => {
                         window.location.href =
                           "https://authstartv2-bi6xdqcqpq-uc.a.run.app?redirect=" +
@@ -208,7 +207,7 @@ export const HeaderBar = (): JSX.Element => {
                     onClick={handleHelpOpen}
                     className="header-bar__help-button"
                     color="inherit"
-                    size={isMobile ? 'small' : 'medium'}
+                    size={isMobile ? "small" : "medium"}
                   >
                     <HelpOutlineIcon />
                   </IconButton>
@@ -218,11 +217,8 @@ export const HeaderBar = (): JSX.Element => {
           </Container>
         </AppBar>
       </Box>
-      
-      <HelpDialog
-        open={helpDialogOpen}
-        onClose={handleHelpClose}
-      />
+
+      <HelpDialog open={helpDialogOpen} onClose={handleHelpClose} />
     </>
   );
 };

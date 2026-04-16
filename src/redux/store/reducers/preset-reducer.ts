@@ -6,8 +6,6 @@ import { SlotType } from "../../../schemas/slot-type";
 import { type BreakdownEntry } from "../../../schemas/breakdown";
 import { type Preset } from "../../../schemas/preset";
 import { type Item } from "../../../schemas/item-data";
-import { type Familiar } from "../../../schemas/familiar";
-import { type Relic } from "../../../schemas/relic";
 import { type ApplicationState } from "../store";
 
 interface PresetState extends Preset {
@@ -18,8 +16,6 @@ interface PresetState extends Preset {
 }
 
 const blankItem = (): Item => ({ id: "" });
-const blankFamiliar = (): Familiar => ({ id: "" });
-const blankRelic = (): Relic => ({ id: "" });
 
 const initialState: PresetState = {
   presetName: "",
@@ -28,15 +24,10 @@ const initialState: PresetState = {
   inventorySlots: Array.from({ length: 28 }, blankItem),
   equipmentSlots: Array.from({ length: 12 }, blankItem),
 
-  familiars: {
-    primaryFamiliars: Array.from({ length: 1 }, blankFamiliar),
-    alternativeFamiliars: Array.from({ length: 3 }, blankFamiliar),
-  },
-
-  relics: {
-    primaryRelics: Array.from({ length: 3 }, blankRelic),
-    alternativeRelics: Array.from({ length: 3 }, blankRelic),
-  },
+  familiar: blankItem(),
+  relics: [],
+  aspect: blankItem(),
+  AmmoSpells: [],
 
   breakdown: [],
 
@@ -98,6 +89,35 @@ function moveBreakdownEntry(
   }
 }
 
+function upsertListItem(
+  list: Item[],
+  index: number,
+  value: Item | null,
+  max: number,
+): Item[] {
+  const next = [...list];
+  const item = value ?? blankItem();
+
+  while (next.length <= index) {
+    next.push(blankItem());
+  }
+
+  next[index] = item;
+
+  return next
+    .slice(0, max)
+    .filter(
+      (entry, i) => entry.id || i <= highestFilledIndex(next.slice(0, max)),
+    );
+}
+
+function highestFilledIndex(list: Item[]): number {
+  for (let i = list.length - 1; i >= 0; i -= 1) {
+    if (list[i]?.id) return i;
+  }
+  return -1;
+}
+
 export const presetSlice = createSlice({
   name: "preset",
   initialState,
@@ -138,6 +158,7 @@ export const presetSlice = createSlice({
       const tmp = state.inventorySlots[sourceIndex];
       state.inventorySlots[sourceIndex] = state.inventorySlots[targetIndex];
       state.inventorySlots[targetIndex] = tmp;
+
       const a = state.breakdown.find(
         (b) => b.slotType === "inventory" && b.slotIndex === sourceIndex,
       );
@@ -181,36 +202,36 @@ export const presetSlice = createSlice({
       moveBreakdownEntry(state.breakdown, fromType, fromIndex, toType, toIndex);
     },
 
-    setPrimaryRelic: (
-      state,
-      action: PayloadAction<{ index: number; value: Relic | null }>,
-    ) => {
-      state.relics.primaryRelics[action.payload.index] =
-        action.payload.value ?? blankRelic();
+    setFamiliar: (state, action: PayloadAction<Item | null>) => {
+      state.familiar = action.payload ?? blankItem();
     },
 
-    setAlternativeRelic: (
-      state,
-      action: PayloadAction<{ index: number; value: Relic | null }>,
-    ) => {
-      state.relics.alternativeRelics[action.payload.index] =
-        action.payload.value ?? blankRelic();
+    setAspect: (state, action: PayloadAction<Item | null>) => {
+      state.aspect = action.payload ?? blankItem();
     },
 
-    setPrimaryFamiliar: (
+    setRelic: (
       state,
-      action: PayloadAction<{ index: number; value: Familiar | null }>,
+      action: PayloadAction<{ index: number; value: Item | null }>,
     ) => {
-      state.familiars.primaryFamiliars[action.payload.index] =
-        action.payload.value ?? blankFamiliar();
+      state.relics = upsertListItem(
+        state.relics,
+        action.payload.index,
+        action.payload.value,
+        3,
+      );
     },
 
-    setAlternativeFamiliar: (
+    setAmmoSpells: (
       state,
-      action: PayloadAction<{ index: number; value: Familiar | null }>,
+      action: PayloadAction<{ index: number; value: Item | null }>,
     ) => {
-      state.familiars.alternativeFamiliars[action.payload.index] =
-        action.payload.value ?? blankFamiliar();
+      state.AmmoSpells = upsertListItem(
+        state.AmmoSpells,
+        action.payload.index,
+        action.payload.value,
+        3,
+      );
     },
 
     setBreakdownEntry: (state, action: PayloadAction<BreakdownEntry>) => {
@@ -256,8 +277,10 @@ export const presetSlice = createSlice({
       state.presetNotes = action.payload.presetNotes;
       state.inventorySlots = action.payload.inventorySlots;
       state.equipmentSlots = action.payload.equipmentSlots;
+      state.familiar = action.payload.familiar;
       state.relics = action.payload.relics;
-      state.familiars = action.payload.familiars;
+      state.aspect = action.payload.aspect;
+      state.AmmoSpells = action.payload.AmmoSpells;
       state.breakdown = action.payload.breakdown;
       state.selectedSlots = [];
     },
@@ -299,10 +322,10 @@ export const {
   swapInventorySlots,
   moveSlot,
   setEquipmentSlot,
-  setPrimaryRelic,
-  setAlternativeRelic,
-  setPrimaryFamiliar,
-  setAlternativeFamiliar,
+  setFamiliar,
+  setAspect,
+  setRelic,
+  setAmmoSpells,
   setBreakdownEntry,
   removeBreakdownEntry,
   importDataAction,

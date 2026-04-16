@@ -1,6 +1,7 @@
-// src/components/Menu.tsx
+// src/components/PresetMenu.tsx
 
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
+import useMediaQuery from "@mui/material/useMediaQuery";
 import { useParams, useNavigate } from "react-router-dom";
 import { useSnackbar } from "notistack";
 
@@ -13,18 +14,20 @@ import {
   MenuItem,
   Divider,
   Tooltip,
-  Chip,
   CircularProgress,
   ListItemIcon,
   ListItemText,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogContentText,
+  DialogActions,
 } from "@mui/material";
 
 import {
   Save as SaveIcon,
   Add as AddIcon,
   ArrowDropDown,
-  Warning as WarningIcon,
-  Check as CheckIcon,
   Cloud as CloudIcon,
   Link as LinkIcon,
   ContentCopy as ContentCopyIcon,
@@ -62,24 +65,9 @@ import { usePresetJsonImport } from "./usePresetJsonImport";
 
 import { FunctionURLs } from "../../api/function-urls";
 
-import "./Menu.css";
+import "./PresetMenu.css";
 
-/* ---------------------------------------------
-   Status Chip
---------------------------------------------- */
-
-const StatusChip = ({ isDirty }: { isDirty: boolean | null }) => {
-  if (isDirty === null) return null;
-  return (
-    <Chip
-      icon={isDirty ? <WarningIcon /> : <CheckIcon />}
-      label={isDirty ? "Unsaved Changes" : "Saved"}
-      color={isDirty ? "warning" : "success"}
-      variant="outlined"
-      size="small"
-    />
-  );
-};
+import { tooltipSlotProps } from "../Tooltip/tooltipStyles";
 
 /* ---------------------------------------------
    Component
@@ -93,11 +81,13 @@ export const PresetMenu = (): JSX.Element => {
   const preset = useAppSelector(selectPreset);
   const { presetName } = preset;
 
-  const { mode, setMode } = useStorageMode();
+  const { mode, setMode, isPresetEditable } = useStorageMode();
   const { isLoggedIn } = useAuth();
 
   const { recentList, refresh, setRecentList } = useRecentPresets();
   const { isDirty, markClean } = usePresetDirtyState(preset);
+
+  const isMobile = useMediaQuery("(max-width:900px)");
 
   const { save, saveAs, saveFresh, isSaving } = usePresetSave({
     preset,
@@ -110,6 +100,7 @@ export const PresetMenu = (): JSX.Element => {
 
   const [recentSelection, setRecentSelection] = useState("");
   const [saveAsOpen, setSaveAsOpen] = useState(false);
+  const [uploadConfirmOpen, setUploadConfirmOpen] = useState(false);
   const [anchorExport, setAnchorExport] = useState<null | HTMLElement>(null);
   const [isUploading, setIsUploading] = useState(false);
 
@@ -142,34 +133,91 @@ export const PresetMenu = (): JSX.Element => {
     return null;
   })();
 
+  const handleUploadToCloud = async () => {
+    if (isUploading || !id) return;
+
+    setUploadConfirmOpen(false);
+    setAnchorExport(null);
+    setIsUploading(true);
+
+    try {
+      const newId = await CloudPresetStorage.savePreset(preset as any);
+
+      localStorage.removeItem(`preset:${id}`);
+      removeRecentPreset(id);
+
+      addRecentPreset({
+        presetId: newId,
+        presetName,
+        source: "cloud",
+      });
+
+      setRecentSelection("");
+      refresh();
+
+      setMode("cloud");
+      navigate(`/${newId}`);
+      enqueueSnackbar("Uploaded to cloud", {
+        variant: "success",
+      });
+    } catch (err: any) {
+      enqueueSnackbar(
+        err?.message ? `Upload failed: ${err.message}` : "Upload failed",
+        { variant: "error" },
+      );
+    } finally {
+      setIsUploading(false);
+    }
+  };
+
   return (
     <Paper className="preset-menu__paper">
-      <Grid container justifyContent="space-between" sx={{ mt: 2, p: 2 }}>
-        <Grid item>
-          <Stack direction="row" spacing={3}>
-            <Button
-              startIcon={<AddIcon />}
-              variant="contained"
-              onClick={() => setSaveAsOpen(true)}
-            >
-              New Preset
-            </Button>
+      <Grid
+        container
+        justifyContent="space-between"
+        className="preset-menu"
+        sx={{ mt: 2, p: 2 }}
+      >
+        <Grid item className="preset-menu__primary">
+          <Stack
+            direction="row"
+            spacing={2}
+            className="preset-menu__primary-actions"
+          >
+            {!isMobile && (
+              <Button
+                className="preset-menu__new-button"
+                startIcon={<AddIcon />}
+                variant="contained"
+                onClick={() => setSaveAsOpen(true)}
+              >
+                New Preset
+              </Button>
+            )}
 
-            <RecentPresetDropdown
-              selected={recentSelection}
-              onSelect={(p) => {
-                if (!p.presetId) return;
-                loadRecent(p);
-              }}
-              items={recentList}
-              onRemoved={refresh}
-            />
+            <div className="preset-menu__recent">
+              <RecentPresetDropdown
+                selected={recentSelection}
+                onSelect={(p) => {
+                  if (!p.presetId) return;
+                  loadRecent(p);
+                }}
+                items={recentList}
+                onRemoved={refresh}
+              />
+            </div>
           </Stack>
         </Grid>
 
-        <Grid item>
-          <Stack direction="row" spacing={3} alignItems="center">
+        <Grid item className="preset-menu__secondary">
+          <Stack
+            direction="row"
+            spacing={2}
+            alignItems="center"
+            className="preset-menu__secondary-actions"
+          >
             <Button
+              className="preset-menu__menu-button"
               onClick={(e) => setAnchorExport(e.currentTarget)}
               endIcon={<ArrowDropDown />}
             >
@@ -182,53 +230,29 @@ export const PresetMenu = (): JSX.Element => {
               onClose={() => setAnchorExport(null)}
               disableScrollLock
             >
+              {isMobile && (
+                <>
+                  <MenuItem
+                    onClick={() => {
+                      setAnchorExport(null);
+                      setSaveAsOpen(true);
+                    }}
+                  >
+                    <ListItemIcon>
+                      <AddIcon fontSize="small" />
+                    </ListItemIcon>
+                    <ListItemText primary="New Preset" />
+                  </MenuItem>
+                  <Divider />
+                </>
+              )}
               {mode === "local" && id && (
                 <>
                   <MenuItem
                     disabled={isUploading}
-                    onClick={async () => {
+                    onClick={() => {
                       if (isUploading) return;
-
-                      setAnchorExport(null);
-                      setIsUploading(true);
-
-                      try {
-                        const newId = await CloudPresetStorage.savePreset(
-                          preset as any,
-                        );
-
-                        // remove local preset storage
-                        localStorage.removeItem(`preset:${id}`);
-
-                        // remove old local preset from recents
-                        removeRecentPreset(id);
-
-                        // add new cloud preset
-                        addRecentPreset({
-                          presetId: newId,
-                          presetName,
-                          source: "cloud",
-                        });
-
-                        // refresh dropdown state
-                        setRecentSelection("");
-                        refresh();
-
-                        setMode("cloud");
-                        navigate(`/${newId}`);
-                        enqueueSnackbar("Uploaded to cloud", {
-                          variant: "success",
-                        });
-                      } catch (err: any) {
-                        enqueueSnackbar(
-                          err?.message
-                            ? `Upload failed: ${err.message}`
-                            : "Upload failed",
-                          { variant: "error" },
-                        );
-                      } finally {
-                        setIsUploading(false);
-                      }
+                      setUploadConfirmOpen(true);
                     }}
                   >
                     <ListItemIcon>
@@ -319,25 +343,27 @@ export const PresetMenu = (): JSX.Element => {
               </MenuItem>
             </Menu>
 
-            <Tooltip
-              title={saveDisabledReason ?? ""}
-              disableHoverListener={!saveDisabledReason}
-              arrow
-            >
-              <span>
-                <Button
-                  onClick={() => (id ? save() : setSaveAsOpen(true))}
-                  disabled={!isDirty || isSaving || !canSave}
-                  startIcon={isSaving ? undefined : <SaveIcon />}
-                  variant="contained"
-                  color="success"
-                >
-                  {isSaving ? <CircularProgress size={20} /> : "Save"}
-                </Button>
-              </span>
-            </Tooltip>
-
-            <StatusChip isDirty={isDirty} />
+            {isPresetEditable && (
+              <Tooltip
+                title={saveDisabledReason ?? ""}
+                disableHoverListener={!saveDisabledReason}
+                arrow
+                slotProps={tooltipSlotProps}
+              >
+                <span>
+                  <Button
+                    className="preset-menu__save-button"
+                    onClick={() => (id ? save() : setSaveAsOpen(true))}
+                    disabled={!isDirty || isSaving || !canSave}
+                    startIcon={isSaving ? undefined : <SaveIcon />}
+                    variant="contained"
+                    color="success"
+                  >
+                    {isSaving ? <CircularProgress size={20} /> : "Save"}
+                  </Button>
+                </span>
+              </Tooltip>
+            )}
           </Stack>
         </Grid>
       </Grid>
@@ -359,6 +385,40 @@ export const PresetMenu = (): JSX.Element => {
         }}
         onClose={() => setSaveAsOpen(false)}
       />
+
+      <Dialog
+        open={uploadConfirmOpen}
+        onClose={() => setUploadConfirmOpen(false)}
+        fullWidth
+        maxWidth="sm"
+      >
+        <DialogTitle>Upload to Cloud</DialogTitle>
+
+        <DialogContent>
+          <DialogContentText>
+            Once uploaded, this preset will become read-only for most users. To
+            make changes, you will need to either:
+          </DialogContentText>
+
+          <DialogContentText sx={{ mt: 2 }}>
+            1. Duplicate via the "New Preset" button; or
+            <br />
+            2. Ask a PvME Editing Staff member to update it for you
+          </DialogContentText>
+        </DialogContent>
+
+        <DialogActions>
+          <Button onClick={() => setUploadConfirmOpen(false)}>Cancel</Button>
+          <Button
+            onClick={handleUploadToCloud}
+            variant="contained"
+            startIcon={isUploading ? undefined : <CloudIcon />}
+            disabled={isUploading}
+          >
+            {isUploading ? <CircularProgress size={20} /> : "Upload to Cloud"}
+          </Button>
+        </DialogActions>
+      </Dialog>
     </Paper>
   );
 };

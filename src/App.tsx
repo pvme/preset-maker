@@ -2,18 +2,15 @@
 
 import React, { useEffect, useState } from "react";
 import { HTML5Backend } from "react-dnd-html5-backend";
-import { DndProvider } from "react-dnd";  // Move this down
+import { DndProvider } from "react-dnd";
 import { HeaderBar } from "./components/HeaderBar/HeaderBar";
-import { PresetSection } from "./components/PresetSection/PresetSection";
+import { PresetPage } from "./components/PresetPage/PresetPage";
 import { AuthProvider } from "./auth/AuthContext";
 import {
   GlobalLoadingProvider,
   useGlobalLoading,
 } from "./storage/GlobalLoadingContext";
-import {
-  PresetLoadProvider,
-  usePresetLoad,
-} from "./storage/PresetLoadContext";
+import { PresetLoadProvider, usePresetLoad } from "./storage/PresetLoadContext";
 import { useSnackbar } from "notistack";
 import { useParams } from "react-router-dom";
 import { useAppDispatch } from "./redux/hooks";
@@ -56,13 +53,13 @@ function AppContent(): JSX.Element {
     if (isPresetLoading) {
       const interval = setInterval(() => {
         setLoadingProgress((prev) =>
-          prev >= 90 ? prev : prev + Math.random() * 15
+          prev >= 90 ? prev : prev + Math.random() * 15,
         );
       }, 100);
       return () => clearInterval(interval);
-    } else {
-      setLoadingProgress(0);
     }
+
+    setLoadingProgress(0);
   }, [isPresetLoading]);
 
   useEffect(() => {
@@ -81,7 +78,7 @@ function AppContent(): JSX.Element {
 
     setIsPresetLoading(true);
     setLoadingPhrase(
-      loadingPhrases[Math.floor(Math.random() * loadingPhrases.length)]
+      loadingPhrases[Math.floor(Math.random() * loadingPhrases.length)],
     );
 
     loadPresetById(id)
@@ -89,12 +86,19 @@ function AppContent(): JSX.Element {
         if (signal.aborted) return;
 
         dispatch(importDataAction(data));
-
         setLoadingProgress(100);
-        setTimeout(() => setIsPresetLoading(false), 300);
+
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            if (!signal.aborted) {
+              setIsPresetLoading(false);
+            }
+          });
+        });
       })
       .catch((err) => {
         if (signal.aborted) return;
+
         enqueueSnackbar(`Preset not found for ID ${id}`, { variant: "error" });
         console.error("Failed to load preset", err);
         setIsPresetLoading(false);
@@ -109,13 +113,14 @@ function AppContent(): JSX.Element {
     <div className="app-container">
       <div className="background-gradient"></div>
 
-      <div className="floating-shapes">
-        <div className="shape shape-1"></div>
-        <div className="shape shape-2"></div>
-        <div className="shape shape-3"></div>
-      </div>
+      <DndProvider backend={HTML5Backend}>
+        <div className="app-content">
+          <HeaderBar />
+          <PresetPage />
+        </div>
+      </DndProvider>
 
-      {showOverlay ? (
+      {showOverlay && (
         <div className="loading-container">
           <div className="loading-card">
             <div className="loading-spinner-wrapper">
@@ -153,13 +158,6 @@ function AppContent(): JSX.Element {
             </div>
           </div>
         </div>
-      ) : (
-        <DndProvider backend={HTML5Backend}>
-          <div className="app-content">
-            <HeaderBar />
-            <PresetSection />
-          </div>
-        </DndProvider>
       )}
     </div>
   );

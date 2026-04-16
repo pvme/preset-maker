@@ -14,7 +14,6 @@ import {
   Tooltip,
   FormControlLabel,
   Checkbox,
-  Divider,
 } from "@mui/material";
 import Autocomplete from "@mui/material/Autocomplete";
 
@@ -24,14 +23,12 @@ import { SlotType } from "../../schemas/slot-type";
 
 import "./EmojiSelectDialog.css";
 
-const MIN_QUERY_LENGTH = 2;
-
 export interface EmojiSelectDialogProps {
   open: boolean;
   onClose: () => void;
   onSelect: (ids: string[]) => void;
 
-  slotType: SlotType | "relic" | "familiar";
+  slotType: SlotType;
   slotIndex: number;
   slotKey: string;
   selectedIndices: string[];
@@ -74,7 +71,6 @@ export const EmojiSelectDialog = (
 
   const { ready, options, filterOptions, filterRecent, dialogTitle } = filter;
 
-  const canSearch = inputValue.length >= MIN_QUERY_LENGTH;
   const isReady = ready && maps;
 
   const handleSelect = useCallback(
@@ -147,7 +143,6 @@ export const EmojiSelectDialog = (
           <Typography>Loading…</Typography>
         ) : (
           <div className="dialog__layout">
-            {/* SEARCH */}
             <div className="dialog__search">
               <Autocomplete
                 value={null}
@@ -155,12 +150,12 @@ export const EmojiSelectDialog = (
                 autoHighlight
                 filterSelectedOptions
                 disableListWrap
-                options={canSearch ? options : []}
+                options={options}
                 onChange={onChange}
                 filterOptions={filterOptions}
                 inputValue={inputValue}
                 onInputChange={(_, value) => setInputValue(value)}
-                open={listOpen && canSearch}
+                open={listOpen}
                 onOpen={() => setListOpen(true)}
                 onClose={(_, reason) => {
                   if (reason === "escape") {
@@ -169,7 +164,7 @@ export const EmojiSelectDialog = (
                   }
                   setListOpen(false);
                 }}
-                noOptionsText={`Type ${MIN_QUERY_LENGTH}+ characters`}
+                noOptionsText="No matching emojis"
                 isOptionEqualToValue={(o, v) => o.id === v.id}
                 getOptionLabel={(o) => maps?.get(o.id)?.name ?? ""}
                 renderOption={renderOption}
@@ -181,20 +176,14 @@ export const EmojiSelectDialog = (
                     placeholder="Search…"
                     onFocus={() => {
                       setExpanded(true);
-                      if (canSearch) setListOpen(true);
+                      setListOpen(true);
                     }}
                     onBlur={() => setExpanded(false)}
-                    helperText={
-                      !canSearch
-                        ? `Type at least ${MIN_QUERY_LENGTH}+ characters`
-                        : undefined
-                    }
                   />
                 )}
               />
             </div>
 
-            {/* OPTIONS */}
             {onToggleMultiFill && (
               <div className="dialog__options">
                 <FormControlLabel
@@ -210,43 +199,37 @@ export const EmojiSelectDialog = (
               </div>
             )}
 
-            {/* RECENT */}
             {recentlySelected.length > 0 && (
-              <>
-                <div className="dialog__recent">
-                  <Typography
-                    variant="caption"
-                    className="dialog__recent-title"
-                  >
-                    RECENT
-                  </Typography>
+              <div className="dialog__recent">
+                <Typography variant="caption" className="dialog__recent-title">
+                  RECENT
+                </Typography>
 
-                  <div className="dialog__recent-grid">
-                    {recentlySelected
-                      .filter((i) => filterRecent(i.id))
-                      .map((item) => {
-                        const entry = maps?.get(item.id);
-                        if (!entry) return null;
+                <div className="dialog__recent-grid">
+                  {recentlySelected
+                    .filter((i) => filterRecent(i.id))
+                    .map((item) => {
+                      const entry = maps?.get(item.id);
+                      if (!entry) return null;
 
-                        return (
-                          <Tooltip key={entry.id} title={entry.name}>
-                            <Button
-                              className="recent-item-button"
-                              startIcon={
-                                <Avatar
-                                  variant="square"
-                                  src={maps?.getUrl(entry.id) ?? undefined}
-                                  className="recent-item-image"
-                                />
-                              }
-                              onClick={() => handleSelect(entry.id)}
-                            />
-                          </Tooltip>
-                        );
-                      })}
-                  </div>
+                      return (
+                        <Tooltip key={entry.id} title={entry.name}>
+                          <Button
+                            className="recent-item-button"
+                            startIcon={
+                              <Avatar
+                                variant="square"
+                                src={maps?.getUrl(entry.id) ?? undefined}
+                                className="recent-item-image"
+                              />
+                            }
+                            onClick={() => handleSelect(entry.id)}
+                          />
+                        </Tooltip>
+                      );
+                    })}
                 </div>
-              </>
+              </div>
             )}
           </div>
         )}

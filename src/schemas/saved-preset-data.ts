@@ -2,48 +2,47 @@
 
 import { type BreakdownEntry } from "./breakdown";
 import { type Item } from "./item-data";
-import { type Relics } from "./relic";
-import { type Familiars } from "./familiar";
 
-export interface SavedPreset {
+export interface LegacySavedPreset {
   presetId?: string;
-
   presetName: string;
   presetNotes: string;
-
   inventorySlots: Item[];
   equipmentSlots: Item[];
-
-  relics: Relics;
-  familiars: Familiars;
-
+  relics?: {
+    primaryRelics?: Item[];
+    alternativeRelics?: Item[];
+  };
+  familiars?: {
+    primaryFamiliars?: Item[];
+    alternativeFamiliars?: Item[];
+  };
   breakdown: BreakdownEntry[];
-
-  // legacy field — retained only for compatibility when loading old presets,
-  // but NEVER saved any more
   presetImage?: string;
 }
 
-/* -------------------------------------------------------------------------- */
-/* Canonical empty preset (MUST match reducer shape)                          */
-/* -------------------------------------------------------------------------- */
+export interface SavedPreset {
+  presetId?: string;
+  presetName: string;
+  presetNotes: string;
+  inventorySlots: Item[];
+  equipmentSlots: Item[];
+  familiar?: Item;
+  relics?: Item[];
+  aspect?: Item;
+  AmmoSpells?: Item[];
+  breakdown: BreakdownEntry[];
+  presetImage?: string;
+}
 
 export const EMPTY_SAVED_PRESET: SavedPreset = {
   presetName: "",
   presetNotes: "",
-
   inventorySlots: Array.from({ length: 28 }, () => ({ id: "" })),
   equipmentSlots: Array.from({ length: 12 }, () => ({ id: "" })),
-
-  relics: {
-    primaryRelics: Array.from({ length: 3 }, () => ({ id: "" })),
-    alternativeRelics: Array.from({ length: 3 }, () => ({ id: "" })),
-  },
-
-  familiars: {
-    primaryFamiliars: Array.from({ length: 1 }, () => ({ id: "" })),
-    alternativeFamiliars: Array.from({ length: 3 }, () => ({ id: "" })),
-  },
-
+  familiar: { id: "" },
+  relics: [],
+  aspect: { id: "" },
+  AmmoSpells: [],
   breakdown: [],
 };

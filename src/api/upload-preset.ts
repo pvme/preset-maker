@@ -14,16 +14,13 @@ interface UploadPresetResponse {
 
 export async function uploadPreset(
   data: SavedPreset,
-  id?: string
+  id?: string,
 ): Promise<UploadPresetResponse> {
-  // Defensive clone to avoid mutating caller state
   const payload = structuredClone(data);
 
-  // Safety: normalise slot lengths
-  payload.equipmentSlots = (payload.equipmentSlots ?? []).slice(0, 14);
+  payload.equipmentSlots = (payload.equipmentSlots ?? []).slice(0, 12);
   payload.inventorySlots = (payload.inventorySlots ?? []).slice(0, 28);
 
-  // Safety: legacy field must never be persisted
   delete payload.presetImage;
 
   const url = `${FunctionURLs.uploadPreset}${id ? `?id=${encodeURIComponent(id)}` : ""}`;
@@ -41,17 +38,13 @@ export async function uploadPreset(
   return response.data;
 }
 
-/**
- * Trigger image regeneration without changing preset identity.
- * Preset payload is cleaned but otherwise identical to uploadPreset.
- */
 export async function getPresetImageUrl(
   preset: SavedPreset,
-  id: string
+  id: string,
 ): Promise<string> {
   const payload = structuredClone(preset);
 
-  payload.equipmentSlots = (payload.equipmentSlots ?? []).slice(0, 14);
+  payload.equipmentSlots = (payload.equipmentSlots ?? []).slice(0, 12);
   payload.inventorySlots = (payload.inventorySlots ?? []).slice(0, 28);
   delete payload.presetImage;
 

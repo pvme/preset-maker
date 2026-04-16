@@ -1,57 +1,61 @@
-# preset-maker
+# Preset Maker
 
-A web app for building RS3 presets and inventories, built with Vite.
+A PvME web app for building, editing, and sharing RuneScape 3 presets.
 
-Production URL: https://pvme.github.io/preset-maker/
+🌐 https://pvme.github.io/preset-maker/
 
-## Getting started
+This app is the front-end part of a trio, alongside https://github.com/pvme/preset-maker-storage and https://github.com/pvme/preset-maker-api
 
-Install dependencies:
+Emojis are pulled from https://github.com/pvme/pvme-settings/blob/master/emojis/emojis_v2.json
 
-```sh
-yarn install
-```
+---
 
-Run a local development front-end server connected to a local back-end server:
+## Overview
 
-```sh
-yarn run dev
-```
+* Build full presets (inventory, equipment, relics, familiar, etc.)
+* Drag & drop items between slots
+* Add notes (per-slot and overall)
+* Search items via emoji + fuzzy search
+* Export as image or JSON
+* Share via cloud links
 
-Run a local development front-end server connected to the production back-end server:
+---
 
-```sh
-yarn run dev:prod
-```
+## Storage Modes
 
-Build & push to repo (branch: gh-pages)
+**Local**
 
-```sh
-npm run deploy
-```
+* Stored in browser
+* Fully editable
 
-## Sorting JSON
+**Cloud**
 
-To sort everything:
+* Stored remotely
+* Read-only for most users
+* Duplicate to edit or ask PvME Editing Staff
 
-```sh
-yarn run sort-all
-```
+---
 
-To sort new items:
+## Tech Stack
 
-```sh
-yarn run sort-items
-```
+React • TypeScript • Vite • MUI • Redux Toolkit
+React DnD • Firebase • react-contenteditable
 
-To sort new relics:
+---
 
-```sh
-yarn run sort-relics
-```
+## Getting Started
 
-To sort new familiars:
+Install:
+`npm install`
 
-```sh
-yarn run sort-familiars
-```
+Run locally:
+`npm run dev`
+
+Run against production backend:
+`npm run dev:prod`
+
+Build:
+`npm run build`
+
+Deploy:
+`npm run deploy`
