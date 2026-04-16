@@ -30,7 +30,7 @@ export interface SavedPreset {
   familiar?: Item;
   relics?: Item[];
   aspect?: Item;
-  AmmoSpells?: Item[];
+  ammoSpells?: Item[];
   breakdown: BreakdownEntry[];
   presetImage?: string;
 }
@@ -43,6 +43,6 @@ export const EMPTY_SAVED_PRESET: SavedPreset = {
   familiar: { id: "" },
   relics: [],
   aspect: { id: "" },
-  AmmoSpells: [],
+  ammoSpells: [],
   breakdown: [],
 };

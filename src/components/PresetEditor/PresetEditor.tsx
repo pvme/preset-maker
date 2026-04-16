@@ -64,7 +64,7 @@ export const PresetEditor = (): JSX.Element => {
     familiar,
     relics,
     aspect,
-    AmmoSpells,
+    ammoSpells,
     slotType,
     selectedSlots,
     slotIndex,
@@ -377,7 +377,7 @@ export const PresetEditor = (): JSX.Element => {
               <PresetExtras
                 title="Ammo / Spells"
                 slotType={SlotType.AmmoSpells}
-                items={AmmoSpells}
+                items={ammoSpells}
                 maxItems={3}
                 setItem={setAmmoSpells}
                 showNames

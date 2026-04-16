@@ -28,7 +28,7 @@ function toSavedPreset(preset: any): SavedPreset {
     familiar: preset?.familiar?.id ? { id: preset.familiar.id } : { id: "" },
     relics: trimFilled(preset?.relics, 3),
     aspect: preset?.aspect?.id ? { id: preset.aspect.id } : { id: "" },
-    AmmoSpells: trimFilled(preset?.AmmoSpells, 3),
+    ammoSpells: trimFilled(preset?.ammoSpells, 3),
     breakdown: Array.isArray(preset?.breakdown) ? preset.breakdown : [],
   };
 }

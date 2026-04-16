@@ -45,7 +45,7 @@ export const presetSchema = z.object({
     z.array(singleSlotSchema).max(3).default([]),
   ),
   aspect: singleSlotSchema.default({ id: "" }),
-  AmmoSpells: z.preprocess(
+  ammoSpells: z.preprocess(
     (val) => normalizeMax(val as any[], 3),
     z.array(singleSlotSchema).max(3).default([]),
   ),
@@ -63,6 +63,6 @@ export const blankPreset: Preset = {
   familiar: { id: "" },
   relics: [],
   aspect: { id: "" },
-  AmmoSpells: [],
+  ammoSpells: [],
   breakdown: [],
 };

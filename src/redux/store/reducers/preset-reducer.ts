@@ -27,7 +27,7 @@ const initialState: PresetState = {
   familiar: blankItem(),
   relics: [],
   aspect: blankItem(),
-  AmmoSpells: [],
+  ammoSpells: [],
 
   breakdown: [],
 
@@ -226,8 +226,8 @@ export const presetSlice = createSlice({
       state,
       action: PayloadAction<{ index: number; value: Item | null }>,
     ) => {
-      state.AmmoSpells = upsertListItem(
-        state.AmmoSpells,
+      state.ammoSpells = upsertListItem(
+        state.ammoSpells,
         action.payload.index,
         action.payload.value,
         3,
@@ -280,7 +280,7 @@ export const presetSlice = createSlice({
       state.familiar = action.payload.familiar;
       state.relics = action.payload.relics;
       state.aspect = action.payload.aspect;
-      state.AmmoSpells = action.payload.AmmoSpells;
+      state.ammoSpells = action.payload.ammoSpells;
       state.breakdown = action.payload.breakdown;
       state.selectedSlots = [];
     },
