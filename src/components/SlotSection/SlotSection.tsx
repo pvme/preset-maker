@@ -18,21 +18,29 @@ import { useEmojiMap } from "../../hooks/useEmojiMap";
 import { useAppSelector } from "../../redux/hooks";
 import { selectPreset } from "../../redux/store/reducers/preset-reducer";
 import { useStorageMode } from "../../storage/StorageModeContext";
-
 import { tooltipSlotProps } from "../Tooltip/tooltipStyles";
+
 import "./SlotSection.css";
 
 type SlotGroup = "inventory" | "equipment";
 
 interface SlotProps {
   slots: ItemData[];
-  handleClickOpen: (e: any, index: number, slotGroup: SlotGroup) => void;
+  handleClickOpen: (
+    e: React.MouseEvent<HTMLElement>,
+    index: number,
+    slotGroup: SlotGroup,
+  ) => void;
   handleDragAndDrop?: (
     dragItem: { fromGroup: string; index: number; id: string },
     targetGroup: string,
     targetIndex: number,
   ) => void;
-  handleShiftClick?: (e: any, index: number, slotGroup: SlotGroup) => void;
+  handleShiftClick?: (
+    e: React.MouseEvent<HTMLElement>,
+    index: number,
+    slotGroup: SlotGroup,
+  ) => void;
 }
 
 interface SlotSectionProps extends SlotProps {
@@ -123,88 +131,81 @@ const SingleSlot = ({
     [handleDragAndDrop, slotGroup, index, isPresetEditable],
   );
 
-  const content = (
+  const setRefs = useCallback(
+    (node: HTMLDivElement | null) => {
+      if (!node) return;
+
+      if (isPresetEditable) {
+        dragRef(node);
+        dropRef(node);
+      }
+    },
+    [dragRef, dropRef, isPresetEditable],
+  );
+
+  const slotStyle: React.CSSProperties = {
+    position: "absolute",
+    top: coord.y,
+    left: coord.x,
+    width: metrics.width,
+    height: metrics.height,
+    opacity,
+    cursor: isPresetEditable ? "pointer" : "default",
+    zIndex: 2,
+    overflow: "visible",
+  };
+
+  const icon = entry ? (
+    <img
+      className={[
+        "preset-slots__icon",
+        slotGroup === "equipment" ? "preset-slots__icon--equipment" : "",
+      ]
+        .filter(Boolean)
+        .join(" ")}
+      src={emojiUrl}
+      alt={entry.name}
+      style={{
+        position: "relative",
+        zIndex: 3,
+        pointerEvents: "none",
+      }}
+    />
+  ) : null;
+
+  const slotNode = (
+    <div
+      ref={isPresetEditable ? setRefs : undefined}
+      className={getClassName()}
+      style={slotStyle}
+      onClick={isPresetEditable ? onSlotSelect : undefined}
+    >
+      {icon}
+    </div>
+  );
+
+  return (
     <>
       {isPresetEditable && emojiUrl && (
         <DragPreviewImage connect={dragPreview} src={emojiUrl} />
       )}
 
-      <div
-        ref={isPresetEditable ? dropRef : undefined}
-        style={{ position: "relative" }}
-      >
-        <div ref={isPresetEditable ? dragRef : undefined}>
-          {isPresetEditable && (
-            <area
-              shape="rect"
-              coords={`${coord.x},${coord.y},${coord.x + metrics.slotBoxWidth},${coord.y + metrics.slotBoxHeight}`}
-              title=""
-              style={{
-                cursor: "pointer",
-                opacity,
-                userSelect: "auto",
-              }}
-              onClick={onSlotSelect}
-            />
-          )}
-
-          {entry ? (
-            <Tooltip
-              title={entry.name}
-              placement="top"
-              arrow
-              disableInteractive
-              slotProps={tooltipSlotProps}
-              leaveDelay={0}
-            >
-              <div
-                className={getClassName()}
-                style={{
-                  position: "absolute",
-                  top: coord.y,
-                  left: coord.x,
-                  width: metrics.width,
-                  height: metrics.height,
-                  opacity,
-                  cursor: isPresetEditable ? "pointer" : "default",
-                }}
-                onClick={isPresetEditable ? onSlotSelect : undefined}
-              >
-                <img
-                  className={[
-                    "preset-slots__icon",
-                    slotGroup === "equipment"
-                      ? "preset-slots__icon--equipment"
-                      : "",
-                  ]
-                    .filter(Boolean)
-                    .join(" ")}
-                  src={emojiUrl}
-                  alt={entry.name}
-                />
-              </div>
-            </Tooltip>
-          ) : (
-            <div
-              className={getClassName()}
-              style={{
-                position: "absolute",
-                top: coord.y,
-                left: coord.x,
-                width: metrics.width,
-                height: metrics.height,
-                opacity,
-                cursor: isPresetEditable ? "pointer" : "default",
-              }}
-              onClick={isPresetEditable ? onSlotSelect : undefined}
-            />
-          )}
-        </div>
-      </div>
+      {entry ? (
+        <Tooltip
+          title={entry.name}
+          placement="top"
+          arrow
+          disableInteractive
+          slotProps={tooltipSlotProps}
+          leaveDelay={0}
+        >
+          {slotNode}
+        </Tooltip>
+      ) : (
+        slotNode
+      )}
     </>
   );
-
-  return content;
 };
 
 const SlotSection = ({

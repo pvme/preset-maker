@@ -45,8 +45,6 @@ import smallBackground from "../../assets/bg.png";
 import genericBackground from "../../assets/bg_large.png";
 import desktopPresetMapBackground from "../../assets/presetmap_desktop.png";
 import mobilePresetMapBackground from "../../assets/presetmap_mobile.png";
-import familiarIconPath from "../../assets/familiar.png";
-import relicIconPath from "../../assets/relic.png";
 import { useEmojiMap } from "../../hooks/useEmojiMap";
 
 import { UI_TO_PRESET_SLOT } from "./equipmentSlots";
@@ -91,7 +89,7 @@ export const PresetEditor = (): JSX.Element => {
 
   const handleSlotSelection = useCallback(
     (
-      _event: React.MouseEvent<HTMLAreaElement>,
+      _event: React.MouseEvent<HTMLElement>,
       index: number,
       slotGroup: string,
     ) => {
@@ -123,7 +121,7 @@ export const PresetEditor = (): JSX.Element => {
 
   const handleSlotOpen = useCallback(
     (
-      _event: React.MouseEvent<HTMLAreaElement | HTMLElement>,
+      _event: React.MouseEvent<HTMLElement>,
       index: number,
       slotGroup: string,
     ) => {
@@ -309,7 +307,25 @@ export const PresetEditor = (): JSX.Element => {
             >
               {panelFrame}
 
-              <map name="presetmap" className="preset-slots">
+              <div className="preset-slots">
+                {isCompactLayout ? (
+                  <div className="preset-slots__mobile-image">
+                    <img
+                      width={194}
+                      height={487}
+                      src={mobilePresetMapBackground}
+                      alt="preset mobile"
+                    />
+                  </div>
+                ) : (
+                  <img
+                    width={472}
+                    height={162}
+                    src={desktopPresetMapBackground}
+                    alt="preset"
+                  />
+                )}
+
                 <Inventory
                   slots={inventorySlots}
                   handleClickOpen={handleSlotOpen}
@@ -323,27 +339,7 @@ export const PresetEditor = (): JSX.Element => {
                   handleShiftClick={handleSlotSelection}
                   handleDragAndDrop={handleDragAndDrop}
                 />
-
-                {isCompactLayout ? (
-                  <div className="preset-slots__mobile-image">
-                    <img
-                      width={194}
-                      height={487}
-                      src={mobilePresetMapBackground}
-                      useMap="#presetmap"
-                      alt="preset mobile"
-                    />
-                  </div>
-                ) : (
-                  <img
-                    width={472}
-                    height={162}
-                    src={desktopPresetMapBackground}
-                    useMap="#presetmap"
-                    alt="preset"
-                  />
-                )}
-              </map>
+              </div>
             </div>
 
             <div className="preset-layout__extras preset-layout__panel">

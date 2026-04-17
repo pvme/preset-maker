@@ -111,6 +111,19 @@
   transform-origin: center;
 }
 
+.preset-slots {
+  position: relative;
+  display: block;
+  width: fit-content;
+}
+
+.preset-slots > img,
+.preset-slots__mobile-image img {
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+
 .preset-layout__extras {
   width: 100%;
   display: grid;
@@ -123,11 +136,6 @@
   text-align: center;
   background-image: var(--preset-extras-bg);
   padding: 8px;
-}
-
-.preset-layout__slots .preset-slots__mobile-image img,
-.preset-layout__slots > img {
-  display: block;
 }
 
 .preset-layout__extras > :nth-child(2) {

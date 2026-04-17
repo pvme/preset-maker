@@ -22,19 +22,15 @@ export const SLOT_METRICS = {
   inventory: {
     width: 38,
     height: 34,
-    slotBoxWidth: 36,
-    slotBoxHeight: 32,
   },
+
   equipment: {
     width: 32,
     height: 34,
-    slotBoxWidth: 32,
-    slotBoxHeight: 29,
   },
 } as const;
 
-/* Mobile version (desktop layout) */
-
+/* Desktop layout */
 export const inventoryCoords: Coord[] = createGridCoords(
   7, // startX
   7, // startY
@@ -53,7 +49,7 @@ export const equipmentCoords: Coord[] = createGridCoords(
   38, // stepY
 );
 
-/* Mobile version (vertical layout) */
+/* Mobile layout */
 export const inventoryCoordsMobile: Coord[] = createGridCoords(
   7,
   4,
@@ -66,26 +62,37 @@ export const inventoryCoordsMobile: Coord[] = createGridCoords(
 export const equipmentCoordsMobile: Coord[] = [
   // Helm
   { x: 85, y: 280 },
+
   // Cape
   { x: 45, y: 320 },
+
   // Necklace
   { x: 85, y: 320 },
+
   // Mainhand
   { x: 25, y: 360 },
+
   // Chest
   { x: 85, y: 360 },
+
   // Shield
   { x: 145, y: 360 },
+
   // Legs
   { x: 85, y: 400 },
+
   // Gloves
   { x: 25, y: 440 },
+
   // Boots
   { x: 85, y: 440 },
+
   // Ring
   { x: 145, y: 440 },
+
   // Ammo/rune pouch
   { x: 125, y: 320 },
+
   // Pocket slot
   { x: 125, y: 280 },
 ];
