@@ -22,7 +22,12 @@ export async function loadEmojis(): Promise<EmojiMaps> {
 
     // Flatten categories → array of EmojiEntry
     const all: EmojiEntry[] = [];
+
     for (const cat of json.categories) {
+      if (cat.name === "Slayer Creatures") {
+        continue;
+      }
+
       for (const e of cat.emojis) all.push(e);
     }
 
