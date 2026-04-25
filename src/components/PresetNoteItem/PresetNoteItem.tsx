@@ -38,7 +38,11 @@ export const PresetNoteItem = ({
   if (!emoji) return null;
 
   const imageUrl = emojiMap.getUrl(itemId);
-  const wikiName = emoji.name.replace(/ /g, "_");
+  const cleanName = emoji.name
+    .replace(/\s*\(stack(?: of [\d,]+)?\)$/i, "")
+    .trim();
+
+  const wikiName = cleanName.replace(/ /g, "_");
   const wikiUrl = `https://runescape.wiki/w/${encodeURIComponent(wikiName)}`;
 
   return (
