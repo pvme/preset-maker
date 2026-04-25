@@ -65,7 +65,6 @@ export const useEmojiFilter = ({ maps, slotType, slotIndex }: Params) => {
         if (slotType === SlotType.Inventory) {
           if (e.preset_slot === AURA_PRESET_SLOT) return false;
           if (e.preset_type === "relic") return false;
-          if (e.preset_type === "familiar") return false;
           if (e.preset_type === "aspect") return false;
           if (e.preset_type === "ammo") return false;
           if (e.preset_type === "spell") return false;
@@ -192,7 +191,6 @@ export const useEmojiFilter = ({ maps, slotType, slotIndex }: Params) => {
       if (slotType === SlotType.Inventory) {
         if (e.preset_slot === AURA_PRESET_SLOT) return false;
         if (e.preset_type === "relic") return false;
-        if (e.preset_type === "familiar") return false;
         if (e.preset_type === "aspect") return false;
         if (e.preset_type === "ammo") return false;
         if (e.preset_type === "spell") return false;
