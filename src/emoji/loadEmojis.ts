@@ -3,6 +3,7 @@
 import { EmojiEntry, EmojiMaps } from "./types";
 import { createIdResolver } from "./idResolver";
 import { SLOT_LABEL_TO_PRESET_SLOT } from "../components/PresetEditor/equipmentSlots";
+import { z } from "zod";
 
 let cached: EmojiMaps | null = null;
 let loadingPromise: Promise<EmojiMaps> | null = null;
@@ -12,23 +13,87 @@ const EMOJI_URL = `https://raw.githubusercontent.com/pvme/pvme-settings/refs/hea
 const PVME_CDN = "https://img.pvme.io/images/";
 const DISCORD_CDN = "https://cdn.discordapp.com/emojis/";
 
+const incomingEmojiJsonSchema = z
+  .object({
+    categories: z.array(
+      z
+        .object({
+          name: z.string().catch(""),
+          emojis: z.array(z.unknown()).catch([]),
+        })
+        .passthrough(),
+    ),
+  })
+  .passthrough();
+
+const incomingEmojiEntrySchema = z
+  .object({
+    id: z.string().trim().min(1),
+    name: z.string().trim().min(1),
+    image: z.string().optional().nullable(),
+    preset_type: z.string().optional().nullable(),
+    preset_slot: z.number().int().optional().nullable(),
+    emoji_id: z.string().optional().nullable(),
+    emoji_server: z.string().optional().nullable(),
+    id_aliases: z.array(z.unknown()).optional().default([]),
+  })
+  .passthrough();
+
+function normalizeOptionalString(value: string | null | undefined) {
+  const trimmed = value?.trim();
+  return trimmed || undefined;
+}
+
+function normalizePresetSlot(slot: number | null | undefined) {
+  return slot === 0 ? null : (slot ?? null);
+}
+
+function normalizeEmojiEntry(raw: unknown): EmojiEntry | null {
+  const parsed = incomingEmojiEntrySchema.safeParse(raw);
+  if (!parsed.success) return null;
+
+  const entry = parsed.data;
+  const aliases = Array.from(
+    new Set(
+      entry.id_aliases
+        .filter((alias): alias is string => typeof alias === "string")
+        .map((alias) => alias.trim().toLowerCase())
+        .filter(Boolean),
+    ),
+  );
+
+  return {
+    id: entry.id.toLowerCase(),
+    name: entry.name,
+    image: normalizeOptionalString(entry.image),
+    emoji_id: normalizeOptionalString(entry.emoji_id),
+    emoji_server: normalizeOptionalString(entry.emoji_server),
+    preset_type: normalizeOptionalString(entry.preset_type)?.toLowerCase(),
+    preset_slot: normalizePresetSlot(entry.preset_slot),
+    id_aliases: aliases.length ? aliases : undefined,
+  };
+}
+
 export async function loadEmojis(): Promise<EmojiMaps> {
   if (cached) return cached;
   if (loadingPromise) return loadingPromise;
 
   loadingPromise = (async () => {
     const res = await fetch(EMOJI_URL, { cache: "no-store" });
-    const json = await res.json();
+    const json = incomingEmojiJsonSchema.parse(await res.json());
 
     // Flatten categories → array of EmojiEntry
     const all: EmojiEntry[] = [];
 
     for (const cat of json.categories) {
-      if (cat.name === "Slayer Creatures") {
+      if (cat.name.trim() === "Slayer Creatures") {
         continue;
       }
 
-      for (const e of cat.emojis) all.push(e);
+      for (const rawEntry of cat.emojis) {
+        const entry = normalizeEmojiEntry(rawEntry);
+        if (entry) all.push(entry);
+      }
     }
 
     const resolver = createIdResolver(all);
@@ -48,7 +113,7 @@ export async function loadEmojis(): Promise<EmojiMaps> {
         emoji_id: e.emoji_id ?? undefined,
         emoji_server: e.emoji_server ?? undefined,
         preset_type: e.preset_type ?? undefined,
-        preset_slot: e.preset_slot ?? null,
+        preset_slot: normalizePresetSlot(e.preset_slot),
       };
 
       byId[id] = entry;
