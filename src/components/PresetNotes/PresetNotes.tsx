@@ -20,6 +20,7 @@ type DraftKey = `${"inventory" | "equipment"}-${number}`;
 interface NoteRow {
   key: DraftKey;
   itemId: string;
+  eofSpec?: string;
   slotType: "inventory" | "equipment";
   slotIndex: number;
   description: string;
@@ -58,6 +59,7 @@ export const PresetNotes = (): JSX.Element | null => {
         {
           key,
           itemId: slot.id,
+          eofSpec: slot.eof_spec,
           slotType: "inventory",
           slotIndex: index,
           description,
@@ -79,6 +81,7 @@ export const PresetNotes = (): JSX.Element | null => {
         {
           key,
           itemId: slot.id,
+          eofSpec: slot.eof_spec,
           slotType: "equipment",
           slotIndex: index,
           description,
@@ -122,6 +125,7 @@ export const PresetNotes = (): JSX.Element | null => {
                 key={row.key}
                 emojiMap={emojiMap}
                 itemId={row.itemId}
+                eofSpec={row.eofSpec}
                 description={row.description}
                 isEditable={isPresetEditable}
                 onCommit={(desc) => commit(row.slotType, row.slotIndex, desc)}
@@ -141,6 +145,7 @@ export const PresetNotes = (): JSX.Element | null => {
                 key={row.key}
                 emojiMap={emojiMap}
                 itemId={row.itemId}
+                eofSpec={row.eofSpec}
                 description={row.description}
                 isEditable={isPresetEditable}
                 onCommit={(desc) => commit(row.slotType, row.slotIndex, desc)}

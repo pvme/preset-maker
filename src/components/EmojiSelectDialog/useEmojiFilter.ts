@@ -18,6 +18,11 @@ interface Params {
   slotKey: string;
 }
 
+export interface EmojiFilterOption {
+  id: string;
+  eof_spec?: string;
+}
+
 const AURA_PRESET_SLOT = 8;
 const AMMO_PRESET_SLOT = 9;
 
@@ -48,7 +53,7 @@ export const useEmojiFilter = ({ maps, slotType, slotIndex }: Params) => {
     [slotType],
   );
 
-  const options = useMemo<{ id: string }[]>(() => {
+  const options = useMemo<EmojiFilterOption[]>(() => {
     if (!maps) return [];
 
     return all
@@ -89,7 +94,7 @@ export const useEmojiFilter = ({ maps, slotType, slotIndex }: Params) => {
   }, [maps, all, slotType, slotIndex, matchesSpecialType]);
 
   const filterOptions = useCallback(
-    (opts: { id: string }[], state: { inputValue: string }) => {
+    (opts: EmojiFilterOption[], state: { inputValue: string }) => {
       if (!maps) return opts.slice(0, MAX_VISIBLE_OPTIONS);
 
       const query = state.inputValue.trim().toLowerCase();
@@ -142,7 +147,7 @@ export const useEmojiFilter = ({ maps, slotType, slotIndex }: Params) => {
           (
             entry,
           ): entry is {
-            option: { id: string; name: string; eofSpec: string };
+            option: EmojiFilterOption & { name: string; eofSpec: string };
             totalScore: number;
             startsWithFirstToken: boolean;
           } => entry !== null,
@@ -167,7 +172,18 @@ export const useEmojiFilter = ({ maps, slotType, slotIndex }: Params) => {
         })
         .slice(0, MAX_VISIBLE_OPTIONS);
 
-      return ranked.map((entry) => ({ id: entry.option.id }));
+      return ranked.flatMap((entry) => {
+        const specMatchesQuery =
+          entry.option.eofSpec &&
+          tokens.some((token) => fuzzysort.single(token, entry.option.eofSpec));
+
+        return [
+          { id: entry.option.id },
+          ...(specMatchesQuery
+            ? [{ id: entry.option.id, eof_spec: entry.option.eofSpec }]
+            : []),
+        ];
+      });
     },
     [maps],
   );

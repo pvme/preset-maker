@@ -388,7 +388,7 @@ export const PresetEditor = (): JSX.Element => {
         open={dialogOpen}
         onClose={onDialogClose}
         onSelect={(ids) =>
-          changeSlot(selectedSlots as string[], { id: ids[0] })
+          changeSlot(selectedSlots as string[], ids[0] ?? { id: "" })
         }
         slotType={slotType}
         slotIndex={slotIndex}

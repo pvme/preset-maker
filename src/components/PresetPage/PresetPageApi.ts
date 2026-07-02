@@ -24,9 +24,13 @@ const unpackData = async (stored: any): Promise<SavedPresetData> => {
       slot?.name ?? // legacy
       slot ?? // string fallback
       "";
+    const eofSpec =
+      typeof slot?.eof_spec === "string" && slot.eof_spec.trim()
+        ? slot.eof_spec.trim()
+        : undefined;
 
     const resolved = emojis.resolve(raw.toString().toLowerCase());
-    return { id: resolved };
+    return { id: resolved, ...(eofSpec ? { eof_spec: eofSpec } : {}) };
   };
 
   return {

@@ -74,6 +74,7 @@ const SingleSlot = ({
 
   const entry = slot.id && maps ? maps.get(slot.id) : undefined;
   const emojiUrl = entry && maps ? (maps.getUrl(entry.id) ?? "") : "";
+  const displayName = slot.eof_spec ? `EoF (${slot.eof_spec})` : entry?.name;
 
   const slotKey = `${slotGroup}:${index}`;
   const slotIsSelected = isPresetEditable && selectedSlots.includes(slotKey);
@@ -164,7 +165,7 @@ const SingleSlot = ({
         .filter(Boolean)
         .join(" ")}
       src={emojiUrl}
-      alt={entry.name}
+      alt={displayName ?? entry.name}
       style={{
         position: "relative",
         zIndex: 3,
@@ -192,7 +193,7 @@ const SingleSlot = ({
 
       {entry ? (
         <Tooltip
-          title={entry.name}
+          title={displayName ?? entry.name}
           placement="top"
           arrow
           disableInteractive

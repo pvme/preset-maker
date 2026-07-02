@@ -75,13 +75,17 @@ export async function normalizePreset(raw: any): Promise<Preset> {
   function migrateSlot(slot: any) {
     const rawId =
       slot?.id ?? slot?.label ?? (typeof slot === "string" ? slot : "");
+    const eofSpec =
+      typeof slot?.eof_spec === "string" && slot.eof_spec.trim()
+        ? slot.eof_spec.trim()
+        : undefined;
 
     if (!rawId || typeof rawId !== "string") {
       return { id: "" };
     }
 
     const resolved = emojis.resolve(rawId.toLowerCase());
-    return { id: resolved ?? "" };
+    return { id: resolved ?? "", ...(eofSpec ? { eof_spec: eofSpec } : {}) };
   }
 
   function migrateSlotArray(input: any, max?: number) {

@@ -16,6 +16,10 @@ interface PresetState extends Preset {
 }
 
 const blankItem = (): Item => ({ id: "" });
+const storedItem = (item: Item): Item => ({
+  id: item.id,
+  ...(item.eof_spec ? { eof_spec: item.eof_spec } : {}),
+});
 
 const initialState: PresetState = {
   presetName: "",
@@ -136,18 +140,14 @@ export const presetSlice = createSlice({
       state,
       action: PayloadAction<{ index: number; value: Item }>,
     ) => {
-      state.inventorySlots[action.payload.index] = {
-        id: action.payload.value.id,
-      };
+      state.inventorySlots[action.payload.index] = storedItem(action.payload.value);
     },
 
     setEquipmentSlot: (
       state,
       action: PayloadAction<{ index: number; value: Item }>,
     ) => {
-      state.equipmentSlots[action.payload.index] = {
-        id: action.payload.value.id,
-      };
+      state.equipmentSlots[action.payload.index] = storedItem(action.payload.value);
     },
 
     swapInventorySlots: (

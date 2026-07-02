@@ -18,7 +18,7 @@ import {
 import Autocomplete from "@mui/material/Autocomplete";
 
 import { useEmojiMap } from "../../hooks/useEmojiMap";
-import { useEmojiFilter } from "./useEmojiFilter";
+import { useEmojiFilter, type EmojiFilterOption } from "./useEmojiFilter";
 import { SlotType } from "../../schemas/slot-type";
 
 import "./EmojiSelectDialog.css";
@@ -26,7 +26,7 @@ import "./EmojiSelectDialog.css";
 export interface EmojiSelectDialogProps {
   open: boolean;
   onClose: () => void;
-  onSelect: (ids: string[]) => void;
+  onSelect: (items: EmojiFilterOption[]) => void;
 
   slotType: SlotType;
   slotIndex: number;
@@ -74,9 +74,9 @@ export const EmojiSelectDialog = (
   const isReady = ready && maps;
 
   const handleSelect = useCallback(
-    (id: string) => {
+    (item: EmojiFilterOption) => {
       requestAnimationFrame(() => {
-        onSelect([id]);
+        onSelect([item]);
 
         if (multiFill) {
           setInputValue("");
@@ -90,14 +90,17 @@ export const EmojiSelectDialog = (
   );
 
   const onChange = useCallback(
-    (_event: unknown, value: { id: string } | null) => {
-      if (value) handleSelect(value.id);
+    (_event: unknown, value: EmojiFilterOption | null) => {
+      if (value) handleSelect(value);
     },
     [handleSelect],
   );
 
   const renderOption = useCallback(
-    (props: React.HTMLAttributes<HTMLLIElement>, option: { id: string }) => {
+    (
+      props: React.HTMLAttributes<HTMLLIElement>,
+      option: EmojiFilterOption,
+    ) => {
       if (!maps) return null;
 
       const entry = maps.get(option.id);
@@ -105,11 +108,12 @@ export const EmojiSelectDialog = (
 
       const url = maps.getUrl(entry.id) ?? undefined;
       const { key, ...safeProps } = props as any;
+      const label = option.eof_spec ? `EoF (${option.eof_spec})` : entry.name;
 
       return (
         <Box
           component="li"
-          key={entry.id}
+          key={`${entry.id}:${option.eof_spec ?? ""}`}
           {...safeProps}
           className="dialog__option"
         >
@@ -122,7 +126,7 @@ export const EmojiSelectDialog = (
               decoding="async"
             />
           )}
-          {entry.name}
+          {label}
         </Box>
       );
     },
@@ -144,7 +148,7 @@ export const EmojiSelectDialog = (
         ) : (
           <div className="dialog__layout">
             <div className="dialog__search">
-              <Autocomplete
+              <Autocomplete<EmojiFilterOption, false, false, false>
                 value={null}
                 disablePortal
                 autoHighlight
@@ -165,8 +169,16 @@ export const EmojiSelectDialog = (
                   setListOpen(false);
                 }}
                 noOptionsText="No matching emojis"
-                isOptionEqualToValue={(o, v) => o.id === v.id}
-                getOptionLabel={(o) => maps?.get(o.id)?.name ?? ""}
+                isOptionEqualToValue={(o, v) =>
+                  o.id === v.id && o.eof_spec === v.eof_spec
+                }
+                getOptionLabel={(o) => {
+                  const entry = maps?.get(o.id);
+                  if (!entry) return "";
+                  return o.eof_spec
+                    ? `EoF (${o.eof_spec})`
+                    : entry.name;
+                }}
                 renderOption={renderOption}
                 renderInput={(params) => (
                   <TextField
@@ -223,7 +235,7 @@ export const EmojiSelectDialog = (
                                 className="recent-item-image"
                               />
                             }
-                            onClick={() => handleSelect(entry.id)}
+                            onClick={() => handleSelect({ id: entry.id })}
                           />
                         </Tooltip>
                       );
@@ -242,7 +254,7 @@ export const EmojiSelectDialog = (
           onClick={() => {
             setListOpen(false);
             inputRef.current?.blur();
-            onSelect([""]);
+            onSelect([{ id: "" }]);
             onClose();
           }}
         >

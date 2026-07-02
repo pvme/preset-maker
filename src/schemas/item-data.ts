@@ -2,4 +2,5 @@
 
 export interface Item {
   id: string;
+  eof_spec?: string;
 }

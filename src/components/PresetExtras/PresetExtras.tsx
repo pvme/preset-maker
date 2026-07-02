@@ -64,9 +64,9 @@ export const PresetExtras = ({
   }, []);
 
   const onSelect = useCallback(
-    (ids: string[]) => {
-      const id = ids[0] ?? "";
-      const value = id ? { id } : null;
+    (items: Item[]) => {
+      const item = items[0] ?? { id: "" };
+      const value = item.id ? item : null;
 
       if (indexed) {
         dispatch(

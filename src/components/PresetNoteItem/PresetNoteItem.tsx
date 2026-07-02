@@ -13,6 +13,7 @@ interface Props {
   emojiMap: EmojiMaps;
   description: string;
   itemId: string;
+  eofSpec?: string;
   isEditable: boolean;
   onCommit: (description: string) => void;
 }
@@ -21,10 +22,26 @@ const noopContentEditableChange = (_event: ContentEditableEvent) => {};
 const noopFocus: React.FocusEventHandler<HTMLElement> = () => {};
 const noopBlur: React.FocusEventHandler<HTMLElement> = () => {};
 
+function getLegacyEofSpec(name: string) {
+  const prefixMatch = name.match(/^EoF(?:\s*\([^)]+\))?\s*-\s*(.+)$/i);
+  if (prefixMatch) return normalizeLegacyEofSpec(prefixMatch[1]);
+
+  const suffixMatch = name.match(/^(.+?)\s+EoF$/i);
+  if (suffixMatch) return normalizeLegacyEofSpec(suffixMatch[1]);
+
+  return undefined;
+}
+
+function normalizeLegacyEofSpec(value: string) {
+  const trimmed = value.trim();
+  return /^[A-Z0-9]+$/.test(trimmed) ? trimmed.toLowerCase() : trimmed;
+}
+
 export const PresetNoteItem = ({
   emojiMap,
   description,
   itemId,
+  eofSpec,
   isEditable,
   onCommit,
 }: Props): JSX.Element | null => {
@@ -42,12 +59,16 @@ export const PresetNoteItem = ({
     .replace(/\s*\(stack(?: of [\d,]+)?\)$/i, "")
     .trim();
 
-  const wikiName = (
-    emoji.eof_spec ??
-    (emoji.name.toLowerCase().startsWith("essence of finality amulet")
-      ? "Essence of Finality amulet"
-      : cleanName)
-  ).replace(/ /g, "_");
+  const legacyEofSpec = eofSpec ?? getLegacyEofSpec(cleanName);
+  const displayName = eofSpec ? `EoF (${eofSpec})` : emoji.name;
+  const isEof =
+    emoji.name.toLowerCase().startsWith("essence of finality amulet") ||
+    emoji.name.toLowerCase().startsWith("essence of finality") ||
+    /^EoF\b/i.test(emoji.name) ||
+    /\bEoF$/i.test(emoji.name);
+
+  const wikiTarget = legacyEofSpec ?? (isEof ? "Essence of Finality amulet" : cleanName);
+  const wikiName = wikiTarget.replace(/ /g, "_");
   const wikiUrl = `https://runescape.wiki/w/${encodeURIComponent(wikiName)}`;
 
   return (
@@ -55,12 +76,12 @@ export const PresetNoteItem = ({
       <Box className="preset-notes__item-meta">
         {imageUrl && (
           <div className="preset-notes__item-media">
-            <img src={imageUrl} alt={emoji.name} width={38} />
+            <img src={imageUrl} alt={displayName} width={38} />
           </div>
         )}
 
         <Box className="preset-notes__item-text">
-          <span>{emoji.name}</span>
+          <span>{displayName}</span>
           <Link
             href={wikiUrl}
             target="_blank"

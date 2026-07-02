@@ -5,10 +5,12 @@ import { BreakdownEntrySchema } from "./breakdown";
 
 const itemSchema = z.object({
   id: z.string().default(""),
+  eof_spec: z.string().optional(),
 });
 
 const singleSlotSchema = z.object({
   id: z.string().default(""),
+  eof_spec: z.string().optional(),
 });
 
 function normalize<T>(arr: T[] | undefined, len: number, blank: () => T): T[] {
