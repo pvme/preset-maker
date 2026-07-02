@@ -9,6 +9,7 @@ export interface EmojiEntry {
   emoji_id?: string;
   emoji_server?: string;
   id_aliases?: string[];
+  eof_spec?: string;
 }
 
 export interface EmojiMaps {

@@ -42,7 +42,12 @@ export const PresetNoteItem = ({
     .replace(/\s*\(stack(?: of [\d,]+)?\)$/i, "")
     .trim();
 
-  const wikiName = cleanName.replace(/ /g, "_");
+  const wikiName = (
+    emoji.eof_spec ??
+    (emoji.name.toLowerCase().startsWith("essence of finality amulet")
+      ? "Essence of Finality amulet"
+      : cleanName)
+  ).replace(/ /g, "_");
   const wikiUrl = `https://runescape.wiki/w/${encodeURIComponent(wikiName)}`;
 
   return (

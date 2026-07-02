@@ -97,6 +97,7 @@ export const useEmojiFilter = ({ maps, slotType, slotIndex }: Params) => {
       const enriched = opts.map((o) => ({
         ...o,
         name: maps.get(o.id)?.name ?? "",
+        eofSpec: maps.get(o.id)?.eof_spec ?? "",
       }));
 
       if (!query) {
@@ -111,20 +112,18 @@ export const useEmojiFilter = ({ maps, slotType, slotIndex }: Params) => {
         .map((option) => {
           const name = option.name.toLowerCase();
           const id = option.id.toLowerCase();
+          const eofSpec = option.eofSpec.toLowerCase();
 
           let totalScore = 0;
 
           for (const token of tokens) {
             const nameMatch = fuzzysort.single(token, name);
             const idMatch = fuzzysort.single(token, id);
+            const eofSpecMatch = fuzzysort.single(token, eofSpec);
 
-            const bestMatch = !nameMatch
-              ? idMatch
-              : !idMatch
-                ? nameMatch
-                : nameMatch.score > idMatch.score
-                  ? nameMatch
-                  : idMatch;
+            const bestMatch = [nameMatch, idMatch, eofSpecMatch]
+              .filter((match): match is Fuzzysort.Result => match !== null)
+              .sort((a, b) => b.score - a.score)[0];
 
             if (!bestMatch) return null;
 
@@ -143,7 +142,7 @@ export const useEmojiFilter = ({ maps, slotType, slotIndex }: Params) => {
           (
             entry,
           ): entry is {
-            option: { id: string; name: string };
+            option: { id: string; name: string; eofSpec: string };
             totalScore: number;
             startsWithFirstToken: boolean;
           } => entry !== null,
