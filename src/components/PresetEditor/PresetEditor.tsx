@@ -71,6 +71,7 @@ export const PresetEditor = (): JSX.Element => {
   const recentItems = useAppSelector(selectRecentItems);
 
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [dialogTargetSlots, setDialogTargetSlots] = useState<string[]>([]);
   const [multiFill, setMultiFill] = useState(false);
 
   const panelFrame = (
@@ -139,6 +140,7 @@ export const PresetEditor = (): JSX.Element => {
       if (isAlreadySelected && hasMultiSelection) {
         dispatch(updateSlotKey(key));
         dispatch(updateSlotIndex(index));
+        setDialogTargetSlots(selectedSlots);
         setDialogOpen(true);
         return;
       }
@@ -147,6 +149,7 @@ export const PresetEditor = (): JSX.Element => {
       dispatch(toggleSlotSelection(key));
       dispatch(updateSlotKey(key));
       dispatch(updateSlotIndex(index));
+      setDialogTargetSlots([key]);
       setDialogOpen(true);
     },
     [dispatch, selectedSlots],
@@ -246,6 +249,7 @@ export const PresetEditor = (): JSX.Element => {
 
   const onDialogClose = useCallback(() => {
     setDialogOpen(false);
+    setDialogTargetSlots([]);
     dispatch(clearSelectedSlots());
   }, [dispatch]);
 
@@ -267,12 +271,14 @@ export const PresetEditor = (): JSX.Element => {
 
       if (!multiFill) {
         dispatch(clearSelectedSlots());
+        setDialogTargetSlots([]);
         return;
       }
 
       const nextKey = getNextSlotKey(indices[0]);
       if (!nextKey) {
         dispatch(clearSelectedSlots());
+        setDialogTargetSlots([]);
         return;
       }
 
@@ -281,6 +287,7 @@ export const PresetEditor = (): JSX.Element => {
       dispatch(toggleSlotSelection(nextKey));
       dispatch(updateSlotKey(nextKey));
       dispatch(updateSlotIndex(Number(raw)));
+      setDialogTargetSlots([nextKey]);
     },
     [dispatch, multiFill, getNextSlotKey],
   );
@@ -388,7 +395,10 @@ export const PresetEditor = (): JSX.Element => {
         open={dialogOpen}
         onClose={onDialogClose}
         onSelect={(ids) =>
-          changeSlot(selectedSlots as string[], ids[0] ?? { id: "" })
+          changeSlot(
+            dialogTargetSlots.length ? dialogTargetSlots : selectedSlots,
+            ids[0] ?? { id: "" },
+          )
         }
         slotType={slotType}
         slotIndex={slotIndex}
