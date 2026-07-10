@@ -14,6 +14,7 @@ import {
 
 import { type Coord } from "../../schemas/coord";
 import { type Item as ItemData } from "../../schemas/item-data";
+import { type EmojiEntry, type EmojiMaps } from "../../emoji";
 
 import { useEmojiMap } from "../../hooks/useEmojiMap";
 import { useAppSelector } from "../../redux/hooks";
@@ -74,6 +75,32 @@ function renderTooltipNote(note: string) {
   return text || /<img\b/i.test(html) ? html : "";
 }
 
+function normalizeSpecKey(value: string) {
+  return value.toLowerCase().replace(/[^a-z0-9]+/g, "");
+}
+
+function findEofSpecEntry(
+  maps: EmojiMaps,
+  eofSpec: string | undefined,
+  eofEntryId: string | undefined,
+): EmojiEntry | undefined {
+  const spec = eofSpec?.trim();
+  if (!spec) return undefined;
+
+  const resolved = maps.resolve(spec);
+  const direct = maps.get(resolved) ?? maps.get(spec);
+  if (direct && direct.id !== eofEntryId) return direct;
+
+  const normalizedSpec = normalizeSpecKey(spec);
+  return Object.values(maps.byId).find(
+    (entry) =>
+      entry.id !== eofEntryId &&
+      !entry.eof_spec &&
+      (normalizeSpecKey(entry.id) === normalizedSpec ||
+        normalizeSpecKey(entry.name) === normalizedSpec),
+  );
+}
+
 interface SlotProps {
   slots: ItemData[];
   handleClickOpen: (
@@ -125,6 +152,12 @@ const SingleSlot = ({
 
   const entry = slot.id && maps ? maps.get(slot.id) : undefined;
   const emojiUrl = entry && maps ? (maps.getUrl(entry.id) ?? "") : "";
+  const eofSpecEntry =
+    slot.eof_spec && maps
+      ? findEofSpecEntry(maps, slot.eof_spec, entry?.id)
+      : undefined;
+  const eofSpecUrl =
+    eofSpecEntry && maps ? (maps.getUrl(eofSpecEntry.id) ?? "") : "";
   const displayName = slot.eof_spec ? `EoF (${slot.eof_spec})` : entry?.name;
   const tooltipName = displayName ?? entry?.name;
   const slotNote =
@@ -233,6 +266,15 @@ const SingleSlot = ({
     />
   ) : null;
 
+  const eofSpecIcon = eofSpecEntry && eofSpecUrl && eofSpecUrl !== emojiUrl ? (
+    <img
+      className="preset-slots__eof-spec-icon"
+      src={eofSpecUrl}
+      alt={eofSpecEntry.name}
+      title={eofSpecEntry.name}
+    />
+  ) : null;
+
   const slotNode = (
     <div
       ref={isPresetEditable ? setRefs : undefined}
@@ -241,6 +283,7 @@ const SingleSlot = ({
       onClick={isPresetEditable ? onSlotSelect : undefined}
     >
       {icon}
+      {eofSpecIcon}
     </div>
   );
 

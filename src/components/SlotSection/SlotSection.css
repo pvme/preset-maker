@@ -38,6 +38,21 @@
   max-width: 38px;
 }
 
+.preset-slots__eof-spec-icon {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 4;
+  width: 60%;
+  height: 60%;
+  max-width: 26px;
+  max-height: 26px;
+  object-fit: contain;
+  pointer-events: none;
+  filter:
+    drop-shadow(-2px -2px 2px rgba(0, 0, 0, 1))
+}
+
 .inventory--mobile {
   margin-left: -3px;
 }
