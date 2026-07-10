@@ -12,6 +12,15 @@ export const tooltipSlotProps = {
       py: 0.75,
       borderRadius: "3px",
       backgroundImage: "var(--preset-extras-bg)",
+      "& .preset-slots__tooltip-note": {
+        mt: "5px",
+        pt: "5px",
+        borderTop: "1px solid rgba(244, 231, 200, 0.22)",
+        color: "#d8c99f",
+        fontSize: "0.78rem",
+        fontWeight: 400,
+        lineHeight: 1.35,
+      },
     },
   },
   arrow: {

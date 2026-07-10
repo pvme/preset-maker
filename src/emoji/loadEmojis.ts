@@ -37,6 +37,7 @@ const incomingEmojiEntrySchema = z
     emoji_server: z.string().optional().nullable(),
     id_aliases: z.array(z.unknown()).optional().default([]),
     eof_spec: z.string().optional().nullable(),
+    note: z.string().optional().nullable(),
   })
   .passthrough();
 
@@ -83,6 +84,7 @@ function normalizeEmojiEntry(raw: unknown): EmojiEntry | null {
     preset_slot: normalizePresetSlot(entry.preset_slot),
     id_aliases: aliases.length ? aliases : undefined,
     eof_spec: normalizeOptionalString(entry.eof_spec) ?? inferLegacyEofSpec(entry.name),
+    note: normalizeOptionalString(entry.note),
   };
 }
 
@@ -127,6 +129,7 @@ export async function loadEmojis(): Promise<EmojiMaps> {
         preset_type: e.preset_type ?? undefined,
         preset_slot: normalizePresetSlot(e.preset_slot),
         eof_spec: e.eof_spec ?? undefined,
+        note: e.note ?? undefined,
       };
 
       byId[id] = entry;

@@ -13,9 +13,18 @@ import {
   EMPTY_SAVED_PRESET,
 } from "../../schemas/saved-preset-data";
 
-function trimFilled(list: { id: string }[] | undefined, max?: number) {
+function savedItem(item: { id?: string; eof_spec?: string } | undefined) {
+  const id = item?.id ?? "";
+  const eofSpec = item?.eof_spec?.trim();
+  return { id, ...(eofSpec ? { eof_spec: eofSpec } : {}) };
+}
+
+function trimFilled(
+  list: { id: string; eof_spec?: string }[] | undefined,
+  max?: number,
+) {
   const safe = Array.isArray(list) ? list : [];
-  const trimmed = safe.filter((item) => item?.id);
+  const trimmed = safe.filter((item) => item?.id).map(savedItem);
   return typeof max === "number" ? trimmed.slice(0, max) : trimmed;
 }
 
@@ -23,11 +32,11 @@ function toSavedPreset(preset: any): SavedPreset {
   return {
     presetName: preset?.presetName ?? "",
     presetNotes: preset?.presetNotes ?? "",
-    inventorySlots: (preset?.inventorySlots ?? []).slice(0, 28),
-    equipmentSlots: (preset?.equipmentSlots ?? []).slice(0, 12),
-    familiar: preset?.familiar?.id ? { id: preset.familiar.id } : { id: "" },
+    inventorySlots: (preset?.inventorySlots ?? []).slice(0, 28).map(savedItem),
+    equipmentSlots: (preset?.equipmentSlots ?? []).slice(0, 12).map(savedItem),
+    familiar: savedItem(preset?.familiar),
     relics: trimFilled(preset?.relics, 3),
-    aspect: preset?.aspect?.id ? { id: preset.aspect.id } : { id: "" },
+    aspect: savedItem(preset?.aspect),
     ammoSpells: trimFilled(preset?.ammoSpells, 3),
     breakdown: Array.isArray(preset?.breakdown) ? preset.breakdown : [],
   };

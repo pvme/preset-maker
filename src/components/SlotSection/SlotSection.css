@@ -41,3 +41,30 @@
 .inventory--mobile {
   margin-left: -3px;
 }
+
+.preset-slots__tooltip {
+  max-width: 280px;
+}
+
+.preset-slots__tooltip-title {
+  font-weight: 700;
+}
+
+.preset-slots__tooltip-note {
+  margin-top: 5px;
+  padding-top: 5px;
+  border-top: 1px solid rgba(244, 231, 200, 0.22);
+  color: #d8c99f;
+  font-size: 0.78rem;
+  font-weight: 400;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+  opacity: 0.95;
+}
+
+.preset-slots__tooltip-note .disc-emoji {
+  width: 1.15em;
+  height: 1.15em;
+  margin: 0 1px;
+  vertical-align: -0.2em;
+}

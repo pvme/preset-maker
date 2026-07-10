@@ -16,12 +16,6 @@ import {
   Typography,
 } from "@mui/material";
 
-export enum SavePresetDialogState {
-  None,
-  NewPreset,
-  ExistingPreset,
-}
-
 interface HelpDialogProps {
   open: boolean;
   onClose: () => void;

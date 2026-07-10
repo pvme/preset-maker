@@ -90,6 +90,10 @@ export const PresetNotes = (): JSX.Element | null => {
     });
   }, [preset.equipmentSlots, drafts, isPresetEditable]);
 
+  const hasAnySlotNotes = useMemo(() => {
+    return preset.breakdown.some((entry) => hasNotes(entry.description));
+  }, [preset.breakdown]);
+
   const commit = (
     slotType: "inventory" | "equipment",
     slotIndex: number,
@@ -104,7 +108,7 @@ export const PresetNotes = (): JSX.Element | null => {
     );
   };
 
-  if (!emojiMap) return null;
+  if (!emojiMap || !hasAnySlotNotes) return null;
 
   return (
     <Box className="preset-notes">

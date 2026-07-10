@@ -34,12 +34,6 @@ export function emojify(text: string): string {
       return fullMatch;
     }
     
-    return `<img
-      class="disc-emoji"
-      src="${url}"
-      alt="${emoji.name}"
-      title="${emoji.name}"
-      data-emoji="${fullMatch}"
-    />`;
+    return `<img class="disc-emoji" src="${url}" alt="${emoji.name}" title="${emoji.name}" data-emoji="${fullMatch}" />`;
   });
 }

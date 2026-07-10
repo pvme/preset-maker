@@ -13,7 +13,7 @@ const allowedAttributes = {
   img: ["src", "alt", "class", "data-emoji"],
 };
 
-const DE_EMOJIFY_REGEX = /<img[^>]*data-emoji="([^"]+)"[^>]*>/g;
+const DE_EMOJIFY_REGEX = /<img\b[^>]*\bdata-emoji=["']([^"']+)["'][^>]*>/gi;
 
 export function useEmojiEditableField({
   value,

@@ -2,6 +2,7 @@ import React, { useCallback } from "react";
 import { DragPreviewImage, useDrag, useDrop } from "react-dnd";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Tooltip from "@mui/material/Tooltip";
+import sanitizeHtml from "sanitize-html";
 
 import {
   SLOT_METRICS,
@@ -18,11 +19,60 @@ import { useEmojiMap } from "../../hooks/useEmojiMap";
 import { useAppSelector } from "../../redux/hooks";
 import { selectPreset } from "../../redux/store/reducers/preset-reducer";
 import { useStorageMode } from "../../storage/StorageModeContext";
+import { emojify } from "../../utility/emojify";
 import { tooltipSlotProps } from "../Tooltip/tooltipStyles";
 
 import "./SlotSection.css";
 
 type SlotGroup = "inventory" | "equipment";
+
+const tooltipNoteAllowedTags = ["img", "br", "div", "span"];
+const tooltipNoteAllowedAttributes = {
+  img: ["src", "alt", "title", "class", "data-emoji"],
+};
+
+function normalizeStoredEmojiMarkup(note: string) {
+  let normalized = note
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/<img\b[^>]*\bdata-emoji=["']([^"']+)["'][^>]*>/gi, "$1");
+
+  const orphanedEmojiAttributes =
+    /\bclass=["']disc-emoji["'][\s\S]*?\bdata-emoji=["']([^"']+)["'][\s\S]*?(?:\/>|>)/i;
+
+  let match = normalized.match(orphanedEmojiAttributes);
+  while (match?.index !== undefined) {
+    normalized =
+      normalized.slice(0, match.index) +
+      match[1] +
+      normalized.slice(match.index + match[0].length);
+    match = normalized.match(orphanedEmojiAttributes);
+  }
+
+  return normalized;
+}
+
+function renderTooltipNote(note: string) {
+  const normalized = normalizeStoredEmojiMarkup(note);
+  if (!normalized.trim()) return "";
+
+  const html = sanitizeHtml(emojify(normalized).replace(/\r?\n/g, "<br />"), {
+    allowedTags: tooltipNoteAllowedTags,
+    allowedAttributes: tooltipNoteAllowedAttributes,
+    allowedSchemes: ["https"],
+  });
+
+  const text = sanitizeHtml(html, {
+    allowedTags: [],
+    allowedAttributes: {},
+  })
+    .replace(/&nbsp;/g, " ")
+    .trim();
+
+  return text || /<img\b/i.test(html) ? html : "";
+}
 
 interface SlotProps {
   slots: ItemData[];
@@ -69,12 +119,21 @@ const SingleSlot = ({
   const metrics = SLOT_METRICS[slotGroup];
 
   const maps = useEmojiMap();
-  const { selectedSlots } = useAppSelector(selectPreset);
+  const preset = useAppSelector(selectPreset);
+  const { selectedSlots } = preset;
   const { isPresetEditable } = useStorageMode();
 
   const entry = slot.id && maps ? maps.get(slot.id) : undefined;
   const emojiUrl = entry && maps ? (maps.getUrl(entry.id) ?? "") : "";
   const displayName = slot.eof_spec ? `EoF (${slot.eof_spec})` : entry?.name;
+  const tooltipName = displayName ?? entry?.name;
+  const slotNote =
+    preset.breakdown.find(
+      (breakdownEntry) =>
+        breakdownEntry.slotType === slotGroup &&
+        breakdownEntry.slotIndex === index,
+    )?.description ?? entry?.note;
+  const tooltipNoteHtml = slotNote ? renderTooltipNote(slotNote) : "";
 
   const slotKey = `${slotGroup}:${index}`;
   const slotIsSelected = isPresetEditable && selectedSlots.includes(slotKey);
@@ -193,7 +252,19 @@ const SingleSlot = ({
 
       {entry ? (
         <Tooltip
-          title={displayName ?? entry.name}
+          title={
+            <div className="preset-slots__tooltip">
+              <div className="preset-slots__tooltip-title">
+                {tooltipName ?? entry.name}
+              </div>
+              {tooltipNoteHtml && (
+                <div
+                  className="preset-slots__tooltip-note"
+                  dangerouslySetInnerHTML={{ __html: tooltipNoteHtml }}
+                />
+              )}
+            </div>
+          }
           placement="top"
           arrow
           disableInteractive
