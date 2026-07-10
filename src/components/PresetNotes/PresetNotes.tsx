@@ -94,6 +94,11 @@ export const PresetNotes = (): JSX.Element | null => {
     return preset.breakdown.some((entry) => hasNotes(entry.description));
   }, [preset.breakdown]);
 
+  const showInventoryNotes = isPresetEditable || inventoryNotes.length > 0;
+  const showEquipmentNotes = isPresetEditable || equipmentNotes.length > 0;
+  const visibleColumnCount =
+    Number(showInventoryNotes) + Number(showEquipmentNotes);
+
   const commit = (
     slotType: "inventory" | "equipment",
     slotIndex: number,
@@ -109,54 +114,71 @@ export const PresetNotes = (): JSX.Element | null => {
   };
 
   if (!emojiMap || !hasAnySlotNotes) return null;
+  if (visibleColumnCount === 0) return null;
 
   return (
     <Box className="preset-notes">
-      <div className="preset-notes__header">
-        <div className="preset-notes__column-title">Inventory Notes</div>
-        <div className="preset-notes__column-title">Equipment Notes</div>
+      <div
+        className={`preset-notes__header${
+          visibleColumnCount === 1 ? " preset-notes__header--single" : ""
+        }`}
+      >
+        {showInventoryNotes && (
+          <div className="preset-notes__column-title">Inventory Notes</div>
+        )}
+        {showEquipmentNotes && (
+          <div className="preset-notes__column-title">Equipment Notes</div>
+        )}
       </div>
 
-      <div className="preset-notes__grid">
-        <div className="preset-notes__column">
-          <div className="preset-notes__column-title preset-notes__column-title--mobile">
-            Inventory Notes
+      <div
+        className={`preset-notes__grid${
+          visibleColumnCount === 1 ? " preset-notes__grid--single" : ""
+        }`}
+      >
+        {showInventoryNotes && (
+          <div className="preset-notes__column">
+            <div className="preset-notes__column-title preset-notes__column-title--mobile">
+              Inventory Notes
+            </div>
+
+            <List className="preset-notes__list">
+              {inventoryNotes.map((row) => (
+                <PresetNoteItem
+                  key={row.key}
+                  emojiMap={emojiMap}
+                  itemId={row.itemId}
+                  eofSpec={row.eofSpec}
+                  description={row.description}
+                  isEditable={isPresetEditable}
+                  onCommit={(desc) => commit(row.slotType, row.slotIndex, desc)}
+                />
+              ))}
+            </List>
           </div>
+        )}
 
-          <List className="preset-notes__list">
-            {inventoryNotes.map((row) => (
-              <PresetNoteItem
-                key={row.key}
-                emojiMap={emojiMap}
-                itemId={row.itemId}
-                eofSpec={row.eofSpec}
-                description={row.description}
-                isEditable={isPresetEditable}
-                onCommit={(desc) => commit(row.slotType, row.slotIndex, desc)}
-              />
-            ))}
-          </List>
-        </div>
+        {showEquipmentNotes && (
+          <div className="preset-notes__column">
+            <div className="preset-notes__column-title preset-notes__column-title--mobile">
+              Equipment Notes
+            </div>
 
-        <div className="preset-notes__column">
-          <div className="preset-notes__column-title preset-notes__column-title--mobile">
-            Equipment Notes
+            <List className="preset-notes__list">
+              {equipmentNotes.map((row) => (
+                <PresetNoteItem
+                  key={row.key}
+                  emojiMap={emojiMap}
+                  itemId={row.itemId}
+                  eofSpec={row.eofSpec}
+                  description={row.description}
+                  isEditable={isPresetEditable}
+                  onCommit={(desc) => commit(row.slotType, row.slotIndex, desc)}
+                />
+              ))}
+            </List>
           </div>
-
-          <List className="preset-notes__list">
-            {equipmentNotes.map((row) => (
-              <PresetNoteItem
-                key={row.key}
-                emojiMap={emojiMap}
-                itemId={row.itemId}
-                eofSpec={row.eofSpec}
-                description={row.description}
-                isEditable={isPresetEditable}
-                onCommit={(desc) => commit(row.slotType, row.slotIndex, desc)}
-              />
-            ))}
-          </List>
-        </div>
+        )}
       </div>
     </Box>
   );

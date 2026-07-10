@@ -6,12 +6,15 @@ export const tooltipSlotProps = {
       border: "1px solid rgba(193, 163, 98, 0.45)",
       boxShadow: "0 2px 8px rgba(0, 0, 0, 0.45)",
       fontSize: "0.9rem",
-      fontWeight: 600,
+      fontWeight: 400,
       lineHeight: 1.1,
       px: 1.5,
       py: 0.75,
       borderRadius: "3px",
       backgroundImage: "var(--preset-extras-bg)",
+      "& .preset-slots__tooltip-title": {
+        fontWeight: 700,
+      },
       "& .preset-slots__tooltip-note": {
         mt: "5px",
         pt: "5px",
