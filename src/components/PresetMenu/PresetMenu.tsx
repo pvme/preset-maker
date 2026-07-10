@@ -48,6 +48,7 @@ import { selectPreset } from "../../redux/store/reducers/preset-reducer";
 
 import { useAuth } from "../../auth/AuthContext";
 import { useStorageMode } from "../../storage/StorageModeContext";
+import { usePresetLoad } from "../../storage/PresetLoadContext";
 import { CloudPresetStorage } from "../../storage/CloudPresetStorage";
 import {
   addRecentPreset,
@@ -82,6 +83,7 @@ export const PresetMenu = (): JSX.Element => {
   const { presetName } = preset;
 
   const { mode, setMode, isPresetEditable } = useStorageMode();
+  const { isPresetLoading } = usePresetLoad();
   const { isLoggedIn } = useAuth();
 
   const { recentList, refresh, setRecentList } = useRecentPresets();
@@ -104,6 +106,7 @@ export const PresetMenu = (): JSX.Element => {
   const [anchorExport, setAnchorExport] = useState<null | HTMLElement>(null);
   const [isUploading, setIsUploading] = useState(false);
 
+  const canShowPresetWriteActions = !isPresetLoading;
   const canSave = mode === "local" || (mode === "cloud" && isLoggedIn);
 
   const { copyImage, downloadImage, clipboardSupported } =
@@ -123,6 +126,7 @@ export const PresetMenu = (): JSX.Element => {
     id,
     markClean,
     setRecentSelection,
+    refreshRecentPresets: refresh,
   });
 
   const saveDisabledReason = (() => {
@@ -246,7 +250,7 @@ export const PresetMenu = (): JSX.Element => {
                   <Divider />
                 </>
               )}
-              {mode === "local" && id && (
+              {canShowPresetWriteActions && mode === "local" && id && (
                 <>
                   <MenuItem
                     disabled={isUploading}
@@ -343,7 +347,7 @@ export const PresetMenu = (): JSX.Element => {
               </MenuItem>
             </Menu>
 
-            {isPresetEditable && (
+            {canShowPresetWriteActions && isPresetEditable && (
               <Tooltip
                 title={saveDisabledReason ?? ""}
                 disableHoverListener={!saveDisabledReason}

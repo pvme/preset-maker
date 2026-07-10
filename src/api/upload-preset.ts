@@ -2,7 +2,6 @@
 
 import axios from "axios";
 import { getAuth } from "../utility/firebase-init";
-import { getDevHeaders } from "./get-headers";
 import { FunctionURLs } from "./function-urls";
 
 import { type SavedPreset } from "../schemas/saved-preset-data";
@@ -30,7 +29,6 @@ export async function uploadPreset(
   const response = await axios.post<UploadPresetResponse>(url, payload, {
     headers: {
       "Content-Type": "application/json",
-      ...getDevHeaders(),
       ...(idToken ? { Authorization: `Bearer ${idToken}` } : {}),
     },
   });
@@ -55,7 +53,6 @@ export async function getPresetImageUrl(
   const response = await axios.post<UploadPresetResponse>(url, payload, {
     headers: {
       "Content-Type": "application/json",
-      ...getDevHeaders(),
       ...(idToken ? { Authorization: `Bearer ${idToken}` } : {}),
     },
   });

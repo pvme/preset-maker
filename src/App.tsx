@@ -1,6 +1,6 @@
 // src/App.tsx
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { DndProvider } from "react-dnd";
 import { HeaderBar } from "./components/HeaderBar/HeaderBar";
@@ -11,15 +11,13 @@ import {
   useGlobalLoading,
 } from "./storage/GlobalLoadingContext";
 import { PresetLoadProvider, usePresetLoad } from "./storage/PresetLoadContext";
-import { useSnackbar } from "notistack";
 import { useParams } from "react-router-dom";
 import { useAppDispatch } from "./redux/hooks";
-import { loadPresetById } from "./storage/preset-storage";
+import { resetToInitialState } from "./redux/store/reducers/preset-reducer";
 import {
-  importDataAction,
-  resetToInitialState,
-} from "./redux/store/reducers/preset-reducer";
-import { StorageModeProvider } from "./storage/StorageModeContext";
+  StorageModeProvider,
+  useStorageMode,
+} from "./storage/StorageModeContext";
 import { Typography } from "@mui/material";
 
 import "./App.css";
@@ -27,14 +25,14 @@ import "./Dialog.css";
 
 function AppContent(): JSX.Element {
   const dispatch = useAppDispatch();
-  const { enqueueSnackbar } = useSnackbar();
   const { id } = useParams<{ id?: string }>();
-  const { skipNextLoad, setSkipNextLoad } = usePresetLoad();
+  const { isPresetLoading, setIsPresetLoading } = usePresetLoad();
+  const { setMode } = useStorageMode();
 
-  const [isPresetLoading, setIsPresetLoading] = useState(false);
   const [loadingProgress, setLoadingProgress] = useState(0);
   const [loadingPhrase, setLoadingPhrase] = useState("");
   const { isGlobalLoading, loadingText } = useGlobalLoading();
+  const lastLoadingStateRef = useRef(false);
 
   const loadingPhrases = [
     "Cooking some blue blubbers...",
@@ -50,6 +48,14 @@ function AppContent(): JSX.Element {
   ];
 
   useEffect(() => {
+    if (isPresetLoading && !lastLoadingStateRef.current) {
+      setLoadingPhrase(
+        loadingPhrases[Math.floor(Math.random() * loadingPhrases.length)],
+      );
+    }
+
+    lastLoadingStateRef.current = isPresetLoading;
+
     if (isPresetLoading) {
       const interval = setInterval(() => {
         setLoadingProgress((prev) =>
@@ -63,49 +69,12 @@ function AppContent(): JSX.Element {
   }, [isPresetLoading]);
 
   useEffect(() => {
-    const controller = new AbortController();
-    const { signal } = controller;
+    if (id) return;
 
-    if (skipNextLoad) {
-      setSkipNextLoad(false);
-      return;
-    }
-
-    if (!id) {
-      dispatch(resetToInitialState());
-      return;
-    }
-
-    setIsPresetLoading(true);
-    setLoadingPhrase(
-      loadingPhrases[Math.floor(Math.random() * loadingPhrases.length)],
-    );
-
-    loadPresetById(id)
-      .then(({ data }) => {
-        if (signal.aborted) return;
-
-        dispatch(importDataAction(data));
-        setLoadingProgress(100);
-
-        requestAnimationFrame(() => {
-          requestAnimationFrame(() => {
-            if (!signal.aborted) {
-              setIsPresetLoading(false);
-            }
-          });
-        });
-      })
-      .catch((err) => {
-        if (signal.aborted) return;
-
-        enqueueSnackbar(`Preset not found for ID ${id}`, { variant: "error" });
-        console.error("Failed to load preset", err);
-        setIsPresetLoading(false);
-      });
-
-    return () => controller.abort();
-  }, [id, dispatch, enqueueSnackbar, skipNextLoad, setSkipNextLoad]);
+    dispatch(resetToInitialState());
+    setMode("local");
+    setIsPresetLoading(false);
+  }, [id, dispatch, setMode, setIsPresetLoading]);
 
   const showOverlay = isGlobalLoading || isPresetLoading;
 

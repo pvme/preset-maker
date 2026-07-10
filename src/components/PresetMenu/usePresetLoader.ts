@@ -18,22 +18,43 @@ import { usePresetLoad } from "../../storage/PresetLoadContext";
 
 import { PresetSummary } from "../../schemas/preset-summary";
 
+const presetLoadPromises = new Map<
+  string,
+  ReturnType<typeof loadPresetById>
+>();
+
+function getPresetLoad(id: string) {
+  const existing = presetLoadPromises.get(id);
+  if (existing) return existing;
+
+  const promise = loadPresetById(id).finally(() => {
+    presetLoadPromises.delete(id);
+  });
+
+  presetLoadPromises.set(id, promise);
+  return promise;
+}
+
 export function usePresetLoader({
   id,
   markClean,
   setRecentSelection,
+  refreshRecentPresets,
 }: {
   id?: string;
   markClean: (preset: any) => void;
   setRecentSelection: (id: string) => void;
+  refreshRecentPresets: () => void;
 }) {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
   const { setMode } = useStorageMode();
-  const { skipNextLoad, setSkipNextLoad } = usePresetLoad();
+  const { skipNextLoad, setSkipNextLoad, setIsPresetLoading } =
+    usePresetLoad();
 
   const lastLoadedIdRef = useRef<string | null>(null);
+  const loadTokenRef = useRef(0);
 
   /* ---------------------------------------------
      Load by URL
@@ -44,14 +65,17 @@ export function usePresetLoader({
     if (lastLoadedIdRef.current === id) return;
     if (skipNextLoad) {
       setSkipNextLoad(false);
+      setIsPresetLoading(false);
       return;
     }
 
     let cancelled = false;
+    const loadToken = ++loadTokenRef.current;
+    setIsPresetLoading(true);
 
     const load = async () => {
       try {
-        const { data, presetId, source } = await loadPresetById(id);
+        const { data, presetId, source } = await getPresetLoad(id);
         if (cancelled) return;
 
         lastLoadedIdRef.current = id;
@@ -67,10 +91,16 @@ export function usePresetLoader({
           presetName: data.presetName,
           source,
         });
+        refreshRecentPresets();
       } catch {
         enqueueSnackbar(`Preset not found for ID ${id}`, {
           variant: "error",
         });
+        lastLoadedIdRef.current = null;
+      } finally {
+        if (loadTokenRef.current === loadToken) {
+          setIsPresetLoading(false);
+        }
       }
     };
 
@@ -82,11 +112,13 @@ export function usePresetLoader({
     id,
     skipNextLoad,
     setSkipNextLoad,
+    setIsPresetLoading,
     dispatch,
     enqueueSnackbar,
     setMode,
     markClean,
     setRecentSelection,
+    refreshRecentPresets,
   ]);
 
   /* ---------------------------------------------

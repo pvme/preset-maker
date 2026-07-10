@@ -1,6 +1,6 @@
 // src/components/Menu/usePresetDirtyState.ts
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { presetsAreEqual } from "../../utility/comparePresets";
 
 function stripUIState(preset: any) {
@@ -27,10 +27,10 @@ export function usePresetDirtyState(preset: any) {
 
   const signature = JSON.stringify(stripUIState(preset));
 
-  const markClean = () => {
-    lastSavedRef.current = deepClone(stripUIState(preset));
+  const markClean = useCallback((nextPreset: any = preset) => {
+    lastSavedRef.current = deepClone(stripUIState(nextPreset));
     setIsDirty(false);
-  };
+  }, [preset]);
 
   useEffect(() => {
     if (!preset) {

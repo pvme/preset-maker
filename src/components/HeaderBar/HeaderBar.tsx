@@ -15,11 +15,49 @@ import Tooltip from "@mui/material/Tooltip";
 
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
+import LogoutIcon from "@mui/icons-material/Logout";
 
 import "./HeaderBar.css";
 import { HelpDialog } from "../HelpDialog/HelpDialog";
 
-import { getAuth, signInWithCustomToken } from "../../utility/firebase-init";
+import {
+  getAuth,
+  signInWithCustomToken,
+  signOut,
+} from "../../utility/firebase-init";
+
+function getHashUrl(url: URL): URL | null {
+  if (!url.hash) return null;
+
+  const hashRoute = url.hash.slice(1);
+  return new URL(
+    hashRoute.startsWith("/")
+      ? `http://preset-maker${hashRoute}`
+      : `http://preset-maker/${hashRoute}`,
+  );
+}
+
+function getAuthTokenFromUrl(): string | null {
+  const url = new URL(window.location.href);
+  const token = url.searchParams.get("authToken");
+  if (token) return token;
+
+  return getHashUrl(url)?.searchParams.get("authToken") ?? null;
+}
+
+function removeAuthTokenFromUrl(): string {
+  const url = new URL(window.location.href);
+  url.searchParams.delete("authToken");
+
+  const hashUrl = getHashUrl(url);
+  if (hashUrl) {
+    hashUrl.searchParams.delete("authToken");
+    const query = hashUrl.searchParams.toString();
+    url.hash = `${hashUrl.pathname}${query ? `?${query}` : ""}`;
+  }
+
+  return url.toString();
+}
 
 export const HeaderBar = (): JSX.Element => {
   const theme = useTheme();
@@ -37,6 +75,14 @@ export const HeaderBar = (): JSX.Element => {
 
   const handleHelpOpen = useCallback(() => setHelpDialogOpen(true), []);
   const handleHelpClose = useCallback(() => setHelpDialogOpen(false), []);
+  const handleLogout = useCallback(async () => {
+    try {
+      await signOut(getAuth());
+      enqueueSnackbar("Logged out", { variant: "success" });
+    } catch {
+      enqueueSnackbar("Logout failed", { variant: "error" });
+    }
+  }, [enqueueSnackbar]);
 
   //
   // -------------------------------
@@ -44,41 +90,14 @@ export const HeaderBar = (): JSX.Element => {
   // -------------------------------
   //
   React.useEffect(() => {
-    const url = new URL(window.location.href);
-    const token = url.searchParams.get("authToken");
+    const token = getAuthTokenFromUrl();
     if (!token) return;
 
     const auth = getAuth();
 
     signInWithCustomToken(auth, token)
       .then(() => {
-        //
-        // CLEAN THE URL PROPERLY:
-        // remove authToken while preserving hash route (#/id)
-        //
-        const cleanUrl = (() => {
-          const full = window.location.href;
-          const [base, hash] = full.split("#");
-
-          // No hash? fallback
-          if (!hash) {
-            url.searchParams.delete("authToken");
-            return url.toString();
-          }
-
-          // Parse inside hash ("/id?authToken=x")
-          const hashUrl = new URL("http://x/" + hash.replace(/^\//, ""));
-          hashUrl.searchParams.delete("authToken");
-
-          // Rebuild hash
-          let newHash = hashUrl.pathname;
-          const qs = hashUrl.searchParams.toString();
-          if (qs) newHash += "?" + qs;
-
-          return `${base}#${newHash}`;
-        })();
-
-        window.history.replaceState({}, "", cleanUrl);
+        window.history.replaceState({}, "", removeAuthTokenFromUrl());
 
         // Extract username from claims
         auth.currentUser?.getIdTokenResult().then((r) => {
@@ -178,13 +197,25 @@ export const HeaderBar = (): JSX.Element => {
 
               <Box className="header-bar__actions">
                 {username ? (
-                  <Typography
-                    variant="body2"
-                    className="header-bar__username"
-                    sx={{ opacity: 0.7, mr: 2 }}
-                  >
-                    Logged in as {username}
-                  </Typography>
+                  <>
+                    <Typography
+                      variant="body2"
+                      className="header-bar__username"
+                      sx={{ opacity: 0.7, mr: 1 }}
+                    >
+                      Logged in as {username}
+                    </Typography>
+                    <Tooltip title="Logout">
+                      <IconButton
+                        className="header-bar__logout-button"
+                        onClick={handleLogout}
+                        color="inherit"
+                        size={isMobile ? "small" : "medium"}
+                      >
+                        <LogoutIcon />
+                      </IconButton>
+                    </Tooltip>
+                  </>
                 ) : (
                   <Tooltip title="Admin Login">
                     <IconButton

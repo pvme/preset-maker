@@ -4,14 +4,25 @@ import React, { createContext, useContext, useState } from 'react';
 interface PresetLoadContextType {
   skipNextLoad: boolean;
   setSkipNextLoad: (value: boolean) => void;
+  isPresetLoading: boolean;
+  setIsPresetLoading: (value: boolean) => void;
 }
 
 const PresetLoadContext = createContext<PresetLoadContextType | undefined>(undefined);
 
 export const PresetLoadProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [skipNextLoad, setSkipNextLoad] = useState(false);
+  const [isPresetLoading, setIsPresetLoading] = useState(false);
+
   return (
-    <PresetLoadContext.Provider value={{ skipNextLoad, setSkipNextLoad }}>
+    <PresetLoadContext.Provider
+      value={{
+        skipNextLoad,
+        setSkipNextLoad,
+        isPresetLoading,
+        setIsPresetLoading,
+      }}
+    >
       {children}
     </PresetLoadContext.Provider>
   );

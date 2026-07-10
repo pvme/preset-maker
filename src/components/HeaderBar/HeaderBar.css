@@ -58,11 +58,13 @@
 }
 
 .header-bar__admin-button,
+.header-bar__logout-button,
 .header-bar__help-button {
   transition: all 0.3s ease;
 }
 
 .header-bar__admin-button:hover,
+.header-bar__logout-button:hover,
 .header-bar__help-button:hover {
   background-color: rgba(255, 255, 255, 0.1);
   transform: scale(1.1);
@@ -97,6 +99,7 @@
 
 .header-bar__logo-button:focus-visible,
 .header-bar__admin-button:focus-visible,
+.header-bar__logout-button:focus-visible,
 .header-bar__help-button:focus-visible {
   outline: 2px solid rgba(255, 255, 255, 0.8);
   outline-offset: 2px;
@@ -112,6 +115,7 @@
 @media (prefers-reduced-motion: reduce) {
   .header-bar__logo-button,
   .header-bar__admin-button,
+  .header-bar__logout-button,
   .header-bar__help-button,
   .header-bar__logo-image {
     transition: none;
@@ -119,6 +123,7 @@
 
   .header-bar__logo-button:hover,
   .header-bar__admin-button:hover,
+  .header-bar__logout-button:hover,
   .header-bar__help-button:hover {
     transform: none;
   }

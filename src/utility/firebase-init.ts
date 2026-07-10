@@ -4,7 +4,8 @@ import { initializeApp } from "firebase/app";
 import {
   getAuth as _getAuth,
   signInWithCustomToken as _signInWithCustomToken,
-  onAuthStateChanged as _onAuthStateChanged
+  onAuthStateChanged as _onAuthStateChanged,
+  signOut as _signOut,
 } from "firebase/auth";
 
 let app: any = null;
@@ -27,6 +28,11 @@ export function getAuth() {
 export function signInWithCustomToken(auth: any, token: string) {
   ensureFirebase();
   return _signInWithCustomToken(auth, token);
+}
+
+export function signOut(auth: any) {
+  ensureFirebase();
+  return _signOut(auth);
 }
 
 export function onAuthStateChanged(auth: any, callback: (user: any) => void) {
