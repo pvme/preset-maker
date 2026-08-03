@@ -90,14 +90,11 @@ export const PresetNotes = (): JSX.Element | null => {
     });
   }, [preset.equipmentSlots, drafts, isPresetEditable]);
 
-  const hasAnySlotNotes = useMemo(() => {
-    return preset.breakdown.some((entry) => hasNotes(entry.description));
-  }, [preset.breakdown]);
-
   const showInventoryNotes = isPresetEditable || inventoryNotes.length > 0;
   const showEquipmentNotes = isPresetEditable || equipmentNotes.length > 0;
   const visibleColumnCount =
     Number(showInventoryNotes) + Number(showEquipmentNotes);
+  const hasNoteRows = inventoryNotes.length > 0 || equipmentNotes.length > 0;
 
   const commit = (
     slotType: "inventory" | "equipment",
@@ -113,7 +110,7 @@ export const PresetNotes = (): JSX.Element | null => {
     );
   };
 
-  if (!emojiMap || !hasAnySlotNotes) return null;
+  if (!emojiMap || !hasNoteRows) return null;
   if (visibleColumnCount === 0) return null;
 
   return (
