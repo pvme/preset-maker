@@ -148,8 +148,9 @@
 }
 
 .preset-notes__editor img.disc-emoji {
-  width: 18px;
-  height: 18px;
+  width: 24px !important;
+  height: 24px !important;
+  margin: 0 2px;
   vertical-align: middle;
 }
 

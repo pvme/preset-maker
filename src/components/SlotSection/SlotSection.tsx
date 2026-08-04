@@ -16,6 +16,12 @@ import { type Coord } from "../../schemas/coord";
 import { type Item as ItemData } from "../../schemas/item-data";
 
 import { useEmojiMap } from "../../hooks/useEmojiMap";
+import {
+  getEmojiAmmoHoverNote,
+  getEmojiDisplayName,
+  prependAutomaticNote,
+  removeAutomaticAmmoNote,
+} from "../../emoji/displayName";
 import { useAppSelector } from "../../redux/hooks";
 import { selectPreset } from "../../redux/store/reducers/preset-reducer";
 import { useStorageMode } from "../../storage/StorageModeContext";
@@ -125,14 +131,23 @@ const SingleSlot = ({
 
   const entry = slot.id && maps ? maps.get(slot.id) : undefined;
   const emojiUrl = entry && maps ? (maps.getUrl(entry.id) ?? "") : "";
-  const displayName = slot.eof_spec ? `EoF (${slot.eof_spec})` : entry?.name;
+  const displayName = entry
+    ? getEmojiDisplayName(entry, slot.eof_spec)
+    : undefined;
   const tooltipName = displayName ?? entry?.name;
-  const slotNote =
+  const savedSlotNote =
     preset.breakdown.find(
       (breakdownEntry) =>
         breakdownEntry.slotType === slotGroup &&
         breakdownEntry.slotIndex === index,
-    )?.description ?? entry?.note;
+    )?.description;
+  const automaticNote = getEmojiAmmoHoverNote(entry);
+  const storedNote = savedSlotNote || entry?.note;
+  const customNote = removeAutomaticAmmoNote(automaticNote, storedNote);
+  const slotNote = prependAutomaticNote(
+    automaticNote,
+    customNote,
+  );
   const tooltipNoteHtml = slotNote ? renderTooltipNote(slotNote) : "";
 
   const slotKey = `${slotGroup}:${index}`;
@@ -267,7 +282,6 @@ const SingleSlot = ({
           }
           placement="top"
           arrow
-          disableInteractive
           slotProps={tooltipSlotProps}
           leaveDelay={0}
         >

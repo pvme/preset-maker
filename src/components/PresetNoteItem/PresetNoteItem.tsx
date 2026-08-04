@@ -8,12 +8,17 @@ import ContentEditable, {
 
 import { useEmojiEditableField } from "../../hooks/useEmojiEditableField";
 import { type EmojiMaps } from "../../hooks/useEmojiMap";
+import {
+  getEmojiDisplayName,
+  prependAutomaticNote,
+} from "../../emoji/displayName";
 
 interface Props {
   emojiMap: EmojiMaps;
   description: string;
   itemId: string;
   eofSpec?: string;
+  automaticNote?: string;
   isEditable: boolean;
   onCommit: (description: string) => void;
 }
@@ -42,11 +47,12 @@ export const PresetNoteItem = ({
   description,
   itemId,
   eofSpec,
+  automaticNote,
   isEditable,
   onCommit,
 }: Props): JSX.Element | null => {
   const field = useEmojiEditableField({
-    value: description,
+    value: prependAutomaticNote(automaticNote ?? "", description),
     allowMultiline: true,
     onCommit,
   });
@@ -60,7 +66,7 @@ export const PresetNoteItem = ({
     .trim();
 
   const legacyEofSpec = eofSpec ?? getLegacyEofSpec(cleanName);
-  const displayName = eofSpec ? `EoF (${eofSpec})` : emoji.name;
+  const displayName = getEmojiDisplayName(emoji, eofSpec);
   const isEof =
     emoji.name.toLowerCase().startsWith("essence of finality amulet") ||
     emoji.name.toLowerCase().startsWith("essence of finality") ||

@@ -63,8 +63,9 @@
 }
 
 .preset-slots__tooltip-note .disc-emoji {
-  width: 1.15em;
-  height: 1.15em;
-  margin: 0 1px;
-  vertical-align: -0.2em;
+  display: inline-block;
+  width: 30px !important;
+  height: 30px !important;
+  margin: 0 4px;
+  vertical-align: middle;
 }
