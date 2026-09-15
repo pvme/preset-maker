@@ -15,7 +15,6 @@ interface Props {
   matches: Match[];
   maps: EmojiMaps;
   onSelect: (match: Match, id: string) => void;
-  onContribute?: (match: Match) => void;
 }
 
 function ManualSearch({ match, maps, onSelect }: { match: Match; maps: EmojiMaps; onSelect: (id: string) => void }) {
@@ -42,7 +41,7 @@ function ManualSearch({ match, maps, onSelect }: { match: Match; maps: EmojiMaps
   />;
 }
 
-function ReviewRow({ match, maps, onSelect, onContribute }: { match: Match; maps: EmojiMaps; onSelect: (id: string) => void; onContribute?: () => void }) {
+function ReviewRow({ match, maps, onSelect }: { match: Match; maps: EmojiMaps; onSelect: (id: string) => void }) {
   const [searching, setSearching] = useState(false);
   const choices = useMemo(() => Array.from(new Set([KEEP_CURRENT, "", ...match.candidates.map(c => c.id), match.selected])), [match]);
   const itemName = (id: string) => id === KEEP_CURRENT ? "Keep current" : id ? maps.byId[id]?.name ?? id : "Empty slot";
@@ -64,11 +63,10 @@ function ReviewRow({ match, maps, onSelect, onContribute }: { match: Match; maps
       </Button>
     </Stack>
     {searching && <ManualSearch match={match} maps={maps} onSelect={id => { onSelect(id); setSearching(false); }} />}
-    {onContribute && (!match.confident || searching) && <Button size="small" sx={{ alignSelf: "flex-start" }} onClick={onContribute}>Item missing? Suggest it</Button>}
   </Stack>;
 }
 
-export function MatchReview({ matches, maps, onSelect, onContribute }: Props) {
+export function MatchReview({ matches, maps, onSelect }: Props) {
   return <Stack spacing={2}>
     <Typography variant="body2" color="text.secondary">
       Check doses, colours and variants. Uncertain matches start as Keep current. Search to choose a different item.
@@ -81,7 +79,7 @@ export function MatchReview({ matches, maps, onSelect, onContribute }: Props) {
           {confident ? "Confident matches" : "Needs checking"} ({group.length})
         </Typography></Divider>
         {group.map(match => <ReviewRow key={`${match.group}-${match.index}`} match={match} maps={maps}
-          onSelect={id => onSelect(match, id)} onContribute={onContribute ? () => onContribute(match) : undefined} />)}
+          onSelect={id => onSelect(match, id)} />)}
       </Box>;
     })}
   </Stack>;

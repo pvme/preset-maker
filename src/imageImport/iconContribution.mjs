@@ -77,37 +77,5 @@ export function createPresetIconContribution(assetBase) {
     }) : -1;
     return { icons, selected };
   }
-  async function config(endpoint) {
-    if (!endpoint) return null;
-    const response = await fetch(endpoint.replace(/\/$/, '') + '/config', { credentials: 'omit' });
-    if (!response.ok) throw new Error('Item submissions are temporarily unavailable.');
-    const result = await response.json();
-    if (!result.siteKey) throw new Error('Item submissions are not connected yet.');
-    return result;
-  }
-  async function submit(endpoint, item, original, token) {
-    const response = await fetch(endpoint.replace(/\/$/, '') + '/submit', {
-      method: 'POST', credentials: 'omit', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ item, original, token }),
-    });
-    const result = await response.json();
-    if (!response.ok) throw new Error(result.error || 'Could not submit this item. Please try again.');
-    if (!/^https:\/\/github\.com\/[\w.-]+\/[\w.-]+\/pull\/\d+$/.test(result.url)) throw new Error('The submission did not return a pull request link.');
-    return result;
-  }
-  async function challenge(element, siteKey, onToken) {
-    if (!window.turnstile) await new Promise((resolve, reject) => {
-      const existing = document.querySelector('script[data-item-turnstile]');
-      const script = existing || document.createElement('script');
-      const timer = setTimeout(() => reject(new Error('Verification could not load. Please reopen the form.')), 15000);
-      const done = fn => { clearTimeout(timer); fn(); };
-      script.addEventListener('load', () => done(resolve), { once: true });
-      script.addEventListener('error', () => { script.remove(); done(() => reject(new Error('Verification could not load. Please reopen the form.'))); }, { once: true });
-      if (!existing) { script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit'; script.dataset.itemTurnstile = ''; document.head.append(script); }
-    });
-    const id = window.turnstile.render(element, { sitekey: siteKey, action: 'item-contribution', callback: onToken,
-      'expired-callback': () => onToken(''), 'error-callback': () => onToken('') });
-    return { reset() { onToken(''); window.turnstile.reset(id); }, remove() { window.turnstile.remove(id); } };
-  }
-  return { clean, extract, read, prepare, config, submit, challenge };
+  return { clean, extract, read, prepare };
 }

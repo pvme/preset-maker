@@ -60,7 +60,7 @@ export function createPresetImageMatcher() {
       const existing = best.findIndex(candidate => candidate.id === entry.id);
       if (existing >= 0) { if (best[existing].score <= score) continue; best.splice(existing, 1); }
       if (best.length < limit || score < best[best.length - 1].score) {
-        best.push({ ...entry, score }); best.sort((a, b) => a.score - b.score); if (best.length > limit) best.pop();
+        best.push({ id: entry.id, family: entry.family, score }); best.sort((a, b) => a.score - b.score); if (best.length > limit) best.pop();
       }
     }
     return best;
@@ -97,12 +97,12 @@ export function createPresetImageMatcher() {
       if (first) leaders.set(variant, { key: first.family || first.id, score: first.score, gap: second ? second.score - first.score : 1 });
       for (const candidate of ranked) {
         const key = candidate.id + ':' + Math.floor(variant / 2);
-        if (!modes.has(key)) modes.set(key, { ...candidate, scores: [1, 1] });
+        if (!modes.has(key)) modes.set(key, { ...candidate, mode: Math.floor(variant / 2), scores: [1, 1] });
         modes.get(key).scores[variant % 2] = candidate.score;
       }
     });
     const candidates = [...modes.values()].map(candidate => {
-      const mode = Math.floor(candidate.variant / 2) * 2, key = candidate.family || candidate.id;
+      const mode = candidate.mode * 2, key = candidate.family || candidate.id;
       const a = leaders.get(mode), b = leaders.get(mode + 1);
       const consistent = a?.key === key && b?.key === key;
       const agreement = consistent &&
@@ -117,7 +117,8 @@ export function createPresetImageMatcher() {
     const strong = best[0] && (best[0].agreement || (best[0].score < .4 &&
       (best[0].score < .3 || best[0].consistent || best[0].distinct) && (!best[1] || best[1].score - best[0].score >
         (best[0].score >= .3 ? .12 : Math.max(.012, Math.min(.035, best[0].score * .12))))));
-    return { candidates: best, selected: strong && !best[0].empty ? best[0].id : '__keep__', confident: !!strong && !best[0].empty };
+    return { candidates: best.map(({ id, score, family, empty }) => ({ id, score, ...(family ? { family } : {}), ...(empty ? { empty } : {}) })),
+      selected: strong && !best[0].empty ? best[0].id : '__keep__', confident: !!strong && !best[0].empty };
   }
   return { size, fingerprint, queries, rank, regions, suggest, apply };
 }

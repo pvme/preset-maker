@@ -6,7 +6,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { ThemeProvider, createTheme } from "@mui/material";
 import { SnackbarProvider } from "notistack";
 import ImportImageDialog from "../src/components/ImportImageDialog/ImportImageDialog";
-import reducer from "../src/redux/store/reducers/preset-reducer";
+import reducer, { setInventorySlot } from "../src/redux/store/reducers/preset-reducer";
 import { detectScreenshot, readScreenshot, scanScreenshot, type Match } from "../src/imageImport/recognition";
 import { loadEmojis } from "../src/emoji/loadEmojis";
 import type { EmojiMaps } from "../src/emoji/types";
@@ -23,7 +23,7 @@ const maps: EmojiMaps = {
   getUrl: () => "data:image/png;base64,",
 };
 const results: Match[] = [
-  { group: "inventory", index: 0, selected: "potion", confident: true, thumbnail: "data:image/png;base64,", candidates: [{ id: "potion", score: .1 }] },
+  { group: "inventory", index: 0, selected: "potion", confident: true, thumbnail: "data:image/png;base64,", candidates: [{ id: "potion", score: .1, vector: new Uint8Array(24 * 24 * 3) } as Match["candidates"][number]] },
   { group: "inventory", index: 1, selected: "__keep__", confident: false, thumbnail: "data:image/png;base64,", candidates: [{ id: "weapon", score: .5 }] },
 ];
 
@@ -63,6 +63,7 @@ async function uploadAndScan() {
 
 test("uncertain matches come first; manual alias search and Apply update the preset", async () => {
   const { store, onClose } = setup();
+  const consoleError = vi.spyOn(console, "error").mockImplementation(() => undefined);
   await uploadAndScan();
   expect(screen.getAllByRole("region").map(node => node.getAttribute("aria-label"))).toEqual(["Needs checking", "Confident matches"]);
   fireEvent.click(screen.getByRole("button", { name: "Search items for Inventory 2" }));
@@ -71,6 +72,23 @@ test("uncertain matches come first; manual alias search and Apply update the pre
   fireEvent.click(screen.getByRole("button", { name: "Apply items (2)" }));
   expect(store.getState().preset.inventorySlots.slice(0, 2)).toEqual([{ id: "potion" }, { id: "potion" }]);
   expect(onClose).toHaveBeenCalledOnce();
+  expect(consoleError).not.toHaveBeenCalledWith(expect.stringContaining("non-serializable"));
+});
+
+test("disabling overwrite preserves existing slots while importing into empty ones", async () => {
+  const { store } = setup();
+  store.dispatch(setInventorySlot({ index: 0, value: { id: "weapon" } }));
+  await uploadAndScan();
+  fireEvent.click(screen.getByRole("button", { name: "Search items for Inventory 2" }));
+  fireEvent.change(screen.getByRole("combobox", { name: "Search Inventory 2" }), { target: { value: "Granite" } });
+  fireEvent.click(await screen.findByRole("option", { name: "Granite maul" }));
+  const overwrite = screen.getByRole("checkbox", { name: "Overwrite existing slots" }) as HTMLInputElement;
+  expect(overwrite.checked).toBe(true);
+  fireEvent.click(overwrite);
+  expect(overwrite.checked).toBe(false);
+  fireEvent.click(screen.getByRole("button", { name: "Apply items (1)" }));
+  expect(store.getState().preset.inventorySlots[0]).toEqual({ id: "weapon" });
+  expect(store.getState().preset.inventorySlots[1]).toEqual({ id: "weapon" });
 });
 
 test("changing the crop invalidates the review and prevents applying stale matches", async () => {

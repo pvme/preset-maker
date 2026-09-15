@@ -56,21 +56,3 @@ test('slot extraction locates original bank frames and returns separate icons wi
   } finally { Object.assign(globalThis, saved); }
 });
 
-test('submissions send only the selected slot and item details and validate returned PR links', async () => {
-  const originalFetch = globalThis.fetch;
-  const calls = [];
-  let reply = { url: 'https://github.com/pvme/pvme-settings/pull/123' }, ok = true;
-  globalThis.fetch = async (...args) => { calls.push(args); return { ok, json: async () => reply }; };
-  try {
-    assert.equal(await client.config(''), null); assert.equal(calls.length, 0);
-    const item = { id: 'test', name: 'Test item' };
-    assert.equal((await client.submit('https://service.test', item, 'selected slot', 'challenge')).url, reply.url);
-    assert.equal(calls[0][0], 'https://service.test/submit');
-    assert.deepEqual(JSON.parse(calls[0][1].body), { item, original: 'selected slot', token: 'challenge' });
-    assert.equal(calls[0][1].credentials, 'omit');
-    reply = { url: 'javascript:alert(1)' };
-    await assert.rejects(client.submit('https://service.test', item, '', ''), /pull request link/);
-    ok = false; reply = { error: 'Verification expired' };
-    await assert.rejects(client.submit('https://service.test', item, '', ''), /Verification expired/);
-  } finally { globalThis.fetch = originalFetch; }
-});

@@ -69,8 +69,11 @@ import { FunctionURLs } from "../../api/function-urls";
 import "./PresetMenu.css";
 
 import { tooltipSlotProps } from "../Tooltip/tooltipStyles";
+import { ItemContributionDialog } from "../ImportImageDialog/ItemContributionDialog";
 
-const ImportImageDialog = lazy(() => import("../ImportImageDialog/ImportImageDialog"));
+const ImportImageDialog = lazy(
+  () => import("../ImportImageDialog/ImportImageDialog"),
+);
 
 /* ---------------------------------------------
    Component
@@ -108,6 +111,7 @@ export const PresetMenu = (): JSX.Element => {
   const [anchorExport, setAnchorExport] = useState<null | HTMLElement>(null);
   const [isUploading, setIsUploading] = useState(false);
   const [imageImportOpen, setImageImportOpen] = useState(false);
+  const [iconSuggestionOpen, setIconSuggestionOpen] = useState(false);
 
   const canShowPresetWriteActions = !isPresetLoading;
   const canSave = mode === "local" || (mode === "cloud" && isLoggedIn);
@@ -348,11 +352,31 @@ export const PresetMenu = (): JSX.Element => {
                   }}
                 />
               </MenuItem>
-              <MenuItem disabled={isPresetLoading || !isPresetEditable}
-                onClick={() => { setAnchorExport(null); setImageImportOpen(true); }}>
-                <ListItemIcon><ImageIcon fontSize="small" /></ListItemIcon>
-                <ListItemText primary="Import Image" />
+              <MenuItem
+                disabled={isPresetLoading || !isPresetEditable}
+                onClick={() => {
+                  setAnchorExport(null);
+                  setImageImportOpen(true);
+                }}
+              >
+                <ListItemIcon>
+                  <ImageIcon fontSize="small" />
+                </ListItemIcon>
+                <ListItemText primary="Import Screenshot" />
               </MenuItem>
+              <Tooltip title="Item submissions are not connected yet." arrow disableHoverListener={isLoggedIn}>
+                <span>
+                  <MenuItem disabled={!isLoggedIn} onClick={() => {
+                    setAnchorExport(null);
+                    setIconSuggestionOpen(true);
+                  }}>
+                    <ListItemIcon>
+                      <ImageIcon fontSize="small" />
+                    </ListItemIcon>
+                    <ListItemText primary="Suggest Missing Icon" />
+                  </MenuItem>
+                </span>
+              </Tooltip>
             </Menu>
 
             {canShowPresetWriteActions && isPresetEditable && (
@@ -398,13 +422,29 @@ export const PresetMenu = (): JSX.Element => {
         onClose={() => setSaveAsOpen(false)}
       />
 
-      {imageImportOpen && <Suspense fallback={<Dialog open onClose={() => setImageImportOpen(false)}>
-        <DialogTitle>Import Image</DialogTitle>
-        <DialogContent><CircularProgress aria-label="Loading image importer" /></DialogContent>
-      </Dialog>}>
-        <ImportImageDialog key={`${mode}:${id ?? "new"}`} editable={isPresetEditable && !isPresetLoading}
-          onClose={() => setImageImportOpen(false)} />
-      </Suspense>}
+      {imageImportOpen && (
+        <Suspense
+          fallback={
+            <Dialog open onClose={() => setImageImportOpen(false)}>
+              <DialogTitle>Import Screenshot</DialogTitle>
+              <DialogContent>
+                <CircularProgress aria-label="Loading loadout screenshot importer" />
+              </DialogContent>
+            </Dialog>
+          }
+        >
+          <ImportImageDialog
+            key={`${mode}:${id ?? "new"}`}
+            editable={isPresetEditable && !isPresetLoading}
+            onClose={() => setImageImportOpen(false)}
+          />
+        </Suspense>
+      )}
+
+      {iconSuggestionOpen && <ItemContributionDialog
+        match={{ group: "inventory", index: 0, selected: "", confident: false, thumbnail: "", candidates: [] }}
+        onClose={() => setIconSuggestionOpen(false)}
+      />}
 
       <Dialog
         open={uploadConfirmOpen}

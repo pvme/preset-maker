@@ -58,6 +58,13 @@ test("ambiguous variants require review while clearly empty cells are recognised
   expect(suggest([empty, empty], entries)).toMatchObject({ selected: "", confident: true });
 });
 
+test("suggestions do not expose template fingerprint buffers", () => {
+  const vector = new Uint8Array(24 * 24 * 3).fill(100);
+  const result = suggest([{ vector, empty: false, count: vector.length }], [{ id: "item", variant: 0, vector }]);
+  expect(result.candidates[0]).toEqual(expect.objectContaining({ id: "item" }));
+  expect(result.candidates[0]).not.toHaveProperty("vector");
+});
+
 test("crop layouts remain within bounds and map equipment into PvME's slot order", () => {
   const box = { x: 47, y: 63, w: 716, h: 608 };
   for (const [layout, count] of [["game", 40], ["inventory", 28], ["equipment", 12]] as [Layout, number][]) {
