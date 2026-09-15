@@ -97,7 +97,7 @@ export async function scanScreenshot(image: HTMLImageElement, layout: Layout, bo
   maps: EmojiMaps, signal: AbortSignal, onProgress: (done: number, total: number) => void, detected?: Region[]): Promise<Match[]> {
   const templates = resolveTemplates(await loadAtlas(), maps);
   signal.throwIfAborted();
-  const slots = layout === "auto" ? detected ?? (await detectScreenshot(image, box, signal)).regions : regions(layout, box);
+  const slots = layout === "manual" ? detected ?? [] : layout === "auto" ? detected ?? (await detectScreenshot(image, box, signal)).regions : regions(layout, box);
   if (!slots.length) throw new Error("No slots detected. Crop around the panels or choose a manual layout.");
   const canvas = document.createElement("canvas");
   canvas.height = 32;

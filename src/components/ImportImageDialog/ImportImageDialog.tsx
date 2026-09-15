@@ -10,7 +10,11 @@ import { applyImageImport } from "../../redux/store/reducers/preset-reducer";
 import { KEEP_CURRENT, type Box as CropBox, type Layout, type Region } from "../../imageImport/matcher";
 import { detectScreenshot, readScreenshot, scanScreenshot, type Match } from "../../imageImport/recognition";
 import { CropPreview } from "./CropPreview";
+import { createPresetManualLayout } from "../../imageImport/manualLayout.mjs";
+import { ManualControls } from "./ManualControls";
 import { MatchReview } from "./MatchReview";
+
+const geometry = createPresetManualLayout();
 
 interface Props { onClose: () => void; editable: boolean }
 
@@ -20,6 +24,7 @@ export default function ImportImageDialog({ onClose, editable }: Props) {
   const [image, setImage] = useState<HTMLImageElement>();
   const [filename, setFilename] = useState("");
   const [layout, setLayout] = useState<Layout>("auto");
+  const [manual, setManual] = useState(geometry.blank);
   const [detected, setDetected] = useState<Region[]>([]);
   const [locating, setLocating] = useState(false);
   const [crop, setCrop] = useState<CropBox>({ x: 0, y: 0, w: 1, h: 1 });
@@ -63,7 +68,7 @@ export default function ImportImageDialog({ onClose, editable }: Props) {
   const readFile = async (file: File) => {
     invalidate();
     const version = revision.current;
-    setReading(true); setImage(undefined); setFilename(""); setDetected([]); setLayout("auto");
+    setReading(true); setImage(undefined); setFilename(""); setDetected([]); setLayout("auto"); setManual(geometry.blank());
     try {
       const next = await readScreenshot(file);
       if (version !== revision.current) return;
@@ -75,10 +80,17 @@ export default function ImportImageDialog({ onClose, editable }: Props) {
       if (version === revision.current) setReading(false);
     }
   };
-  const updateCrop = (next: CropBox) => { invalidate(); setDetected([]); setLocating(layout === "auto"); setCrop(next); };
+  const activeBox = layout === "manual" ? manual[manual.step].box ?? { x: 0, y: 0, w: image?.width ?? 1, h: image?.height ?? 1 } : crop;
+  const visibleRegions = layout === "manual" ? geometry.regions(manual) : detected;
+  const canScan = layout === "manual" ? manual.step === "equipment" && geometry.ready(manual) : !!detected.length;
+  const updateCrop = (next: CropBox) => {
+    invalidate();
+    if (layout === "manual" && image) { setManual(geometry.place(manual, next, image.width, image.height)); return; }
+    setDetected([]); setLocating(true); setCrop(next);
+  };
   const changeField = (field: keyof CropBox, value: number) => {
     if (!image || !Number.isFinite(value)) return;
-    const next = { ...crop, [field]: Math.round(value) };
+    const next = { ...activeBox, [field]: Math.round(value) };
     next.x = Math.max(0, Math.min(next.x, image.width - 1));
     next.y = Math.max(0, Math.min(next.y, image.height - 1));
     next.w = Math.max(1, Math.min(next.w, image.width - next.x));
@@ -86,7 +98,7 @@ export default function ImportImageDialog({ onClose, editable }: Props) {
     updateCrop(next);
   };
   const scan = async () => {
-    if (!image || busy || !editable || locating || (layout === "auto" && !detected.length)) return;
+    if (!image || busy || !editable || locating || !canScan) return;
     invalidate();
     const version = revision.current;
     const task = new AbortController(); controller.current = task;
@@ -98,7 +110,7 @@ export default function ImportImageDialog({ onClose, editable }: Props) {
       const result = await scanScreenshot(image, layout, crop, catalogue, task.signal, (done, total) => {
         if (version !== revision.current) return;
         setProgress(done / total * 100); setStatus(`Finding items: ${done} / ${total}`);
-      }, detected);
+      }, visibleRegions);
       if (version !== revision.current) return;
       setMatches(result);
       setStatus(`Found suggestions for ${result.length} slots. ${result.filter(match => !match.confident).length} need checking.`);
@@ -142,30 +154,26 @@ export default function ImportImageDialog({ onClose, editable }: Props) {
           <TextField select label="Screenshot layout" value={layout} size="small"
             onChange={event => { invalidate(); setDetected([]); setLocating(event.target.value === "auto"); setLayout(event.target.value as Layout); }}>
             <MenuItem value="auto">Auto-detect slots</MenuItem>
-            <MenuItem value="game">Manual: inventory and equipment (reference layout)</MenuItem>
-            <MenuItem value="inventory">Manual: inventory only (4 columns, 7 rows)</MenuItem>
-            <MenuItem value="equipment">Manual: equipment only (in-game worn slots)</MenuItem>
+            <MenuItem value="manual">Manual</MenuItem>
           </TextField>
-          <Typography variant="body2" color="text.secondary">
-            {layout === "auto" ? "The boxes show the detected slots. Crop around the panels only if needed, or choose a manual layout."
-              : layout === "game" ? "Crop to the full in-game preset panel, including its bottom toolbar."
-              : layout === "inventory" ? "Crop tightly around the 4 by 7 inventory grid."
-                : "Crop tightly around the worn slots, from the head and pocket to the gloves, boots and ring."}
-            {layout !== "auto" && " Drag on the image or adjust the crop below until the outlines line up with the items."}
-          </Typography>
-          <CropPreview image={image} crop={crop} layout={layout} detected={detected} onChange={updateCrop} />
+          {layout === "manual" ? <ManualControls value={manual} onChange={next => { invalidate(); setManual(next); }} />
+            : <Typography variant="body2" color="text.secondary">The boxes show the detected slots. Crop around the panels only if needed, or choose Manual.</Typography>}
+          <CropPreview image={image} crop={activeBox} layout={layout} detected={visibleRegions} onChange={updateCrop}
+            onMoveSlot={layout === "manual" && manual.step === "equipment" && manual.equipment.enabled ? (index, box) => {
+              invalidate(); setManual(geometry.move(manual, index, box, image.width, image.height));
+            } : undefined} />
           <Box sx={{ display: "grid", gridTemplateColumns: { xs: "repeat(2, 1fr)", sm: "repeat(4, 1fr)" }, gap: 1.5 }}>
             {([['x', 'Left'], ['y', 'Top'], ['w', 'Width'], ['h', 'Height']] as const).map(([key, label]) =>
-              <TextField key={key} type="number" size="small" label={label} value={crop[key]}
+              <TextField key={key} type="number" size="small" label={label} value={activeBox[key]}
                 inputProps={{ min: key === "x" || key === "y" ? 0 : 1, step: 1,
-                  max: key === "x" ? image.width - 1 : key === "y" ? image.height - 1 : key === "w" ? image.width - crop.x : image.height - crop.y }}
+                  max: key === "x" ? image.width - 1 : key === "y" ? image.height - 1 : key === "w" ? image.width - activeBox.x : image.height - activeBox.y }}
                 onChange={event => changeField(key, Number(event.target.value))} />)}
           </Box>
           <Stack direction="row" spacing={1}>
-            <Button variant="contained" onClick={() => void scan()} disabled={busy || locating || !editable || (layout === "auto" && !detected.length) || crop.w < 16 || crop.h < 16}>
+            <Button variant="contained" onClick={() => void scan()} disabled={busy || locating || !editable || !canScan || activeBox.w < 2 || activeBox.h < 2}>
               {busy ? "Finding items..." : "Find items"}
             </Button>
-            <Button onClick={() => updateCrop({ x: 0, y: 0, w: image.width, h: image.height })}>Reset crop</Button>
+            <Button onClick={() => updateCrop({ x: 0, y: 0, w: image.width, h: image.height })}>{layout === "manual" ? "Use full image for this panel" : "Reset crop"}</Button>
           </Stack>
         </>}
         {(busy || locating) && <LinearProgress variant={busy && progress ? "determinate" : "indeterminate"} value={progress} aria-label={locating ? "Detecting slots" : "Finding items"} />}

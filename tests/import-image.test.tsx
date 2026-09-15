@@ -35,9 +35,12 @@ beforeEach(() => {
   vi.mocked(detectScreenshot).mockResolvedValue({ regions: [{ group: "inventory", index: 0, x: 23, y: 19, w: 36, h: 32 }], inventory: true, equipment: false });
   vi.mocked(scanScreenshot).mockResolvedValue(structuredClone(results));
   vi.spyOn(HTMLCanvasElement.prototype, "getContext").mockReturnValue({
-    clearRect: vi.fn(), drawImage: vi.fn(), beginPath: vi.fn(), rect: vi.fn(), fill: vi.fn(), strokeRect: vi.fn(),
+    clearRect: vi.fn(), drawImage: vi.fn(), beginPath: vi.fn(), rect: vi.fn(), fill: vi.fn(), fillText: vi.fn(), strokeRect: vi.fn(),
   } as unknown as CanvasRenderingContext2D);
   HTMLElement.prototype.scrollIntoView = vi.fn();
+  window.PointerEvent = MouseEvent as typeof PointerEvent;
+  HTMLCanvasElement.prototype.setPointerCapture = vi.fn();
+  HTMLCanvasElement.prototype.releasePointerCapture = vi.fn();
 });
 afterEach(() => { cleanup(); vi.restoreAllMocks(); });
 
@@ -87,7 +90,7 @@ test("a cancelled scan cannot restore results after a layout change", async () =
   fireEvent.click(find);
   await waitFor(() => expect(scanScreenshot).toHaveBeenCalledOnce());
   fireEvent.mouseDown(screen.getByRole("combobox", { name: "Screenshot layout" }));
-  fireEvent.click(await screen.findByRole("option", { name: "Manual: inventory only (4 columns, 7 rows)" }));
+  fireEvent.click(await screen.findByRole("option", { name: "Manual" }));
   await act(async () => complete(results));
   expect(vi.mocked(scanScreenshot).mock.calls[0][4].aborted).toBe(true);
   expect(screen.queryByRole("region")).toBeNull();
@@ -154,7 +157,11 @@ test("unrecognized images require alignment instead of scanning guessed slots", 
   expect((screen.getByRole("button", { name: "Apply items" }) as HTMLButtonElement).disabled).toBe(true);
   expect(scanScreenshot).not.toHaveBeenCalled();
   fireEvent.mouseDown(screen.getByRole("combobox", { name: "Screenshot layout" }));
-  fireEvent.click(await screen.findByRole("option", { name: "Manual: inventory only (4 columns, 7 rows)" }));
+  fireEvent.click(await screen.findByRole("option", { name: "Manual" }));
+  expect((screen.getByRole("button", { name: "Find items" }) as HTMLButtonElement).disabled).toBe(true);
+  fireEvent.change(screen.getByRole("spinbutton", { name: "Width" }), { target: { value: "160" } });
+  fireEvent.click(screen.getByRole("button", { name: "2. Equipment" }));
+  fireEvent.click(screen.getByRole("checkbox", { name: "Include equipment" }));
   expect((screen.getByRole("button", { name: "Find items" }) as HTMLButtonElement).disabled).toBe(false);
 });
 
@@ -171,4 +178,40 @@ test("changing a crop cancels detection and ignores its late result", async () =
   await screen.findByText(/No complete slot layout detected/);
   await act(async () => finish({ regions: [{ group: "inventory", index: 0, x: 0, y: 0, w: 32, h: 32 }], inventory: true, equipment: false }));
   expect((screen.getByRole("button", { name: "Find items" }) as HTMLButtonElement).disabled).toBe(true);
+});
+
+
+test("manual placement keeps separate panels, supports grid changes and moves individual equipment slots", async () => {
+  setup();
+  fireEvent.change(screen.getByLabelText("Screenshot file"), { target: { files: [new File(["image"], "preset.png", { type: "image/png" })] } });
+  await screen.findByRole("combobox", { name: "Screenshot layout" });
+  fireEvent.mouseDown(screen.getByRole("combobox", { name: "Screenshot layout" }));
+  expect((await screen.findAllByRole("option")).map(option => option.textContent)).toEqual(["Auto-detect slots", "Manual"]);
+  fireEvent.click(screen.getByRole("option", { name: "Manual" }));
+  expect((screen.getByRole("button", { name: "2. Equipment" }) as HTMLButtonElement).disabled).toBe(true);
+  const field = (name: string, value: number) => fireEvent.change(screen.getByRole("spinbutton", { name }), { target: { value: String(value) } });
+  field("Columns", 6);
+  expect((screen.getByRole("spinbutton", { name: "Rows" }) as HTMLInputElement).value).toBe("5");
+  field("Left", 10); field("Top", 20); field("Width", 180); field("Height", 150);
+  fireEvent.click(screen.getByRole("button", { name: "2. Equipment" }));
+  fireEvent.mouseDown(screen.getByRole("combobox", { name: "Equipment arrangement" }));
+  fireEvent.click(await screen.findByRole("option", { name: "Grid" }));
+  field("Columns", 4);
+  field("Left", 210); field("Top", 40); field("Width", 140); field("Height", 192);
+  const preview = screen.getByRole("img", { name: /Screenshot with slot outlines/ });
+  vi.spyOn(preview, "getBoundingClientRect").mockReturnValue({ x: 0, y: 0, left: 0, top: 0, right: 358, bottom: 304, width: 358, height: 304, toJSON: () => ({}) });
+  fireEvent.pointerDown(preview, { button: 0, clientX: 215, clientY: 45, pointerId: 1 });
+  fireEvent.pointerMove(preview, { clientX: 105, clientY: 225, pointerId: 1 });
+  fireEvent.pointerUp(preview, { clientX: 105, clientY: 225, pointerId: 1 });
+  fireEvent.click(screen.getByRole("button", { name: "Find items" }));
+  await screen.findByRole("region", { name: "Needs checking" });
+  const call = vi.mocked(scanScreenshot).mock.calls[0];
+  expect(call[1]).toBe("manual");
+  expect(call[6]).toHaveLength(40);
+  expect(call[6]?.filter(slot => slot.group === "inventory")[6]).toMatchObject({ x: 10, y: 50.4 });
+  expect(call[6]?.find(slot => slot.group === "equipment" && slot.index === 0)).toMatchObject({ x: 100, y: 220 });
+  expect(call[6]?.find(slot => slot.group === "equipment" && slot.index === 1)?.x).toBeGreaterThan(210);
+  fireEvent.click(screen.getByRole("button", { name: "1. Inventory" }));
+  expect((screen.getByRole("spinbutton", { name: "Left" }) as HTMLInputElement).value).toBe("10");
+  expect(screen.queryByRole("region", { name: "Needs checking" })).toBeNull();
 });

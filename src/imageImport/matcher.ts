@@ -1,7 +1,7 @@
 import { createPresetImageMatcher } from "./iconMatcher.mjs";
 export const FINGERPRINT_SIZE = 24;
 export const KEEP_CURRENT = "__keep__";
-export type Layout = "auto" | "game" | "inventory" | "equipment";
+export type Layout = "auto" | "manual" | "game" | "inventory" | "equipment";
 export type Group = "inventory" | "equipment";
 export interface Box { x: number; y: number; w: number; h: number }
 export interface Region extends Box { group: Group; index: number }
