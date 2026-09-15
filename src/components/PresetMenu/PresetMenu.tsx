@@ -1,6 +1,6 @@
 // src/components/PresetMenu.tsx
 
-import { useRef, useState } from "react";
+import { lazy, Suspense, useRef, useState } from "react";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useParams, useNavigate } from "react-router-dom";
 import { useSnackbar } from "notistack";
@@ -70,6 +70,10 @@ import "./PresetMenu.css";
 
 import { tooltipSlotProps } from "../Tooltip/tooltipStyles";
 
+const ImportImageDialog = lazy(
+  () => import("../ImportImageDialog/ImportImageDialog"),
+);
+
 /* ---------------------------------------------
    Component
 --------------------------------------------- */
@@ -105,6 +109,7 @@ export const PresetMenu = (): JSX.Element => {
   const [uploadConfirmOpen, setUploadConfirmOpen] = useState(false);
   const [anchorExport, setAnchorExport] = useState<null | HTMLElement>(null);
   const [isUploading, setIsUploading] = useState(false);
+  const [imageImportOpen, setImageImportOpen] = useState(false);
 
   const canShowPresetWriteActions = !isPresetLoading;
   const canSave = mode === "local" || (mode === "cloud" && isLoggedIn);
@@ -245,7 +250,7 @@ export const PresetMenu = (): JSX.Element => {
                     <ListItemIcon>
                       <AddIcon fontSize="small" />
                     </ListItemIcon>
-                    <ListItemText primary="New Preset" />
+                    <ListItemText primary="New preset" />
                   </MenuItem>
                   <Divider />
                 </>
@@ -267,7 +272,7 @@ export const PresetMenu = (): JSX.Element => {
                       )}
                     </ListItemIcon>
                     <ListItemText
-                      primary={isUploading ? "Uploading…" : "Upload to Cloud"}
+                      primary={isUploading ? "Uploading…" : "Upload to cloud"}
                     />
                   </MenuItem>
                   <Divider />
@@ -287,7 +292,7 @@ export const PresetMenu = (): JSX.Element => {
                 <ListItemIcon>
                   <LinkIcon fontSize="small" />
                 </ListItemIcon>
-                <ListItemText primary="Copy Embed Link" />
+                <ListItemText primary="Copy embed link" />
               </MenuItem>
 
               <Divider />
@@ -302,7 +307,7 @@ export const PresetMenu = (): JSX.Element => {
                 <ListItemIcon>
                   <ContentCopyIcon fontSize="small" />
                 </ListItemIcon>
-                <ListItemText primary="Copy Image" />
+                <ListItemText primary="Copy image" />
               </MenuItem>
 
               <MenuItem
@@ -316,7 +321,7 @@ export const PresetMenu = (): JSX.Element => {
                 <ListItemIcon>
                   <ImageIcon fontSize="small" />
                 </ListItemIcon>
-                <ListItemText primary="Download Image" />
+                <ListItemText primary="Download image" />
               </MenuItem>
 
               <Divider />
@@ -325,14 +330,14 @@ export const PresetMenu = (): JSX.Element => {
                 <ListItemIcon>
                   <FileDownloadIcon fontSize="small" />
                 </ListItemIcon>
-                <ListItemText primary="Export JSON" />
+                <ListItemText primary="Export backup" />
               </MenuItem>
 
               <MenuItem onClick={() => fileInputRef.current?.click()}>
                 <ListItemIcon>
                   <FileUploadIcon fontSize="small" />
                 </ListItemIcon>
-                <ListItemText primary="Import JSON" />
+                <ListItemText primary="Import backup" />
                 <input
                   ref={fileInputRef}
                   type="file"
@@ -344,6 +349,19 @@ export const PresetMenu = (): JSX.Element => {
                     if (file) importJson(file);
                   }}
                 />
+              </MenuItem>
+              <Divider />
+              <MenuItem
+                disabled={isPresetLoading || !isPresetEditable}
+                onClick={() => {
+                  setAnchorExport(null);
+                  setImageImportOpen(true);
+                }}
+              >
+                <ListItemIcon>
+                  <ImageIcon fontSize="small" />
+                </ListItemIcon>
+                <ListItemText primary="Import screenshot" />
               </MenuItem>
             </Menu>
 
@@ -389,6 +407,25 @@ export const PresetMenu = (): JSX.Element => {
         }}
         onClose={() => setSaveAsOpen(false)}
       />
+
+      {imageImportOpen && (
+        <Suspense
+          fallback={
+            <Dialog open onClose={() => setImageImportOpen(false)}>
+              <DialogTitle>Import Screenshot</DialogTitle>
+              <DialogContent>
+                <CircularProgress aria-label="Loading loadout screenshot importer" />
+              </DialogContent>
+            </Dialog>
+          }
+        >
+          <ImportImageDialog
+            key={`${mode}:${id ?? "new"}`}
+            editable={isPresetEditable && !isPresetLoading}
+            onClose={() => setImageImportOpen(false)}
+          />
+        </Suspense>
+      )}
 
       <Dialog
         open={uploadConfirmOpen}

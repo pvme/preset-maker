@@ -4,12 +4,15 @@
   "version": "3",
   "type": "module",
   "scripts": {
+    "test": "vitest run",
+    "test:build": "node utility/check-build.mjs",
+    "recognition:build": "tsx utility/build-recognition.mjs",
     "dev": "vite",
     "dev:prod": "vite --mode production",
     "dev:emulator": "vite --mode emulator",
     "start": "npm run dev",
     "build": "node ./utility/get-version.js && tsc && vite build",
-    "predeploy": "npm run build",
+    "predeploy": "npm run build && npm run test:build",
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
@@ -41,13 +44,19 @@
     "zod": "^3.25.64"
   },
   "devDependencies": {
+    "@napi-rs/canvas": "^1.0.9",
+    "@testing-library/dom": "^10.4.2",
+    "@testing-library/react": "^16.3.3",
     "@types/file-saver": "^2.0.7",
     "@types/react": "^18.3.23",
     "@types/react-dom": "^18.3.7",
     "@types/sanitize-html": "^2.16.0",
     "@vitejs/plugin-react": "^4.5.2",
     "gh-pages": "^6.3.0",
+    "jsdom": "^26.1.0",
+    "tsx": "^4.23.13",
     "typescript": "^5.8.3",
-    "vite": "^6.3.5"
+    "vite": "^6.3.5",
+    "vitest": "^4.1.11"
   }
 }

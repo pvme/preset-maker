@@ -23,7 +23,7 @@ interface HelpDialogProps {
 
 export const HelpDialog = ({ open, onClose }: HelpDialogProps): JSX.Element => {
   return (
-    <Dialog open={open} onClose={onClose} className="help-dialog" maxWidth="xs">
+    <Dialog open={open} onClose={onClose} className="help-dialog" maxWidth="sm">
       <form>
         <DialogTitle>About this app</DialogTitle>
 
@@ -86,7 +86,7 @@ export const HelpDialog = ({ open, onClose }: HelpDialogProps): JSX.Element => {
 
         <DialogActions sx={{ justifyContent: "space-between", px: 2 }}>
           <Typography variant="body2" color="text.secondary">
-            <small>Built with ❤️ by x222</small>
+            <small>Built with ❤️ by x222, Rcm37 and Saltea</small>
           </Typography>
           <Typography variant="caption" sx={{ opacity: 0.6 }}>
             {APP_VERSION}

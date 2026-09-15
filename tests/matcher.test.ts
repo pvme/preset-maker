@@ -1,0 +1,206 @@
+import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
+import { createCanvas, loadImage } from "@napi-rs/canvas";
+import { expect, test } from "vitest";
+import { fingerprint, queries, suggest, regions, KEEP_CURRENT, type Template, type Layout } from "../src/imageImport/matcher";
+import reducer, { applyImageImport, importDataAction } from "../src/redux/store/reducers/preset-reducer";
+import { blankPreset } from "../src/schemas/preset";
+
+const matcher = { fingerprint, queries, suggest };
+const fixtureIds = ["elderovlsalve", "nightmaregauntlets", "stalkerring", "vestmentsofhavochood",
+  "scriptureofful", "pernixsquiveryellow", "rod"];
+
+async function readAtlas(): Promise<Template[]> {
+  const metadata = JSON.parse(await readFile(new URL("../src/assets/recognition/recognition.json", import.meta.url), "utf8"));
+  const image = await loadImage(await readFile(new URL("../src/assets/recognition/recognition.png", import.meta.url)));
+  const ctx = createCanvas(image.width, image.height).getContext("2d");
+  ctx.drawImage(image, 0, 0);
+  return metadata.records.map((entry: Omit<Template, "vector">, i: number) => {
+    const pixels = ctx.getImageData(i % metadata.columns * metadata.size,
+      Math.floor(i / metadata.columns) * metadata.size, metadata.size, metadata.size).data;
+    const vector = new Uint8Array(metadata.size ** 2 * 3);
+    for (let p = 0; p < metadata.size ** 2; p++) vector.set(pixels.subarray(p * 4, p * 4 + 3), p * 3);
+    return { ...entry, vector };
+  });
+}
+
+test("committed atlas identifies original item icons after scaling and JPEG compression", async () => {
+  const atlas = await readAtlas();
+  const icons = await loadImage(await readFile(new URL("fixtures/preset-recognition-icons.png", import.meta.url)));
+  const original = createCanvas(358, 304), originalCtx = original.getContext("2d");
+  originalCtx.fillStyle = "#25231e"; originalCtx.fillRect(0, 0, 358, 304);
+  for (let i = 0; i < 28; i++) originalCtx.drawImage(icons, (i % fixtureIds.length) * 40, 0, 40, 40,
+    18 + i % 4 * 40, 3 + Math.floor(i / 4) * 36, 40, 40);
+  for (const scale of [1, 2]) {
+    const scaled = createCanvas(original.width * scale, original.height * scale);
+    scaled.getContext("2d").drawImage(original, 0, 0, scaled.width, scaled.height);
+    const image = scale === 1 ? scaled : await loadImage(scaled.toBuffer("image/jpeg", 90));
+    let recognised = 0;
+    for (const region of regions("game", { x: 0, y: 0, w: image.width, h: image.height }).filter(r => r.group === "inventory")) {
+      const ctx = createCanvas(36, 32).getContext("2d");
+      ctx.drawImage(image, region.x, region.y, region.w, region.h, 0, 0, 36, 32);
+      const pixels = ctx.getImageData(0, 0, 36, 32);
+      const result = suggest([fingerprint(pixels), fingerprint(pixels, true)], atlas);
+      if (result.candidates[0]?.id === fixtureIds[region.index % fixtureIds.length]) recognised++;
+    }
+    expect(recognised, `Recognised ${recognised}/28 at ${scale}x`).toBeGreaterThanOrEqual(25);
+  }
+}, 15000);
+
+test("ambiguous variants require review while clearly empty cells are recognised", () => {
+  const ctx = createCanvas(32, 32).getContext("2d");
+  ctx.fillStyle = "#28c3ec"; ctx.fillRect(7, 6, 12, 20);
+  const query = fingerprint(ctx.getImageData(0, 0, 32, 32));
+  const entries = ["dose1", "dose2"].flatMap(id => [0, 1].map(variant => ({ id, variant, vector: query.vector })));
+  expect(suggest([query, query], entries)).toMatchObject({ selected: KEEP_CURRENT, confident: false });
+  ctx.clearRect(0, 0, 32, 32);
+  const empty = fingerprint(ctx.getImageData(0, 0, 32, 32));
+  expect(suggest([empty, empty], entries)).toMatchObject({ selected: "", confident: true });
+});
+
+test("suggestions do not expose template fingerprint buffers", () => {
+  const vector = new Uint8Array(24 * 24 * 3).fill(100);
+  const result = suggest([{ vector, empty: false, count: vector.length }], [{ id: "item", variant: 0, vector }]);
+  expect(result.candidates[0]).toEqual(expect.objectContaining({ id: "item" }));
+  expect(result.candidates[0]).not.toHaveProperty("vector");
+});
+
+test("crop layouts remain within bounds and map equipment into PvME's slot order", () => {
+  const box = { x: 47, y: 63, w: 716, h: 608 };
+  for (const [layout, count] of [["game", 40], ["inventory", 28], ["equipment", 12]] as [Layout, number][]) {
+    const slots = regions(layout, box);
+    expect(slots).toHaveLength(count);
+    for (const slot of slots) {
+      expect(slot.x).toBeGreaterThanOrEqual(box.x); expect(slot.y).toBeGreaterThanOrEqual(box.y);
+      expect(slot.x + slot.w).toBeLessThanOrEqual(box.x + box.w + .01);
+      expect(slot.y + slot.h).toBeLessThanOrEqual(box.y + box.h + .01);
+    }
+  }
+  const gear = regions("equipment", box);
+  expect(gear[0].y).toBeLessThan(gear[4].y);
+  expect(gear[4].y).toBeLessThan(gear[6].y);
+  expect(gear[6].y).toBeLessThan(gear[8].y);
+  expect(gear[3].x).toBeLessThan(gear[4].x);
+  expect(gear[4].x).toBeLessThan(gear[5].x);
+});
+
+test("applying a review preserves preset metadata and unchanged EoFs, and clears explicit empty slots", () => {
+  const preset = structuredClone(blankPreset);
+  preset.presetName = "AoD"; preset.presetNotes = "Keep these notes";
+  preset.inventorySlots[0] = { id: "old", eof_spec: "Old weapon" };
+  preset.inventorySlots[1] = { id: "eof", eof_spec: "Dark bow" };
+  preset.inventorySlots[2] = { id: "unresolved" };
+  preset.equipmentSlots[0] = { id: "helm" };
+  preset.familiar = { id: "ripper" }; preset.relics = [{ id: "relic" }];
+  preset.ammoSpells = [{ id: "spell" }]; preset.aspect = { id: "aspect" };
+  preset.breakdown = [{ slotType: "inventory", slotIndex: 1, description: "EoF switch" }];
+  const before = reducer(undefined, importDataAction(preset));
+  const after = reducer(before, applyImageImport([
+    { group: "inventory", index: 0, selected: "new" },
+    { group: "inventory", index: 1, selected: "eof" },
+    { group: "inventory", index: 2, selected: KEEP_CURRENT },
+    { group: "equipment", index: 0, selected: "" },
+    { group: "inventory", index: 99, selected: "invalid" },
+    { group: "inventory", index: -1, selected: "invalid" },
+  ]));
+  expect(after.inventorySlots[0]).toEqual({ id: "new" });
+  expect(after.inventorySlots[1]).toEqual({ id: "eof", eof_spec: "Dark bow" });
+  expect(after.inventorySlots[2]).toEqual({ id: "unresolved" });
+  expect(after.equipmentSlots[0]).toEqual({ id: "" });
+  expect({ ...after, inventorySlots: before.inventorySlots, equipmentSlots: before.equipmentSlots }).toEqual(before);
+  expect(before.inventorySlots[0]).toEqual({ id: "old", eof_spec: "Old weapon" });
+});
+
+test('item details survive resizing and changed stack quantities without confusing incense colours', async () => {
+  const atlas = await readAtlas();
+  const records = JSON.parse(await readFile(new URL('./fixtures/preset-detail-icons.json', import.meta.url), 'utf8'));
+  const icons = await loadImage(await readFile(new URL('./fixtures/preset-detail-icons.png', import.meta.url)));
+  for (const scale of [1, 1.5]) for (const item of records) {
+    const original = createCanvas(item.w, item.h), ctx = original.getContext('2d');
+    ctx.fillStyle = '#25231e'; ctx.fillRect(0, 0, item.w, item.h);
+    ctx.drawImage(icons, item.x, 0, item.w, item.h, 0, 0, item.w, item.h);
+    if (item.w === 38) {
+      ctx.fillStyle = '#25231e'; ctx.fillRect(0, 0, item.w, 9);
+      ctx.font = '9px monospace'; ctx.fillStyle = '#ffff00'; ctx.fillText('250', 0, 8);
+    }
+    const resized = createCanvas(Math.round(item.w * scale), Math.round(item.h * scale));
+    resized.getContext('2d').drawImage(original, 0, 0, resized.width, resized.height);
+    const pixels = resized.getContext('2d').getImageData(0, 0, resized.width, resized.height);
+    const result = matcher.suggest(matcher.queries(pixels), atlas);
+    assert.equal(result.candidates[0]?.family, item.family, item.id + ' at ' + scale);
+    assert.equal(result.confident, true, item.id + ' at ' + scale + ': ' + JSON.stringify(result.candidates.slice(0, 3).map(({id,score}) => ({id,score}))));
+  }
+}, 15000);
+
+test('stack quantities do not compete while different items with identical icons remain uncertain', () => {
+  const ctx = createCanvas(32, 32).getContext('2d');
+  ctx.fillStyle = '#ac54ef'; ctx.fillRect(7, 8, 17, 20);
+  const queries = matcher.queries(ctx.getImageData(0, 0, 32, 32));
+  const entries = ['stack100', 'stack500'].flatMap(id => queries.map((query, variant) => ({ id, family: 'same scroll', variant, vector: query.vector })));
+  assert.equal(matcher.suggest(queries, entries).confident, true);
+  const different = entries.map(entry => ({ ...entry, family: entry.id }));
+  assert.equal(matcher.suggest(queries, different).confident, false);
+  const dark = matcher.fingerprint(ctx.getImageData(0, 0, 32, 32));
+  assert.equal(matcher.suggest([dark, { ...dark, empty: true }], entries).selected === '', false);
+});
+test('duplicate catalogue artwork resolves confidently to the preset scroll and master cape', async () => {
+  const atlas = await readAtlas();
+  for (const [source, expected] of [['ripperscroll', 'ripperscrolls'], ['ripperscrolls', 'ripperscrolls'], ['magiccape', 'mag120'], ['mag120', 'mag120']]) {
+    const image = await loadImage(await readFile(new URL('./fixtures/' + source + '.png', import.meta.url)));
+    for (const scale of [1, 1.5, 2]) {
+      const output = createCanvas(Math.round(image.width * scale), Math.round(image.height * scale));
+      const ctx = output.getContext('2d'); ctx.fillStyle = '#25231e'; ctx.fillRect(0, 0, output.width, output.height); ctx.drawImage(image, 0, 0, output.width, output.height);
+      const result = matcher.suggest(matcher.queries(ctx.getImageData(0, 0, output.width, output.height)), atlas);
+      assert.equal(result.candidates[0]?.id, expected, source + ' at ' + scale);
+      assert.equal(result.confident, true, source + ' at ' + scale);
+    }
+  }
+  assert.equal(atlas.some(entry => ['ripperscroll', 'magiccape'].includes(entry.id)), false);
+});
+
+test('weak colour similarities cannot become confident when competing items are close', () => {
+  const vector = value => new Uint8Array(24 * 24 * 3).fill(value);
+  const query = { vector: vector(100), empty: false };
+  const entries = [{ id: 'blue-essence', value: 64 }, { id: 'blue-coif', value: 60 }]
+    .flatMap(({ id, value }) => [0, 1].map(variant => ({ id, variant, vector: vector(value) })));
+  const result = matcher.suggest([query, query], entries);
+  assert.equal(result.candidates[0].id, 'blue-essence');
+  assert.equal(result.selected, '__keep__'); assert.equal(result.confident, false);
+});
+
+test('grey items can use a precise background mask only when both masks agree on the item', () => {
+  const vector = value => new Uint8Array(24 * 24 * 3).fill(value);
+  const query = { vector: vector(100), empty: false };
+  const entries = [{ id: 'dummy', variant: 0, vector: vector(40) }, { id: 'other', variant: 0, vector: vector(30) },
+    { id: 'dummy', variant: 1, vector: vector(99) }, { id: 'other', variant: 1, vector: vector(50) }];
+  assert.equal(matcher.suggest([query, query], entries).selected, 'dummy');
+  entries[1].vector = vector(70); entries[3].vector = vector(20);
+  assert.equal(matcher.suggest([query, query], entries).confident, false);
+  entries[1].vector = vector(40); entries[3].vector = vector(99);
+  assert.equal(matcher.suggest([query, query], entries).confident, false);
+});
+
+test('empty equipment templates include views without the slot frame and clear an empty shield', async () => {
+  const atlas = await readAtlas();
+  assert.equal(atlas.filter(entry => !entry.id && entry.slot === 5 && entry.variant === 1).length, 6);
+  const artwork = await loadImage(await readFile(new URL('../src/assets/presetmap_desktop.png', import.meta.url)));
+  const canvas = createCanvas(30, 32), ctx = canvas.getContext('2d');
+  ctx.drawImage(artwork, 433, 46, 30, 32, 0, 0, 30, 32);
+  const result = matcher.suggest(matcher.queries(ctx.getImageData(0, 0, 30, 32)), atlas.filter(entry => entry.id || entry.slot === 5));
+  assert.equal(result.selected, ''); assert.equal(result.confident, true);
+});
+
+
+test('bank screenshots recognise dark robes and empty shields while retaining uncertain items for review', async () => {
+  const atlas = await readAtlas();
+  const image = await loadImage(await readFile(new URL('./fixtures/preset-bank-matches.png', import.meta.url)));
+  const expected = ['vestmentsofhavoctop', '', '__keep__', '__keep__', '__keep__', '__keep__', '__keep__', '__keep__', 'dummy', 'spiritshield'];
+  for (let i = 0; i < expected.length; i++) {
+    const equipment = [0, 1, 7, 9].includes(i), width = equipment ? 32 : 34, height = equipment ? 30 : 31;
+    const canvas = createCanvas(width, height), ctx = canvas.getContext('2d');
+    ctx.drawImage(image, i * 40, 0, width, height, 0, 0, width, height);
+    const result = matcher.suggest(matcher.queries(ctx.getImageData(0, 0, width, height)), atlas.filter(entry => entry.id || (equipment && entry.slot === (i === 0 ? 4 : i === 7 ? 7 : 5))));
+    assert.equal(result.selected, expected[i], `Bank screenshot item ${i}`);
+    assert.equal(result.confident, expected[i] !== '__keep__', `Bank screenshot confidence ${i}`);
+  }
+});
