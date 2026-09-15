@@ -89,20 +89,32 @@ export function createPresetImageMatcher() {
   }
   function suggest(queries, entries, limit = 6) {
     if (queries.length && queries.every(query => query.empty)) return { candidates: [{ id: '', score: 0, empty: true }], selected: '', confident: true };
-    const modes = new Map();
+    const modes = new Map(), leaders = new Map();
     queries.forEach((query, variant) => {
       if (query.empty) return;
-      for (const candidate of rank(query, entries.filter(e => e.variant === variant), Math.max(limit, 24))) {
+      const ranked = rank(query, entries.filter(e => e.variant === variant), Math.max(limit, 24));
+      const first = ranked[0], second = first && ranked.find(candidate => (candidate.family || candidate.id) !== (first.family || first.id));
+      if (first) leaders.set(variant, { key: first.family || first.id, score: first.score, gap: second ? second.score - first.score : 1 });
+      for (const candidate of ranked) {
         const key = candidate.id + ':' + Math.floor(variant / 2);
         if (!modes.has(key)) modes.set(key, { ...candidate, scores: [1, 1] });
         modes.get(key).scores[variant % 2] = candidate.score;
       }
     });
-    const candidates = [...modes.values()].map(candidate => ({ ...candidate, score: candidate.scores[0] * .75 + candidate.scores[1] * .25 }));
+    const candidates = [...modes.values()].map(candidate => {
+      const mode = Math.floor(candidate.variant / 2) * 2, key = candidate.family || candidate.id;
+      const a = leaders.get(mode), b = leaders.get(mode + 1);
+      const consistent = a?.key === key && b?.key === key;
+      const agreement = consistent &&
+        ((a.score < .075 && a.gap > .12) || (b.score < .075 && b.gap > .12));
+      return { ...candidate, agreement, consistent, score: candidate.scores[0] * .75 + candidate.scores[1] * .25 };
+    });
     const unique = new Map();
     for (const candidate of candidates) { const key = candidate.family || candidate.id; if (!unique.has(key) || unique.get(key).score > candidate.score) unique.set(key, candidate); }
     const best = [...unique.values()].sort((a, b) => a.score - b.score).slice(0, limit);
-    const strong = best[0] && best[0].score < .4 && (!best[1] || best[1].score - best[0].score > Math.max(.012, Math.min(.035, best[0].score * .12)));
+    const strong = best[0] && (best[0].agreement || (best[0].score < .4 &&
+      (best[0].score < .3 || best[0].consistent) && (!best[1] || best[1].score - best[0].score >
+        (best[0].score >= .3 ? .12 : Math.max(.012, Math.min(.035, best[0].score * .12))))));
     return { candidates: best, selected: strong && !best[0].empty ? best[0].id : '__keep__', confident: !!strong && !best[0].empty };
   }
   return { size, fingerprint, queries, rank, regions, suggest, apply };

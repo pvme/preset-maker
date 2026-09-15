@@ -150,3 +150,35 @@ test('duplicate catalogue artwork resolves confidently to the preset scroll and 
   }
   assert.equal(atlas.some(entry => ['ripperscroll', 'magiccape'].includes(entry.id)), false);
 });
+
+test('weak colour similarities cannot become confident when competing items are close', () => {
+  const vector = value => new Uint8Array(24 * 24 * 3).fill(value);
+  const query = { vector: vector(100), empty: false };
+  const entries = [{ id: 'blue-essence', value: 64 }, { id: 'blue-coif', value: 60 }]
+    .flatMap(({ id, value }) => [0, 1].map(variant => ({ id, variant, vector: vector(value) })));
+  const result = matcher.suggest([query, query], entries);
+  assert.equal(result.candidates[0].id, 'blue-essence');
+  assert.equal(result.selected, '__keep__'); assert.equal(result.confident, false);
+});
+
+test('grey items can use a precise background mask only when both masks agree on the item', () => {
+  const vector = value => new Uint8Array(24 * 24 * 3).fill(value);
+  const query = { vector: vector(100), empty: false };
+  const entries = [{ id: 'dummy', variant: 0, vector: vector(40) }, { id: 'other', variant: 0, vector: vector(30) },
+    { id: 'dummy', variant: 1, vector: vector(99) }, { id: 'other', variant: 1, vector: vector(50) }];
+  assert.equal(matcher.suggest([query, query], entries).selected, 'dummy');
+  entries[1].vector = vector(70); entries[3].vector = vector(20);
+  assert.equal(matcher.suggest([query, query], entries).confident, false);
+  entries[1].vector = vector(40); entries[3].vector = vector(99);
+  assert.equal(matcher.suggest([query, query], entries).confident, false);
+});
+
+test('empty equipment templates include views without the slot frame and clear an empty shield', async () => {
+  const atlas = await readAtlas();
+  assert.equal(atlas.filter(entry => !entry.id && entry.slot === 5 && entry.variant === 1).length, 2);
+  const artwork = await loadImage(await readFile(new URL('../src/assets/presetmap_desktop.png', import.meta.url)));
+  const canvas = createCanvas(30, 32), ctx = canvas.getContext('2d');
+  ctx.drawImage(artwork, 433, 46, 30, 32, 0, 0, 30, 32);
+  const result = matcher.suggest(matcher.queries(ctx.getImageData(0, 0, 30, 32)), atlas.filter(entry => entry.id || entry.slot === 5));
+  assert.equal(result.selected, ''); assert.equal(result.confident, true);
+});
