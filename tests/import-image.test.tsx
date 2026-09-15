@@ -115,3 +115,18 @@ test("pasting a screenshot into the dialog uses the same import flow", async () 
   expect(await screen.findByText("pasted.png")).toBeTruthy();
   expect(readScreenshot).toHaveBeenCalledWith(file);
 });
+
+test.each([
+  [358, 304, 358, 304],
+  [1432, 1216, 448, 380],
+  [4000, 200, 720, 36],
+])("the %ix%i screenshot fits the full %ix%i canvas drawing area", async (sourceWidth, sourceHeight, width, height) => {
+  const image = new Image(); image.width = sourceWidth; image.height = sourceHeight;
+  vi.mocked(readScreenshot).mockResolvedValue(image);
+  setup();
+  fireEvent.change(screen.getByLabelText("Screenshot file"), { target: { files: [new File(["image"], "preset.png", { type: "image/png" })] } });
+  const canvas = await screen.findByRole("img", { name: /Screenshot with slot outlines/ }) as HTMLCanvasElement;
+  expect(canvas.width).toBe(width);
+  expect(canvas.height).toBe(height);
+  expect(canvas.getContext("2d")?.drawImage).toHaveBeenCalledWith(expect.anything(), 0, 0, canvas.width, canvas.height);
+});

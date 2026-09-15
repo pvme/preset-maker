@@ -43,10 +43,10 @@ export function CropPreview({ image, crop, layout, onChange }: Props) {
       y: Math.max(0, Math.min(image.height - 1, Math.round((event.clientY - rect.top) / rect.height * image.height))),
     };
   };
-  return <Box sx={{ textAlign: "center", bgcolor: "background.default", p: 1, borderRadius: 1 }}>
-    <Box component="canvas" ref={canvasRef} width={width} height={height}
+  return <Box sx={{ bgcolor: "background.default", p: 1, borderRadius: 1, flexShrink: 0 }}>
+    <canvas ref={canvasRef} width={width} height={height}
       role="img" aria-label="Screenshot with slot outlines. Drag to crop, or use the crop fields below."
-      sx={{ maxWidth: "100%", height: "auto", verticalAlign: "middle", touchAction: "none", cursor: "crosshair" }}
+      style={{ display: "block", margin: "0 auto", maxWidth: "100%", height: "auto", touchAction: "none", cursor: "crosshair" }}
       onPointerDown={event => {
         if (event.button !== 0) return;
         start.current = point(event);
