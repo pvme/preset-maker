@@ -7,6 +7,7 @@ import { FINGERPRINT_SIZE, queries, suggest, regions, type Box, type Layout,
   type Region, type Selection, type Template, type Candidate } from "./matcher";
 
 export interface Match extends Selection {
+  region?: Region;
   thumbnail: string;
   candidates: Candidate[];
   confident: boolean;
@@ -111,7 +112,7 @@ export async function scanScreenshot(image: HTMLImageElement, layout: Layout, bo
     const pixels = ctx.getImageData(0, 0, canvas.width, canvas.height);
     const suggestion = suggest(queries(pixels),
       templatesForSlot(templates, maps, region));
-    matches.push({ group: region.group, index: region.index, thumbnail: canvas.toDataURL(), ...suggestion });
+    matches.push({ group: region.group, index: region.index, region: { ...region }, thumbnail: canvas.toDataURL(), ...suggestion });
     onProgress(matches.length, slots.length);
     await new Promise(resolve => setTimeout(resolve, 0));
   }

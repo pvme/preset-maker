@@ -120,12 +120,12 @@ export function createPresetLayoutDetector() {
       for (const seed of rectangles) {
         const w = seed.w, h = seed.h;
         if (w / dy < .65 || w / dy > .98 || h / dy < .65 || h / dy > .98) continue;
-        for (const dx of [dy, ...xs.filter(step => step / dy > .8 && step / dy < 1.25)]) {
+        for (const dx of new Set([dy, ...xs.filter(step => step / dy > .8 && step / dy < 1.25)])) for (const spread of [1.3, 1.5]) {
           for (let row = 0; row < 5; row++) {
             const x = seed.x, y = seed.y - row * dy;
-            if (x < dx * 1.3 || y < 1 || x + dx * 1.3 + w >= width - 1 || y + dy * 4 + h >= height - 1) continue;
+            if (x < dx * spread || y < 1 || x + dx * spread + w >= width - 1 || y + dy * 4 + h >= height - 1) continue;
             let total = 0, found = 0;
-            const boxes = equipmentOffsets.map(([ox, oy]) => ({ x: Math.round(x + ox * dx), y: Math.round(y + oy * dy), w, h }));
+            const boxes = equipmentOffsets.map(([ox, oy]) => ({ x: Math.round(x + (Math.abs(ox) === 1.3 ? Math.sign(ox) * spread : ox) * dx), y: Math.round(y + oy * dy), w, h }));
             if (inventoryBounds && boxes.some(box => box.x < inventoryBounds.x + inventoryBounds.w && box.x + box.w > inventoryBounds.x && box.y < inventoryBounds.y + inventoryBounds.h && box.y + box.h > inventoryBounds.y)) continue;
             for (const box of boxes) { const score = frame(box.x, box.y, w, h); total += score; if (score > .76) found++; }
             const score = total / boxes.length;

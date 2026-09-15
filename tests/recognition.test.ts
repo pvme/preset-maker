@@ -42,6 +42,7 @@ test("the browser loader retries failed requests and the scanner reads the bundl
   const result = await scanScreenshot(canvas as unknown as HTMLImageElement, "inventory",
     { x: 0, y: 0, w: 160, h: 280 }, maps, new AbortController().signal, progress);
   expect(result).toHaveLength(28);
+  expect(result[0].region).toEqual(expect.objectContaining({ group: 'inventory', index: 0, x: expect.any(Number), y: expect.any(Number) }));
   expect(result.map(match => match.candidates[0]?.id)).toEqual(Array(28).fill("elderovlsalve"));
   expect(progress).toHaveBeenLastCalledWith(28, 28);
   expect(fetcher).toHaveBeenCalledTimes(2);

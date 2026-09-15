@@ -195,6 +195,6 @@ export default function ImportImageDialog({ onClose, editable }: Props) {
         onClose();
       }}>Apply items{changes.length ? ` (${changes.length})` : ""}</Button>
     </DialogActions>
-    {contribution && <ItemContributionDialog match={contribution} onClose={() => setContribution(undefined)} />}
+    {contribution && <ItemContributionDialog match={contribution} source={image} onClose={() => setContribution(undefined)} />}
   </Dialog>;
 }

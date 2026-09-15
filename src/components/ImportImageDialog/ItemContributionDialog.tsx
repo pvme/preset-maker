@@ -9,7 +9,7 @@ const client = createPresetIconContribution(import.meta.env.BASE_URL + "icon-cle
 const endpoint = import.meta.env.VITE_ITEM_CONTRIBUTION_URL || "";
 const slots = ["Inventory", "Head", "Body", "Legs", "Main hand", "Off hand", "Hands", "Feet", "Aura", "Ammo", "Neck", "Ring", "Cape", "Pocket"];
 
-export function ItemContributionDialog({ match, onClose }: { match: Match; onClose: () => void }) {
+export function ItemContributionDialog({ match, source, onClose }: { match: Match; source?: HTMLImageElement; onClose: () => void }) {
   const [name, setName] = useState("");
   const [id, setId] = useState("");
   const [aliases, setAliases] = useState("");
@@ -20,6 +20,7 @@ export function ItemContributionDialog({ match, onClose }: { match: Match; onClo
   const [selected, setSelected] = useState(0);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
+  const [status, setStatus] = useState("");
   const [url, setUrl] = useState("");
   const [token, setToken] = useState("");
   const verification = useRef<HTMLDivElement>(null);
@@ -33,6 +34,20 @@ export function ItemContributionDialog({ match, onClose }: { match: Match; onClo
     return () => { active.current = false; task.current?.abort(); };
   }, []);
   useEffect(() => {
+    if (!source) return;
+    const current = new AbortController(); task.current = current;
+    setBusy(true); setError(""); setIcons([]); setSelected(-1); setStatus("Preparing items from your uploaded screenshot...");
+    void client.prepare(source, match.region, current.signal).then(result => {
+      if (current.signal.aborted) return;
+      setIcons(result.icons); setSelected(result.selected);
+      setStatus(result.selected >= 0 ? "Selected item prepared from your uploaded screenshot."
+        : "Your uploaded screenshot is loaded. Choose this item from the bank slots below. If it is not there, choose a bank or GE image containing it.");
+    }).catch(error => {
+      if (!current.signal.aborted) { setStatus(""); setError(error instanceof Error ? error.message : "Could not prepare this screenshot."); }
+    }).finally(() => { if (!current.signal.aborted) setBusy(false); });
+    return () => current.abort();
+  }, [source, match.region]);
+  useEffect(() => {
     if (!config || !verification.current) return;
     let disposed = false;
     let widget: Challenge | undefined;
@@ -43,7 +58,7 @@ export function ItemContributionDialog({ match, onClose }: { match: Match; onClo
   }, [config]);
   const read = async (file: File) => {
     task.current?.abort(); const current = new AbortController(); task.current = current;
-    setBusy(true); setError(""); setIcons([]); setSelected(0); setUrl("");
+    setBusy(true); setError(""); setIcons([]); setSelected(0); setUrl(""); setStatus("");
     try { const result = await client.read(file, current.signal); if (!current.signal.aborted) setIcons(result); }
     catch (error) { if (!current.signal.aborted) setError(error instanceof Error ? error.message : "Could not read the image."); }
     finally { if (!current.signal.aborted) setBusy(false); }
@@ -67,8 +82,9 @@ export function ItemContributionDialog({ match, onClose }: { match: Match; onClo
         <DialogContentText>Search the catalogue first. Submit an item here if it is missing.</DialogContentText>
       </Stack>
       {!config && <Alert severity="info">Item submissions are not connected yet. You can prepare and download an icon here.</Alert>}
-      <Typography variant="body2">Choose or paste an original bank or GE PNG at 100% interface scale, with an opaque background and the full slot border. Then select the item below.</Typography>
-      <Button component="label" variant="outlined" disabled={busy || !!url}>Choose bank / GE image
+      <Typography variant="body2">The uploaded screenshot is reused where possible. Cleanup needs an original bank or GE slot at 100% interface scale, with an opaque background and the full slot border.</Typography>
+      {status && <Typography variant="body2" role="status">{status}</Typography>}
+      <Button component="label" variant="outlined" disabled={busy || !!url}>{source ? "Choose another bank / GE image" : "Choose bank / GE image"}
         <input hidden type="file" accept="image/png" aria-label="Missing item screenshot" onChange={event => {
           const file = event.target.files?.[0]; event.target.value = ""; if (file) void read(file);
         }} />

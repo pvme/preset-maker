@@ -68,6 +68,15 @@ export function createPresetIconContribution(assetBase) {
     try { const image = new Image(); image.src = url; await image.decode(); return await extract(image, signal); }
     finally { URL.revokeObjectURL(url); }
   }
+  async function prepare(image, region, signal) {
+    const icons = await extract(image, signal);
+    const selected = region ? icons.findIndex(icon => {
+      const overlap = Math.max(0, Math.min(icon.x + 38, region.x + region.w) - Math.max(icon.x, region.x)) *
+        Math.max(0, Math.min(icon.y + 34, region.y + region.h) - Math.max(icon.y, region.y));
+      return overlap / (region.w * region.h) >= .8 && overlap / (38 * 34) >= .5;
+    }) : -1;
+    return { icons, selected };
+  }
   async function config(endpoint) {
     if (!endpoint) return null;
     const response = await fetch(endpoint.replace(/\/$/, '') + '/config', { credentials: 'omit' });
@@ -100,5 +109,5 @@ export function createPresetIconContribution(assetBase) {
       'expired-callback': () => onToken(''), 'error-callback': () => onToken('') });
     return { reset() { onToken(''); window.turnstile.reset(id); }, remove() { window.turnstile.remove(id); } };
   }
-  return { clean, extract, read, config, submit, challenge };
+  return { clean, extract, read, prepare, config, submit, challenge };
 }

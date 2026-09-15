@@ -44,6 +44,11 @@ test('slot extraction locates original bank frames and returns separate icons wi
     assert.deepEqual(found.map(({ x, y }) => ({ x, y })), [{ x: 5, y: 6 }, { x: 49, y: 40 }]);
     const selected = await loadImage(found[0].original);
     assert.deepEqual([selected.width, selected.height], [38, 34]);
+    const reused = await extractor.prepare(screenshot, { x: 50, y: 41, w: 36, h: 32 });
+    assert.equal(reused.selected, 1);
+    assert.equal(reused.icons[reused.selected].original, found[1].original);
+    const worn = await extractor.prepare(screenshot, { x: 5, y: 41, w: 32, h: 32 });
+    assert.equal(worn.selected, -1);
     const aborted = new AbortController(); aborted.abort();
     await assert.rejects(extractor.extract(screenshot, aborted.signal), /abort/i);
     const invalid = createCanvas(100, 100);

@@ -6,6 +6,7 @@ export function createPresetIconContribution(assetBase: string): {
   clean(slot: ImageData, border: ImageData, background: ImageData): ImageData | null;
   extract(image: HTMLImageElement | HTMLCanvasElement, signal?: AbortSignal): Promise<ContributionIcon[]>;
   read(file: File, signal?: AbortSignal): Promise<ContributionIcon[]>;
+  prepare(image: HTMLImageElement | HTMLCanvasElement, region: { x: number; y: number; w: number; h: number } | undefined, signal?: AbortSignal): Promise<{ icons: ContributionIcon[]; selected: number }>;
   config(endpoint: string): Promise<ContributionConfig | null>;
   submit(endpoint: string, item: ContributionItem, original: string, token: string): Promise<{ url: string; existing?: boolean }>;
   challenge(element: HTMLElement, siteKey: string, onToken: (token: string) => void): Promise<Challenge>;

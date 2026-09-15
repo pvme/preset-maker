@@ -72,6 +72,6 @@ Run the importer checks with `npm test`. Maintainers can regenerate the bundled 
 
 ### Missing items
 
-Choose **Item missing? Suggest it** in the review to prepare a cleaned icon from an original bank or GE PNG. Select an icon, enter its item details, and submit it for a draft pull request. Visitors do not need GitHub accounts. Only the selected slot and item details are sent, after choosing Submit item.
+Choose **Item missing? Suggest it** in the review to reuse the uploaded screenshot. Compatible bank or GE slots are cleaned automatically, and the clicked slot is preselected. For worn equipment, choose its matching bank icon from the same screenshot, or provide another bank or GE image if the item is absent. Enter its item details and submit it for a draft pull request. Visitors do not need GitHub accounts. Only the selected slot and item details are sent, after choosing Submit item.
 
 Preview and download work locally. Submission requires the optional [bot service](contributions/README.md) and `VITE_ITEM_CONTRIBUTION_URL`; until it is connected, the form explains that submission is unavailable. Maintainers review the draft, host the icon through the PvME Image Store bot, and complete the catalogue entry before merging.

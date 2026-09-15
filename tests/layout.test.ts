@@ -42,3 +42,13 @@ test('an unrelated image produces no guessed slots and cancelled detection stops
   const controller = new AbortController(); controller.abort();
   await assert.rejects(detector.detectAsync(ctx.getImageData(0, 0, canvas.width, canvas.height), controller.signal));
 });
+
+test('bank preset equipment below the inventory is detected with wider outer slots', () => {
+  const { canvas: original, expected } = layoutScreenshot({ bank: true });
+  for (const scale of [1, 1.5, 2]) {
+    const canvas = createCanvas(original.width * scale + 40, original.height * scale + 30), ctx = canvas.getContext('2d');
+    ctx.drawImage(original, 20, 15, original.width * scale, original.height * scale);
+    const result = verify(canvas, expected, scale, 20, 15);
+    assert.equal(result.inventory, true); assert.equal(result.equipment, true);
+  }
+});
