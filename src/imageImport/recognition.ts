@@ -3,7 +3,7 @@ import { UI_TO_PRESET_SLOT } from "../components/PresetEditor/equipmentSlots";
 import atlasUrl from "../assets/recognition/recognition.png";
 import metadataUrl from "../assets/recognition/recognition.json?url";
 import { createPresetLayoutDetector } from "./layoutDetector.mjs";
-import { FINGERPRINT_SIZE, fingerprint, suggest, regions, type Box, type Layout,
+import { FINGERPRINT_SIZE, queries, suggest, regions, type Box, type Layout,
   type Region, type Selection, type Template, type Candidate } from "./matcher";
 
 export interface Match extends Selection {
@@ -57,7 +57,7 @@ export function loadAtlas(): Promise<Template[]> {
       const [response, image] = await Promise.all([fetch(metadataUrl), imageFromUrl(atlasUrl)]);
       if (!response.ok) throw new Error("Could not load the item templates. Try Find items again.");
       const meta: { version: number; size: number; columns: number; records: Omit<Template, "vector">[] } = await response.json();
-      if (meta.version !== 1 || meta.size !== FINGERPRINT_SIZE || !meta.records.length) {
+      if (meta.version !== 2 || meta.size !== FINGERPRINT_SIZE || !meta.records.length) {
         throw new Error("The item templates are incompatible. Refresh the page and try again.");
       }
       const canvas = document.createElement("canvas");
@@ -106,10 +106,10 @@ export async function scanScreenshot(image: HTMLImageElement, layout: Layout, bo
   const matches: Match[] = [];
   for (const region of slots) {
     signal.throwIfAborted();
-    canvas.width = region.group === "inventory" ? 36 : 32;
+    canvas.width = Math.max(1, Math.round(region.w)); canvas.height = Math.max(1, Math.round(region.h));
     ctx.drawImage(image, region.x, region.y, region.w, region.h, 0, 0, canvas.width, canvas.height);
     const pixels = ctx.getImageData(0, 0, canvas.width, canvas.height);
-    const suggestion = suggest([fingerprint(pixels), fingerprint(pixels, true)],
+    const suggestion = suggest(queries(pixels),
       templatesForSlot(templates, maps, region));
     matches.push({ group: region.group, index: region.index, thumbnail: canvas.toDataURL(), ...suggestion });
     onProgress(matches.length, slots.length);

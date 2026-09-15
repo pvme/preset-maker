@@ -33,7 +33,7 @@ test("the browser loader retries failed requests and the scanner reads the bundl
   await expect(loadAtlas()).rejects.toThrow("Could not load the item templates");
   const atlas = await loadAtlas();
   expect(atlas).toHaveLength(metadata.records.length);
-  expect(atlas[0].vector).toHaveLength(768);
+  expect(atlas[0].vector).toHaveLength(24 * 24 * 3);
   const source = await loadImage(readFileSync(resolve("tests/fixtures/preset-recognition-icons.png")));
   const canvas = createCanvas(160, 280), ctx = canvas.getContext("2d");
   ctx.fillStyle = "#25231e"; ctx.fillRect(0, 0, 160, 280);
@@ -49,10 +49,10 @@ test("the browser loader retries failed requests and the scanner reads the bundl
   const abort = new AbortController(); abort.abort();
   await expect(scanScreenshot(canvas as unknown as HTMLImageElement, "inventory",
     { x: 0, y: 0, w: 160, h: 280 }, maps, abort.signal, vi.fn())).rejects.toThrow();
-});
+}, 15000);
 
 test("renamed IDs resolve before ranking and equipment templates respect the selected slot", () => {
-  const vector = new Uint8Array(768);
+  const vector = new Uint8Array(24 * 24 * 3);
   const catalogue = { ...maps,
     resolve: (id: string) => id === "old-helm" ? "helm" : id,
     byId: { helm: { id: "helm", name: "Helm", preset_slot: 1 }, boots: { id: "boots", name: "Boots", preset_slot: 7 } },
@@ -112,4 +112,4 @@ test("automatic scanning reads detected coordinates within a cropped image", asy
   const result = await scanScreenshot(canvas as unknown as HTMLImageElement, "auto", crop, maps, new AbortController().signal, vi.fn(), detection.regions);
   expect(result).toHaveLength(28);
   expect(result.map(match => match.candidates[0]?.id)).toEqual(Array(28).fill("elderovlsalve"));
-});
+}, 15000);

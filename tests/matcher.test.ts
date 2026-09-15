@@ -1,10 +1,12 @@
+import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import { createCanvas, loadImage } from "@napi-rs/canvas";
 import { expect, test } from "vitest";
-import { fingerprint, suggest, regions, KEEP_CURRENT, type Template, type Layout } from "../src/imageImport/matcher";
+import { fingerprint, queries, suggest, regions, KEEP_CURRENT, type Template, type Layout } from "../src/imageImport/matcher";
 import reducer, { applyImageImport, importDataAction } from "../src/redux/store/reducers/preset-reducer";
 import { blankPreset } from "../src/schemas/preset";
 
+const matcher = { fingerprint, queries, suggest };
 const fixtureIds = ["elderovlsalve", "nightmaregauntlets", "stalkerring", "vestmentsofhavochood",
   "scriptureofful", "pernixsquiveryellow", "rod"];
 
@@ -43,9 +45,9 @@ test("committed atlas identifies original item icons after scaling and JPEG comp
     }
     expect(recognised, `Recognised ${recognised}/28 at ${scale}x`).toBeGreaterThanOrEqual(25);
   }
-});
+}, 15000);
 
-test("ambiguous variants and blank cells keep existing items until reviewed", () => {
+test("ambiguous variants require review while clearly empty cells are recognised", () => {
   const ctx = createCanvas(32, 32).getContext("2d");
   ctx.fillStyle = "#28c3ec"; ctx.fillRect(7, 6, 12, 20);
   const query = fingerprint(ctx.getImageData(0, 0, 32, 32));
@@ -53,7 +55,7 @@ test("ambiguous variants and blank cells keep existing items until reviewed", ()
   expect(suggest([query, query], entries)).toMatchObject({ selected: KEEP_CURRENT, confident: false });
   ctx.clearRect(0, 0, 32, 32);
   const empty = fingerprint(ctx.getImageData(0, 0, 32, 32));
-  expect(suggest([empty, empty], entries).selected).toBe(KEEP_CURRENT);
+  expect(suggest([empty, empty], entries)).toMatchObject({ selected: "", confident: true });
 });
 
 test("crop layouts remain within bounds and map equipment into PvME's slot order", () => {
@@ -100,4 +102,37 @@ test("applying a review preserves preset metadata and unchanged EoFs, and clears
   expect(after.equipmentSlots[0]).toEqual({ id: "" });
   expect({ ...after, inventorySlots: before.inventorySlots, equipmentSlots: before.equipmentSlots }).toEqual(before);
   expect(before.inventorySlots[0]).toEqual({ id: "old", eof_spec: "Old weapon" });
+});
+
+test('item details survive resizing and changed stack quantities without confusing incense colours', async () => {
+  const atlas = await readAtlas();
+  const records = JSON.parse(await readFile(new URL('./fixtures/preset-detail-icons.json', import.meta.url), 'utf8'));
+  const icons = await loadImage(await readFile(new URL('./fixtures/preset-detail-icons.png', import.meta.url)));
+  for (const scale of [1, 1.5]) for (const item of records) {
+    const original = createCanvas(item.w, item.h), ctx = original.getContext('2d');
+    ctx.fillStyle = '#25231e'; ctx.fillRect(0, 0, item.w, item.h);
+    ctx.drawImage(icons, item.x, 0, item.w, item.h, 0, 0, item.w, item.h);
+    if (item.w === 38) {
+      ctx.fillStyle = '#25231e'; ctx.fillRect(0, 0, item.w, 9);
+      ctx.font = '9px monospace'; ctx.fillStyle = '#ffff00'; ctx.fillText('250', 0, 8);
+    }
+    const resized = createCanvas(Math.round(item.w * scale), Math.round(item.h * scale));
+    resized.getContext('2d').drawImage(original, 0, 0, resized.width, resized.height);
+    const pixels = resized.getContext('2d').getImageData(0, 0, resized.width, resized.height);
+    const result = matcher.suggest(matcher.queries(pixels), atlas);
+    assert.equal(result.candidates[0]?.family, item.family, item.id + ' at ' + scale);
+    assert.equal(result.confident, true, item.id + ' at ' + scale + ': ' + JSON.stringify(result.candidates.slice(0, 3).map(({id,score}) => ({id,score}))));
+  }
+}, 15000);
+
+test('stack quantities do not compete while different items with identical icons remain uncertain', () => {
+  const ctx = createCanvas(32, 32).getContext('2d');
+  ctx.fillStyle = '#ac54ef'; ctx.fillRect(7, 8, 17, 20);
+  const queries = matcher.queries(ctx.getImageData(0, 0, 32, 32));
+  const entries = ['stack100', 'stack500'].flatMap(id => queries.map((query, variant) => ({ id, family: 'same scroll', variant, vector: query.vector })));
+  assert.equal(matcher.suggest(queries, entries).confident, true);
+  const different = entries.map(entry => ({ ...entry, family: entry.id }));
+  assert.equal(matcher.suggest(queries, different).confident, false);
+  const dark = matcher.fingerprint(ctx.getImageData(0, 0, 32, 32));
+  assert.equal(matcher.suggest([dark, { ...dark, empty: true }], entries).selected === '', false);
 });

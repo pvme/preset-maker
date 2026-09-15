@@ -64,8 +64,8 @@ Deploy:
 
 Open **Menu → Import Image** in an editable preset. Choose or paste a screenshot. The importer locates inventory and equipment slots automatically and draws their outlines. It supports 4-column and 7-column inventories, worn-equipment layouts and compact equipment grids. If it cannot recognise the panels, crop around them or select a manual layout. Click **Find items**, review the suggestions, then **Apply items** and save the preset.
 
-Uncertain matches appear first and default to **Keep current**. Use **Search** to correct an item by name or alias, or choose **Empty slot** to clear it. Importing updates inventory and equipment; preset notes, relics, familiar, spells and aspect stay as they are. Cloud presets follow the existing editing permissions.
+Clearly empty slots are recognised automatically. Uncertain matches appear first and default to **Keep current**. Use **Search** to correct an item by name or alias, or choose **Empty slot** to clear it. Importing updates inventory and equipment; preset notes, relics, familiar, spells and aspect stay as they are. Cloud presets follow the existing editing permissions.
 
-Matching runs in the browser against bundled 16×16 colour fingerprints from the PvME emoji catalogue. Screenshots are never uploaded. Identical icons, doses and colour variants may need manual correction.
+Matching runs in the browser against bundled 16×16 colour fingerprints from the PvME emoji catalogue. Icon proportions are preserved and stack numbers are excluded when comparing stack variants of the same item. Screenshots are never uploaded. Identical icons, doses and colour variants may need manual correction.
 
 Run the importer checks with `npm test`. Maintainers can regenerate the bundled templates from the current catalogue with `npm run recognition:build`. Downloaded icons are cached in `.cache/recognition/`; the generated PNG and JSON in `src/assets/recognition/` should be committed together. Normal builds use the bundled files and do not download the catalogue icons.

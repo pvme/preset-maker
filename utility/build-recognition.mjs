@@ -9,14 +9,14 @@ function imageUrls(entry) {
   if (entry.image) urls.push(new URL(entry.image, 'https://img.pvme.io/images/').href);
   return [...new Set(urls)];
 }
-import { FINGERPRINT_SIZE, fingerprint } from '../src/imageImport/matcher.ts';
+import { FINGERPRINT_SIZE, fingerprint, queries } from '../src/imageImport/matcher.ts';
 
 const cache = new URL('../.cache/recognition/', import.meta.url);
 await mkdir(cache, { recursive: true });
 const response = await fetch(CATALOGUE_URL);
 if (!response.ok) throw new Error('Catalogue download failed: ' + response.status);
 const catalogue = await response.json();
-const matcher = { size: FINGERPRINT_SIZE, fingerprint }, records = [], failures = [];
+const matcher = { size: FINGERPRINT_SIZE, fingerprint, queries }, records = [], failures = [];
 const entries = catalogue.categories.flatMap(category => category.emojis);
 let cursor = 0;
 await Promise.all(Array.from({ length: 8 }, async () => {
@@ -38,9 +38,15 @@ await Promise.all(Array.from({ length: 8 }, async () => {
       const image = await loadImage(bytes), canvas = createCanvas(image.width, image.height), ctx = canvas.getContext('2d');
       ctx.drawImage(image, 0, 0);
       const pixels = ctx.getImageData(0, 0, canvas.width, canvas.height);
-      for (const variant of [0, 1]) {
-        const feature = matcher.fingerprint(pixels, !!variant);
-        if (!feature.empty) records.push({ id: entry.id.toLowerCase(), variant, vector: feature.vector });
+      const samples = [pixels];
+      if (matcher.queries(pixels).length > 2) {
+        const scaled = createCanvas(Math.round(image.width * 1.5), Math.round(image.height * 1.5)), context = scaled.getContext('2d');
+        context.drawImage(image, 0, 0, scaled.width, scaled.height);
+        samples.push(context.getImageData(0, 0, scaled.width, scaled.height));
+      }
+      for (const sample of samples) for (const variant of [0, 1, 2, 3]) {
+        const feature = matcher.fingerprint(sample, !!(variant % 2), variant >= 2);
+        if (!feature.empty) records.push({ id: entry.id.toLowerCase(), variant, family: entry.name.toLowerCase().replace(/\s*\(stack(?: of \d+)?\)\s*$/, '').trim(), vector: feature.vector });
       }
     } catch { failures.push(entry.id); }
   }
@@ -51,7 +57,7 @@ const artwork = await loadImage(fileURLToPath(new URL('../src/assets/presetmap_d
 for (let slot = 0; slot < 12; slot++) {
   const canvas = createCanvas(32, 34), ctx = canvas.getContext('2d');
   ctx.drawImage(artwork, 334 + slot % 3 * 49, 7 + Math.floor(slot / 3) * 38, 32, 34, 0, 0, 32, 34);
-  for (const variant of [0, 1]) records.push({ id: '', variant, slot, vector: matcher.fingerprint(ctx.getImageData(0, 0, 32, 34), !!variant).vector });
+  for (const variant of [0, 1, 2, 3]) records.push({ id: '', variant, slot, vector: matcher.fingerprint(ctx.getImageData(0, 0, 32, 34), !!(variant % 2), variant >= 2).vector });
 }
 records.sort((a, b) => a.id.localeCompare(b.id) || a.variant - b.variant || (a.slot ?? 0) - (b.slot ?? 0));
 const columns = 64, canvas = createCanvas(columns * matcher.size, Math.ceil(records.length / columns) * matcher.size), ctx = canvas.getContext('2d');
@@ -64,5 +70,5 @@ records.forEach((record, index) => {
 });
 const output = new URL('../src/assets/recognition/', import.meta.url);
 await writeFile(new URL('recognition.png', output), canvas.toBuffer('image/png'));
-await writeFile(new URL('recognition.json', output), JSON.stringify({ version: 1, size: matcher.size, columns, source: CATALOGUE_URL, records: records.map(({ vector, ...record }) => record) }));
+await writeFile(new URL('recognition.json', output), JSON.stringify({ version: 2, size: matcher.size, columns, source: CATALOGUE_URL, records: records.map(({ vector, ...record }) => record) }));
 console.log('Wrote ' + records.length + ' templates from ' + entries.length + ' catalogue entries.');
