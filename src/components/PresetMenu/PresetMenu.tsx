@@ -69,7 +69,6 @@ import { FunctionURLs } from "../../api/function-urls";
 import "./PresetMenu.css";
 
 import { tooltipSlotProps } from "../Tooltip/tooltipStyles";
-import { ItemContributionDialog } from "../ImportImageDialog/ItemContributionDialog";
 
 const ImportImageDialog = lazy(
   () => import("../ImportImageDialog/ImportImageDialog"),
@@ -111,7 +110,6 @@ export const PresetMenu = (): JSX.Element => {
   const [anchorExport, setAnchorExport] = useState<null | HTMLElement>(null);
   const [isUploading, setIsUploading] = useState(false);
   const [imageImportOpen, setImageImportOpen] = useState(false);
-  const [iconSuggestionOpen, setIconSuggestionOpen] = useState(false);
 
   const canShowPresetWriteActions = !isPresetLoading;
   const canSave = mode === "local" || (mode === "cloud" && isLoggedIn);
@@ -252,7 +250,7 @@ export const PresetMenu = (): JSX.Element => {
                     <ListItemIcon>
                       <AddIcon fontSize="small" />
                     </ListItemIcon>
-                    <ListItemText primary="New Preset" />
+                    <ListItemText primary="New preset" />
                   </MenuItem>
                   <Divider />
                 </>
@@ -274,7 +272,7 @@ export const PresetMenu = (): JSX.Element => {
                       )}
                     </ListItemIcon>
                     <ListItemText
-                      primary={isUploading ? "Uploading…" : "Upload to Cloud"}
+                      primary={isUploading ? "Uploading…" : "Upload to cloud"}
                     />
                   </MenuItem>
                   <Divider />
@@ -294,7 +292,7 @@ export const PresetMenu = (): JSX.Element => {
                 <ListItemIcon>
                   <LinkIcon fontSize="small" />
                 </ListItemIcon>
-                <ListItemText primary="Copy Embed Link" />
+                <ListItemText primary="Copy embed link" />
               </MenuItem>
 
               <Divider />
@@ -309,7 +307,7 @@ export const PresetMenu = (): JSX.Element => {
                 <ListItemIcon>
                   <ContentCopyIcon fontSize="small" />
                 </ListItemIcon>
-                <ListItemText primary="Copy Image" />
+                <ListItemText primary="Copy image" />
               </MenuItem>
 
               <MenuItem
@@ -323,7 +321,7 @@ export const PresetMenu = (): JSX.Element => {
                 <ListItemIcon>
                   <ImageIcon fontSize="small" />
                 </ListItemIcon>
-                <ListItemText primary="Download Image" />
+                <ListItemText primary="Download image" />
               </MenuItem>
 
               <Divider />
@@ -332,14 +330,14 @@ export const PresetMenu = (): JSX.Element => {
                 <ListItemIcon>
                   <FileDownloadIcon fontSize="small" />
                 </ListItemIcon>
-                <ListItemText primary="Export JSON" />
+                <ListItemText primary="Export backup" />
               </MenuItem>
 
               <MenuItem onClick={() => fileInputRef.current?.click()}>
                 <ListItemIcon>
                   <FileUploadIcon fontSize="small" />
                 </ListItemIcon>
-                <ListItemText primary="Import JSON" />
+                <ListItemText primary="Import backup" />
                 <input
                   ref={fileInputRef}
                   type="file"
@@ -352,6 +350,7 @@ export const PresetMenu = (): JSX.Element => {
                   }}
                 />
               </MenuItem>
+              <Divider />
               <MenuItem
                 disabled={isPresetLoading || !isPresetEditable}
                 onClick={() => {
@@ -362,21 +361,8 @@ export const PresetMenu = (): JSX.Element => {
                 <ListItemIcon>
                   <ImageIcon fontSize="small" />
                 </ListItemIcon>
-                <ListItemText primary="Import Screenshot" />
+                <ListItemText primary="Import screenshot" />
               </MenuItem>
-              <Tooltip title="Item submissions are not connected yet." arrow disableHoverListener={isLoggedIn}>
-                <span>
-                  <MenuItem disabled={!isLoggedIn} onClick={() => {
-                    setAnchorExport(null);
-                    setIconSuggestionOpen(true);
-                  }}>
-                    <ListItemIcon>
-                      <ImageIcon fontSize="small" />
-                    </ListItemIcon>
-                    <ListItemText primary="Suggest Missing Icon" />
-                  </MenuItem>
-                </span>
-              </Tooltip>
             </Menu>
 
             {canShowPresetWriteActions && isPresetEditable && (
@@ -440,11 +426,6 @@ export const PresetMenu = (): JSX.Element => {
           />
         </Suspense>
       )}
-
-      {iconSuggestionOpen && <ItemContributionDialog
-        match={{ group: "inventory", index: 0, selected: "", confident: false, thumbnail: "", candidates: [] }}
-        onClose={() => setIconSuggestionOpen(false)}
-      />}
 
       <Dialog
         open={uploadConfirmOpen}

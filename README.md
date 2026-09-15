@@ -70,6 +70,3 @@ Matching runs in the browser against bundled 24×24 colour fingerprints from the
 
 Run the importer checks with `npm test`. Maintainers can regenerate the bundled templates from the current catalogue with `npm run recognition:build`. Downloaded icons are cached in `.cache/recognition/`; the generated PNG and JSON in `src/assets/recognition/` should be committed together. Normal builds use the bundled files and do not download the catalogue icons.
 
-### Missing items
-
-Choose **Suggest Missing Icon** to prepare an icon locally. Compatible bank or GE slots are cleaned automatically; choose the item you want, then download the cleaned PNG. No screenshot or item details are uploaded.
