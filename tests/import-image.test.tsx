@@ -7,11 +7,11 @@ import { ThemeProvider, createTheme } from "@mui/material";
 import { SnackbarProvider } from "notistack";
 import ImportImageDialog from "../src/components/ImportImageDialog/ImportImageDialog";
 import reducer from "../src/redux/store/reducers/preset-reducer";
-import { readScreenshot, scanScreenshot, type Match } from "../src/imageImport/recognition";
+import { detectScreenshot, readScreenshot, scanScreenshot, type Match } from "../src/imageImport/recognition";
 import { loadEmojis } from "../src/emoji/loadEmojis";
 import type { EmojiMaps } from "../src/emoji/types";
 
-vi.mock("../src/imageImport/recognition", () => ({ readScreenshot: vi.fn(), scanScreenshot: vi.fn() }));
+vi.mock("../src/imageImport/recognition", () => ({ detectScreenshot: vi.fn(), readScreenshot: vi.fn(), scanScreenshot: vi.fn() }));
 vi.mock("../src/emoji/loadEmojis", () => ({ loadEmojis: vi.fn() }));
 
 const maps: EmojiMaps = {
@@ -32,6 +32,7 @@ beforeEach(() => {
   const image = new Image(); image.width = 358; image.height = 304;
   vi.mocked(readScreenshot).mockResolvedValue(image);
   vi.mocked(loadEmojis).mockResolvedValue(maps);
+  vi.mocked(detectScreenshot).mockResolvedValue({ regions: [{ group: "inventory", index: 0, x: 23, y: 19, w: 36, h: 32 }], inventory: true, equipment: false });
   vi.mocked(scanScreenshot).mockResolvedValue(structuredClone(results));
   vi.spyOn(HTMLCanvasElement.prototype, "getContext").mockReturnValue({
     clearRect: vi.fn(), drawImage: vi.fn(), beginPath: vi.fn(), rect: vi.fn(), fill: vi.fn(), strokeRect: vi.fn(),
@@ -51,7 +52,9 @@ function setup(editable = true) {
 }
 async function uploadAndScan() {
   fireEvent.change(screen.getByLabelText("Screenshot file"), { target: { files: [new File(["image"], "preset.png", { type: "image/png" })] } });
-  fireEvent.click(await screen.findByRole("button", { name: "Find items" }));
+  const find = await screen.findByRole("button", { name: "Find items" }) as HTMLButtonElement;
+  await waitFor(() => expect(find.disabled).toBe(false));
+  fireEvent.click(find);
   await screen.findByRole("region", { name: "Needs checking" });
 }
 
@@ -79,10 +82,12 @@ test("a cancelled scan cannot restore results after a layout change", async () =
   vi.mocked(scanScreenshot).mockImplementation(() => new Promise(resolve => { complete = resolve; }));
   setup();
   fireEvent.change(screen.getByLabelText("Screenshot file"), { target: { files: [new File(["image"], "preset.png", { type: "image/png" })] } });
-  fireEvent.click(await screen.findByRole("button", { name: "Find items" }));
+  const find = await screen.findByRole("button", { name: "Find items" }) as HTMLButtonElement;
+  await waitFor(() => expect(find.disabled).toBe(false));
+  fireEvent.click(find);
   await waitFor(() => expect(scanScreenshot).toHaveBeenCalledOnce());
   fireEvent.mouseDown(screen.getByRole("combobox", { name: "Screenshot layout" }));
-  fireEvent.click(await screen.findByRole("option", { name: "Inventory only (4 columns, 7 rows)" }));
+  fireEvent.click(await screen.findByRole("option", { name: "Manual: inventory only (4 columns, 7 rows)" }));
   await act(async () => complete(results));
   expect(vi.mocked(scanScreenshot).mock.calls[0][4].aborted).toBe(true);
   expect(screen.queryByRole("region")).toBeNull();
@@ -129,4 +134,41 @@ test.each([
   expect(canvas.width).toBe(width);
   expect(canvas.height).toBe(height);
   expect(canvas.getContext("2d")?.drawImage).toHaveBeenCalledWith(expect.anything(), 0, 0, canvas.width, canvas.height);
+});
+
+
+test("automatic detection supplies the actual slot coordinates to the scanner", async () => {
+  setup(); await uploadAndScan();
+  expect(screen.getByRole("combobox", { name: "Screenshot layout" }).textContent).toBe("Auto-detect slots");
+  expect(detectScreenshot).toHaveBeenCalledOnce();
+  expect(vi.mocked(scanScreenshot).mock.calls[0][1]).toBe("auto");
+  expect(vi.mocked(scanScreenshot).mock.calls[0][6]).toEqual([{ group: "inventory", index: 0, x: 23, y: 19, w: 36, h: 32 }]);
+});
+
+test("unrecognized images require alignment instead of scanning guessed slots", async () => {
+  vi.mocked(detectScreenshot).mockResolvedValue({ regions: [], inventory: false, equipment: false });
+  setup();
+  fireEvent.change(screen.getByLabelText("Screenshot file"), { target: { files: [new File(["image"], "preset.png", { type: "image/png" })] } });
+  await screen.findByText(/No complete slot layout detected/);
+  expect((screen.getByRole("button", { name: "Find items" }) as HTMLButtonElement).disabled).toBe(true);
+  expect((screen.getByRole("button", { name: "Apply items" }) as HTMLButtonElement).disabled).toBe(true);
+  expect(scanScreenshot).not.toHaveBeenCalled();
+  fireEvent.mouseDown(screen.getByRole("combobox", { name: "Screenshot layout" }));
+  fireEvent.click(await screen.findByRole("option", { name: "Manual: inventory only (4 columns, 7 rows)" }));
+  expect((screen.getByRole("button", { name: "Find items" }) as HTMLButtonElement).disabled).toBe(false);
+});
+
+test("changing a crop cancels detection and ignores its late result", async () => {
+  let finish!: (value: Awaited<ReturnType<typeof detectScreenshot>>) => void;
+  vi.mocked(detectScreenshot).mockImplementationOnce(() => new Promise(resolve => { finish = resolve; }))
+    .mockResolvedValue({ regions: [], inventory: false, equipment: false });
+  setup();
+  fireEvent.change(screen.getByLabelText("Screenshot file"), { target: { files: [new File(["image"], "preset.png", { type: "image/png" })] } });
+  await waitFor(() => expect(detectScreenshot).toHaveBeenCalledOnce());
+  expect((screen.getByRole("button", { name: "Find items" }) as HTMLButtonElement).disabled).toBe(true);
+  fireEvent.change(screen.getByRole("spinbutton", { name: "Left" }), { target: { value: "2" } });
+  expect(vi.mocked(detectScreenshot).mock.calls[0][2].aborted).toBe(true);
+  await screen.findByText(/No complete slot layout detected/);
+  await act(async () => finish({ regions: [{ group: "inventory", index: 0, x: 0, y: 0, w: 32, h: 32 }], inventory: true, equipment: false }));
+  expect((screen.getByRole("button", { name: "Find items" }) as HTMLButtonElement).disabled).toBe(true);
 });

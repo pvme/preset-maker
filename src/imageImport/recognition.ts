@@ -2,6 +2,7 @@ import type { EmojiMaps } from "../emoji/types";
 import { UI_TO_PRESET_SLOT } from "../components/PresetEditor/equipmentSlots";
 import atlasUrl from "../assets/recognition/recognition.png";
 import metadataUrl from "../assets/recognition/recognition.json?url";
+import { createPresetLayoutDetector } from "./layoutDetector.mjs";
 import { FINGERPRINT_SIZE, fingerprint, suggest, regions, type Box, type Layout,
   type Region, type Selection, type Template, type Candidate } from "./matcher";
 
@@ -9,6 +10,18 @@ export interface Match extends Selection {
   thumbnail: string;
   candidates: Candidate[];
   confident: boolean;
+}
+
+export async function detectScreenshot(image: HTMLImageElement, box: Box, signal: AbortSignal) {
+  const canvas = document.createElement("canvas");
+  canvas.width = Math.round(box.w); canvas.height = Math.round(box.h);
+  const ctx = canvas.getContext("2d", { willReadFrequently: true });
+  if (!ctx) throw new Error("Your browser could not read the screenshot.");
+  ctx.drawImage(image, box.x, box.y, box.w, box.h, 0, 0, canvas.width, canvas.height);
+  const result = await createPresetLayoutDetector().detectAsync(ctx.getImageData(0, 0, canvas.width, canvas.height), signal);
+  return { ...result, regions: result.regions.map(region => ({ ...region,
+    x: box.x + region.x * box.w / canvas.width, y: box.y + region.y * box.h / canvas.height,
+    w: region.w * box.w / canvas.width, h: region.h * box.h / canvas.height })) };
 }
 
 export function imageFromUrl(url: string): Promise<HTMLImageElement> {
@@ -81,10 +94,11 @@ export function templatesForSlot(templates: Template[], maps: EmojiMaps, region:
 }
 
 export async function scanScreenshot(image: HTMLImageElement, layout: Layout, box: Box,
-  maps: EmojiMaps, signal: AbortSignal, onProgress: (done: number, total: number) => void): Promise<Match[]> {
+  maps: EmojiMaps, signal: AbortSignal, onProgress: (done: number, total: number) => void, detected?: Region[]): Promise<Match[]> {
   const templates = resolveTemplates(await loadAtlas(), maps);
   signal.throwIfAborted();
-  const slots = regions(layout, box);
+  const slots = layout === "auto" ? detected ?? (await detectScreenshot(image, box, signal)).regions : regions(layout, box);
+  if (!slots.length) throw new Error("No slots detected. Crop around the panels or choose a manual layout.");
   const canvas = document.createElement("canvas");
   canvas.height = 32;
   const ctx = canvas.getContext("2d", { willReadFrequently: true });

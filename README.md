@@ -62,7 +62,7 @@ Deploy:
 
 ## Import Image
 
-Open **Menu → Import Image** in an editable preset. Choose or paste a screenshot, select its layout, and crop until the slot outlines line up with the items. Click **Find items**, review the suggestions, then **Apply items** and save the preset.
+Open **Menu → Import Image** in an editable preset. Choose or paste a screenshot. The importer locates inventory and equipment slots automatically and draws their outlines. It supports 4-column and 7-column inventories, worn-equipment layouts and compact equipment grids. If it cannot recognise the panels, crop around them or select a manual layout. Click **Find items**, review the suggestions, then **Apply items** and save the preset.
 
 Uncertain matches appear first and default to **Keep current**. Use **Search** to correct an item by name or alias, or choose **Empty slot** to clear it. Importing updates inventory and equipment; preset notes, relics, familiar, spells and aspect stay as they are. Cloud presets follow the existing editing permissions.
 

@@ -1,6 +1,10 @@
 import assert from "node:assert/strict";
-import { readFile } from "node:fs/promises";
+import { readdir, readFile } from "node:fs/promises";
 import { basename, join } from "node:path";
+import { runInNewContext } from "node:vm";
+import { resolveObjectURL } from "node:buffer";
+import ts from "typescript";
+import { layoutScreenshot } from "../tests/layout-fixture.mjs";
 import { JSDOM, VirtualConsole } from "jsdom";
 import { transformWithEsbuild } from "vite";
 
@@ -49,3 +53,45 @@ try {
 } finally {
   dom.window.close();
 }
+
+
+const importerFile = (await readdir("dist/assets")).find(name => /^ImportImageDialog-.*\.js$/.test(name));
+assert.ok(importerFile, "The production image importer must be bundled.");
+const importer = await readFile(join("dist/assets", importerFile), "utf8");
+const parsed = ts.createSourceFile(importerFile, importer, ts.ScriptTarget.Latest, true, ts.ScriptKind.JS);
+let factory;
+const visit = node => {
+  if (factory) return;
+  if (ts.isFunctionDeclaration(node) && node.getText(parsed).includes("Detection cancelled.")) factory = node.getText(parsed);
+  else ts.forEachChild(node, visit);
+};
+visit(parsed);
+assert.ok(factory, "The production importer must include the slot detector.");
+const workers = [];
+class TestWorker {
+  stopped = false;
+  constructor(url) { this.blob = resolveObjectURL(url); workers.push(this); }
+  postMessage(pixels, transfer) {
+    const data = structuredClone(pixels, { transfer });
+    void this.blob.text().then(code => {
+      if (this.stopped) return;
+      const self = { postMessage: result => this.onmessage({ data: result }) };
+      runInNewContext(code, { self });
+      self.onmessage({ data });
+    }).catch(error => this.onerror(error));
+  }
+  terminate() { this.stopped = true; }
+}
+const detector = runInNewContext(`(${factory})()`, { Worker: TestWorker, Blob, URL });
+const { canvas } = layoutScreenshot({ swapped: true });
+const pixels = () => ({ width: canvas.width, height: canvas.height,
+  data: new Uint8ClampedArray(canvas.getContext("2d").getImageData(0, 0, canvas.width, canvas.height).data) });
+const result = await detector.detectAsync(pixels(), new AbortController().signal);
+assert.equal(result.regions.length, 40, "The minified worker must detect slots without access to the application scope.");
+assert.ok(workers[0].stopped, "Completed detection must release its worker.");
+const cancellation = new AbortController();
+const pending = detector.detectAsync(pixels(), cancellation.signal);
+cancellation.abort();
+await assert.rejects(pending);
+assert.ok(workers[1].stopped, "Cancelled detection must stop its worker.");
+console.log("Production slot detection worker runs and supports cancellation.");

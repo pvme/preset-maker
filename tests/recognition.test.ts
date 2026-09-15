@@ -2,7 +2,7 @@ import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { createCanvas, loadImage, Image as CanvasImage } from "@napi-rs/canvas";
 import { afterEach, expect, test, vi } from "vitest";
-import { loadAtlas, readScreenshot, resolveTemplates, scanScreenshot, templatesForSlot } from "../src/imageImport/recognition";
+import { detectScreenshot, loadAtlas, readScreenshot, resolveTemplates, scanScreenshot, templatesForSlot } from "../src/imageImport/recognition";
 import type { EmojiMaps } from "../src/emoji/types";
 import type { Template } from "../src/imageImport/matcher";
 
@@ -91,4 +91,25 @@ test("decoding failures and dimension limits release the temporary image URL", a
   await expect(readScreenshot(file)).rejects.toThrow("4096 pixels");
   expect(revoke).toHaveBeenCalledTimes(2);
   revoke.mockRestore();
+});
+
+
+test("automatic scanning reads detected coordinates within a cropped image", async () => {
+  canvasBrowser();
+  vi.stubGlobal("fetch", vi.fn().mockResolvedValue({ ok: true, json: async () => metadata }));
+  const { layoutScreenshot } = await import("./layout-fixture.mjs");
+  const { canvas, expected } = layoutScreenshot({ equipment: false });
+  const crop = { x: 10, y: 10, w: 210, h: 280 };
+  const detection = await detectScreenshot(canvas as unknown as HTMLImageElement, crop, new AbortController().signal);
+  expect(detection.regions).toHaveLength(28);
+  expect(detection.equipment).toBe(false);
+  const icons = await loadImage(readFileSync(resolve("tests/fixtures/preset-recognition-icons.png")));
+  const ctx = canvas.getContext("2d");
+  for (const slot of expected) {
+    ctx.fillStyle = "#25231e"; ctx.fillRect(slot.x + 1, slot.y + 1, slot.w - 2, slot.h - 2);
+    ctx.drawImage(icons, 0, 0, 40, 40, slot.x + 1, slot.y + 1, slot.w - 2, slot.h - 2);
+  }
+  const result = await scanScreenshot(canvas as unknown as HTMLImageElement, "auto", crop, maps, new AbortController().signal, vi.fn(), detection.regions);
+  expect(result).toHaveLength(28);
+  expect(result.map(match => match.candidates[0]?.id)).toEqual(Array(28).fill("elderovlsalve"));
 });

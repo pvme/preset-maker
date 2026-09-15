@@ -1,15 +1,16 @@
 import { useEffect, useRef, type PointerEvent } from "react";
 import { Box, useTheme } from "@mui/material";
-import { regions, type Box as CropBox, type Layout } from "../../imageImport/matcher";
+import { regions, type Box as CropBox, type Layout, type Region } from "../../imageImport/matcher";
 
 interface Props {
   image: HTMLImageElement;
   crop: CropBox;
   layout: Layout;
+  detected?: Region[];
   onChange: (box: CropBox) => void;
 }
 
-export function CropPreview({ image, crop, layout, onChange }: Props) {
+export function CropPreview({ image, crop, layout, detected, onChange }: Props) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const start = useRef<{ x: number; y: number }>();
   const theme = useTheme();
@@ -29,12 +30,12 @@ export function CropPreview({ image, crop, layout, onChange }: Props) {
     ctx.fill("evenodd");
     ctx.strokeStyle = theme.palette.primary.main;
     ctx.lineWidth = 1;
-    for (const region of regions(layout, crop)) {
+    for (const region of (layout === "auto" ? detected ?? [] : regions(layout, crop))) {
       ctx.strokeRect(region.x * sx, region.y * sy, region.w * sx, region.h * sy);
     }
     ctx.lineWidth = 2;
     ctx.strokeRect(crop.x * sx, crop.y * sy, crop.w * sx, crop.h * sy);
-  }, [image, crop, layout, width, height, theme.palette.primary.main]);
+  }, [image, crop, layout, detected, width, height, theme.palette.primary.main]);
 
   const point = (event: PointerEvent<HTMLCanvasElement>) => {
     const rect = event.currentTarget.getBoundingClientRect();

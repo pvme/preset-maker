@@ -1,6 +1,6 @@
 export const FINGERPRINT_SIZE = 16;
 export const KEEP_CURRENT = "__keep__";
-export type Layout = "game" | "inventory" | "equipment";
+export type Layout = "auto" | "game" | "inventory" | "equipment";
 export type Group = "inventory" | "equipment";
 export interface Box { x: number; y: number; w: number; h: number }
 export interface Region extends Box { group: Group; index: number }
@@ -104,7 +104,7 @@ export function regions(layout: Layout, box: Box): Region[] {
     equipmentPositions.forEach(([x, y], i) => add("equipment", i, x, y, 32, 32, 358, 304));
   } else if (layout === "inventory") {
     for (let i = 0; i < 28; i++) add("inventory", i, i % 4, Math.floor(i / 4), 1, 1, 4, 7);
-  } else {
+  } else if (layout === "equipment") {
     equipmentPositions.forEach(([x, y], i) => add("equipment", i, x - 208, y - 41, 32, 32, 140, 192));
   }
   return result;
