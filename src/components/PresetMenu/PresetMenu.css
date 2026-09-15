@@ -1,5 +1,11 @@
 .preset-menu {
   width: 100%;
+  gap: 12px;
+  align-items: center;
+}
+
+.preset-menu__layout {
+  min-width: 220px !important;
 }
 
 .preset-menu__primary,
@@ -55,6 +61,11 @@
     display: grid;
     grid-template-columns: 1fr;
     gap: 10px;
+  }
+
+  .preset-menu__primary-actions > .preset-menu__layout {
+    margin-left: 0;
+    width: 100%;
   }
 
   .preset-menu__secondary-actions {

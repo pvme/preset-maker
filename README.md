@@ -60,6 +60,12 @@ Build:
 Deploy:
 `npm run deploy`
 
+## Inventory layout
+
+Use **Inventory layout** in the top toolbar, between **Recent Presets** and **Menu**, to switch between **7 columns × 4 rows** and **4 columns × 7 rows**. The 4-column view places worn equipment alongside the inventory, with relics, familiar, ammo/spells and aspect underneath. Both views use PvME artwork. Copy image and Download image export the selected arrangement at double resolution, without the layout control or selection highlights.
+
+The choice is remembered in this browser and is available for read-only presets too. It is a view preference: switching keeps all items, slot order and notes intact and does not alter saved presets, JSON backups or cloud embed links. On small screens the preset can be scrolled horizontally; the selected column count stays the same. New browsers start with 7 columns on desktop and 4 columns on small screens.
+
 ## Import Image
 
 Open **Menu → Import Image** in an editable preset. Choose or paste a screenshot. The importer locates inventory and equipment slots automatically and draws their outlines. It supports 4-column and 7-column inventories, worn-equipment layouts and compact equipment grids. Choose **Manual** to place the inventory first, change its columns, rows and gap, then place the equipment independently. Equipment supports worn positions or a configurable grid; drag the labelled slot boxes to rearrange individual slots. Uncheck either **Include** box to skip that panel. Click **Find items**, review the suggestions, then **Apply items** and save the preset.

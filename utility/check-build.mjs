@@ -47,9 +47,9 @@ try {
   menu.click();
   await new Promise(resolve => setTimeout(resolve, 100));
   assert.ok([...dom.window.document.querySelectorAll('[role="menuitem"]')]
-    .some(item => item.textContent === "Import Image"), "The production menu must contain Import Image.");
+    .some(item => item.textContent === "Import screenshot"), "The production menu must contain Import screenshot.");
   assert.deepEqual(errors, [], "Opening the production menu must not cause runtime errors.");
-  console.log("Production app starts and the menu contains Import Image.");
+  console.log("Production app starts and the menu contains Import screenshot.");
 } finally {
   dom.window.close();
 }

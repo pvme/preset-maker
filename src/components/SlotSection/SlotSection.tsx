@@ -1,15 +1,12 @@
 import React, { useCallback } from "react";
 import { DragPreviewImage, useDrag, useDrop } from "react-dnd";
-import useMediaQuery from "@mui/material/useMediaQuery";
 import Tooltip from "@mui/material/Tooltip";
 import sanitizeHtml from "sanitize-html";
 
 import {
   SLOT_METRICS,
   equipmentCoords,
-  equipmentCoordsMobile,
   inventoryCoords,
-  inventoryCoordsMobile,
 } from "../../data/coordinates";
 
 import { type Coord } from "../../schemas/coord";
@@ -81,6 +78,7 @@ function renderTooltipNote(note: string) {
 }
 
 interface SlotProps {
+  coords?: Coord[];
   slots: ItemData[];
   handleClickOpen: (
     e: React.MouseEvent<HTMLElement>,
@@ -321,15 +319,9 @@ const SlotSection = ({
 };
 
 export const Inventory = (props: SlotProps) => {
-  const isMobile = useMediaQuery("(max-width:900px)");
-  const coords = isMobile ? inventoryCoordsMobile : inventoryCoords;
-
-  return <SlotSection {...props} coords={coords} slotGroup="inventory" />;
+  return <SlotSection {...props} coords={props.coords ?? inventoryCoords} slotGroup="inventory" />;
 };
 
 export const Equipment = (props: SlotProps) => {
-  const isMobile = useMediaQuery("(max-width:900px)");
-  const coords = isMobile ? equipmentCoordsMobile : equipmentCoords;
-
-  return <SlotSection {...props} coords={coords} slotGroup="equipment" />;
+  return <SlotSection {...props} coords={props.coords ?? equipmentCoords} slotGroup="equipment" />;
 };

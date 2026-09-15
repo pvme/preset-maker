@@ -37,6 +37,8 @@ import {
 } from "@mui/icons-material";
 
 import { RecentPresetDropdown } from "./RecentPresetDropdown";
+import { InventoryLayoutSelect } from "./InventoryLayoutSelect";
+import { type InventoryLayout } from "../../hooks/useInventoryLayout";
 import {
   SavePresetDialog,
   SavePresetDialogState,
@@ -78,7 +80,10 @@ const ImportImageDialog = lazy(
    Component
 --------------------------------------------- */
 
-export const PresetMenu = (): JSX.Element => {
+export const PresetMenu = ({ layout, onLayoutChange }: {
+  layout: InventoryLayout;
+  onLayoutChange: (layout: InventoryLayout) => void;
+}): JSX.Element => {
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
   const { id } = useParams<{ id?: string }>();
@@ -215,6 +220,7 @@ export const PresetMenu = (): JSX.Element => {
                 onRemoved={refresh}
               />
             </div>
+            <InventoryLayoutSelect layout={layout} onChange={onLayoutChange} />
           </Stack>
         </Grid>
 
@@ -300,8 +306,12 @@ export const PresetMenu = (): JSX.Element => {
               <MenuItem
                 disabled={!clipboardSupported}
                 onClick={async () => {
-                  await copyImage();
-                  enqueueSnackbar("Image copied", { variant: "success" });
+                  try {
+                    await copyImage();
+                    enqueueSnackbar("Image copied", { variant: "success" });
+                  } catch {
+                    enqueueSnackbar("Could not copy the image. Check that item images have loaded and try again.", { variant: "error" });
+                  }
                 }}
               >
                 <ListItemIcon>
@@ -312,10 +322,12 @@ export const PresetMenu = (): JSX.Element => {
 
               <MenuItem
                 onClick={async () => {
-                  await downloadImage();
-                  enqueueSnackbar("Image downloaded", {
-                    variant: "success",
-                  });
+                  try {
+                    await downloadImage();
+                    enqueueSnackbar("Image downloaded", { variant: "success" });
+                  } catch {
+                    enqueueSnackbar("Could not download the image. Check that item images have loaded and try again.", { variant: "error" });
+                  }
                 }}
               >
                 <ListItemIcon>

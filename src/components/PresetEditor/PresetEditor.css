@@ -162,40 +162,78 @@
   padding-bottom: 10px !important;
 }
 
-/* Tablet/Mobile styling */
-@media (max-width: 900px) {
-  .preset-editor__card {
-    width: 100%;
-  }
+.preset-editor__card {
+  max-width: 100%;
+  overflow-x: auto !important;
+}
 
-  .preset-layout {
-    max-width: 194px;
-  }
+.preset-layout--7x4 {
+  width: 472px;
+  max-width: none;
+}
 
-  .preset-layout__slots {
-    display: flex;
-    justify-content: center;
-  }
+.preset-layout--4x7 {
+  width: 388px;
+  max-width: none;
+  gap: 4px;
+}
 
-  .preset-slots {
-    display: block;
-    width: 194px;
-  }
+.preset-layout__tall-slots {
+  display: grid;
+  grid-template-columns: 204px 179px;
+  gap: 5px;
+}
 
-  .preset-layout__extras {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-template-areas:
-      "relics relics"
-      "familiar aspect"
-      "ammo ammo";
-    gap: 0;
-    padding: 15px 5px;
-  }
+.preset-layout__tall-slots .preset-layout__panel {
+  height: 296px;
+  background-image: var(--preset-extras-bg);
+}
 
-  .preset-layout__extras > :nth-child(2),
-  .preset-layout__extras > :nth-child(3),
-  .preset-layout__extras > :nth-child(4),
-  .preset-layout__extras > :nth-child(5) {
-    min-width: 0;
-  }
+.preset-layout__tall-slots .preset-slots {
+  width: 100%;
+  height: 100%;
+}
+
+.preset-slots__background {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.preset-slots__connections {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.preset-layout--4x7 .preset-slots__slot--filled {
+  background: none;
+}
+
+.preset-layout--4x7 .preset-layout__extras {
+  gap: 6px 4px;
+  padding: 6px;
+}
+
+.preset-layout--4x7 .preset-extras {
+  padding: 0 2px;
+}
+
+.preset-layout--4x7 .preset-extras__title {
+  font-size: 0.85rem;
+  line-height: 1.3;
+  margin-bottom: 4px;
+}
+
+.preset-layout--4x7 .preset-extras__item {
+  min-height: 34px;
+  padding: 2px 6px;
+}
+
+.preset-layout .preset-extras--slots-3 .preset-extras__items {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.preset-layout--export .preset-slots__slot {
+  border-color: transparent;
 }
