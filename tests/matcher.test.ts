@@ -175,10 +175,25 @@ test('grey items can use a precise background mask only when both masks agree on
 
 test('empty equipment templates include views without the slot frame and clear an empty shield', async () => {
   const atlas = await readAtlas();
-  assert.equal(atlas.filter(entry => !entry.id && entry.slot === 5 && entry.variant === 1).length, 2);
+  assert.equal(atlas.filter(entry => !entry.id && entry.slot === 5 && entry.variant === 1).length, 6);
   const artwork = await loadImage(await readFile(new URL('../src/assets/presetmap_desktop.png', import.meta.url)));
   const canvas = createCanvas(30, 32), ctx = canvas.getContext('2d');
   ctx.drawImage(artwork, 433, 46, 30, 32, 0, 0, 30, 32);
   const result = matcher.suggest(matcher.queries(ctx.getImageData(0, 0, 30, 32)), atlas.filter(entry => entry.id || entry.slot === 5));
   assert.equal(result.selected, ''); assert.equal(result.confident, true);
+});
+
+
+test('bank screenshots recognise dark robes and empty shields while retaining uncertain items for review', async () => {
+  const atlas = await readAtlas();
+  const image = await loadImage(await readFile(new URL('./fixtures/preset-bank-matches.png', import.meta.url)));
+  const expected = ['vestmentsofhavoctop', '', '__keep__', '__keep__', '__keep__', '__keep__', '__keep__', '__keep__', 'dummy', 'spiritshield'];
+  for (let i = 0; i < expected.length; i++) {
+    const equipment = [0, 1, 7, 9].includes(i), width = equipment ? 32 : 34, height = equipment ? 30 : 31;
+    const canvas = createCanvas(width, height), ctx = canvas.getContext('2d');
+    ctx.drawImage(image, i * 40, 0, width, height, 0, 0, width, height);
+    const result = matcher.suggest(matcher.queries(ctx.getImageData(0, 0, width, height)), atlas.filter(entry => entry.id || (equipment && entry.slot === (i === 0 ? 4 : i === 7 ? 7 : 5))));
+    assert.equal(result.selected, expected[i], `Bank screenshot item ${i}`);
+    assert.equal(result.confident, expected[i] !== '__keep__', `Bank screenshot confidence ${i}`);
+  }
 });

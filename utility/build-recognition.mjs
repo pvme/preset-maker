@@ -58,10 +58,12 @@ await Promise.all(Array.from({ length: 8 }, async () => {
 if (failures.length) throw new Error('Could not load icons: ' + failures.join(', '));
 
 const artwork = await loadImage(fileURLToPath(new URL('../src/assets/presetmap_desktop.png', import.meta.url)));
-for (let slot = 0; slot < 12; slot++) for (const inset of [0, 1]) {
+for (let slot = 0; slot < 12; slot++) for (const inset of [0, 1]) for (const brightness of inset ? [.9, .95, 1, 1.05, 1.1] : [1]) {
   const canvas = createCanvas(32 - inset * 2, 34 - inset * 2), ctx = canvas.getContext('2d');
   ctx.drawImage(artwork, 334 + slot % 3 * 49 + inset, 7 + Math.floor(slot / 3) * 38 + inset, canvas.width, canvas.height, 0, 0, canvas.width, canvas.height);
-  for (const variant of [0, 1, 2, 3]) records.push({ id: '', variant, slot, vector: matcher.fingerprint(ctx.getImageData(0, 0, canvas.width, canvas.height), !!(variant % 2), variant >= 2).vector });
+  const pixels = ctx.getImageData(0, 0, canvas.width, canvas.height);
+  for (let p = 0; p < pixels.data.length; p += 4) for (let channel = 0; channel < 3; channel++) pixels.data[p + channel] *= brightness;
+  for (const variant of [0, 1, 2, 3]) records.push({ id: '', variant, slot, vector: matcher.fingerprint(pixels, !!(variant % 2), variant >= 2).vector });
 }
 records.sort((a, b) => a.id.localeCompare(b.id) || a.variant - b.variant || (a.slot ?? 0) - (b.slot ?? 0));
 const columns = 64, canvas = createCanvas(columns * matcher.size, Math.ceil(records.length / columns) * matcher.size), ctx = canvas.getContext('2d');

@@ -107,13 +107,15 @@ export function createPresetImageMatcher() {
       const consistent = a?.key === key && b?.key === key;
       const agreement = consistent &&
         ((a.score < .075 && a.gap > .12) || (b.score < .075 && b.gap > .12));
-      return { ...candidate, agreement, consistent, score: candidate.scores[0] * .75 + candidate.scores[1] * .25 };
+      const distinct = (a?.key === key && a.score < .25 && a.gap > .2) ||
+        (b?.key === key && b.score < .25 && b.gap > .2);
+      return { ...candidate, agreement, consistent, distinct, score: candidate.scores[0] * .75 + candidate.scores[1] * .25 };
     });
     const unique = new Map();
     for (const candidate of candidates) { const key = candidate.family || candidate.id; if (!unique.has(key) || unique.get(key).score > candidate.score) unique.set(key, candidate); }
     const best = [...unique.values()].sort((a, b) => a.score - b.score).slice(0, limit);
     const strong = best[0] && (best[0].agreement || (best[0].score < .4 &&
-      (best[0].score < .3 || best[0].consistent) && (!best[1] || best[1].score - best[0].score >
+      (best[0].score < .3 || best[0].consistent || best[0].distinct) && (!best[1] || best[1].score - best[0].score >
         (best[0].score >= .3 ? .12 : Math.max(.012, Math.min(.035, best[0].score * .12))))));
     return { candidates: best, selected: strong && !best[0].empty ? best[0].id : '__keep__', confident: !!strong && !best[0].empty };
   }
