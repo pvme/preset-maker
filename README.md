@@ -59,3 +59,13 @@ Build:
 
 Deploy:
 `npm run deploy`
+
+## Import Image
+
+Open **Menu → Import Image** in an editable preset. Choose or paste a screenshot, select its layout, and crop until the slot outlines line up with the items. Click **Find items**, review the suggestions, then **Apply items** and save the preset.
+
+Uncertain matches appear first and default to **Keep current**. Use **Search** to correct an item by name or alias, or choose **Empty slot** to clear it. Importing updates inventory and equipment; preset notes, relics, familiar, spells and aspect stay as they are. Cloud presets follow the existing editing permissions.
+
+Matching runs in the browser against bundled 16×16 colour fingerprints from the PvME emoji catalogue. Screenshots are never uploaded. Identical icons, doses and colour variants may need manual correction.
+
+Run the importer checks with `npm test`. Maintainers can regenerate the bundled templates from the current catalogue with `npm run recognition:build`. Downloaded icons are cached in `.cache/recognition/`; the generated PNG and JSON in `src/assets/recognition/` should be committed together. Normal builds use the bundled files and do not download the catalogue icons.

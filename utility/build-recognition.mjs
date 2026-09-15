@@ -1,0 +1,68 @@
+import { readFile, writeFile, mkdir } from 'node:fs/promises';
+import { createHash } from 'node:crypto';
+import { fileURLToPath } from 'node:url';
+import { createCanvas, loadImage } from '@napi-rs/canvas';
+const CATALOGUE_URL = 'https://raw.githubusercontent.com/pvme/pvme-settings/master/emojis/emojis_v2.json';
+function imageUrls(entry) {
+  const urls = [];
+  if (entry.emoji_id) urls.push(`https://cdn.discordapp.com/emojis/${entry.emoji_id}.png`);
+  if (entry.image) urls.push(new URL(entry.image, 'https://img.pvme.io/images/').href);
+  return [...new Set(urls)];
+}
+import { FINGERPRINT_SIZE, fingerprint } from '../src/imageImport/matcher.ts';
+
+const cache = new URL('../.cache/recognition/', import.meta.url);
+await mkdir(cache, { recursive: true });
+const response = await fetch(CATALOGUE_URL);
+if (!response.ok) throw new Error('Catalogue download failed: ' + response.status);
+const catalogue = await response.json();
+const matcher = { size: FINGERPRINT_SIZE, fingerprint }, records = [], failures = [];
+const entries = catalogue.categories.flatMap(category => category.emojis);
+let cursor = 0;
+await Promise.all(Array.from({ length: 8 }, async () => {
+  while (cursor < entries.length) {
+    const entry = entries[cursor++];
+    const path = new URL(createHash('sha256').update(entry.id).digest('hex').slice(0, 24) + '.png', cache);
+    let bytes;
+    try { bytes = await readFile(path); } catch {
+      for (const url of imageUrls(entry)) {
+        try {
+          const res = await fetch(url, { signal: AbortSignal.timeout(15000) });
+          if (!res.ok) continue;
+          bytes = Buffer.from(await res.arrayBuffer()); await writeFile(path, bytes); break;
+        } catch {}
+      }
+    }
+    if (!bytes) { failures.push(entry.id); continue; }
+    try {
+      const image = await loadImage(bytes), canvas = createCanvas(image.width, image.height), ctx = canvas.getContext('2d');
+      ctx.drawImage(image, 0, 0);
+      const pixels = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      for (const variant of [0, 1]) {
+        const feature = matcher.fingerprint(pixels, !!variant);
+        if (!feature.empty) records.push({ id: entry.id.toLowerCase(), variant, vector: feature.vector });
+      }
+    } catch { failures.push(entry.id); }
+  }
+}));
+if (failures.length) throw new Error('Could not load icons: ' + failures.join(', '));
+
+const artwork = await loadImage(fileURLToPath(new URL('../src/assets/presetmap_desktop.png', import.meta.url)));
+for (let slot = 0; slot < 12; slot++) {
+  const canvas = createCanvas(32, 34), ctx = canvas.getContext('2d');
+  ctx.drawImage(artwork, 334 + slot % 3 * 49, 7 + Math.floor(slot / 3) * 38, 32, 34, 0, 0, 32, 34);
+  for (const variant of [0, 1]) records.push({ id: '', variant, slot, vector: matcher.fingerprint(ctx.getImageData(0, 0, 32, 34), !!variant).vector });
+}
+records.sort((a, b) => a.id.localeCompare(b.id) || a.variant - b.variant || (a.slot ?? 0) - (b.slot ?? 0));
+const columns = 64, canvas = createCanvas(columns * matcher.size, Math.ceil(records.length / columns) * matcher.size), ctx = canvas.getContext('2d');
+records.forEach((record, index) => {
+  const pixels = ctx.createImageData(matcher.size, matcher.size);
+  for (let p = 0; p < matcher.size * matcher.size; p++) {
+    pixels.data.set(record.vector.subarray(p * 3, p * 3 + 3), p * 4); pixels.data[p * 4 + 3] = 255;
+  }
+  ctx.putImageData(pixels, index % columns * matcher.size, Math.floor(index / columns) * matcher.size);
+});
+const output = new URL('../src/assets/recognition/', import.meta.url);
+await writeFile(new URL('recognition.png', output), canvas.toBuffer('image/png'));
+await writeFile(new URL('recognition.json', output), JSON.stringify({ version: 1, size: matcher.size, columns, source: CATALOGUE_URL, records: records.map(({ vector, ...record }) => record) }));
+console.log('Wrote ' + records.length + ' templates from ' + entries.length + ' catalogue entries.');

@@ -1,6 +1,6 @@
 // src/components/PresetMenu.tsx
 
-import { useRef, useState } from "react";
+import { lazy, Suspense, useRef, useState } from "react";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useParams, useNavigate } from "react-router-dom";
 import { useSnackbar } from "notistack";
@@ -70,6 +70,8 @@ import "./PresetMenu.css";
 
 import { tooltipSlotProps } from "../Tooltip/tooltipStyles";
 
+const ImportImageDialog = lazy(() => import("../ImportImageDialog/ImportImageDialog"));
+
 /* ---------------------------------------------
    Component
 --------------------------------------------- */
@@ -105,6 +107,7 @@ export const PresetMenu = (): JSX.Element => {
   const [uploadConfirmOpen, setUploadConfirmOpen] = useState(false);
   const [anchorExport, setAnchorExport] = useState<null | HTMLElement>(null);
   const [isUploading, setIsUploading] = useState(false);
+  const [imageImportOpen, setImageImportOpen] = useState(false);
 
   const canShowPresetWriteActions = !isPresetLoading;
   const canSave = mode === "local" || (mode === "cloud" && isLoggedIn);
@@ -345,6 +348,11 @@ export const PresetMenu = (): JSX.Element => {
                   }}
                 />
               </MenuItem>
+              <MenuItem disabled={isPresetLoading || !isPresetEditable}
+                onClick={() => { setAnchorExport(null); setImageImportOpen(true); }}>
+                <ListItemIcon><ImageIcon fontSize="small" /></ListItemIcon>
+                <ListItemText primary="Import Image" />
+              </MenuItem>
             </Menu>
 
             {canShowPresetWriteActions && isPresetEditable && (
@@ -389,6 +397,14 @@ export const PresetMenu = (): JSX.Element => {
         }}
         onClose={() => setSaveAsOpen(false)}
       />
+
+      {imageImportOpen && <Suspense fallback={<Dialog open onClose={() => setImageImportOpen(false)}>
+        <DialogTitle>Import Image</DialogTitle>
+        <DialogContent><CircularProgress aria-label="Loading image importer" /></DialogContent>
+      </Dialog>}>
+        <ImportImageDialog key={`${mode}:${id ?? "new"}`} editable={isPresetEditable && !isPresetLoading}
+          onClose={() => setImageImportOpen(false)} />
+      </Suspense>}
 
       <Dialog
         open={uploadConfirmOpen}

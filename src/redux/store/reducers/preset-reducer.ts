@@ -7,6 +7,7 @@ import { type BreakdownEntry } from "../../../schemas/breakdown";
 import { type Preset } from "../../../schemas/preset";
 import { type Item } from "../../../schemas/item-data";
 import { type ApplicationState } from "../store";
+import { KEEP_CURRENT, type Selection } from "../../../imageImport/matcher";
 
 interface PresetState extends Preset {
   slotType: SlotType;
@@ -134,6 +135,17 @@ export const presetSlice = createSlice({
 
     setPresetNotes: (state, action: PayloadAction<string>) => {
       state.presetNotes = action.payload;
+    },
+
+    applyImageImport: (state, action: PayloadAction<Selection[]>) => {
+      for (const { group, index, selected } of action.payload) {
+        if (group !== "inventory" && group !== "equipment") continue;
+        const slots = group === "inventory" ? state.inventorySlots : state.equipmentSlots;
+        if (!Number.isInteger(index) || index < 0 || index >= slots.length ||
+            typeof selected !== "string" || selected === KEEP_CURRENT) continue;
+        if (slots[index].id !== selected) slots[index] = { id: selected };
+      }
+      state.selectedSlots = [];
     },
 
     setInventorySlot: (
@@ -315,6 +327,7 @@ export const presetSlice = createSlice({
 });
 
 export const {
+  applyImageImport,
   resetToInitialState,
   setPresetName,
   setPresetNotes,
