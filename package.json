@@ -5,13 +5,14 @@
   "type": "module",
   "scripts": {
     "test": "vitest run",
+    "test:build": "node utility/check-build.mjs",
     "recognition:build": "tsx utility/build-recognition.mjs",
     "dev": "vite",
     "dev:prod": "vite --mode production",
     "dev:emulator": "vite --mode emulator",
     "start": "npm run dev",
     "build": "node ./utility/get-version.js && tsc && vite build",
-    "predeploy": "npm run build",
+    "predeploy": "npm run build && npm run test:build",
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
