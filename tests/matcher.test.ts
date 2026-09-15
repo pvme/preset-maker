@@ -136,3 +136,17 @@ test('stack quantities do not compete while different items with identical icons
   const dark = matcher.fingerprint(ctx.getImageData(0, 0, 32, 32));
   assert.equal(matcher.suggest([dark, { ...dark, empty: true }], entries).selected === '', false);
 });
+test('duplicate catalogue artwork resolves confidently to the preset scroll and master cape', async () => {
+  const atlas = await readAtlas();
+  for (const [source, expected] of [['ripperscroll', 'ripperscrolls'], ['ripperscrolls', 'ripperscrolls'], ['magiccape', 'mag120'], ['mag120', 'mag120']]) {
+    const image = await loadImage(await readFile(new URL('./fixtures/' + source + '.png', import.meta.url)));
+    for (const scale of [1, 1.5, 2]) {
+      const output = createCanvas(Math.round(image.width * scale), Math.round(image.height * scale));
+      const ctx = output.getContext('2d'); ctx.fillStyle = '#25231e'; ctx.fillRect(0, 0, output.width, output.height); ctx.drawImage(image, 0, 0, output.width, output.height);
+      const result = matcher.suggest(matcher.queries(ctx.getImageData(0, 0, output.width, output.height)), atlas);
+      assert.equal(result.candidates[0]?.id, expected, source + ' at ' + scale);
+      assert.equal(result.confident, true, source + ' at ' + scale);
+    }
+  }
+  assert.equal(atlas.some(entry => ['ripperscroll', 'magiccape'].includes(entry.id)), false);
+});

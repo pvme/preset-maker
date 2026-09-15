@@ -66,6 +66,12 @@ Open **Menu → Import Image** in an editable preset. Choose or paste a screensh
 
 Clearly empty slots are recognised automatically. Uncertain matches appear first and default to **Keep current**. Use **Search** to correct an item by name or alias, or choose **Empty slot** to clear it. Importing updates inventory and equipment; preset notes, relics, familiar, spells and aspect stay as they are. Cloud presets follow the existing editing permissions.
 
-Matching runs in the browser against bundled 16×16 colour fingerprints from the PvME emoji catalogue. Icon proportions are preserved and stack numbers are excluded when comparing stack variants of the same item. Screenshots are never uploaded. Identical icons, doses and colour variants may need manual correction.
+Matching runs in the browser against bundled 24×24 colour fingerprints from the PvME emoji catalogue. Icon proportions are preserved and stack numbers are excluded when comparing stack variants of the same item. Matching does not upload screenshots. Identical icons, doses and colour variants may need manual correction. Known duplicate artwork is consolidated using `utility/recognition-aliases.json` when building the templates.
 
 Run the importer checks with `npm test`. Maintainers can regenerate the bundled templates from the current catalogue with `npm run recognition:build`. Downloaded icons are cached in `.cache/recognition/`; the generated PNG and JSON in `src/assets/recognition/` should be committed together. Normal builds use the bundled files and do not download the catalogue icons.
+
+### Missing items
+
+Choose **Item missing? Suggest it** in the review to prepare a cleaned icon from an original bank or GE PNG. Select an icon, enter its item details, and submit it for a draft pull request. Visitors do not need GitHub accounts. Only the selected slot and item details are sent, after choosing Submit item.
+
+Preview and download work locally. Submission requires the optional [bot service](contributions/README.md) and `VITE_ITEM_CONTRIBUTION_URL`; until it is connected, the form explains that submission is unavailable. Maintainers review the draft, host the icon through the PvME Image Store bot, and complete the catalogue entry before merging.

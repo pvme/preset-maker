@@ -18,10 +18,14 @@ if (!response.ok) throw new Error('Catalogue download failed: ' + response.statu
 const catalogue = await response.json();
 const matcher = { size: FINGERPRINT_SIZE, fingerprint, queries }, records = [], failures = [];
 const entries = catalogue.categories.flatMap(category => category.emojis);
+const aliases = JSON.parse(await readFile(new URL('recognition-aliases.json', import.meta.url), 'utf8'));
+const byId = new Map(entries.map(entry => [entry.id, entry]));
+for (const [source, target] of Object.entries(aliases)) if (!byId.has(source) || !byId.has(target)) throw new Error('Recognition alias is missing from the catalogue: ' + source + ' -> ' + target);
 let cursor = 0;
 await Promise.all(Array.from({ length: 8 }, async () => {
   while (cursor < entries.length) {
     const entry = entries[cursor++];
+    const recognized = byId.get(aliases[entry.id] || entry.id);
     const path = new URL(createHash('sha256').update(entry.id).digest('hex').slice(0, 24) + '.png', cache);
     let bytes;
     try { bytes = await readFile(path); } catch {
@@ -46,7 +50,7 @@ await Promise.all(Array.from({ length: 8 }, async () => {
       }
       for (const sample of samples) for (const variant of [0, 1, 2, 3]) {
         const feature = matcher.fingerprint(sample, !!(variant % 2), variant >= 2);
-        if (!feature.empty) records.push({ id: entry.id.toLowerCase(), variant, family: entry.name.toLowerCase().replace(/\s*\(stack(?: of \d+)?\)\s*$/, '').trim(), vector: feature.vector });
+        if (!feature.empty) records.push({ id: recognized.id.toLowerCase(), variant, family: recognized.name.toLowerCase().replace(/\s*\(stack(?: of \d+)?\)\s*$/, '').trim(), vector: feature.vector });
       }
     } catch { failures.push(entry.id); }
   }

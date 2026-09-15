@@ -13,6 +13,7 @@ import { CropPreview } from "./CropPreview";
 import { createPresetManualLayout } from "../../imageImport/manualLayout.mjs";
 import { ManualControls } from "./ManualControls";
 import { MatchReview } from "./MatchReview";
+import { ItemContributionDialog } from "./ItemContributionDialog";
 
 const geometry = createPresetManualLayout();
 
@@ -29,6 +30,7 @@ export default function ImportImageDialog({ onClose, editable }: Props) {
   const [locating, setLocating] = useState(false);
   const [crop, setCrop] = useState<CropBox>({ x: 0, y: 0, w: 1, h: 1 });
   const [matches, setMatches] = useState<Match[]>([]);
+  const [contribution, setContribution] = useState<Match>();
   const [maps, setMaps] = useState<EmojiMaps>();
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
@@ -128,6 +130,7 @@ export default function ImportImageDialog({ onClose, editable }: Props) {
   const changes = matches.filter(match => match.selected !== KEEP_CURRENT);
   return <Dialog open onClose={onClose} fullWidth maxWidth="md" aria-labelledby="import-image-title"
     onPaste={event => {
+      if (contribution) return;
       const file = Array.from(event.clipboardData.files).find(entry => entry.type.startsWith("image/"));
       if (file) { event.preventDefault(); void readFile(file); }
     }}>
@@ -178,7 +181,7 @@ export default function ImportImageDialog({ onClose, editable }: Props) {
         </>}
         {(busy || locating) && <LinearProgress variant={busy && progress ? "determinate" : "indeterminate"} value={progress} aria-label={locating ? "Detecting slots" : "Finding items"} />}
         <Box ref={review} aria-live="polite"><Typography variant="body2">{status}</Typography></Box>
-        {!!matches.length && maps && <MatchReview matches={matches} maps={maps} onSelect={(target, id) =>
+        {!!matches.length && maps && <MatchReview matches={matches} maps={maps} onContribute={setContribution} onSelect={(target, id) =>
           setMatches(current => current.map(match => match.group === target.group && match.index === target.index
             ? { ...match, selected: id } : match))} />}
       </Stack>
@@ -192,5 +195,6 @@ export default function ImportImageDialog({ onClose, editable }: Props) {
         onClose();
       }}>Apply items{changes.length ? ` (${changes.length})` : ""}</Button>
     </DialogActions>
+    {contribution && <ItemContributionDialog match={contribution} onClose={() => setContribution(undefined)} />}
   </Dialog>;
 }
