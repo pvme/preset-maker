@@ -1,16 +1,27 @@
-import { MenuItem, TextField } from "@mui/material";
+import { MenuItem, Switch, Typography } from "@mui/material";
 import { type InventoryLayout } from "../../hooks/useInventoryLayout";
 
 export function InventoryLayoutSelect({ layout, onChange }: {
   layout: InventoryLayout;
   onChange: (layout: InventoryLayout) => void;
 }) {
+  const isPortrait = layout === "4x7";
   return (
-    <TextField select size="small" label="Inventory layout" value={layout}
+    <MenuItem
       className="preset-menu__layout"
-      onChange={(event) => onChange(event.target.value as InventoryLayout)}>
-      <MenuItem value="7x4">7 columns × 4 rows</MenuItem>
-      <MenuItem value="4x7">4 columns × 7 rows</MenuItem>
-    </TextField>
+      onClick={() => onChange(isPortrait ? "7x4" : "4x7")}
+    >
+      <Typography>Layout</Typography>
+      <span className="preset-menu__layout-switch">
+        <span>Landscape</span>
+        <Switch
+          checked={isPortrait}
+          onClick={(event) => event.stopPropagation()}
+          onChange={(_event, checked) => onChange(checked ? "4x7" : "7x4")}
+          inputProps={{ "aria-label": "Portrait layout" }}
+        />
+        <span>Portrait</span>
+      </span>
+    </MenuItem>
   );
 }

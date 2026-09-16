@@ -35,8 +35,10 @@ function setup() {
 }
 
 async function selectLayout(name: string) {
-  fireEvent.mouseDown(screen.getByRole("combobox", { name: "Inventory layout" }));
-  fireEvent.click(await screen.findByRole("option", { name }));
+  const portraitToggle = screen.getByRole("checkbox", { name: "Portrait layout" });
+  if (portraitToggle.checked !== name.startsWith("4 columns")) {
+    fireEvent.click(portraitToggle);
+  }
 }
 
 test("switches a read-only preset between both arrangements without changing imported items or slot state", async () => {

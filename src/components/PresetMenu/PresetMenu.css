@@ -5,7 +5,17 @@
 }
 
 .preset-menu__layout {
-  min-width: 220px !important;
+  min-width: 290px;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.preset-menu__layout-switch {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  line-height: 1;
+  font-size: 0.75rem;
 }
 
 .preset-menu__primary,
@@ -61,11 +71,6 @@
     display: grid;
     grid-template-columns: 1fr;
     gap: 10px;
-  }
-
-  .preset-menu__primary-actions > .preset-menu__layout {
-    margin-left: 0;
-    width: 100%;
   }
 
   .preset-menu__secondary-actions {

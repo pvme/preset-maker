@@ -220,7 +220,6 @@ export const PresetMenu = ({ layout, onLayoutChange }: {
                 onRemoved={refresh}
               />
             </div>
-            <InventoryLayoutSelect layout={layout} onChange={onLayoutChange} />
           </Stack>
         </Grid>
 
@@ -243,8 +242,12 @@ export const PresetMenu = ({ layout, onLayoutChange }: {
               anchorEl={anchorExport}
               open={Boolean(anchorExport)}
               onClose={() => setAnchorExport(null)}
+              anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+              transformOrigin={{ vertical: "top", horizontal: "right" }}
               disableScrollLock
             >
+              <InventoryLayoutSelect layout={layout} onChange={onLayoutChange} />
+              <Divider />
               {isMobile && (
                 <>
                   <MenuItem
