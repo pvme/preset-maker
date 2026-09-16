@@ -49,6 +49,13 @@ export const equipmentCoords: Coord[] = createGridCoords(
   38, // stepY
 );
 
+// The Vorkath arrangement uses the same slot indices as the compact grid.
+export const inventoryCoordsTall = createGridCoords(12, 12, 4, 7, 45, 39);
+export const equipmentCoordsTall: Coord[] = [
+  [1, 0], [0.25, 1], [1, 1], [0, 2], [1, 2], [2, 2],
+  [1, 3], [0, 4], [1, 4], [2, 4], [1.75, 1], [1.75, 0],
+].map(([column, row]) => ({ x: 14 + column * 59, y: 46 + row * 44 }));
+
 /* Mobile layout */
 export const inventoryCoordsMobile: Coord[] = createGridCoords(
   7,

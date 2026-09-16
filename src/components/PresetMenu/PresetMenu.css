@@ -1,5 +1,21 @@
 .preset-menu {
   width: 100%;
+  gap: 12px;
+  align-items: center;
+}
+
+.preset-menu__layout {
+  min-width: 290px;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.preset-menu__layout-switch {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  line-height: 1;
+  font-size: 0.75rem;
 }
 
 .preset-menu__primary,

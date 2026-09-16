@@ -162,40 +162,134 @@
   padding-bottom: 10px !important;
 }
 
-/* Tablet/Mobile styling */
+.preset-editor__card {
+  max-width: 100%;
+  overflow-x: auto !important;
+}
+
+.preset-layout--7x4 {
+  width: 480px;
+  max-width: none;
+}
+
+.preset-layout--7x4 .preset-layout__slots {
+  box-sizing: border-box;
+  padding: 2px 4px 0;
+}
+
+.preset-layout--4x7 {
+  width: 381px;
+  max-width: none;
+  gap: 4px;
+}
+
+.preset-layout__tall-slots {
+  display: grid;
+  grid-template-columns: 197px 179px;
+  gap: 5px;
+}
+
+.preset-layout__tall-slots .preset-layout__panel {
+  height: 296px;
+  background-image: var(--preset-extras-bg);
+}
+
+.preset-layout__tall-slots .preset-slots {
+  width: 100%;
+  height: 100%;
+}
+
+.preset-slots__background {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.preset-slots__connections {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.preset-layout--4x7 .preset-slots__slot--filled {
+  background: none;
+}
+
+.preset-layout--4x7 .preset-layout__extras {
+  gap: 6px 4px;
+  padding: 8px;
+}
+
+.preset-layout--4x7 .preset-extras {
+  padding: 0 2px;
+}
+
+.preset-layout--4x7 .preset-extras__title {
+  font-size: 0.85rem;
+  line-height: 1.3;
+  margin-bottom: 4px;
+}
+
+.preset-layout--4x7 .preset-extras__item {
+  min-height: 34px;
+  padding: 2px 6px;
+}
+
+.preset-layout--7x4 .preset-extras--icons-only {
+  padding: 4px 6px;
+}
+
+.preset-layout--7x4 .preset-extras--icons-only .preset-extras__title {
+  margin-bottom: 4px;
+}
+
+.preset-layout--7x4 .preset-extras--icons-only .preset-extras__item {
+  min-height: 34px;
+  padding: 2px 6px;
+}
+
+.preset-layout .preset-extras--slots-3 .preset-extras__items {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.preset-layout--export .preset-slots__slot {
+  border-color: transparent;
+}
+
 @media (max-width: 900px) {
   .preset-editor__card {
     width: 100%;
+    overflow-x: hidden !important;
   }
 
-  .preset-layout {
-    max-width: 194px;
+  .preset-layout--4x7 {
+    width: 204px;
+    max-width: 100%;
+    gap: 0;
   }
 
-  .preset-layout__slots {
-    display: flex;
-    justify-content: center;
+  .preset-layout__tall-slots {
+    grid-template-columns: 204px;
+    gap: 0;
   }
 
-  .preset-slots {
-    display: block;
-    width: 194px;
+  .preset-layout__tall-slots .preset-layout__equipment {
+    width: 204px;
   }
 
-  .preset-layout__extras {
+  .preset-layout__tall-slots .preset-layout__equipment .preset-slots {
+    width: 179px;
+    margin: 0 auto;
+  }
+
+  .preset-layout--4x7 .preset-layout__extras {
+    width: 204px;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     grid-template-areas:
       "relics relics"
-      "familiar aspect"
-      "ammo ammo";
-    gap: 0;
-    padding: 15px 5px;
-  }
-
-  .preset-layout__extras > :nth-child(2),
-  .preset-layout__extras > :nth-child(3),
-  .preset-layout__extras > :nth-child(4),
-  .preset-layout__extras > :nth-child(5) {
-    min-width: 0;
+      "ammo ammo"
+      "aspect familiar";
+    row-gap: 10px;
+    padding: 10px;
   }
 }

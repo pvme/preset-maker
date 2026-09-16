@@ -4,17 +4,25 @@ import { PresetNotes } from "../PresetNotes/PresetNotes";
 import { PresetEditor } from "../PresetEditor/PresetEditor";
 import { PresetInfo } from "../PresetInfo/PresetInfo";
 import PresetMenu from "../PresetMenu/PresetMenu";
+import { useInventoryLayout } from "../../hooks/useInventoryLayout";
 
 import { Container, Grid } from "@mui/material";
+import useMediaQuery from "@mui/material/useMediaQuery";
 import "./PresetPage.css";
 
 export const PresetPage = (): JSX.Element => {
+  const [layout, setLayout] = useInventoryLayout();
+  const isMobile = useMediaQuery("(max-width:900px)");
+  const editorLayout = isMobile ? "4x7" : layout;
   return (
     <div className="preset-page">
       <Container className="preset-page__menu">
         <Grid container spacing={2} direction="column">
           <Grid item>
-            <PresetMenu />
+            <PresetMenu
+              layout={editorLayout}
+              onLayoutChange={setLayout}
+            />
           </Grid>
         </Grid>
       </Container>
@@ -22,7 +30,7 @@ export const PresetPage = (): JSX.Element => {
       <Container className="preset-page__top">
         <Grid container spacing={0} className="preset-page__top-grid">
           <Grid item xs={12} md="auto" className="preset-page__editor">
-            <PresetEditor />
+            <PresetEditor layout={editorLayout} />
           </Grid>
 
           <Grid

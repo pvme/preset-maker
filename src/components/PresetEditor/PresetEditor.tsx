@@ -1,7 +1,9 @@
 // src/components/PresetEditor/PresetEditor.tsx
 
 import React, { useCallback, useState } from "react";
-import useMediaQuery from "@mui/material/useMediaQuery";
+import { type InventoryLayout } from "../../hooks/useInventoryLayout";
+import { inventoryCoordsTall, equipmentCoordsTall } from "../../data/coordinates";
+import { SlotBackground } from "./SlotBackground";
 
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
@@ -44,17 +46,16 @@ import cornerPath from "../../assets/corner.png";
 import smallBackground from "../../assets/bg.png";
 import genericBackground from "../../assets/bg_large.png";
 import desktopPresetMapBackground from "../../assets/presetmap_desktop.png";
-import mobilePresetMapBackground from "../../assets/presetmap_mobile.png";
 import { useEmojiMap } from "../../hooks/useEmojiMap";
 
 import { UI_TO_PRESET_SLOT } from "./equipmentSlots";
 
 const EQUIPMENT_UI_ORDER = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 
-export const PresetEditor = (): JSX.Element => {
+export const PresetEditor = ({ layout }: { layout: InventoryLayout }): JSX.Element => {
   const dispatch = useAppDispatch();
   const maps = useEmojiMap();
-  const isCompactLayout = useMediaQuery("(max-width:900px)");
+  const isTallLayout = layout === "4x7";
 
   const {
     inventorySlots,
@@ -297,57 +298,72 @@ export const PresetEditor = (): JSX.Element => {
       <Card className="preset-editor__card">
         <CardContent data-id="content" className="preset-layout__content">
           <div
-            className="preset-layout"
+            className={`preset-layout preset-layout--${layout}`}
+            data-inventory-layout={layout}
             style={{
-              ["--preset-slot-bg" as string]: isCompactLayout
-                ? "#2f2924"
-                : `url(${smallBackground})`,
+              ["--preset-slot-bg" as string]: `url(${smallBackground})`,
               ["--preset-extras-bg" as string]: `url(${genericBackground})`,
               ["--preset-frame-border-top" as string]: `url(${borderTop})`,
               ["--preset-frame-border-side" as string]: `url(${borderSide})`,
               ["--preset-frame-corner" as string]: `url(${cornerPath})`,
             }}
           >
-            <div
-              className="preset-layout__slots preset-layout__panel"
-              style={{ backgroundImage: `url(${genericBackground})` }}
-            >
-              {panelFrame}
-
-              <div className="preset-slots">
-                {isCompactLayout ? (
-                  <div className="preset-slots__mobile-image">
-                    <img
-                      width={194}
-                      height={487}
-                      src={mobilePresetMapBackground}
-                      alt="preset mobile"
-                    />
+            {isTallLayout ? (
+              <div className="preset-layout__tall-slots">
+                <div className="preset-layout__inventory preset-layout__panel">
+                  {panelFrame}
+                  <div className="preset-slots">
+                    <SlotBackground coords={inventoryCoordsTall} group="inventory" slots={inventorySlots} />
+                    <Inventory coords={inventoryCoordsTall} slots={inventorySlots}
+                      handleClickOpen={handleSlotOpen} handleShiftClick={handleSlotSelection}
+                      handleDragAndDrop={handleDragAndDrop} />
                   </div>
-                ) : (
+                </div>
+                <div className="preset-layout__equipment preset-layout__panel">
+                  {panelFrame}
+                  <div className="preset-slots">
+                    <svg className="preset-slots__connections" width="179" height="296" aria-hidden="true">
+                      <path d="M89 63V239 M30 151H148 M30 151V239 M148 151V239" fill="none" stroke="#454134" strokeWidth="3" />
+                      <path d="M89 63V239 M30 151H148 M30 151V239 M148 151V239" fill="none" stroke="#24221c" />
+                    </svg>
+                    <SlotBackground coords={equipmentCoordsTall} group="equipment" slots={equipmentSlots} />
+                    <Equipment coords={equipmentCoordsTall} slots={equipmentSlots}
+                      handleClickOpen={handleSlotOpen} handleShiftClick={handleSlotSelection}
+                      handleDragAndDrop={handleDragAndDrop} />
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div
+                className="preset-layout__slots preset-layout__panel"
+                style={{ backgroundImage: `url(${genericBackground})` }}
+              >
+                {panelFrame}
+
+                <div className="preset-slots">
                   <img
                     width={472}
                     height={162}
                     src={desktopPresetMapBackground}
                     alt="preset"
                   />
-                )}
 
-                <Inventory
-                  slots={inventorySlots}
-                  handleClickOpen={handleSlotOpen}
-                  handleShiftClick={handleSlotSelection}
-                  handleDragAndDrop={handleDragAndDrop}
-                />
+                  <Inventory
+                    slots={inventorySlots}
+                    handleClickOpen={handleSlotOpen}
+                    handleShiftClick={handleSlotSelection}
+                    handleDragAndDrop={handleDragAndDrop}
+                  />
 
-                <Equipment
-                  slots={equipmentSlots}
-                  handleClickOpen={handleSlotOpen}
-                  handleShiftClick={handleSlotSelection}
-                  handleDragAndDrop={handleDragAndDrop}
-                />
+                  <Equipment
+                    slots={equipmentSlots}
+                    handleClickOpen={handleSlotOpen}
+                    handleShiftClick={handleSlotSelection}
+                    handleDragAndDrop={handleDragAndDrop}
+                  />
+                </div>
               </div>
-            </div>
+            )}
 
             <div className="preset-layout__extras preset-layout__panel">
               {panelFrame}
@@ -359,7 +375,7 @@ export const PresetEditor = (): JSX.Element => {
                 maxItems={3}
                 setItem={setRelic}
                 indexed
-                showNames
+                showNames={false}
               />
               <PresetExtras
                 title="Familiar"
@@ -367,7 +383,7 @@ export const PresetEditor = (): JSX.Element => {
                 items={[familiar]}
                 maxItems={1}
                 setItem={setFamiliar}
-                showNames
+                showNames={false}
               />
               <PresetExtras
                 title="Aspect"
@@ -375,7 +391,7 @@ export const PresetEditor = (): JSX.Element => {
                 items={[aspect]}
                 maxItems={1}
                 setItem={setAspect}
-                showNames
+                showNames={false}
               />
               <PresetExtras
                 title="Ammo / Spells"
@@ -383,7 +399,7 @@ export const PresetEditor = (): JSX.Element => {
                 items={ammoSpells}
                 maxItems={3}
                 setItem={setAmmoSpells}
-                showNames
+                showNames={false}
                 indexed
               />
             </div>
