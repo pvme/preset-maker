@@ -25,7 +25,10 @@ afterEach(() => { cleanup(); vi.restoreAllMocks(); });
 
 function LayoutEditor() {
   const [layout, setLayout] = useInventoryLayout();
-  return <><InventoryLayoutSelect layout={layout} onChange={setLayout} /><PresetEditor layout={layout} /></>;
+  return <>
+    <InventoryLayoutSelect layout={layout} onChange={setLayout} />
+    <PresetEditor layout={layout} />
+  </>;
 }
 
 function setup() {
@@ -58,6 +61,7 @@ test("switches a read-only preset between both arrangements without changing imp
   expect(slots()[4].style.top).toBe(slots()[0].style.top);
   expect(store.getState().preset).toBe(before);
 });
+
 
 test("remembers the explicit layout across mounts", async () => {
   const first = setup();

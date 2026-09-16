@@ -375,7 +375,7 @@ export const PresetEditor = ({ layout }: { layout: InventoryLayout }): JSX.Eleme
                 maxItems={3}
                 setItem={setRelic}
                 indexed
-                showNames={!isTallLayout}
+                showNames={false}
               />
               <PresetExtras
                 title="Familiar"
@@ -383,7 +383,7 @@ export const PresetEditor = ({ layout }: { layout: InventoryLayout }): JSX.Eleme
                 items={[familiar]}
                 maxItems={1}
                 setItem={setFamiliar}
-                showNames={!isTallLayout}
+                showNames={false}
               />
               <PresetExtras
                 title="Aspect"
@@ -391,7 +391,7 @@ export const PresetEditor = ({ layout }: { layout: InventoryLayout }): JSX.Eleme
                 items={[aspect]}
                 maxItems={1}
                 setItem={setAspect}
-                showNames={!isTallLayout}
+                showNames={false}
               />
               <PresetExtras
                 title="Ammo / Spells"
@@ -399,7 +399,7 @@ export const PresetEditor = ({ layout }: { layout: InventoryLayout }): JSX.Eleme
                 items={ammoSpells}
                 maxItems={3}
                 setItem={setAmmoSpells}
-                showNames={!isTallLayout}
+                showNames={false}
                 indexed
               />
             </div>

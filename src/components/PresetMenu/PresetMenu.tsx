@@ -80,7 +80,10 @@ const ImportImageDialog = lazy(
    Component
 --------------------------------------------- */
 
-export const PresetMenu = ({ layout, onLayoutChange }: {
+export const PresetMenu = ({
+  layout,
+  onLayoutChange,
+}: {
   layout: InventoryLayout;
   onLayoutChange: (layout: InventoryLayout) => void;
 }): JSX.Element => {

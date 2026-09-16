@@ -230,6 +230,19 @@
   padding: 2px 6px;
 }
 
+.preset-layout--7x4 .preset-extras--icons-only {
+  padding: 4px 6px;
+}
+
+.preset-layout--7x4 .preset-extras--icons-only .preset-extras__title {
+  margin-bottom: 4px;
+}
+
+.preset-layout--7x4 .preset-extras--icons-only .preset-extras__item {
+  min-height: 34px;
+  padding: 2px 6px;
+}
+
 .preset-layout .preset-extras--slots-3 .preset-extras__items {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }

@@ -16,7 +16,10 @@ export const PresetPage = (): JSX.Element => {
       <Container className="preset-page__menu">
         <Grid container spacing={2} direction="column">
           <Grid item>
-            <PresetMenu layout={layout} onLayoutChange={setLayout} />
+            <PresetMenu
+              layout={layout}
+              onLayoutChange={setLayout}
+            />
           </Grid>
         </Grid>
       </Container>
