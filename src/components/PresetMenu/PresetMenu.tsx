@@ -249,7 +249,9 @@ export const PresetMenu = ({
               transformOrigin={{ vertical: "top", horizontal: "right" }}
               disableScrollLock
             >
-              <InventoryLayoutSelect layout={layout} onChange={onLayoutChange} />
+              {!isMobile && (
+                <InventoryLayoutSelect layout={layout} onChange={onLayoutChange} />
+              )}
               <Divider />
               {isMobile && (
                 <>

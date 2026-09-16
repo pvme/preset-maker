@@ -64,7 +64,7 @@ Deploy:
 
 Use **Inventory layout** in the top toolbar, between **Recent Presets** and **Menu**, to switch between **7 columns × 4 rows** and **4 columns × 7 rows**. The 4-column view places worn equipment alongside the inventory, with relics, familiar, ammo/spells and aspect underneath. Both views use PvME artwork. Copy image and Download image export the selected arrangement at double resolution, without the layout control or selection highlights.
 
-The choice is remembered in this browser and is available for read-only presets too. It is a view preference: switching keeps all items, slot order and notes intact and does not alter saved presets, JSON backups or cloud embed links. On small screens the preset can be scrolled horizontally; the selected column count stays the same. New browsers start with 7 columns on desktop and 4 columns on small screens.
+The choice is remembered in this browser and is available for read-only presets too. It is a view preference: switching keeps all items, slot order and notes intact and does not alter saved presets, JSON backups or cloud embed links. On small screens the editor always uses the 4-column portrait view, with inventory and equipment stacked vertically. New browsers start with 7 columns on desktop and 4 columns on small screens.
 
 ## Import Image
 

@@ -80,6 +80,15 @@ test("uses the small-screen default only when there is no saved choice", () => {
   expect(setup().container.querySelector(".preset-layout--7x4")).toBeTruthy();
 });
 
+test("stacks portrait inventory and equipment panels on small screens", () => {
+  vi.mocked(window.matchMedia).mockReturnValue({ matches: true, addListener: vi.fn(), removeListener: vi.fn() } as any);
+  const { container } = setup();
+  const panels = container.querySelector(".preset-layout__tall-slots");
+  expect(panels).toBeTruthy();
+  expect(panels?.querySelector(".preset-layout__inventory")).toBeTruthy();
+  expect(panels?.querySelector(".preset-layout__equipment")).toBeTruthy();
+});
+
 test("still switches when local storage is blocked", async () => {
   vi.spyOn(Storage.prototype, "getItem").mockImplementation(() => { throw new Error("blocked"); });
   vi.spyOn(Storage.prototype, "setItem").mockImplementation(() => { throw new Error("blocked"); });

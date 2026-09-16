@@ -250,3 +250,41 @@
 .preset-layout--export .preset-slots__slot {
   border-color: transparent;
 }
+
+@media (max-width: 900px) {
+  .preset-editor__card {
+    width: 100%;
+    overflow-x: hidden !important;
+  }
+
+  .preset-layout--4x7 {
+    width: 204px;
+    max-width: 100%;
+    gap: 0;
+  }
+
+  .preset-layout__tall-slots {
+    grid-template-columns: 204px;
+    gap: 0;
+  }
+
+  .preset-layout__tall-slots .preset-layout__equipment {
+    width: 204px;
+  }
+
+  .preset-layout__tall-slots .preset-layout__equipment .preset-slots {
+    width: 179px;
+    margin: 0 auto;
+  }
+
+  .preset-layout--4x7 .preset-layout__extras {
+    width: 204px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-areas:
+      "relics relics"
+      "ammo ammo"
+      "aspect familiar";
+    row-gap: 10px;
+    padding: 10px;
+  }
+}
