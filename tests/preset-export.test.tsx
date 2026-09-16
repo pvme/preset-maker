@@ -28,9 +28,11 @@ test.each(["4x7", "7x4"])("exports the complete %s layout and cleans only the cl
   expect(await renderPresetCanvas()).toBe(canvas);
 });
 
-test("rejects incomplete images before creating an export", async () => {
+test("exports even when an item image is unavailable", async () => {
   document.body.innerHTML = '<div class="preset-layout"><img /></div>';
   document.querySelector("img")!.decode = vi.fn().mockRejectedValue(new Error("Image unavailable"));
-  await expect(renderPresetCanvas()).rejects.toThrow("Image unavailable");
-  expect(html2canvas).not.toHaveBeenCalled();
+  const canvas = document.createElement("canvas");
+  vi.mocked(html2canvas).mockResolvedValue(canvas);
+  await expect(renderPresetCanvas()).resolves.toBe(canvas);
+  expect(html2canvas).toHaveBeenCalledOnce();
 });

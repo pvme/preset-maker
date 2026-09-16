@@ -4,10 +4,14 @@ export async function renderPresetCanvas(): Promise<HTMLCanvasElement> {
   const element = document.querySelector<HTMLElement>(".preset-layout");
   if (!element) throw new Error("The preset is not ready to export.");
 
-  await Promise.all(Array.from(element.querySelectorAll("img")).map(async (image) => {
-    await image.decode();
-  }));
-  await document.fonts.ready;
+  await Promise.all(
+    Array.from(element.querySelectorAll("img")).map((image) =>
+      typeof image.decode === "function"
+        ? image.decode().catch(() => undefined)
+        : Promise.resolve(),
+    ),
+  );
+  await document.fonts?.ready;
 
   return html2canvas(element, {
     useCORS: true,
