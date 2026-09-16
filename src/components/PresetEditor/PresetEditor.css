@@ -168,19 +168,24 @@
 }
 
 .preset-layout--7x4 {
-  width: 472px;
+  width: 480px;
   max-width: none;
 }
 
+.preset-layout--7x4 .preset-layout__slots {
+  box-sizing: border-box;
+  padding: 2px 4px 0;
+}
+
 .preset-layout--4x7 {
-  width: 388px;
+  width: 381px;
   max-width: none;
   gap: 4px;
 }
 
 .preset-layout__tall-slots {
   display: grid;
-  grid-template-columns: 204px 179px;
+  grid-template-columns: 197px 179px;
   gap: 5px;
 }
 
@@ -212,7 +217,7 @@
 
 .preset-layout--4x7 .preset-layout__extras {
   gap: 6px 4px;
-  padding: 6px;
+  padding: 8px;
 }
 
 .preset-layout--4x7 .preset-extras {
