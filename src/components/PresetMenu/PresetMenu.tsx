@@ -294,13 +294,17 @@ export const PresetMenu = ({
               )}
 
               <MenuItem
-                onClick={() => {
+                onClick={async () => {
                   if (!id) return;
                   const url = `${FunctionURLs.presetEmbed}?id=${encodeURIComponent(
                     id,
-                  )}`;
-                  navigator.clipboard.writeText(url);
-                  enqueueSnackbar("Link copied", { variant: "success" });
+                  )}&layout=${layout}`;
+                  try {
+                    await navigator.clipboard.writeText(url);
+                    enqueueSnackbar("Link copied", { variant: "success" });
+                  } catch {
+                    enqueueSnackbar("Could not copy the link. Please try again.", { variant: "error" });
+                  }
                 }}
               >
                 <ListItemIcon>
