@@ -12,6 +12,7 @@ const resolveSlot = (slot: any, maps: Awaited<ReturnType<typeof loadEmojis>>) =>
 export function makeEmbedRenderer(options: { fetchImageBytes?: (url: string) => Promise<Buffer> } = {}) {
   return createRenderer({
   createCanvas, loadImage,
+  renderScale: 2,
   failOnImageError: true,
   loadLocal: (name: string) => loadImage(fileURLToPath(new URL(`../src/assets/${name}`, import.meta.url))),
   loadIconMap: loadEmojis,

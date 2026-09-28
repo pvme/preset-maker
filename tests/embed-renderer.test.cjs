@@ -61,6 +61,24 @@ test('renderer does not mutate the input preset', async () => {
   assert.deepEqual(preset, before);
 });
 
+test('double-resolution rendering preserves portrait slot positions', async () => {
+  const renderer = createRenderer({
+    createCanvas, loadImage, renderScale: 2,
+    loadLocal: name => loadImage(path.join(__dirname, '../src/assets', name)),
+    loadIconMap: async () => ({}), normalizePresetToV2: data => data,
+    resolveArray: items => items, resolveSlot: slot => slot,
+  });
+  const image = await loadImage(await renderer.renderPresetImage(preset, '4x7'));
+  assert.equal(image.width, 762); assert.equal(image.height, 1036);
+  const canvas = createCanvas(image.width, image.height);
+  const ctx = canvas.getContext('2d'); ctx.drawImage(image, 0, 0);
+  slots.forEach((_, i) => {
+    const x = (12 + i % 4 * 45 + 19) * 2;
+    const y = (34 + 12 + Math.floor(i / 4) * 39 + 17) * 2;
+    assert.deepEqual([...ctx.getImageData(x, y, 1, 1).data].slice(0, 3), color(i));
+  });
+});
+
 test('strict icon loading rejects incomplete renders and retries failed images', async () => {
   let fail = true;
   const renderer = createRenderer({

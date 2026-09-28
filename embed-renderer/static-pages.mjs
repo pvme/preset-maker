@@ -21,8 +21,8 @@ export function staticEmbedHtml({ id, layout, title, siteUrl, image }) {
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${escape(title)}</title>
 ${meta('og:type', 'website')}${meta('og:site_name', 'PvME Preset Maker')}
-${meta('og:title', title)}${meta('og:url', page.href)}
-${meta('og:description', `RuneScape preset - ${layout === '4x7' ? 'Portrait (4 x 7)' : 'Landscape (7 x 4)'}`)}
+${meta('og:title', `PvME Preset: ${title}`)}${meta('og:url', page.href)}
+${meta('og:description', 'Click the link above to view preset and notes')}
 ${image ? `${meta('og:image', imageUrl)}${meta('og:image:type', 'image/webp')}${meta('og:image:width', image.width)}${meta('og:image:height', image.height)}` : ''}
 <meta name="twitter:card" content="summary_large_image">
 </head><body><h1>${escape(title)}</h1>

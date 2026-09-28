@@ -36,6 +36,9 @@ test('each layout gets static metadata, versioned image and the correct hash red
     assert.match(html, new RegExp(`#/abc\\?layout=${layout}`));
     assert.match(html, /property="og:image" content="https:\/\/example.test\/preset-maker\/embeds\/images\/[a-f0-9]{64}.webp"/);
     assert.doesNotMatch(html, /<script>Hi/);
+    assert.match(html, /property="og:title" content="PvME Preset: /);
+    assert.match(html, /Click the link above to view preset and notes/);
+    assert.doesNotMatch(html, /RuneScape preset -|Portrait \(4 x 7\)|Landscape \(7 x 4\)/);
   }
 });
 

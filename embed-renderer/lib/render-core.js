@@ -1,6 +1,6 @@
 const { normalizeLayout } = require("./layout");
 function createRenderer({ createCanvas, loadImage, loadLocal, loadIconMap,
-  resolveArray, resolveSlot, normalizePresetToV2, failOnImageError = false, fetchImageBytes }) {
+  resolveArray, resolveSlot, normalizePresetToV2, failOnImageError = false, fetchImageBytes, renderScale = 1 }) {
 // -----------------------------------------------------
 // Constants
 // -----------------------------------------------------
@@ -407,8 +407,10 @@ async function renderPresetImage(rawPreset, layout) {
   const canvasWidth = panelWidth;
   const canvasHeight = TITLE_HEIGHT + topPanelHeight + extrasPanelHeight;
 
-  const canvas = createCanvas(canvasWidth, canvasHeight);
+  const canvas = createCanvas(canvasWidth * renderScale, canvasHeight * renderScale);
   const ctx = canvas.getContext("2d");
+  ctx.scale(renderScale, renderScale);
+  ctx.imageSmoothingQuality = "high";
 
   ctx.fillStyle = "#17120f";
   ctx.fillRect(0, 0, canvasWidth, canvasHeight);

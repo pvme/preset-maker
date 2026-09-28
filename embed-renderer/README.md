@@ -81,7 +81,8 @@ has the same option. `EMBED_RENDER_BUDGET_MS` changes that limit for normal runs
   the renderer, artwork or item catalogue invalidate the relevant cached results.
 - The app and previews are published together. An unchanged scheduled run skips
   the app build and deployment. If a deployment fails, the next run retries it.
-- Published images are WebP to keep the whole site below Pages' 1 GB limit. The
+- Images render at twice the display resolution so text stays clear, and are saved
+  as WebP to keep the whole site below Pages' 1 GB limit. The
   job stops before publishing if previews exceed 900 MB or the site exceeds 950 MB.
 - A failed render keeps the previous image where possible and retries next run.
   Deleted presets and unused images are removed. Errors are printed in the job log.
