@@ -98,12 +98,13 @@ function normalizeEmojiEntry(raw: unknown): EmojiEntry | null {
   };
 }
 
-export async function loadEmojis(): Promise<EmojiMaps> {
+export async function loadEmojis(signal?: AbortSignal): Promise<EmojiMaps> {
   if (cached) return cached;
   if (loadingPromise) return loadingPromise;
 
   loadingPromise = (async () => {
-    const res = await fetch(EMOJI_URL, { cache: "no-store" });
+    const res = await fetch(EMOJI_URL, { cache: "no-store", signal });
+    if (!res.ok) throw new Error(`Emoji catalogue download failed: ${res.status}`);
     const json = incomingEmojiJsonSchema.parse(await res.json());
 
     // Flatten categories → array of EmojiEntry

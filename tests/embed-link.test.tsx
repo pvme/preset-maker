@@ -24,7 +24,6 @@ vi.mock("../src/components/PresetMenu/usePresetJsonExport", () => ({ usePresetJs
 vi.mock("../src/components/PresetMenu/usePresetJsonImport", () => ({ usePresetJsonImport: () => ({}) }));
 vi.mock("../src/components/PresetMenu/RecentPresetDropdown", () => ({ RecentPresetDropdown: () => null }));
 vi.mock("../src/components/SavePresetDialog/SavePresetDialog", () => ({ SavePresetDialog: () => null, SavePresetDialogState: {} }));
-vi.mock("../src/api/function-urls", () => ({ FunctionURLs: { presetEmbed: "https://presets.example.test/" } }));
 
 afterEach(() => { cleanup(); vi.clearAllMocks(); });
 
@@ -42,7 +41,8 @@ function setup(layout: "4x7" | "7x4", writeText = vi.fn().mockResolvedValue(unde
 test.each(["4x7", "7x4"] as const)("copies the displayed %s layout into the embed link", async layout => {
   const write = setup(layout);
   await waitFor(() => expect(notify).toHaveBeenCalledWith("Link copied", { variant: "success" }));
-  expect(write).toHaveBeenCalledWith(`https://presets.example.test/?id=test-preset&layout=${layout}`);
+  const base = new URL(import.meta.env.BASE_URL, window.location.origin);
+  expect(write).toHaveBeenCalledWith(new URL(`embeds/test-preset/${layout}/`, base).href);
 });
 
 test("reports a clipboard failure without claiming the link was copied", async () => {

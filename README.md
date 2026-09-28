@@ -2,6 +2,11 @@
 
 A PvME web app for building, editing, and sharing RuneScape 3 presets.
 
+Portrait and landscape embed previews are generated every ten minutes by
+GitHub Actions and published with the existing GitHub Pages site.
+See [activation and local testing instructions](embed-renderer/README.md).
+For interactive image editing, run `npm run preview:embeds`.
+
 🌐 https://pvme.github.io/preset-maker/
 
 This app is the front-end part of a trio, alongside https://github.com/pvme/preset-maker-storage and https://github.com/pvme/preset-maker-api
@@ -64,7 +69,7 @@ Deploy:
 
 Use **Inventory layout** in the top toolbar, between **Recent Presets** and **Menu**, to switch between **7 columns × 4 rows** and **4 columns × 7 rows**. The 4-column view places worn equipment alongside the inventory, with relics, familiar, ammo/spells and aspect underneath. Both views use PvME artwork. Copy image and Download image export the selected arrangement at double resolution, without the layout control or selection highlights.
 
-The choice is remembered in this browser and is available for read-only presets too. It is a view preference: switching keeps all items, slot order and notes intact and does not alter saved presets or JSON backups. Copy embed link includes the displayed layout as `layout=4x7` or `layout=7x4`. Shared layout parameters override the receiving browser preference, and switching layout updates the browser URL. The embed backend must accept the same parameter, render and cache each layout separately, and preserve it in the editor redirect. On small screens the editor always uses the 4-column portrait view, with inventory and equipment stacked vertically. New browsers start with 7 columns on desktop and 4 columns on small screens.
+The choice is remembered in this browser and is available for read-only presets too. It is a view preference: switching keeps all items, slot order and notes intact and does not alter saved presets or JSON backups. Copy embed link points to a static preview page at `embeds/{id}/4x7/` or `embeds/{id}/7x4/`. Shared layout parameters override the receiving browser preference, and switching layout updates the browser URL. The scheduled generator publishes each layout separately and preserves the layout query parameter in the editor redirect. On small screens the editor always uses the 4-column portrait view, with inventory and equipment stacked vertically. New browsers start with 7 columns on desktop and 4 columns on small screens.
 
 ## Import Image
 

@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Preset embed preview</title>
+<style>
+  body { margin: 32px auto; padding: 0 20px; max-width: 1100px; background: #17191d; color: #eee; font: 16px system-ui; }
+  h1 { font-size: 25px; } p { color: #bdc3cb; }
+  textarea { box-sizing: border-box; width: 100%; height: 180px; background: #22262d; color: #eee; border: 1px solid #56606d; padding: 12px; }
+  button, input { font: inherit; margin: 12px 12px 12px 0; } button { padding: 8px 16px; cursor: pointer; }
+  .previews { display: flex; flex-wrap: wrap; gap: 28px; align-items: start; }
+  figure { margin: 0; } figcaption { margin: 16px 0; } img { max-width: 100%; } a { color: #96caff; }
+  #status { min-height: 24px; white-space: pre-wrap; }
+</style>
+<h1>Preset embed preview</h1>
+<p>Compare landscape (7 × 4) and portrait (4 × 7). Load a preset JSON backup or paste it below.</p>
+<label>Preset JSON <input id="file" type="file" accept=".json,application/json"></label>
+<textarea id="preset" aria-label="Preset JSON" spellcheck="false"></textarea>
+<button id="render">Render both layouts</button><button id="demo">Load example</button>
+<p id="status" role="status">Loading example…</p>
+<div class="previews">
+  <figure><figcaption>Landscape · <a id="download-7x4" download="preset-7x4.png">Download PNG</a></figcaption><img id="image-7x4" alt="Landscape preview" hidden></figure>
+  <figure><figcaption>Portrait · <a id="download-4x7" download="preset-4x7.png">Download PNG</a></figcaption><img id="image-4x7" alt="Portrait preview" hidden></figure>
+</div>
+<script type="module">
+  const $ = id => document.getElementById(id);
+  const urls = {};
+  async function render() {
+    $('render').disabled = true;
+    $('status').textContent = 'Rendering…';
+    try {
+      JSON.parse($('preset').value);
+      // Keep both requests settled before re-enabling the button.
+      const results = await Promise.allSettled(['7x4', '4x7'].map(async layout => {
+        const response = await fetch('/render.png?layout=' + layout, {
+          method: 'POST', headers: { 'Content-Type': 'application/json' }, body: $('preset').value,
+        });
+        if (!response.ok) throw new Error(await response.text());
+        const blob = await response.blob();
+        if (urls[layout]) URL.revokeObjectURL(urls[layout]);
+        urls[layout] = URL.createObjectURL(blob);
+        $('image-' + layout).src = urls[layout];
+        $('image-' + layout).hidden = false;
+        $('download-' + layout).href = urls[layout];
+      }));
+      const failed = results.find(result => result.status === 'rejected');
+      if (failed) throw failed.reason;
+      $('status').textContent = 'Both previews are ready.';
+    } catch (error) { $('status').textContent = 'Could not render: ' + error.message; }
+    finally { $('render').disabled = false; }
+  }
+  async function demo() {
+    try {
+      const response = await fetch('/demo.json');
+      if (!response.ok) throw new Error(await response.text());
+      $('preset').value = await response.text();
+      await render();
+    } catch (error) { $('status').textContent = 'Could not load example: ' + error.message; }
+  }
+  $('render').onclick = render;
+  $('demo').onclick = demo;
+  $('file').onchange = async event => {
+    if (event.target.files[0]) { $('preset').value = await event.target.files[0].text(); await render(); }
+  };
+  demo();
+</script>
+</html>

@@ -1,45 +1,158 @@
-name: Build and Deploy GH Pages
+name: Build site and refresh preset previews
 
 on:
   push:
-    branches:
-      - master
+    branches: [master]
+  schedule:
+    # Every ten minutes, offset from the busiest top-of-hour slot.
+    - cron: '7,17,27,37,47,57 * * * *'
+  workflow_dispatch:
+    inputs:
+      force_regenerate:
+        description: Re-render unchanged presets too
+        type: boolean
+        default: false
 
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
+
+# Serialize scheduled refreshes and code deployments, including initial generation.
+concurrency:
+  group: github-pages-publication
+  cancel-in-progress: false
 
 jobs:
   build-and-deploy:
-    concurrency: ci-${{ github.ref }}
     runs-on: ubuntu-latest
-
+    timeout-minutes: 60
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
     steps:
-      - name: Checkout
+      - name: Checkout application
         uses: actions/checkout@v4
+
+      - name: Checkout current public presets
+        uses: actions/checkout@v4
+        with:
+          repository: pvme/preset-maker-storage
+          ref: main
+          path: .cache/preset-source
+          sparse-checkout: presets
+          persist-credentials: false
+
+      - name: Configure Pages
+        id: pages
+        uses: actions/configure-pages@v5
 
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: npm
 
-      - name: Load Env Vars/Secrets
+      - name: Set published paths
+        env:
+          PAGES_URL: ${{ steps.pages.outputs.base_url }}
         run: |
-          echo "VITE_FIREBASE_API_KEY=${{ secrets.FIREBASE_API_KEY }}" >> $GITHUB_ENV
-          echo "VITE_GET_PRESET_URL=${{ vars.VITE_GET_PRESET_URL }}" >> $GITHUB_ENV
-          echo "VITE_UPLOAD_PRESET_URL=${{ vars.VITE_UPLOAD_PRESET_URL }}" >> $GITHUB_ENV
-          echo "VITE_PRESET_EMBED_URL=${{ vars.VITE_PRESET_EMBED_URL }}" >> $GITHUB_ENV
-          echo "VITE_RENDER_PRESET_IMAGE_URL=${{ vars.VITE_RENDER_PRESET_IMAGE_URL }}" >> $GITHUB_ENV
-          echo "VITE_ON_PRESET_WRITE_URL=${{ vars.VITE_ON_PRESET_WRITE_URL }}" >> $GITHUB_ENV
+          node --input-type=module <<'NODE'
+          import { appendFileSync } from 'node:fs';
+          const url = new URL(process.env.PAGES_URL.replace(/\/+$/, '') + '/');
+          appendFileSync(process.env.GITHUB_ENV, `EMBED_SITE_URL=${url.href}\nSITE_BASE_PATH=${url.pathname}\n`);
+          NODE
 
-      - name: Install and Build
-        run: |
-          npm ci
-          npm run build
-
-      - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@v4
+      - name: Restore generated previews
+        id: previews
+        uses: actions/cache/restore@v4
         with:
-          folder: dist
-          branch: gh-pages
-          clean: true
+          path: .cache/static-embeds
+          key: static-embeds-v1-lookup-${{ github.run_id }}
+          restore-keys: static-embeds-v1-
+
+      - name: Restore downloaded icons
+        id: icons
+        uses: actions/cache/restore@v4
+        with:
+          path: .cache/embed-icons
+          key: embed-icons-v1-lookup-${{ github.run_id }}
+          restore-keys: embed-icons-v1-
+
+      - name: Install dependencies
+        run: npm ci --include=dev --no-audit --no-fund
+
+      - name: Generate new and changed previews
+        id: generate
+        env:
+          EMBED_FORCE: ${{ inputs.force_regenerate || 'false' }}
+        run: npm run generate:embeds
+
+      - name: Save generated previews
+        if: steps.previews.outputs.cache-matched-key != format('static-embeds-v1-{0}', steps.generate.outputs.cache-key)
+        uses: actions/cache/save@v4
+        with:
+          path: .cache/static-embeds
+          key: static-embeds-v1-${{ steps.generate.outputs.cache-key }}
+
+      - name: Save downloaded icons
+        if: steps.icons.outputs.cache-matched-key != format('embed-icons-v1-{0}', steps.generate.outputs.icon-cache-key)
+        uses: actions/cache/save@v4
+        with:
+          path: .cache/embed-icons
+          key: embed-icons-v1-${{ steps.generate.outputs.icon-cache-key }}
+
+      - name: Check whether publication is needed
+        id: publication
+        run: |
+          node --input-type=module <<'NODE'
+          import { readFile, appendFile } from 'node:fs/promises';
+          const local = await readFile('.cache/static-embeds/manifest.json', 'utf8');
+          let matches = false;
+          try {
+            const response = await fetch(new URL('embeds/manifest.json', process.env.EMBED_SITE_URL), {
+              cache: 'no-store', signal: AbortSignal.timeout(15000),
+            });
+            matches = response.ok && await response.text() === local;
+          } catch { /* Retry a missing or unsuccessful publication. */ }
+          await appendFile(process.env.GITHUB_OUTPUT, `needed=${process.env.GITHUB_EVENT_NAME !== 'schedule' || !matches}\n`);
+          NODE
+
+      - name: Build the application
+        if: steps.publication.outputs.needed == 'true'
+        env:
+          VITE_FIREBASE_API_KEY: ${{ secrets.FIREBASE_API_KEY }}
+          VITE_GET_PRESET_URL: ${{ vars.VITE_GET_PRESET_URL }}
+          VITE_UPLOAD_PRESET_URL: ${{ vars.VITE_UPLOAD_PRESET_URL }}
+          VITE_RENDER_PRESET_IMAGE_URL: ${{ vars.VITE_RENDER_PRESET_IMAGE_URL }}
+          VITE_ON_PRESET_WRITE_URL: ${{ vars.VITE_ON_PRESET_WRITE_URL }}
+        run: npm run build -- --base "$SITE_BASE_PATH"
+
+      - name: Include previews in the site
+        if: steps.publication.outputs.needed == 'true'
+        run: |
+          node --input-type=module <<'NODE'
+          import { cp, readdir, stat } from 'node:fs/promises';
+          import path from 'node:path';
+          await cp('.cache/static-embeds', 'dist/embeds', { recursive: true });
+          async function size(dir) {
+            let bytes = 0;
+            for (const item of await readdir(dir, { withFileTypes: true })) {
+              const file = path.join(dir, item.name);
+              bytes += item.isDirectory() ? await size(file) : (await stat(file)).size;
+            }
+            return bytes;
+          }
+          if (await size('dist') > 950000000) throw new Error('Site exceeds the GitHub Pages size budget');
+          NODE
+
+      - name: Upload complete site
+        if: steps.publication.outputs.needed == 'true'
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: dist
+
+      - name: Deploy complete site
+        if: steps.publication.outputs.needed == 'true'
+        id: deploy
+        uses: actions/deploy-pages@v4
