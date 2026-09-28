@@ -31,6 +31,23 @@ Discord gets a page with the right image already in its metadata. Opening the
 link in a browser takes you to the editor with the same layout selected.
 Old links to the Google endpoint won't change, so copy a new link to test this.
 
+## Existing links and guide updates
+
+Keep `presets.pvme.io` pointing at its current endpoint. Links already posted in
+Discord or other sites keep using it, including `?id=...` links without a layout.
+This rollout doesn't change that domain, its DNS, or the old endpoint. No new
+hosting service or cloud deployment is needed for the static previews.
+
+Publish the Pages previews before merging the guide link update. That update
+uses `https://pvme.io/preset-maker/embeds/ID/4x7/` for each preset, keeping the
+same ID. Check that every guide preset has a generated portrait image in
+`embeds/manifest.json`; a fallback page without an image isn't ready yet.
+Fix any failed guide presets and run the workflow again before switching links.
+
+The existing endpoint must stay running for old URLs to work. A future shutdown
+would need a replacement that understands its `?id=` URLs; GitHub Pages alone
+cannot choose a different static page from that query string.
+
 The first batch can take a few runs. Each normal run spends up to five minutes
 rendering, publishes what it has, and picks up the rest next time. Until a new
 preset's image is ready, its link still opens the editor.
