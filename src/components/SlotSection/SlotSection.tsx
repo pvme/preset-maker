@@ -1,5 +1,5 @@
-import React, { useCallback } from "react";
-import { DragPreviewImage, useDrag, useDrop } from "react-dnd";
+import React, { useCallback, useState } from "react";
+import { DragPreviewImage, useDrag, useDragLayer, useDrop } from "react-dnd";
 import Tooltip from "@mui/material/Tooltip";
 import sanitizeHtml from "sanitize-html";
 
@@ -126,6 +126,10 @@ const SingleSlot = ({
   const preset = useAppSelector(selectPreset);
   const { selectedSlots } = preset;
   const { isPresetEditable } = useStorageMode();
+  const isSlotDragInProgress = useDragLayer((monitor) =>
+    monitor.isDragging(),
+  );
+  const [isTooltipOpen, setIsTooltipOpen] = useState(false);
 
   const entry = slot.id && maps ? maps.get(slot.id) : undefined;
   const emojiUrl = entry && maps ? (maps.getUrl(entry.id) ?? "") : "";
@@ -282,6 +286,11 @@ const SingleSlot = ({
           arrow
           slotProps={tooltipSlotProps}
           leaveDelay={0}
+          open={isTooltipOpen && !isSlotDragInProgress}
+          onOpen={() => {
+            if (!isSlotDragInProgress) setIsTooltipOpen(true);
+          }}
+          onClose={() => setIsTooltipOpen(false)}
         >
           {slotNode}
         </Tooltip>
