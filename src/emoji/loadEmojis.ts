@@ -116,7 +116,13 @@ export async function loadEmojis(): Promise<EmojiMaps> {
 
       for (const rawEntry of cat.emojis) {
         const entry = normalizeEmojiEntry(rawEntry);
-        if (entry) all.push(entry);
+        if (entry) {
+          // Prayer catalogue entries currently carry their type in the category.
+          if (cat.name.trim().toLowerCase() === "prayers" && !entry.preset_type) {
+            entry.preset_type = "prayer";
+          }
+          all.push(entry);
+        }
       }
     }
 

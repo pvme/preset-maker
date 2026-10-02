@@ -14,6 +14,7 @@ import { useStorageMode } from "../../storage/StorageModeContext";
 
 import { tooltipSlotProps } from "../Tooltip/tooltipStyles";
 import "./PresetExtras.css";
+import { PresetIcon } from "../PresetEditor/PresetIcon";
 
 interface PresetExtrasProps {
   title: string;
@@ -25,6 +26,7 @@ interface PresetExtrasProps {
     | ((payload: { index: number; value: Item | null }) => AnyAction);
   indexed?: boolean;
   showNames?: boolean;
+  side?: string;
 }
 
 export const PresetExtras = ({
@@ -35,7 +37,8 @@ export const PresetExtras = ({
   setItem,
   indexed = false,
   showNames = false,
-}: PresetExtrasProps): JSX.Element => {
+  side,
+}: PresetExtrasProps): JSX.Element | null => {
   const dispatch = useAppDispatch();
   const maps = useEmojiMap();
   const isMobileScreen = useMediaQuery("(max-width:900px)");
@@ -46,8 +49,11 @@ export const PresetExtras = ({
 
   const visibleItems = Array.from(
     { length: maxItems },
-    (_, i) => items[i] ?? { id: "" },
-  );
+    (_, index) => ({ item: items[index] ?? { id: "" }, index }),
+  ).filter(({ item }) => isPresetEditable || Boolean(item.id && maps?.getUrl(item.id)));
+
+  const hasVisibleItems = visibleItems.length > 0;
+
 
   const openDialog = useCallback(
     (index: number) => {
@@ -90,8 +96,11 @@ export const PresetExtras = ({
   const safeUrl = (id: string) => maps?.getUrl(id) ?? "";
 
 
+  if (!hasVisibleItems) return null;
+
   return (
     <div
+      data-support-side={side}
       className={[
         "preset-extras",
         `preset-extras--slots-${maxItems}`,
@@ -104,7 +113,7 @@ export const PresetExtras = ({
       </Typography>
 
       <div className="preset-extras__items">
-        {visibleItems.map((item, index) => {
+        {visibleItems.map(({ item, index }) => {
           const entry = item.id ? safeGet(item.id) : undefined;
 
           if (!entry) {
@@ -112,12 +121,16 @@ export const PresetExtras = ({
               <div
                 key={index}
                 className="preset-extras__item preset-extras__item--empty"
+                role={isPresetEditable ? "button" : undefined}
+                tabIndex={isPresetEditable ? 0 : undefined}
+                aria-label={isPresetEditable ? `Change ${title} slot ${index + 1}` : undefined}
+                onKeyDown={isPresetEditable ? (event) => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); openDialog(index); } } : undefined}
                 onClick={isPresetEditable ? () => openDialog(index) : undefined}
               >
                 {isPresetEditable && (
                   <AddIcon
                     className="preset-extras__add"
-                    htmlColor="#646464"
+                    htmlColor="#b89b58"
                   />
                 )}
               </div>
@@ -138,10 +151,14 @@ export const PresetExtras = ({
             >
               <div
                 className="preset-extras__item"
+                role={isPresetEditable ? "button" : undefined}
+                tabIndex={isPresetEditable ? 0 : undefined}
+                aria-label={isPresetEditable ? `Change ${title} slot ${index + 1}` : undefined}
+                onKeyDown={isPresetEditable ? (event) => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); openDialog(index); } } : undefined}
                 onClick={isPresetEditable ? () => openDialog(index) : undefined}
               >
                 <span className="preset-extras__tooltip-anchor">
-                  <img
+                  <PresetIcon
                     className="preset-extras__item-image"
                     src={url}
                     alt={entry.name}

@@ -10,6 +10,9 @@ export function usePresetJsonExport(preset: {
   inventorySlots: any[];
   equipmentSlots: any[];
   relics: any;
+  prayers?: any[];
+  aspect?: any;
+  ammoSpells?: any[];
   familiar: any;
   breakdown: any[];
 }) {
@@ -20,6 +23,9 @@ export function usePresetJsonExport(preset: {
       inventorySlots: preset.inventorySlots,
       equipmentSlots: preset.equipmentSlots,
       relics: preset.relics,
+      prayers: preset.prayers,
+      aspect: preset.aspect,
+      ammoSpells: preset.ammoSpells,
       familiar: preset.familiar,
       breakdown: preset.breakdown,
     });

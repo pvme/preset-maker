@@ -36,6 +36,7 @@ function toSavedPreset(preset: any): SavedPreset {
     equipmentSlots: (preset?.equipmentSlots ?? []).slice(0, 12).map(savedItem),
     familiar: savedItem(preset?.familiar),
     relics: trimFilled(preset?.relics, 3),
+    prayers: trimFilled(preset?.prayers, 3),
     aspect: savedItem(preset?.aspect),
     ammoSpells: trimFilled(preset?.ammoSpells, 3),
     breakdown: Array.isArray(preset?.breakdown) ? preset.breakdown : [],

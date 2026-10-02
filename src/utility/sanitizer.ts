@@ -40,6 +40,9 @@ export const sanitizePresetData = (preset: SavedPreset): SavedPreset => {
     equipmentSlots: sanitizeSlots(preset.equipmentSlots, 12),
 
     relics: (preset.relics ?? []).map(sanitizeItem),
+    prayers: (preset.prayers ?? []).filter(item => item?.id).slice(0, 3).map(item => ({ id: item.id })),
+    aspect: preset.aspect ? sanitizeItem(preset.aspect) : undefined,
+    ammoSpells: (preset.ammoSpells ?? []).map(sanitizeItem),
 
     familiar: preset.familiar ? sanitizeItem(preset.familiar) : undefined,
 

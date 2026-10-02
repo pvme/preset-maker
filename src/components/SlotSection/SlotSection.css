@@ -34,8 +34,11 @@
 
 .preset-slots__icon {
   pointer-events: none;
-  max-height: 34px;
-  max-width: 38px;
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  flex: none;
+  clip-path: inset(0);
 }
 
 .inventory--mobile {
@@ -68,4 +71,17 @@
   height: 30px !important;
   margin: 0 4px;
   vertical-align: middle;
+}
+
+.preset-slots__icon--equipment {
+  height: 27px;
+}
+
+.preset-slots__slot--editable:hover {
+  border-color: #b89b58;
+  background-color: rgb(184 155 88 / 8%);
+}
+
+.preset-slots__slot--selected {
+  border-color: #e7c779;
 }

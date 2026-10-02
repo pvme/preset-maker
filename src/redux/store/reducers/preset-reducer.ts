@@ -31,6 +31,7 @@ const initialState: PresetState = {
 
   familiar: blankItem(),
   relics: [],
+  prayers: [],
   aspect: blankItem(),
   ammoSpells: [],
 
@@ -234,6 +235,15 @@ export const presetSlice = createSlice({
       );
     },
 
+    setPrayer: (
+      state,
+      action: PayloadAction<{ index: number; value: Item | null }>,
+    ) => {
+      const { index, value } = action.payload;
+      if (!Number.isInteger(index) || index < 0 || index >= 3) return;
+      state.prayers = upsertListItem(state.prayers, index, value ? { id: value.id } : null, 3);
+    },
+
     setAmmoSpells: (
       state,
       action: PayloadAction<{ index: number; value: Item | null }>,
@@ -291,6 +301,7 @@ export const presetSlice = createSlice({
       state.equipmentSlots = action.payload.equipmentSlots;
       state.familiar = action.payload.familiar;
       state.relics = action.payload.relics;
+      state.prayers = action.payload.prayers ?? [];
       state.aspect = action.payload.aspect;
       state.ammoSpells = action.payload.ammoSpells;
       state.breakdown = action.payload.breakdown;
@@ -339,6 +350,7 @@ export const {
   setAspect,
   setRelic,
   setAmmoSpells,
+  setPrayer,
   setBreakdownEntry,
   removeBreakdownEntry,
   importDataAction,

@@ -69,7 +69,7 @@
   width: 100%;
   padding: 12px;
   border-radius: 10px;
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(184, 155, 88, 0.06);
 }
 
 .dialog__recent-title {
@@ -127,5 +127,5 @@
    ========================= */
 
 .MuiAutocomplete-listbox .Mui-focused {
-  background-color: #313131;
+  background-color: #332b1f;
 }

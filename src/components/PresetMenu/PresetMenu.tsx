@@ -399,7 +399,7 @@ export const PresetMenu = ({
                     disabled={!isDirty || isSaving || !canSave}
                     startIcon={isSaving ? undefined : <SaveIcon />}
                     variant="contained"
-                    color="success"
+                    color="primary"
                   >
                     {isSaving ? <CircularProgress size={20} /> : "Save"}
                   </Button>

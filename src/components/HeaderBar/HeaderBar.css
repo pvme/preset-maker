@@ -4,9 +4,10 @@
 }
 
 .header-bar__app-bar {
-  background: rgb(27 28 28);
+  background: #1c1a17;
+  color: #e7c779;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid #493b27;
 }
 
 .header-bar__toolbar {
@@ -107,8 +108,8 @@
 
 @media (prefers-contrast: high) {
   .header-bar__app-bar {
-    background: #1565c0;
-    border-bottom: 2px solid white;
+    background: #1c1a17;
+    border-bottom: 2px solid #e7c779;
   }
 }
 

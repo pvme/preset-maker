@@ -1,5 +1,5 @@
 .preset-info {
-  background: rgba(255, 255, 255, 0.025);
+  background: #211e19;
   box-shadow:
     0 10px 30px rgba(0, 0, 0, 0.34),
     inset 0 1px 0 rgba(255, 214, 140, 0.07),
@@ -8,16 +8,17 @@
   -webkit-backdrop-filter: blur(12px);
 }
 
-.preset-info__content {
+.preset-info .preset-info__content {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 24px;
+  padding: 24px;
 }
 
 .preset-info__title-wrap {
   position: relative;
   min-width: 0;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid #5c492e;
   border-radius: 4px;
   background: rgba(255, 255, 255, 0.01);
   transition:
@@ -41,11 +42,11 @@
   width: 100%;
   display: block;
   min-height: 44px;
-  padding: 10px 12px 10px 40px;
+  padding: 14px 16px 14px 44px;
   border: 0;
   outline: none;
   background: transparent;
-  color: #fff;
+  color: #e6dcc7;
   font-family: Roboto, Helvetica, Arial, sans-serif;
   font-size: 1.3rem;
   font-weight: 600;
@@ -68,11 +69,11 @@
 
 .preset-info__title-placeholder {
   position: absolute;
-  top: 10px;
-  left: 40px;
-  right: 12px;
+  top: 14px;
+  left: 44px;
+  right: 16px;
   pointer-events: none;
-  color: rgba(255, 255, 255, 0.42);
+  color: #a89a80;
   font-family: Roboto, Helvetica, Arial, sans-serif;
   font-size: 1.3rem;
   font-weight: 600;
@@ -96,12 +97,12 @@
 .preset-info__title-icon {
   position: absolute;
   top: 50%;
-  left: 12px;
+  left: 16px;
   transform: translateY(-50%);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgba(255, 255, 255, 0.32);
+  color: #b89b58;
   pointer-events: none;
   z-index: 2;
 }
@@ -120,7 +121,7 @@
   cursor: default;
   margin-bottom: 8px;
   margin-left: 16px;
-  color: rgba(255, 255, 255, 0.7);
+  color: #b89b58;
   font-family: Roboto, Helvetica, Arial, sans-serif;
   font-size: 0.95rem;
   font-weight: 500;
@@ -133,11 +134,11 @@
   white-space: pre-wrap !important;
   word-wrap: break-word !important;
   overflow-wrap: break-word !important;
-  padding: 12px 14px;
+  padding: 16px 18px;
   min-height: 120px;
-  color: #fff;
+  color: #e6dcc7;
   border-radius: 4px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid #5c492e;
   outline: none;
   font-family: Roboto, Helvetica, Arial, sans-serif;
   line-height: 1.55;
@@ -174,10 +175,10 @@
   left: 0;
   right: 0;
   z-index: 5;
-  padding: 12px 14px;
+  padding: 16px 18px;
   font-size: 16px;
   pointer-events: none;
-  color: rgba(255, 255, 255, 0.5);
+  color: #a89a80;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -234,6 +235,10 @@
 }
 
 @media (max-width: 900px) {
+  .preset-info .preset-info__content {
+    padding: 20px;
+  }
+
   .preset-info__title-input,
   .preset-info__title-placeholder {
     font-size: 1.2rem;
@@ -243,3 +248,5 @@
     min-height: 0;
   }
 }
+
+.preset-info__title-input { color: #e7c779; }
