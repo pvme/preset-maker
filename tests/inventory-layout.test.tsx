@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
+import { HashRouter } from "react-router-dom";
 import { PresetEditor } from "../src/components/PresetEditor/PresetEditor";
 import { InventoryLayoutSelect } from "../src/components/PresetMenu/InventoryLayoutSelect";
 import { useInventoryLayout } from "../src/hooks/useInventoryLayout";
@@ -19,6 +20,7 @@ vi.mock("../src/storage/StorageModeContext", () => ({
 
 beforeEach(() => {
   localStorage.clear();
+  window.history.replaceState(null, "", "/");
   window.matchMedia = vi.fn().mockReturnValue({ matches: false, addListener: vi.fn(), removeListener: vi.fn() });
 });
 afterEach(() => { cleanup(); vi.restoreAllMocks(); });
@@ -33,7 +35,7 @@ function LayoutEditor() {
 
 function setup() {
   const store = configureStore({ reducer: { preset: reducer, recentItem: recentItems } });
-  const view = render(<Provider store={store}><DndProvider backend={HTML5Backend}><LayoutEditor /></DndProvider></Provider>);
+  const view = render(<HashRouter><Provider store={store}><DndProvider backend={HTML5Backend}><LayoutEditor /></DndProvider></Provider></HashRouter>);
   return { ...view, store };
 }
 
@@ -95,4 +97,18 @@ test("still switches when local storage is blocked", async () => {
   const { container } = setup();
   await selectLayout("4 columns × 7 rows");
   expect(container.querySelector(".preset-layout--4x7")).toBeTruthy();
+});
+
+test("uses a shared hash-route layout in preference to a saved local choice", () => {
+  localStorage.setItem("preset-maker:inventory-layout", "7x4");
+  window.history.replaceState(null, "", "/preset-maker/#/shared-preset?layout=4x7");
+  const { container } = setup();
+  expect(container.querySelector(".preset-layout--4x7")).toBeTruthy();
+});
+
+test("writes a selected layout into the shared hash-route query", async () => {
+  window.history.replaceState(null, "", "/preset-maker/#/shared-preset?other=value");
+  setup();
+  await selectLayout("4 columns × 7 rows");
+  expect(window.location.hash).toBe("#/shared-preset?other=value&layout=4x7");
 });
