@@ -14,12 +14,5 @@ export function buildEmbedLink(
   base.pathname = `${base.pathname.replace(/\/+$/, "")}/`;
   if (base.search || base.hash) throw new Error("Embed base URL must not contain a query or hash");
   const encodedId = encodeURIComponent(id);
-  const embed = new URL(
-    layout === "4x7" ? `${encodedId}/4x7/` : `${encodedId}/`,
-    base,
-  );
-  // Keep the mode explicit so any redirect from the static embed opens the
-  // matching editor arrangement, including the default 7x4 layout.
-  embed.searchParams.set("layout", layout);
-  return embed.href;
+  return new URL(`${encodedId}/${layout}/`, base).href;
 }
