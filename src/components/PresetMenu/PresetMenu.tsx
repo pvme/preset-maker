@@ -296,7 +296,9 @@ export const PresetMenu = ({
               <MenuItem
                 onClick={() => {
                   if (!id) return;
-                  const url = buildEmbedLink(id, layout);
+                  // Discord caches OpenGraph data by page URL. A fresh value
+                  // makes a copied link pick up a newly generated image.
+                  const url = buildEmbedLink(id, layout, undefined, crypto.randomUUID());
                   navigator.clipboard.writeText(url);
                   enqueueSnackbar("Link copied", { variant: "success" });
                 }}

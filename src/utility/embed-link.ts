@@ -9,10 +9,13 @@ export function buildEmbedLink(
   id: string,
   layout: InventoryLayout,
   baseUrl = configuredBase,
+  cacheBuster?: string,
 ): string {
   const base = new URL(baseUrl);
   base.pathname = `${base.pathname.replace(/\/+$/, "")}/`;
   if (base.search || base.hash) throw new Error("Embed base URL must not contain a query or hash");
   const encodedId = encodeURIComponent(id);
-  return new URL(`${encodedId}/${layout}/`, base).href;
+  const embed = new URL(`${encodedId}/${layout}/`, base);
+  if (cacheBuster) embed.searchParams.set("v", cacheBuster);
+  return embed.href;
 }

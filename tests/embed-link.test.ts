@@ -15,3 +15,8 @@ test("does not add a query or cache-buster", () => {
   expect(buildEmbedLink("stable", "7x4", "https://example.test/embeds/") )
     .toBe("https://example.test/embeds/stable/7x4/");
 });
+
+test("adds a supplied cache-buster without changing the layout path", () => {
+  expect(buildEmbedLink("preset-1", "4x7", "https://example.test/embeds/", "fresh-image"))
+    .toBe("https://example.test/embeds/preset-1/4x7/?v=fresh-image");
+});
