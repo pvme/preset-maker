@@ -46,6 +46,10 @@ export const presetSchema = z.object({
     (val) => normalizeMax(val as any[], 3),
     z.array(singleSlotSchema).max(3).default([]),
   ),
+  prayers: z.preprocess(
+    (val) => normalizeMax(val as any[], 3),
+    z.array(singleSlotSchema).max(3).default([]),
+  ),
   aspect: singleSlotSchema.default({ id: "" }),
   ammoSpells: z.preprocess(
     (val) => normalizeMax(val as any[], 3),
@@ -64,6 +68,7 @@ export const blankPreset: Preset = {
   equipmentSlots: Array.from({ length: 12 }, () => ({ id: "" })),
   familiar: { id: "" },
   relics: [],
+  prayers: [],
   aspect: { id: "" },
   ammoSpells: [],
   breakdown: [],

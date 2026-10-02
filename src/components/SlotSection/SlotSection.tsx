@@ -26,6 +26,7 @@ import { emojify } from "../../utility/emojify";
 import { tooltipSlotProps } from "../Tooltip/tooltipStyles";
 
 import "./SlotSection.css";
+import { PresetIcon } from "../PresetEditor/PresetIcon";
 
 type SlotGroup = "inventory" | "equipment";
 
@@ -233,7 +234,7 @@ const SingleSlot = ({
   };
 
   const icon = entry ? (
-    <img
+    <PresetIcon
       className={[
         "preset-slots__icon",
         slotGroup === "equipment" ? "preset-slots__icon--equipment" : "",

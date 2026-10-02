@@ -31,6 +31,7 @@ export interface SavedPreset {
   relics?: Item[];
   aspect?: Item;
   ammoSpells?: Item[];
+  prayers?: Item[];
   breakdown: BreakdownEntry[];
   presetImage?: string;
 }
@@ -42,6 +43,7 @@ export const EMPTY_SAVED_PRESET: SavedPreset = {
   equipmentSlots: Array.from({ length: 12 }, () => ({ id: "" })),
   familiar: { id: "" },
   relics: [],
+  prayers: [],
   aspect: { id: "" },
   ammoSpells: [],
   breakdown: [],

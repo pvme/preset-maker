@@ -132,6 +132,8 @@ export async function normalizePreset(raw: any): Promise<Preset> {
 
     aspect: raw?.aspect ? migrateSlot(raw.aspect) : { id: "" },
 
+    prayers: migrateSlotArray(raw?.prayers, 3),
+
     ammoSpells: migrateSlotArray(raw?.ammoSpells, 3),
 
     breakdown: migrateLegacyBreakdown(raw),

@@ -38,6 +38,7 @@ export const useEmojiFilter = ({ maps, slotType, slotIndex }: Params) => {
 
   const matchesSpecialType = useCallback(
     (e: EmojiEntry) => {
+      if (slotType === SlotType.Prayer) return e.preset_type === "prayer";
       if (slotType === SlotType.Relic) return e.preset_type === "relic";
       if (slotType === SlotType.Familiar) return e.preset_type === "familiar";
       if (slotType === SlotType.Aspect) return e.preset_type === "aspect";
@@ -62,7 +63,8 @@ export const useEmojiFilter = ({ maps, slotType, slotIndex }: Params) => {
           slotType === SlotType.Relic ||
           slotType === SlotType.Familiar ||
           slotType === SlotType.Aspect ||
-          slotType === SlotType.AmmoSpells
+          slotType === SlotType.AmmoSpells ||
+        slotType === SlotType.Prayer
         ) {
           return matchesSpecialType(e);
         }
@@ -103,6 +105,7 @@ export const useEmojiFilter = ({ maps, slotType, slotIndex }: Params) => {
         ...o,
         name: maps.get(o.id)?.name ?? "",
         eofSpec: maps.get(o.id)?.eof_spec ?? "",
+        aliases: maps.get(o.id)?.id_aliases ?? [],
       }));
 
       if (!query) {
@@ -118,6 +121,7 @@ export const useEmojiFilter = ({ maps, slotType, slotIndex }: Params) => {
           const name = option.name.toLowerCase();
           const id = option.id.toLowerCase();
           const eofSpec = option.eofSpec.toLowerCase();
+          const aliases = option.aliases.map((alias) => alias.toLowerCase());
 
           let totalScore = 0;
 
@@ -125,8 +129,11 @@ export const useEmojiFilter = ({ maps, slotType, slotIndex }: Params) => {
             const nameMatch = fuzzysort.single(token, name);
             const idMatch = fuzzysort.single(token, id);
             const eofSpecMatch = fuzzysort.single(token, eofSpec);
+            const aliasMatches = aliases
+              .map((alias) => fuzzysort.single(token, alias))
+              .filter((match): match is Fuzzysort.Result => match !== null);
 
-            const bestMatch = [nameMatch, idMatch, eofSpecMatch]
+            const bestMatch = [nameMatch, idMatch, eofSpecMatch, ...aliasMatches]
               .filter((match): match is Fuzzysort.Result => match !== null)
               .sort((a, b) => b.score - a.score)[0];
 
@@ -135,7 +142,9 @@ export const useEmojiFilter = ({ maps, slotType, slotIndex }: Params) => {
             totalScore += bestMatch.score;
           }
 
-          const startsWithFirstToken = name.startsWith(tokens[0]);
+          const startsWithFirstToken =
+            name.startsWith(tokens[0]) ||
+            aliases.some((alias) => alias.startsWith(tokens[0]));
 
           return {
             option,
@@ -147,7 +156,11 @@ export const useEmojiFilter = ({ maps, slotType, slotIndex }: Params) => {
           (
             entry,
           ): entry is {
-            option: EmojiFilterOption & { name: string; eofSpec: string };
+            option: EmojiFilterOption & {
+              name: string;
+              eofSpec: string;
+              aliases: string[];
+            };
             totalScore: number;
             startsWithFirstToken: boolean;
           } => entry !== null,
@@ -198,7 +211,8 @@ export const useEmojiFilter = ({ maps, slotType, slotIndex }: Params) => {
         slotType === SlotType.Relic ||
         slotType === SlotType.Familiar ||
         slotType === SlotType.Aspect ||
-        slotType === SlotType.AmmoSpells
+        slotType === SlotType.AmmoSpells ||
+        slotType === SlotType.Prayer
       ) {
         return matchesSpecialType(e);
       }
@@ -225,6 +239,7 @@ export const useEmojiFilter = ({ maps, slotType, slotIndex }: Params) => {
   );
 
   const dialogTitle = useMemo(() => {
+    if (slotType === SlotType.Prayer) return "Select prayer";
     if (slotType === SlotType.Relic) return "Select relic";
     if (slotType === SlotType.Familiar) return "Select familiar";
     if (slotType === SlotType.Aspect) return "Select aspect";

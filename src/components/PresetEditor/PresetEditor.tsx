@@ -24,6 +24,7 @@ import {
   setRelic,
   setAspect,
   setAmmoSpells,
+  setPrayer,
 } from "../../redux/store/reducers/preset-reducer";
 
 import {
@@ -46,6 +47,7 @@ import cornerPath from "../../assets/corner.png";
 import smallBackground from "../../assets/bg.png";
 import genericBackground from "../../assets/bg_large.png";
 import desktopPresetMapBackground from "../../assets/presetmap_desktop.png";
+import { useStorageMode } from "../../storage/StorageModeContext";
 import { useEmojiMap } from "../../hooks/useEmojiMap";
 
 import { UI_TO_PRESET_SLOT } from "./equipmentSlots";
@@ -64,11 +66,13 @@ export const PresetEditor = ({ layout }: { layout: InventoryLayout }): JSX.Eleme
     relics,
     aspect,
     ammoSpells,
+    prayers,
     slotType,
     selectedSlots,
     slotIndex,
   } = useAppSelector(selectPreset);
 
+  const { isPresetEditable } = useStorageMode();
   const recentItems = useAppSelector(selectRecentItems);
 
   const [dialogOpen, setDialogOpen] = useState(false);
@@ -293,6 +297,23 @@ export const PresetEditor = ({ layout }: { layout: InventoryLayout }): JSX.Eleme
     [dispatch, multiFill, getNextSlotKey],
   );
 
+  const supportSections = [
+    { title: "Relics", slotType: SlotType.Relic, items: relics, maxItems: 3, setItem: setRelic, indexed: true, row: 0, side: "left" },
+    { title: "Ammo / Spells", slotType: SlotType.AmmoSpells, items: ammoSpells, maxItems: 3, setItem: setAmmoSpells, indexed: true, row: 1, side: "left" },
+    { title: "Prayers", slotType: SlotType.Prayer, items: prayers, maxItems: 3, setItem: setPrayer, indexed: true, row: 0, side: "right" },
+    { title: "Familiar", slotType: SlotType.Familiar, items: [familiar], maxItems: 1, setItem: setFamiliar, row: 1, side: "right" },
+    { title: "Aspect", slotType: SlotType.Aspect, items: [aspect], maxItems: 1, setItem: setAspect, row: 1, side: "right" },
+  ].filter(section => isPresetEditable || section.items.some(item => item?.id && maps?.getUrl(item.id)));
+  const supportWidth = supportSections.reduce((width, section) => {
+    const count = isPresetEditable ? section.maxItems : section.items.filter(item => item?.id && maps?.getUrl(item.id)).length;
+    const slotsWidth = count * 32 + Math.max(0, count - 1) * 4;
+    const labelWidth = section.title.length * 7;
+    return width + (isTallLayout ? Math.max(slotsWidth, labelWidth) : slotsWidth + labelWidth + 10);
+  }, 0) + Math.max(0, supportSections.length - 1) * 14;
+  const supportRows = !supportSections.length ? [] : supportWidth <= (isTallLayout ? 381 : 472) - 28
+    ? [supportSections]
+    : [0, 1].map(row => supportSections.filter(section => section.row === row)).filter(row => row.length);
+
   return (
     <>
       <Card className="preset-editor__card">
@@ -365,44 +386,16 @@ export const PresetEditor = ({ layout }: { layout: InventoryLayout }): JSX.Eleme
               </div>
             )}
 
-            <div className="preset-layout__extras preset-layout__panel">
-              {panelFrame}
-
-              <PresetExtras
-                title="Relics"
-                slotType={SlotType.Relic}
-                items={relics}
-                maxItems={3}
-                setItem={setRelic}
-                indexed
-                showNames={false}
-              />
-              <PresetExtras
-                title="Familiar"
-                slotType={SlotType.Familiar}
-                items={[familiar]}
-                maxItems={1}
-                setItem={setFamiliar}
-                showNames={false}
-              />
-              <PresetExtras
-                title="Aspect"
-                slotType={SlotType.Aspect}
-                items={[aspect]}
-                maxItems={1}
-                setItem={setAspect}
-                showNames={false}
-              />
-              <PresetExtras
-                title="Ammo / Spells"
-                slotType={SlotType.AmmoSpells}
-                items={ammoSpells}
-                maxItems={3}
-                setItem={setAmmoSpells}
-                showNames={false}
-                indexed
-              />
-            </div>
+            {supportRows.length > 0 && (
+              <div className="preset-layout__extras preset-layout__panel">
+                {panelFrame}
+                {supportRows.map((row, index) => (
+                  <div className="preset-layout__support-row" key={index}>
+                    {row.map(section => <PresetExtras key={section.title} {...section} showNames={false} />)}
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         </CardContent>
       </Card>
