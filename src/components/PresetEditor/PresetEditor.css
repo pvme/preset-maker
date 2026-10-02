@@ -140,7 +140,7 @@
   gap: 28px;
   padding: 14px 18px;
   background: linear-gradient(rgb(21 19 17 / 58%), rgb(12 11 10 / 70%)), var(--preset-slot-bg);
-  border: 1px solid transparent;
+  border: 0;
   box-shadow: none;
 }
 

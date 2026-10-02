@@ -31,6 +31,40 @@
   flex-wrap: nowrap;
 }
 
+@media (min-width: 901px) {
+  .preset-page__top-grid {
+    align-items: stretch;
+  }
+
+  .preset-page__info {
+    margin-bottom: 16px;
+  }
+
+  .preset-page__editor,
+  .preset-page__editor .preset-editor__card,
+  .preset-page__editor .preset-layout__content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .preset-page__editor .preset-editor__card,
+  .preset-page__editor .preset-layout__content,
+  .preset-page__editor .preset-layout {
+    flex-grow: 1;
+  }
+
+  /* Keep the item grid fixed; absorb extra height in the support section. */
+  .preset-page__editor .preset-layout__extras,
+  .preset-page__editor .preset-layout__support-row {
+    flex: 1 0 auto;
+  }
+
+  .preset-page__editor .preset-layout__slots,
+  .preset-page__editor .preset-layout__tall-slots {
+    flex: 0 0 auto;
+  }
+}
+
 @media (max-width: 900px) {
   .preset-page__top-grid {
     flex-direction: column;
