@@ -66,7 +66,7 @@ import { usePresetExport } from "../../hooks/usePresetExport";
 import { usePresetJsonExport } from "./usePresetJsonExport";
 import { usePresetJsonImport } from "./usePresetJsonImport";
 
-import { FunctionURLs } from "../../api/function-urls";
+import { buildEmbedLink } from "../../utility/embed-link";
 
 import "./PresetMenu.css";
 
@@ -296,9 +296,7 @@ export const PresetMenu = ({
               <MenuItem
                 onClick={() => {
                   if (!id) return;
-                  const url = `${FunctionURLs.presetEmbed}?id=${encodeURIComponent(
-                    id,
-                  )}`;
+                  const url = buildEmbedLink(id, layout);
                   navigator.clipboard.writeText(url);
                   enqueueSnackbar("Link copied", { variant: "success" });
                 }}

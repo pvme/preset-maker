@@ -8,7 +8,6 @@ import { type SavedPreset } from "../schemas/saved-preset-data";
 
 interface UploadPresetResponse {
   id: string;
-  imageUrl: string;
 }
 
 export async function uploadPreset(
@@ -36,26 +35,3 @@ export async function uploadPreset(
   return response.data;
 }
 
-export async function getPresetImageUrl(
-  preset: SavedPreset,
-  id: string,
-): Promise<string> {
-  const payload = structuredClone(preset);
-
-  payload.equipmentSlots = (payload.equipmentSlots ?? []).slice(0, 12);
-  payload.inventorySlots = (payload.inventorySlots ?? []).slice(0, 28);
-  delete payload.presetImage;
-
-  const url = `${FunctionURLs.uploadPreset}?id=${encodeURIComponent(id)}`;
-
-  const idToken = await getAuth().currentUser?.getIdToken();
-
-  const response = await axios.post<UploadPresetResponse>(url, payload, {
-    headers: {
-      "Content-Type": "application/json",
-      ...(idToken ? { Authorization: `Bearer ${idToken}` } : {}),
-    },
-  });
-
-  return response.data.imageUrl;
-}

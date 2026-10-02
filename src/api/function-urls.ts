@@ -1,15 +1,9 @@
 const {
   VITE_GET_PRESET_URL,
   VITE_UPLOAD_PRESET_URL,
-  VITE_PRESET_EMBED_URL,
-  VITE_RENDER_PRESET_IMAGE_URL,
-  VITE_ON_PRESET_WRITE_URL
 } = import.meta.env;
 
 export const FunctionURLs = {
   getPreset: VITE_GET_PRESET_URL,
   uploadPreset: VITE_UPLOAD_PRESET_URL,
-  presetEmbed: VITE_PRESET_EMBED_URL,
-  renderPresetImage: VITE_RENDER_PRESET_IMAGE_URL,
-  onPresetWrite: VITE_ON_PRESET_WRITE_URL,
 };
