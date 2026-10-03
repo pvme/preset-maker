@@ -6,7 +6,6 @@ import Tooltip from "@mui/material/Tooltip";
 import { useAppDispatch } from "../../redux/hooks";
 import { EmojiSelectDialog } from "../EmojiSelectDialog/EmojiSelectDialog";
 import { useEmojiMap } from "../../hooks/useEmojiMap";
-import useMediaQuery from "@mui/material/useMediaQuery";
 import { type AnyAction } from "@reduxjs/toolkit";
 import { SlotType } from "../../schemas/slot-type";
 import { type Item } from "../../schemas/item-data";
@@ -41,7 +40,6 @@ export const PresetExtras = ({
 }: PresetExtrasProps): JSX.Element | null => {
   const dispatch = useAppDispatch();
   const maps = useEmojiMap();
-  const isMobileScreen = useMediaQuery("(max-width:900px)");
   const { isPresetEditable } = useStorageMode();
 
   const [dialogOpen, setDialogOpen] = useState(false);
@@ -57,11 +55,11 @@ export const PresetExtras = ({
 
   const openDialog = useCallback(
     (index: number) => {
-      if (!isPresetEditable || isMobileScreen) return;
+      if (!isPresetEditable) return;
       setSelectionIndex(index);
       setDialogOpen(true);
     },
-    [isPresetEditable, isMobileScreen],
+    [isPresetEditable],
   );
 
   const closeDialog = useCallback(() => {
