@@ -300,7 +300,10 @@ export const PresetMenu = ({
                 </>
               )}
 
+              <Tooltip title={embed.detail} placement="left" arrow describeChild slotProps={tooltipSlotProps}>
+                <span style={{ display: "block" }} tabIndex={!embed.ready && !embed.canRetry ? 0 : undefined}>
               <MenuItem
+                component="div"
                 disabled={!embed.ready && !embed.canRetry}
                 onClick={async () => {
                   if (embed.canRetry) { embed.retry(); return; }
@@ -318,6 +321,8 @@ export const PresetMenu = ({
                 </ListItemIcon>
                 <ListItemText primary={embed.label} />
               </MenuItem>
+                </span>
+              </Tooltip>
 
               <Divider />
 
