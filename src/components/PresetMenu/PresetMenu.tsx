@@ -301,7 +301,16 @@ export const PresetMenu = ({
               )}
 
               <Tooltip title={embed.detail} placement="left" arrow describeChild slotProps={tooltipSlotProps}>
-                <span style={{ display: "block" }} tabIndex={!embed.ready && !embed.canRetry ? 0 : undefined}>
+                <span
+                  style={{ display: "block" }}
+                  tabIndex={!embed.ready && !embed.canRetry ? 0 : undefined}
+                  onKeyDown={(event) => {
+                    if (event.target === event.currentTarget && (embed.ready || embed.canRetry) && (event.key === "Enter" || event.key === " ")) {
+                      event.preventDefault();
+                      event.currentTarget.querySelector<HTMLElement>('[role="menuitem"]')?.click();
+                    }
+                  }}
+                >
               <MenuItem
                 component="div"
                 disabled={!embed.ready && !embed.canRetry}
