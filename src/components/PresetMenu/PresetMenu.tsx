@@ -66,7 +66,8 @@ import { usePresetExport } from "../../hooks/usePresetExport";
 import { usePresetJsonExport } from "./usePresetJsonExport";
 import { usePresetJsonImport } from "./usePresetJsonImport";
 
-import { buildEmbedLink } from "../../utility/embed-link";
+import { useEmbedReadiness } from "./useEmbedReadiness";
+import { copyReadyEmbedLink } from "../../utility/copy-embed-link";
 
 import "./PresetMenu.css";
 
@@ -118,6 +119,12 @@ export const PresetMenu = ({
   const [anchorExport, setAnchorExport] = useState<null | HTMLElement>(null);
   const [isUploading, setIsUploading] = useState(false);
   const [imageImportOpen, setImageImportOpen] = useState(false);
+
+  const { slotType: _slotType, slotIndex: _slotIndex, slotKey: _slotKey, selectedSlots: _selectedSlots, ...embedContent } = preset;
+  const embed = useEmbedReadiness({
+    id, layout, mode, isDirty, busy: isSaving || isUploading || isPresetLoading,
+    contentKey: JSON.stringify(embedContent),
+  });
 
   const canShowPresetWriteActions = !isPresetLoading;
   const canSave = mode === "local" || (mode === "cloud" && isLoggedIn);
@@ -294,19 +301,22 @@ export const PresetMenu = ({
               )}
 
               <MenuItem
-                onClick={() => {
-                  if (!id) return;
-                  // Discord caches OpenGraph data by page URL. A fresh value
-                  // makes a copied link pick up a newly generated image.
-                  const url = buildEmbedLink(id, layout, undefined, crypto.randomUUID());
-                  navigator.clipboard.writeText(url);
-                  enqueueSnackbar("Link copied", { variant: "success" });
+                disabled={!embed.ready && !embed.canRetry}
+                onClick={async () => {
+                  if (embed.canRetry) { embed.retry(); return; }
+                  try {
+                    await copyReadyEmbedLink(embed.copyUrl);
+                    enqueueSnackbar("Link copied", { variant: "success" });
+                  } catch (error) {
+                    const pending = error instanceof Error && error.message === "Embed is not ready yet";
+                    enqueueSnackbar(pending ? "Embed is not ready yet" : "Could not copy the link. Please try again.", { variant: pending ? "info" : "error" });
+                  }
                 }}
               >
                 <ListItemIcon>
                   <LinkIcon fontSize="small" />
                 </ListItemIcon>
-                <ListItemText primary="Copy embed link" />
+                <ListItemText primary={embed.label} />
               </MenuItem>
 
               <Divider />
